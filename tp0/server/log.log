@@ -1,0 +1,31 @@
+[INFO] 17:27:53:794 Servidor/(3587:3587): Listo para escuchar a mi cliente
+[INFO] 17:27:53:794 Servidor/(3587:3587): Servidor listo para recibir al cliente
+[INFO] 17:33:09:287 Servidor/(4251:4251): Listo para escuchar a mi cliente
+[INFO] 17:33:09:287 Servidor/(4251:4251): Servidor listo para recibir al cliente
+[INFO] 18:42:58:062 Servidor/(6371:6371): Listo para escuchar a mi cliente
+[INFO] 18:42:58:087 Servidor/(6371:6371): Servidor listo para recibir al cliente
+[INFO] 18:43:06:710 Servidor/(6371:6371): Se conecto un cliente!
+[WARNING] 18:43:06:710 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:06:710 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:43:13:671 Servidor/(6371:6371): Operacion desconocida. No quieras meter la pata
+[ERROR] 18:43:13:671 Servidor/(6371:6371): el cliente se desconecto. Terminando servidor
+[INFO] 18:56:50:178 Servidor/(6948:6948): Listo para escuchar a mi cliente
+[INFO] 18:56:50:220 Servidor/(6948:6948): Servidor listo para recibir al cliente
+[INFO] 18:57:53:988 Servidor/(6948:6948): Se conecto un cliente!
+[WARNING] 18:57:53:989 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:57:53:989 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:58:09:868 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:58:09:869 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:58:09:869 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:58:09:869 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[WARNING] 18:58:09:869 Servidor/(6948:6948): Operacion desconocida. No quieras meter la pata
+[ERROR] 18:58:09:869 Servidor/(6948:6948): el cliente se desconecto. Terminando servidor
