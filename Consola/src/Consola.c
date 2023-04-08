@@ -1,15 +1,6 @@
 #include "Consola.h"
 
 int main(int argc, char* argv[]) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> d2f70ef (Conexion inicial Consola-Kernel)
-=======
->>>>>>> 6120503298323a6f7914965d1ad15192fc3c6232
 	int conexion;
 	char* ip;
 	char* puerto;
@@ -44,34 +35,24 @@ int main(int argc, char* argv[]) {
 	// Armamos y enviamos el paquete
 	paquete(conexion);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f70ef (Conexion inicial Consola-Kernel)
-=======
->>>>>>> 6120503298323a6f7914965d1ad15192fc3c6232
 	terminar_programa(conexion, logger, config);
 
 	log_destroy(logger);
 }
 
-t_log* iniciar_logger(void)
-{
+t_log* iniciar_logger(void) {
 	t_log* nuevo_logger = NULL;
 
 	return nuevo_logger;
 }
 
-t_config* iniciar_config(void)
-{
+t_config* iniciar_config(void) {
 	t_config* nuevo_config = NULL;
 
 	return nuevo_config;
 }
 
-void leer_consola(t_log* logger)
-{
+void leer_consola(t_log* logger) {
 	char* leido;
 
 	// La primera te la dejo de yapa
@@ -87,8 +68,7 @@ void leer_consola(t_log* logger)
 	free(leido);
 }
 
-void paquete(int conexion)
-{
+void paquete(int conexion) {
 	// Ahora toca lo divertido!
 	char* leido;
 	t_paquete* paquete;
@@ -102,7 +82,6 @@ void paquete(int conexion)
 	}
 	enviar_paquete(paquete, conexion);
 
-	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
 	free(paquete);
 	
@@ -110,7 +89,5 @@ void paquete(int conexion)
 
 void terminar_programa(int conexion, t_log* logger, t_config* config)
 {
-	/* Y por ultimo, hay que liberar lo que utilizamos (conexion, log y config) 
-	  con las funciones de las commons y del TP mencionadas en el enunciado */
 	free(1);
 }
