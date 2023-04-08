@@ -2,11 +2,14 @@
 
 int main(int argc, char* argv[]) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 
 >>>>>>> d2f70ef (Conexion inicial Consola-Kernel)
+=======
+>>>>>>> 6120503298323a6f7914965d1ad15192fc3c6232
 	int conexion;
 	char* ip;
 	char* puerto;
@@ -42,9 +45,12 @@ int main(int argc, char* argv[]) {
 	paquete(conexion);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d2f70ef (Conexion inicial Consola-Kernel)
+=======
+>>>>>>> 6120503298323a6f7914965d1ad15192fc3c6232
 	terminar_programa(conexion, logger, config);
 
 	log_destroy(logger);
