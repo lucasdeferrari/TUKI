@@ -1,0 +1,16 @@
+[INFO] 15:03:51:411 Servidor/(6097:6097): Listo para escuchar a mi cliente
+[INFO] 15:03:51:411 Servidor/(6097:6097): Servidor listo para recibir al cliente
+[INFO] 15:04:14:987 Servidor/(6176:6176): Listo para escuchar a mi cliente
+[INFO] 15:04:14:990 Servidor/(6176:6176): Kernel listo para recibir al cliente
+<<<<<<< HEAD
+=======
+[INFO] 19:44:40:286 Servidor/(2143:2143): Listo para escuchar a mi cliente
+[INFO] 19:44:40:297 Servidor/(2143:2143): Kernel listo para recibir al cliente
+[INFO] 19:44:58:789 Servidor/(2154:2154): Listo para escuchar a mi cliente
+[INFO] 19:44:58:793 Servidor/(2154:2154): Kernel listo para recibir al cliente
+[INFO] 19:46:12:852 Servidor/(2347:2347): Listo para escuchar a mi cliente
+[INFO] 19:46:12:856 Servidor/(2347:2347): Kernel listo para recibir al cliente
+[INFO] 19:48:09:064 Servidor/(2143:2143): Se conecto un cliente!
+[INFO] 19:48:09:067 Servidor/(2143:2143): Me llego el mensaje valor
+[ERROR] 19:48:54:112 Servidor/(2143:2143): el cliente se desconecto. Terminando servidor
+>>>>>>> d2f70ef (Conexion inicial Consola-Kernel)
