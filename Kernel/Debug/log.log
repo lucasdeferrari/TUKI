@@ -1,0 +1,79 @@
+[INFO] 14:02:36:778 Servidor/(7248:7248): Listo para escuchar a mi cliente
+[INFO] 14:02:36:780 Servidor/(7248:7248): Servidor listo para recibir al cliente
+[INFO] 14:04:47:342 Servidor/(7248:7248): Se conecto un cliente!
+[INFO] 14:04:57:531 Servidor/(7248:7248): Me llegaron los siguientes valores:
+
+[INFO] 14:04:57:531 Servidor/(7248:7248): HOLA«U
+[ERROR] 14:04:57:531 Servidor/(7248:7248): el cliente se desconecto. Terminando servidor
+[INFO] 14:33:36:080 Servidor/(8118:8118): Listo para escuchar a mi cliente
+[INFO] 14:33:36:082 Servidor/(8118:8118): Kernel listo para recibir al cliente
+[INFO] 14:35:36:666 Servidor/(8281:8281): Listo para escuchar a mi cliente
+[INFO] 14:35:36:667 Servidor/(8281:8281): Kernel listo para recibir al cliente
+[INFO] 14:38:54:423 Servidor/(8419:8419): 8000
+[INFO] 14:38:54:423 Servidor/(8419:8419): Listo para escuchar a mi cliente
+[INFO] 14:38:54:423 Servidor/(8419:8419): Kernel listo para recibir al cliente
+[INFO] 14:40:31:409 Servidor/(8467:8467): 4444
+[INFO] 14:40:31:409 Servidor/(8467:8467): Listo para escuchar a mi cliente
+[INFO] 14:40:31:409 Servidor/(8467:8467): Kernel listo para recibir al cliente
+[INFO] 14:40:38:096 Servidor/(8467:8467): Se conecto un cliente!
+[INFO] 14:40:44:218 Servidor/(8467:8467): Me llegaron los siguientes valores:
+
+[INFO] 14:40:44:218 Servidor/(8467:8467): HOLAhU
+[ERROR] 14:40:44:219 Servidor/(8467:8467): el cliente se desconecto. Terminando servidor
+[INFO] 14:40:56:896 Servidor/(8487:8487): 4444
+[INFO] 14:40:56:896 Servidor/(8487:8487): Listo para escuchar a mi cliente
+[INFO] 14:40:56:896 Servidor/(8487:8487): Kernel listo para recibir al cliente
+[INFO] 14:41:03:432 Servidor/(8487:8487): Se conecto un cliente!
+[INFO] 14:41:10:659 Servidor/(8487:8487): Me llegaron los siguientes valores:
+
+[INFO] 14:41:10:659 Servidor/(8487:8487): como andas
+[INFO] 14:41:10:659 Servidor/(8487:8487): chauñ
+[ERROR] 14:41:10:659 Servidor/(8487:8487): el cliente se desconecto. Terminando servidor
+[INFO] 14:41:25:162 Servidor/(8505:8505): 4444
+[INFO] 14:41:25:162 Servidor/(8505:8505): Listo para escuchar a mi cliente
+[INFO] 14:41:25:162 Servidor/(8505:8505): Kernel listo para recibir al cliente
+[INFO] 14:41:28:959 Servidor/(8505:8505): Se conecto un cliente!
+[INFO] 14:41:33:201 Servidor/(8505:8505): Me llegaron los siguientes valores:
+
+[INFO] 14:41:33:201 Servidor/(8505:8505): hola como andas
+[ERROR] 14:41:33:201 Servidor/(8505:8505): el cliente se desconecto. Terminando servidor
+[INFO] 14:41:43:569 Servidor/(8521:8521): 4444
+[INFO] 14:41:43:573 Servidor/(8521:8521): Listo para escuchar a mi cliente
+[INFO] 14:41:43:573 Servidor/(8521:8521): Kernel listo para recibir al cliente
+[INFO] 14:41:45:925 Servidor/(8521:8521): Se conecto un cliente!
+[INFO] 14:41:48:148 Servidor/(8521:8521): Me llegaron los siguientes valores:
+
+[INFO] 14:41:48:149 Servidor/(8521:8521): hola!V
+[ERROR] 14:41:48:149 Servidor/(8521:8521): el cliente se desconecto. Terminando servidor
+[INFO] 14:42:11:424 Servidor/(8539:8539): 4444
+[INFO] 14:42:11:424 Servidor/(8539:8539): Listo para escuchar a mi cliente
+[INFO] 14:42:11:424 Servidor/(8539:8539): Kernel listo para recibir al cliente
+[INFO] 14:42:15:254 Servidor/(8539:8539): Se conecto un cliente!
+[INFO] 14:42:20:954 Servidor/(8539:8539): Me llegaron los siguientes valores:
+
+[INFO] 14:42:20:954 Servidor/(8539:8539): hola como
+[ERROR] 14:42:20:954 Servidor/(8539:8539): el cliente se desconecto. Terminando servidor
+[INFO] 14:47:37:172 Servidor/(8742:8742): 4444
+[INFO] 14:47:37:175 Servidor/(8742:8742): Listo para escuchar a mi cliente
+[INFO] 14:47:37:175 Servidor/(8742:8742): Kernel listo para recibir al cliente
+[INFO] 14:47:41:816 Servidor/(8742:8742): Se conecto un cliente!
+[INFO] 14:47:45:038 Servidor/(8742:8742): Me llegaron los siguientes valores:
+
+[INFO] 14:47:45:038 Servidor/(8742:8742): hola como
+[ERROR] 14:47:45:038 Servidor/(8742:8742): el cliente se desconecto. Terminando servidor
+[INFO] 14:53:50:988 Servidor/(9028:9028): 4444
+[INFO] 14:53:50:988 Servidor/(9028:9028): Listo para escuchar a mi cliente
+[INFO] 14:53:50:988 Servidor/(9028:9028): Kernel listo para recibir al cliente
+[INFO] 14:53:56:549 Servidor/(9028:9028): Se conecto un cliente!
+[INFO] 14:54:04:101 Servidor/(9028:9028): Me llegaron los siguientes valores:
+
+[INFO] 14:54:04:117 Servidor/(9028:9028): hola como
+[ERROR] 14:54:04:117 Servidor/(9028:9028): el cliente se desconecto. Terminando servidor
+[INFO] 14:58:02:732 Servidor/(9167:9167): 4444
+[INFO] 14:58:02:732 Servidor/(9167:9167): Listo para escuchar a mi cliente
+[INFO] 14:58:02:732 Servidor/(9167:9167): Kernel listo para recibir al cliente
+[INFO] 14:58:11:908 Servidor/(9167:9167): Se conecto un cliente!
+[INFO] 14:58:18:256 Servidor/(9167:9167): Me llegaron los siguientes valores:
+
+[INFO] 14:58:18:260 Servidor/(9167:9167): hola como
+[ERROR] 14:58:18:260 Servidor/(9167:9167): el cliente se desconecto. Terminando servidor

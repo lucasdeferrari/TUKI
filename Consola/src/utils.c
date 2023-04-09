@@ -19,8 +19,6 @@ void* serializar_paquete(t_paquete* paquete, int bytes)
 
 int crear_conexion(char *IP, char* PUERTO)
 {
-	//log_info(logger,"estoy adentro de crear conexion");
-
 	struct addrinfo hints;
 	struct addrinfo *server_info;
 
@@ -31,16 +29,9 @@ int crear_conexion(char *IP, char* PUERTO)
 
 	getaddrinfo(IP, PUERTO, &hints, &server_info);
 
-	// Ahora vamos a crear el socket.
-	int socket_cliente = socket(server_info->ai_family,
-								server_info->ai_socktype,
-								server_info->ai_protocol);
+	int socket_cliente = socket(server_info->ai_family, server_info->ai_socktype, server_info->ai_protocol);
 
-
-	// Ahora que tenemos el socket, vamos a conectarlo
 	connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen);
-
-	//log_info(logger, "Me estoy conectando!");
 
 	freeaddrinfo(server_info);
 

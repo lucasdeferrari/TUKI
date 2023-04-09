@@ -1,7 +1,6 @@
 #include"utils.h"
 
 t_log* logger;
-//t_config* config;
 
 int iniciar_servidor(void)
 {
@@ -18,32 +17,8 @@ int iniciar_servidor(void)
 	hints.ai_flags = AI_PASSIVE;
 
 	getaddrinfo(IP, PUERTO, &hints, &servinfo);
-//	config = iniciar_config();
-//
-//	config = config_create("/home/utnso/tp/tp-2023-1c-Los-operadores/tp/client/consola.config");
-//
-//	//	// Usando el config creado previamente, leemos los valores del config y los
-//	//	// dejamos en las variables 'ip', 'puerto' y 'valor'
-//	//
-//	if (config == NULL) {
-//			printf("No se pudo crear el config.");
-//			exit(5);
-//		}
-//
-//	ip = config_get_string_value(config, "IP_KERNEL");
-//		//printf("El ip es: %s", ip);
-//	puerto = config_get_string_value(config, "PUERTO_KERNEL");
-//	printf("El puerto es: %s", puerto);
-//
-//
-//		// Creamos una conexión hacia el servidor
-//
-//	log_info(logger,"antes de conexion");
-//
-//	conexion = crear_conexion(ip, puerto);
+	log_info(logger, PUERTO);
 
-	//log_info(logger, "despues de conexion");
-	// Creamos el socket de escucha del servidor
 	socket_servidor = socket(servinfo->ai_family,
 	                         servinfo->ai_socktype,
 	                         servinfo->ai_protocol);
@@ -64,10 +39,6 @@ int iniciar_servidor(void)
 
 int esperar_cliente(int socket_servidor)
 {
-	// Quitar esta línea cuando hayamos terminado de implementar la funcion
-	// assert(!"no implementado!");
-
-	// Aceptamos un nuevo cliente
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
