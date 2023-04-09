@@ -1,18 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <commons/log.h>
-#include "utils.h"
-
-void iterator(char* value) {
-    log_info(logger, value);
-}
+#include "kernel.h"
 
 int main(void) {
     logger = log_create("log.log", "Servidor", 1, LOG_LEVEL_DEBUG);
 
     int server_fd = iniciar_servidor();
-    log_info(logger, "Kernel listo para recibir al cliente");
+    log_info(logger, "Servidor listo para recibir al cliente");
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
@@ -38,4 +30,6 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-
+void iterator(char* value) {
+    log_info(logger,"%s", value);
+}
