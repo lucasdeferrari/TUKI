@@ -1,0 +1,82 @@
+[INFO] 22:32:12:383 CPU/(5545:5546): Lista para escuchar a mi cliente
+[INFO] 22:32:12:383 CPU/(5545:5546): CPU lista para recibir al cliente
+[INFO] 22:34:13:979 CPU/(5657:5658): Lista para escuchar a mi cliente
+[INFO] 22:34:13:979 CPU/(5657:5658): CPU lista para recibir al cliente
+[INFO] 22:44:26:066 CPU/(6464:6465): Lista para escuchar a mi cliente
+[INFO] 22:44:26:067 CPU/(6464:6465): CPU lista para recibir al cliente
+[INFO] 22:44:33:489 CPU/(6464:6465): Se conecto un cliente!
+[INFO] 22:44:39:839 CPU/(6464:6465): 
+Me llegaron los siguientes valores:
+
+[INFO] 22:44:39:840 CPU/(6464:6465): HOLA�
+[ERROR] 22:44:39:840 CPU/(6464:6465): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:45:36:590 CPU/(6533:6534): Lista para escuchar a mi cliente
+[INFO] 22:45:36:590 CPU/(6533:6534): CPU lista para recibir al cliente
+[INFO] 22:45:56:223 CPU/(6533:6534): Se conecto un cliente!
+[INFO] 22:46:06:110 CPU/(6533:6534): 
+Me llegaron los siguientes valores:
+
+[INFO] 22:46:06:111 CPU/(6533:6534): HOLA CPU SON EL KERNEL
+[ERROR] 22:46:06:111 CPU/(6533:6534): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:53:24:445 CPU/(7325:7326): Lista para escuchar a mi cliente
+[INFO] 22:53:24:445 CPU/(7325:7326): CPU lista para recibir al Kernel
+[INFO] 22:53:43:555 CPU/(7325:7326): Se conecto un cliente!
+[INFO] 22:53:53:985 CPU/(7325:7326): 
+Me llegaron los siguientes valores:
+
+[INFO] 22:53:53:987 CPU/(7325:7326): HOLA CPU
+[INFO] 22:53:53:987 CPU/(7325:7326): SOY EL KERNEL
+[ERROR] 22:53:53:987 CPU/(7325:7326): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:55:12:668 CPU/(7427:7428): Lista para escuchar a mi cliente
+[INFO] 22:55:12:668 CPU/(7427:7428): CPU lista para recibir al Kernel
+[INFO] 22:55:28:248 CPU/(7427:7428): Se conecto un cliente!
+[INFO] 22:55:38:082 CPU/(7427:7428): 
+Me llegaron los siguientes valores:
+
+[INFO] 22:55:38:082 CPU/(7427:7428): HOLA CPU
+[ERROR] 22:56:52:066 CPU/(7427:7428): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:06:46:206 CPU/(7721:7722): Lista para escuchar al kernel
+[INFO] 23:06:46:207 CPU/(7721:7722): CPU lista para recibir al Kernel
+[INFO] 23:07:02:399 CPU/(7721:7722): El kernel se conectó!
+[INFO] 23:07:49:637 CPU/(7821:7822): Lista para escuchar al kernel
+[INFO] 23:07:49:637 CPU/(7821:7822): CPU lista para recibir al Kernel
+[INFO] 23:09:31:400 CPU/(7884:7885): Lista para escuchar al kernel
+[INFO] 23:09:31:400 CPU/(7884:7885): CPU lista para recibir al Kernel
+[INFO] 23:09:36:090 CPU/(7884:7885): El kernel se conectó!
+[INFO] 23:09:43:209 CPU/(7884:7885): 
+Me llegaron los siguientes valores:
+[INFO] 23:09:43:211 CPU/(7884:7885): HOLA CPU
+[INFO] 23:09:43:211 CPU/(7884:7885): SOY EL KERNEL
+[ERROR] 23:09:43:211 CPU/(7884:7885): 
+el kernel se desconecto. Terminando servidor
+[INFO] 23:22:01:086 CPU/(9035:9036): Lista para escuchar al kernel
+[INFO] 23:22:01:087 CPU/(9035:9036): CPU lista para recibir al Kernel
+[INFO] 23:22:14:813 CPU/(9035:9036): El kernel se conectó!
+[INFO] 23:22:31:976 CPU/(9035:9036): 
+Me llegaron los siguientes valores:
+[INFO] 23:22:31:977 CPU/(9035:9036): HOLA CPU
+[INFO] 23:22:31:977 CPU/(9035:9036): SOY EL KERNEL
+[ERROR] 23:23:12:460 CPU/(9035:9036): 
+el kernel se desconecto. Terminando servidor
+[INFO] 23:28:48:079 CPU/(9243:9244): Lista para escuchar al kernel
+[INFO] 23:28:48:079 CPU/(9243:9244): CPU lista para recibir al Kernel
+[INFO] 23:29:01:033 CPU/(9243:9244): El kernel se conectó!
+[INFO] 23:29:13:620 CPU/(9243:9244): 
+Me llegaron los siguientes valores:
+[INFO] 23:29:13:621 CPU/(9243:9244): HOLA CPU
+[INFO] 23:29:13:621 CPU/(9243:9244): SOY EL KERNEL
+[ERROR] 23:29:13:925 CPU/(9243:9244): 
+el kernel se desconecto. Terminando servidor
+[INFO] 23:31:33:350 CPU/(9681:9682): Lista para escuchar al kernel
+[INFO] 23:31:33:350 CPU/(9681:9682): CPU lista para recibir al Kernel
+[INFO] 23:31:38:039 CPU/(9681:9682): El kernel se conectó!
+[INFO] 23:31:45:372 CPU/(9681:9682): 
+Me llegaron los siguientes valores:
+[INFO] 23:31:45:373 CPU/(9681:9682): HOLA CPU
+[INFO] 23:31:45:373 CPU/(9681:9682): SOY EL KERNEL
+[ERROR] 23:31:45:373 CPU/(9681:9682): 
+el kernel se desconecto. Terminando servidor

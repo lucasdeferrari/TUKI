@@ -1,0 +1,24 @@
+[INFO] 22:21:24:064 CPU/(4699:4750): Listo para escuchar a mi cliente
+[INFO] 22:21:24:064 CPU/(4699:4750): CPU lista para recibir al cliente
+[INFO] 22:22:52:426 CPU/(4871:4871): Listo para escuchar a mi cliente
+[INFO] 22:22:52:436 CPU/(4871:4871): CPU lista para recibir al cliente
+[INFO] 22:22:56:441 CPU/(4887:4887): Listo para escuchar a mi cliente
+[INFO] 22:22:56:448 CPU/(4887:4887): CPU lista para recibir al cliente
+[INFO] 22:23:05:897 CPU/(4907:4907): Listo para escuchar a mi cliente
+[INFO] 22:23:05:902 CPU/(4907:4907): CPU lista para recibir al cliente
+[INFO] 22:24:33:442 CPU/(5030:5037): Listo para escuchar a mi cliente
+[INFO] 22:24:33:445 CPU/(5030:5037): CPU lista para recibir al cliente
+[INFO] 22:26:26:565 CPU/(5196:5202): Listo para escuchar a mi cliente
+[INFO] 22:26:26:568 CPU/(5196:5202): CPU lista para recibir al cliente
+[INFO] 22:27:00:626 CPU/(5256:5262): Listo para escuchar a mi cliente
+[INFO] 22:27:00:631 CPU/(5256:5262): CPU lista para recibir al cliente
+[INFO] 22:29:27:956 CPU/(4871:4871): Se conecto un cliente!
+[INFO] 22:37:55:578 CPU/(4871:4871): 
+Me llegaron los siguientes valores:
+
+[ERROR] 22:37:55:579 CPU/(4871:4871): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:38:43:046 CPU/(6180:6186): Lista para escuchar a mi cliente
+[INFO] 22:38:43:048 CPU/(6180:6186): CPU lista para recibir al cliente
+[INFO] 22:53:34:391 CPU/(7340:7346): Lista para escuchar a mi cliente
+[INFO] 22:53:34:394 CPU/(7340:7346): CPU lista para recibir al Kernel

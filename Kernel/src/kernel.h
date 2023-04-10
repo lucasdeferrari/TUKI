@@ -10,6 +10,7 @@
 #include<commons/config.h>
 #include<readline/readline.h>
 #include <pthread.h>
+#include <semaphore.h>
 
 char* ip_cpu;
 char* puerto_cpu;
@@ -17,12 +18,16 @@ char* ip_memoria;
 char* puerto_memoria;
 char* ip_filesystem;
 char* puerto_filesystem;
+sem_t semKernelServer;
+sem_t semKernelClient;
+
 
 
 void *serverKernel(void *ptr);
-void* clientCPU(t_config* config);
+void* clientCPU(void *ptr);
 void iniciarHilosCliente();
-pthread_t server_thread, client_CPU, client_FS, client_Memoria;
+void iniciarHiloServer();
+pthread_t serverKernel_thread, client_CPU, client_FS, client_Memoria;
 
 
 void iterator(char* value);

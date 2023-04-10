@@ -11,15 +11,12 @@
 #include<readline/readline.h>
 #include <pthread.h>
 
-//char* ip_cpu;
-//char* puerto_cpu;
-//char* ip_memoria;
-//char* puerto_memoria;
-//char* ip_filesystem;
-//char* puerto_filesystem;
+char* ip_memoria;
+char* puerto_memoria;
 
-
-pthread_t server_thread;
+void *serverCPU(void *ptr);
+void iniciarHiloServer();
+pthread_t serverCPU_thread;
 
 
 void iterator(char* value);

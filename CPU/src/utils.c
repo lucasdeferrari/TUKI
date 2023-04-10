@@ -31,7 +31,7 @@ int iniciar_servidor(void)
 	//int socket_cliente;
 	//esperar_cliente(socket_servidor);
 	freeaddrinfo(servinfo);
-	log_info(logger, "Listo para escuchar a mi cliente");
+	log_info(logger, "Lista para escuchar al kernel");
 
 	return socket_servidor;
 }
@@ -41,7 +41,7 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto un cliente!");
+	log_info(logger, "El kernel se conectó!");
 
 	return socket_cliente;
 }

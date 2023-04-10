@@ -11,7 +11,7 @@ int main(void)
 
 	logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
 
-	config = config_create("./consola.config");
+	config = config_create("/home/utnso/tp/tp-2023-1c-Los-operadores/Consola/consola.config");
 
 	if (config == NULL) {
 		printf("No se pudo crear el config.");
@@ -25,7 +25,7 @@ int main(void)
 
 	conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
 
-	log_info(logger, "Ingrese sus mensajes: ");
+	log_info(logger, "Ingrese sus mensajes para el kernel: ");
 
 	paquete(conexion_kernel);
 
