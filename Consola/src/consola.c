@@ -1,13 +1,10 @@
 #include "consola.h"
 
-#include <readline/readline.h>
-
 int main(void)
 {
-	int conexion;
-	char* ip;
-	char* puerto;
-	char* valor;
+	int conexion_kernel;
+	char* ip_kernel;
+	char* puerto_kernel;
 
 	t_log* logger;
 	t_config* config;
@@ -21,21 +18,18 @@ int main(void)
 		exit(1);
 	}
 
-	ip = config_get_string_value(config, "IP");
-	puerto = config_get_string_value(config, "PUERTO");
-	log_info(logger, "El puerto es %s", puerto);
+	ip_kernel = config_get_string_value(config, "IP_KERNEL");
+	puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
 	// Creamos una conexión hacia el servidor
 
-	log_info(logger,"");
+	conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
 
-	conexion = crear_conexion(ip, puerto);
+	log_info(logger, "Ingrese sus mensajes: ");
 
-	log_info(logger, "despues de conexion");
+	paquete(conexion_kernel);
 
-	paquete(conexion);
-
-	terminar_programa(conexion, logger, config);
+	terminar_programa(conexion_kernel, logger, config);
 }
 
 t_log* iniciar_logger(void)

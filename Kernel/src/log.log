@@ -1,0 +1,80 @@
+[INFO] 01:33:54:045 Servidor/(5038:5038): 4444
+[INFO] 01:33:54:046 Servidor/(5038:5038): Listo para escuchar a mi cliente
+[INFO] 01:33:54:046 Servidor/(5038:5038): Kernel listo para recibir al cliente
+[INFO] 01:34:00:877 Servidor/(5038:5038): Se conecto un cliente!
+[INFO] 01:34:07:034 Servidor/(5038:5038): Me llegaron los siguientes valores:
+
+[INFO] 01:34:07:041 Servidor/(5038:5038): HolaÃU
+[INFO] 01:34:07:041 Servidor/(5038:5038): pepeR
+[ERROR] 01:34:07:041 Servidor/(5038:5038): el cliente se desconecto. Terminando servidor
+[INFO] 01:34:38:780 Servidor/(5082:5082): 4444
+[INFO] 01:34:38:780 Servidor/(5082:5082): Listo para escuchar a mi cliente
+[INFO] 01:34:38:780 Servidor/(5082:5082): Kernel listo para recibir al cliente
+[INFO] 01:34:44:237 Servidor/(5082:5082): Se conecto un cliente!
+[INFO] 01:34:47:982 Servidor/(5082:5082): Me llegaron los siguientes valores:
+
+[INFO] 01:34:47:983 Servidor/(5082:5082): pedroU
+[ERROR] 01:34:47:983 Servidor/(5082:5082): el cliente se desconecto. Terminando servidor
+[INFO] 01:36:33:940 Servidor/(5292:5292): 4444
+[INFO] 01:36:33:940 Servidor/(5292:5292): Listo para escuchar a mi cliente
+[INFO] 01:36:33:941 Servidor/(5292:5292): Kernel listo para recibir al cliente
+[INFO] 01:36:39:405 Servidor/(5292:5292): Se conecto un cliente!
+[INFO] 01:37:02:323 Servidor/(5322:5322): 4444
+[INFO] 01:37:02:324 Servidor/(5322:5322): Listo para escuchar a mi cliente
+[INFO] 01:37:02:324 Servidor/(5322:5322): Kernel listo para recibir al cliente
+[INFO] 01:37:42:642 Servidor/(5344:5344): 4444
+[INFO] 01:37:42:642 Servidor/(5344:5344): Listo para escuchar a mi cliente
+[INFO] 01:37:42:642 Servidor/(5344:5344): Kernel listo para recibir al cliente
+[INFO] 01:39:59:911 Servidor/(5439:5439): 4444
+[INFO] 01:39:59:911 Servidor/(5439:5439): Listo para escuchar a mi cliente
+[INFO] 01:39:59:911 Servidor/(5439:5439): Kernel listo para recibir al cliente
+[INFO] 01:40:06:848 Servidor/(5439:5439): Se conecto un cliente!
+[INFO] 01:40:16:259 Servidor/(5439:5439): Me llegaron los siguientes valores:
+
+[INFO] 01:40:16:260 Servidor/(5439:5439): hola†U
+[INFO] 01:40:16:260 Servidor/(5439:5439): juan
+[INFO] 01:40:16:261 Servidor/(5439:5439): jorge
+[ERROR] 01:40:16:261 Servidor/(5439:5439): el cliente se desconecto. Terminando servidor
+[INFO] 01:41:05:871 Servidor/(5490:5490): 4444
+[INFO] 01:41:05:871 Servidor/(5490:5490): Listo para escuchar a mi cliente
+[INFO] 01:41:05:871 Servidor/(5490:5490): Kernel listo para recibir al cliente
+[INFO] 01:41:23:332 Servidor/(5490:5490): Se conecto un cliente!
+[INFO] 01:41:33:234 Servidor/(5490:5490): Me llegaron los siguientes valores:
+
+[INFO] 01:41:33:237 Servidor/(5490:5490): pepeèU
+[INFO] 01:41:33:237 Servidor/(5490:5490): jorge
+[INFO] 01:41:33:237 Servidor/(5490:5490): celular
+[ERROR] 01:41:33:237 Servidor/(5490:5490): el cliente se desconecto. Terminando servidor
+[INFO] 01:43:05:054 Servidor/(5594:5594): 8000
+[INFO] 01:43:05:055 Servidor/(5594:5594): Listo para escuchar a mi cliente
+[INFO] 01:43:05:055 Servidor/(5594:5594): Kernel listo para recibir al cliente
+[INFO] 01:43:15:032 Servidor/(5594:5594): Se conecto un cliente!
+[INFO] 01:43:20:205 Servidor/(5594:5594): Me llegaron los siguientes valores:
+
+[INFO] 01:43:20:206 Servidor/(5594:5594): holaaU
+[INFO] 01:43:20:206 Servidor/(5594:5594): okEùH
+[ERROR] 01:43:20:206 Servidor/(5594:5594): el cliente se desconecto. Terminando servidor
+[INFO] 01:47:18:144 Servidor/(5898:5899): Listo para escuchar a mi cliente
+[INFO] 01:47:18:145 Servidor/(5898:5899): Kernel listo para recibir al cliente
+[INFO] 01:47:23:789 Servidor/(5898:5899): Se conecto un cliente!
+[INFO] 01:47:31:387 Servidor/(5898:5899): Me llegaron los siguientes valores:
+
+[INFO] 01:47:31:389 Servidor/(5898:5899): Me escuchas?
+[INFO] 01:47:31:389 Servidor/(5898:5899): ??
+[ERROR] 01:47:31:389 Servidor/(5898:5899): el cliente se desconecto. Terminando servidor
+[INFO] 01:55:12:181 Servidor/(6309:6310): Listo para escuchar a mi cliente
+[INFO] 01:55:12:181 Servidor/(6309:6310): Kernel listo para recibir al cliente
+[INFO] 01:55:33:154 Servidor/(6309:6310): Se conecto un cliente!
+[INFO] 01:55:40:231 Servidor/(6309:6310): Me llegaron los siguientes valores:
+
+[INFO] 01:55:40:232 Servidor/(6309:6310): holaaaa
+[INFO] 01:55:40:233 Servidor/(6309:6310): solDó
+[ERROR] 01:55:40:233 Servidor/(6309:6310): el cliente se desconecto. Terminando servidor
+[INFO] 02:03:59:098 Servidor/(6772:6773): Listo para escuchar a mi cliente
+[INFO] 02:03:59:099 Servidor/(6772:6773): Kernel listo para recibir al cliente
+[INFO] 02:04:17:592 Servidor/(6772:6773): Se conecto un cliente!
+[INFO] 02:04:23:086 Servidor/(6772:6773): Me llegaron los siguientes valores:
+
+[INFO] 02:04:23:087 Servidor/(6772:6773): probando
+[INFO] 02:04:23:087 Servidor/(6772:6773): oka$Š
+[ERROR] 02:04:23:088 Servidor/(6772:6773): el cliente se desconecto. Terminando servidor
