@@ -29,7 +29,7 @@ int main(void)
 
 	paquete(conexion_kernel);
 
-	terminar_programa(conexion_kernel, logger, config);
+	liberarConexiones(conexion_kernel, logger, config);
 }
 
 t_log* iniciar_logger(void)
@@ -78,10 +78,10 @@ void paquete(int conexion){
 	eliminar_paquete(paquete);
 }
 
-void terminar_programa(int conexion, t_log* logger, t_config* config)
+void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {
 	log_destroy(logger);
 	config_destroy(config);
 	liberar_conexion(conexion);
-	exit(95);
+
 }

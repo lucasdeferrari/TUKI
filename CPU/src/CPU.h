@@ -1,5 +1,5 @@
-#ifndef KERNEL_H_
-#define KERNEL_H_
+#ifndef CPU_H_
+#define CPU_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,18 +11,15 @@
 #include<readline/readline.h>
 #include <pthread.h>
 
-char* ip_cpu;
-char* puerto_cpu;
-char* ip_memoria;
-char* puerto_memoria;
-char* ip_filesystem;
-char* puerto_filesystem;
+//char* ip_cpu;
+//char* puerto_cpu;
+//char* ip_memoria;
+//char* puerto_memoria;
+//char* ip_filesystem;
+//char* puerto_filesystem;
 
 
-void *serverKernel(void *ptr);
-void* clientCPU(t_config* config);
-void iniciarHilosCliente();
-pthread_t server_thread, client_CPU, client_FS, client_Memoria;
+pthread_t server_thread;
 
 
 void iterator(char* value);

@@ -1,22 +1,11 @@
 #include "kernel.h"
 
-void *serverKernel(void *ptr);
+t_config* config;
 
 int main(void) {
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
-    int conexion_cpu;
-    int conexion_memoria;
-	int conexion_filesystem;
-    char* ip_cpu;
-    char* puerto_cpu;
-    char* ip_memoria;
-    char* puerto_memoria;
-    char* ip_filesystem;
-    char* puerto_filesystem;
-    pthread_t server_thread;
 
-    t_config* config;
 
     config = iniciar_config();
     config = config_create("/home/utnso/tp/tp-2023-1c-Los-operadores/Kernel/kernel.config");
@@ -35,17 +24,63 @@ int main(void) {
 
     //THREADS CONEXIÓN
 
-    //thread server consola-kernel
-    pthread_create( &server_thread,	// puntero al thread
-        			NULL,
-    				&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
-    				NULL); // argumentos de la función
+    //thread clientes CPU, FS, Memoria
+    iniciarHilosCliente(config);
+
+
 
     pthread_join(server_thread,NULL);
-
+    pthread_join(client_CPU,NULL);
+    pthread_join(client_Memoria,NULL);
+    pthread_join(client_FS,NULL);
 
     return EXIT_SUCCESS;
 }
+
+void iniciarHilosCliente() {
+//	int err = pthread_create( &client_FS,	// puntero al thread
+//	        NULL,
+//	    	&clientFS, // le paso la def de la función que quiero que ejecute mientras viva
+//	    	NULL); // argumentos de la función
+//
+//	 if (err != 0) {
+//	  printf("\nNo se pudo crear el hilo del cliente FS del kernel.");
+//	  exit(7);
+//	 }
+//	 printf("El hilo cliente del File System se creo correctamente.");
+
+	int err = pthread_create( &client_CPU,	// puntero al thread
+	            NULL,
+	        	&clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
+				config); // argumentos de la función
+
+	     if (err != 0) {
+	      printf("\nNo se pudo crear el hilo del cliente del CPU del kernel.");
+	      exit(7);
+	     }
+	     printf("El hilo cliente del CPU del kernel se creo correctamente.");
+
+
+//	     err = pthread_create( &client_Memoria,	// puntero al thread
+//	     	        NULL,
+//	     	    	&clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+//	     	    	NULL); // argumentos de la función
+//
+//	     	 if (err != 0) {
+//	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
+//	     	  exit(7);
+//	     	 }
+//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
+
+}
+
+void* clientCPU (t_config* config) {
+	int conexion_CPU= crear_conexion(ip_cpu, puerto_cpu);
+	paquete(conexion_CPU);
+	liberarConexiones(conexion_CPU, logger, config);
+	return NULL;
+}
+
 
 void* serverKernel(void* ptr){
 
