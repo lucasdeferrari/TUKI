@@ -3,7 +3,7 @@
 void *serverKernel(void *ptr);
 
 int main(void) {
-    logger = log_create("log.log", "Servidor", 1, LOG_LEVEL_DEBUG);
+    logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
     int conexion_cpu;
     int conexion_memoria;
