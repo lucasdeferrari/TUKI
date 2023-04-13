@@ -5,12 +5,13 @@ t_config* config;
 int main(void) {
 
 	sem_init(&semKernelServer,0,1);
-	sem_init(&semKernelClient,0,0);
+	sem_init(&semKernelClientCPU,0,0);
+	sem_init(&semKernelClientMemoria,0,0);
 	pthread_t memoria;
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("./kernel.config");
+    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/Kernel/kernel.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");
@@ -34,7 +35,7 @@ int main(void) {
 
 
     pthread_join(client_CPU,NULL);
-    //pthread_join(client_Memoria,NULL);
+    pthread_join(client_Memoria,NULL);
     //pthread_join(client_FS,NULL);
     pthread_join(serverKernel_thread,NULL);
 
@@ -91,19 +92,20 @@ void* clientCPU(void* ptr) {
     paquete(conexion_CPU);
     liberar_conexion(conexion_CPU);
 
-    sem_post(&semKernelClient);
+    sem_post(&semKernelClientCPU);
 	return NULL;
 }
 
 void* clientMemoria(void* ptr) {
+	sem_wait(&semKernelClientCPU);
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    log_info(logger, "Ingrese sus mensajes para la CPU: ");
+    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
     paquete(conexion_Memoria);
     liberar_conexion(conexion_Memoria);
 
-    sem_post(&semKernelClient);
+    sem_post(&semKernelClientMemoria);
 	return NULL;
 }
 
@@ -125,7 +127,7 @@ void iniciarHiloServer() {
 
 void* serverKernel(void* ptr){
 
-	sem_wait(&semKernelClient);
+	sem_wait(&semKernelClientMemoria);
 
     int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir a la consola");

@@ -19,7 +19,8 @@ char* puerto_memoria;
 char* ip_filesystem;
 char* puerto_filesystem;
 sem_t semKernelServer;
-sem_t semKernelClient;
+sem_t semKernelClientCPU;
+sem_t semKernelClientMemoria;
 
 
 
