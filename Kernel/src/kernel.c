@@ -10,7 +10,7 @@ int main(void) {
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
     config = iniciar_config();
-    config = config_create("/home/utnso/tp/tp-2023-1c-Los-operadores/Kernel/kernel.config");
+    config = config_create("../kernel.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");

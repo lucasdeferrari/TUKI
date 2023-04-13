@@ -6,9 +6,9 @@
 #include <string.h>
 #include <commons/log.h>
 #include "utils.h"
-#include<commons/string.h>
-#include<commons/config.h>
-#include<readline/readline.h>
+#include <commons/string.h>
+#include <commons/config.h>
+#include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
 
