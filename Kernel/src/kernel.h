@@ -25,6 +25,7 @@ sem_t semKernelClient;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
+void* clientMemoria(void *ptr);
 void iniciarHilosCliente();
 void iniciarHiloServer();
 pthread_t serverKernel_thread, client_CPU, client_FS, client_Memoria;

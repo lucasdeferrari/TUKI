@@ -6,11 +6,11 @@ int main(void) {
 
 	sem_init(&semKernelServer,0,1);
 	sem_init(&semKernelClient,0,0);
+	pthread_t memoria;
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
-    config = iniciar_config();
-    config = config_create("../kernel.config");
+    config = config_create("./kernel.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");
@@ -59,7 +59,7 @@ void iniciarHilosCliente() {
 
 	int err = pthread_create( &client_CPU,	// puntero al thread
 	            NULL,
-	        	&clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
+	        	clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
 				NULL); // argumentos de la función
 
 	     if (err != 0) {
@@ -69,18 +69,19 @@ void iniciarHilosCliente() {
 	     printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
 
 
-//	     err = pthread_create( &client_Memoria,	// puntero al thread
-//	     	        NULL,
-//	     	    	&clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-//	     	    	NULL); // argumentos de la función
-//
-//	     	 if (err != 0) {
-//	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
-//	     	  exit(7);
-//	     	 }
-//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
+	     err = pthread_create( &client_Memoria,	// puntero al thread
+	     	        NULL,
+	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+	     	    	NULL); // argumentos de la función
+
+	     	 if (err != 0) {
+	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
+	     	  exit(7);
+	     	 }
+	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
+
 
 void* clientCPU(void* ptr) {
 	int config=1;
@@ -89,6 +90,18 @@ void* clientCPU(void* ptr) {
     log_info(logger, "Ingrese sus mensajes para la CPU: ");
     paquete(conexion_CPU);
     liberar_conexion(conexion_CPU);
+
+    sem_post(&semKernelClient);
+	return NULL;
+}
+
+void* clientMemoria(void* ptr) {
+	int config = 1;
+    int conexion_Memoria;
+    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    log_info(logger, "Ingrese sus mensajes para la CPU: ");
+    paquete(conexion_Memoria);
+    liberar_conexion(conexion_Memoria);
 
     sem_post(&semKernelClient);
 	return NULL;

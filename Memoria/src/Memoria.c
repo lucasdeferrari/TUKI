@@ -5,93 +5,43 @@
 #include <commons/string.h>
 #include <commons/config.h>
 #include <readline/readline.h>
-#include <pthread.h>
-#include <semaphore.h>
+
 
 char* ip_memoria;
 char* puerto_memoria;
-char* ipKernel;
-char* puertoKernel;
-sem_t semKernelServer;
-sem_t semKernelClient;
-t_config* config;
 
-void* clientKernel() {
-	int config = 1;
-    int conn;
-    conn = crear_conexion(ipKernel, puertoKernel);
-    log_info(logger, "Ingrese sus mensajes para la CPU: ");
-    paquete(conn);
-    liberar_conexion(conn);
-
-    sem_post(&semKernelClient);
-	return NULL;
-}
-
-void iniciarHilosCliente(pthread_t clientMemory) {
-	int err = pthread_create( &clientMemory, NULL, clientKernel, NULL);
-
-	 if (err != 0) {
-	  printf("\nNo se pudo crear el hilo de la conexión kernel-CPU.\n");
-	  exit(7);
-	 }
-	 printf("\nEl hilo de la conexión Memoria-Kernel se creo correctamente.\n");
+void iterator(char* value) {
+	log_info(logger,"%s", value);
 }
 
 int main(void) {
-	pthread_t clientMemory;
-	sem_init(&semKernelServer,0,1);
-	sem_init(&semKernelClient,0,0);
+	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
 
-	logger = log_create("memory.log", "Memory", 1, LOG_LEVEL_DEBUG);
+	int server_fd = iniciar_servidor();
+	log_info(logger, "Memoria lista para recibir al cliente");
+	int cliente_fd = esperar_cliente(server_fd);
 
-	config = config_create("./memoria.config");
-
-	if (config == NULL) {
-		printf("No se pudo crear el config.");
-		exit(5);
+	t_list* lista;
+	while (1) {
+		int cod_op = recibir_operacion(cliente_fd);
+		switch (cod_op) {
+		case MENSAJE:
+			recibir_mensaje(cliente_fd);
+			break;
+		case PAQUETE:
+			lista = recibir_paquete(cliente_fd);
+			log_info(logger, "Me llegaron los siguientes valores:\n");
+			list_iterate(lista, (void*) iterator);
+			break;
+		case -1:
+			log_error(logger, "el cliente se desconecto. Terminando servidor");
+			return EXIT_FAILURE;
+		default:
+			log_warning(logger,"Operacion desconocida. No quieras meter la pata");
+			break;
+		}
 	}
-
-	ip_memoria = config_get_string_value(config, "IP");
-	puerto_memoria = config_get_string_value(config, "PUERTO");
-
-	//THREADS CONEXIÓN
-
-	//thread clientes CPU, FS, Memoria
-	iniciarHilosCliente(clientMemory);
-
-//	pthread_join(client_CPU,NULL);
-	pthread_join(clientMemory, NULL);
-	//pthread_join(client_Memoria,NULL);
-	//pthread_join(client_FS,NULL);
-//	pthread_join(serverKernel_thread,NULL);
-
-	//libero memoria
-	log_destroy(logger);
-	config_destroy(config);
-
 	return EXIT_SUCCESS;
 }
 
-void paquete(int conexion)
-{
-	// Ahora toca lo divertido!
-	char* leido;
-	t_paquete* paquete;
 
-	paquete = crear_paquete();
-
-	// Leemos y esta vez agregamos las lineas al paquete
-	leido = readline("> ");
-
-	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido));
-		leido = readline("> ");
-	}
-
-	enviar_paquete(paquete, conexion);
-
-	free(leido);
-	eliminar_paquete(paquete);
-
-}
