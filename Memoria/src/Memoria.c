@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <commons/log.h>
 #include "utils.h"
 #include <commons/string.h>
 #include <commons/config.h>
@@ -18,7 +17,7 @@ sem_t semKernelClient;
 t_config* config;
 
 void* clientKernel() {
-	int config=1;
+	int config = 1;
     int conn;
     conn = crear_conexion(ipKernel, puertoKernel);
     log_info(logger, "Ingrese sus mensajes para la CPU: ");
@@ -36,7 +35,7 @@ void iniciarHilosCliente(pthread_t clientMemory) {
 	  printf("\nNo se pudo crear el hilo de la conexión kernel-CPU.\n");
 	  exit(7);
 	 }
-	 printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
+	 printf("\nEl hilo de la conexión Memoria-Kernel se creo correctamente.\n");
 }
 
 int main(void) {
@@ -46,7 +45,6 @@ int main(void) {
 
 	logger = log_create("memory.log", "Memory", 1, LOG_LEVEL_DEBUG);
 
-	config = iniciar_config();
 	config = config_create("./memoria.config");
 
 	if (config == NULL) {
@@ -73,4 +71,27 @@ int main(void) {
 	config_destroy(config);
 
 	return EXIT_SUCCESS;
+}
+
+void paquete(int conexion)
+{
+	// Ahora toca lo divertido!
+	char* leido;
+	t_paquete* paquete;
+
+	paquete = crear_paquete();
+
+	// Leemos y esta vez agregamos las lineas al paquete
+	leido = readline("> ");
+
+	while(strcmp(leido, "") != 0){
+		agregar_a_paquete(paquete, leido, strlen(leido));
+		leido = readline("> ");
+	}
+
+	enviar_paquete(paquete, conexion);
+
+	free(leido);
+	eliminar_paquete(paquete);
+
 }
