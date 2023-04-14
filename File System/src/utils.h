@@ -13,7 +13,7 @@
 #include<assert.h>
 
 #define IP_MEMORIA "127.0.0.1"
-#define PUERTO_MEMORIA "8001"
+#define PUERTO_MEMORIA "8002"
 
 typedef enum
 {

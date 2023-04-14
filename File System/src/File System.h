@@ -1,5 +1,5 @@
-#ifndef CPU_H_
-#define CPU_H_
+#ifndef FILE_SYSTEM_H_
+#define FILE_YSTEM_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,15 +15,16 @@
 
 char* ip_memoria;
 char* puerto_memoria;
-sem_t semCPUServer;
-//sem_t semCPUClientMemoria;
+sem_t semFileSystemServer;
+sem_t semFileSystemClientMemoria;
 
 
-void *serverCPU(void *ptr);
-//void* clientMemoria(void *ptr);
-//void iniciarHiloCliente();
+
+void *serverFileSystem(void *ptr);
+void* clientMemoria(void *ptr);
+void iniciarHiloCliente();
 void iniciarHiloServer();
-pthread_t serverCPU_thread; // client_Memoria;
+pthread_t serverFileSystem_thread, client_Memoria;
 
 
 void iterator(char* value);
@@ -33,7 +34,7 @@ t_config* iniciar_config(void);
 void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
-#endif /* CPU_H_ */
+#endif /* FILE_SYSTEM_H_ */
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {

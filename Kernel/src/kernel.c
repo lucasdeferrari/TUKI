@@ -28,7 +28,8 @@ int main(void) {
     //THREADS CONEXIÓN
 
     //thread clientes CPU, FS, Memoria
-    iniciarHilosCliente();
+    iniciarHilosClienteCPU();
+    iniciarHilosClienteMemoria();
 
     //thread server consola
     iniciarHiloServer();
@@ -46,7 +47,7 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-void iniciarHilosCliente() {
+void iniciarHilosClienteCPU() {
 //	int err = pthread_create( &client_FS,	// puntero al thread
 //	        NULL,
 //	    	&clientFS, // le paso la def de la función que quiero que ejecute mientras viva
@@ -70,7 +71,22 @@ void iniciarHilosCliente() {
 	     printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
 
 
-	     err = pthread_create( &client_Memoria,	// puntero al thread
+//	     err = pthread_create( &client_Memoria,	// puntero al thread
+//	     	        NULL,
+//	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+//	     	    	NULL); // argumentos de la función
+//
+//	     	 if (err != 0) {
+//	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
+//	     	  exit(7);
+//	     	 }
+//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
+
+}
+
+void iniciarHilosClienteMemoria() {
+
+	int err = pthread_create( &client_Memoria,	// puntero al thread
 	     	        NULL,
 	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
 	     	    	NULL); // argumentos de la función
@@ -82,7 +98,6 @@ void iniciarHilosCliente() {
 	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
-
 
 void* clientCPU(void* ptr) {
 	int config=1;

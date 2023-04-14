@@ -22,3 +22,10 @@ el cliente se desconecto. Terminando servidor
 [INFO] 22:38:43:048 CPU/(6180:6186): CPU lista para recibir al cliente
 [INFO] 22:53:34:391 CPU/(7340:7346): Lista para escuchar a mi cliente
 [INFO] 22:53:34:394 CPU/(7340:7346): CPU lista para recibir al Kernel
+[INFO] 01:46:53:272 CPU/(5911:5917): Lista para escuchar al kernel
+[INFO] 01:46:53:274 CPU/(5911:5917): CPU lista para recibir al Kernel
+[INFO] 01:52:58:469 CPU/(6077:6082): estoy adentro de crear conexion
+[INFO] 01:55:26:070 CPU/(6122:6174): estoy adentro de crear conexion
+[INFO] 02:11:18:256 CPU/(6477:6483): estoy adentro de crear conexion
+[INFO] 02:12:14:369 CPU/(6513:6518): estoy adentro de crear conexion
+[INFO] 02:29:12:489 CPU/(6965:6971): CPU lista para recibir al Kernel
