@@ -4,13 +4,12 @@ t_config* config;
 
 int main(void) {
 
-//	sem_init(&semCPUServer,0,1);
-//	sem_init(&semCPUClientMemoria,0,0);
-//	pthread_t memoria;
+	sem_init(&semCPUServer,0,1);
+	sem_init(&semCPUClientMemoria,0,0);
+	pthread_t memoria;
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = iniciar_config();
     config = config_create("/home/utnso/tp-2023-1c-Los-operadores/CPU/CPU.config");
 
     if (config == NULL) {
@@ -22,13 +21,13 @@ int main(void) {
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
 
 //    //Hilo Cliente
-//    iniciarHiloCliente();
+    iniciarHiloCliente();
 
     //Server
     iniciarHiloServer();
 
     //pthread_join
-//    pthread_join(client_Memoria,NULL);
+    pthread_join(client_Memoria,NULL);
     pthread_join(serverCPU_thread,NULL);
 
     //libero memoria
@@ -38,32 +37,32 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-//void iniciarHiloCliente() {
-//
-//	int err = pthread_create( &client_Memoria,	// puntero al thread
-//	     	        NULL,
-//	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-//	     	    	NULL); // argumentos de la función
-//
-//	     	 if (err != 0) {
-//	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del CPU.");
-//	     	  exit(7);
-//	     	 }
-//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
-//
-//}
-//
-//void* clientMemoria(void* ptr) {
-//	int config = 1;
-//    int conexion_Memoria;
-//    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-//    paquete(conexion_Memoria);
-//    liberar_conexion(conexion_Memoria);
-//
-//    sem_post(&semCPUClientMemoria);
-//	return NULL;
-//}
+void iniciarHiloCliente() {
+
+	int err = pthread_create( &client_Memoria,	// puntero al thread
+	     	        NULL,
+	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+	     	    	NULL); // argumentos de la función
+
+	     	 if (err != 0) {
+	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del CPU.");
+	     	  exit(7);
+	     	 }
+	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
+
+}
+
+void* clientMemoria(void* ptr) {
+	int config = 1;
+    int conexion_Memoria;
+    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+    paquete(conexion_Memoria);
+    liberar_conexion(conexion_Memoria);
+
+    sem_post(&semCPUClientMemoria);
+	return NULL;
+}
 
 void iniciarHiloServer() {
 
@@ -82,7 +81,7 @@ void iniciarHiloServer() {
 
 void* serverCPU(void* ptr){
 
-	//sem_wait(&semCPUClientMemoria);
+	sem_wait(&semCPUClientMemoria);
 
     int server_fd = iniciar_servidor();
     log_info(logger, "CPU lista para recibir al Kernel");
@@ -97,7 +96,7 @@ void* serverCPU(void* ptr){
     			break;
     		case PAQUETE:
     			lista = recibir_paquete(cliente_fd);
-    			log_info(logger, "Me llegaron los siguientes valores:");
+    			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
     			break;
     		case -1:

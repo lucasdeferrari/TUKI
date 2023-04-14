@@ -7,6 +7,7 @@ int main(void) {
 	sem_init(&semKernelServer,0,1);
 	sem_init(&semKernelClientCPU,0,0);
 	sem_init(&semKernelClientMemoria,0,0);
+	sem_init(&semKernelClientFileSystem,0,0);
 	pthread_t memoria;
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
@@ -30,6 +31,7 @@ int main(void) {
     //thread clientes CPU, FS, Memoria
     iniciarHilosClienteCPU();
     iniciarHilosClienteMemoria();
+    iniciarHilosClienteFileSystem();
 
     //thread server consola
     iniciarHiloServer();
@@ -37,7 +39,7 @@ int main(void) {
 
     pthread_join(client_CPU,NULL);
     pthread_join(client_Memoria,NULL);
-    //pthread_join(client_FS,NULL);
+    pthread_join(client_FileSystem,NULL);
     pthread_join(serverKernel_thread,NULL);
 
     //libero memoria
@@ -98,7 +100,20 @@ void iniciarHilosClienteMemoria() {
 	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
+void iniciarHilosClienteFileSystem() {
 
+	int err = pthread_create( &client_FileSystem,	// puntero al thread
+	     	        NULL,
+					clientFileSystem, // le paso la def de la función que quiero que ejecute mientras viva
+	     	    	NULL); // argumentos de la función
+
+	     	 if (err != 0) {
+	     	  printf("\nNo se pudo crear el hilo del cliente FileSystem del kernel.");
+	     	  exit(7);
+	     	 }
+	     	 printf("\nEl hilo cliente del FileSystem se creo correctamente.");
+
+}
 void* clientCPU(void* ptr) {
 	int config=1;
     int conexion_CPU;
@@ -123,6 +138,20 @@ void* clientMemoria(void* ptr) {
     sem_post(&semKernelClientMemoria);
 	return NULL;
 }
+
+void* clientFileSystem(void* ptr) {
+	sem_wait(&semKernelClientMemoria);
+	int config = 1;
+    int conexion_FileSystem;
+    conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
+    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
+    paquete(conexion_FileSystem);
+    liberar_conexion(conexion_FileSystem);
+
+    sem_post(&semKernelClientFileSystem);
+	return NULL;
+}
+
 
 void iniciarHiloServer() {
 

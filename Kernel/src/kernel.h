@@ -21,16 +21,17 @@ char* puerto_filesystem;
 sem_t semKernelServer;
 sem_t semKernelClientCPU;
 sem_t semKernelClientMemoria;
-
-
+sem_t semKernelClientFileSystem;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
+void* clientFileSystem(void *ptr);
 void iniciarHilosClienteCPU();
 void iniciarHilosClienteMemoria();
+void iniciarHilosClienteFileSystem();
 void iniciarHiloServer();
-pthread_t serverKernel_thread, client_CPU, client_FS, client_Memoria;
+pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria;
 
 
 void iterator(char* value);

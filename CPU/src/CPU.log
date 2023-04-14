@@ -80,3 +80,8 @@ Me llegaron los siguientes valores:
 [INFO] 23:31:45:373 CPU/(9681:9682): SOY EL KERNEL
 [ERROR] 23:31:45:373 CPU/(9681:9682): 
 el kernel se desconecto. Terminando servidor
+[INFO] 04:56:14:185 CPU/(123825:123827): CPU lista para recibir al Kernel
+[INFO] 05:03:35:250 CPU/(124012:124013): Ingrese sus mensajes para la Memoria: 
+[INFO] 05:45:40:957 CPU/(2980:2981): Ingrese sus mensajes para la Memoria: 
+[INFO] 05:53:31:498 CPU/(3104:3105): Ingrese sus mensajes para la Memoria: 
+[INFO] 05:57:48:016 CPU/(3192:3193): Ingrese sus mensajes para la Memoria: 

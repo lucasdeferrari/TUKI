@@ -16,14 +16,14 @@
 char* ip_memoria;
 char* puerto_memoria;
 sem_t semCPUServer;
-//sem_t semCPUClientMemoria;
+sem_t semCPUClientMemoria;
 
 
 void *serverCPU(void *ptr);
-//void* clientMemoria(void *ptr);
-//void iniciarHiloCliente();
+void* clientMemoria(void *ptr);
+void iniciarHiloCliente();
 void iniciarHiloServer();
-pthread_t serverCPU_thread; // client_Memoria;
+pthread_t serverCPU_thread, client_Memoria;
 
 
 void iterator(char* value);

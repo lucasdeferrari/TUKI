@@ -8,7 +8,7 @@ int main(void) {
 	sem_init(&semFileSystemClientMemoria,0,0);
 	pthread_t memoria;
 
-    logger = log_create("FielSystem.log", "File System", 1, LOG_LEVEL_DEBUG);
+    logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 
     config = config_create("/home/utnso/tp-2023-1c-Los-operadores/File System/FileSystem.config");
 
@@ -74,7 +74,7 @@ void iniciarHiloServer() {
     				NULL); // argumentos de la función
 
     	     if (err != 0) {
-    	      printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
+    	      printf("\nNo se pudo crear el hilo de la conexión Kernel-Filesystem.\n");
     	      exit(7);
     	     }
     	     printf("\nEl hilo de la conexión Kernel-FileSystem se creo correctamente.\n");

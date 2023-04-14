@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "utils.h"
-#include <commons/string.h>
-#include <commons/config.h>
-#include <readline/readline.h>
+#include "Memoria.h"
 
 
 char* ip_memoria;
