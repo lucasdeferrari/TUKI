@@ -171,7 +171,7 @@ void iniciarHiloServer() {
 
 void* serverKernel(void* ptr){
 
-	sem_wait(&semKernelClientMemoria);
+	sem_wait(&semKernelClientFileSystem);
 
     int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir a la consola");
