@@ -16,7 +16,7 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(IP_MEMORIA, PUERTO_MEMORIA, &hints, &servinfo);
+	getaddrinfo(IP, PUERTO, &hints, &servinfo);
 
 	socket_servidor = socket(servinfo->ai_family,
 	                         servinfo->ai_socktype,

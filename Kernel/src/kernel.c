@@ -4,11 +4,11 @@ t_config* config;
 
 int main(void) {
 
-	sem_init(&semKernelServer,0,1);
+	//sem_init(&semKernelServer,0,1);
 	sem_init(&semKernelClientCPU,0,0);
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semKernelClientFileSystem,0,0);
-	pthread_t memoria;
+
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
@@ -28,10 +28,10 @@ int main(void) {
 
     //THREADS CONEXIÓN
 
-    //thread clientes CPU, FS, Memoria
-    iniciarHilosClienteCPU();
-    iniciarHilosClienteMemoria();
-    iniciarHilosClienteFileSystem();
+    //thread clients CPU, FS, Memoria
+    iniciarHiloClienteCPU();
+    iniciarHiloClienteMemoria();
+    iniciarHiloClienteFileSystem();
 
     //thread server consola
     iniciarHiloServer();
@@ -49,17 +49,7 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-void iniciarHilosClienteCPU() {
-//	int err = pthread_create( &client_FS,	// puntero al thread
-//	        NULL,
-//	    	&clientFS, // le paso la def de la función que quiero que ejecute mientras viva
-//	    	NULL); // argumentos de la función
-//
-//	 if (err != 0) {
-//	  printf("\nNo se pudo crear el hilo del cliente FS del kernel.");
-//	  exit(7);
-//	 }
-//	 printf("El hilo cliente del File System se creo correctamente.");
+void iniciarHiloClienteCPU() {
 
 	int err = pthread_create( &client_CPU,	// puntero al thread
 	            NULL,
@@ -72,21 +62,9 @@ void iniciarHilosClienteCPU() {
 	     }
 	     printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
 
-
-//	     err = pthread_create( &client_Memoria,	// puntero al thread
-//	     	        NULL,
-//	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-//	     	    	NULL); // argumentos de la función
-//
-//	     	 if (err != 0) {
-//	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
-//	     	  exit(7);
-//	     	 }
-//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
-
 }
 
-void iniciarHilosClienteMemoria() {
+void iniciarHiloClienteMemoria() {
 
 	int err = pthread_create( &client_Memoria,	// puntero al thread
 	     	        NULL,
@@ -100,7 +78,7 @@ void iniciarHilosClienteMemoria() {
 	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
-void iniciarHilosClienteFileSystem() {
+void iniciarHiloClienteFileSystem() {
 
 	int err = pthread_create( &client_FileSystem,	// puntero al thread
 	     	        NULL,
@@ -198,7 +176,7 @@ void* serverKernel(void* ptr){
     	}
     }
 
-    sem_post(&semKernelServer);
+    //sem_post(&semKernelServer);
 
 	return NULL;
 }

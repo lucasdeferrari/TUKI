@@ -16,7 +16,7 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(IP_MEMORIA, PUERTO_MEMORIA, &hints, &servinfo);
+	getaddrinfo(IP, PUERTO, &hints, &servinfo);
 
 	socket_servidor = socket(servinfo->ai_family,
 	                         servinfo->ai_socktype,
@@ -40,7 +40,7 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto una consola!");
+	log_info(logger, "Se conecto un cliente!");
 
 	return socket_cliente;
 }

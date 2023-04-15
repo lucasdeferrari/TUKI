@@ -6,7 +6,6 @@ int main(void) {
 
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
-	pthread_t memoria;
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 

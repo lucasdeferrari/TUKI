@@ -6,7 +6,6 @@ int main(void) {
 
 	sem_init(&semFileSystemServer,0,1);
 	sem_init(&semFileSystemClientMemoria,0,0);
-	pthread_t memoria;
 
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 

@@ -31,7 +31,7 @@ int iniciar_servidor(void)
 	//int socket_cliente;
 	//esperar_cliente(socket_servidor);
 	freeaddrinfo(servinfo);
-	log_info(logger, "Listo para escuchar a la consola");
+	log_info(logger, "Listo para escuchar al cliente");
 
 	return socket_servidor;
 }
@@ -41,7 +41,7 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto una consola!");
+	log_info(logger, "Se conecto un cliente!");
 
 	return socket_cliente;
 }

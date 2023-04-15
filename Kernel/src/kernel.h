@@ -27,9 +27,9 @@ void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void* clientFileSystem(void *ptr);
-void iniciarHilosClienteCPU();
-void iniciarHilosClienteMemoria();
-void iniciarHilosClienteFileSystem();
+void iniciarHiloClienteCPU();
+void iniciarHiloClienteMemoria();
+void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria;
 
@@ -41,7 +41,6 @@ t_config* iniciar_config(void);
 void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
-#endif /* KERNEL_H_ */
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {
@@ -50,3 +49,5 @@ void liberarConexiones(int conexion, t_log* logger, t_config* config)
 	liberar_conexion(conexion);
 
 }
+
+#endif /* KERNEL_H_ */

@@ -11,7 +11,7 @@ int main(void)
 
 	logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
 
-	config = config_create("./consola.config");
+	config = config_create("../consola.config");
 
 	if (config == NULL) {
 		printf("No se pudo crear el config.");

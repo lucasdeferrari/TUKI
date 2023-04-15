@@ -2,3 +2,75 @@
 [INFO] 05:05:15:643 Memoria/(124058:124058): Memoria lista para recibir al cliente
 [INFO] 05:36:31:984 Memoria/(2710:2710): Listo para escuchar a la consola
 [INFO] 05:36:31:985 Memoria/(2710:2710): Memoria lista para recibir al cliente
+[INFO] 03:03:12:239 Memoria/(3749:3749): Listo para escuchar al cliente
+[INFO] 03:03:12:240 Memoria/(3749:3749): Memoria lista para recibir al cliente
+[INFO] 03:03:29:998 Memoria/(3749:3749): Se conecto un cliente!
+[INFO] 03:03:41:549 Memoria/(3749:3749): Me llegaron los siguientes valores:
+
+[INFO] 03:03:41:549 Memoria/(3749:3749): Hola memoria
+[INFO] 03:03:41:549 Memoria/(3749:3749): soy la cpu
+[ERROR] 03:03:41:549 Memoria/(3749:3749): el cliente se desconecto. Terminando servidor
+[INFO] 03:15:09:250 Memoria/(4038:4038): Listo para escuchar al cliente
+[INFO] 03:15:09:250 Memoria/(4038:4038): Memoria lista para recibir al cliente
+[INFO] 03:15:35:297 Memoria/(4038:4038): Se conecto un cliente!
+[INFO] 03:15:43:310 Memoria/(4038:4038): Me llegaron los siguientes valores:
+
+[INFO] 03:15:43:310 Memoria/(4038:4038): hola memoria
+[INFO] 03:15:43:310 Memoria/(4038:4038): sot la cpu
+[ERROR] 03:15:43:310 Memoria/(4038:4038): el cliente se desconecto. Terminando servidor
+[INFO] 03:20:55:330 Memoria/(4126:4126): Listo para escuchar al cliente
+[INFO] 03:20:55:331 Memoria/(4126:4126): Memoria lista para recibir al cliente
+[INFO] 03:21:01:914 Memoria/(4126:4126): Se conecto un cliente!
+[INFO] 03:21:08:065 Memoria/(4126:4126): Me llegaron los siguientes valores:
+
+[INFO] 03:21:08:066 Memoria/(4126:4126): hola mem
+[INFO] 03:21:08:066 Memoria/(4126:4126): soy cpu
+[ERROR] 03:21:08:066 Memoria/(4126:4126): el cliente se desconecto. Terminando servidor
+[INFO] 03:22:26:353 Memoria/(4157:4157): Listo para escuchar al cliente
+[INFO] 03:22:26:353 Memoria/(4157:4157): Memoria lista para recibir al cliente
+[INFO] 03:22:38:001 Memoria/(4157:4157): Se conecto un cliente!
+[INFO] 03:22:40:237 Memoria/(4157:4157): Me llegaron los siguientes valores:
+
+[INFO] 03:22:40:237 Memoria/(4157:4157): lßi›*V
+[INFO] 03:22:40:237 Memoria/(4157:4157): mÏPÜ¥
+[ERROR] 03:22:40:238 Memoria/(4157:4157): el cliente se desconecto. Terminando servidor
+[INFO] 03:23:44:903 Memoria/(4215:4215): Listo para escuchar al cliente
+[INFO] 03:23:44:904 Memoria/(4215:4215): Memoria lista para recibir al cliente
+[INFO] 03:23:56:676 Memoria/(4215:4215): Se conecto un cliente!
+[INFO] 03:24:01:666 Memoria/(4215:4215): Me llegaron los siguientes valores:
+
+[INFO] 03:24:01:666 Memoria/(4215:4215): hola mem
+[INFO] 03:24:01:666 Memoria/(4215:4215): cpuFé
+[ERROR] 03:24:01:666 Memoria/(4215:4215): el cliente se desconecto. Terminando servidor
+[INFO] 03:27:26:288 Memoria/(4272:4272): Listo para escuchar al cliente
+[INFO] 03:27:26:289 Memoria/(4272:4272): Memoria lista para recibir al cliente
+[INFO] 03:27:39:246 Memoria/(4272:4272): Se conecto un cliente!
+[INFO] 03:27:43:573 Memoria/(4272:4272): Me llegaron los siguientes valores:
+
+[INFO] 03:27:43:573 Memoria/(4272:4272): hola V
+[INFO] 03:27:43:573 Memoria/(4272:4272): cpuÀ
+[ERROR] 03:27:43:573 Memoria/(4272:4272): el cliente se desconecto. Terminando servidor
+[INFO] 03:41:23:293 Memoria/(4771:4771): Listo para escuchar al cliente
+[INFO] 03:41:23:294 Memoria/(4771:4771): Memoria lista para recibir al cliente
+[INFO] 03:41:30:803 Memoria/(4771:4771): Se conecto un cliente!
+[INFO] 03:41:39:532 Memoria/(4771:4771): Me llegaron los siguientes valores:
+
+[INFO] 03:41:39:532 Memoria/(4771:4771): hola mem
+[INFO] 03:41:39:532 Memoria/(4771:4771): soy cpu
+[ERROR] 03:41:39:532 Memoria/(4771:4771): el cliente se desconecto. Terminando servidor
+[INFO] 03:41:47:131 Memoria/(4775:4775): Listo para escuchar al cliente
+[INFO] 03:41:47:131 Memoria/(4775:4775): Memoria lista para recibir al cliente
+[INFO] 03:42:11:203 Memoria/(4775:4775): Se conecto un cliente!
+[INFO] 03:42:19:659 Memoria/(4775:4775): Me llegaron los siguientes valores:
+
+[INFO] 03:42:19:659 Memoria/(4775:4775): hola mem
+[INFO] 03:42:19:659 Memoria/(4775:4775): soy fs
+[ERROR] 03:42:19:659 Memoria/(4775:4775): el cliente se desconecto. Terminando servidor
+[INFO] 03:42:28:508 Memoria/(4780:4780): Listo para escuchar al cliente
+[INFO] 03:42:28:509 Memoria/(4780:4780): Memoria lista para recibir al cliente
+[INFO] 03:43:05:963 Memoria/(4780:4780): Se conecto un cliente!
+[INFO] 03:43:24:692 Memoria/(4780:4780): Me llegaron los siguientes valores:
+
+[INFO] 03:43:24:692 Memoria/(4780:4780): hola mem
+[INFO] 03:43:24:692 Memoria/(4780:4780): kernel
+[ERROR] 03:43:24:692 Memoria/(4780:4780): el cliente se desconecto. Terminando servidor
