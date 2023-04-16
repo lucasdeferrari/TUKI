@@ -28,7 +28,7 @@ int main(void) {
 
     //THREADS CONEXIÓN
 
-    //thread clients CPU, FS, Memoria
+    //thread clients CPU, FS, Memoria		//alternativa con hilos
     iniciarHiloClienteCPU();
     iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
@@ -37,9 +37,9 @@ int main(void) {
     iniciarHiloServer();
 
 
-    pthread_join(client_CPU,NULL);
-    pthread_join(client_Memoria,NULL);
-    pthread_join(client_FileSystem,NULL);
+    pthread_detach(client_CPU);
+    pthread_detach(client_Memoria);
+    pthread_detach(client_FileSystem);
     pthread_join(serverKernel_thread,NULL);
 
     //libero memoria

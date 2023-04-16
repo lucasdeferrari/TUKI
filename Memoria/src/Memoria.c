@@ -1,3 +1,4 @@
+//Crear un archivo global de funciones comunes
 #include "Memoria.h"
 
 char* ip_memoria;
@@ -9,6 +10,7 @@ void iterator(char* value) {
 
 int main(void) {
 
+
 	t_list* lista;
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
@@ -16,9 +18,10 @@ int main(void) {
 
 
 		log_info(logger, "Memoria lista para recibir al cliente");
-		int cliente_fd = esperar_cliente(server_fd);
 
+		//autentificar cada módulo al conectarse y según quien sea procesar
 		while (1) {
+			int cliente_fd = esperar_cliente(server_fd);
 			int cod_op = recibir_operacion(cliente_fd);
 			switch (cod_op) {
 			case MENSAJE:
@@ -31,8 +34,8 @@ int main(void) {
 				break;
 			case -1:
 				log_error(logger, "el cliente se desconecto. Terminando servidor");
-
-				return EXIT_FAILURE;
+				break;
+				//return EXIT_FAILURE;
 			default:
 				log_warning(logger,"Operacion desconocida. No quieras meter la pata");
 				break;
