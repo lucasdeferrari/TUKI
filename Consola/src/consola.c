@@ -1,7 +1,38 @@
 #include "consola.h"
 
-int main(void)
-{
+#define PATH_CONFIG_GLOBALES "/home/utnso/Documents/tp-2023-1c-Los-operadores/configs.config"
+
+int verificarConfig(char* path){
+	if (config_create(path) != NULL) //Si existen las config devuelve un 1 sino un -1
+		return 1;
+	else
+		return -1;
+}
+
+void copiarConfigs(char* path){
+
+	if(verificarConfig(path) == -1){
+		fprintf(stderr,"Error al abrir las configs\n");
+		exit(1);
+	} else{
+		t_config* configConsola = config_create(path);
+		config_save_in_file(configConsola, PATH_CONFIG_GLOBALES);
+	}
+}
+
+int main(int argc, char *argv[]) {
+	//Aqui se verifica si introducieron todos los archivos necesarios para consola
+	// 0 -> mismo archivo
+	// 1 -> configs
+	// 2 -> pseudocodigo
+	if(argc == 3){
+		char* pathConfig = argv[1];
+		char* pathCode = argv[2];
+		copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
+
+	} else
+		exit(1);
+
 	int conexion_kernel;
 	char* ip_kernel;
 	char* puerto_kernel;
@@ -11,7 +42,7 @@ int main(void)
 
 	logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
 
-	config = config_create("../consola.config");
+	config = config_create("./consola.config");
 
 	if (config == NULL) {
 		printf("No se pudo crear el config.");
