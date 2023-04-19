@@ -1,25 +1,5 @@
 #include "consola.h"
 
-#define PATH_CONFIG_GLOBALES "/home/utnso/Documents/tp-2023-1c-Los-operadores/configs.config"
-
-int verificarConfig(char* path){
-	if (config_create(path) != NULL) //Si existen las config devuelve un 1 sino un -1
-		return 1;
-	else
-		return -1;
-}
-
-void copiarConfigs(char* path){
-
-	if(verificarConfig(path) == -1){
-		fprintf(stderr,"Error al abrir las configs\n");
-		exit(1);
-	} else{
-		t_config* configConsola = config_create(path);
-		config_save_in_file(configConsola, PATH_CONFIG_GLOBALES);
-	}
-}
-
 int main(int argc, char *argv[]) {
 	//Aqui se verifica si introducieron todos los archivos necesarios para consola
 	// 0 -> mismo archivo
@@ -28,8 +8,7 @@ int main(int argc, char *argv[]) {
 	if(argc == 3){
 		char* pathConfig = argv[1];
 		char* pathCode = argv[2];
-		copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
-
+		copiarConfigs(pathConfig); // Copia las config pasadas a un archivo global
 	} else
 		exit(1);
 
@@ -115,4 +94,24 @@ void liberarConexiones(int conexion, t_log* logger, t_config* config)
 	config_destroy(config);
 	liberar_conexion(conexion);
 
+}
+
+//Configs
+
+int verificarConfig(char* path){
+	if (config_create(path) != NULL) //Si existen las config devuelve un 1 sino un -1
+		return 1;
+	else
+		return -1;
+}
+
+void copiarConfigs(char* path){
+
+	if(verificarConfig(path) == -1){
+		fprintf(stderr,"Error al abrir las configs\n");
+		exit(1);
+	} else{
+		t_config* configConsola = config_create(path);
+		config_save_in_file(configConsola, PATH_CONFIG_GLOBALES);
+	}
 }
