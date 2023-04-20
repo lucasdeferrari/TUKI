@@ -23,138 +23,83 @@
 
 int verificarConfig(char* path){
 
-	if (config_create(path) != NULL) //Si existen las config devuelve un 1 sino un -1
-
-		return 1;
-
-	else
-
-		return -1;
-
+if (config_create(path) != NULL) //Si existen las config devuelve un 1 sino un -1
+	return 1;
+else
+	return -1;
 }
 
 
 
 void copiarConfigs(char* path){
-	if(verificarConfig(path) == -1){
-
-		fprintf(stderr,"Error al abrir las configs\n");
-
-		exit(1);
-
-	} else{
-
-		t_config* configConsola = config_create(path);
-
-		config_save_in_file(configConsola, PATH_CONFIG_GLOBALES);
-
+if(verificarConfig(path) == -1){
+	fprintf(stderr,"Error al abrir las configs\n");
+	exit(1);
+}else{
+	t_config* configConsola = config_create(path);
+	config_save_in_file(configConsola, PATH_CONFIG_GLOBALES);
 	}
-
 }
 
-
-
 char** split(char* cadena, char delimitador, int* numSubcadenas) {
-
     int longitudCadena = strlen(cadena);
-
     int numDelimitadores = 0;
-
     for (int i = 0; i < longitudCadena; i++) {
-
         if (cadena[i] == delimitador) {
-
             numDelimitadores++; // Contar el número de delimitadores
-
         }
-
     }
 
+ *numSubcadenas = numDelimitadores + 1;
 
+ char** subcadenas = (char**)malloc((*numSubcadenas) * sizeof(char*)); // Reservar memoria para el arreglo de subcadenas
+ int inicioSubcadena = 0;
+ int numCaracteresSubcadena = 0;
+ int indiceSubcadena = 0;
 
-    *numSubcadenas = numDelimitadores + 1;
-
-    char** subcadenas = (char**)malloc((*numSubcadenas) * sizeof(char*)); // Reservar memoria para el arreglo de subcadenas
-
-
-
-    int inicioSubcadena = 0;
-
-    int numCaracteresSubcadena = 0;
-
-    int indiceSubcadena = 0;
-
-    for (int i = 0; i < longitudCadena; i++) {
-
-        if (cadena[i] == delimitador || i == longitudCadena - 1) {
-
-            if (i == longitudCadena - 1 && cadena[i] != delimitador) {
-
-                numCaracteresSubcadena++; // Agregar el último caracter si no es un delimitador
-
+ for (int i = 0; i < longitudCadena; i++) {
+	 if (cadena[i] == delimitador || i == longitudCadena - 1) {
+	 if (i == longitudCadena - 1 && cadena[i] != delimitador) {
+	numCaracteresSubcadena++; // Agregar el último caracter si no es un delimitador
             }
 
-            subcadenas[indiceSubcadena] = (char*)malloc((numCaracteresSubcadena + 1) * sizeof(char)); // Reservar memoria para la subcadena
+subcadenas[indiceSubcadena] = (char*)malloc((numCaracteresSubcadena + 1) * sizeof(char)); // Reservar memoria para la subcadena
+strncpy(subcadenas[indiceSubcadena], cadena + inicioSubcadena, numCaracteresSubcadena); // Copiar la subcadena en el arreglo de subcadenas
+subcadenas[indiceSubcadena][numCaracteresSubcadena] = '\0'; // Agregar el caracter nulo al final de la subcadena
+inicioSubcadena = i + 1; // Actualizar el inicio de la siguiente subcadena
+numCaracteresSubcadena = 0; // Reiniciar el contador de caracteres
+indiceSubcadena++; // Incrementar el índice del arreglo de subcadenas
 
-            strncpy(subcadenas[indiceSubcadena], cadena + inicioSubcadena, numCaracteresSubcadena); // Copiar la subcadena en el arreglo de subcadenas
-
-            subcadenas[indiceSubcadena][numCaracteresSubcadena] = '\0'; // Agregar el caracter nulo al final de la subcadena
-
-            inicioSubcadena = i + 1; // Actualizar el inicio de la siguiente subcadena
-
-            numCaracteresSubcadena = 0; // Reiniciar el contador de caracteres
-
-            indiceSubcadena++; // Incrementar el índice del arreglo de subcadenas
-
-        } else {
-
-            numCaracteresSubcadena++; // Contar el número de caracteres en la subcadena actual
-
-        }
-
-    }
-
-
-
-    return subcadenas;
+} else {
+	numCaracteresSubcadena++; // Contar el número de caracteres en la subcadena actual
+}
+}
+return subcadenas;
 
 }
 
 
 
 char* nombreModulo(char* path){
+int numSubcadenas;
+char** subcadenas = split(path, '/', &numSubcadenas);
+char* file = subcadenas[numSubcadenas - 1];
+int numSubcadenas1;
+char** subcadenas1 = split(file, '.', &numSubcadenas1);
 
-    int numSubcadenas;
+char* modulo = subcadenas1[0];
 
-    char** subcadenas = split(path, '/', &numSubcadenas);
+free(subcadenas1); // Liberar memoria para el arreglo de subcadenas
+free(subcadenas); // Liberar memoria para el arreglo de subcadenas
 
-    char* file = subcadenas[numSubcadenas - 1];
-
-    int numSubcadenas1;
-
-    char** subcadenas1 = split(file, '.', &numSubcadenas1);
-
-
-
-    char* modulo = subcadenas1[0];
-
-
-
-    free(subcadenas1); // Liberar memoria para el arreglo de subcadenas
-
-    free(subcadenas); // Liberar memoria para el arreglo de subcadenas
-
-
-
-    return modulo;
-
+return modulo;
 }
 
 char* imprimirPalabra(FILE *archivo) {
-	char* line = NULL;
-	char linea[100] ;
-	char caracter;
-	char *palabra = linea;
+char* line = NULL;
+char linea[100] ;
+char caracter;
+char *palabra = linea;
 
 while ((caracter = fgetc(archivo)) != '\n') {
 	*palabra += caracter;
@@ -177,23 +122,17 @@ return palabra;
 
 short verificacionPseudoCodigo(char* path){
 
-	// verificar el path
+// verificar el path
 
-	char* linea[100];
-	char** linea1 = linea;
-	char *palabraLeida;
-	FILE* archivo;
-	archivo = fopen(path, "r");
+char* linea[100];
+char** linea1 = linea;
+char *palabraLeida;
+FILE* archivo;
+archivo = fopen(path, "r");
 
-
-
-	if (archivo == NULL) {
-
-		fprintf(stderr, "Error al abrir el archivo.\n");
-	    exit(1); }
-
-
-
+if (archivo == NULL) {
+	fprintf(stderr, "Error al abrir el archivo.\n");
+	exit(1); }
 
 palabraLeida = imprimirPalabra(archivo);
 while(palabraLeida != 'z') {
@@ -217,7 +156,7 @@ printf("%s",linea);
 
 
 
-			//char* instruction = instructions[0];
+//char* instruction = instructions[0];
 
 //			if (strcmp(instruction, F_READ) != 0)
 
@@ -315,9 +254,9 @@ printf("%s",linea);
 
 //					exit(1);
 
-			//line = fgets(line, 1,f);
+//line = fgets(line, 1,f);
 
-		}
+}
 
 
 
