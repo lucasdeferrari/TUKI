@@ -150,36 +150,70 @@ char* nombreModulo(char* path){
 
 }
 
+char* imprimirPalabra(FILE *archivo) {
+	char* line = NULL;
+	char linea[100] ;
+	char caracter;
+	char *palabra = linea;
 
+while ((caracter = fgetc(archivo)) != '\n') {
+	*palabra += caracter;
+}
+//*palabra = '\0'; // se agrega el caracter nulo al final de la línea
+
+
+//fscanf(archivo, "%s", palabra);
+printf("%s", linea);
+if (linea== EXIT ){
+//funcion_exit();
+	printf("entre a exit");
+}
+if (palabra == EOF) {
+	return 'z';
+}
+return palabra;
+
+}
 
 short verificacionPseudoCodigo(char* path){
 
 	// verificar el path
 
-	FILE* f = fopen(path, "r");
+	char* linea[100];
+	char** linea1 = linea;
+	char *palabraLeida;
+	FILE* archivo;
+	archivo = fopen(path, "r");
 
-	if (f == NULL) {
+
+
+	if (archivo == NULL) {
 
 		fprintf(stderr, "Error al abrir el archivo.\n");
-
-	    exit(1);
-
-	}else{
-
-		char* line = NULL;
-
-
-		while(fread(line, sizeof(char), 100, f) != EOF){ // ocurre un segfault y no se porque
-
-			int words = 0;
-
-			char** instructions = split(line, ' ', words);
+	    exit(1); }
 
 
 
-			for(int i = 0; i < words; i++)
 
-				printf("%s \n", instructions[i]);
+palabraLeida = imprimirPalabra(archivo);
+while(palabraLeida != 'z') {
+	palabraLeida = imprimirPalabra(archivo);
+	**linea1 += palabraLeida;
+}
+
+printf("%s",linea);
+
+//			int words = 0;
+//
+//			char** instructions = split(line, ' ', words);
+//
+//			printf("La linea leida es %s\n", line);
+//
+//
+//
+//			for(int i = 0; i < words; i++)
+//
+//				printf("%s \n", instructions[i]);
 
 
 
@@ -281,13 +315,13 @@ short verificacionPseudoCodigo(char* path){
 
 //					exit(1);
 
-			line = fgets(line, 1,f);
+			//line = fgets(line, 1,f);
 
 		}
 
-	}
 
-}
+
+//}
 
 
 
@@ -316,7 +350,7 @@ int main(int argc, char *argv[]) {
 		verificacionPseudoCodigo(pathCode);
 
 	} else
-		verificacionPseudoCodigo("/home/utnso/Documents/tp-2023-1c-Los-operadores/Consola/prueba.txt");
+		verificacionPseudoCodigo("prueba.txt");
 
 		exit(1);
 
@@ -379,6 +413,8 @@ int main(int argc, char *argv[]) {
 	liberarConexiones(conexion_kernel, logger, config);
 
 }
+
+
 
 
 
