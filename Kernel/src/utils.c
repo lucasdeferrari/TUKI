@@ -16,7 +16,13 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(IP, PUERTO, &hints, &servinfo);
+	int result = getaddrinfo(IP, PUERTO, &hints, &servinfo);
+
+	if (result != 0) {
+    // La llamada a getaddrinfo() falló, manejar el error aquí
+    fprintf(stderr, "Error en getaddrinfo: %s\n", gai_strerror(result));
+    exit(EXIT_FAILURE);
+}
 
 	socket_servidor = socket(servinfo->ai_family,
 	                         servinfo->ai_socktype,
