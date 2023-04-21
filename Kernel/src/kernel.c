@@ -216,3 +216,33 @@ void paquete(int conexion)
 	eliminar_paquete(paquete);
 
 }
+
+//PCB
+typedef struct nodoArchivos {
+    char* info_archivos;//ver tipo de direccion
+    struct nodoArchivos* sgte;
+} t_nodoArchivos;
+
+typedef struct nodoInstrucciones {
+    char* info_instruccion;
+    struct nodoInstrucciones* sgte;
+} t_nodoInstrucciones;
+
+typedef struct infopcb {
+    int pid;
+    t_nodoInstrucciones listaInstrucciones;
+    int programCounter;
+    int registrosCpu[15];//Ver el tipo dependiendo informacion
+    int tablaSegmentos[2];//Ver el tipo dependiendo informacion
+	int estimadoProxRafaga;
+	int tiempoLlegadaReady;
+	t_nodoArchivos punterosArchivos;
+} t_infopcb;
+
+typedef struct nodoPcb {
+    t_infopcb info_pcb;
+    struct nodoPcb* sgte;
+} t_nodoPcb;
+
+
+
