@@ -39,6 +39,35 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
+//Listas PCB
+typedef struct nodoArchivos {
+    char* info_archivos;//ver tipo de direccion
+    struct nodoArchivos* sgte;
+} t_nodoArchivos;
+
+typedef struct nodoInstrucciones {
+    char* info_instruccion;
+    struct nodoInstrucciones* sgte;
+} t_nodoInstrucciones;
+
+typedef struct infopcb {
+    int pid;
+    t_nodoInstrucciones listaInstrucciones;
+    int programCounter; //Numero que nos dice la posicion del puntero de la lista de instrucciones
+    int registrosCpu[15];//Ver el tipo dependiendo informacion
+    int tablaSegmentos[2];//Ver el tipo dependiendo informacion
+	int estimadoProxRafaga;
+	int tiempoLlegadaReady;
+	t_nodoArchivos punterosArchivos;
+} t_infopcb;
+
+///COLA NEW
+typedef struct nodoNew {
+    t_infopcb info_pcb;
+    struct nodoNew* sgte;
+} t_nodoNew;
+
+//Funciones servidor
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);
@@ -49,7 +78,7 @@ t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
 
-//client
+//Funciones cliente
 int crear_conexion(char* ip, char* puerto);
 void enviar_mensaje(char* mensaje, int socket_cliente);
 t_paquete* crear_paquete(void);

@@ -26,6 +26,13 @@ int main(void) {
     ip_filesystem = config_get_string_value(config, "IP_FILESYSTEM");
     puerto_filesystem = config_get_string_value(config, "PUERTO_FILESYSTEM");
 
+    //Inicializar punteros lista pcb
+    t_nodoArchivos* punterosArchivos = NULL;
+    t_nodoInstrucciones* listaInstrucciones = NULL;
+
+    //Inicializar punteros cola New
+    t_nodoNew* frenteColaNew = NULL; // Puntero al frente de la cola
+    t_nodoNew* finColaNew = NULL; // Puntero al fin de la cola
     //THREADS CONEXIÓN
 
     //thread clients CPU, FS, Memoria		//alternativa con hilos
@@ -217,32 +224,34 @@ void paquete(int conexion)
 
 }
 
-//PCB
-typedef struct nodoArchivos {
-    char* info_archivos;//ver tipo de direccion
-    struct nodoArchivos* sgte;
-} t_nodoArchivos;
+//encolar
+void queueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew, t_infopcb pcb_puntero) {
+	t_nodoNew* nuevo = (t_nodoNew*)malloc(sizeof(t_nodoNew)); // Reservamos memoria para el nuevo nodo
+    nuevo->info_pcb = pcb_puntero; // Guardamos el valor en el nuevo nodo
+    nuevo->sgte = NULL; // El siguiente nodo de nuevo es nulo
+    if (*frenteColaNew == NULL) { // Si la cola está vacía
+        *frenteColaNew = nuevo; // El nuevo nodo es el frente
+    } else { // Si no está vacía
+        (*finColaNew)->sgte = nuevo; // El siguiente del último nodo es el nuevo nodo
+    }
+*finColaNew = nuevo; // El nuevo nodo es el nuevo fin
+}
 
-typedef struct nodoInstrucciones {
-    char* info_instruccion;
-    struct nodoInstrucciones* sgte;
-} t_nodoInstrucciones;
-
-typedef struct infopcb {
-    int pid;
-    t_nodoInstrucciones listaInstrucciones;
-    int programCounter;
-    int registrosCpu[15];//Ver el tipo dependiendo informacion
-    int tablaSegmentos[2];//Ver el tipo dependiendo informacion
-	int estimadoProxRafaga;
-	int tiempoLlegadaReady;
-	t_nodoArchivos punterosArchivos;
-} t_infopcb;
-
-typedef struct nodoPcb {
-    t_infopcb info_pcb;
-    struct nodoPcb* sgte;
-} t_nodoPcb;
-
-
+//desencolar
+t_infopcb unqueueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew) {
+	t_infopcb pcb_puntero;
+    t_nodoNew* temp;
+    if (*frenteColaNew == NULL) { // Si la cola está vacía
+        printf("La cola esta vacia\n");
+        exit(5); //Ver como salir de la funcion
+    }
+    pcb_puntero = (*frenteColaNew)->info_pcb; // Obtenemos el valor del frente
+    temp = *frenteColaNew; // Guardamos el frente temporalmente
+    *frenteColaNew = (*frenteColaNew)->sgte; // El siguiente del frente es el nuevo frente
+    if (*frenteColaNew == NULL) { // Si la cola quedó vacía
+        *finColaNew = NULL; // El fin es nulo
+    }
+free(temp); // Liberamos la memoria del frente anterior
+    return pcb_puntero; // Devolvemos el valor del frente
+}
 

@@ -41,6 +41,8 @@ t_config* iniciar_config(void);
 void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
+void queueNew(t_nodoNew** , t_nodoNew** , t_infopcb);
+t_infopcb unqueueNew(t_nodoNew** , t_nodoNew** );
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {
