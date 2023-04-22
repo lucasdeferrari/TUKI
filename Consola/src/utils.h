@@ -10,20 +10,17 @@
 #include<string.h>
 #include<commons/log.h>
 
-typedef enum
-{
+typedef enum{
 	MENSAJE,
 	PAQUETE
 }op_code;
 
-typedef struct
-{
+typedef struct{
 	int size;
 	void* stream;
 } t_buffer;
 
-typedef struct
-{
+typedef struct{
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
