@@ -53,13 +53,16 @@ typedef struct nodoInstrucciones {
 typedef struct infopcb {
     int pid;
     t_nodoInstrucciones listaInstrucciones;
-    int programCounter; //Numero que nos dice la posicion del puntero de la lista de instrucciones
-    int registrosCpu[15];//Ver el tipo dependiendo informacion
-    int tablaSegmentos[2];//Ver el tipo dependiendo informacion
+    t_nodoInstrucciones programCounter; // puntero de la siguiente instrucción a ejecutar
+    int registrosCpu[16];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+    int tablaSegmentos;// LISTA DE UN ARRAY DE 3 ELEMENTOS
 	int estimadoProxRafaga;
 	int tiempoLlegadaReady;
 	t_nodoArchivos punterosArchivos;
 } t_infopcb;
+
+//EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar
+//El ready se ejecuta con fifo o hrrn según las instrucciones que cargue el usuario
 
 ///COLA NEW
 typedef struct nodoNew {

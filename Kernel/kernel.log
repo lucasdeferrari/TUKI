@@ -101,3 +101,13 @@ el cliente se desconecto. Terminando servidor
 [INFO] 13:38:13:619 Kernel/(2149:2156): Ingrese sus mensajes para el FileSystem: 
 [INFO] 13:38:15:931 Kernel/(2149:2157): Listo para escuchar a la consola
 [INFO] 13:38:15:934 Kernel/(2149:2157): Kernel listo para recibir a la consola
+[INFO] 23:40:26:645 Kernel/(3259:3267): Ingrese sus mensajes para la CPU: 
+[INFO] 23:40:29:713 Kernel/(3259:3268): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:41:03:677 Kernel/(3431:3436): Ingrese sus mensajes para la CPU: 
+[INFO] 23:41:08:031 Kernel/(3431:3437): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:41:16:607 Kernel/(3431:3438): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:41:39:844 Kernel/(3459:3464): Ingrese sus mensajes para la CPU: 
+[INFO] 23:42:01:330 Kernel/(3497:3502): Ingrese sus mensajes para la CPU: 
+[INFO] 23:44:21:097 Kernel/(3654:3659): Ingrese sus mensajes para la CPU: 
+[INFO] 23:44:25:016 Kernel/(3654:3660): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:44:32:481 Kernel/(3654:3661): Ingrese sus mensajes para el FileSystem: 

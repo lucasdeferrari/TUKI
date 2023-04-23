@@ -44,6 +44,7 @@ int esperar_cliente(int);
 t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
+char* recibir_handshake(int socket_cliente);
 
 //client
 int crear_conexion(char* ip, char* puerto);

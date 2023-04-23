@@ -55,6 +55,7 @@ void* clientMemoria(void* ptr) {
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    enviar_mensaje("CPU",conexion_Memoria);
     log_info(logger, "Ingrese sus mensajes para la Memoria: ");
     paquete(conexion_Memoria);
     liberar_conexion(conexion_Memoria);

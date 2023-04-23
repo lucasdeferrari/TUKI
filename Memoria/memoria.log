@@ -1,2 +1,60 @@
 [INFO] 13:22:17:439 Memoria/(2119:2119): Listo para escuchar a la consola
 [INFO] 13:22:17:445 Memoria/(2119:2119): Memoria lista para recibir al cliente
+[INFO] 23:28:50:837 Memoria/(2564:2564): Listo para escuchar al cliente
+[INFO] 23:28:50:841 Memoria/(2564:2564): Memoria lista para recibir al cliente
+
+[INFO] 23:28:53:813 Memoria/(2564:2569): Se conecto un cliente!
+[INFO] 23:28:57:568 Memoria/(2564:2569): Me llegaron los siguientes valores:
+[INFO] 23:28:57:569 Memoria/(2564:2569): soy cpuuu
+[ERROR] 23:28:57:569 Memoria/(2564:2569): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:33:36:396 Memoria/(2916:2916): Listo para escuchar al cliente
+[INFO] 23:33:36:405 Memoria/(2916:2916): Memoria lista para recibir al cliente
+
+[INFO] 23:33:48:607 Memoria/(2916:2921): Se conecto un cliente!
+[INFO] 23:33:48:610 Memoria/(2916:2921): Me llego el mensaje CPU
+[INFO] 23:33:48:610 Memoria/(2916:2921): se conecto la cpu
+[INFO] 23:33:56:646 Memoria/(2916:2921): Me llegaron los siguientes valores:
+[INFO] 23:33:56:647 Memoria/(2916:2921): soy la cpuu
+[ERROR] 23:33:56:647 Memoria/(2916:2921): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:34:42:590 Memoria/(2970:2970): Listo para escuchar al cliente
+[INFO] 23:34:42:597 Memoria/(2970:2970): Memoria lista para recibir al cliente
+
+[INFO] 23:34:48:406 Memoria/(2916:2929): Se conecto un cliente!
+[INFO] 23:34:48:407 Memoria/(2916:2929): Me llego el mensaje CPU
+[INFO] 23:34:48:407 Memoria/(2916:2929): se conecto la cpu
+[INFO] 23:35:19:803 Memoria/(3002:3002): Listo para escuchar al cliente
+[INFO] 23:35:19:807 Memoria/(3002:3002): Memoria lista para recibir al cliente
+
+[INFO] 23:35:44:056 Memoria/(3064:3064): Listo para escuchar al cliente
+[INFO] 23:35:44:065 Memoria/(3064:3064): Memoria lista para recibir al cliente
+
+[INFO] 23:37:47:057 Memoria/(3184:3184): Listo para escuchar al cliente
+[INFO] 23:37:47:060 Memoria/(3184:3184): Memoria lista para recibir al cliente
+
+[INFO] 23:37:51:109 Memoria/(3184:3190): Se conecto un cliente!
+[INFO] 23:37:51:115 Memoria/(3184:3190): se conecto la cpu
+[INFO] 23:37:58:835 Memoria/(3184:3190): Me llegaron los siguientes valores:
+[INFO] 23:37:58:835 Memoria/(3184:3190): Hola memoria soy la cpuu%
+[ERROR] 23:37:58:835 Memoria/(3184:3190): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:38:15:633 Memoria/(3184:3194): Se conecto un cliente!
+[INFO] 23:38:15:636 Memoria/(3184:3194): se conecto el filesystem
+[INFO] 23:38:22:254 Memoria/(3184:3194): Me llegaron los siguientes valores:
+[INFO] 23:38:22:254 Memoria/(3184:3194): soyy fileeee 
+[INFO] 23:38:22:255 Memoria/(3184:3194): xdddd
+[ERROR] 23:38:22:255 Memoria/(3184:3194): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:40:29:713 Memoria/(3184:3202): Se conecto un cliente!
+[INFO] 23:40:29:713 Memoria/(3184:3202): se conecto el kernel
+[INFO] 23:42:24:111 Memoria/(3535:3535): Listo para escuchar al cliente
+[INFO] 23:42:24:115 Memoria/(3535:3535): Memoria lista para recibir al cliente
+
+[INFO] 23:42:57:187 Memoria/(3535:3540): Se conecto un cliente!
+[INFO] 23:42:57:191 Memoria/(3535:3540): se conecto el filesystem
+[INFO] 23:43:00:735 Memoria/(3535:3540): Me llegaron los siguientes valores:
+[INFO] 23:43:00:736 Memoria/(3535:3540): fkdkd
+[INFO] 23:43:00:736 Memoria/(3535:3540): kdkd
+[ERROR] 23:43:00:736 Memoria/(3535:3540): 
+el cliente se desconecto. Terminando servidor

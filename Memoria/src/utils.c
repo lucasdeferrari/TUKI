@@ -77,6 +77,8 @@ void recibir_mensaje(int socket_cliente)
 	free(buffer);
 }
 
+
+
 t_list* recibir_paquete(int socket_cliente)
 {
 	int size;
