@@ -117,63 +117,7 @@ char* nombreModulo(char* path){
 	return modulo;
 }
 
-//char* imprimirPalabra(FILE *archivo) {
-//	//char* line = NULL;
-//	char linea[100];
-//	char caracter;
-//	char palabra[100];
-//	//strcpy(palabra,linea);
-//
-//	caracter= fgetc(archivo);
-//
-//	while (caracter!='\n') {
-//		char ch_str[2] = {caracter, '\0'}; // Convertimos el char en un string
-//		//*palabra += caracter;
-//		strncat(palabra, ch_str, sizeof(ch_str));
-//	}
-//	//*palabra = '\0'; // se agrega el caracter nulo al final de la línea
-//
-//
-//	//fscanf(archivo, "%s", palabra);
-//	printf("%s", linea);
-//
-//	if (strcmp(linea,EXIT)==0 ){
-//		//funcion_exit();
-//		printf("entre a exit");
-//	}
-//
-//	if (strcmp(palabra,EOF)==0) {
-//		return "z";
-//	}
-//
-//	return palabra;
-//}
-//
-//short verificacionPseudoCodigo(char* path){
-//
-//	// verificar el path
-//
-//	//char* linea[100] = "";
-//	char* linea1;
-//	//strcpy(*linea1, linea);
-//	char *palabraLeida;
-//
-//
-//
-//	//palabraLeida = imprimirPalabra(archivo);
-//	strcpy(palabraLeida,imprimirPalabra(archivo));
-//
-//	while(strcmp(palabraLeida, "z")!= 0){
-//		strcpy(palabraLeida,imprimirPalabra(archivo));
-//		//*linea1 += palabraLeida;
-//		strncat(linea1, palabraLeida, sizeof(palabraLeida));
-//	}
-//
-//	printf("%s",linea1);
-//
-//}
-
-void empaquetar(Nodo* cabeza) {
+t_paquete* empaquetar(Nodo* cabeza) {
     Nodo* actual = cabeza;
     t_paquete* paquete;
 
@@ -183,6 +127,7 @@ void empaquetar(Nodo* cabeza) {
     	agregar_a_paquete(paquete, actual->linea, strlen(actual->linea));
         actual = actual->siguiente;
     }
+    return paquete;
 }
 
 void imprimir(Nodo* cabeza) {
@@ -283,38 +228,16 @@ fclose(archivo);
 if (ultima_linea != NULL) {
     insertar(&cabeza, ultima_linea);
 }
-//empaquetar(cabeza);
-//
+
+// SE DEBERIA EMPAQUETAR Y ENVIAR. DESCOMENTAR CUANDO ESTE LISTO
+//t_paquete* paquete = empaquetar(cabeza);
 //enviar_paquete(paquete, conexion_kernel);
 
 imprimir(cabeza);
 
-		//--------------------------------------------------------------------------------------------------------------
-		// Ahora toca lo divertido!
+//eliminar_paquete(paquete);
 
-
-
-
-
-
-		// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
-
-		eliminar_paquete(paquete);
-
-		//--------------------------------------------------------------------------------------------------------------
-
-		//verificacionPseudoCodigo(pathCode);
-
-
-
-
-
-
-	log_info(logger, "Ingrese sus mensajes para el kernel: ");
-
-	paquete(conexion_kernel);
-
-	liberarConexiones(conexion_kernel, logger, config);
+liberarConexiones(conexion_kernel, logger, config);
 
 //}
 }
@@ -347,23 +270,23 @@ void leer_consola(t_log* logger){
 
 
 
-void paquete(int conexion){
-	char* leido;
-	t_paquete* paquete;
-
-	paquete = crear_paquete();
-	leido = readline("> ");
-
-	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido));
-		leido = readline("> ");
-	}
-
-	enviar_paquete(paquete, conexion);
-
-	free(leido);
-	eliminar_paquete(paquete);
-}
+//void paquete(int conexion){
+//	char* leido;
+//	t_paquete* paquete;
+//
+//	paquete = crear_paquete();
+//	leido = readline("> ");
+//
+//	while(strcmp(leido, "") != 0){
+//		agregar_a_paquete(paquete, leido, strlen(leido));
+//		leido = readline("> ");
+//	}
+//
+//	enviar_paquete(paquete, conexion);
+//
+//	free(leido);
+//	eliminar_paquete(paquete);
+//}
 
 
 
