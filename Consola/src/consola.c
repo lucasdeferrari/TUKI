@@ -20,6 +20,31 @@
 #define EXIT "EXIT"
 #define YIELD "YIELD"
 
+struct Nodo {
+    char* linea;
+    struct Nodo* siguiente;
+};typedef struct Nodo Nodo;
+
+void insertar(Nodo** cabeza, char* linea) {
+    Nodo* nuevo_nodo = (Nodo*)malloc(sizeof(Nodo));
+    nuevo_nodo->linea = linea;
+    nuevo_nodo->siguiente = NULL;
+
+    Nodo* ultimo = *cabeza;
+
+    if (*cabeza == NULL) {
+        *cabeza = nuevo_nodo;
+        return;
+    }
+
+    while (ultimo->siguiente != NULL) {
+        ultimo = ultimo->siguiente;
+    }
+
+    ultimo->siguiente = nuevo_nodo;
+    return;
+}
+
 
 int verificarConfig(char* path){
 
@@ -92,187 +117,198 @@ char* nombreModulo(char* path){
 	return modulo;
 }
 
-char* imprimirPalabra(FILE *archivo) {
-	char* line = NULL;
-	char linea[100] ;
-	char caracter;
-	char *palabra = linea;
+//char* imprimirPalabra(FILE *archivo) {
+//	//char* line = NULL;
+//	char linea[100];
+//	char caracter;
+//	char palabra[100];
+//	//strcpy(palabra,linea);
+//
+//	caracter= fgetc(archivo);
+//
+//	while (caracter!='\n') {
+//		char ch_str[2] = {caracter, '\0'}; // Convertimos el char en un string
+//		//*palabra += caracter;
+//		strncat(palabra, ch_str, sizeof(ch_str));
+//	}
+//	//*palabra = '\0'; // se agrega el caracter nulo al final de la línea
+//
+//
+//	//fscanf(archivo, "%s", palabra);
+//	printf("%s", linea);
+//
+//	if (strcmp(linea,EXIT)==0 ){
+//		//funcion_exit();
+//		printf("entre a exit");
+//	}
+//
+//	if (strcmp(palabra,EOF)==0) {
+//		return "z";
+//	}
+//
+//	return palabra;
+//}
+//
+//short verificacionPseudoCodigo(char* path){
+//
+//	// verificar el path
+//
+//	//char* linea[100] = "";
+//	char* linea1;
+//	//strcpy(*linea1, linea);
+//	char *palabraLeida;
+//
+//
+//
+//	//palabraLeida = imprimirPalabra(archivo);
+//	strcpy(palabraLeida,imprimirPalabra(archivo));
+//
+//	while(strcmp(palabraLeida, "z")!= 0){
+//		strcpy(palabraLeida,imprimirPalabra(archivo));
+//		//*linea1 += palabraLeida;
+//		strncat(linea1, palabraLeida, sizeof(palabraLeida));
+//	}
+//
+//	printf("%s",linea1);
+//
+//}
 
-	while ((caracter = fgetc(archivo)) != '\n') {
-		*palabra += caracter;
-	}
-	//*palabra = '\0'; // se agrega el caracter nulo al final de la línea
+void empaquetar(Nodo* cabeza) {
+    Nodo* actual = cabeza;
+    t_paquete* paquete;
 
+    paquete = crear_paquete();
 
-	//fscanf(archivo, "%s", palabra);
-	printf("%s", linea);
-	if (linea== EXIT ){
-		//funcion_exit();
-		printf("entre a exit");
-	}
-
-	if (palabra == EOF) {
-		return 'z';
-	}
-
-	return palabra;
+    while (actual != NULL) {
+    	agregar_a_paquete(paquete, actual->linea, strlen(actual->linea));
+        actual = actual->siguiente;
+    }
 }
 
-short verificacionPseudoCodigo(char* path){
+void imprimir(Nodo* cabeza) {
+    Nodo* actual = cabeza;
 
-	// verificar el path
-
-	char* linea[100];
-	char** linea1 = linea;
-	char *palabraLeida;
-	FILE* archivo;
-	archivo = fopen(path, "r");
-
-	if (archivo == NULL) {
-		fprintf(stderr, "Error al abrir el archivo.\n");
-		exit(1);
-	}
-
-	palabraLeida = imprimirPalabra(archivo);
-
-	while(palabraLeida != 'z') {
-		palabraLeida = imprimirPalabra(archivo);
-		**linea1 += palabraLeida;
-	}
-
-	printf("%s",linea);
-
-//	int words = 0;
-//	char** instructions = split(line, ' ', words);
-//
-//	printf("La linea leida es %s\n", line);
-//
-//	for(int i = 0; i < words; i++) {
-//		printf("%s \n", instructions[i]);
-//	}
-
-
-
-//	char* instruction = instructions[0];
-
-//	if (strcmp(instruction, F_READ) != 0)
-//		if(words != 4)
-//			exit(1);
-
-//	if (strcmp(instruction, F_WRITE) != 0)
-//		if(words != 4)
-//			exit(1);
-
-//	if (strcmp(instruction, SET) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, MOV_IN) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, MOV_OUT) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, F_TRUNCATE) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, F_SEEK) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, CREATE_SEGMENT) != 0)
-//		if(words != 3)
-//			exit(1);
-
-//	if (strcmp(instruction, I_O) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, WAIT) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, SIGNAL) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, F_OPEN) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, F_CLOSE) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, DELETE_SEGMENT) != 0)
-//		if(words != 2)
-//			exit(1);
-
-//	if (strcmp(instruction, EXIT) != 0)
-//		if(words != 1)
-//			exit(1);
-
-//	if (strcmp(instruction, YIELD) != 0)
-//		if(words != 1)
-//			exit(1);
-
-//	line = fgets(line, 1,f);
-
-//	}
+    while (actual != NULL) {
+        printf("%s", actual->linea);
+        actual = actual->siguiente;
+    }
 }
-
-
 
 int main(int argc, char *argv[]) {
 
-	//Aqui se verifica si introducieron todos los archivos necesarios para consola
+//Aqui se verifica si introducieron todos los archivos necesarios para consola
 
-	// 0 -> mismo archivo
+// 0 -> mismo archivo
 
-	// 1 -> configs
+// 1 -> configs
 
-	// 2 -> pseudocodigo
+// 2 -> pseudocodigo
 
-	if(argc == 3){
-		char* pathProgram = argv[0];
-		char* pathConfig = argv[1];
-		char* pathCode = argv[2];
+char linea[200];
+Nodo* cabeza = NULL;
+FILE* archivo;
+int conexion_kernel;
+char* ip_kernel;
+char* puerto_kernel;
 
-		copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
+t_log* logger;
+t_config* config;
 
-		printf("%s \n", nombreModulo(pathProgram));
+//if(argc == 3){
+char* pathProgram = argv[0];
+char* pathConfig = argv[1];
+char* pathCode = argv[2];
 
-		verificacionPseudoCodigo(pathCode);
+logger = log_create(PATH_LOG, "Consola", true, LOG_LEVEL_INFO);
+config = config_create("./consola.config");
 
-	}else{
-		verificacionPseudoCodigo("prueba.txt");
+if (config == NULL) {
+	printf("No se pudo crear el config.");
+	exit(1);
+}
 
-		exit(1);
+ip_kernel = config_get_string_value(config, "IP_KERNEL");
+puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
+
+// Creamos una conexión hacia el servidor
+conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
+
+
+//copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
+
+printf("%s \n", nombreModulo(pathProgram));
+
+archivo = fopen("prueba.txt", "r");
+
+if (archivo == NULL) {
+	fprintf(stderr, "Error al abrir el archivo.\n");
+	exit(1);
+}
+
+char* ultima_linea = NULL;
+
+//while (fgets(linea, sizeof(linea), archivo) != NULL) {
+//		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
+//		strcpy(nueva_linea, linea);
+//		insertar(&cabeza, nueva_linea);
+//	}
+//
+//// Verificar si la última línea se ha agregado correctamente a la lista
+//
+//if (strlen(linea) > 0 && linea[strlen(linea)-1] != '\n') {
+//    char* nueva_linea = (char*)malloc(strlen(linea) + 2);
+//    strcpy(nueva_linea, linea);
+//    strcat(nueva_linea, "\n");
+//    insertar(&cabeza, nueva_linea);
+//}
+//
+//fclose(archivo);
+
+while (fgets(linea, sizeof(linea), archivo) != NULL) {
+		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
+		strcpy(nueva_linea, linea);
+		insertar(&cabeza, nueva_linea);
+		if (feof(archivo)) {  // Verificar si la línea actual es la última
+			if (ultima_linea == NULL || strcmp(ultima_linea, nueva_linea) != 0) {
+				ultima_linea = nueva_linea;
+			} else {
+				free(nueva_linea);
+			}
+		}
 	}
 
-	int conexion_kernel;
-	char* ip_kernel;
-	char* puerto_kernel;
+fclose(archivo);
 
-	t_log* logger;
-	t_config* config;
+// Agregar la última línea a la lista si no se ha agregado antes
+if (ultima_linea != NULL) {
+    insertar(&cabeza, ultima_linea);
+}
+//empaquetar(cabeza);
+//
+//enviar_paquete(paquete, conexion_kernel);
 
-	logger = log_create(PATH_LOG, "Consola", true, LOG_LEVEL_INFO);
-	config = config_create(PATH_CONFIG_GLOBALES);
+imprimir(cabeza);
 
-	if (config == NULL) {
-		printf("No se pudo crear el config.");
-		exit(1);
-	}
+		//--------------------------------------------------------------------------------------------------------------
+		// Ahora toca lo divertido!
 
-	ip_kernel = config_get_string_value(config, "IP_KERNEL");
-	puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
-	// Creamos una conexión hacia el servidor
-	conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
+
+
+
+
+		// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
+
+		eliminar_paquete(paquete);
+
+		//--------------------------------------------------------------------------------------------------------------
+
+		//verificacionPseudoCodigo(pathCode);
+
+
+
+
+
 
 	log_info(logger, "Ingrese sus mensajes para el kernel: ");
 
@@ -280,6 +316,7 @@ int main(int argc, char *argv[]) {
 
 	liberarConexiones(conexion_kernel, logger, config);
 
+//}
 }
 
 t_log* iniciar_logger(void){
