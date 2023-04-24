@@ -25,6 +25,13 @@ int main(void) {
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
     ip_filesystem = config_get_string_value(config, "IP_FILESYSTEM");
     puerto_filesystem = config_get_string_value(config, "PUERTO_FILESYSTEM");
+    puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
+    algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
+
+    hrrn_alfa = config_get_string_value(config, "HRRN_ALFA");
+    grado_max_multiprogramación = config_get_string_value(config, "GRADO_MAX_MULTIPROGRAMACION");
+    //recursos = config_get_string_value(config, "RECURSOS");
+    //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
 
     //Inicializar punteros lista pcb
     t_nodoArchivos* punterosArchivos = NULL;
@@ -33,8 +40,8 @@ int main(void) {
     //Inicializar punteros cola New
     t_nodoNew* frenteColaNew = NULL; // Puntero al frente de la cola
     t_nodoNew* finColaNew = NULL; // Puntero al fin de la cola
-    //THREADS CONEXIÓN
 
+    //THREADS CONEXIÓN
     //thread clients CPU, FS, Memoria		//alternativa con hilos
     iniciarHiloClienteCPU();
     iniciarHiloClienteMemoria();
@@ -170,8 +177,9 @@ void* serverKernel(void* ptr){
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);
     			break;
-    		case PAQUETE:
+    		case PAQUETE:   //RECIBIR PAQUETE DE INSTRUCCIONES DE LA CONSOLA Y ARMAR PCB
     			lista = recibir_paquete(cliente_fd);
+    			armarPCB(lista);
     			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
     			break;
@@ -188,6 +196,27 @@ void* serverKernel(void* ptr){
 
 	return NULL;
 }
+
+//
+void armarPCB(t_list* lista){
+
+	t_infopcb nuevoPCB;
+	estimacion_inicial = config_get_string_value(config, "ESTIMACION_INICIAL");
+
+	nuevoPCB.pid = 1;
+	//nuevoPCB.listaInstrucciones = lista;
+	//nuevoPCB.programCounter = lista->head; //TIENE QUE APUNTAR AL PRIMER ELEMENTO DE LA LISTA;
+	for (int i = 0; i < 16; i++) {
+		nuevoPCB.registrosCpu[i] = 0;
+	}
+	//nuevoPCB.tablaSegmentos = NULL;
+	nuevoPCB.estimadoProxRafaga = estimacion_inicial; //CHAR* ESTIMACION_INICIAL
+	nuevoPCB.tiempoLlegadaReady = 0;
+	//nuevoPCB.punterosArchivos = NULL;
+
+	//queueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew, t_infopcb pcb_puntero);
+}
+
 
 void iterator(char* value) {
     log_info(logger, value);
@@ -255,4 +284,5 @@ t_infopcb unqueueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew) {
 free(temp); // Liberamos la memoria del frente anterior
     return pcb_puntero; // Devolvemos el valor del frente
 }
+
 

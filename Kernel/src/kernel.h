@@ -18,6 +18,14 @@ char* ip_memoria;
 char* puerto_memoria;
 char* ip_filesystem;
 char* puerto_filesystem;
+char* puerto_escucha;
+char* algoritmo_planificacion;
+char* estimacion_inicial;
+char* hrrn_alfa;
+char* grado_max_multiprogramación ;
+//recursos ;
+//instancias_recursos ;
+
 sem_t semKernelServer;
 sem_t semKernelClientCPU;
 sem_t semKernelClientMemoria;

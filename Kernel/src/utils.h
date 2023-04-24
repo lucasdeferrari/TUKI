@@ -50,16 +50,29 @@ typedef struct nodoInstrucciones {
     struct nodoInstrucciones* sgte;
 } t_nodoInstrucciones;
 
+typedef struct infoTablaSegmentos {
+    int id;
+    int direccionBase; //VER TIPO
+    int tamaño;
+} t_infoTablaSegmentos;
+
+typedef struct nodoTablaSegmentos {
+	t_infoTablaSegmentos info_tablaSegmentos;
+    struct nodoTablaSegmentos* sgte;
+} t_nodoTablaSegmentos;
+
+
 typedef struct infopcb {
     int pid;
     t_nodoInstrucciones listaInstrucciones;
     t_nodoInstrucciones programCounter; // puntero de la siguiente instrucción a ejecutar
     int registrosCpu[16];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
-    int tablaSegmentos;// LISTA DE UN ARRAY DE 3 ELEMENTOS
+    t_nodoTablaSegmentos tablaSegmentos;// VERIFICAR TIPOS
 	int estimadoProxRafaga;
 	int tiempoLlegadaReady;
 	t_nodoArchivos punterosArchivos;
 } t_infopcb;
+
 
 //EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar
 //El ready se ejecuta con fifo o hrrn según las instrucciones que cargue el usuario
