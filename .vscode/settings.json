@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "signal.h": "c"
-    },
-
-    "files.exclude": {
-        "**/.vscode/c_cpp_properties.json": true
-}
-}
