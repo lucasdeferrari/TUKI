@@ -111,3 +111,180 @@ el cliente se desconecto. Terminando servidor
 [INFO] 23:44:21:097 Kernel/(3654:3659): Ingrese sus mensajes para la CPU: 
 [INFO] 23:44:25:016 Kernel/(3654:3660): Ingrese sus mensajes para la Memoria: 
 [INFO] 23:44:32:481 Kernel/(3654:3661): Ingrese sus mensajes para el FileSystem: 
+[INFO] 20:12:30:750 Kernel/(5375:5380): Ingrese sus mensajes para la CPU: 
+[INFO] 20:12:34:847 Kernel/(5375:5381): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:12:43:016 Kernel/(5375:5382): Ingrese sus mensajes para el FileSystem: 
+[INFO] 20:12:44:836 Kernel/(5375:5383): Listo para escuchar a la consola
+[INFO] 20:12:44:836 Kernel/(5375:5383): Kernel listo para recibir a la consola
+[INFO] 22:28:15:773 Kernel/(6112:6117): Ingrese sus mensajes para la CPU: 
+[INFO] 22:28:19:951 Kernel/(6112:6118): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:28:21:543 Kernel/(6112:6119): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:28:23:135 Kernel/(6112:6120): Listo para escuchar a la consola
+[INFO] 22:28:23:135 Kernel/(6112:6120): Kernel listo para recibir a la consola
+[INFO] 22:31:32:863 Kernel/(6112:6120): Se conecto una consola!
+[ERROR] 22:31:32:864 Kernel/(6112:6120): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:36:13:799 Kernel/(6504:6511): Ingrese sus mensajes para la CPU: 
+[INFO] 22:36:18:579 Kernel/(6504:6512): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:36:19:095 Kernel/(6504:6513): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:36:20:111 Kernel/(6504:6514): Listo para escuchar a la consola
+[INFO] 22:36:20:111 Kernel/(6504:6514): Kernel listo para recibir a la consola
+[INFO] 22:36:23:812 Kernel/(6504:6514): Se conecto una consola!
+[INFO] 22:36:23:812 Kernel/(6504:6514): Me llegaron los siguientes valores:
+
+[INFO] 22:36:23:812 Kernel/(6504:6514): hola
+
+[INFO] 22:36:23:812 Kernel/(6504:6514): loco
+
+[INFO] 22:36:23:812 Kernel/(6504:6514): soy
+H
+[INFO] 22:36:23:812 Kernel/(6504:6514): lucas
+[INFO] 22:36:23:812 Kernel/(6504:6514): lucas
+[ERROR] 22:36:23:812 Kernel/(6504:6514): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:38:40:710 Kernel/(6587:6593): Ingrese sus mensajes para la CPU: 
+[INFO] 22:38:46:224 Kernel/(6587:6594): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:38:46:691 Kernel/(6587:6595): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:38:47:235 Kernel/(6587:6596): Listo para escuchar a la consola
+[INFO] 22:38:47:235 Kernel/(6587:6596): Kernel listo para recibir a la consola
+[INFO] 22:38:51:248 Kernel/(6587:6596): Se conecto una consola!
+[INFO] 22:38:51:248 Kernel/(6587:6596): Me llegaron los siguientes valores:
+
+[INFO] 22:38:51:248 Kernel/(6587:6596): hola
+
+[INFO] 22:38:51:248 Kernel/(6587:6596): loco
+
+[INFO] 22:38:51:248 Kernel/(6587:6596): soy
+¼
+[INFO] 22:38:51:248 Kernel/(6587:6596): lucas
+[INFO] 22:38:51:248 Kernel/(6587:6596): lucas
+[ERROR] 22:38:51:248 Kernel/(6587:6596): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:40:16:807 Kernel/(6666:6672): Ingrese sus mensajes para la CPU: 
+[INFO] 22:40:17:541 Kernel/(6666:6673): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:40:17:823 Kernel/(6666:6674): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:40:18:142 Kernel/(6666:6675): Listo para escuchar a la consola
+[INFO] 22:40:18:142 Kernel/(6666:6675): Kernel listo para recibir a la consola
+[INFO] 22:40:21:508 Kernel/(6666:6675): Se conecto una consola!
+[INFO] 22:40:21:508 Kernel/(6666:6675): Me llegaron los siguientes valores:
+
+[INFO] 22:40:21:508 Kernel/(6666:6675): hola
+
+[INFO] 22:40:21:508 Kernel/(6666:6675): loco
+
+[INFO] 22:40:21:508 Kernel/(6666:6675): soy
+e
+[INFO] 22:40:21:508 Kernel/(6666:6675): lucas
+[INFO] 22:40:21:508 Kernel/(6666:6675): lucas
+[ERROR] 22:40:21:508 Kernel/(6666:6675): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:42:38:760 Kernel/(6830:6836): Ingrese sus mensajes para la CPU: 
+[INFO] 22:42:40:079 Kernel/(6830:6837): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:42:40:355 Kernel/(6830:6838): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:42:40:655 Kernel/(6830:6839): Listo para escuchar a la consola
+[INFO] 22:42:40:655 Kernel/(6830:6839): Kernel listo para recibir a la consola
+[INFO] 22:42:43:076 Kernel/(6830:6839): Se conecto una consola!
+[INFO] 22:42:43:077 Kernel/(6830:6839): Me llegaron los siguientes valores:
+
+[INFO] 22:42:43:077 Kernel/(6830:6839): hola
+
+[INFO] 22:42:43:077 Kernel/(6830:6839): loco
+
+[INFO] 22:42:43:077 Kernel/(6830:6839): soy
+
+[INFO] 22:42:43:077 Kernel/(6830:6839): lucas
+[INFO] 22:42:43:077 Kernel/(6830:6839): lucas
+[ERROR] 22:42:43:077 Kernel/(6830:6839): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:17:45:940 Kernel/(8069:8075): Ingrese sus mensajes para la CPU: 
+[INFO] 23:17:47:087 Kernel/(8069:8076): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:17:47:352 Kernel/(8069:8077): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:17:47:619 Kernel/(8069:8078): Listo para escuchar a la consola
+[INFO] 23:17:47:619 Kernel/(8069:8078): Kernel listo para recibir a la consola
+[INFO] 23:18:22:820 Kernel/(8176:8182): Ingrese sus mensajes para la CPU: 
+[INFO] 23:18:24:638 Kernel/(8176:8183): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:18:24:859 Kernel/(8176:8184): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:18:25:087 Kernel/(8176:8185): Listo para escuchar a la consola
+[INFO] 23:18:25:087 Kernel/(8176:8185): Kernel listo para recibir a la consola
+[INFO] 23:19:04:004 Kernel/(8069:8078): Se conecto una consola!
+[ERROR] 23:19:04:004 Kernel/(8069:8078): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:19:18:624 Kernel/(8246:8252): Ingrese sus mensajes para la CPU: 
+[INFO] 23:19:20:073 Kernel/(8246:8253): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:19:20:254 Kernel/(8246:8254): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:19:20:573 Kernel/(8246:8255): Listo para escuchar a la consola
+[INFO] 23:19:20:573 Kernel/(8246:8255): Kernel listo para recibir a la consola
+[INFO] 23:19:23:672 Kernel/(8246:8255): Se conecto una consola!
+[ERROR] 23:19:23:673 Kernel/(8246:8255): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:21:03:134 Kernel/(8346:8352): Ingrese sus mensajes para la CPU: 
+[INFO] 23:21:04:459 Kernel/(8346:8353): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:21:04:627 Kernel/(8346:8354): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:21:04:860 Kernel/(8346:8355): Listo para escuchar a la consola
+[INFO] 23:21:04:861 Kernel/(8346:8355): Kernel listo para recibir a la consola
+[INFO] 23:21:08:047 Kernel/(8346:8355): Se conecto una consola!
+[ERROR] 23:21:08:047 Kernel/(8346:8355): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:21:32:898 Kernel/(8422:8428): Ingrese sus mensajes para la CPU: 
+[INFO] 23:21:34:819 Kernel/(8422:8429): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:21:34:999 Kernel/(8422:8430): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:21:35:223 Kernel/(8422:8431): Listo para escuchar a la consola
+[INFO] 23:21:35:223 Kernel/(8422:8431): Kernel listo para recibir a la consola
+[INFO] 23:21:38:936 Kernel/(8422:8431): Se conecto una consola!
+[ERROR] 23:21:38:936 Kernel/(8422:8431): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:22:57:990 Kernel/(8471:8477): Ingrese sus mensajes para la CPU: 
+[INFO] 23:22:59:204 Kernel/(8471:8478): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:22:59:443 Kernel/(8471:8479): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:22:59:675 Kernel/(8471:8480): Listo para escuchar a la consola
+[INFO] 23:22:59:675 Kernel/(8471:8480): Kernel listo para recibir a la consola
+[INFO] 23:23:03:192 Kernel/(8471:8480): Se conecto una consola!
+[INFO] 23:23:03:192 Kernel/(8471:8480): Me llegaron los siguientes valores:
+
+[INFO] 23:23:03:192 Kernel/(8471:8480): hola
+
+[INFO] 23:23:03:192 Kernel/(8471:8480): loco
+
+[INFO] 23:23:03:192 Kernel/(8471:8480): soy
+–
+[INFO] 23:23:03:192 Kernel/(8471:8480): lucas
+[INFO] 23:23:03:192 Kernel/(8471:8480): lucas
+
+[ERROR] 23:23:03:192 Kernel/(8471:8480): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:24:19:836 Kernel/(8495:8501): Ingrese sus mensajes para la CPU: 
+[INFO] 23:24:20:968 Kernel/(8495:8502): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:24:21:187 Kernel/(8495:8503): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:24:21:419 Kernel/(8495:8504): Listo para escuchar a la consola
+[INFO] 23:24:21:419 Kernel/(8495:8504): Kernel listo para recibir a la consola
+[INFO] 23:24:25:200 Kernel/(8495:8504): Se conecto una consola!
+[INFO] 23:24:25:200 Kernel/(8495:8504): Me llegaron los siguientes valores:
+
+[INFO] 23:24:25:200 Kernel/(8495:8504): hola soy 55
+
+[INFO] 23:24:25:200 Kernel/(8495:8504): loco 9
+
+[INFO] 23:24:25:200 Kernel/(8495:8504): soy j f f f f f f 
+#ü
+[INFO] 23:24:25:200 Kernel/(8495:8504): lucas
+[INFO] 23:24:25:200 Kernel/(8495:8504): lucas
+
+[ERROR] 23:24:25:200 Kernel/(8495:8504): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:30:14:791 Kernel/(8809:8815): Ingrese sus mensajes para la CPU: 
+[INFO] 23:30:18:095 Kernel/(8809:8816): Ingrese sus mensajes para la Memoria: 
+[INFO] 23:30:18:395 Kernel/(8809:8817): Ingrese sus mensajes para el FileSystem: 
+[INFO] 23:30:18:795 Kernel/(8809:8818): Listo para escuchar a la consola
+[INFO] 23:30:18:795 Kernel/(8809:8818): Kernel listo para recibir a la consola
+[INFO] 23:30:24:556 Kernel/(8809:8818): Se conecto una consola!
+[INFO] 23:30:24:556 Kernel/(8809:8818): Me llegaron los siguientes valores:
+
+[INFO] 23:30:24:556 Kernel/(8809:8818): hola soy 55
+
+[INFO] 23:30:24:556 Kernel/(8809:8818): loco 9
+
+[INFO] 23:30:24:556 Kernel/(8809:8818): soy j f f f f f f 
+Óÿ
+[INFO] 23:30:24:556 Kernel/(8809:8818): lucas
+[ERROR] 23:30:24:556 Kernel/(8809:8818): 
+el cliente se desconecto. Terminando servidor

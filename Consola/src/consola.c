@@ -41,7 +41,7 @@ void insertar(Nodo** cabeza, char* linea) {
         ultimo = ultimo->siguiente;
     }
 
-    ultimo->siguiente = nuevo_nodo;
+    ultimo->siguiente= nuevo_nodo;
     return;
 }
 
@@ -77,7 +77,7 @@ char** split(char* cadena, char delimitador, int* numSubcadenas) {
 
     *numSubcadenas = numDelimitadores + 1;
 
-    char** subcadenas = (char**)malloc((*numSubcadenas) * sizeof(char*)); // Reservar memoria para el arreglo de subcadenas
+    char** subcadenas = (char*)malloc((*numSubcadenas) * sizeof(char)); // Reservar memoria para el arreglo de subcadenas
     int inicioSubcadena = 0;
     int numCaracteresSubcadena = 0;
     int indiceSubcadena = 0;
@@ -164,8 +164,8 @@ char* pathProgram = argv[0];
 char* pathConfig = argv[1];
 char* pathCode = argv[2];
 
-logger = log_create(PATH_LOG, "Consola", true, LOG_LEVEL_INFO);
-config = config_create("./consola.config");
+logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
+config = config_create("../consola.config");
 
 if (config == NULL) {
 	printf("No se pudo crear el config.");
@@ -183,91 +183,64 @@ conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
 
 printf("%s \n", nombreModulo(pathProgram));
 
-archivo = fopen("prueba.txt", "r");
+archivo = fopen("/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt", "r");
 
 if (archivo == NULL) {
 	fprintf(stderr, "Error al abrir el archivo.\n");
 	exit(1);
 }
 
-char* ultima_linea = NULL;
+//char* ultima_linea = NULL;
 
-//while (fgets(linea, sizeof(linea), archivo) != NULL) {
-//		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
-//		strcpy(nueva_linea, linea);
-//		insertar(&cabeza, nueva_linea);
-//	}
-//
-//// Verificar si la última línea se ha agregado correctamente a la lista
-//
+while (fgets(linea, sizeof(linea), archivo) != NULL) {
+		char* nueva_linea = (char*)malloc(strlen(linea));
+		strcpy(nueva_linea, linea);
+		insertar(&cabeza, nueva_linea);
+	}
+
+// Verificar si la última línea se ha agregado correctamente a la lista
+
 //if (strlen(linea) > 0 && linea[strlen(linea)-1] != '\n') {
 //    char* nueva_linea = (char*)malloc(strlen(linea) + 2);
 //    strcpy(nueva_linea, linea);
 //    strcat(nueva_linea, "\n");
 //    insertar(&cabeza, nueva_linea);
 //}
-//
-//fclose(archivo);
-
-while (fgets(linea, sizeof(linea), archivo) != NULL) {
-		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
-		strcpy(nueva_linea, linea);
-		insertar(&cabeza, nueva_linea);
-		if (feof(archivo)) {  // Verificar si la línea actual es la última
-			if (ultima_linea == NULL || strcmp(ultima_linea, nueva_linea) != 0) {
-				ultima_linea = nueva_linea;
-			} else {
-				free(nueva_linea);
-			}
-		}
-	}
 
 fclose(archivo);
 
+//while (fgets(linea, sizeof(linea), archivo) != NULL) {
+//		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
+//		strcpy(nueva_linea, linea);
+//		insertar(&cabeza, nueva_linea);
+//		if (feof(archivo)) {  // Verificar si la línea actual es la última
+//			if (ultima_linea == NULL || strcmp(ultima_linea, nueva_linea) != 0) {
+//				ultima_linea = nueva_linea;
+//			} else {
+//				free(nueva_linea);
+//			}
+//		}
+//	}
+//
+//fclose(archivo);
+
 // Agregar la última línea a la lista si no se ha agregado antes
-if (ultima_linea != NULL) {
-    insertar(&cabeza, ultima_linea);
-}
+//if (ultima_linea != NULL) {
+//    insertar(&cabeza, ultima_linea);
+//}
 
-// SE DEBERIA EMPAQUETAR Y ENVIAR. DESCOMENTAR CUANDO ESTE LISTO
-//t_paquete* paquete = empaquetar(cabeza);
-//enviar_paquete(paquete, conexion_kernel);
+// CHEQUEAR SI ANDA EL EMPAQUETADO CON KERNEL
+t_paquete* paquete = empaquetar(cabeza);
+enviar_paquete(paquete, conexion_kernel);
 
-imprimir(cabeza);
+//imprimir(cabeza);
 
-//eliminar_paquete(paquete);
+eliminar_paquete(paquete);
 
 liberarConexiones(conexion_kernel, logger, config);
 
 //}
 }
-
-t_log* iniciar_logger(void){
-	t_log* nuevo_logger;
-	return nuevo_logger;
-}
-
-
-
-t_config* iniciar_config(void){
-	t_config* nuevo_config;
-	return nuevo_config;
-}
-
-
-
-void leer_consola(t_log* logger){
-	char* leido;
-	leido = readline("> ");
-
-	while(strcmp(leido, "") != 0){
-		log_info(logger, leido);
-		leido = readline("> ");
-	}
-
-	free(leido);
-}
-
 
 
 //void paquete(int conexion){
