@@ -45,14 +45,16 @@ typedef struct nodoArchivos {
     struct nodoArchivos* sgte;
 } t_nodoArchivos;
 
-typedef struct nodoInstrucciones {
-    char* info_instruccion;
-    struct nodoInstrucciones* sgte;
-} t_nodoInstrucciones;
+//typedef struct nodoInstrucciones {
+//    char* info_instruccion;
+//    struct nodoInstrucciones* sgte;
+//} t_nodoInstrucciones;
+
+t_list *listaInstrucciones;
 
 typedef struct infoTablaSegmentos {
     int id;
-    int direccionBase; //VER TIPO
+    char* direccionBase; //VER TIPO
     int tamaño;
 } t_infoTablaSegmentos;
 
@@ -64,13 +66,13 @@ typedef struct nodoTablaSegmentos {
 
 typedef struct infopcb {
     int pid;
-    t_nodoInstrucciones listaInstrucciones;
-    t_nodoInstrucciones programCounter; // puntero de la siguiente instrucción a ejecutar
-    int registrosCpu[16];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
-    t_nodoTablaSegmentos tablaSegmentos;// VERIFICAR TIPOS
-	int estimadoProxRafaga;
+    t_list* listaInstrucciones;
+    int programCounter; // numero de la siguiente instrucción a ejecutar
+    char* registrosCpu[11];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+    t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+	float estimadoProxRafaga;
 	int tiempoLlegadaReady;
-	t_nodoArchivos punterosArchivos;
+	t_nodoArchivos* punterosArchivos;
 } t_infopcb;
 
 

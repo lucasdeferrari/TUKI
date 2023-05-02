@@ -35,11 +35,10 @@ int main(void) {
 
     //Inicializar punteros lista pcb
     t_nodoArchivos* punterosArchivos = NULL;
-    t_nodoInstrucciones* listaInstrucciones = NULL;
+    //Creamos lista instrucciones
+    listaInstrucciones = list_create();
 
-    //Inicializar punteros cola New
-    t_nodoNew* frenteColaNew = NULL; // Puntero al frente de la cola
-    t_nodoNew* finColaNew = NULL; // Puntero al fin de la cola
+
 
     //THREADS CONEXIÓN
     //thread clients CPU, FS, Memoria		//alternativa con hilos
@@ -198,23 +197,37 @@ void* serverKernel(void* ptr){
 }
 
 //
-void armarPCB(t_list* lista){
 
+//Inicializar punteros cola New
+   t_nodoNew** frenteColaNew = NULL; // Puntero al frente de la cola
+   t_nodoNew** finColaNew = NULL; // Puntero al fin de la cola
+
+int pid = 1;
+void armarPCB(t_list* lista){
 	t_infopcb nuevoPCB;
 	estimacion_inicial = config_get_string_value(config, "ESTIMACION_INICIAL");
-
-	nuevoPCB.pid = 1;
-	//nuevoPCB.listaInstrucciones = lista;
-	//nuevoPCB.programCounter = lista->head; //TIENE QUE APUNTAR AL PRIMER ELEMENTO DE LA LISTA;
-	for (int i = 0; i < 16; i++) {
+	nuevoPCB.pid = pid;
+	nuevoPCB.listaInstrucciones = lista;
+	nuevoPCB.programCounter = 0; //TIENE QUE APUNTAR AL INDICE DE LA LISTA;
+	for (int i = 0; i < 12; i++) {
 		nuevoPCB.registrosCpu[i] = 0;
 	}
-	//nuevoPCB.tablaSegmentos = NULL;
-	nuevoPCB.estimadoProxRafaga = estimacion_inicial; //CHAR* ESTIMACION_INICIAL
+	t_nodoTablaSegmentos* nodoTablaSegmentos = malloc(sizeof(t_nodoTablaSegmentos));
+	nuevoPCB.tablaSegmentos->info_tablaSegmentos.id=0;
+	nuevoPCB.tablaSegmentos->info_tablaSegmentos.direccionBase = NULL;
+	nuevoPCB.tablaSegmentos->info_tablaSegmentos.tamaño = 0;
+	nuevoPCB.tablaSegmentos->sgte=NULL;
+	nuevoPCB.tablaSegmentos = nodoTablaSegmentos;
+	nuevoPCB.estimadoProxRafaga = atof(estimacion_inicial); //CHAR* ESTIMACION_INICIAL
 	nuevoPCB.tiempoLlegadaReady = 0;
-	//nuevoPCB.punterosArchivos = NULL;
+	t_nodoArchivos* nodoPunterosArchivos = malloc(sizeof(t_nodoArchivos));
+	nuevoPCB.punterosArchivos->info_archivos=NULL;
+	nuevoPCB.punterosArchivos->sgte=NULL;
+	nuevoPCB.punterosArchivos = nodoPunterosArchivos;
 
-	//queueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew, t_infopcb pcb_puntero);
+	queueNew(frenteColaNew, finColaNew, nuevoPCB);
+
+	pid++;
 }
 
 
