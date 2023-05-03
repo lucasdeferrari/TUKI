@@ -10,3 +10,9 @@
 [INFO] 04:37:02:100 Kernel/(123386:123387): Ingrese sus mensajes para la CPU: 
 [INFO] 05:52:24:679 Kernel/(3076:3077): Ingrese sus mensajes para la CPU: 
 [INFO] 05:56:25:369 Kernel/(3134:3135): Ingrese sus mensajes para la CPU: 
+[INFO] 00:40:11:636 Kernel/(23011:23012): Ingrese sus mensajes para la CPU: 
+[INFO] 00:50:18:381 Kernel/(23123:23124): Listo para escuchar a la consola
+[INFO] 00:50:18:381 Kernel/(23123:23124): Kernel listo para recibir a la consola
+[INFO] 00:52:01:043 Kernel/(23123:23124): Se conecto una consola!
+[ERROR] 00:52:01:044 Kernel/(23123:23124): 
+el cliente se desconecto. Terminando servidor

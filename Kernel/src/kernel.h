@@ -26,10 +26,11 @@ char* grado_max_multiprogramación ;
 //recursos ;
 //instancias_recursos ;
 
-sem_t semKernelServer;
+
 sem_t semKernelClientCPU;
 sem_t semKernelClientMemoria;
 sem_t semKernelClientFileSystem;
+sem_t semKernelServer;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
@@ -52,6 +53,7 @@ void terminar_programa(int, t_log*, t_config*);
 void armarPCB(t_list*);
 void queueNew(t_nodoNew** , t_nodoNew** , t_infopcb);
 t_infopcb unqueueNew(t_nodoNew** , t_nodoNew** );
+void mostrarColaNew(t_nodoNew* );
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {
