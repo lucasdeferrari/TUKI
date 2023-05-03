@@ -36,17 +36,19 @@ int pid = 1; //Contador del PID de los PCB
 
 
 //Semaforos e hilos
-sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer;
-pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria;
+sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer,semReady;
+pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria,encolar_ready;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void* clientFileSystem(void *ptr);
+void* encolarReady(void *ptr);
 void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
+void iniciarHiloReady();
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb);
