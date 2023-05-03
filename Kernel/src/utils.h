@@ -78,11 +78,11 @@ typedef struct infopcb {
 //EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar
 //El ready se ejecuta con fifo o hrrn según las instrucciones que cargue el usuario
 
-///COLA NEW
-typedef struct nodoNew {
+///COLA
+typedef struct nodoCola {
     t_infopcb info_pcb;
-    struct nodoNew* sgte;
-} t_nodoNew;
+    struct nodoCola* sgte;
+} t_nodoCola;
 
 //Funciones servidor
 extern t_log* logger;

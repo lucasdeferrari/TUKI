@@ -2,13 +2,6 @@
 
 t_config* config;
 
-//Inicializar punteros cola New
-t_nodoNew** frenteColaNew = NULL; // Puntero al frente de la cola
-t_nodoNew** finColaNew = NULL; // Puntero al fin de la cola
-
-int pid = 1; //Contador del PID de los PCB
-
-
 int main(void) {
 
 
@@ -68,6 +61,34 @@ int main(void) {
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
     pthread_join(serverKernel_thread,NULL);
+
+
+
+//FALTA IMPLEMENTAR EL HILO PARA ENCOLAR EN READY
+
+//SI EL ALGORTIMO DE PLANIFICACIÓN ES FIFO, VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
+
+//        if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//
+//        	int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+//        	int lugaresDisponiblesReady = 4 - cantidadElementosReady;
+//
+//        	printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+//
+//
+//        	while(cantidadElementosReady < atof(grado_max_multiprogramación)){
+//
+//        		if(frenteColaNew != NULL){
+//        			queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
+//
+//        			cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+//        			lugaresDisponiblesReady = 4 - cantidadElementosReady;
+//
+//        			printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+//        		}
+//        	}
+//        	printf("Grado máximo de multiprogramación alcanzado. \n");
+//        }
 
     //libero memoria
     log_destroy(logger);
@@ -200,7 +221,8 @@ void* serverKernel(void* ptr){
     		case PAQUETE:   //Recibe paquete de instrucciones, arma el PCB y lo encola en NEW
     			lista = recibir_paquete(cliente_fd);
     			armarPCB(lista);
-    			mostrarColaNew(frenteColaNew);
+    			printf("PCB encolado en NEW:\n ");
+    			mostrarCola(frenteColaNew);
     			//log_info(logger, "Me llegaron los siguientes valores:\n");
     			//list_iterate(lista, (void*) iterator);
     			break;
@@ -254,7 +276,7 @@ void armarPCB(t_list* lista){
 //	nuevoPCB.punterosArchivos = nodoPunterosArchivos;
 
 	//Encolamos en NEW (FIFO)
-	queueNew(&frenteColaNew, &finColaNew, nuevoPCB);
+	queue(&frenteColaNew, &finColaNew, nuevoPCB);
 
 	pid++;
 }
@@ -297,8 +319,8 @@ void paquete(int conexion)
 }
 
 //encolar
-void queueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew, t_infopcb pcb) {
-	t_nodoNew* nuevo = malloc(sizeof(t_nodoNew)); // Reservamos memoria para el nuevo nodo
+void queue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew, t_infopcb pcb) {
+	t_nodoCola* nuevo = malloc(sizeof(t_nodoCola)); // Reservamos memoria para el nuevo nodo
     nuevo->info_pcb = pcb; // Guardamos el valor en el nuevo nodo
     nuevo->sgte = NULL; // El siguiente nodo de nuevo es nulo
     if (*frenteColaNew == NULL) { // Si la cola está vacía
@@ -310,9 +332,9 @@ void queueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew, t_infopcb pcb) 
 }
 
 //desencolar
-t_infopcb unqueueNew(t_nodoNew** frenteColaNew, t_nodoNew** finColaNew) {
+t_infopcb unqueue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew) {
 	t_infopcb pcb_puntero;
-    t_nodoNew* temp;
+	t_nodoCola* temp;
     if (*frenteColaNew == NULL) { // Si la cola está vacía
         printf("La cola esta vacia\n");
         exit(5); //Ver como salir de la funcion
@@ -328,8 +350,8 @@ free(temp); // Liberamos la memoria del frente anterior
 }
 
 
-void mostrarColaNew(t_nodoNew* frenteColaNew) {
-    printf("Contenido de la cola New:\n");
+void mostrarCola(t_nodoCola* frenteColaNew) {
+    printf("Contenido de la cola:\n");
     while (frenteColaNew != NULL) {
         printf("PID: %d\n", frenteColaNew->info_pcb.pid);
 
@@ -365,3 +387,14 @@ void mostrarColaNew(t_nodoNew* frenteColaNew) {
     }
 }
 
+int cantidadElementosCola(t_nodoCola* frenteCola) {
+    int contador = 0;
+    t_nodoCola* temp = frenteCola;
+
+    while (temp != NULL) {
+        contador++;
+        temp = temp->sgte;
+    }
+
+    return contador;
+}

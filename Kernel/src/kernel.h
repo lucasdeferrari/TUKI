@@ -26,11 +26,18 @@ char* grado_max_multiprogramación ;
 //recursos ;
 //instancias_recursos ;
 
+//Inicializar punteros colas
+t_nodoCola** frenteColaNew = NULL; // Puntero al frente de la cola
+t_nodoCola** finColaNew = NULL; // Puntero al fin de la cola
+t_nodoCola** frenteColaReady= NULL;
+t_nodoCola** finColaReady = NULL;
 
-sem_t semKernelClientCPU;
-sem_t semKernelClientMemoria;
-sem_t semKernelClientFileSystem;
-sem_t semKernelServer;
+int pid = 1; //Contador del PID de los PCB
+
+
+//Semaforos e hilos
+sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer;
+pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
@@ -40,20 +47,20 @@ void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
-pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria;
 
+void armarPCB(t_list*);
+void queue(t_nodoCola** , t_nodoCola** , t_infopcb);
+t_infopcb unqueue(t_nodoCola** , t_nodoCola** );
+void mostrarCola(t_nodoCola* );
+int cantidadElementosCola(t_nodoCola*);
 
 void iterator(char* value);
-
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
 void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
-void armarPCB(t_list*);
-void queueNew(t_nodoNew** , t_nodoNew** , t_infopcb);
-t_infopcb unqueueNew(t_nodoNew** , t_nodoNew** );
-void mostrarColaNew(t_nodoNew* );
+
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {
