@@ -84,45 +84,45 @@ int main(void) {
 
 void iniciarHiloClienteCPU() {
 
-	int err = pthread_create( &client_CPU,	// puntero al thread
-	            NULL,
-	        	clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
-				NULL); // argumentos de la función
+	int err = pthread_create( 	&client_CPU,	// puntero al thread
+								NULL,
+								clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-	     if (err != 0) {
-	      printf("\nNo se pudo crear el hilo de la conexión kernel-CPU.\n");
-	      exit(7);
-	     }
-	     //printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo de la conexión kernel-CPU.\n");
+	exit(7);
+	}
+	//printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
 
 }
 
 void iniciarHiloClienteMemoria() {
 
-	int err = pthread_create( &client_Memoria,	// puntero al thread
-	     	        NULL,
-	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-	     	    	NULL); // argumentos de la función
+	int err = pthread_create( 	&client_Memoria,	// puntero al thread
+								NULL,
+								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-	     	 if (err != 0) {
-	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
-	     	  exit(7);
-	     	 }
-	     	 //printf("El hilo cliente de la Memoria se creo correctamente.");
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
+	exit(7);
+	}
+	//printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
 void iniciarHiloClienteFileSystem() {
 
-	int err = pthread_create( &client_FileSystem,	// puntero al thread
-	     	        NULL,
-					clientFileSystem, // le paso la def de la función que quiero que ejecute mientras viva
-	     	    	NULL); // argumentos de la función
+	int err = pthread_create( 	&client_FileSystem,	// puntero al thread
+								NULL,
+								clientFileSystem, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-	     	 if (err != 0) {
-	     	  printf("\nNo se pudo crear el hilo del cliente FileSystem del kernel.");
-	     	  exit(7);
-	     	 }
-	     	 //printf("\nEl hilo cliente del FileSystem se creo correctamente.");
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo del cliente FileSystem del kernel.");
+	exit(7);
+	}
+	//printf("\nEl hilo cliente del FileSystem se creo correctamente.");
 
 }
 void* clientCPU(void* ptr) {
@@ -168,17 +168,16 @@ void* clientFileSystem(void* ptr) {
 
 void iniciarHiloServer() {
 
-    int err = pthread_create( &serverKernel_thread,	// puntero al thread
-    	            NULL,
-    	        	&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
-    				NULL); // argumentos de la función
+    int err = pthread_create( 	&serverKernel_thread,	// puntero al thread
+								NULL,
+								&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-    	     if (err != 0) {
-    	      printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
-    	      exit(7);
-    	     }
-    	     //printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
-
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
+	exit(7);
+	}
+	//printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
 }
 
 
@@ -263,16 +262,16 @@ void armarPCB(t_list* lista){
 
 void iniciarHiloReady() {
 
-	int err = pthread_create( &encolar_ready,	// puntero al thread
-	            NULL,
-	        	encolarReady, // le paso la def de la función que quiero que ejecute mientras viva
-				NULL); // argumentos de la función
+	int err = pthread_create( 	&encolar_ready,	// puntero al thread
+								NULL,
+								encolarReady, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-	     if (err != 0) {
-	      printf("\nNo se pudo crear el hilo para encolar en Ready. \n");
-	      exit(7);
-	     }
-	     //printf("\nEl hilo para encolar en Ready se creo correctamente.\n");
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo para encolar en Ready. \n");
+	exit(7);
+	}
+	//printf("\nEl hilo para encolar en Ready se creo correctamente.\n");
 
 }
 

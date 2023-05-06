@@ -141,105 +141,105 @@ void imprimir(Nodo* cabeza) {
 
 int main(int argc, char *argv[]) {
 
-//Aqui se verifica si introducieron todos los archivos necesarios para consola
+	//Aqui se verifica si introducieron todos los archivos necesarios para consola
 
-// 0 -> mismo archivo
+	// 0 -> mismo archivo
 
-// 1 -> configs
+	// 1 -> configs
 
-// 2 -> pseudocodigo
+	// 2 -> pseudocodigo
 
-char linea[200];
-Nodo* cabeza = NULL;
-FILE* archivo;
-int conexion_kernel;
-char* ip_kernel;
-char* puerto_kernel;
+	char linea[200];
+	Nodo* cabeza = NULL;
+	FILE* archivo;
+	int conexion_kernel;
+	char* ip_kernel;
+	char* puerto_kernel;
 
-t_log* logger;
-t_config* config;
+	t_log* logger;
+	t_config* config;
 
-//if(argc == 3){
-char* pathProgram = argv[0];
-char* pathConfig = argv[1];
-char* pathCode = argv[2];
+	//if(argc == 3){
+	char* pathProgram = argv[0];
+	char* pathConfig = argv[1];
+	char* pathCode = argv[2];
 
-logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
-config = config_create("../consola.config");
+	logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
+	config = config_create("../consola.config");
 
-if (config == NULL) {
-	printf("No se pudo crear el config.");
-	exit(1);
-}
-
-ip_kernel = config_get_string_value(config, "IP_KERNEL");
-puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
-
-// Creamos una conexión hacia el servidor
-conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
-
-
-//copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
-
-printf("%s \n", nombreModulo(pathProgram));
-
-archivo = fopen("/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt", "r");
-
-if (archivo == NULL) {
-	fprintf(stderr, "Error al abrir el archivo.\n");
-	exit(1);
-}
-
-//char* ultima_linea = NULL;
-
-while (fgets(linea, sizeof(linea), archivo) != NULL) {
-		char* nueva_linea = (char*)malloc(strlen(linea));
-		strcpy(nueva_linea, linea);
-		insertar(&cabeza, nueva_linea);
+	if (config == NULL) {
+		printf("No se pudo crear el config.");
+		exit(1);
 	}
 
-// Verificar si la última línea se ha agregado correctamente a la lista
+	ip_kernel = config_get_string_value(config, "IP_KERNEL");
+	puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
-//if (strlen(linea) > 0 && linea[strlen(linea)-1] != '\n') {
-//    char* nueva_linea = (char*)malloc(strlen(linea) + 2);
-//    strcpy(nueva_linea, linea);
-//    strcat(nueva_linea, "\n");
-//    insertar(&cabeza, nueva_linea);
-//}
+	// Creamos una conexión hacia el servidor
+	conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
 
-fclose(archivo);
 
-//while (fgets(linea, sizeof(linea), archivo) != NULL) {
-//		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
-//		strcpy(nueva_linea, linea);
-//		insertar(&cabeza, nueva_linea);
-//		if (feof(archivo)) {  // Verificar si la línea actual es la última
-//			if (ultima_linea == NULL || strcmp(ultima_linea, nueva_linea) != 0) {
-//				ultima_linea = nueva_linea;
-//			} else {
-//				free(nueva_linea);
-//			}
-//		}
-//	}
-//
-//fclose(archivo);
+	//copiarConfigs(pathConfig); //Copia las config pasadas a un archivo global
 
-// Agregar la última línea a la lista si no se ha agregado antes
-//if (ultima_linea != NULL) {
-//    insertar(&cabeza, ultima_linea);
-//}
+	printf("%s \n", nombreModulo(pathProgram));
 
-// CHEQUEAR SI ANDA EL EMPAQUETADO CON KERNEL
-t_paquete* paquete = empaquetar(cabeza);
-enviar_paquete(paquete, conexion_kernel);
+	archivo = fopen("/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt", "r");
 
-//imprimir(cabeza);
+	if (archivo == NULL) {
+		fprintf(stderr, "Error al abrir el archivo.\n");
+		exit(1);
+	}
 
-eliminar_paquete(paquete);
+	//char* ultima_linea = NULL;
 
-liberarConexiones(conexion_kernel, logger, config);
+	while (fgets(linea, sizeof(linea), archivo) != NULL) {
+			char* nueva_linea = (char*)malloc(strlen(linea));
+			strcpy(nueva_linea, linea);
+			insertar(&cabeza, nueva_linea);
+		}
 
-//}
+	// Verificar si la última línea se ha agregado correctamente a la lista
+
+	//if (strlen(linea) > 0 && linea[strlen(linea)-1] != '\n') {
+	//    char* nueva_linea = (char*)malloc(strlen(linea) + 2);
+	//    strcpy(nueva_linea, linea);
+	//    strcat(nueva_linea, "\n");
+	//    insertar(&cabeza, nueva_linea);
+	//}
+
+	fclose(archivo);
+
+	//while (fgets(linea, sizeof(linea), archivo) != NULL) {
+	//		char* nueva_linea = (char*)malloc(strlen(linea) + 1);
+	//		strcpy(nueva_linea, linea);
+	//		insertar(&cabeza, nueva_linea);
+	//		if (feof(archivo)) {  // Verificar si la línea actual es la última
+	//			if (ultima_linea == NULL || strcmp(ultima_linea, nueva_linea) != 0) {
+	//				ultima_linea = nueva_linea;
+	//			} else {
+	//				free(nueva_linea);
+	//			}
+	//		}
+	//	}
+	//
+	//fclose(archivo);
+
+	// Agregar la última línea a la lista si no se ha agregado antes
+	//if (ultima_linea != NULL) {
+	//    insertar(&cabeza, ultima_linea);
+	//}
+
+	// CHEQUEAR SI ANDA EL EMPAQUETADO CON KERNEL
+	t_paquete* paquete = empaquetar(cabeza);
+	enviar_paquete(paquete, conexion_kernel);
+
+	//imprimir(cabeza);
+
+	eliminar_paquete(paquete);
+
+	liberarConexiones(conexion_kernel, logger, config);
+
+	//}
 }
 
 

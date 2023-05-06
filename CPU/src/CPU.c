@@ -1,6 +1,131 @@
 #include "CPU.h"
+#include <ucontext.h>
 
 t_config* config;
+
+typedef struct nodoArchivos {
+    char* info_archivos;//ver tipo de direccion
+    struct nodoArchivos* sgte;
+} t_nodoArchivos;
+
+typedef struct infoTablaSegmentos {
+    int id;
+    char* direccionBase; //VER TIPO
+    int tamanio;
+} t_infoTablaSegmentos;
+
+typedef struct nodoTablaSegmentos {
+	t_infoTablaSegmentos info_tablaSegmentos;
+    struct nodoTablaSegmentos* sgte;
+} t_nodoTablaSegmentos;
+
+typedef struct infopcb {
+    int pid;
+    t_list* listaInstrucciones;
+    int programCounter; // numero de la siguiente instrucción a ejecutar
+    char* registrosCpu[12];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+    t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+	float estimadoProxRafaga;
+	int tiempoLlegadaReady;
+	t_nodoArchivos* punterosArchivos;
+} t_infopcb;
+
+ucontext_t my_context, kernel_context;
+
+// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
+void* set(char* reg, char* valor){
+	strcpy(reg, valor);
+}
+
+// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
+void* yield(t_infopcb pcbViejo, t_infopcb pcbNuevo ){
+
+	// Registros de 4 bytes: AX, BX, CX, DX.
+		// 0.  AX (Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
+		//     Es comúnmente usado para almacenar resultados de operaciones y como fuente o destino de datos en instrucciones.
+
+		// 1.  BX (Base Register): Es utilizado como registro base en operaciones de direccionamiento.
+		//	   Puede ser usado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
+
+		// 2.  CX (Counter Register): Es utilizado como registro contador en bucles y repeticiones.
+		//	   Puede ser utilizado en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
+
+		// 3.  DX (Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
+		//     Puede ser utilizado para almacenar datos temporalmente antes de ser enviados o después de ser recibidos.
+
+	// Registros de 8 bytes: EAX, EBX, ECX, EDX
+		// 4.  EAX (Extended Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
+		//	   Al igual que AX, EAX es ampliamente utilizado para almacenar resultados de operaciones y como fuente o destino de datos en instrucciones.
+
+		// 5.  EBX (Extended Base Register): Es utilizado como registro base en operaciones de direccionamiento.
+		//	   Al igual que BX, EBX puede ser usado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
+
+		// 6.  ECX (Extended Counter Register): Es utilizado como registro contador en bucles y repeticiones.
+		//	   Al igual que CX, ECX se utiliza en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
+
+		// 7.  EDX (Extended Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
+		//	   Al igual que DX, EDX puede ser utilizado para almacenar datos temporalmente antes de ser enviados o después de ser recibidos.
+
+	// Registros de 16 bytes: RAX, RBX, RCX, RDX
+		// 8.  RAX (Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
+		//	   También es utilizado para retornar valores desde una función.
+
+		// 9.  RBX (Base Register): Es utilizado como registro base en operaciones de direccionamiento.
+		//	   Puede ser utilizado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
+
+		// 10. RCX (Counter Register): Es utilizado como registro contador en bucles y repeticiones.
+		//	   Se utiliza en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
+
+		// 11. RDX (Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
+		//	   También puede ser utilizado para el almacenamiento temporal de datos.
+
+    // Guardar el contexto actual en my_context
+    if (getcontext(&my_context) == -1)
+    {
+        perror("getcontext");
+        exit(1);
+    }
+
+    // Cambiar al contexto del kernel
+    if (swapcontext(&my_context, &kernel_context) == -1)
+    {
+        perror("swapcontext");
+        exit(1);
+    }
+
+}
+
+void finish_process(){
+
+    // Guardar el contexto actual en my_context
+    if (getcontext(&my_context) == -1)
+    {
+        perror("getcontext");
+        return;
+    }
+
+    // Cambiar al contexto del kernel para finalizar el proceso
+    swapcontext(&my_context, &kernel_context);
+}
+
+// EXIT: Esta instrucción representa la syscall de finalización del proceso. Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
+void* exit(t_infopcb pcb){
+	// Obtener el contexto del kernel
+	if (getcontext(&kernel_context) == -1)
+	{
+		perror("getcontext");
+		return 1;
+	}
+
+	// Modificar el contexto del kernel para que maneje la finalización del proceso
+	kernel_context.uc_link = NULL;
+	kernel_context.uc_stack.ss_sp = malloc(SIGSTKSZ);
+	kernel_context.uc_stack.ss_size = SIGSTKSZ;
+	makecontext(&kernel_context, finish_process, 0);
+
+	// Llamar a la syscall de finalización del proceso
+	finish_process();
+}
 
 int main(void) {
 
@@ -66,16 +191,16 @@ void* clientMemoria(void* ptr) {
 
 void iniciarHiloServer() {
 
-    int err = pthread_create( &serverCPU_thread,	// puntero al thread
-    	            NULL,
-    	        	&serverCPU, // le paso la def de la función que quiero que ejecute mientras viva
-    				NULL); // argumentos de la función
+    int err = pthread_create( 	&serverCPU_thread,	// puntero al thread
+    	            			NULL,
+								&serverCPU, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
 
-    	     if (err != 0) {
-    	      printf("\nNo se pudo crear el hilo de la conexión kernel-CPU \n");
-    	      exit(7);
-    	     }
-    	     printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
+	 if (err != 0) {
+	  printf("\nNo se pudo crear el hilo de la conexión kernel-CPU \n");
+	  exit(7);
+	 }
+	 printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
 
 }
 
