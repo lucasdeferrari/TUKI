@@ -10,16 +10,8 @@
 #include<readline/readline.h>
 #include "utils.h"
 
-
-t_log* iniciar_logger(void);
-t_config* iniciar_config(void);
-void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
-int verificarConfig(char*);
-void copiarConfigs(char*);
-char** split(char* cadena, char delimitador, int* numSubcadenas);
-char* nombreModulo(char* path);
 short verificacionPseudoCodigo(char* path);
 
 #endif /* CONSOLA_H_ */
