@@ -9,7 +9,7 @@ int main(void) {
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semKernelClientFileSystem,0,0);
 	sem_init(&semKernelServer,0,0);
-	sem_init(&semReady,0,0);
+	//sem_init(&semReady,0,0);
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
@@ -57,8 +57,6 @@ int main(void) {
     //thread server consola
     iniciarHiloServer();
 
-    //FALTA IMPLEMENTAR EL HILO PARA ENCOLAR EN READY
-    iniciarHiloReady();
 
 
     pthread_detach(client_CPU);
@@ -77,7 +75,7 @@ int main(void) {
     sem_destroy(&semKernelClientMemoria);
     sem_destroy(&semKernelClientFileSystem);
     sem_destroy(&semKernelServer);
-    sem_destroy(&semReady);
+    //sem_destroy(&semReady);
 
     return EXIT_SUCCESS;
 }
@@ -200,13 +198,16 @@ void* serverKernel(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			armarPCB(lista);
     			printf("PCB encolado en NEW:\n");
+    			encolarReady();
+    			printf("Cola NEW:\n");
     			mostrarCola(frenteColaNew);
+    			printf("Cola READY:\n");
+    			mostrarCola(frenteColaReady);
     			//log_info(logger, "Me llegaron los siguientes valores:\n");
     			//list_iterate(lista, (void*) iterator);
     			break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
-    			//sem_post(&semReady);
     			return EXIT_FAILURE;
     		default:
     			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
@@ -260,54 +261,37 @@ void armarPCB(t_list* lista){
 	pid++;
 }
 
-void iniciarHiloReady() {
 
-	int err = pthread_create( 	&encolar_ready,	// puntero al thread
-								NULL,
-								encolarReady, // le paso la def de la función que quiero que ejecute mientras viva
-								NULL); // argumentos de la función
+void encolarReady() {
 
-	if (err != 0) {
-	printf("\nNo se pudo crear el hilo para encolar en Ready. \n");
-	exit(7);
+	//SI EL ALGORTIMO DE PLANIFICACIÓN ES FIFO, VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
+
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+		int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+		int lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
+
+		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+
+
+		if(lugaresDisponiblesReady > 0 ){
+
+			if(frenteColaNew != NULL){
+				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
+
+				cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+				lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
+				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+			}
+		}
+		else{
+			printf("Grado máximo de multiprogramación alcanzado. \n");
+		}
+
+		//SI ES HRRN
 	}
-	//printf("\nEl hilo para encolar en Ready se creo correctamente.\n");
 
-}
-
-void* encolarReady(void* ptr) {
-	sem_wait(&semReady);
-
-
-
-//SI EL ALGORTIMO DE PLANIFICACIÓN ES FIFO, VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
-
-//	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-//
-//		int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
-//		int lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
-//
-//		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
-//
-//
-//		while(lugaresDisponiblesReady > 0 ){
-//
-//			if(frenteColaNew != NULL){
-//				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
-//
-//				cantidadElementosReady = cantidadElementosCola(frenteColaReady);
-//				lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
-//
-//				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
-//			}
-//		}
-//
-//		printf("Grado máximo de multiprogramación alcanzado. \n");
-//
-//	}
-
-
-	return NULL;
+	return;
 }
 
 

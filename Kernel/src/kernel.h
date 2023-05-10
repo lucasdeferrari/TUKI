@@ -43,12 +43,12 @@ void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void* clientFileSystem(void *ptr);
-void* encolarReady(void *ptr);
+void encolarReady();
 void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
-void iniciarHiloReady();
+
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb);
