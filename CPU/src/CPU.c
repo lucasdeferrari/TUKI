@@ -1,7 +1,7 @@
 #include "CPU.h"
-
 t_config* config;
 
+//typedef van en utils.h
 typedef struct infoTablaSegmentos {
     int id;
     char* direccionBase; //VER TIPO
@@ -13,54 +13,32 @@ typedef struct nodoTablaSegmentos {
     struct nodoTablaSegmentos* sgte;
 } t_nodoTablaSegmentos;
 
+//UTILIZAMOS UN STRUCT PARA LOS REGISTROS EN VEZ DE UN VECTOR
+//DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
+typedef struct registrosCPU {
+	char* AX;
+	char* BX;
+	char* CX;
+	char* DX;
+	char* EAX;
+	char* EBX;
+	char* ECX;
+	char* EDX;
+	char* RAX;
+	char* RBX;
+	char* RCX;
+	char* RDX;
+} t_registrosCPU;
+
 typedef struct {
 	char* instruccion;
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar
-	char* registrosCpu[12];// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+	t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
 	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 } contextExecution;
 
-// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
-void set(char* reg, char* valor){
-	strcpy(reg, valor);
-	//delay 1000ml
-}
-
-// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
-contextExecution yield(contextExecution contexto){
-
-	contexto.instruccion = "yield";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
-
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
-
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-    return contexto;
-}
-
-// EXIT: Esta instrucción representa la syscall de finalización del proceso.
-// Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
-contextExecution exit_tp(contextExecution contexto){
-
-	contexto.instruccion = "exit";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
-
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
-
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-	return contexto;
-}
+//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
 
 int main(void) {
 
@@ -212,6 +190,52 @@ void paquete(int conexion)
 	eliminar_paquete(paquete);
 
 }
+
+//SE DEBEN MODIFICAR LAS FUNCIONES PARA QUE SEAN DE TIPO VOID Y MODIFIQUEN DIRECTAMENTE EL STRUCT DE CONTEXTO RECIBIDO POR KERNEL
+//(las firmas de las funciones estan en CPU.h)
+
+// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
+void set(char* reg, char* valor){
+	strcpy(reg, valor);
+	//delay 1000ml
+}
+
+// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
+contextExecution yield(contextExecution contexto){
+
+	contexto.instruccion = "yield";
+//	contexto.listaInstrucciones = instrucciones;
+	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
+
+//	for(int i = 0 ; i < 12; i++)
+//		set(contexto.registrosCpu[i], registrosCpu[i]);
+
+//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
+
+	//Modificaciones Contexto
+
+    return contexto;
+}
+
+// EXIT: Esta instrucción representa la syscall de finalización del proceso.
+// Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
+contextExecution exit_tp(contextExecution contexto){
+
+	contexto.instruccion = "exit";
+//	contexto.listaInstrucciones = instrucciones;
+	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
+
+//	for(int i = 0 ; i < 12; i++)
+//		set(contexto.registrosCpu[i], registrosCpu[i]);
+
+//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
+
+	//Modificaciones Contexto
+
+	return contexto;
+}
+
+
 
 // Registros de 4 bytes: AX, BX, CX, DX.
 		// 0.  AX (Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
