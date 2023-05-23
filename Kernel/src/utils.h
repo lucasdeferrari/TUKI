@@ -77,7 +77,7 @@ typedef struct registrosCPU {
 typedef struct infopcb {
     int pid;
     t_list* listaInstrucciones;
-    int programCounter; // numero de la siguiente instrucción a ejecutar
+    uint32_t programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
     t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
     t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 	float estimadoProxRafaga;
