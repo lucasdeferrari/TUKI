@@ -34,18 +34,64 @@ typedef struct {
 	char* instruccion;
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar
-	t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+	char* registrosCpu[12];// CAMBIAR POR EL STRUCT
 	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 } contextExecution;
 
-//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
+//SE DEBEN MODIFICAR LAS FUNCIONES PARA QUE SEAN DE TIPO VOID Y MODIFIQUEN DIRECTAMENTE EL STRUCT DE CONTEXTO RECIBIDO POR KERNEL
+
+// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
+void set(char* reg, char* valor){
+	strcpy(reg, valor);
+	//delay 1000ml
+}
+
+// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
+contextExecution yield(contextExecution contexto){
+
+	contexto.instruccion = "yield";
+//	contexto.listaInstrucciones = instrucciones;
+	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
+
+//	for(int i = 0 ; i < 12; i++)
+//		set(contexto.registrosCpu[i], registrosCpu[i]);
+
+//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
+
+	//Modificaciones Contexto
+
+    return contexto;
+}
+
+// EXIT: Esta instrucción representa la syscall de finalización del proceso.
+// Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
+contextExecution exit_tp(contextExecution contexto){
+
+	contexto.instruccion = "exit";
+//	contexto.listaInstrucciones = instrucciones;
+	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
+
+//	for(int i = 0 ; i < 12; i++)
+//		set(contexto.registrosCpu[i], registrosCpu[i]);
+
+//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
+
+	//Modificaciones Contexto
+
+	return contexto;
+}
+
+
+
 
 int main(void) {
+
+	//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
 
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
 
-	exit1();
+	//exit1();
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
@@ -191,49 +237,6 @@ void paquete(int conexion)
 
 }
 
-//SE DEBEN MODIFICAR LAS FUNCIONES PARA QUE SEAN DE TIPO VOID Y MODIFIQUEN DIRECTAMENTE EL STRUCT DE CONTEXTO RECIBIDO POR KERNEL
-//(las firmas de las funciones estan en CPU.h)
-
-// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
-void set(char* reg, char* valor){
-	strcpy(reg, valor);
-	//delay 1000ml
-}
-
-// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
-contextExecution yield(contextExecution contexto){
-
-	contexto.instruccion = "yield";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
-
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
-
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-    return contexto;
-}
-
-// EXIT: Esta instrucción representa la syscall de finalización del proceso.
-// Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
-contextExecution exit_tp(contextExecution contexto){
-
-	contexto.instruccion = "exit";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
-
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
-
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-	return contexto;
-}
 
 
 

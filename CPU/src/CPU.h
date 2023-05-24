@@ -25,9 +25,7 @@ void iniciarHiloCliente();
 void iniciarHiloServer();
 pthread_t serverCPU_thread, client_Memoria;
 
-void set(char*, char*);
-contextExecution yield(contextExecution);
-contextExecution exit_tp(contextExecution);
+
 
 void iterator(char* value);
 

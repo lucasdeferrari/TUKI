@@ -229,9 +229,18 @@ void armarPCB(t_list* lista){
 	nuevoPCB.listaInstrucciones = lista;
 	nuevoPCB.programCounter = 0;
 
-	for (int i = 0; i < 12; i++) {
-		nuevoPCB.registrosCpu[i] = NULL;
-	}
+	nuevoPCB.registrosCpu.AX = NULL;
+	nuevoPCB.registrosCpu.BX = NULL;
+	nuevoPCB.registrosCpu.CX = NULL;
+	nuevoPCB.registrosCpu.DX = NULL;
+	nuevoPCB.registrosCpu.EAX = NULL;
+	nuevoPCB.registrosCpu.EBX = NULL;
+	nuevoPCB.registrosCpu.ECX = NULL;
+	nuevoPCB.registrosCpu.EDX = NULL;
+	nuevoPCB.registrosCpu.RAX = NULL;
+	nuevoPCB.registrosCpu.RBX = NULL;
+	nuevoPCB.registrosCpu.RCX = NULL;
+	nuevoPCB.registrosCpu.RDX = NULL;
 
 	nuevoPCB.tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
 
@@ -376,10 +385,10 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
         }
 
         printf("Program Counter: %d\n", frenteColaNew->info_pcb.programCounter);
-        printf("Registros CPU:\n");
-        for (int i = 0; i < 12; i++) {
-            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
-        }
+//        printf("Registros CPU:\n");
+//        for (int i = 0; i < 12; i++) {
+//            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
+//        }
         printf("Tabla de segmentos:\n");
         t_nodoTablaSegmentos* tabla = frenteColaNew->info_pcb.tablaSegmentos;
         while (tabla != NULL) {
