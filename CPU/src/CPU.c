@@ -34,7 +34,7 @@ typedef struct {
 	char* instruccion;
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar
-	char* registrosCpu[12];// CAMBIAR POR EL STRUCT
+	t_registrosCPU registrosCpu;// CAMBIAR POR EL STRUCT
 	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 } contextExecution;
 
@@ -81,12 +81,33 @@ contextExecution exit_tp(contextExecution contexto){
 	return contexto;
 }
 
+t_paquete* deserializar(t_buffer* buffer) {
+	t_paquete* paquete = malloc(sizeof(t_paquete));
 
+    void* stream = buffer->stream;
+    // Deserializamos los campos que tenemos en el buffer
+    memcpy(&(paquete->buffer->size), stream, sizeof(int));
+    stream += sizeof(int);
+    memcpy(&(paquete->buffer->stream), stream, sizeof(void*));
+        stream += sizeof(void*);
+
+    memcpy(&(paquete->codigo_operacion), stream, sizeof(op_code));
+    stream += sizeof(op_code);
+
+    // Por último, para obtener el nombre, primero recibimos el tamaño y luego el texto en sí:
+//    memcpy(&(persona->nombre_length), stream, sizeof(uint32_t));
+//    stream += sizeof(uint32_t);
+//    persona->nombre = malloc(persona->nombre_length);
+//    memcpy(persona->nombre, stream, persona->nombre_length);
+
+    return paquete;
+}
 
 
 int main(void) {
 
 	//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
+	desserializar();
 
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
@@ -236,45 +257,3 @@ void paquete(int conexion)
 	eliminar_paquete(paquete);
 
 }
-
-
-
-
-// Registros de 4 bytes: AX, BX, CX, DX.
-		// 0.  AX (Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
-		//     Es comúnmente usado para almacenar resultados de operaciones y como fuente o destino de datos en instrucciones.
-
-		// 1.  BX (Base Register): Es utilizado como registro base en operaciones de direccionamiento.
-		//	   Puede ser usado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
-
-		// 2.  CX (Counter Register): Es utilizado como registro contador en bucles y repeticiones.
-		//	   Puede ser utilizado en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
-
-		// 3.  DX (Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
-		//     Puede ser utilizado para almacenar datos temporalmente antes de ser enviados o después de ser recibidos.
-
-	// Registros de 8 bytes: EAX, EBX, ECX, EDX
-		// 4.  EAX (Extended Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
-		//	   Al igual que AX, EAX es ampliamente utilizado para almacenar resultados de operaciones y como fuente o destino de datos en instrucciones.
-
-		// 5.  EBX (Extended Base Register): Es utilizado como registro base en operaciones de direccionamiento.
-		//	   Al igual que BX, EBX puede ser usado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
-
-		// 6.  ECX (Extended Counter Register): Es utilizado como registro contador en bucles y repeticiones.
-		//	   Al igual que CX, ECX se utiliza en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
-
-		// 7.  EDX (Extended Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
-		//	   Al igual que DX, EDX puede ser utilizado para almacenar datos temporalmente antes de ser enviados o después de ser recibidos.
-
-	// Registros de 16 bytes: RAX, RBX, RCX, RDX
-		// 8.  RAX (Accumulator Register): Es utilizado como registro acumulador para operaciones aritméticas y lógicas.
-		//	   También es utilizado para retornar valores desde una función.
-
-		// 9.  RBX (Base Register): Es utilizado como registro base en operaciones de direccionamiento.
-		//	   Puede ser utilizado para almacenar una dirección base, un puntero a una estructura de datos o un índice en un arreglo.
-
-		// 10. RCX (Counter Register): Es utilizado como registro contador en bucles y repeticiones.
-		//	   Se utiliza en combinación con instrucciones de salto y comparación para controlar la repetición de un bloque de código.
-
-		// 11. RDX (Data Register): Es utilizado como registro de datos en operaciones de entrada y salida.
-		//	   También puede ser utilizado para el almacenamiento temporal de datos.

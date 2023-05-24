@@ -109,6 +109,7 @@ void iniciarHiloClienteMemoria() {
 	//printf("El hilo cliente de la Memoria se creo correctamente.");
 
 }
+
 void iniciarHiloClienteFileSystem() {
 
 	int err = pthread_create( 	&client_FileSystem,	// puntero al thread
@@ -123,6 +124,7 @@ void iniciarHiloClienteFileSystem() {
 	//printf("\nEl hilo cliente del FileSystem se creo correctamente.");
 
 }
+
 void* clientCPU(void* ptr) {
 	sem_wait(&semKernelClientCPU);
 	int config=1;
@@ -163,7 +165,6 @@ void* clientFileSystem(void* ptr) {
 	return NULL;
 }
 
-
 void iniciarHiloServer() {
 
     int err = pthread_create( 	&serverKernel_thread,	// puntero al thread
@@ -177,7 +178,6 @@ void iniciarHiloServer() {
 	}
 	//printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
 }
-
 
 void* serverKernel(void* ptr){
 
@@ -217,7 +217,6 @@ void* serverKernel(void* ptr){
 
 	return NULL;
 }
-
 
 void armarPCB(t_list* lista){
 
@@ -270,7 +269,6 @@ void armarPCB(t_list* lista){
 	pid++;
 }
 
-
 void encolarReady() {
 
 	//SI EL ALGORTIMO DE PLANIFICACIÓN ES FIFO, VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
@@ -303,22 +301,19 @@ void encolarReady() {
 	return;
 }
 
-
 void iterator(char* value) {
     log_info(logger, value);
 }
 
 //Funciones client
 
-t_config* iniciar_config(void)
-{
+t_config* iniciar_config(void){
 	t_config* nuevo_config;
 
 	return nuevo_config;
 }
 
-void paquete(int conexion)
-{
+void paquete(int conexion){
 	// Ahora toca lo divertido!
 	char* leido;
 	t_paquete* paquete;
@@ -370,7 +365,6 @@ t_infopcb unqueue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew) {
 free(temp); // Liberamos la memoria del frente anterior
     return pcb_puntero; // Devolvemos el valor del frente
 }
-
 
 void mostrarCola(t_nodoCola* frenteColaNew) {
     printf("Contenido de la cola:\n");
