@@ -35,19 +35,6 @@ int main(void) {
     //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
 
 
-
-
-    //NO ES NECESARIO SOLO SE INICIALIZA LA COLA NEW Q ES LA QUE CONTIENE LOS PCBs - REVISAR
-    //Inicializar punteros lista pcb
-    //t_nodoArchivos* punterosArchivos = NULL;
-
-    //NO ES NECESARIO LA LISTA SE CREA EN LA ESTRUCTURA PCB - REVISAR
-    //t_list *listaInstrucciones;
-    //Creamos lista instrucciones
-    //listaInstrucciones = list_create();
-
-
-
     //THREADS CONEXIÓN
     //thread clients CPU, FS, Memoria		//alternativa con hilos
     iniciarHiloClienteCPU();
