@@ -202,7 +202,7 @@ void* serverKernel(void* ptr){
     			if (strcmp(handshake, "consola") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
         			armarPCB(lista);
-        			printf("PCB encolado en NEW:\n");
+        			printf("PCB encolado en NEW\n");
         			encolarReady();
         			printf("Cola NEW:\n");
         			mostrarCola(frenteColaNew);
