@@ -2,6 +2,9 @@
 
 t_config* config;
 
+//Lo necesitamos para escuchar constantemente
+int server_fd;
+
 int main(void) {
 
 
@@ -9,7 +12,7 @@ int main(void) {
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semKernelClientFileSystem,0,0);
 	sem_init(&semKernelServer,0,0);
-	//sem_init(&semReady,0,0);
+
 
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
@@ -36,20 +39,26 @@ int main(void) {
 
 
     //THREADS CONEXIÓN
-    //thread clients CPU, FS, Memoria		//alternativa con hilos
+    //thread clients CPU, FS, Memoria
     iniciarHiloClienteCPU();
     iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
 
-    //thread server consola
-    iniciarHiloServer();
+    //thread server
 
+
+	server_fd = iniciar_servidor();
+	log_info(logger, "Kernel listo para escuchar al cliente\n");
+
+	while(1){
+		iniciarHiloServer();
+		pthread_join(serverKernel_thread, NULL);
+	}
 
 
     pthread_detach(client_CPU);
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
-    pthread_join(serverKernel_thread,NULL);
     pthread_detach(encolar_ready);
 
 
@@ -62,7 +71,7 @@ int main(void) {
     sem_destroy(&semKernelClientMemoria);
     sem_destroy(&semKernelClientFileSystem);
     sem_destroy(&semKernelServer);
-    //sem_destroy(&semReady);
+
 
     return EXIT_SUCCESS;
 }
@@ -170,8 +179,8 @@ void* serverKernel(void* ptr){
 
 	sem_wait(&semKernelServer);
 
-    int server_fd = iniciar_servidor();
-    log_info(logger, "Kernel listo para recibir a la consola");
+    //int server_fd = iniciar_servidor();
+    log_info(logger, "Kernel listo para recibir al cliente");
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
@@ -210,7 +219,7 @@ void* serverKernel(void* ptr){
         			mostrarCola(frenteColaReady);
     				//cosas de consola
     			}
-    			if (strcmp(handshake, "kernel") == 0) {
+    			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
     				//cosas de kernel
     			}
@@ -225,9 +234,10 @@ void* serverKernel(void* ptr){
 
     			//log_info(logger, "Me llegaron los siguientes valores:\n");
     			//list_iterate(lista, (void*) iterator);
-    			free(handshake);
     			break;
     		case -1:
+    			free(handshake);
+    			sem_post(&semKernelServer);
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
     		default:

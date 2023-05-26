@@ -37,7 +37,6 @@ int iniciar_servidor(void)
 	//int socket_cliente;
 	//esperar_cliente(socket_servidor);
 	freeaddrinfo(servinfo);
-	log_info(logger, "Listo para escuchar a la consola");
 
 	return socket_servidor;
 }
