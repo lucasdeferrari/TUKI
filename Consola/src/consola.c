@@ -92,11 +92,6 @@ int main(int argc, char *argv[]) {
 	fclose(archivo);
 
 	t_list_iterator* iterador = list_iterator_create(lista);
-	while(list_iterator_has_next(iterador)){
-		char* siguiente = list_iterator_next(iterador);
-		printf("%s",siguiente);
-
-	}
 	t_paquete* paquete = empaquetar(lista);
 
 	enviar_paquete(paquete, conexion_kernel);
