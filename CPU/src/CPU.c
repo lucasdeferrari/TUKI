@@ -107,7 +107,7 @@ t_paquete* deserializar(t_buffer* buffer) {
 int main(void) {
 
 	//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
-	desserializar();
+	//desserializar();
 
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
@@ -116,7 +116,7 @@ int main(void) {
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("./CPU.config");
+    config = config_create("../CPU.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");

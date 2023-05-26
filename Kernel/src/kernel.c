@@ -179,7 +179,24 @@ void* serverKernel(void* ptr){
     	int cod_op = recibir_operacion(cliente_fd);
     	switch (cod_op) {
     		case MENSAJE:
-    			recibir_mensaje(cliente_fd);
+    			char* handshake = recibir_handshake(cliente_fd);
+    			char* clienteConectado = handshake;
+    			if (strcmp(handshake, "consola") == 0) {
+    				log_info(logger, "Se conecto una consola");
+    				//cosas de consola
+    			}
+    			if (strcmp(handshake, "kernel") == 0) {
+    				log_info(logger, "Se conecto el kernel");
+    				//cosas de kernel
+    			}
+    			if (strcmp(handshake, "CPU") == 0) {
+    				log_info(logger, "Se conecto la cpu");
+    				//cosas de cpu
+    			}
+    			if (strcmp(handshake, "filesystem") == 0) {
+    				log_info(logger, "Se conecto el filesystem");
+    				//cosas de fs
+    			}
     			break;
     		case PAQUETE:   //Recibe paquete de instrucciones, arma el PCB y lo encola en NEW
     			lista = recibir_paquete(cliente_fd);
@@ -400,4 +417,12 @@ int cantidadElementosCola(t_nodoCola* frenteCola) {
     }
 
     return contador;
+}
+
+char* recibir_handshake(int socket_cliente)
+{
+	int size;
+	char* buffer = recibir_buffer(&size, socket_cliente);
+	//log_info(logger, "Me llego el mensaje %s", buffer);
+	return buffer;
 }

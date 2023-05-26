@@ -62,7 +62,7 @@ t_config* iniciar_config(void);
 void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
-
+char* recibir_handshake(int);
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {

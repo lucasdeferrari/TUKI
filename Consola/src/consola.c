@@ -111,6 +111,7 @@ int main(int argc, char *argv[]) {
 	fclose(archivo);
 
 	t_paquete* paquete = empaquetar(cabeza);
+	enviar_mensaje("consola", conexion_kernel);
 	enviar_paquete(paquete, conexion_kernel);
 
 	eliminar_paquete(paquete);

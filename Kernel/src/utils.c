@@ -47,8 +47,6 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto una consola!");
-
 	return socket_cliente;
 }
 
