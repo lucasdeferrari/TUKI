@@ -180,7 +180,6 @@ void* serverKernel(void* ptr){
     	switch (cod_op) {
     		case MENSAJE:
     			char* handshake = recibir_handshake(cliente_fd);
-    			char* clienteConectado = handshake;
     			if (strcmp(handshake, "consola") == 0) {
     				log_info(logger, "Se conecto una consola");
     				//cosas de consola
@@ -200,15 +199,33 @@ void* serverKernel(void* ptr){
     			break;
     		case PAQUETE:   //Recibe paquete de instrucciones, arma el PCB y lo encola en NEW
     			lista = recibir_paquete(cliente_fd);
-    			armarPCB(lista);
-    			printf("PCB encolado en NEW:\n");
-    			encolarReady();
-    			printf("Cola NEW:\n");
-    			mostrarCola(frenteColaNew);
-    			printf("Cola READY:\n");
-    			mostrarCola(frenteColaReady);
+    			if (strcmp(handshake, "consola") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
+        			armarPCB(lista);
+        			printf("PCB encolado en NEW:\n");
+        			encolarReady();
+        			printf("Cola NEW:\n");
+        			mostrarCola(frenteColaNew);
+        			printf("Cola READY:\n");
+        			mostrarCola(frenteColaReady);
+    				//cosas de consola
+    			}
+    			if (strcmp(handshake, "kernel") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
+    				//cosas de kernel
+    			}
+    			if (strcmp(handshake, "CPU") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
+    				//cosas de cpu
+    			}
+    			if (strcmp(handshake, "filesystem") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
+    				//cosas de fs
+    			}
+
     			//log_info(logger, "Me llegaron los siguientes valores:\n");
     			//list_iterate(lista, (void*) iterator);
+    			free(handshake);
     			break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");

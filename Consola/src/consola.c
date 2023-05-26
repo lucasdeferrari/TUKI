@@ -94,6 +94,7 @@ int main(int argc, char *argv[]) {
 	t_list_iterator* iterador = list_iterator_create(lista);
 	t_paquete* paquete = empaquetar(lista);
 
+	enviar_mensaje("consola",conexion_kernel); //Envía el handshake
 	enviar_paquete(paquete, conexion_kernel);
 
 	eliminar_paquete(paquete);
