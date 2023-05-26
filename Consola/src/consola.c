@@ -8,35 +8,17 @@ struct Nodo {
     struct Nodo* siguiente;
 };typedef struct Nodo Nodo;
 
-void insertar(Nodo** cabeza, char* linea) {
-    Nodo* nuevo_nodo = (Nodo*)malloc(sizeof(Nodo));
-    nuevo_nodo->linea = linea;
-    nuevo_nodo->siguiente = NULL;
+t_paquete* empaquetar(t_list* cabeza) {
 
-    Nodo* ultimo = *cabeza;
+    t_list_iterator* iterador = list_iterator_create(cabeza);
+    t_paquete* paquete = crear_paquete();
 
-    if (*cabeza == NULL) {
-        *cabeza = nuevo_nodo;
-        return;
-    }
+    while (list_iterator_has_next(iterador)) {
 
-    while (ultimo->siguiente != NULL) {
-        ultimo = ultimo->siguiente;
-    }
+    	char* siguiente = list_iterator_next(iterador);
+    	int tamanio = (strlen(siguiente))+1;
+    	agregar_a_paquete(paquete, siguiente,tamanio );
 
-    ultimo->siguiente= nuevo_nodo;
-    return;
-}
-
-t_paquete* empaquetar(Nodo* cabeza) {
-    Nodo* actual = cabeza;
-    t_paquete* paquete;
-
-    paquete = crear_paquete();
-
-    while (actual != NULL) {
-    	agregar_a_paquete(paquete, actual->linea, strlen(actual->linea));
-        actual = actual->siguiente;
     }
     return paquete;
 }
@@ -60,8 +42,8 @@ int main(int argc, char *argv[]) {
 
 	// 2 -> pseudocodigo
 
-	char linea[200];
-	Nodo* cabeza = NULL;
+	char* linea = string_new();
+	t_list * lista = list_create();
 	FILE* archivo;
 	int conexion_kernel;
 	char* ip_kernel;
@@ -70,7 +52,6 @@ int main(int argc, char *argv[]) {
 	t_log* logger;
 	t_config* config;
 
-	// Falta implementar que en cada argumento del main este cada archivo que se pide.
 
 	//if(argc == 3){
 	char* pathProgram = argv[0];
@@ -102,16 +83,22 @@ int main(int argc, char *argv[]) {
 	}
 
 
-	while (fgets(linea, sizeof(linea), archivo) != NULL) {
-			char* nueva_linea = (char*)malloc(strlen(linea));
-			strcpy(nueva_linea, linea);
-			insertar(&cabeza, nueva_linea);
+	while (fgets(linea, 99, archivo) != NULL) {
+			char*nueva_linea = string_new();
+			nueva_linea = string_duplicate(linea);
+			list_add(lista,nueva_linea);
 		}
 
 	fclose(archivo);
 
-	t_paquete* paquete = empaquetar(cabeza);
-	enviar_mensaje("consola", conexion_kernel);
+	t_list_iterator* iterador = list_iterator_create(lista);
+	while(list_iterator_has_next(iterador)){
+		char* siguiente = list_iterator_next(iterador);
+		printf("%s",siguiente);
+
+	}
+	t_paquete* paquete = empaquetar(lista);
+
 	enviar_paquete(paquete, conexion_kernel);
 
 	eliminar_paquete(paquete);
