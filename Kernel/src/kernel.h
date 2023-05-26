@@ -48,6 +48,7 @@ void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
+void serializarContexto(int );
 
 
 void armarPCB(t_list*);

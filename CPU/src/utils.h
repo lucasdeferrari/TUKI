@@ -19,7 +19,8 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE
+	PAQUETE,
+	CONTEXTO
 }op_code;
 
 //client
@@ -35,6 +36,46 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
+//  CONTEXTO
+typedef struct infoTablaSegmentos {
+    int id;
+    char* direccionBase; //VER TIPO
+    int tamanio;
+} t_infoTablaSegmentos;
+
+typedef struct nodoTablaSegmentos {
+	t_infoTablaSegmentos info_tablaSegmentos;
+    struct nodoTablaSegmentos* sgte;
+} t_nodoTablaSegmentos;
+
+//UTILIZAMOS UN STRUCT PARA LOS REGISTROS EN VEZ DE UN VECTOR
+//DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
+typedef struct registrosCPU {
+	char* AX;
+	char* BX;
+	char* CX;
+	char* DX;
+	char* EAX;
+	char* EBX;
+	char* ECX;
+	char* EDX;
+	char* RAX;
+	char* RBX;
+	char* RCX;
+	char* RDX;
+} t_registrosCPU;
+
+typedef struct {
+	char* instruccion;
+	char* recursoSolicitado;
+	int tiempoBloqueado;
+	t_list* listaInstrucciones;
+	int programCounter; // numero de la siguiente instrucción a ejecutar
+	t_registrosCPU registrosCpu;
+	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+} t_contextoEjecucion;
+
+
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);
@@ -44,6 +85,7 @@ int esperar_cliente(int);
 t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
+t_contextoEjecucion* recibir_contexto(int );
 
 //client
 int crear_conexion(char* ip, char* puerto);

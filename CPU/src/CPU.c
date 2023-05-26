@@ -1,43 +1,6 @@
 #include "CPU.h"
 t_config* config;
 
-//typedef van en utils.h
-typedef struct infoTablaSegmentos {
-    int id;
-    char* direccionBase; //VER TIPO
-    int tamanio;
-} t_infoTablaSegmentos;
-
-typedef struct nodoTablaSegmentos {
-	t_infoTablaSegmentos info_tablaSegmentos;
-    struct nodoTablaSegmentos* sgte;
-} t_nodoTablaSegmentos;
-
-//UTILIZAMOS UN STRUCT PARA LOS REGISTROS EN VEZ DE UN VECTOR
-//DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
-typedef struct registrosCPU {
-	char* AX;
-	char* BX;
-	char* CX;
-	char* DX;
-	char* EAX;
-	char* EBX;
-	char* ECX;
-	char* EDX;
-	char* RAX;
-	char* RBX;
-	char* RCX;
-	char* RDX;
-} t_registrosCPU;
-
-typedef struct {
-	char* instruccion;
-	t_list* listaInstrucciones;
-	int programCounter; // numero de la siguiente instrucción a ejecutar
-	t_registrosCPU registrosCpu;// CAMBIAR POR EL STRUCT
-	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
-} contextExecution;
-
 //SE DEBEN MODIFICAR LAS FUNCIONES PARA QUE SEAN DE TIPO VOID Y MODIFIQUEN DIRECTAMENTE EL STRUCT DE CONTEXTO RECIBIDO POR KERNEL
 
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
@@ -47,7 +10,7 @@ void set(char* reg, char* valor){
 }
 
 // YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
-contextExecution yield(contextExecution contexto){
+t_contextoEjecucion yield(t_contextoEjecucion contexto){
 
 	contexto.instruccion = "yield";
 //	contexto.listaInstrucciones = instrucciones;
@@ -65,7 +28,7 @@ contextExecution yield(contextExecution contexto){
 
 // EXIT: Esta instrucción representa la syscall de finalización del proceso.
 // Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
-contextExecution exit_tp(contextExecution contexto){
+t_contextoEjecucion exit_tp(t_contextoEjecucion contexto){
 
 	contexto.instruccion = "exit";
 //	contexto.listaInstrucciones = instrucciones;
@@ -81,33 +44,32 @@ contextExecution exit_tp(contextExecution contexto){
 	return contexto;
 }
 
-t_paquete* deserializar(t_buffer* buffer) {
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-
-    void* stream = buffer->stream;
-    // Deserializamos los campos que tenemos en el buffer
-    memcpy(&(paquete->buffer->size), stream, sizeof(int));
-    stream += sizeof(int);
-    memcpy(&(paquete->buffer->stream), stream, sizeof(void*));
-        stream += sizeof(void*);
-
-    memcpy(&(paquete->codigo_operacion), stream, sizeof(op_code));
-    stream += sizeof(op_code);
-
-    // Por último, para obtener el nombre, primero recibimos el tamaño y luego el texto en sí:
+//t_paquete* deserializar(t_buffer* buffer) {
+//    t_paquete* persona = malloc(sizeof(t_persona));
+//
+//    void* stream = buffer->stream;
+//    // Deserializamos los campos que tenemos en el buffer
+//    memcpy(&(persona->dni), stream, sizeof(uint32_t));
+//    stream += sizeof(uint32_t);
+//    memcpy(&(persona->edad), stream, sizeof(uint8_t));
+//    stream += sizeof(uint8_t);
+//    memcpy(&(persona->pasaporte), stream, sizeof(uint32_t));
+//    stream += sizeof(uint32_t);
+//
+//    // Por último, para obtener el nombre, primero recibimos el tamaño y luego el texto en sí:
 //    memcpy(&(persona->nombre_length), stream, sizeof(uint32_t));
 //    stream += sizeof(uint32_t);
 //    persona->nombre = malloc(persona->nombre_length);
 //    memcpy(persona->nombre, stream, persona->nombre_length);
-
-    return paquete;
-}
+//
+//    return persona;
+//}
 
 
 int main(void) {
 
-	//SE DEBE DESSERIALIZAR EL CONTEXTO ENVIADO POR KERNEL
-	//desserializar();
+	//DESERIALIZACIÓN DE CONTEXTO
+
 
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
@@ -196,8 +158,12 @@ void* serverCPU(void* ptr){
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
+    t_contextoEjecucion* contextoPRUEBA;
+
     while (1) {
+
     	int cod_op = recibir_operacion(cliente_fd);
+
     	switch (cod_op) {
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);
@@ -206,6 +172,12 @@ void* serverCPU(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
+    			break;
+    		case CONTEXTO:
+
+    			contextoPRUEBA = recibir_contexto(cliente_fd);
+    			printf("programCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
+
     			break;
     		case -1:
     			log_error(logger, "\nel kernel se desconecto. Terminando servidor");

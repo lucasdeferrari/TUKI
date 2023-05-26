@@ -40,7 +40,7 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto una consola!");
+	log_info(logger, "Se conecto un cliente");
 
 	return socket_cliente;
 }
@@ -56,6 +56,54 @@ int recibir_operacion(int socket_cliente)
 		return -1;
 	}
 }
+
+//RETORNA T_INFOPCB PORQUE ES DE PRUEBA PERO DEBERÍA RETORNAR ALGO DE T_CONTEXTOEJECUCION
+t_contextoEjecucion* recibir_contexto(int socket_cliente){
+
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->buffer = malloc(sizeof(t_buffer));
+
+	// Recibimos el buffer.
+	//Recibimos el tamaño del buffer
+	recv(socket_cliente, &(paquete->buffer->size), sizeof(int), 0);
+
+	//Recibimos el contenido del buffer
+	paquete->buffer->stream = malloc(paquete->buffer->size);
+	recv(socket_cliente, paquete->buffer->stream, paquete->buffer->size, 0);
+
+	//Desserializamos el contenido
+	t_contextoEjecucion* contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
+
+	void* stream = paquete->buffer->stream;
+
+	// Deserializamos los campos que tenemos en el buffer
+	 memcpy(&(contextoPRUEBA->programCounter), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 return contextoPRUEBA;
+
+}
+
+
+//t_paquete* recibir_operacion2(int socket_cliente)
+//{
+//	t_paquete* paquete = malloc(sizeof(t_paquete));
+//	paquete->buffer = malloc(sizeof(t_buffer));
+//
+//	// Primero recibimos el codigo de operacion
+//	recv(socket_cliente, &(paquete->codigo_operacion), sizeof(op_code), 0);
+//
+//	printf("paquete->codigo_operacion dentro de RECIBIR_OPERACION: %d\n",paquete->codigo_operacion);
+//
+//
+//	// Después ya podemos recibir el buffer. Primero su tamaño seguido del contenido
+//	recv(socket_cliente, &(paquete->buffer->size), sizeof(int), 0);
+//
+//	paquete->buffer->stream = malloc(paquete->buffer->size);
+//	recv(socket_cliente, paquete->buffer->stream, paquete->buffer->size, 0);
+//
+//	return paquete;
+//}
 
 void* recibir_buffer(int* size, int socket_cliente)
 {

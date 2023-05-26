@@ -37,7 +37,6 @@ int main(void) {
     //recursos = config_get_string_value(config, "RECURSOS");
     //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
 
-
     //THREADS CONEXIÓN
     //thread clients CPU, FS, Memoria
     iniciarHiloClienteCPU();
@@ -119,13 +118,70 @@ void iniciarHiloClienteFileSystem() {
 
 }
 
+void serializarContexto(int unSocket){
+
+	t_contextoEjecucion contextoPRUEBA;
+	contextoPRUEBA.programCounter = 3;
+
+	//BUFFER
+
+	t_buffer* buffer = malloc(sizeof(t_buffer));
+
+	buffer->size = sizeof(int); //Program counter
+
+	void* stream = malloc(buffer->size);
+	int offset = 0; //desplazamiento
+
+	memcpy(stream + offset, &contextoPRUEBA.programCounter, sizeof(int));
+	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+
+	buffer->stream = stream;
+
+	//free memoria dinámica
+
+	//llenar el PAQUETE con el buffer
+
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = CONTEXTO;
+	paquete->buffer = buffer; // Nuestro buffer de antes.
+
+	// Armamos el stream a enviar
+	//    tamaño               stream        size       codigo_operación
+	void* a_enviar = malloc(buffer->size + sizeof(int) + sizeof(op_code)); //op_code -> int
+	offset = 0;
+
+	memcpy(a_enviar + offset, &(paquete->codigo_operacion), sizeof(op_code));
+	offset += sizeof(int);
+
+	memcpy(a_enviar + offset, &(paquete->buffer->size), sizeof(int));
+    offset += sizeof(int);
+
+	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
+	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
+
+	// Lo enviamos
+	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
+
+
+	printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
+
+	// Liberamos la memoria
+	free(a_enviar);
+	free(paquete->buffer->stream);
+	free(paquete->buffer);
+	free(paquete);
+
+	return;
+}
+
 void* clientCPU(void* ptr) {
 	sem_wait(&semKernelClientCPU);
 	int config=1;
     int conexion_CPU;
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
-    log_info(logger, "Ingrese sus mensajes para la CPU: ");
-    paquete(conexion_CPU);
+    //log_info(logger, "Ingrese sus mensajes para la CPU: ");
+    //paquete(conexion_CPU);
+    serializarContexto(conexion_CPU);
     liberar_conexion(conexion_CPU);
 
     sem_post(&semKernelClientMemoria);
@@ -353,7 +409,7 @@ void paquete(int conexion){
 	leido = readline("> ");
 
 	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido));
+		agregar_a_paquete(paquete, leido, strlen(leido)); //+1
 		leido = readline("> ");
 	}
 

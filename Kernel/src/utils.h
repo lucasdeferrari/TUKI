@@ -23,7 +23,8 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE
+	PAQUETE,
+	CONTEXTO
 }op_code;
 
 //client
@@ -38,6 +39,7 @@ typedef struct
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
+
 
 //Listas PCB
 typedef struct nodoArchivos {
@@ -77,7 +79,7 @@ typedef struct registrosCPU {
 typedef struct infopcb {
     int pid;
     t_list* listaInstrucciones;
-    uint32_t programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
+    int programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
     t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
     t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 	float estimadoProxRafaga;
@@ -85,9 +87,18 @@ typedef struct infopcb {
 	t_nodoArchivos* punterosArchivos;
 } t_infopcb;
 
+typedef struct {
+	char* instruccion;
+	char* recursoSolicitado;
+	int tiempoBloqueado;
+	t_list* listaInstrucciones;
+	int programCounter; // numero de la siguiente instrucción a ejecutar
+	t_registrosCPU registrosCpu;
+	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+} t_contextoEjecucion;
+
 
 //EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar
-//El ready se ejecuta con fifo o hrrn según las instrucciones que cargue el usuario
 
 ///COLA
 typedef struct nodoCola {
