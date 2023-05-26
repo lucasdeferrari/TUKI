@@ -46,7 +46,6 @@ int main(void) {
 
     //thread server
 
-
 	server_fd = iniciar_servidor();
 	log_info(logger, "Kernel listo para escuchar al cliente\n");
 
@@ -55,11 +54,10 @@ int main(void) {
 		pthread_join(serverKernel_thread, NULL);
 	}
 
-
     pthread_detach(client_CPU);
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
-    pthread_detach(encolar_ready);
+
 
 
     //libero memoria
