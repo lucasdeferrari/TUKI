@@ -57,7 +57,7 @@ int recibir_operacion(int socket_cliente)
 	}
 }
 
-//RETORNA T_INFOPCB PORQUE ES DE PRUEBA PERO DEBERÍA RETORNAR ALGO DE T_CONTEXTOEJECUCION
+
 t_contextoEjecucion* recibir_contexto(int socket_cliente){
 
 	t_paquete* paquete = malloc(sizeof(t_paquete));
@@ -79,6 +79,11 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	// Deserializamos los campos que tenemos en el buffer
 	 memcpy(&(contextoPRUEBA->programCounter), stream, sizeof(int));
 	 stream += sizeof(int);
+
+	 memcpy(&(contextoPRUEBA->instruccion), stream, sizeof(uint32_t));
+	    stream += sizeof(uint32_t);
+	    contextoPRUEBA->instruccion = malloc(contextoPRUEBA->instruccion_length);
+	    memcpy(contextoPRUEBA->instruccion, stream, contextoPRUEBA->instruccion_length);
 
 	 return contextoPRUEBA;
 

@@ -88,6 +88,7 @@ typedef struct infopcb {
 } t_infopcb;
 
 typedef struct {
+	int instruccion_length;
 	char* instruccion;
 	char* recursoSolicitado;
 	int tiempoBloqueado;

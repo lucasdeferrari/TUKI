@@ -50,3 +50,8 @@ el cliente se desconecto. Terminando servidor
 [INFO] 14:04:10:515 CPU/(37452:37470): CPU lista para recibir al Kernel
 [INFO] 14:23:03:866 CPU/(38772:38778): Ingrese sus mensajes para la Memoria: 
 [INFO] 14:23:07:919 CPU/(38772:38779): CPU lista para recibir al Kernel
+[INFO] 13:12:21:939 CPU/(93320:93335): Ingrese sus mensajes para la Memoria: 
+[INFO] 13:12:34:042 CPU/(93320:93338): CPU lista para recibir al Kernel
+[INFO] 13:12:51:276 CPU/(93320:93338): Se conecto un cliente
+[ERROR] 13:12:51:283 CPU/(93320:93338): 
+el kernel se desconecto. Terminando servidor

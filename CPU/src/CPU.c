@@ -163,7 +163,7 @@ void* serverCPU(void* ptr){
     while (1) {
 
     	int cod_op = recibir_operacion(cliente_fd);
-
+    	printf("%d", cod_op);
     	switch (cod_op) {
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);

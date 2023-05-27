@@ -122,12 +122,15 @@ void serializarContexto(int unSocket){
 
 	t_contextoEjecucion contextoPRUEBA;
 	contextoPRUEBA.programCounter = 3;
+	contextoPRUEBA.instruccion = calloc(1, 4+1);
+	strcpy(contextoPRUEBA.instruccion, "Hola");
+	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
 
 	//BUFFER
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int); //Program counter
+	buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1; //Program counter e instruccion
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
@@ -135,9 +138,13 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contextoPRUEBA.programCounter, sizeof(int));
 	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
 
+	//instruccion, dinamica
+	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
+	offset += sizeof(int);
+	memcpy(stream + offset, contextoPRUEBA.instruccion, strlen(contextoPRUEBA.instruccion) + 1);
+
 	buffer->stream = stream;
 
-	//free memoria dinámica
 
 	//llenar el PAQUETE con el buffer
 
@@ -164,7 +171,10 @@ void serializarContexto(int unSocket){
 
 
 	printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
+	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
 
+	//free memoria dinámica
+	free(contextoPRUEBA.instruccion);
 	// Liberamos la memoria
 	free(a_enviar);
 	free(paquete->buffer->stream);

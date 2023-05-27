@@ -66,6 +66,7 @@ typedef struct registrosCPU {
 } t_registrosCPU;
 
 typedef struct {
+	int instruccion_length;
 	char* instruccion;
 	char* recursoSolicitado;
 	int tiempoBloqueado;
