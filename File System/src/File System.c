@@ -2,7 +2,22 @@
 
 t_config* config;
 
+int block_size = 0;
+int block_count = 0;
+
 int main(void) {
+
+	char* p_superbloque = string_new();
+	char* p_bitmap = string_new();
+	char* p_bloques = string_new();
+
+	char* linea = string_new();
+
+	char* superbloque[2];
+
+	FILE* archivo_superbloque;
+	FILE* archivo_bitmap;
+	FILE* archivo_bloques;
 
 	sem_init(&semFileSystemServer,0,1);
 	sem_init(&semFileSystemClientMemoria,0,0);
@@ -12,9 +27,77 @@ int main(void) {
     config = config_create("/home/utnso/tp-2023-1c-Los-operadores/File System/FileSystem.config");
 
     if (config == NULL) {
-        printf("No se pudo crear el config.");
+        printf("No se pudo crear el config.\n");
         exit(5);
     }
+
+    if (config_has_property(config, "PATH_SUPERBLOQUE")) {
+    	 printf("Existe el path al superbloque.\n");
+    	 p_superbloque = config_get_string_value(config, "PATH_SUPERBLOQUE");
+    	 }
+    	 else {
+    	 printf("No existe el path al superbloque.\n");
+    	 exit(5);
+    	 }
+    archivo_superbloque = fopen(p_superbloque, "r");
+    	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
+
+    	if (archivo_superbloque == NULL) {
+    		fprintf(stderr, "Error al abrir el archivo de superbloque.\n");
+    		exit(1);
+    	}
+//	  if (config_has_property(p_superbloque, "BLOCK_SIZE")) {
+//			 printf("Existe el la clave block size.\n");
+//			 block_size = config_get_int_value(config, "BLOCK_SIZE");
+//			 }
+//			 else {
+//			 printf("No existe la clave block size.\n");
+//			 exit(5);
+//			 }
+//
+//	  if (config_has_property(p_superbloque, "BLOCK_COUNT")) {
+//			 printf("Existe el la clave block count.\n");
+//			 block_count = config_get_int_value(config, "BLOCK_COUNT");
+//			 }
+//			 else {
+//			 printf("No existe la clave block count.\n");
+//			 exit(5);
+//			 }
+//
+//	  printf("Block count: %i", block_count);
+//	  printf("Block size: %i", block_size);
+
+    if (config_has_property(config, "PATH_BITMAP")) {
+       	 printf("Existe el path al bitmap.\n");
+       	 p_bitmap = config_get_string_value(config, "PATH_BITMAP");
+       	 }
+       	 else {
+       	 printf("No existe el path al bitmap.\n");
+       	 exit(5);
+       	 }
+    archivo_bitmap = fopen(p_bitmap, "r");
+    	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
+
+    	if (archivo_bitmap == NULL) {
+    		fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
+    		exit(1);
+    	}
+
+    if (config_has_property(config, "PATH_BLOQUES")) {
+		 printf("Existe el path a los bloques.\n");
+		 p_bloques= config_get_string_value(config, "PATH_BLOQUES");
+		 }
+		 else {
+		 printf("No existe el path a los bloques.\n");
+		 exit(5);
+		 }
+    archivo_bloques = fopen(p_bloques, "r");
+    	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
+
+    	if (archivo_bloques == NULL) {
+    		fprintf(stderr, "Error al abrir el archivo de bloques.\n");
+    		exit(1);
+    	}
 
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");

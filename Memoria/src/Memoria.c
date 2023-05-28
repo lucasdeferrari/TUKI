@@ -72,8 +72,6 @@ void* serverMemoria(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:");
     			list_iterate(lista, (void*) iterator);
-    			printf("Socket antes: %i\n", cliente_fd);
-    			printf("Handshake antes: %s\n", handshake);
     			enviar_respuesta(cliente_fd, handshake);
     			break;
     		case -1:
@@ -93,7 +91,6 @@ void* serverMemoria(void* ptr){
 void enviar_respuesta(int socket_cliente, char* quien_es) {
 	char* handshake = quien_es;
 	char* respuesta = string_new();
-	printf("Estoy dentro de enviar respuesta\n");
 	printf("Socket: %i\n", socket_cliente);
 	printf("Me conecte con: %s\n", handshake);
 
