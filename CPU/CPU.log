@@ -55,3 +55,6 @@ el cliente se desconecto. Terminando servidor
 [INFO] 13:12:51:276 CPU/(93320:93338): Se conecto un cliente
 [ERROR] 13:12:51:283 CPU/(93320:93338): 
 el kernel se desconecto. Terminando servidor
+[INFO] 21:34:05:074 CPU/(11848:11850): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:34:10:519 CPU/(11848:11850): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:34:10:519 CPU/(11848:11849): CPU lista para recibir al Kernel

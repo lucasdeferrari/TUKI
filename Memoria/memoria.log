@@ -58,3 +58,22 @@ el cliente se desconecto. Terminando servidor
 [INFO] 23:43:00:736 Memoria/(3535:3540): kdkd
 [ERROR] 23:43:00:736 Memoria/(3535:3540): 
 el cliente se desconecto. Terminando servidor
+[INFO] 20:16:02:569 Memoria/(8208:8208): Listo para escuchar al cliente
+[INFO] 20:16:02:569 Memoria/(8208:8208): Memoria lista para recibir al cliente
+
+[INFO] 21:14:40:587 Memoria/(10919:10919): Listo para escuchar al cliente
+[INFO] 21:14:40:587 Memoria/(10919:10919): Memoria lista para recibir al cliente
+
+[INFO] 21:14:49:042 Memoria/(10919:10920): Se conecto un cliente!
+[INFO] 21:14:49:042 Memoria/(10919:10920): se conecto el filesystem
+[INFO] 21:14:53:865 Memoria/(10919:10920): Me llegaron los siguientes valores:
+[INFO] 21:14:53:865 Memoria/(10919:10920): f
+[ERROR] 21:14:53:865 Memoria/(10919:10920): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:34:05:074 Memoria/(10919:10924): Se conecto un cliente!
+[INFO] 21:34:05:074 Memoria/(10919:10924): se conecto la cpu
+[INFO] 21:34:10:511 Memoria/(10919:10924): Me llegaron los siguientes valores:
+[INFO] 21:34:10:513 Memoria/(10919:10924): h
+[INFO] 21:34:10:513 Memoria/(10919:10924): \
+[ERROR] 21:34:10:519 Memoria/(10919:10924): 
+el cliente se desconecto. Terminando servidor

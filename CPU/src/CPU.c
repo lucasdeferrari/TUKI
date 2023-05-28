@@ -65,6 +65,28 @@ t_contextoEjecucion exit_tp(t_contextoEjecucion contexto){
 //    return persona;
 //}
 
+//I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
+//Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la
+//cantidad de unidades de tiempo que va a bloquearse el proceso
+//void* i_o(int contexto, int socket) {
+//	contexto++;
+//	enviar_mensaje("1000", socket);
+//	return NULL;
+//}
+//
+////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia
+////del recurso indicado por parámetro.
+//void* wait(char* recurso, int socket) {
+//	enviar_mensaje("wait, %s", recurso, socket);
+//	return NULL;
+//}
+//
+////SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia
+////del recurso indicado por parámetro.
+//void* signal(char* recurso, int socket) {
+//	enviar_mensaje(("signal, %s", recurso), socket);
+//	return NULL;
+//}
 
 int main(void) {
 
@@ -78,7 +100,7 @@ int main(void) {
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("../CPU.config");
+    config = config_create("./CPU.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");
@@ -166,6 +188,8 @@ void* serverCPU(void* ptr){
 
     t_list* lista;
     t_contextoEjecucion* contextoPRUEBA;
+
+//    i_o(6, server_fd);
 
     while (1) {
 
