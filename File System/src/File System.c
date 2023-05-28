@@ -24,8 +24,8 @@ int main(void) {
 
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 
-//    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/File System/FileSystem.config");
-    config = config_create("./FileSystem.config");
+    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/File System/FileSystem.config");
+    //config = config_create("./FileSystem.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.\n");

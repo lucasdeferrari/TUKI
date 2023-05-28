@@ -6,7 +6,8 @@ t_config* config;
 int server_fd;
 
 int main(void) {
-
+	estadoEnEjecucion.programCounter = 3;
+	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
 
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
@@ -121,22 +122,27 @@ void iniciarHiloClienteFileSystem() {
 void serializarContexto(int unSocket){
 
 	t_contextoEjecucion contextoPRUEBA;
-	contextoPRUEBA.programCounter = 3;
+	contextoPRUEBA.programCounter = estadoEnEjecucion.programCounter;
+	strcpy(contextoPRUEBA.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
 	contextoPRUEBA.instruccion = calloc(1, 4+1);
 	strcpy(contextoPRUEBA.instruccion, "Hola");
 	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
+
 
 	//BUFFER
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1; //Program counter e instruccion
+	buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1 + sizeof(contextoPRUEBA.registrosCpu.AX); //Program counter e instruccion
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
 
 	memcpy(stream + offset, &contextoPRUEBA.programCounter, sizeof(int));
 	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.AX, sizeof(contextoPRUEBA.registrosCpu.AX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.AX);
 
 	//instruccion, dinamica
 	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
@@ -172,6 +178,7 @@ void serializarContexto(int unSocket){
 
 	printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
 	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
+	printf("RegistroAX enviado a CPU = %s\n", contextoPRUEBA.registrosCpu.AX);
 
 	//free memoria dinámica
 	free(contextoPRUEBA.instruccion);
@@ -326,18 +333,43 @@ void armarPCB(t_list* lista){
 	nuevoPCB.listaInstrucciones = lista;
 	nuevoPCB.programCounter = 0;
 
-	nuevoPCB.registrosCpu.AX = NULL;
-	nuevoPCB.registrosCpu.BX = NULL;
-	nuevoPCB.registrosCpu.CX = NULL;
-	nuevoPCB.registrosCpu.DX = NULL;
-	nuevoPCB.registrosCpu.EAX = NULL;
-	nuevoPCB.registrosCpu.EBX = NULL;
-	nuevoPCB.registrosCpu.ECX = NULL;
-	nuevoPCB.registrosCpu.EDX = NULL;
-	nuevoPCB.registrosCpu.RAX = NULL;
-	nuevoPCB.registrosCpu.RBX = NULL;
-	nuevoPCB.registrosCpu.RCX = NULL;
-	nuevoPCB.registrosCpu.RDX = NULL;
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.AX); i++) {
+		nuevoPCB.registrosCpu.AX[i] = '\0';
+	    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.BX); i++) {
+		nuevoPCB.registrosCpu.BX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.CX); i++) {
+		nuevoPCB.registrosCpu.CX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.DX ); i++) {
+		nuevoPCB.registrosCpu.DX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EAX ); i++) {
+		nuevoPCB.registrosCpu.EAX[i] = '\0';
+			    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EBX ); i++) {
+			nuevoPCB.registrosCpu.EBX[i] = '\0';
+				    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.ECX ); i++) {
+				nuevoPCB.registrosCpu.ECX[i] = '\0';
+					    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EDX ); i++) {
+					nuevoPCB.registrosCpu.EDX[i] = '\0';
+						    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RAX ); i++) {
+			nuevoPCB.registrosCpu.RAX[i] = '\0';
+				    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RBX ); i++) {
+				nuevoPCB.registrosCpu.RBX[i] = '\0';
+					    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RCX ); i++) {
+					nuevoPCB.registrosCpu.RCX[i] = '\0';
+						    }
+	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RDX ); i++) {
+					nuevoPCB.registrosCpu.RDX[i] = '\0';
+						    }
+
 
 	nuevoPCB.tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
 

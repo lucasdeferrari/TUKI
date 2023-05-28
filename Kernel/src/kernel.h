@@ -32,6 +32,7 @@ t_nodoCola** finColaNew = NULL; // Puntero al fin de la cola
 t_nodoCola** frenteColaReady= NULL;
 t_nodoCola** finColaReady = NULL;
 
+t_infopcb estadoEnEjecucion;
 int pid = 1; //Contador del PID de los PCB
 
 

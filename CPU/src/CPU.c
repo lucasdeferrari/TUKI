@@ -100,7 +100,7 @@ int main(void) {
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("./CPU.config");
+    config = config_create("../CPU.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");
