@@ -17,6 +17,7 @@ sem_t semMemoriaServer;
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
+void enviar_respuesta(int socket_cliente, char* quien_es);
 pthread_t serverMemoria_thread;
 
 void iterator(char *value);

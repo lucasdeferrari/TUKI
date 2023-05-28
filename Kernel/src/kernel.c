@@ -206,6 +206,9 @@ void* clientMemoria(void* ptr) {
     enviar_mensaje("kernel",conexion_Memoria);
     log_info(logger, "Ingrese sus mensajes para la Memoria: ");
     paquete(conexion_Memoria);
+    int cod_op = recibir_operacion(conexion_Memoria);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_Memoria);
     liberar_conexion(conexion_Memoria);
 
     sem_post(&semKernelClientFileSystem);
@@ -410,16 +413,14 @@ t_config* iniciar_config(void){
 
 void paquete(int conexion){
 	// Ahora toca lo divertido!
-	char* leido;
-	t_paquete* paquete;
-
-	paquete = crear_paquete();
+	char* leido = string_new();
+	t_paquete* paquete = crear_paquete();
 
 	// Leemos y esta vez agregamos las lineas al paquete
 	leido = readline("> ");
 
 	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido)); //+1
+		agregar_a_paquete(paquete, leido, strlen(leido)+1);
 		leido = readline("> ");
 	}
 

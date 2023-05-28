@@ -88,11 +88,11 @@ int main(void) {
     ip_memoria= config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
 
-    //Hilo Cliente
-    iniciarHiloCliente();
-
     //Server
     iniciarHiloServer();
+
+    //Hilo Cliente
+    iniciarHiloCliente();
 
     //pthread_join
     pthread_join(client_Memoria,NULL);
@@ -123,12 +123,19 @@ void iniciarHiloCliente() {
 void* clientMemoria(void* ptr) {
 	int config = 1;
     int conexion_Memoria;
+    char buffer[1024] = {0};
 
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
     enviar_mensaje("CPU",conexion_Memoria);
     log_info(logger, "Ingrese sus mensajes para la Memoria: ");
     paquete(conexion_Memoria);
+    int cod_op = recibir_operacion(conexion_Memoria);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_Memoria);
+//    int valread = read(conexion_Memoria, buffer, 1024);
+//    printf("Respuesta del servidor: %s\n", buffer);
     liberar_conexion(conexion_Memoria);
+
 
     sem_post(&semCPUClientMemoria);
 	return NULL;
@@ -210,16 +217,16 @@ t_config* iniciar_config(void)
 void paquete(int conexion)
 {
 	// Ahora toca lo divertido!
-	char* leido;
-	t_paquete* paquete;
+	char* leido = string_new();
+	t_paquete* paquete = crear_paquete();
 
-	paquete = crear_paquete();
+
 
 	// Leemos y esta vez agregamos las lineas al paquete
 	leido = readline("> ");
 
 	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido));
+		agregar_a_paquete(paquete, leido, strlen(leido)+1);
 		leido = readline("> ");
 	}
 

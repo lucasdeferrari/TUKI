@@ -56,23 +56,25 @@ void* serverMemoria(void* ptr){
     			char* handshake = recibir_handshake(cliente_fd);
 
     			if (strcmp(handshake, "kernel") == 0) {
-    				//cosas de kernel
     				log_info(logger, "se conecto el kernel");
+
     			}
     			if (strcmp(handshake, "CPU") == 0) {
     				log_info(logger, "se conecto la cpu");
-    				//cosas de cpu
+
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
     				log_info(logger, "se conecto el filesystem");
-    				//cosas de fs
     			}
-    			free(handshake);
+    			//free(handshake);
     			break;
     		case PAQUETE:
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:");
     			list_iterate(lista, (void*) iterator);
+    			printf("Socket antes: %i\n", cliente_fd);
+    			printf("Handshake antes: %s\n", handshake);
+    			enviar_respuesta(cliente_fd, handshake);
     			break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
@@ -86,6 +88,33 @@ void* serverMemoria(void* ptr){
     //sem_post(&semKernelServer);
 
 	return NULL;
+}
+
+void enviar_respuesta(int socket_cliente, char* quien_es) {
+	char* handshake = quien_es;
+	char* respuesta = string_new();
+	printf("Estoy dentro de enviar respuesta\n");
+	printf("Socket: %i\n", socket_cliente);
+	printf("Me conecte con: %s\n", handshake);
+
+
+		if (strcmp(handshake, "kernel") == 0) {
+			respuesta = "Hola kernel, gracias por comunicarte con la memoria!";
+			enviar_mensaje(respuesta, socket_cliente);
+
+		}
+		if (strcmp(handshake, "CPU") == 0) {
+			printf("matchee con cpu");
+			respuesta = "Hola cpu, gracias por comunicarte con la memoria!";
+//			send(socket_cliente, respuesta, strlen(respuesta)+1, 0);
+			enviar_mensaje(respuesta, socket_cliente);
+
+		}
+		if (strcmp(handshake, "filesystem") == 0) {
+			respuesta = "Hola fs, gracias por comunicarte con la memoria!";
+			enviar_mensaje(respuesta, socket_cliente);
+		}
+		free(handshake);
 }
 
 char* recibir_handshake(int socket_cliente)
