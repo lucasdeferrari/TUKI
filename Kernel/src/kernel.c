@@ -20,6 +20,9 @@ int main(void) {
 	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
 	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
 
+	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
+	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
+
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semKernelClientFileSystem,0,0);
@@ -131,8 +134,8 @@ void iniciarHiloClienteFileSystem() {
 }
 
 void serializarContexto(int unSocket){
-
 	t_contextoEjecucion contextoPRUEBA;
+
 	contextoPRUEBA.programCounter = estadoEnEjecucion.programCounter;
 	strcpy(contextoPRUEBA.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
 	strcpy(contextoPRUEBA.registrosCpu.BX, estadoEnEjecucion.registrosCpu.BX);
@@ -149,10 +152,16 @@ void serializarContexto(int unSocket){
 	strcpy(contextoPRUEBA.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
 	strcpy(contextoPRUEBA.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
 
+	list_add_all(contextoPRUEBA.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
+	t_list_iterator* iterador = list_iterator_create(contextoPRUEBA.listaInstrucciones);
+	t_list_iterator* iterador2 = list_iterator_create(contextoPRUEBA.listaInstrucciones);
+//	contextoPRUEBA.listaInstrucciones->head->data; //CHAR*
+//	contextoPRUEBA.listaInstrucciones->head->next; //PUNTERO A LA PROXIMA
+//	contextoPRUEBA.listaInstrucciones->elements_count; //INDICE DE LA INSTRUCCION
+
 	contextoPRUEBA.instruccion = calloc(1, 4+1);
 	strcpy(contextoPRUEBA.instruccion, "Hola");
 	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
-
 
 	//BUFFER
 
@@ -160,6 +169,16 @@ void serializarContexto(int unSocket){
 
 	//buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1 + sizeof(contextoPRUEBA.registrosCpu.AX); //Program counter e instruccion
 	buffer->size = sizeof(int) + sizeof(contextoPRUEBA.registrosCpu.AX) * 4 + sizeof(contextoPRUEBA.registrosCpu.EAX) *4 + sizeof(contextoPRUEBA.registrosCpu.RAX)*4;
+
+
+//	while (list_iterator_has_next(iterador)) {
+//
+//			    	char* siguiente = list_iterator_next(iterador);
+//			    	int tamanio = (strlen(siguiente))+1;
+//			    	list_add(contextoPRUEBA.listaInstrucciones_length, tamanio);
+//			    	buffer->size += tamanio + sizeof(int);
+//			    }
+
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
@@ -203,6 +222,15 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RDX, sizeof(contextoPRUEBA.registrosCpu.RDX));
 	offset += sizeof(contextoPRUEBA.registrosCpu.RDX);
 
+//	while (list_iterator_has_next(iterador2)) {
+//		int indice = 0;
+//		char* siguiente = list_iterator_next(iterador2);
+//		memcpy(stream + offset, list_get(contextoPRUEBA.listaInstrucciones_length, indice), sizeof(int));
+//		offset += sizeof(int);
+//		memcpy(stream + offset, list_get(contextoPRUEBA.listaInstrucciones, indice), strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
+//		offset += sizeof(strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
+//		indice++;
+//		}
 
 	//instruccion, dinamica
 //	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
@@ -232,6 +260,8 @@ void serializarContexto(int unSocket){
 	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
 	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
 
+
+
 	// Lo enviamos
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
@@ -239,7 +269,7 @@ void serializarContexto(int unSocket){
 	//printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
 	//printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
 
-
+//	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.listaInstrucciones->head->data);
 
 
 	//free memoria dinámica

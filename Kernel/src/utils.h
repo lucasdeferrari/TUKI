@@ -92,6 +92,7 @@ typedef struct {
 	char* instruccion;
 	char* recursoSolicitado;
 	int tiempoBloqueado;
+	t_list* listaInstrucciones_length;
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar
 	t_registrosCPU registrosCpu;
