@@ -187,7 +187,6 @@ void* serverCPU(void* ptr){
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
-    t_contextoEjecucion* contextoPRUEBA;
 
 //    i_o(6, server_fd);
 
@@ -208,6 +207,20 @@ void* serverCPU(void* ptr){
 
     			contextoPRUEBA = recibir_contexto(cliente_fd);
     			printf("programCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
+    			printf("AX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.AX);
+    			printf("CX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.BX);
+    			printf("BX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.CX);
+    			printf("DX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.DX);
+
+    			printf("EAX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EAX);
+    			printf("EBX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EBX);
+    			printf("ECX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.ECX);
+    			printf("EDX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EDX);
+
+    			printf("RAX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RAX);
+    			printf("RBX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RBX);
+    			printf("RCX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RCX);
+    			printf("RDX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RDX);
 
     			break;
     		case -1:

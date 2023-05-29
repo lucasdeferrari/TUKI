@@ -8,6 +8,17 @@ int server_fd;
 int main(void) {
 	estadoEnEjecucion.programCounter = 3;
 	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
+	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");
+	strcpy(estadoEnEjecucion.registrosCpu.DX,"H");
+	strcpy(estadoEnEjecucion.registrosCpu.EAX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.EBX,"HOLAHOL");
+	strcpy(estadoEnEjecucion.registrosCpu.ECX,"HOLAHO");
+	strcpy(estadoEnEjecucion.registrosCpu.EDX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
 
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
@@ -124,6 +135,20 @@ void serializarContexto(int unSocket){
 	t_contextoEjecucion contextoPRUEBA;
 	contextoPRUEBA.programCounter = estadoEnEjecucion.programCounter;
 	strcpy(contextoPRUEBA.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
+	strcpy(contextoPRUEBA.registrosCpu.BX, estadoEnEjecucion.registrosCpu.BX);
+	strcpy(contextoPRUEBA.registrosCpu.CX, estadoEnEjecucion.registrosCpu.CX);
+	strcpy(contextoPRUEBA.registrosCpu.DX, estadoEnEjecucion.registrosCpu.DX);
+
+	strcpy(contextoPRUEBA.registrosCpu.EAX, estadoEnEjecucion.registrosCpu.EAX);
+	strcpy(contextoPRUEBA.registrosCpu.EBX, estadoEnEjecucion.registrosCpu.EBX);
+	strcpy(contextoPRUEBA.registrosCpu.ECX, estadoEnEjecucion.registrosCpu.ECX);
+	strcpy(contextoPRUEBA.registrosCpu.EDX, estadoEnEjecucion.registrosCpu.EDX);
+
+	strcpy(contextoPRUEBA.registrosCpu.RAX, estadoEnEjecucion.registrosCpu.RAX);
+	strcpy(contextoPRUEBA.registrosCpu.RBX, estadoEnEjecucion.registrosCpu.RBX);
+	strcpy(contextoPRUEBA.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
+	strcpy(contextoPRUEBA.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
+
 	contextoPRUEBA.instruccion = calloc(1, 4+1);
 	strcpy(contextoPRUEBA.instruccion, "Hola");
 	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
@@ -133,7 +158,8 @@ void serializarContexto(int unSocket){
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1 + sizeof(contextoPRUEBA.registrosCpu.AX); //Program counter e instruccion
+	//buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1 + sizeof(contextoPRUEBA.registrosCpu.AX); //Program counter e instruccion
+	buffer->size = sizeof(int) + sizeof(contextoPRUEBA.registrosCpu.AX) * 4 + sizeof(contextoPRUEBA.registrosCpu.EAX) *4 + sizeof(contextoPRUEBA.registrosCpu.RAX)*4;
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
@@ -144,10 +170,44 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.AX, sizeof(contextoPRUEBA.registrosCpu.AX));
 	offset += sizeof(contextoPRUEBA.registrosCpu.AX);
 
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.BX, sizeof(contextoPRUEBA.registrosCpu.BX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.BX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.CX, sizeof(contextoPRUEBA.registrosCpu.CX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.CX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.DX, sizeof(contextoPRUEBA.registrosCpu.DX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.DX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EAX, sizeof(contextoPRUEBA.registrosCpu.EAX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.EAX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EBX, sizeof(contextoPRUEBA.registrosCpu.EBX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.EBX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.ECX, sizeof(contextoPRUEBA.registrosCpu.ECX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.ECX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EDX, sizeof(contextoPRUEBA.registrosCpu.EDX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.EDX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RAX, sizeof(contextoPRUEBA.registrosCpu.RAX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.RAX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RBX, sizeof(contextoPRUEBA.registrosCpu.RBX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.RBX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RCX, sizeof(contextoPRUEBA.registrosCpu.RCX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.RCX);
+
+	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RDX, sizeof(contextoPRUEBA.registrosCpu.RDX));
+	offset += sizeof(contextoPRUEBA.registrosCpu.RDX);
+
+
 	//instruccion, dinamica
-	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
-	offset += sizeof(int);
-	memcpy(stream + offset, contextoPRUEBA.instruccion, strlen(contextoPRUEBA.instruccion) + 1);
+//	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
+//	offset += sizeof(int);
+//	memcpy(stream + offset, contextoPRUEBA.instruccion, strlen(contextoPRUEBA.instruccion) + 1);
 
 	buffer->stream = stream;
 
@@ -176,12 +236,14 @@ void serializarContexto(int unSocket){
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
 
-	printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
-	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
-	printf("RegistroAX enviado a CPU = %s\n", contextoPRUEBA.registrosCpu.AX);
+	//printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
+	//printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
+
+
+
 
 	//free memoria dinámica
-	free(contextoPRUEBA.instruccion);
+	//free(contextoPRUEBA.instruccion);
 	// Liberamos la memoria
 	free(a_enviar);
 	free(paquete->buffer->stream);

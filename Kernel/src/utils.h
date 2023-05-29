@@ -61,18 +61,18 @@ typedef struct nodoTablaSegmentos {
 
 //DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
 typedef struct registrosCPU {
-	char AX[4];
-	char BX[4];
-	char CX[4];
-	char DX[4];
-	char EAX[8];
-	char EBX[8];
-	char ECX[8];
-	char EDX[8];
-	char RAX[16];
-	char RBX[16];
-	char RCX[16];
-	char RDX[16];
+	char AX[5];
+	char BX[5];
+	char CX[5];
+	char DX[5];
+	char EAX[9];
+	char EBX[9];
+	char ECX[9];
+	char EDX[9];
+	char RAX[17];
+	char RBX[17];
+	char RCX[17];
+	char RDX[17];
 } t_registrosCPU;
 
 //REVEER: LOS TIPOS DE DATOS DE LAS LISTAS (TENEMOS PUNTEROS A LISTAS, PODRÍAMOS TENER DIRECTAMENTE LAS LISTAS)

@@ -63,6 +63,7 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 	paquete->buffer = malloc(sizeof(t_buffer));
 
+
 	// Recibimos el buffer.
 	//Recibimos el tamaño del buffer
 	recv(socket_cliente, &(paquete->buffer->size), sizeof(int), 0);
@@ -73,6 +74,7 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 
 	//Desserializamos el contenido
 	t_contextoEjecucion* contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
+	printf("Tamaño de AX = %d\n", sizeof(contextoPRUEBA->registrosCpu.AX));
 
 	void* stream = paquete->buffer->stream;
 
@@ -80,10 +82,47 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	 memcpy(&(contextoPRUEBA->programCounter), stream, sizeof(int));
 	 stream += sizeof(int);
 
-	 memcpy(&(contextoPRUEBA->instruccion), stream, sizeof(uint32_t));
-	    stream += sizeof(uint32_t);
-	    contextoPRUEBA->instruccion = malloc(contextoPRUEBA->instruccion_length);
-	    memcpy(contextoPRUEBA->instruccion, stream, contextoPRUEBA->instruccion_length);
+	 memcpy(&(contextoPRUEBA->registrosCpu.AX), stream, sizeof(contextoPRUEBA->registrosCpu.AX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.AX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.BX), stream, sizeof(contextoPRUEBA->registrosCpu.BX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.BX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.CX), stream, sizeof(contextoPRUEBA->registrosCpu.CX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.CX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.DX), stream, sizeof(contextoPRUEBA->registrosCpu.DX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.DX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.EAX), stream, sizeof(contextoPRUEBA->registrosCpu.EAX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.EAX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.EBX), stream, sizeof(contextoPRUEBA->registrosCpu.EBX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.EBX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.ECX), stream, sizeof(contextoPRUEBA->registrosCpu.ECX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.ECX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.EDX), stream, sizeof(contextoPRUEBA->registrosCpu.EDX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.EDX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.RAX), stream, sizeof(contextoPRUEBA->registrosCpu.RAX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.RAX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.RBX), stream, sizeof(contextoPRUEBA->registrosCpu.RBX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.RBX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.RCX), stream, sizeof(contextoPRUEBA->registrosCpu.RCX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.RCX);
+
+	 memcpy(&(contextoPRUEBA->registrosCpu.RDX), stream, sizeof(contextoPRUEBA->registrosCpu.RDX));
+	 stream += sizeof(contextoPRUEBA->registrosCpu.RDX);
+
+
+//	 memcpy(&(contextoPRUEBA->instruccion), stream, sizeof(uint32_t));
+//	    stream += sizeof(uint32_t);
+//	    contextoPRUEBA->instruccion = malloc(contextoPRUEBA->instruccion_length);
+//	    memcpy(contextoPRUEBA->instruccion, stream, contextoPRUEBA->instruccion_length);
 
 	 return contextoPRUEBA;
 

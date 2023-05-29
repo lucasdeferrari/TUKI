@@ -17,6 +17,7 @@ char* ip_memoria;
 char* puerto_memoria;
 sem_t semCPUServer;
 sem_t semCPUClientMemoria;
+t_contextoEjecucion* contextoPRUEBA;
 
 
 void *serverCPU(void *ptr);

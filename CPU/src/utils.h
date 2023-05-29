@@ -51,18 +51,18 @@ typedef struct nodoTablaSegmentos {
 //UTILIZAMOS UN STRUCT PARA LOS REGISTROS EN VEZ DE UN VECTOR
 //DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
 typedef struct registrosCPU {
-	char* AX;
-	char* BX;
-	char* CX;
-	char* DX;
-	char* EAX;
-	char* EBX;
-	char* ECX;
-	char* EDX;
-	char* RAX;
-	char* RBX;
-	char* RCX;
-	char* RDX;
+	char AX[5];
+	char BX[5];
+	char CX[5];
+	char DX[5];
+	char EAX[9];
+	char EBX[9];
+	char ECX[9];
+	char EDX[9];
+	char RAX[17];
+	char RBX[17];
+	char RCX[17];
+	char RDX[17];
 } t_registrosCPU;
 
 typedef struct {
