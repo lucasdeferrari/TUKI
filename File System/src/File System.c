@@ -11,10 +11,6 @@ int main(void) {
 	char* p_bitmap = string_new();
 	char* p_bloques = string_new();
 
-	char* linea = string_new();
-
-	char* superbloque[2];
-
 	FILE* archivo_superbloque;
 	FILE* archivo_bitmap;
 	FILE* archivo_bloques;
@@ -25,7 +21,6 @@ int main(void) {
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 
     config = config_create("/home/utnso/tp-2023-1c-Los-operadores/File System/FileSystem.config");
-    //config = config_create("./FileSystem.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.\n");
@@ -43,30 +38,38 @@ int main(void) {
     archivo_superbloque = fopen(p_superbloque, "r");
     	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
-    	if (archivo_superbloque == NULL) {
-    		fprintf(stderr, "Error al abrir el archivo de superbloque.\n");
-    		exit(1);
-    	}
-//	  if (config_has_property(p_superbloque, "BLOCK_SIZE")) {
-//			 printf("Existe el la clave block size.\n");
-//			 block_size = config_get_int_value(config, "BLOCK_SIZE");
-//			 }
-//			 else {
-//			 printf("No existe la clave block size.\n");
-//			 exit(5);
-//			 }
-//
-//	  if (config_has_property(p_superbloque, "BLOCK_COUNT")) {
-//			 printf("Existe el la clave block count.\n");
-//			 block_count = config_get_int_value(config, "BLOCK_COUNT");
-//			 }
-//			 else {
-//			 printf("No existe la clave block count.\n");
-//			 exit(5);
-//			 }
-//
-//	  printf("Block count: %i", block_count);
-//	  printf("Block size: %i", block_size);
+	if (archivo_superbloque == NULL) {
+		fprintf(stderr, "Error al abrir el archivo de superbloque.\n");
+		exit(1);
+	}
+	t_config* superbloque;
+	superbloque = config_create(p_superbloque);
+
+	 if (superbloque == NULL) {
+			printf("No se pudo crear el config para leer el superbloque.\n");
+			exit(5);
+		}
+
+	  if (config_has_property(superbloque, "BLOCK_SIZE")) {
+			 printf("Existe el la clave block size.\n");
+			 block_size = config_get_int_value(superbloque, "BLOCK_SIZE");
+			 }
+			 else {
+			 printf("No existe la clave block size.\n");
+			 exit(5);
+			 }
+
+	  if (config_has_property(superbloque, "BLOCK_COUNT")) {
+			 printf("Existe el la clave block count.\n");
+			 block_count = config_get_int_value(superbloque, "BLOCK_COUNT");
+			 }
+			 else {
+			 printf("No existe la clave block count.\n");
+			 exit(5);
+			 }
+
+	  printf("Block count: %i\n", block_count);
+	  printf("Block size: %i\n", block_size);
 
     if (config_has_property(config, "PATH_BITMAP")) {
        	 printf("Existe el path al bitmap.\n");
@@ -83,6 +86,11 @@ int main(void) {
     		fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
     		exit(1);
     	}
+
+    void* puntero_a_bits = malloc(1);
+	t_bitarray* bitarray = bitarray_create_with_mode(puntero_a_bits, block_count, LSB_FIRST);
+
+	//config_set_value()
 
     if (config_has_property(config, "PATH_BLOQUES")) {
 		 printf("Existe el path a los bloques.\n");
@@ -138,7 +146,6 @@ void iniciarHiloCliente() {
 }
 
 void* clientMemoria(void* ptr) {
-	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
     enviar_mensaje("filesystem",conexion_Memoria);

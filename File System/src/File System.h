@@ -8,6 +8,7 @@
 #include "utils.h"
 #include <commons/string.h>
 #include <commons/config.h>
+#include <commons/bitarray.h>
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
