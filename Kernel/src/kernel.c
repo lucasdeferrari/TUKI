@@ -20,8 +20,8 @@ int main(void) {
 	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
 	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
 
-	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
-	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
+	//list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
+	//list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
@@ -152,9 +152,9 @@ void serializarContexto(int unSocket){
 	strcpy(contextoPRUEBA.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
 	strcpy(contextoPRUEBA.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
 
-	list_add_all(contextoPRUEBA.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
-	t_list_iterator* iterador = list_iterator_create(contextoPRUEBA.listaInstrucciones);
-	t_list_iterator* iterador2 = list_iterator_create(contextoPRUEBA.listaInstrucciones);
+//	list_add_all(contextoPRUEBA.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
+//	t_list_iterator* iterador = list_iterator_create(contextoPRUEBA.listaInstrucciones);
+//	t_list_iterator* iterador2 = list_iterator_create(contextoPRUEBA.listaInstrucciones);
 //	contextoPRUEBA.listaInstrucciones->head->data; //CHAR*
 //	contextoPRUEBA.listaInstrucciones->head->next; //PUNTERO A LA PROXIMA
 //	contextoPRUEBA.listaInstrucciones->elements_count; //INDICE DE LA INSTRUCCION
