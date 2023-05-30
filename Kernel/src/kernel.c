@@ -36,7 +36,7 @@ int main(void) {
 
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
-//    iniciarHiloClienteCPU();
+    iniciarHiloClienteCPU();
 //    iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
 
@@ -273,8 +273,9 @@ void* clientCPU(void* ptr) {
 	int config=1;
     int conexion_CPU;
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
-    //log_info(logger, "Ingrese sus mensajes para la CPU: ");
+    log_info(logger, "Ingrese sus mensajes para la CPU ");
     //paquete(conexion_CPU);
+//    recibir_mensaje(conexion_CPU);
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
 
     //enviamos las intrucciones del contexto
@@ -283,6 +284,7 @@ void* clientCPU(void* ptr) {
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
     printf("Instrucciones enviadas a CPU. \n");
+
 
     liberar_conexion(conexion_CPU);
 

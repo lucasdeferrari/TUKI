@@ -77,3 +77,112 @@ el cliente se desconecto. Terminando servidor
 [INFO] 21:34:10:513 Memoria/(10919:10924): \
 [ERROR] 21:34:10:519 Memoria/(10919:10924): 
 el cliente se desconecto. Terminando servidor
+[INFO] 03:59:50:606 Memoria/(89289:89289): Listo para escuchar al cliente
+[INFO] 03:59:50:606 Memoria/(89289:89289): Memoria lista para recibir al cliente
+
+[INFO] 03:59:54:838 Memoria/(89289:89291): Se conecto un cliente!
+[INFO] 03:59:54:838 Memoria/(89289:89291): se conecto el filesystem
+[INFO] 04:00:09:785 Memoria/(89289:89291): Me llegaron los siguientes valores:
+[INFO] 04:00:09:785 Memoria/(89289:89291): a
+[ERROR] 04:00:09:785 Memoria/(89289:89291): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:00:09:792 Memoria/(89289:89300): Se conecto un cliente!
+[INFO] 04:00:09:794 Memoria/(89289:89300): se conecto la cpu
+[INFO] 04:00:09:794 Memoria/(89289:89300): Me llegaron los siguientes valores:
+[INFO] 04:00:09:794 Memoria/(89289:89300): a
+[ERROR] 04:00:09:802 Memoria/(89289:89300): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:01:34:517 Memoria/(89328:89328): Listo para escuchar al cliente
+[INFO] 04:01:34:517 Memoria/(89328:89328): Memoria lista para recibir al cliente
+
+[INFO] 04:01:43:115 Memoria/(89328:89329): Se conecto un cliente!
+[INFO] 04:01:43:116 Memoria/(89328:89329): se conecto el filesystem
+[INFO] 04:01:47:081 Memoria/(89328:89329): Me llegaron los siguientes valores:
+[INFO] 04:01:47:082 Memoria/(89328:89329): a
+[INFO] 04:01:47:082 Memoria/(89328:89329): a
+[ERROR] 04:01:47:091 Memoria/(89328:89329): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:01:52:780 Memoria/(89328:89334): Se conecto un cliente!
+[INFO] 04:01:52:782 Memoria/(89328:89334): se conecto la cpu
+[INFO] 04:01:54:654 Memoria/(89328:89334): Me llegaron los siguientes valores:
+[INFO] 04:01:54:655 Memoria/(89328:89334): a
+[ERROR] 04:01:54:655 Memoria/(89328:89334): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:03:17:955 Memoria/(89328:89339): Se conecto un cliente!
+[INFO] 04:03:17:955 Memoria/(89328:89339): se conecto la cpu
+[INFO] 04:03:19:368 Memoria/(89328:89339): Me llegaron los siguientes valores:
+[INFO] 04:03:19:368 Memoria/(89328:89339): a
+[ERROR] 04:03:19:369 Memoria/(89328:89339): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:34:503 Memoria/(89328:89410): Se conecto un cliente!
+[INFO] 04:05:34:504 Memoria/(89328:89410): se conecto el filesystem
+[INFO] 04:05:36:154 Memoria/(89328:89410): Me llegaron los siguientes valores:
+[INFO] 04:05:36:155 Memoria/(89328:89410): a
+[ERROR] 04:05:36:156 Memoria/(89328:89410): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:50:918 Memoria/(89328:89489): Se conecto un cliente!
+[INFO] 04:05:50:918 Memoria/(89328:89489): se conecto la cpu
+[INFO] 04:05:52:171 Memoria/(89328:89489): Me llegaron los siguientes valores:
+[INFO] 04:05:52:171 Memoria/(89328:89489): a
+[ERROR] 04:05:52:173 Memoria/(89328:89489): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:06:26:370 Memoria/(89328:89521): Se conecto un cliente!
+[INFO] 04:06:26:370 Memoria/(89328:89521): se conecto la cpu
+[INFO] 04:06:27:835 Memoria/(89328:89521): Me llegaron los siguientes valores:
+[INFO] 04:06:27:835 Memoria/(89328:89521): a
+[ERROR] 04:06:27:842 Memoria/(89328:89521): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:09:41:262 Memoria/(89328:89535): Se conecto un cliente!
+[INFO] 04:09:41:262 Memoria/(89328:89535): se conecto la cpu
+[INFO] 04:09:42:800 Memoria/(89328:89535): Me llegaron los siguientes valores:
+[INFO] 04:09:42:800 Memoria/(89328:89535): a
+[ERROR] 04:09:42:800 Memoria/(89328:89535): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:10:01:695 Memoria/(89328:89627): Se conecto un cliente!
+[INFO] 04:10:01:696 Memoria/(89328:89627): se conecto el filesystem
+[INFO] 04:10:03:164 Memoria/(89328:89627): Me llegaron los siguientes valores:
+[INFO] 04:10:03:164 Memoria/(89328:89627): a
+[ERROR] 04:10:03:165 Memoria/(89328:89627): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:11:57:189 Memoria/(89328:89645): Se conecto un cliente!
+[INFO] 04:11:57:199 Memoria/(89328:89645): se conecto la cpu
+[INFO] 04:11:59:050 Memoria/(89328:89645): Me llegaron los siguientes valores:
+[INFO] 04:11:59:051 Memoria/(89328:89645): a
+[ERROR] 04:11:59:051 Memoria/(89328:89645): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:12:17:250 Memoria/(89328:89671): Se conecto un cliente!
+[INFO] 04:12:17:250 Memoria/(89328:89671): se conecto el filesystem
+[INFO] 04:12:18:332 Memoria/(89328:89671): Me llegaron los siguientes valores:
+[INFO] 04:12:18:333 Memoria/(89328:89671): a
+[ERROR] 04:12:18:335 Memoria/(89328:89671): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:12:23:628 Memoria/(89328:89677): Se conecto un cliente!
+[INFO] 04:12:23:628 Memoria/(89328:89677): se conecto la cpu
+[INFO] 04:12:24:573 Memoria/(89328:89677): Me llegaron los siguientes valores:
+[INFO] 04:12:24:573 Memoria/(89328:89677): a
+[ERROR] 04:12:24:574 Memoria/(89328:89677): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:16:55:377 Memoria/(89328:89685): Se conecto un cliente!
+[INFO] 04:16:55:377 Memoria/(89328:89685): se conecto la cpu
+[INFO] 04:16:56:598 Memoria/(89328:89685): Me llegaron los siguientes valores:
+[INFO] 04:16:56:598 Memoria/(89328:89685): a
+[ERROR] 04:16:56:602 Memoria/(89328:89685): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:17:03:142 Memoria/(89328:89920): Se conecto un cliente!
+[INFO] 04:17:03:142 Memoria/(89328:89920): se conecto el filesystem
+[INFO] 04:17:04:305 Memoria/(89328:89920): Me llegaron los siguientes valores:
+[INFO] 04:17:04:305 Memoria/(89328:89920): a
+[ERROR] 04:17:04:307 Memoria/(89328:89920): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:20:46:103 Memoria/(89328:89930): Se conecto un cliente!
+[INFO] 04:20:46:103 Memoria/(89328:89930): se conecto el filesystem
+[INFO] 04:20:47:437 Memoria/(89328:89930): Me llegaron los siguientes valores:
+[INFO] 04:20:47:437 Memoria/(89328:89930): a
+[ERROR] 04:20:47:437 Memoria/(89328:89930): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:20:51:972 Memoria/(89328:90082): Se conecto un cliente!
+[INFO] 04:20:51:972 Memoria/(89328:90082): se conecto la cpu
+[INFO] 04:20:53:295 Memoria/(89328:90082): Me llegaron los siguientes valores:
+[INFO] 04:20:53:296 Memoria/(89328:90082): a
+[ERROR] 04:20:53:298 Memoria/(89328:90082): 
+el cliente se desconecto. Terminando servidor

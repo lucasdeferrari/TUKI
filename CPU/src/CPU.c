@@ -65,28 +65,171 @@ t_contextoEjecucion exit_tp(t_contextoEjecucion contexto){
 //    return persona;
 //}
 
+void serializarContexto(t_contextoEjecucion estadoEnEjecucion, int unSocket){
+
+	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
+	estadoEnEjecucion.programCounter = 3;
+	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
+	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");
+	strcpy(estadoEnEjecucion.registrosCpu.DX,"H");
+	strcpy(estadoEnEjecucion.registrosCpu.EAX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.EBX,"HOLAHOL");
+	strcpy(estadoEnEjecucion.registrosCpu.ECX,"HOLAHO");
+	strcpy(estadoEnEjecucion.registrosCpu.EDX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
+
+	//BUFFER
+
+	t_buffer* buffer = malloc(sizeof(t_buffer));
+
+	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion.registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion.registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion.registrosCpu.RAX)*4;
+
+	void* stream = malloc(buffer->size);
+	int offset = 0; //desplazamiento
+
+	memcpy(stream + offset, &estadoEnEjecucion.programCounter, sizeof(int));
+	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.AX, sizeof(estadoEnEjecucion.registrosCpu.AX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.AX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.BX, sizeof(estadoEnEjecucion.registrosCpu.BX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.BX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.CX, sizeof(estadoEnEjecucion.registrosCpu.CX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.CX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.DX, sizeof(estadoEnEjecucion.registrosCpu.DX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.DX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EAX, sizeof(estadoEnEjecucion.registrosCpu.EAX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EAX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EBX, sizeof(estadoEnEjecucion.registrosCpu.EBX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EBX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.ECX, sizeof(estadoEnEjecucion.registrosCpu.ECX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.ECX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EDX, sizeof(estadoEnEjecucion.registrosCpu.EDX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EDX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RAX, sizeof(estadoEnEjecucion.registrosCpu.RAX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RAX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RBX, sizeof(estadoEnEjecucion.registrosCpu.RBX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RBX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RCX, sizeof(estadoEnEjecucion.registrosCpu.RCX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RCX);
+
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RDX, sizeof(estadoEnEjecucion.registrosCpu.RDX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RDX);
+
+	buffer->stream = stream;
+
+	//llenar el PAQUETE con el buffer
+
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = CONTEXTO;
+	paquete->buffer = buffer; // Nuestro buffer de antes.
+
+	// Armamos el stream a enviar
+	//    tamaño               stream        size       codigo_operación
+	void* a_enviar = malloc(buffer->size + sizeof(int) + sizeof(op_code)); //op_code -> int
+	offset = 0;
+
+	memcpy(a_enviar + offset, &(paquete->codigo_operacion), sizeof(op_code));
+	offset += sizeof(int);
+
+	memcpy(a_enviar + offset, &(paquete->buffer->size), sizeof(int));
+    offset += sizeof(int);
+
+	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
+	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
+
+	// Lo enviamos
+	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
+
+	// Liberamos la memoria
+	free(a_enviar);
+	free(paquete->buffer->stream);
+	free(paquete->buffer);
+	free(paquete);
+
+	return;
+}
+
+t_paquete* empaquetar(t_list* cabeza) {
+
+    t_list_iterator* iterador = list_iterator_create(cabeza);
+    t_paquete* paquete = crear_paquete_instrucciones();
+
+    while (list_iterator_has_next(iterador)) {
+
+    	char* siguiente = list_iterator_next(iterador);
+    	int tamanio = (strlen(siguiente))+1;
+    	agregar_a_paquete(paquete, siguiente,tamanio );
+
+    }
+    return paquete;
+}
+
 //I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
 //Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la
 //cantidad de unidades de tiempo que va a bloquearse el proceso
-//void* i_o(int contexto, int socket) {
-//	contexto++;
-//	enviar_mensaje("1000", socket);
-//	return NULL;
-//}
-//
+void* i_o(int socket) {
+//	printf("\n antes -> %d", contextoPRUEBA->programCounter);
+	contextoPRUEBA->programCounter++;
+	contextoPRUEBA->tiempoBloqueado = 1000;
+	contextoPRUEBA->instruccion = "i/o";
+	contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
+
+//	printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
+//	printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
+//	printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
+//	printf("\n tiempo bloqueado -> %d", contextoPRUEBA->tiempoBloqueado);
+
+	return NULL;
+}
+
 ////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia
 ////del recurso indicado por parámetro.
-//void* wait(char* recurso, int socket) {
-//	enviar_mensaje("wait, %s", recurso, socket);
-//	return NULL;
-//}
-//
-////SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia
-////del recurso indicado por parámetro.
-//void* signal(char* recurso, int socket) {
-//	enviar_mensaje(("signal, %s", recurso), socket);
-//	return NULL;
-//}
+void* wait(char* recurso, int socket) {
+//		printf("\n antes -> %d", contextoPRUEBA->programCounter);
+		contextoPRUEBA->programCounter++;
+		contextoPRUEBA->instruccion = "wait";
+		strcpy(contextoPRUEBA->recursoSolicitado, recurso);
+		contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
+
+//		printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
+//		printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
+//		printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
+//		printf("\n recurso -> %s", contextoPRUEBA->recursoSolicitado);
+
+		return NULL;
+}
+
+//SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia
+//del recurso indicado por parámetro.
+void* signal_tp(char* recurso, int socket) {
+//	printf("\n antes -> %d", contextoPRUEBA->programCounter);
+	contextoPRUEBA->programCounter++;
+	contextoPRUEBA->instruccion = "signal";
+	strcpy(contextoPRUEBA->recursoSolicitado, recurso);
+	contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
+
+//	printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
+//	printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
+//	printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
+//	printf("\n recurso -> %s", contextoPRUEBA->recursoSolicitado);
+
+	return NULL;
+}
 
 int main(void) {
 
@@ -100,7 +243,7 @@ int main(void) {
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("../CPU.config");
+    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/CPU/CPU.config");
 
     if (config == NULL) {
         printf("No se pudo crear el config.");
@@ -126,6 +269,8 @@ int main(void) {
 
     return EXIT_SUCCESS;
 }
+
+
 
 void iniciarHiloCliente() {
 
@@ -187,13 +332,12 @@ void* serverCPU(void* ptr){
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
-
-//    i_o(6, server_fd);
-
     while (1) {
 
     	int cod_op = recibir_operacion(cliente_fd);
-    	printf("%d", cod_op);
+    	printf("\n %d\n", cod_op);
+
+
     	switch (cod_op) {
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);
@@ -210,7 +354,8 @@ void* serverCPU(void* ptr){
     			break;
     		case CONTEXTO:
     			contextoPRUEBA = recibir_contexto(cliente_fd);
-    			printf("programCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
+    			//IO signal y wait deben ser llamadas despues de recibir_contexto;
+    			printf("\nprogramCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
     			printf("AX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.AX);
     			printf("CX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.BX);
     			printf("BX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.CX);
@@ -230,9 +375,9 @@ void* serverCPU(void* ptr){
     		case -1:
     			log_error(logger, "\nel kernel se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
-    			default:
-    			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-    		break;
+			default:
+				log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
+				break;
     	}
     }
 
@@ -240,7 +385,6 @@ void* serverCPU(void* ptr){
 
 	return NULL;
 }
-
 
 void iterator(char* value) {
     log_info(logger, value);

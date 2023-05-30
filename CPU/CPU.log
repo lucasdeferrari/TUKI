@@ -58,3 +58,33 @@ el kernel se desconecto. Terminando servidor
 [INFO] 21:34:05:074 CPU/(11848:11850): Ingrese sus mensajes para la Memoria: 
 [INFO] 21:34:10:519 CPU/(11848:11850): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
 [INFO] 21:34:10:519 CPU/(11848:11849): CPU lista para recibir al Kernel
+[INFO] 04:00:03:491 CPU/(89297:89299): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:00:09:795 CPU/(89297:89299): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:00:09:800 CPU/(89297:89298): CPU lista para recibir al Kernel
+[INFO] 04:01:52:781 CPU/(89336:89338): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:01:54:655 CPU/(89336:89338): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:01:54:659 CPU/(89336:89337): CPU lista para recibir al Kernel
+[INFO] 04:03:17:955 CPU/(89407:89409): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:03:19:368 CPU/(89407:89409): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:03:19:371 CPU/(89407:89408): CPU lista para recibir al Kernel
+[INFO] 04:05:50:918 CPU/(89518:89520): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:05:52:172 CPU/(89518:89520): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:05:52:173 CPU/(89518:89519): CPU lista para recibir al Kernel
+[INFO] 04:06:26:370 CPU/(89530:89534): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:06:27:839 CPU/(89530:89534): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:06:27:841 CPU/(89530:89533): CPU lista para recibir al Kernel
+[INFO] 04:09:41:262 CPU/(89624:89626): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:09:42:800 CPU/(89624:89626): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:09:42:800 CPU/(89624:89625): CPU lista para recibir al Kernel
+[INFO] 04:11:57:189 CPU/(89667:89670): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:11:59:051 CPU/(89667:89670): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:11:59:051 CPU/(89667:89668): CPU lista para recibir al Kernel
+[INFO] 04:12:23:628 CPU/(89682:89684): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:12:24:573 CPU/(89682:89684): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:12:24:575 CPU/(89682:89683): CPU lista para recibir al Kernel
+[INFO] 04:16:55:374 CPU/(89917:89919): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:16:56:601 CPU/(89917:89919): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:16:56:603 CPU/(89917:89918): CPU lista para recibir al Kernel
+[INFO] 04:20:51:972 CPU/(90083:90086): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:20:53:298 CPU/(90083:90086): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:20:53:300 CPU/(90083:90085): CPU lista para recibir al Kernel
