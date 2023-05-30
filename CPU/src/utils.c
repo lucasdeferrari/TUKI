@@ -119,35 +119,10 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	 stream += sizeof(contextoPRUEBA->registrosCpu.RDX);
 
 
-//	 memcpy(&(contextoPRUEBA->instruccion), stream, sizeof(uint32_t));
-//	    stream += sizeof(uint32_t);
-//	    contextoPRUEBA->instruccion = malloc(contextoPRUEBA->instruccion_length);
-//	    memcpy(contextoPRUEBA->instruccion, stream, contextoPRUEBA->instruccion_length);
-
 	 return contextoPRUEBA;
 
 }
 
-
-//t_paquete* recibir_operacion2(int socket_cliente)
-//{
-//	t_paquete* paquete = malloc(sizeof(t_paquete));
-//	paquete->buffer = malloc(sizeof(t_buffer));
-//
-//	// Primero recibimos el codigo de operacion
-//	recv(socket_cliente, &(paquete->codigo_operacion), sizeof(op_code), 0);
-//
-//	printf("paquete->codigo_operacion dentro de RECIBIR_OPERACION: %d\n",paquete->codigo_operacion);
-//
-//
-//	// Después ya podemos recibir el buffer. Primero su tamaño seguido del contenido
-//	recv(socket_cliente, &(paquete->buffer->size), sizeof(int), 0);
-//
-//	paquete->buffer->stream = malloc(paquete->buffer->size);
-//	recv(socket_cliente, paquete->buffer->stream, paquete->buffer->size, 0);
-//
-//	return paquete;
-//}
 
 void* recibir_buffer(int* size, int socket_cliente)
 {

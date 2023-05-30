@@ -20,7 +20,8 @@ typedef enum
 {
 	MENSAJE,
 	PAQUETE,
-	CONTEXTO
+	CONTEXTO,
+	INSTRUCCIONES
 }op_code;
 
 //client

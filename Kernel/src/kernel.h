@@ -23,6 +23,7 @@ char* algoritmo_planificacion;
 char* estimacion_inicial;
 char* hrrn_alfa;
 char* grado_max_multiprogramación ;
+int server_fd;
 //recursos ;
 //instancias_recursos ;
 
@@ -65,6 +66,7 @@ void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
 char* recibir_handshake(int);
+t_paquete* empaquetar(t_list*);
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {

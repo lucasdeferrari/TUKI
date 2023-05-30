@@ -23,6 +23,8 @@ t_paquete* empaquetar(t_list* cabeza) {
     return paquete;
 }
 
+
+
 void imprimir(Nodo* cabeza) {
     Nodo* actual = cabeza;
 

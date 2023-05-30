@@ -203,8 +203,12 @@ void* serverCPU(void* ptr){
     			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
     			break;
+    		case INSTRUCCIONES:
+    			contextoPRUEBA->listaInstrucciones = recibir_paquete(cliente_fd);
+    			log_info(logger, "Me llegaron las siguientes intrucciones:\n");
+    			list_iterate(contextoPRUEBA->listaInstrucciones, (void*) iterator);
+    			break;
     		case CONTEXTO:
-
     			contextoPRUEBA = recibir_contexto(cliente_fd);
     			printf("programCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
     			printf("AX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.AX);

@@ -2,26 +2,7 @@
 
 t_config* config;
 
-//Lo necesitamos para escuchar constantemente
-int server_fd;
-
 int main(void) {
-	estadoEnEjecucion.programCounter = 3;
-	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
-	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");
-	strcpy(estadoEnEjecucion.registrosCpu.DX,"H");
-	strcpy(estadoEnEjecucion.registrosCpu.EAX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.EBX,"HOLAHOL");
-	strcpy(estadoEnEjecucion.registrosCpu.ECX,"HOLAHO");
-	strcpy(estadoEnEjecucion.registrosCpu.EDX,"HOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
-
-	//list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
-	//list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
@@ -52,11 +33,12 @@ int main(void) {
     //recursos = config_get_string_value(config, "RECURSOS");
     //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
 
-    //THREADS CONEXIÓN
-    //thread clients CPU, FS, Memoria
-    iniciarHiloClienteCPU();
-    iniciarHiloClienteMemoria();
-    iniciarHiloClienteFileSystem();
+
+//    //THREADS CONEXIÓN
+//    //thread clients CPU, FS, Memoria
+//    iniciarHiloClienteCPU();
+//    iniciarHiloClienteMemoria();
+//    iniciarHiloClienteFileSystem();
 
     //thread server
 
@@ -72,8 +54,6 @@ int main(void) {
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
 
-
-
     //libero memoria
     log_destroy(logger);
     config_destroy(config);
@@ -83,7 +63,6 @@ int main(void) {
     sem_destroy(&semKernelClientMemoria);
     sem_destroy(&semKernelClientFileSystem);
     sem_destroy(&semKernelServer);
-
 
     return EXIT_SUCCESS;
 }
@@ -134,93 +113,109 @@ void iniciarHiloClienteFileSystem() {
 }
 
 void serializarContexto(int unSocket){
-	t_contextoEjecucion contextoPRUEBA;
 
-	contextoPRUEBA.programCounter = estadoEnEjecucion.programCounter;
-	strcpy(contextoPRUEBA.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
-	strcpy(contextoPRUEBA.registrosCpu.BX, estadoEnEjecucion.registrosCpu.BX);
-	strcpy(contextoPRUEBA.registrosCpu.CX, estadoEnEjecucion.registrosCpu.CX);
-	strcpy(contextoPRUEBA.registrosCpu.DX, estadoEnEjecucion.registrosCpu.DX);
+	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
+	estadoEnEjecucion.programCounter = 3;
+	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
+	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");
+	strcpy(estadoEnEjecucion.registrosCpu.DX,"H");
+	strcpy(estadoEnEjecucion.registrosCpu.EAX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.EBX,"HOLAHOL");
+	strcpy(estadoEnEjecucion.registrosCpu.ECX,"HOLAHO");
+	strcpy(estadoEnEjecucion.registrosCpu.EDX,"HOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
 
-	strcpy(contextoPRUEBA.registrosCpu.EAX, estadoEnEjecucion.registrosCpu.EAX);
-	strcpy(contextoPRUEBA.registrosCpu.EBX, estadoEnEjecucion.registrosCpu.EBX);
-	strcpy(contextoPRUEBA.registrosCpu.ECX, estadoEnEjecucion.registrosCpu.ECX);
-	strcpy(contextoPRUEBA.registrosCpu.EDX, estadoEnEjecucion.registrosCpu.EDX);
+//ESTO TIRA SEGMENTATION FAULT, IGUAL NO HACE FALTA AGREGARLO PORQUE NOS LO MANDA CONSOLA
+//	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
+//	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 
-	strcpy(contextoPRUEBA.registrosCpu.RAX, estadoEnEjecucion.registrosCpu.RAX);
-	strcpy(contextoPRUEBA.registrosCpu.RBX, estadoEnEjecucion.registrosCpu.RBX);
-	strcpy(contextoPRUEBA.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
-	strcpy(contextoPRUEBA.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
+//PODRÍAMOS DIRECTAMENTE TRABAJAR CON estadoEnEjecucion
+//	t_contextoEjecucion contexto;
+//	contexto.programCounter = estadoEnEjecucion.programCounter;
+//	strcpy(contexto.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
+//	strcpy(contexto.registrosCpu.BX, estadoEnEjecucion.registrosCpu.BX);
+//	strcpy(contexto.registrosCpu.CX, estadoEnEjecucion.registrosCpu.CX);
+//	strcpy(contexto.registrosCpu.DX, estadoEnEjecucion.registrosCpu.DX);
+//
+//	strcpy(contexto.registrosCpu.EAX, estadoEnEjecucion.registrosCpu.EAX);
+//	strcpy(contexto.registrosCpu.EBX, estadoEnEjecucion.registrosCpu.EBX);
+//	strcpy(contexto.registrosCpu.ECX, estadoEnEjecucion.registrosCpu.ECX);
+//	strcpy(contexto.registrosCpu.EDX, estadoEnEjecucion.registrosCpu.EDX);
+//
+//	strcpy(contexto.registrosCpu.RAX, estadoEnEjecucion.registrosCpu.RAX);
+//	strcpy(contexto.registrosCpu.RBX, estadoEnEjecucion.registrosCpu.RBX);
+//	strcpy(contexto.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
+//	strcpy(contexto.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
 
-//	list_add_all(contextoPRUEBA.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
-//	t_list_iterator* iterador = list_iterator_create(contextoPRUEBA.listaInstrucciones);
-//	t_list_iterator* iterador2 = list_iterator_create(contextoPRUEBA.listaInstrucciones);
+//	list_add_all(contexto.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
+
+
+//	t_list_iterator* iterador = list_iterator_create(contexto.listaInstrucciones);
+//	t_list_iterator* iterador2 = list_iterator_create(contexto.listaInstrucciones);
+
 //	contextoPRUEBA.listaInstrucciones->head->data; //CHAR*
 //	contextoPRUEBA.listaInstrucciones->head->next; //PUNTERO A LA PROXIMA
 //	contextoPRUEBA.listaInstrucciones->elements_count; //INDICE DE LA INSTRUCCION
-
-	contextoPRUEBA.instruccion = calloc(1, 4+1);
-	strcpy(contextoPRUEBA.instruccion, "Hola");
-	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
 
 	//BUFFER
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	//buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1 + sizeof(contextoPRUEBA.registrosCpu.AX); //Program counter e instruccion
-	buffer->size = sizeof(int) + sizeof(contextoPRUEBA.registrosCpu.AX) * 4 + sizeof(contextoPRUEBA.registrosCpu.EAX) *4 + sizeof(contextoPRUEBA.registrosCpu.RAX)*4;
+	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion.registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion.registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion.registrosCpu.RAX)*4;
 
-
-//	while (list_iterator_has_next(iterador)) {
-//
-//			    	char* siguiente = list_iterator_next(iterador);
-//			    	int tamanio = (strlen(siguiente))+1;
-//			    	list_add(contextoPRUEBA.listaInstrucciones_length, tamanio);
-//			    	buffer->size += tamanio + sizeof(int);
-//			    }
-
+	//	while (list_iterator_has_next(iterador)) {
+	//
+	//		char* siguiente = list_iterator_next(iterador);
+	//		int tamanio = (strlen(siguiente))+1;
+	//		list_add(contextoPRUEBA.listaInstrucciones_length, tamanio);
+	//		buffer->size += tamanio + sizeof(int);
+	//	}
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
 
-	memcpy(stream + offset, &contextoPRUEBA.programCounter, sizeof(int));
+	memcpy(stream + offset, &estadoEnEjecucion.programCounter, sizeof(int));
 	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.AX, sizeof(contextoPRUEBA.registrosCpu.AX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.AX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.AX, sizeof(estadoEnEjecucion.registrosCpu.AX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.AX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.BX, sizeof(contextoPRUEBA.registrosCpu.BX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.BX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.BX, sizeof(estadoEnEjecucion.registrosCpu.BX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.BX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.CX, sizeof(contextoPRUEBA.registrosCpu.CX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.CX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.CX, sizeof(estadoEnEjecucion.registrosCpu.CX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.CX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.DX, sizeof(contextoPRUEBA.registrosCpu.DX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.DX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.DX, sizeof(estadoEnEjecucion.registrosCpu.DX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.DX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EAX, sizeof(contextoPRUEBA.registrosCpu.EAX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.EAX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EAX, sizeof(estadoEnEjecucion.registrosCpu.EAX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EAX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EBX, sizeof(contextoPRUEBA.registrosCpu.EBX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.EBX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EBX, sizeof(estadoEnEjecucion.registrosCpu.EBX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EBX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.ECX, sizeof(contextoPRUEBA.registrosCpu.ECX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.ECX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.ECX, sizeof(estadoEnEjecucion.registrosCpu.ECX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.ECX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.EDX, sizeof(contextoPRUEBA.registrosCpu.EDX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.EDX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EDX, sizeof(estadoEnEjecucion.registrosCpu.EDX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.EDX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RAX, sizeof(contextoPRUEBA.registrosCpu.RAX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.RAX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RAX, sizeof(estadoEnEjecucion.registrosCpu.RAX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RAX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RBX, sizeof(contextoPRUEBA.registrosCpu.RBX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.RBX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RBX, sizeof(estadoEnEjecucion.registrosCpu.RBX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RBX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RCX, sizeof(contextoPRUEBA.registrosCpu.RCX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.RCX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RCX, sizeof(estadoEnEjecucion.registrosCpu.RCX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RCX);
 
-	memcpy(stream + offset, &contextoPRUEBA.registrosCpu.RDX, sizeof(contextoPRUEBA.registrosCpu.RDX));
-	offset += sizeof(contextoPRUEBA.registrosCpu.RDX);
+	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RDX, sizeof(estadoEnEjecucion.registrosCpu.RDX));
+	offset += sizeof(estadoEnEjecucion.registrosCpu.RDX);
 
 //	while (list_iterator_has_next(iterador2)) {
 //		int indice = 0;
@@ -230,12 +225,8 @@ void serializarContexto(int unSocket){
 //		memcpy(stream + offset, list_get(contextoPRUEBA.listaInstrucciones, indice), strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
 //		offset += sizeof(strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
 //		indice++;
-//		}
+//	}
 
-	//instruccion, dinamica
-//	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
-//	offset += sizeof(int);
-//	memcpy(stream + offset, contextoPRUEBA.instruccion, strlen(contextoPRUEBA.instruccion) + 1);
 
 	buffer->stream = stream;
 
@@ -260,17 +251,11 @@ void serializarContexto(int unSocket){
 	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
 	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
 
-
-
 	// Lo enviamos
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
-
-	//printf("programCounter enviado a CPU = %d\n",contextoPRUEBA.programCounter);
-	//printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
-
 //	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.listaInstrucciones->head->data);
-
+	//printf("Contexto sin instrucciones enviado a CPU. \n");
 
 	//free memoria dinámica
 	//free(contextoPRUEBA.instruccion);
@@ -290,7 +275,15 @@ void* clientCPU(void* ptr) {
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
     //log_info(logger, "Ingrese sus mensajes para la CPU: ");
     //paquete(conexion_CPU);
-    serializarContexto(conexion_CPU);
+    serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
+
+    //enviamos las intrucciones del contexto
+    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion.listaInstrucciones);
+    t_paquete* paquete = empaquetar(estadoEnEjecucion.listaInstrucciones);
+    enviar_paquete(paquete, conexion_CPU);
+    eliminar_paquete(paquete);
+    printf("Instrucciones enviadas a CPU. \n");
+
     liberar_conexion(conexion_CPU);
 
     sem_post(&semKernelClientMemoria);
@@ -343,7 +336,7 @@ void iniciarHiloServer() {
 
 void* serverKernel(void* ptr){
 
-	sem_wait(&semKernelServer);
+	//sem_wait(&semKernelServer);
 
     //int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir al cliente");
@@ -379,11 +372,13 @@ void* serverKernel(void* ptr){
         			armarPCB(lista);
         			printf("PCB encolado en NEW\n");
         			encolarReady();
-        			printf("Cola NEW:\n");
-        			mostrarCola(frenteColaNew);
-        			printf("Cola READY:\n");
-        			mostrarCola(frenteColaReady);
+        			//printf("Cola NEW:\n");
+        			//mostrarCola(frenteColaNew);
+        			//printf("Cola READY:\n");
+        			//mostrarCola(frenteColaReady);
     				//cosas de consola
+
+        			iniciarHiloClienteCPU();
     			}
     			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
@@ -517,6 +512,9 @@ void encolarReady() {
 			printf("Grado máximo de multiprogramación alcanzado. \n");
 		}
 
+		printf("Proceso pasado a estadoEnEjecucion. \n");
+		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
+
 		//SI ES HRRN
 	}
 
@@ -641,4 +639,19 @@ char* recibir_handshake(int socket_cliente)
 	char* buffer = recibir_buffer(&size, socket_cliente);
 	//log_info(logger, "Me llego el mensaje %s", buffer);
 	return buffer;
+}
+
+t_paquete* empaquetar(t_list* cabeza) {
+
+    t_list_iterator* iterador = list_iterator_create(cabeza);
+    t_paquete* paquete = crear_paquete_instrucciones();
+
+    while (list_iterator_has_next(iterador)) {
+
+    	char* siguiente = list_iterator_next(iterador);
+    	int tamanio = (strlen(siguiente))+1;
+    	agregar_a_paquete(paquete, siguiente,tamanio );
+
+    }
+    return paquete;
 }
