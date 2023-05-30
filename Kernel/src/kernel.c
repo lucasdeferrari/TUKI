@@ -115,7 +115,7 @@ void iniciarHiloClienteFileSystem() {
 void serializarContexto(int unSocket){
 
 	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
-	estadoEnEjecucion.programCounter = 3;
+	estadoEnEjecucion.programCounter = 0;
 	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
 	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
 	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");

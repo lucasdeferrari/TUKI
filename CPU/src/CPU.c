@@ -1,112 +1,47 @@
 #include "CPU.h"
 t_config* config;
 
-//SE DEBEN MODIFICAR LAS FUNCIONES PARA QUE SEAN DE TIPO VOID Y MODIFIQUEN DIRECTAMENTE EL STRUCT DE CONTEXTO RECIBIDO POR KERNEL
+void iniciar_ejecucion(){
 
-// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
-void set(char* reg, char* valor){
-	strcpy(reg, valor);
-	//delay 1000ml
+	//MIENTRAS LA INSTRUCCION NO SEA EXIT, I/O, WAIT, YIELD.   ( O UN ERROR, F_*, *_SEGMENT )
+	//HAY QUE SEGUIR EJECUTANDO LAS INSTRUCCIONES Y ACTUALIZANDO EL CONTEXTO PARA ENVIARLO DESPUÉS A KERNEL
+
+	int continuarLeyendo = 1;
+
+	while(continuarLeyendo>0){
+
+		//list_get retorna el contenido de una posicion determianda de la lista
+		char* proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
+
+		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
+
+		//ejecutarFuncion: ejecuta la función que corresponde y retorna un int para saber si debe seguir ejecutando
+		continuarLeyendo = ejecutarFuncion(proximaInstruccion);
+
+	}
+
+	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
+	// serializarContexto()
+
+	return;
 }
 
-// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU. Se deberá devolver el Contexto de Ejecución actualizado al Kernel
-t_contextoEjecucion yield(t_contextoEjecucion contexto){
+int ejecutarFuncion(char* proximaInstruccion){
 
-	contexto.instruccion = "yield";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
+	int continuarLeyendo = 0; //valor de prueba por ahora
 
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
+	//Reconoce la funcion y sus parámetros
+	//Ejecuta la función actualizando el contexto
+	//Dependiendo del tipo de funcion va a asignarle el valor correspondiente a continuarLeyendo
 
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-    return contexto;
+	return continuarLeyendo;
 }
 
-// EXIT: Esta instrucción representa la syscall de finalización del proceso.
-// Se deberá devolver el Contexto de Ejecución actualizado al Kernel para su finalización.
-t_contextoEjecucion exit_tp(t_contextoEjecucion contexto){
-
-	contexto.instruccion = "exit";
-//	contexto.listaInstrucciones = instrucciones;
-	contexto.programCounter++; // numero de la siguiente instrucción a ejecutar
-
-//	for(int i = 0 ; i < 12; i++)
-//		set(contexto.registrosCpu[i], registrosCpu[i]);
-
-//	contexto.tablaSegmentos = tablaSegmentos;// direccion base = char*?
-
-	//Modificaciones Contexto
-
-	return contexto;
-}
-
-
-
-//I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
-//Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la
-//cantidad de unidades de tiempo que va a bloquearse el proceso
-void* i_o(int socket) {
-//	printf("\n antes -> %d", contextoPRUEBA->programCounter);
-	contextoPRUEBA->programCounter++;
-	contextoPRUEBA->tiempoBloqueado = 1000;
-	contextoPRUEBA->instruccion = "i/o";
-	contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
-
-//	printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
-//	printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
-//	printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
-//	printf("\n tiempo bloqueado -> %d", contextoPRUEBA->tiempoBloqueado);
-
-	return NULL;
-}
-
-////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia
-////del recurso indicado por parámetro.
-void* wait(char* recurso, int socket) {
-//		printf("\n antes -> %d", contextoPRUEBA->programCounter);
-		contextoPRUEBA->programCounter++;
-		contextoPRUEBA->instruccion = "wait";
-		strcpy(contextoPRUEBA->recursoSolicitado, recurso);
-		contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
-
-//		printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
-//		printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
-//		printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
-//		printf("\n recurso -> %s", contextoPRUEBA->recursoSolicitado);
-
-		return NULL;
-}
-
-//SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia
-//del recurso indicado por parámetro.
-void* signal_tp(char* recurso, int socket) {
-//	printf("\n antes -> %d", contextoPRUEBA->programCounter);
-	contextoPRUEBA->programCounter++;
-	contextoPRUEBA->instruccion = "signal";
-	strcpy(contextoPRUEBA->recursoSolicitado, recurso);
-	contextoPRUEBA->instruccion_length = string_length(contextoPRUEBA->instruccion) + 1;
-
-//	printf("\n Intruccion -> %s", contextoPRUEBA->instruccion);
-//	printf("\n Intruccion length-> %d", contextoPRUEBA->instruccion_length);
-//	printf("\n programCounter -> %d", contextoPRUEBA->programCounter);
-//	printf("\n recurso -> %s", contextoPRUEBA->recursoSolicitado);
-
-	return NULL;
-}
 
 int main(void) {
 
-	//DESERIALIZACIÓN DE CONTEXTO
-
-
 	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
-
-	//exit1();
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
@@ -213,27 +148,28 @@ void* serverCPU(void* ptr){
     			list_iterate(lista, (void*) iterator);
     			break;
     		case INSTRUCCIONES:
-    			contextoPRUEBA->listaInstrucciones = recibir_paquete(cliente_fd);
-    			log_info(logger, "Me llegaron las siguientes intrucciones:\n");
-    			list_iterate(contextoPRUEBA->listaInstrucciones, (void*) iterator);
+    			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
+    			log_info(logger, "Instrucciones recibidas de Kernel:\n");
+    			list_iterate(contexto->listaInstrucciones, (void*) iterator);
+    			iniciar_ejecucion(); //Por ahora de prueba
     			break;
     		case CONTEXTO:
-    			contextoPRUEBA = recibir_contexto(cliente_fd);
-    			printf("\nprogramCounter recibido de Kernel = %d\n",contextoPRUEBA->programCounter);
-    			printf("AX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.AX);
-    			printf("CX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.BX);
-    			printf("BX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.CX);
-    			printf("DX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.DX);
+    			contexto = recibir_contexto(cliente_fd);
+    			printf("\nprogramCounter recibido de Kernel = %d\n",contexto->programCounter);
+    			printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
+    			printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
+    			printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
+    			printf("DX recibido de Kernel = %s\n",contexto->registrosCpu.DX);
 
-    			printf("EAX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EAX);
-    			printf("EBX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EBX);
-    			printf("ECX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.ECX);
-    			printf("EDX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.EDX);
+    			printf("EAX recibido de Kernel = %s\n",contexto->registrosCpu.EAX);
+    			printf("EBX recibido de Kernel = %s\n",contexto->registrosCpu.EBX);
+    			printf("ECX recibido de Kernel = %s\n",contexto->registrosCpu.ECX);
+    			printf("EDX recibido de Kernel = %s\n",contexto->registrosCpu.EDX);
 
-    			printf("RAX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RAX);
-    			printf("RBX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RBX);
-    			printf("RCX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RCX);
-    			printf("RDX recibido de Kernel = %s\n",contextoPRUEBA->registrosCpu.RDX);
+    			printf("RAX recibido de Kernel = %s\n",contexto->registrosCpu.RAX);
+    			printf("RBX recibido de Kernel = %s\n",contexto->registrosCpu.RBX);
+    			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
+    			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
     			break;
     		case -1:
@@ -284,4 +220,70 @@ void paquete(int conexion)
 	free(leido);
 	eliminar_paquete(paquete);
 
+}
+
+// FUNCIONES INSTRUCCIONES
+
+
+// REVISAR FUNCION SET
+// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
+void set_tp(char* reg, char* valor){
+	strcpy(reg, valor);
+	//delay 1000ml
+}
+
+//COMPLETAT FUNCIONES
+
+
+// YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU.
+void yield_tp(){
+
+	//strcpy(contexto->instruccion, "yield");
+	contexto->programCounter++;
+
+    return;
+}
+
+// EXIT: Esta instrucción representa la syscall de finalización del proceso.
+void exit_tp(){
+
+	//strcpy(contexto->instruccion, "exit");
+	contexto->programCounter++;
+
+	return;
+}
+
+
+//I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
+//Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la cantidad de unidades de tiempo que va a bloquearse el proceso
+void i_o_tp() {
+
+	//strcpy(contexto->instruccion, "i/o");
+	contexto->programCounter++;
+	//contexto->tiempoBloqueado = 1000;
+
+	return;
+}
+
+////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia del recurso indicado por parámetro.
+void wait_tp() {
+
+		contexto->programCounter++;
+		//strcpy(contexto->instruccion, "wait");
+
+
+		//strcpy(contexto->recursoSolicitado, recurso);
+
+
+		return;
+}
+
+//SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia del recurso indicado por parámetro.
+void signal_tp() {
+
+	contexto->programCounter++;
+	//strcpy(contexto->instruccion, "signal");
+
+
+	return;
 }

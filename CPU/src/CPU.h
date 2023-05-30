@@ -17,7 +17,7 @@ char* ip_memoria;
 char* puerto_memoria;
 sem_t semCPUServer;
 sem_t semCPUClientMemoria;
-t_contextoEjecucion* contextoPRUEBA;
+t_contextoEjecucion* contexto;
 
 
 void *serverCPU(void *ptr);
@@ -26,6 +26,14 @@ void iniciarHiloCliente();
 void iniciarHiloServer();
 pthread_t serverCPU_thread, client_Memoria;
 
+//Funciones instrucciones
+void yield_tp();
+void exit_tp();
+void i_o_tp();
+void wait_tp();
+void signal_tp();
+
+ejecutarFuncion(char*);
 
 
 void iterator(char* value);
