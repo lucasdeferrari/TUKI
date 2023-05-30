@@ -12,6 +12,7 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <sys/mman.h>
 
 
 char* ip_memoria;

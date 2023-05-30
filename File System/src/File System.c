@@ -71,6 +71,8 @@ int main(void) {
 	  printf("Block count: %i\n", block_count);
 	  printf("Block size: %i\n", block_size);
 
+	  int tamanio_total = block_size * block_count;
+
     if (config_has_property(config, "PATH_BITMAP")) {
        	 printf("Existe el path al bitmap.\n");
        	 p_bitmap = config_get_string_value(config, "PATH_BITMAP");
@@ -79,16 +81,61 @@ int main(void) {
        	 printf("No existe el path al bitmap.\n");
        	 exit(5);
        	 }
-    archivo_bitmap = fopen(p_bitmap, "r");
-    	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
+    archivo_bitmap = fopen(p_bitmap, "r+");
+    if (archivo_bitmap == NULL) {
+        fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
+        exit(1);
+    }
 
-    	if (archivo_bitmap == NULL) {
-    		fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
-    		exit(1);
-    	}
+    // Obtener el descriptor de archivo a partir del puntero de archivo
+    int fd = fileno(archivo_bitmap);
+    printf("File descriptor: %i\n" , fd);
 
-    void* puntero_a_bits = malloc(1);
-	t_bitarray* bitarray = bitarray_create_with_mode(puntero_a_bits, block_count, LSB_FIRST);
+    // Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
+	off_t result = lseek(fd, block_count - 1, SEEK_SET);
+	if (result == -1) {
+		perror("Error al ajustar el tamaño del archivo");
+		exit(1);
+	}
+
+	// Escribir un byte nulo al final del archivo para que ocupe espacio
+	result = write(fd, "", 1);
+	if (result == -1) {
+		perror("Error al escribir en el archivo");
+		exit(1);
+	}
+
+
+    // Realizar el mapeo
+    void* mapping = mmap(NULL, block_count, PROT_WRITE, MAP_SHARED, fd, 0);
+    if (mapping == MAP_FAILED) {
+        perror("Error en mmap");
+        exit(1);
+    }
+
+    t_bitarray* bitarray_mapeado = bitarray_create_with_mode(mapping, block_count, LSB_FIRST);
+
+   // Pregunto la cantidad maxima de bits
+   size_t cantMaxBits = bitarray_get_max_bit(bitarray_mapeado);
+   printf("%lu\n", cantMaxBits);
+
+   // Escribir en la memoria mapeada
+   bitarray_set_bit(bitarray_mapeado, 0);
+
+   // Ver el valor que acabo de modificar
+   bool valor = bitarray_test_bit(bitarray_mapeado, 0);
+
+   printf("El valor del bit 0 es %i\n", valor);
+
+//       // Sincronizar los cambios con el archivo en disco
+       if (msync(mapping, block_count, MS_SYNC) == -1) {
+           perror("Error en msync");
+           exit(1);
+       }
+    // Liberar recursos después de su uso
+    munmap(mapping, block_count);
+    close(fd);
+    fclose(archivo_bitmap);
 
 	//config_set_value()
 
@@ -107,6 +154,35 @@ int main(void) {
     		fprintf(stderr, "Error al abrir el archivo de bloques.\n");
     		exit(1);
     	}
+
+    	int fd2 = fileno(archivo_bloques);
+		printf("File descriptor: %i\n" , fd2);
+
+		// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
+		off_t result2 = lseek(fd, tamanio_total - 1, SEEK_SET);
+		if (result2 == -1) {
+			perror("Error al ajustar el tamaño del archivo");
+			exit(1);
+		}
+
+		// Escribir un byte nulo al final del archivo para que ocupe espacio
+		result2 = write(fd2, "", 1);
+		if (result2 == -1) {
+			perror("Error al escribir en el archivo");
+			exit(1);
+		}
+
+
+		// Realizar el mapeo
+		void* mapping2 = mmap(NULL, tamanio_total, PROT_WRITE, MAP_SHARED, fd2, 0);
+		if (mapping2 == MAP_FAILED) {
+			perror("Error en mmap");
+			exit(1);
+		}
+
+		munmap(mapping, block_count);
+		close(fd);
+		fclose(archivo_bitmap);
 
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
