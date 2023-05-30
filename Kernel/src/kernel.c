@@ -133,23 +133,6 @@ void serializarContexto(int unSocket){
 //	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 //	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 
-//PODRÍAMOS DIRECTAMENTE TRABAJAR CON estadoEnEjecucion
-//	t_contextoEjecucion contexto;
-//	contexto.programCounter = estadoEnEjecucion.programCounter;
-//	strcpy(contexto.registrosCpu.AX, estadoEnEjecucion.registrosCpu.AX);
-//	strcpy(contexto.registrosCpu.BX, estadoEnEjecucion.registrosCpu.BX);
-//	strcpy(contexto.registrosCpu.CX, estadoEnEjecucion.registrosCpu.CX);
-//	strcpy(contexto.registrosCpu.DX, estadoEnEjecucion.registrosCpu.DX);
-//
-//	strcpy(contexto.registrosCpu.EAX, estadoEnEjecucion.registrosCpu.EAX);
-//	strcpy(contexto.registrosCpu.EBX, estadoEnEjecucion.registrosCpu.EBX);
-//	strcpy(contexto.registrosCpu.ECX, estadoEnEjecucion.registrosCpu.ECX);
-//	strcpy(contexto.registrosCpu.EDX, estadoEnEjecucion.registrosCpu.EDX);
-//
-//	strcpy(contexto.registrosCpu.RAX, estadoEnEjecucion.registrosCpu.RAX);
-//	strcpy(contexto.registrosCpu.RBX, estadoEnEjecucion.registrosCpu.RBX);
-//	strcpy(contexto.registrosCpu.RCX, estadoEnEjecucion.registrosCpu.RCX);
-//	strcpy(contexto.registrosCpu.RDX, estadoEnEjecucion.registrosCpu.RDX);
 
 //	list_add_all(contexto.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
 

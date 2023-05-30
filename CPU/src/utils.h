@@ -23,7 +23,12 @@ typedef enum
 	CONTEXTO,
 	INSTRUCCIONES
 }op_code;
-
+typedef enum
+{
+	SET,
+	YIELD,
+	EXIT
+}nombre_instruccion;
 //client
 typedef struct
 {

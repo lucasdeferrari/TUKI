@@ -29,8 +29,31 @@ void iniciar_ejecucion(){
 int ejecutarFuncion(char* proximaInstruccion){
 
 	int continuarLeyendo = 0; //valor de prueba por ahora
+//char**  string_split(char * text, char * separator);
+	char** arrayInstruccion = string_split(proximaInstruccion, " ");
+	char* nombreInstruccion = arrayInstruccion[0];
+	printf("%s", nombreInstruccion);
+	switch (nombreInstruccion) {
+	    		case SET:
 
-	//Reconoce la funcion y sus parámetros
+	    		case YIELD:
+
+	    			break;
+	    		case EXIT:
+
+	    			break;
+	    		case CONTEXTO:
+
+	    			break;
+	    		case -1:
+	    			log_error(logger, "\nel kernel se desconecto. Terminando servidor");
+	    			return EXIT_FAILURE;
+				default:
+					log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
+					break;
+	    	}
+	    }
+	//Reconoce la funcion (con split y head) y  despues sus parámetros (que se pasarian directo a la funcion)
 	//Ejecuta la función actualizando el contexto
 	//Dependiendo del tipo de funcion va a asignarle el valor correspondiente a continuarLeyendo
 
