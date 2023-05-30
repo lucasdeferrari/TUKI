@@ -36,8 +36,8 @@ int main(void) {
 
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
-    iniciarHiloClienteCPU();
-//    iniciarHiloClienteMemoria();
+//  iniciarHiloClienteCPU();
+//  iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
 
     //thread server
@@ -255,7 +255,7 @@ void serializarContexto(int unSocket){
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
 //	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.listaInstrucciones->head->data);
-	//printf("Contexto sin instrucciones enviado a CPU. \n");
+	printf("Contexto sin instrucciones enviado a CPU. \n");
 
 	//free memoria dinámica
 	//free(contextoPRUEBA.instruccion);
@@ -273,9 +273,8 @@ void* clientCPU(void* ptr) {
 	int config=1;
     int conexion_CPU;
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
-    log_info(logger, "Ingrese sus mensajes para la CPU ");
+    //log_info(logger, "Ingrese sus mensajes para la CPU ");
     //paquete(conexion_CPU);
-//    recibir_mensaje(conexion_CPU);
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
 
     //enviamos las intrucciones del contexto
