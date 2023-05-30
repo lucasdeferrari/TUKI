@@ -147,7 +147,7 @@ int main(void) {
 		 printf("No existe el path a los bloques.\n");
 		 exit(5);
 		 }
-    archivo_bloques = fopen(p_bloques, "r");
+    archivo_bloques = fopen(p_bloques, "r+");
     	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
     	if (archivo_bloques == NULL) {
@@ -159,7 +159,7 @@ int main(void) {
 		printf("File descriptor: %i\n" , fd2);
 
 		// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
-		off_t result2 = lseek(fd, tamanio_total - 1, SEEK_SET);
+		off_t result2 = lseek(fd2, tamanio_total - 1, SEEK_SET);
 		if (result2 == -1) {
 			perror("Error al ajustar el tamaño del archivo");
 			exit(1);
@@ -180,9 +180,19 @@ int main(void) {
 			exit(1);
 		}
 
-		munmap(mapping, block_count);
-		close(fd);
-		fclose(archivo_bitmap);
+//		char* mapped_data = (char*) mapping2;
+//		mapped_data[0] = 'A';
+
+	   // Sincronizar los cambios con el archivo en disco
+	   if (msync(mapping2, tamanio_total, MS_SYNC) == -1) {
+		   perror("Error en msync");
+		   exit(1);
+		   }
+
+	   // Liberando recursos
+		munmap(mapping2, tamanio_total);
+		close(fd2);
+		fclose(archivo_bloques);
 
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
@@ -271,6 +281,7 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
+    			enviar_respuesta(cliente_fd, "kernel");
     			break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
@@ -317,5 +328,13 @@ void paquete(int conexion)
 
 	free(leido);
 	eliminar_paquete(paquete);
+
+}
+
+void enviar_respuesta(int socket_cliente, char* quien_es) {
+	char* handshake = quien_es;
+	char* respuesta = string_new();
+	respuesta = "Hola kernel, gracias por comunicarte con el fileSystem!";
+	enviar_mensaje(respuesta, socket_cliente);
 
 }

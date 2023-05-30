@@ -38,7 +38,7 @@ int main(void) {
 //    //thread clients CPU, FS, Memoria
 //    iniciarHiloClienteCPU();
 //    iniciarHiloClienteMemoria();
-//    iniciarHiloClienteFileSystem();
+    iniciarHiloClienteFileSystem();
 
     //thread server
 
@@ -308,12 +308,15 @@ void* clientMemoria(void* ptr) {
 }
 
 void* clientFileSystem(void* ptr) {
-	sem_wait(&semKernelClientFileSystem);
+	//sem_wait(&semKernelClientFileSystem);
 	int config = 1;
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
     log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
     paquete(conexion_FileSystem);
+    int cod_op = recibir_operacion(conexion_FileSystem);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_FileSystem);
     liberar_conexion(conexion_FileSystem);
 
     sem_post(&semKernelServer);
@@ -336,7 +339,7 @@ void iniciarHiloServer() {
 
 void* serverKernel(void* ptr){
 
-	//sem_wait(&semKernelServer);
+	sem_wait(&semKernelServer);
 
     //int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir al cliente");
