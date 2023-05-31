@@ -2,6 +2,30 @@
 
 t_config* config;
 
+void inicializarRecursos(){
+	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
+	//    recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
+	//    instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+
+	    //valores prueba
+	    int instancias_recursos[] = {1,2};
+	    char* recursos[] = {"DISCO", "RECURSO_1"};
+
+	    int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
+
+
+
+	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
+	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
+//	    int i;
+//	    for (i=0;i<cantidadDeRecursos;i++){
+//
+//
+//	    }
+
+
+}
+
 int main(void) {
 
 	sem_init(&semKernelClientCPU,0,1);
@@ -27,19 +51,18 @@ int main(void) {
     puerto_filesystem = config_get_string_value(config, "PUERTO_FILESYSTEM");
     puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
     algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
-
     hrrn_alfa = config_get_int_value(config, "HRRN_ALFA");
     grado_max_multiprogramación = config_get_int_value(config, "GRADO_MAX_MULTIPROGRAMACION");
-    //recursos = config_get_string_value(config, "RECURSOS");
-    //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
+
+
 
     //Representa que no hay ningun estado en ejecucion
-
     estadoEnEjecucion = malloc(sizeof(t_infopcb));
     int ningunEstado = -1;
     estadoEnEjecucion->pid = ningunEstado;
-    listaReady = list_create();
 
+    listaReady = list_create();
+    inicializarRecursos();
 
 
 //    //THREADS CONEXIÓN

@@ -24,8 +24,12 @@ double estimacion_inicial;
 int hrrn_alfa;
 int grado_max_multiprogramación ;
 int server_fd;
-//recursos ;
-//instancias_recursos ;
+
+//VERIFICAR TIPO
+//char ** recursos ;
+//char ** instancias_recursos ;
+
+//Manejo de recursos;
 
 //Inicializar punteros colas
 t_nodoCola** frenteColaNew = NULL; // Puntero al frente de la cola
@@ -37,8 +41,11 @@ t_nodoCola** finColaReady = NULL;
 
 //SI UTILIZAMOS HRRN
 t_list* listaReady;
+
 t_infopcb* estadoEnEjecucion;
 int pid = 1; //Contador del PID de los PCB
+
+
 
 
 //Semaforos e hilos
