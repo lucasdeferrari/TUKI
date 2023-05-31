@@ -34,9 +34,11 @@ int main(void) {
     //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
 
     //Representa que no hay ningun estado en ejecucion
-    estadoEnEjecucion.pid = -1;
-    listaReady = list_create();
 
+    estadoEnEjecucion = malloc(sizeof(t_infopcb));
+    int ningunEstado = -1;
+    estadoEnEjecucion->pid = ningunEstado;
+    listaReady = list_create();
 
 
 
@@ -45,6 +47,8 @@ int main(void) {
 //  iniciarHiloClienteCPU();
 //  iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
+
+
 
     //thread server
 
@@ -128,8 +132,8 @@ void* clientCPU(void* ptr) {
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
 
     //enviamos las intrucciones del contexto
-    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion.listaInstrucciones);
-    t_paquete* paquete = empaquetar(estadoEnEjecucion.listaInstrucciones);
+    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
+    t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
     printf("Instrucciones enviadas a CPU. \n");
@@ -226,8 +230,8 @@ void* serverKernel(void* ptr){
         			armarPCB(lista);  //arma el PCB y lo encola en NEW
         			printf("PCB encolado en NEW\n");
         			encolarReady();  //Si corresponde lo encola en Ready
-        			printf("PID EN EJECUCION: %d\n", estadoEnEjecucion.pid );
-        			if(estadoEnEjecucion.pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
+        			printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
+        			if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
         				desencolarReady();
         			}
 
@@ -405,17 +409,17 @@ void encolarReady() {
 
 void desencolarReady (){
 
-	// SI EL ALGORITMO DE PLANIFICACION ES FIFO
+	 //SI EL ALGORITMO DE PLANIFICACION ES FIFO
 
-//	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-//		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
-//		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
-//
-//		printf("Cola READY:\n");
-//		mostrarCola(frenteColaReady);
-//
-//		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion.pid);
-//	}
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
+		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
+
+		printf("Cola READY:\n");
+		mostrarCola(frenteColaReady);
+
+		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
+	}
 
 
 	// SI EL ALGORITMO DE PLANIFICACION ES HRRN
@@ -446,6 +450,14 @@ void desencolarReady (){
 		}
 
 		printf("PID MAX RAFAGA: %d\n", pidMaxRafaga);
+
+
+		estadoEnEjecucion = list_get(listaReady,pidMaxRafaga);
+
+		list_remove(listaReady,pidMaxRafaga);
+
+		printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
+		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 	}
 
@@ -671,19 +683,19 @@ t_paquete* empaquetar(t_list* cabeza) {
 void serializarContexto(int unSocket){
 
 	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
-	estadoEnEjecucion.programCounter = 0;
-	strcpy(estadoEnEjecucion.registrosCpu.AX,"HOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.BX,"HOL");
-	strcpy(estadoEnEjecucion.registrosCpu.CX,"HO");
-	strcpy(estadoEnEjecucion.registrosCpu.DX,"H");
-	strcpy(estadoEnEjecucion.registrosCpu.EAX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.EBX,"HOLAHOL");
-	strcpy(estadoEnEjecucion.registrosCpu.ECX,"HOLAHO");
-	strcpy(estadoEnEjecucion.registrosCpu.EDX,"HOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
+	estadoEnEjecucion->programCounter = 0;
+	strcpy(estadoEnEjecucion->registrosCpu.AX,"HOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.BX,"HOL");
+	strcpy(estadoEnEjecucion->registrosCpu.CX,"HO");
+	strcpy(estadoEnEjecucion->registrosCpu.DX,"H");
+	strcpy(estadoEnEjecucion->registrosCpu.EAX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.EBX,"HOLAHOL");
+	strcpy(estadoEnEjecucion->registrosCpu.ECX,"HOLAHO");
+	strcpy(estadoEnEjecucion->registrosCpu.EDX,"HOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.RBX,"HOLAHOLAHOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.RCX,"HOLAHOLA");
+	strcpy(estadoEnEjecucion->registrosCpu.RDX,"HOLA");
 
 
 //	list_add_all(contexto.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
@@ -700,7 +712,7 @@ void serializarContexto(int unSocket){
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion.registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion.registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion.registrosCpu.RAX)*4;
+	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion->registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion->registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion->registrosCpu.RAX)*4;
 
 	//	while (list_iterator_has_next(iterador)) {
 	//
@@ -713,44 +725,44 @@ void serializarContexto(int unSocket){
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
 
-	memcpy(stream + offset, &estadoEnEjecucion.programCounter, sizeof(int));
+	memcpy(stream + offset, &estadoEnEjecucion->programCounter, sizeof(int));
 	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.AX, sizeof(estadoEnEjecucion.registrosCpu.AX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.AX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.AX, sizeof(estadoEnEjecucion->registrosCpu.AX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.AX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.BX, sizeof(estadoEnEjecucion.registrosCpu.BX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.BX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.BX, sizeof(estadoEnEjecucion->registrosCpu.BX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.BX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.CX, sizeof(estadoEnEjecucion.registrosCpu.CX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.CX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.CX, sizeof(estadoEnEjecucion->registrosCpu.CX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.CX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.DX, sizeof(estadoEnEjecucion.registrosCpu.DX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.DX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.DX, sizeof(estadoEnEjecucion->registrosCpu.DX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.DX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EAX, sizeof(estadoEnEjecucion.registrosCpu.EAX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.EAX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EAX, sizeof(estadoEnEjecucion->registrosCpu.EAX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.EAX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EBX, sizeof(estadoEnEjecucion.registrosCpu.EBX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.EBX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EBX, sizeof(estadoEnEjecucion->registrosCpu.EBX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.EBX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.ECX, sizeof(estadoEnEjecucion.registrosCpu.ECX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.ECX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.ECX, sizeof(estadoEnEjecucion->registrosCpu.ECX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.ECX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.EDX, sizeof(estadoEnEjecucion.registrosCpu.EDX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.EDX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EDX, sizeof(estadoEnEjecucion->registrosCpu.EDX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.EDX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RAX, sizeof(estadoEnEjecucion.registrosCpu.RAX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.RAX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RAX, sizeof(estadoEnEjecucion->registrosCpu.RAX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.RAX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RBX, sizeof(estadoEnEjecucion.registrosCpu.RBX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.RBX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RBX, sizeof(estadoEnEjecucion->registrosCpu.RBX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.RBX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RCX, sizeof(estadoEnEjecucion.registrosCpu.RCX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.RCX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RCX, sizeof(estadoEnEjecucion->registrosCpu.RCX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.RCX);
 
-	memcpy(stream + offset, &estadoEnEjecucion.registrosCpu.RDX, sizeof(estadoEnEjecucion.registrosCpu.RDX));
-	offset += sizeof(estadoEnEjecucion.registrosCpu.RDX);
+	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RDX, sizeof(estadoEnEjecucion->registrosCpu.RDX));
+	offset += sizeof(estadoEnEjecucion->registrosCpu.RDX);
 
 //	while (list_iterator_has_next(iterador2)) {
 //		int indice = 0;

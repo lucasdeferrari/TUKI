@@ -37,7 +37,7 @@ t_nodoCola** finColaReady = NULL;
 
 //SI UTILIZAMOS HRRN
 t_list* listaReady;
-t_infopcb estadoEnEjecucion;
+t_infopcb* estadoEnEjecucion;
 int pid = 1; //Contador del PID de los PCB
 
 
