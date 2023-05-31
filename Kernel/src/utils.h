@@ -83,9 +83,12 @@ typedef struct infopcb {
     int programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
     t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
     t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
-	float estimadoProxRafaga;
 	int tiempoLlegadaReady;
 	t_nodoArchivos* punterosArchivos;
+	double estimadoProxRafaga;
+	float tiempoEsperaReady;
+	float tiempoEnEjecucion;
+
 } t_infopcb;
 
 
@@ -106,7 +109,7 @@ typedef struct {
 
 ///COLA
 typedef struct nodoCola {
-    t_infopcb info_pcb;
+    t_infopcb* info_pcb;
     struct nodoCola* sgte;
 } t_nodoCola;
 

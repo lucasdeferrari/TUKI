@@ -28,10 +28,16 @@ int main(void) {
     puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
     algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
 
-    hrrn_alfa = config_get_string_value(config, "HRRN_ALFA");
-    grado_max_multiprogramación = config_get_string_value(config, "GRADO_MAX_MULTIPROGRAMACION");
+    hrrn_alfa = config_get_int_value(config, "HRRN_ALFA");
+    grado_max_multiprogramación = config_get_int_value(config, "GRADO_MAX_MULTIPROGRAMACION");
     //recursos = config_get_string_value(config, "RECURSOS");
     //instancias_recursos = config_get_string_value(config, "INSTANCIAS_RECURSOS");
+
+    //Representa que no hay ningun estado en ejecucion
+    estadoEnEjecucion.pid = -1;
+    listaReady = list_create();
+
+
 
 
 //    //THREADS CONEXIÓN
@@ -112,6 +118,556 @@ void iniciarHiloClienteFileSystem() {
 
 }
 
+void* clientCPU(void* ptr) {
+	sem_wait(&semKernelClientCPU);
+	int config=1;
+    int conexion_CPU;
+    conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
+    //log_info(logger, "Ingrese sus mensajes para la CPU ");
+    //paquete(conexion_CPU);
+    serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
+
+    //enviamos las intrucciones del contexto
+    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion.listaInstrucciones);
+    t_paquete* paquete = empaquetar(estadoEnEjecucion.listaInstrucciones);
+    enviar_paquete(paquete, conexion_CPU);
+    eliminar_paquete(paquete);
+    printf("Instrucciones enviadas a CPU. \n");
+
+
+    liberar_conexion(conexion_CPU);
+
+    sem_post(&semKernelClientMemoria);
+	return NULL;
+}
+
+void* clientMemoria(void* ptr) {
+	sem_wait(&semKernelClientMemoria);
+	int config = 1;
+    int conexion_Memoria;
+    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    enviar_mensaje("kernel",conexion_Memoria);
+    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+    paquete(conexion_Memoria);
+    int cod_op = recibir_operacion(conexion_Memoria);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_Memoria);
+    liberar_conexion(conexion_Memoria);
+
+    sem_post(&semKernelClientFileSystem);
+	return NULL;
+}
+
+void* clientFileSystem(void* ptr) {
+	//sem_wait(&semKernelClientFileSystem);
+	int config = 1;
+    int conexion_FileSystem;
+    conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
+    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
+    paquete(conexion_FileSystem);
+    int cod_op = recibir_operacion(conexion_FileSystem);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_FileSystem);
+    liberar_conexion(conexion_FileSystem);
+
+    sem_post(&semKernelServer);
+	return NULL;
+}
+
+void iniciarHiloServer() {
+
+    int err = pthread_create( 	&serverKernel_thread,	// puntero al thread
+								NULL,
+								&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
+
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
+	exit(7);
+	}
+	//printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
+}
+
+void* serverKernel(void* ptr){
+
+	sem_wait(&semKernelServer);
+
+    //int server_fd = iniciar_servidor();
+    log_info(logger, "Kernel listo para recibir al cliente");
+    int cliente_fd = esperar_cliente(server_fd);
+
+    t_list* lista;
+    while (1) {
+    	int cod_op = recibir_operacion(cliente_fd);
+    	switch (cod_op) {
+    		case MENSAJE:
+    			char* handshake = recibir_handshake(cliente_fd);
+    			if (strcmp(handshake, "consola") == 0) {
+    				log_info(logger, "Se conecto una consola");
+    				//cosas de consola
+    			}
+    			if (strcmp(handshake, "kernel") == 0) {
+    				log_info(logger, "Se conecto el kernel");
+    				//cosas de kernel
+    			}
+    			if (strcmp(handshake, "CPU") == 0) {
+    				log_info(logger, "Se conecto la cpu");
+    				//cosas de cpu
+    			}
+    			if (strcmp(handshake, "filesystem") == 0) {
+    				log_info(logger, "Se conecto el filesystem");
+    				//cosas de fs
+    			}
+    			break;
+    		case PAQUETE:
+    			lista = recibir_paquete(cliente_fd); //Recibe paquete de instrucciones
+    			if (strcmp(handshake, "consola") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
+        			armarPCB(lista);  //arma el PCB y lo encola en NEW
+        			printf("PCB encolado en NEW\n");
+        			encolarReady();  //Si corresponde lo encola en Ready
+        			printf("PID EN EJECUCION: %d\n", estadoEnEjecucion.pid );
+        			if(estadoEnEjecucion.pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
+        				desencolarReady();
+        			}
+
+    				//cosas de consola
+
+        			//iniciarHiloClienteCPU();
+    			}
+    			if (strcmp(handshake, "memoria") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
+    				//cosas de kernel
+    			}
+    			if (strcmp(handshake, "CPU") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
+    				//cosas de cpu
+    			}
+    			if (strcmp(handshake, "filesystem") == 0) {
+    				log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
+    				//cosas de fs
+    			}
+
+    			//log_info(logger, "Me llegaron los siguientes valores:\n");
+    			//list_iterate(lista, (void*) iterator);
+    			break;
+    		case -1:
+    			free(handshake);
+    			sem_post(&semKernelServer);
+    			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
+    			return EXIT_FAILURE;
+    		default:
+    			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
+    			break;
+    	}
+    }
+
+	return NULL;
+}
+
+void armarPCB(t_list* lista){
+
+	t_infopcb* nuevoPCB = malloc(sizeof(t_infopcb));
+	estimacion_inicial = config_get_double_value(config, "ESTIMACION_INICIAL");
+
+	//inicializamos estructura
+	nuevoPCB->pid = pid;
+	nuevoPCB->listaInstrucciones = lista;
+	nuevoPCB->programCounter = 0;
+
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.AX); i++) {
+		nuevoPCB->registrosCpu.AX[i] = '\0';
+	    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.BX); i++) {
+		nuevoPCB->registrosCpu.BX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.CX); i++) {
+		nuevoPCB->registrosCpu.CX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.DX ); i++) {
+		nuevoPCB->registrosCpu.DX[i] = '\0';
+		    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EAX ); i++) {
+		nuevoPCB->registrosCpu.EAX[i] = '\0';
+			    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EBX ); i++) {
+			nuevoPCB->registrosCpu.EBX[i] = '\0';
+				    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.ECX ); i++) {
+				nuevoPCB->registrosCpu.ECX[i] = '\0';
+					    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EDX ); i++) {
+					nuevoPCB->registrosCpu.EDX[i] = '\0';
+						    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RAX ); i++) {
+			nuevoPCB->registrosCpu.RAX[i] = '\0';
+				    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RBX ); i++) {
+				nuevoPCB->registrosCpu.RBX[i] = '\0';
+					    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RCX ); i++) {
+					nuevoPCB->registrosCpu.RCX[i] = '\0';
+						    }
+	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RDX ); i++) {
+					nuevoPCB->registrosCpu.RDX[i] = '\0';
+						    }
+
+
+	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
+	nuevoPCB->estimadoProxRafaga = estimacion_inicial;
+	nuevoPCB->tiempoLlegadaReady = 0;
+	nuevoPCB->punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
+
+	//Encolamos en NEW (FIFO)
+	queue(&frenteColaNew, &finColaNew, nuevoPCB);
+
+	printf("Cola NEW:\n");
+	mostrarCola(frenteColaNew);
+
+	pid++;
+}
+
+void encolarReady() {
+
+	// SI EL ALGORITMO DE PLANIFICACION ES FIFO VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
+
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+		int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+
+		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+
+
+		if(lugaresDisponiblesReady > 0 ){
+
+			if(frenteColaNew != NULL){
+				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
+
+				cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+			}
+		}
+		else{
+			printf("Grado máximo de multiprogramación alcanzado. \n");
+		}
+
+		printf("Cola NEW:\n");
+		mostrarCola(frenteColaNew);
+		printf("Cola READY:\n");
+		//mostrarCola(frenteColaReady);
+
+	}
+
+
+
+
+	// SI EL ALGORITMO DE PLANIFICACION ES HRRN VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
+
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+		int cantidadElementosReady = list_size(listaReady);
+		printf("Cantidad de elementos en READY: %d \n",cantidadElementosReady);
+
+
+		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+
+
+		if(lugaresDisponiblesReady > 0 ){
+
+			if(frenteColaNew != NULL){
+
+				list_add(listaReady, unqueue(&frenteColaNew,&finColaNew));
+
+				cantidadElementosReady = list_size(listaReady);
+				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+				printf("Cola READY:\n");
+				t_infopcb* proceso = list_get(listaReady,0);
+				printf("PID: %d\n", proceso->pid);
+			}
+
+		}else{
+			printf("Grado máximo de multiprogramación alcanzado. \n");
+		}
+
+		printf("Cola NEW:\n");
+		mostrarCola(frenteColaNew);
+		//printf("Cola READY:\n");
+		//mostrarListaReady(listaReady);
+
+	}
+
+	return;
+}
+
+void desencolarReady (){
+
+	// SI EL ALGORITMO DE PLANIFICACION ES FIFO
+
+//	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
+//		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
+//
+//		printf("Cola READY:\n");
+//		mostrarCola(frenteColaReady);
+//
+//		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion.pid);
+//	}
+
+
+	// SI EL ALGORITMO DE PLANIFICACION ES HRRN
+
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+		//calcularHRRN()       //primero calculo HRRN y luego mando a ejecutar el que corresponda
+
+		int proxRafaga;
+		int maxRafaga = 0;
+		int pidMaxRafaga;
+		int i=0;
+		int cantidadElementosReady = list_size(listaReady);
+		t_infopcb* procesoActual = NULL;
+
+
+		while( i < cantidadElementosReady ){
+
+			procesoActual = list_get(listaReady,i);
+			proxRafaga = procesoActual->estimadoProxRafaga;
+
+			if(proxRafaga > maxRafaga){
+				maxRafaga = proxRafaga;
+				pidMaxRafaga = i;
+			}
+
+			i++;
+		}
+
+		printf("PID MAX RAFAGA: %d\n", pidMaxRafaga);
+
+	}
+
+
+	return;
+}
+
+void calcularHRRN(){
+
+	//max R = (w + s) / s     -> w = tiempo de espera
+
+	// S = ESTIMACION_INICIAL           CPU = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
+
+}
+
+
+
+void iterator(char* value) {
+    log_info(logger, value);
+}
+
+//Funciones client
+
+t_config* iniciar_config(void){
+	t_config* nuevo_config;
+
+	return nuevo_config;
+}
+
+void paquete(int conexion){
+	// Ahora toca lo divertido!
+	char* leido = string_new();
+	t_paquete* paquete = crear_paquete();
+
+	// Leemos y esta vez agregamos las lineas al paquete
+	leido = readline("> ");
+
+	while(strcmp(leido, "") != 0){
+		agregar_a_paquete(paquete, leido, strlen(leido)+1);
+		leido = readline("> ");
+	}
+
+	enviar_paquete(paquete, conexion);
+
+	free(leido);
+	eliminar_paquete(paquete);
+
+}
+
+//encolar
+void queue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew, t_infopcb* pcb) {
+	t_nodoCola* nuevo = malloc(sizeof(t_nodoCola)); // Reservamos memoria para el nuevo nodo
+    nuevo->info_pcb = pcb; // Guardamos el valor en el nuevo nodo
+    nuevo->sgte = NULL; // El siguiente nodo de nuevo es nulo
+    if (*frenteColaNew == NULL) { // Si la cola está vacía
+        *frenteColaNew = nuevo; // El nuevo nodo es el frente
+    } else { // Si no está vacía
+        (*finColaNew)->sgte = nuevo; // El siguiente del último nodo es el nuevo nodo
+    }
+    *finColaNew = nuevo; // El nuevo nodo es el nuevo fin
+}
+
+//desencolar
+t_infopcb* unqueue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew) {
+	t_infopcb* pcb_puntero;
+	t_nodoCola* temp;
+    if (*frenteColaNew == NULL) { // Si la cola está vacía
+        printf("La cola esta vacia\n");
+        exit(5); //Ver como salir de la funcion
+    }
+    pcb_puntero = (*frenteColaNew)->info_pcb; // Obtenemos el valor del frente
+    temp = *frenteColaNew; // Guardamos el frente temporalmente
+    *frenteColaNew = (*frenteColaNew)->sgte; // El siguiente del frente es el nuevo frente
+    if (*frenteColaNew == NULL) { // Si la cola quedó vacía
+        *finColaNew = NULL; // El fin es nulo
+    }
+free(temp); // Liberamos la memoria del frente anterior
+    return pcb_puntero; // Devolvemos el valor del frente
+}
+
+void mostrarCola(t_nodoCola* frenteColaNew) {
+    printf("Contenido de la cola:\n");
+    while (frenteColaNew != NULL) {
+        printf("PID: %d\n", frenteColaNew->info_pcb->pid);
+
+        printf("Lista de instrucciones:\n");
+        t_list* lista = frenteColaNew->info_pcb->listaInstrucciones;
+        for (int i = 0; i < list_size(lista); i++) {
+        	char* instruccion = list_get(lista, i);
+        	printf("\t%s\n", instruccion);
+        }
+
+        printf("Program Counter: %d\n", frenteColaNew->info_pcb->programCounter);
+//        printf("Registros CPU:\n");
+//        for (int i = 0; i < 12; i++) {
+//            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
+//        }
+        printf("Tabla de segmentos:\n");
+        t_nodoTablaSegmentos* tabla = frenteColaNew->info_pcb->tablaSegmentos;
+        while (tabla != NULL) {
+        	printf("Id: %p\n", tabla->info_tablaSegmentos.id);
+            printf("Base: %p\n", tabla->info_tablaSegmentos.direccionBase);
+            printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
+            tabla = tabla->sgte;
+        }
+        printf("Estimado próxima ráfaga: %f\n", frenteColaNew->info_pcb->estimadoProxRafaga);
+        printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->tiempoLlegadaReady);
+        printf("Punteros a archivos:\n");
+        t_nodoArchivos* punteros = frenteColaNew->info_pcb->punterosArchivos;
+        while (punteros != NULL) {
+            printf("%s\n", punteros->info_archivos);
+            punteros = punteros->sgte;
+        }
+        frenteColaNew = frenteColaNew->sgte;
+    }
+}
+
+int cantidadElementosCola(t_nodoCola* frenteCola) {
+    int contador = 0;
+    t_nodoCola* temp = frenteCola;
+
+    while (temp != NULL) {
+        contador++;
+        temp = temp->sgte;
+    }
+
+    return contador;
+}
+
+void agregarElementoListaReady(t_nodoCola** lista, t_infopcb* info) {
+    // Crear un nuevo nodo
+	t_nodoCola* nuevoNodo = (t_nodoCola*)malloc(sizeof(t_nodoCola));
+    nuevoNodo->info_pcb = info;
+    nuevoNodo->sgte = NULL;
+
+    // Si la lista está vacía, el nuevo nodo se convierte en el primer nodo
+    if (*lista == NULL) {
+        *lista = nuevoNodo;
+    } else {
+        // Recorrer la lista hasta llegar al último nodo
+    	t_nodoCola* nodoActual = *lista;
+        while (nodoActual->sgte != NULL) {
+            nodoActual = nodoActual->sgte;
+        }
+
+        // Enlazar el nuevo nodo al último nodo de la lista
+        nodoActual->sgte = nuevoNodo;
+    }
+}
+
+//void mostrarListaReady(t_list* lista) {
+//	t_list* nodoActual;
+//	nodoActual = list_create();
+//	nodoActual = lista;
+//	int c =0;
+//
+//    // Recorrer la lista y mostrar la información de cada nodo
+//    while (nodoActual != NULL) {
+//        // Mostrar la información del nodo actual
+//    	t_infopcb* primeroLista =malloc(sizeof(t_infopcb));
+//    	primeroLista=  list_get(lista,c);
+//        printf("PID: %d\n", primeroLista->pid);
+//
+//                printf("Lista de instrucciones:\n");
+//
+//                t_list* lista;
+//                lista = list_create();
+//                lista	=	primeroLista->listaInstrucciones;
+//                for (int i = 0; i < list_size(lista); i++) {
+//                	char* instruccion = list_get(lista, i);
+//                	printf("\t%s\n", instruccion);
+//                }
+//
+//                printf("Program Counter: %d\n", primeroLista->programCounter);
+//        //        printf("Registros CPU:\n");
+//        //        for (int i = 0; i < 12; i++) {
+//        //            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
+//        //        }
+//                printf("Tabla de segmentos:\n");
+//                t_nodoTablaSegmentos* tabla = primeroLista->tablaSegmentos;
+//                while (tabla != NULL) {
+//                	printf("Id: %p\n", tabla->info_tablaSegmentos.id);
+//                    printf("Base: %p\n", tabla->info_tablaSegmentos.direccionBase);
+//                    printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
+//                    tabla = tabla->sgte;
+//                }
+//                printf("Estimado próxima ráfaga: %f\n", primeroLista->estimadoProxRafaga);
+//                printf("Tiempo llegada a Ready: %d\n", primeroLista->tiempoLlegadaReady);
+//
+//        // Avanzar al siguiente nodo
+//        nodoActual = nodoActual->head->next;
+//        c++;
+//    }
+//}
+
+int cantidadElementosListaReady(t_nodoCola* lista) {
+    int contador = 0;
+    t_nodoCola* nodoActual = lista;
+
+    while (nodoActual != NULL) {
+        contador++;
+        nodoActual = nodoActual->sgte;
+    }
+
+    return contador;
+}
+
+t_paquete* empaquetar(t_list* cabeza) {
+
+    t_list_iterator* iterador = list_iterator_create(cabeza);
+    t_paquete* paquete = crear_paquete_instrucciones();
+
+    while (list_iterator_has_next(iterador)) {
+
+    	char* siguiente = list_iterator_next(iterador);
+    	int tamanio = (strlen(siguiente))+1;
+    	agregar_a_paquete(paquete, siguiente,tamanio );
+
+    }
+    return paquete;
+}
+
 void serializarContexto(int unSocket){
 
 	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
@@ -128,10 +684,6 @@ void serializarContexto(int unSocket){
 	strcpy(estadoEnEjecucion.registrosCpu.RBX,"HOLAHOLAHOLA");
 	strcpy(estadoEnEjecucion.registrosCpu.RCX,"HOLAHOLA");
 	strcpy(estadoEnEjecucion.registrosCpu.RDX,"HOLA");
-
-//ESTO TIRA SEGMENTATION FAULT, IGUAL NO HACE FALTA AGREGARLO PORQUE NOS LO MANDA CONSOLA
-//	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
-//	list_add(estadoEnEjecucion.listaInstrucciones, "WAIT DISCO");
 
 
 //	list_add_all(contexto.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
@@ -251,374 +803,6 @@ void serializarContexto(int unSocket){
 	return;
 }
 
-void* clientCPU(void* ptr) {
-	sem_wait(&semKernelClientCPU);
-	int config=1;
-    int conexion_CPU;
-    conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
-    //log_info(logger, "Ingrese sus mensajes para la CPU ");
-    //paquete(conexion_CPU);
-    serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
-
-    //enviamos las intrucciones del contexto
-    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion.listaInstrucciones);
-    t_paquete* paquete = empaquetar(estadoEnEjecucion.listaInstrucciones);
-    enviar_paquete(paquete, conexion_CPU);
-    eliminar_paquete(paquete);
-    printf("Instrucciones enviadas a CPU. \n");
-
-
-    liberar_conexion(conexion_CPU);
-
-    sem_post(&semKernelClientMemoria);
-	return NULL;
-}
-
-void* clientMemoria(void* ptr) {
-	sem_wait(&semKernelClientMemoria);
-	int config = 1;
-    int conexion_Memoria;
-    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("kernel",conexion_Memoria);
-    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-    paquete(conexion_Memoria);
-    int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_Memoria);
-    liberar_conexion(conexion_Memoria);
-
-    sem_post(&semKernelClientFileSystem);
-	return NULL;
-}
-
-void* clientFileSystem(void* ptr) {
-	//sem_wait(&semKernelClientFileSystem);
-	int config = 1;
-    int conexion_FileSystem;
-    conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
-    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
-    paquete(conexion_FileSystem);
-    int cod_op = recibir_operacion(conexion_FileSystem);
-    printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_FileSystem);
-    liberar_conexion(conexion_FileSystem);
-
-    sem_post(&semKernelServer);
-	return NULL;
-}
-
-void iniciarHiloServer() {
-
-    int err = pthread_create( 	&serverKernel_thread,	// puntero al thread
-								NULL,
-								&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
-								NULL); // argumentos de la función
-
-	if (err != 0) {
-	printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
-	exit(7);
-	}
-	//printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
-}
-
-void* serverKernel(void* ptr){
-
-	sem_wait(&semKernelServer);
-
-    //int server_fd = iniciar_servidor();
-    log_info(logger, "Kernel listo para recibir al cliente");
-    int cliente_fd = esperar_cliente(server_fd);
-
-    t_list* lista;
-    while (1) {
-    	int cod_op = recibir_operacion(cliente_fd);
-    	switch (cod_op) {
-    		case MENSAJE:
-    			char* handshake = recibir_handshake(cliente_fd);
-    			if (strcmp(handshake, "consola") == 0) {
-    				log_info(logger, "Se conecto una consola");
-    				//cosas de consola
-    			}
-    			if (strcmp(handshake, "kernel") == 0) {
-    				log_info(logger, "Se conecto el kernel");
-    				//cosas de kernel
-    			}
-    			if (strcmp(handshake, "CPU") == 0) {
-    				log_info(logger, "Se conecto la cpu");
-    				//cosas de cpu
-    			}
-    			if (strcmp(handshake, "filesystem") == 0) {
-    				log_info(logger, "Se conecto el filesystem");
-    				//cosas de fs
-    			}
-    			break;
-    		case PAQUETE:   //Recibe paquete de instrucciones, arma el PCB y lo encola en NEW
-    			lista = recibir_paquete(cliente_fd);
-    			if (strcmp(handshake, "consola") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
-        			armarPCB(lista);
-        			printf("PCB encolado en NEW\n");
-        			encolarReady();
-        			//printf("Cola NEW:\n");
-        			//mostrarCola(frenteColaNew);
-        			//printf("Cola READY:\n");
-        			//mostrarCola(frenteColaReady);
-    				//cosas de consola
-
-        			iniciarHiloClienteCPU();
-    			}
-    			if (strcmp(handshake, "memoria") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
-    				//cosas de kernel
-    			}
-    			if (strcmp(handshake, "CPU") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
-    				//cosas de cpu
-    			}
-    			if (strcmp(handshake, "filesystem") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
-    				//cosas de fs
-    			}
-
-    			//log_info(logger, "Me llegaron los siguientes valores:\n");
-    			//list_iterate(lista, (void*) iterator);
-    			break;
-    		case -1:
-    			free(handshake);
-    			sem_post(&semKernelServer);
-    			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
-    			return EXIT_FAILURE;
-    		default:
-    			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-    			break;
-    	}
-    }
-
-	return NULL;
-}
-
-void armarPCB(t_list* lista){
-
-	t_infopcb nuevoPCB;
-	estimacion_inicial = config_get_string_value(config, "ESTIMACION_INICIAL");
-
-	//inicializamos estructura
-	nuevoPCB.pid = pid;
-	nuevoPCB.listaInstrucciones = lista;
-	nuevoPCB.programCounter = 0;
-
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.AX); i++) {
-		nuevoPCB.registrosCpu.AX[i] = '\0';
-	    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.BX); i++) {
-		nuevoPCB.registrosCpu.BX[i] = '\0';
-		    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.CX); i++) {
-		nuevoPCB.registrosCpu.CX[i] = '\0';
-		    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.DX ); i++) {
-		nuevoPCB.registrosCpu.DX[i] = '\0';
-		    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EAX ); i++) {
-		nuevoPCB.registrosCpu.EAX[i] = '\0';
-			    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EBX ); i++) {
-			nuevoPCB.registrosCpu.EBX[i] = '\0';
-				    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.ECX ); i++) {
-				nuevoPCB.registrosCpu.ECX[i] = '\0';
-					    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.EDX ); i++) {
-					nuevoPCB.registrosCpu.EDX[i] = '\0';
-						    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RAX ); i++) {
-			nuevoPCB.registrosCpu.RAX[i] = '\0';
-				    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RBX ); i++) {
-				nuevoPCB.registrosCpu.RBX[i] = '\0';
-					    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RCX ); i++) {
-					nuevoPCB.registrosCpu.RCX[i] = '\0';
-						    }
-	for (int i = 0; i < sizeof(nuevoPCB.registrosCpu.RDX ); i++) {
-					nuevoPCB.registrosCpu.RDX[i] = '\0';
-						    }
-
-
-	nuevoPCB.tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-
-//solo sería necesario si quisiera inicializar tablaSegmentos con un valor distinto a NULL
-
-//	t_nodoTablaSegmentos* nodoTablaSegmentos = malloc(sizeof(t_nodoTablaSegmentos));
-//	nuevoPCB.tablaSegmentos->sgte=NULL;
-//	nuevoPCB.tablaSegmentos->info_tablaSegmentos.id=0;
-//	nuevoPCB.tablaSegmentos->info_tablaSegmentos.direccionBase = NULL;
-//	nuevoPCB.tablaSegmentos->info_tablaSegmentos.tamaño = 0;
-//	nuevoPCB.tablaSegmentos = nodoTablaSegmentos;
-
-	nuevoPCB.estimadoProxRafaga = atof(estimacion_inicial);
-	nuevoPCB.tiempoLlegadaReady = 0;
-
-	nuevoPCB.punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-
-//solo sería necesario si quisiera inicializar punterosArchivos con un valor distinto a NULL
-//	t_nodoArchivos* nodoPunterosArchivos = malloc(sizeof(t_nodoArchivos));
-//	nuevoPCB.punterosArchivos->info_archivos=NULL;
-//	nuevoPCB.punterosArchivos->sgte=NULL;
-//	nuevoPCB.punterosArchivos = nodoPunterosArchivos;
-
-	//Encolamos en NEW (FIFO)
-	queue(&frenteColaNew, &finColaNew, nuevoPCB);
-
-	pid++;
-}
-
-void encolarReady() {
-
-	//SI EL ALGORTIMO DE PLANIFICACIÓN ES FIFO, VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
-
-	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-		int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
-		int lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
-
-		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
-
-
-		if(lugaresDisponiblesReady > 0 ){
-
-			if(frenteColaNew != NULL){
-				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
-
-				cantidadElementosReady = cantidadElementosCola(frenteColaReady);
-				lugaresDisponiblesReady = atof(grado_max_multiprogramación) - cantidadElementosReady;
-				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
-			}
-		}
-		else{
-			printf("Grado máximo de multiprogramación alcanzado. \n");
-		}
-
-		printf("Proceso pasado a estadoEnEjecucion. \n");
-		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
-
-		//SI ES HRRN
-	}
-
-	return;
-}
-
-void iterator(char* value) {
-    log_info(logger, value);
-}
-
-//Funciones client
-
-t_config* iniciar_config(void){
-	t_config* nuevo_config;
-
-	return nuevo_config;
-}
-
-void paquete(int conexion){
-	// Ahora toca lo divertido!
-	char* leido = string_new();
-	t_paquete* paquete = crear_paquete();
-
-	// Leemos y esta vez agregamos las lineas al paquete
-	leido = readline("> ");
-
-	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido)+1);
-		leido = readline("> ");
-	}
-
-	enviar_paquete(paquete, conexion);
-
-	free(leido);
-	eliminar_paquete(paquete);
-
-}
-
-//encolar
-void queue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew, t_infopcb pcb) {
-	t_nodoCola* nuevo = malloc(sizeof(t_nodoCola)); // Reservamos memoria para el nuevo nodo
-    nuevo->info_pcb = pcb; // Guardamos el valor en el nuevo nodo
-    nuevo->sgte = NULL; // El siguiente nodo de nuevo es nulo
-    if (*frenteColaNew == NULL) { // Si la cola está vacía
-        *frenteColaNew = nuevo; // El nuevo nodo es el frente
-    } else { // Si no está vacía
-        (*finColaNew)->sgte = nuevo; // El siguiente del último nodo es el nuevo nodo
-    }
-    *finColaNew = nuevo; // El nuevo nodo es el nuevo fin
-}
-
-//desencolar
-t_infopcb unqueue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew) {
-	t_infopcb pcb_puntero;
-	t_nodoCola* temp;
-    if (*frenteColaNew == NULL) { // Si la cola está vacía
-        printf("La cola esta vacia\n");
-        exit(5); //Ver como salir de la funcion
-    }
-    pcb_puntero = (*frenteColaNew)->info_pcb; // Obtenemos el valor del frente
-    temp = *frenteColaNew; // Guardamos el frente temporalmente
-    *frenteColaNew = (*frenteColaNew)->sgte; // El siguiente del frente es el nuevo frente
-    if (*frenteColaNew == NULL) { // Si la cola quedó vacía
-        *finColaNew = NULL; // El fin es nulo
-    }
-free(temp); // Liberamos la memoria del frente anterior
-    return pcb_puntero; // Devolvemos el valor del frente
-}
-
-void mostrarCola(t_nodoCola* frenteColaNew) {
-    printf("Contenido de la cola:\n");
-    while (frenteColaNew != NULL) {
-        printf("PID: %d\n", frenteColaNew->info_pcb.pid);
-
-        printf("Lista de instrucciones:\n");
-        t_list* lista = frenteColaNew->info_pcb.listaInstrucciones;
-        for (int i = 0; i < list_size(lista); i++) {
-        	char* instruccion = list_get(lista, i);
-        	printf("\t%s\n", instruccion);
-        }
-
-        printf("Program Counter: %d\n", frenteColaNew->info_pcb.programCounter);
-//        printf("Registros CPU:\n");
-//        for (int i = 0; i < 12; i++) {
-//            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
-//        }
-        printf("Tabla de segmentos:\n");
-        t_nodoTablaSegmentos* tabla = frenteColaNew->info_pcb.tablaSegmentos;
-        while (tabla != NULL) {
-        	printf("Id: %p\n", tabla->info_tablaSegmentos.id);
-            printf("Base: %p\n", tabla->info_tablaSegmentos.direccionBase);
-            printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
-            tabla = tabla->sgte;
-        }
-        printf("Estimado próxima ráfaga: %f\n", frenteColaNew->info_pcb.estimadoProxRafaga);
-        printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb.tiempoLlegadaReady);
-        printf("Punteros a archivos:\n");
-        t_nodoArchivos* punteros = frenteColaNew->info_pcb.punterosArchivos;
-        while (punteros != NULL) {
-            printf("%s\n", punteros->info_archivos);
-            punteros = punteros->sgte;
-        }
-        frenteColaNew = frenteColaNew->sgte;
-    }
-}
-
-int cantidadElementosCola(t_nodoCola* frenteCola) {
-    int contador = 0;
-    t_nodoCola* temp = frenteCola;
-
-    while (temp != NULL) {
-        contador++;
-        temp = temp->sgte;
-    }
-
-    return contador;
-}
 
 char* recibir_handshake(int socket_cliente)
 {
@@ -628,17 +812,4 @@ char* recibir_handshake(int socket_cliente)
 	return buffer;
 }
 
-t_paquete* empaquetar(t_list* cabeza) {
 
-    t_list_iterator* iterador = list_iterator_create(cabeza);
-    t_paquete* paquete = crear_paquete_instrucciones();
-
-    while (list_iterator_has_next(iterador)) {
-
-    	char* siguiente = list_iterator_next(iterador);
-    	int tamanio = (strlen(siguiente))+1;
-    	agregar_a_paquete(paquete, siguiente,tamanio );
-
-    }
-    return paquete;
-}

@@ -20,9 +20,9 @@ char* ip_filesystem;
 char* puerto_filesystem;
 char* puerto_escucha;
 char* algoritmo_planificacion;
-char* estimacion_inicial;
-char* hrrn_alfa;
-char* grado_max_multiprogramación ;
+double estimacion_inicial;
+int hrrn_alfa;
+int grado_max_multiprogramación ;
 int server_fd;
 //recursos ;
 //instancias_recursos ;
@@ -30,9 +30,13 @@ int server_fd;
 //Inicializar punteros colas
 t_nodoCola** frenteColaNew = NULL; // Puntero al frente de la cola
 t_nodoCola** finColaNew = NULL; // Puntero al fin de la cola
+
+//SI UTILIZAMOS FIFO
 t_nodoCola** frenteColaReady= NULL;
 t_nodoCola** finColaReady = NULL;
 
+//SI UTILIZAMOS HRRN
+t_list* listaReady;
 t_infopcb estadoEnEjecucion;
 int pid = 1; //Contador del PID de los PCB
 
@@ -54,10 +58,13 @@ void serializarContexto(int );
 
 
 void armarPCB(t_list*);
-void queue(t_nodoCola** , t_nodoCola** , t_infopcb);
-t_infopcb unqueue(t_nodoCola** , t_nodoCola** );
+void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
+t_infopcb* unqueue(t_nodoCola** , t_nodoCola** );
 void mostrarCola(t_nodoCola* );
 int cantidadElementosCola(t_nodoCola*);
+void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
+void mostrarListaReady(t_list*);
+int cantidadElementosListaReady(t_nodoCola*);
 
 void iterator(char* value);
 t_log* iniciar_logger(void);
