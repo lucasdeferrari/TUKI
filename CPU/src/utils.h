@@ -27,7 +27,20 @@ typedef enum
 {
 	SET,
 	YIELD,
-	EXIT
+	EXIT,
+	IO,
+	WAIT,
+	SIGNAL,
+	MOV_IN,
+	MOV_OUT,
+	F_OPEN,
+	F_CLOSE,
+	F_SEEK,
+	F_READ,
+	F_WRITE,
+	F_TRUNCATE,
+	CREATE_SEGMENT,
+	DELETE_SEGMENT
 }nombre_instruccion;
 //client
 typedef struct
@@ -75,6 +88,7 @@ typedef struct {
 	int instruccion_length;
 	char* instruccion;
 	char* recursoSolicitado;
+	char* recursoALiberar;
 	int tiempoBloqueado;
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar

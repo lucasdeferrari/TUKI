@@ -1,68 +1,6 @@
 #include "CPU.h"
 t_config* config;
 
-void iniciar_ejecucion(){
-
-	//MIENTRAS LA INSTRUCCION NO SEA EXIT, I/O, WAIT, YIELD, .   ( O UN ERROR, F_*, *_SEGMENT )
-	//HAY QUE SEGUIR EJECUTANDO LAS INSTRUCCIONES Y ACTUALIZANDO EL CONTEXTO PARA ENVIARLO DESPUÉS A KERNEL
-
-	//SI HAY UN SIGNAL HAY QUE AVISARLE A KERNEL, VER SI DEVOLVEMOS EL CONTEXTO O ENVIAMOS OTRO TIPO DE PAQUETE
-
-	int continuarLeyendo = 1;
-
-	while(continuarLeyendo>0){
-
-		//list_get retorna el contenido de una posicion determianda de la lista
-		char* proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
-
-		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
-
-		//ejecutarFuncion: ejecuta la función que corresponde y retorna un int para saber si debe seguir ejecutando
-		continuarLeyendo = ejecutarFuncion(proximaInstruccion);
-
-	}
-
-	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
-	// serializarContexto()
-
-	return;
-}
-
-int ejecutarFuncion(char* proximaInstruccion){
-
-	int continuarLeyendo = 0; //valor de prueba por ahora
-//char**  string_split(char * text, char * separator);
-	char** arrayInstruccion = string_split(proximaInstruccion, " ");
-	char* nombreInstruccion = arrayInstruccion[0];
-	printf("%s", nombreInstruccion);
-//	switch (nombreInstruccion) {
-//	    		case SET:
-//
-//	    		case YIELD:
-//
-//	    			break;
-//	    		case EXIT:
-//
-//	    			break;
-//	    		case CONTEXTO:
-//
-//	    			break;
-//	    		case -1:
-//	    			log_error(logger, "\nel kernel se desconecto. Terminando servidor");
-//	    			return EXIT_FAILURE;
-//				default:
-//					log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-//					break;
-//	    	}
-//}
-	//Reconoce la funcion (con split y head) y  despues sus parámetros (que se pasarian directo a la funcion)
-	//Ejecuta la función actualizando el contexto
-	//Dependiendo del tipo de funcion va a asignarle el valor correspondiente a continuarLeyendo
-
-	return continuarLeyendo;
-}
-
-
 int main(void) {
 
 	sem_init(&semCPUServer,0,1);
@@ -97,8 +35,6 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-
-
 void iniciarHiloCliente() {
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
@@ -111,7 +47,6 @@ void iniciarHiloCliente() {
 	exit(7);
 	}
 	printf("El hilo cliente de la Memoria se creo correctamente.");
-
 }
 
 void* clientMemoria(void* ptr) {
@@ -126,10 +61,7 @@ void* clientMemoria(void* ptr) {
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
     recibir_mensaje(conexion_Memoria);
-//    int valread = read(conexion_Memoria, buffer, 1024);
-//    printf("Respuesta del servidor: %s\n", buffer);
     liberar_conexion(conexion_Memoria);
-
 
     sem_post(&semCPUClientMemoria);
 	return NULL;
@@ -147,7 +79,6 @@ void iniciarHiloServer() {
 	  exit(7);
 	 }
 	 printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
-
 }
 
 void* serverCPU(void* ptr){
@@ -247,68 +178,161 @@ void paquete(int conexion)
 
 }
 
+void iniciar_ejecucion(){
+	int continuarLeyendo = 1;
+
+	while(continuarLeyendo>0){
+
+		//list_get retorna el contenido de una posicion determianda de la lista
+		char* proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
+
+		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
+
+		//ejecutarFuncion: ejecuta la función que corresponde y retorna un int para saber si debe seguir ejecutando
+		continuarLeyendo = ejecutarFuncion(proximaInstruccion);
+
+	}
+
+	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
+	// serializarContexto()
+
+	return;
+}
+
+int ejecutarFuncion(char* proximaInstruccion){
+
+	int continuarLeyendo = 0;
+	char** arrayInstruccion = string_split(proximaInstruccion, " ");
+	char* nombreInstruccion = arrayInstruccion[0];
+
+	printf("%s", nombreInstruccion);
+
+	contexto->programCounter++;
+	switch (nombreInstruccion) {
+	   case SET:
+			char* setParam1 = string_new();
+			char* setParam2= string_new();
+			setParam1 = string_duplicate(arrayInstruccion[1]);
+			setParam2 = string_duplicate(arrayInstruccion[2]);
+			set_tp(setParam1, setParam2);
+			free(setParam1);
+			free(setParam2);
+			continuarLeyendo = 1;
+			break;
+
+		case YIELD:
+			yield_tp();
+			break;
+
+		case EXIT:
+			exit_tp();
+			break;
+
+		case IO:
+			int ioParam = arrayInstruccion[1];
+			i_o_tp(ioParam);
+			break;
+
+		case WAIT:
+			char* recursoWait = string_new();
+			recursoWait = string_duplicate(arrayInstruccion[1]);
+			wait_tp(recursoWait);
+			break;
+
+		case SIGNAL:
+			char* recursoSignal = string_new();
+			recursoSignal = string_duplicate(arrayInstruccion[1]);
+			signal_tp(recursoSignal);
+			break;
+
+		case MOV_IN:
+			continuarLeyendo = 1;
+			break;
+
+		case MOV_OUT:
+			continuarLeyendo = 1;
+			break;
+
+		case F_OPEN:
+			break;
+
+		case F_CLOSE:
+			break;
+
+		case F_SEEK:
+			break;
+
+		case F_READ:
+			break;
+
+		case F_WRITE:
+			break;
+
+		case F_TRUNCATE:
+			break;
+
+		case CREATE_SEGMENT:
+			break;
+
+		case DELETE_SEGMENT:
+			break;
+
+
+		default:
+			log_warning(logger,"\Instruccion desconocida. No quieras meter la pata");
+			break;
+	}
+
+	//Reconoce la funcion (con split y head) y  despues sus parámetros (que se pasarian directo a la funcion)
+	//Ejecuta la función actualizando el contexto
+	//Dependiendo del tipo de funcion va a asignarle el valor correspondiente a continuarLeyendo
+
+	return continuarLeyendo;
+}
+
+
 // FUNCIONES INSTRUCCIONES
 
 
 // REVISAR FUNCION SET
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
-void set_tp(char* reg, char* valor){
-	strcpy(reg, valor);
+void set_tp(char* registro, char* valor){
+	registro = string_duplicate(valor);
+	contexto->instruccion = string_duplicate("set");
+	return;
 	//delay 1000ml
 }
 
-//COMPLETAT FUNCIONES
-
-
 // YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU.
 void yield_tp(){
-
-	//strcpy(contexto->instruccion, "yield");
-	contexto->programCounter++;
-
+	contexto->instruccion = string_duplicate("yield");
     return;
 }
 
 // EXIT: Esta instrucción representa la syscall de finalización del proceso.
 void exit_tp(){
-
-	//strcpy(contexto->instruccion, "exit");
-	contexto->programCounter++;
-
+	contexto->instruccion = string_duplicate("exit");
 	return;
 }
 
-
 //I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
 //Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la cantidad de unidades de tiempo que va a bloquearse el proceso
-void i_o_tp() {
-
-	//strcpy(contexto->instruccion, "i/o");
-	contexto->programCounter++;
-	//contexto->tiempoBloqueado = 1000;
-
+void i_o_tp(int tiempoBloqueado) {
+	contexto->instruccion = string_duplicate("i/o");
+	contexto->tiempoBloqueado = tiempoBloqueado;
 	return;
 }
 
 ////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia del recurso indicado por parámetro.
-void wait_tp() {
-
-		contexto->programCounter++;
-		//strcpy(contexto->instruccion, "wait");
-
-
-		//strcpy(contexto->recursoSolicitado, recurso);
-
-
-		return;
+void wait_tp(char* recurso) {
+	contexto->instruccion = string_duplicate("wait");
+	contexto->recursoSolicitado = string_duplicate(recurso);
+	return;
 }
 
 //SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia del recurso indicado por parámetro.
-void signal_tp() {
-
-	contexto->programCounter++;
-	//strcpy(contexto->instruccion, "signal");
-
-
+void signal_tp(char* recurso) {
+	contexto->instruccion = string_duplicate("signal");
+	contexto->recursoALiberar = string_duplicate(recurso);
 	return;
 }

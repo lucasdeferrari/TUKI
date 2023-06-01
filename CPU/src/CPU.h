@@ -8,6 +8,7 @@
 #include "utils.h"
 #include <commons/string.h>
 #include <commons/config.h>
+#include <commons/string.h>
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
@@ -33,10 +34,11 @@ void i_o_tp();
 void wait_tp();
 void signal_tp();
 
-ejecutarFuncion(char*);
+int ejecutarFuncion(char*);
+void iniciar_ejecucion();
 
 
-void iterator(char* value);
+void iterator(char*);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
