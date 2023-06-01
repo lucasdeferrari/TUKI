@@ -10,7 +10,6 @@ void iterator(char* value) {
 }
 
 int main(void) {
-
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
 	server_fd = iniciar_servidor();
 	log_info(logger, "Memoria lista para recibir al cliente\n");
@@ -21,11 +20,9 @@ int main(void) {
 	}
 
 	return EXIT_SUCCESS;
-
 }
 
 void iniciarHiloServer() {
-
     int err = pthread_create( &serverMemoria_thread,	// puntero al thread
     	            NULL,
     	        	&serverMemoria, // le paso la def de la función que quiero que ejecute mientras viva
@@ -35,8 +32,6 @@ void iniciarHiloServer() {
     	      printf("\nNo se pudo crear el hilo de la conexión.\n");
     	      exit(7);
     	     }
-    	     //printf("\nEl hilo de la conexión se creo correctamente.\n");
-
 }
 
 
@@ -103,7 +98,6 @@ void enviar_respuesta(int socket_cliente, char* quien_es) {
 		if (strcmp(handshake, "CPU") == 0) {
 			printf("matchee con cpu");
 			respuesta = "Hola cpu, gracias por comunicarte con la memoria!";
-//			send(socket_cliente, respuesta, strlen(respuesta)+1, 0);
 			enviar_mensaje(respuesta, socket_cliente);
 
 		}
@@ -118,7 +112,6 @@ char* recibir_handshake(int socket_cliente)
 {
 	int size;
 	char* buffer = recibir_buffer(&size, socket_cliente);
-	//log_info(logger, "Me llego el mensaje %s", buffer);
 	return buffer;
 }
 

@@ -42,6 +42,7 @@ int main(void) {
 		fprintf(stderr, "Error al abrir el archivo de superbloque.\n");
 		exit(1);
 	}
+
 	t_config* superbloque;
 	superbloque = config_create(p_superbloque);
 
@@ -127,11 +128,11 @@ int main(void) {
 
    printf("El valor del bit 0 es %i\n", valor);
 
-//       // Sincronizar los cambios con el archivo en disco
-       if (msync(mapping, block_count, MS_SYNC) == -1) {
-           perror("Error en msync");
-           exit(1);
-       }
+   // Sincronizar los cambios con el archivo en disco
+   if (msync(mapping, block_count, MS_SYNC) == -1) {
+	   perror("Error en msync");
+	   exit(1);
+   }
     // Liberar recursos después de su uso
     munmap(mapping, block_count);
     close(fd);
@@ -148,51 +149,51 @@ int main(void) {
 		 exit(5);
 		 }
     archivo_bloques = fopen(p_bloques, "r+");
-    	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
+	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
-    	if (archivo_bloques == NULL) {
-    		fprintf(stderr, "Error al abrir el archivo de bloques.\n");
-    		exit(1);
-    	}
+	if (archivo_bloques == NULL) {
+		fprintf(stderr, "Error al abrir el archivo de bloques.\n");
+		exit(1);
+	}
 
-    	int fd2 = fileno(archivo_bloques);
-		printf("File descriptor: %i\n" , fd2);
+	int fd2 = fileno(archivo_bloques);
+	printf("File descriptor: %i\n" , fd2);
 
-		// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
-		off_t result2 = lseek(fd2, tamanio_total - 1, SEEK_SET);
-		if (result2 == -1) {
-			perror("Error al ajustar el tamaño del archivo");
-			exit(1);
-		}
+	// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
+	off_t result2 = lseek(fd2, tamanio_total - 1, SEEK_SET);
+	if (result2 == -1) {
+		perror("Error al ajustar el tamaño del archivo");
+		exit(1);
+	}
 
-		// Escribir un byte nulo al final del archivo para que ocupe espacio
-		result2 = write(fd2, "", 1);
-		if (result2 == -1) {
-			perror("Error al escribir en el archivo");
-			exit(1);
-		}
+	// Escribir un byte nulo al final del archivo para que ocupe espacio
+	result2 = write(fd2, "", 1);
+	if (result2 == -1) {
+		perror("Error al escribir en el archivo");
+		exit(1);
+	}
 
 
-		// Realizar el mapeo
-		void* mapping2 = mmap(NULL, tamanio_total, PROT_WRITE, MAP_SHARED, fd2, 0);
-		if (mapping2 == MAP_FAILED) {
-			perror("Error en mmap");
-			exit(1);
-		}
+	// Realizar el mapeo
+	void* mapping2 = mmap(NULL, tamanio_total, PROT_WRITE, MAP_SHARED, fd2, 0);
+	if (mapping2 == MAP_FAILED) {
+		perror("Error en mmap");
+		exit(1);
+	}
 
 //		char* mapped_data = (char*) mapping2;
 //		mapped_data[0] = 'A';
 
-	   // Sincronizar los cambios con el archivo en disco
-	   if (msync(mapping2, tamanio_total, MS_SYNC) == -1) {
-		   perror("Error en msync");
-		   exit(1);
-		   }
+   // Sincronizar los cambios con el archivo en disco
+   if (msync(mapping2, tamanio_total, MS_SYNC) == -1) {
+	   perror("Error en msync");
+	   exit(1);
+	   }
 
-	   // Liberando recursos
-		munmap(mapping2, tamanio_total);
-		close(fd2);
-		fclose(archivo_bloques);
+   // Liberando recursos
+	munmap(mapping2, tamanio_total);
+	close(fd2);
+	fclose(archivo_bloques);
 
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
@@ -217,7 +218,6 @@ int main(void) {
 }
 
 void iniciarHiloCliente() {
-
 	int err = pthread_create( &client_Memoria,	// puntero al thread
 	     	        NULL,
 	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
@@ -228,7 +228,6 @@ void iniciarHiloCliente() {
 	     	  exit(7);
 	     	 }
 	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
-
 }
 
 void* clientMemoria(void* ptr) {
@@ -247,7 +246,6 @@ void* clientMemoria(void* ptr) {
 }
 
 void iniciarHiloServer() {
-
     int err = pthread_create( &serverFileSystem_thread,	// puntero al thread
     	            NULL,
     	        	&serverFileSystem, // le paso la def de la función que quiero que ejecute mientras viva
@@ -258,12 +256,9 @@ void iniciarHiloServer() {
     	      exit(7);
     	     }
     	     printf("\nEl hilo de la conexión Kernel-FileSystem se creo correctamente.\n");
-
 }
 
-
 void* serverFileSystem(void* ptr){
-
 	sem_wait(&semFileSystemClientMemoria);
 
     int server_fd = iniciar_servidor();
@@ -336,5 +331,4 @@ void enviar_respuesta(int socket_cliente, char* quien_es) {
 	char* respuesta = string_new();
 	respuesta = "Hola kernel, gracias por comunicarte con el fileSystem!";
 	enviar_mensaje(respuesta, socket_cliente);
-
 }
