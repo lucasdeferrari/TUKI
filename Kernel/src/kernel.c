@@ -4,14 +4,26 @@ t_config* config;
 
 void inicializarRecursos(){
 	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
-	//    recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
-	//    instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
+	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+
+	//int cantidadRecursos = string_array_size(recursos);
+	//int contador = 0;
+
+	while(!string_array_is_empty(recursos)){
+		t_recursos* unRecurso;
+		unRecurso->recurso = string_array_pop(recursos);
+		int instanciaRecurso= string_array_pop(instancias_recursos);
+		unRecurso->instancias = strtol(instanciaRecurso, NULL, 10);
+		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
+		//contador ++;
+	}
 
 	    //valores prueba
-	    int instancias_recursos[] = {1,2};
-	    char* recursos[] = {"DISCO", "RECURSO_1"};
+	//    int instancias_recursos[] = {1,2};
+	//    char* recursos[] = {"DISCO", "RECURSO_1"};
 
-	    int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
+	//   int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
 
 
 
@@ -27,7 +39,6 @@ void inicializarRecursos(){
 }
 
 int main(void) {
-
 	sem_init(&semKernelClientCPU,0,1);
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semKernelClientFileSystem,0,0);
@@ -62,6 +73,7 @@ int main(void) {
     estadoEnEjecucion->pid = ningunEstado;
 
     listaReady = list_create();
+    listaRecursos = list_create();
     inicializarRecursos();
 
 

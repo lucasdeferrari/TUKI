@@ -72,6 +72,7 @@ int cantidadElementosCola(t_nodoCola*);
 void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
 void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
+t_list* listaRecursos;
 
 void iterator(char* value);
 t_log* iniciar_logger(void);
