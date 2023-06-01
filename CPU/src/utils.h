@@ -23,6 +23,7 @@ typedef enum
 	CONTEXTO,
 	INSTRUCCIONES
 }op_code;
+
 typedef enum
 {
 	SET,
@@ -93,7 +94,7 @@ typedef struct {
 	t_list* listaInstrucciones;
 	int programCounter; // numero de la siguiente instrucción a ejecutar
 	t_registrosCPU registrosCpu;
-	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+	//t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 } t_contextoEjecucion;
 
 

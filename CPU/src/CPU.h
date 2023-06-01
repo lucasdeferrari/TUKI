@@ -30,12 +30,14 @@ pthread_t serverCPU_thread, client_Memoria;
 //Funciones instrucciones
 void yield_tp();
 void exit_tp();
-void i_o_tp();
-void wait_tp();
-void signal_tp();
+void i_o_tp(int);
+void wait_tp(char* );
+void signal_tp(char* );
+void set_tp(char* , char* );
 
 int ejecutarFuncion(char*);
 void iniciar_ejecucion();
+void vaciarContexto();
 
 
 void iterator(char*);

@@ -11,12 +11,18 @@ int main(void) {
     config = config_create("/home/utnso/tp-2023-1c-Los-operadores/CPU/CPU.config");
 
     if (config == NULL) {
-        printf("No se pudo crear el config.");
+        printf("No se pudo crear el config.\n");
         exit(5);
     }
 
     ip_memoria= config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
+
+    //Inicializo contexto
+    contexto = malloc(sizeof(t_contextoEjecucion));
+    contexto->listaInstrucciones = list_create();
+
+    vaciarContexto();
 
     //Server
     iniciarHiloServer();
@@ -43,23 +49,21 @@ void iniciarHiloCliente() {
 								NULL); // argumentos de la función
 
 	if (err != 0) {
-	printf("\nNo se pudo crear el hilo del cliente Memoria del CPU.");
+	printf("No se pudo crear el hilo del cliente Memoria del CPU.\n");
 	exit(7);
 	}
-	printf("El hilo cliente de la Memoria se creo correctamente.");
+	printf("El hilo cliente de la Memoria se creo correctamente.\n");
 }
 
 void* clientMemoria(void* ptr) {
 	int config = 1;
     int conexion_Memoria;
-    char buffer[1024] = {0};
 
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
     enviar_mensaje("CPU",conexion_Memoria);
     log_info(logger, "Ingrese sus mensajes para la Memoria: ");
     paquete(conexion_Memoria);
     int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
     recibir_mensaje(conexion_Memoria);
     liberar_conexion(conexion_Memoria);
 
@@ -75,10 +79,10 @@ void iniciarHiloServer() {
 								NULL); // argumentos de la función
 
 	 if (err != 0) {
-	  printf("\nNo se pudo crear el hilo de la conexión kernel-CPU \n");
+	  printf("No se pudo crear el hilo de la conexión kernel-CPU \n");
 	  exit(7);
 	 }
-	 printf("\nEl hilo de la conexión kernel-CPU se creo correctamente.\n");
+	 printf("El hilo de la conexión kernel-CPU se creo correctamente.\n");
 }
 
 void* serverCPU(void* ptr){
@@ -88,7 +92,7 @@ void* serverCPU(void* ptr){
     int server_fd = iniciar_servidor();
     log_info(logger, "CPU lista para recibir al Kernel");
     int cliente_fd = esperar_cliente(server_fd);
-
+    int contadorContexto = 0;
     t_list* lista;
     while (1) {
 
@@ -102,16 +106,23 @@ void* serverCPU(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
+    			list_destroy(lista);
     			break;
     		case INSTRUCCIONES:
     			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
+    			contadorContexto++;
     			log_info(logger, "Instrucciones recibidas de Kernel:\n");
     			list_iterate(contexto->listaInstrucciones, (void*) iterator);
-    			iniciar_ejecucion(); //Por ahora de prueba
+    			if(contadorContexto == 2){
+    				iniciar_ejecucion();
+    			}
+
+
     			break;
     		case CONTEXTO:
     			contexto = recibir_contexto(cliente_fd);
-    			printf("\nprogramCounter recibido de Kernel = %d\n",contexto->programCounter);
+    			contadorContexto++;
+    			printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
     			printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
     			printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
     			printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
@@ -127,12 +138,16 @@ void* serverCPU(void* ptr){
     			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
     			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
+    			if(contadorContexto == 2){
+    				iniciar_ejecucion();
+    			}
+
     			break;
     		case -1:
-    			log_error(logger, "\nel kernel se desconecto. Terminando servidor");
+    			log_error(logger, "el kernel se desconecto. Terminando servidor\n");
     			return EXIT_FAILURE;
 			default:
-				log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
+				log_warning(logger,"Operacion desconocida. No quieras meter la pata\n");
 				break;
     	}
     }
@@ -178,8 +193,72 @@ void paquete(int conexion)
 
 }
 
+void vaciarContexto(){
+	contexto->instruccion_length = 0;
+	contexto->programCounter = 0;
+	contexto->tiempoBloqueado = 0;
+
+	for (int i = 0; i < sizeof(contexto->registrosCpu.AX); i++) {
+		contexto->registrosCpu.AX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.BX); i++) {
+		contexto->registrosCpu.BX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.CX); i++) {
+		contexto->registrosCpu.CX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.DX ); i++) {
+		contexto->registrosCpu.DX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.EAX ); i++) {
+		contexto->registrosCpu.EAX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.EBX ); i++) {
+		contexto->registrosCpu.EBX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.ECX ); i++) {
+		contexto->registrosCpu.ECX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.EDX ); i++) {
+		contexto->registrosCpu.EDX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.RAX ); i++) {
+		contexto->registrosCpu.RAX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.RBX ); i++) {
+		contexto->registrosCpu.RBX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.RCX ); i++) {
+		contexto->registrosCpu.RCX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contexto->registrosCpu.RDX ); i++) {
+		contexto->registrosCpu.RDX[i] = '\0';
+	}
+
+	return;
+
+}
+
 void iniciar_ejecucion(){
 	int continuarLeyendo = 1;
+    contexto->instruccion = string_new();
+    contexto->recursoSolicitado = string_new();
+    contexto->recursoALiberar = string_new();
+    printf("ANTES DE INICIAR LA EJECUCION\n");
+	printf("AX = %s\n",contexto->registrosCpu.AX);
+	printf("BX = %s\n",contexto->registrosCpu.BX);
+	printf("CX = %s\n",contexto->registrosCpu.CX);
+	printf("DX = %s\n",contexto->registrosCpu.DX);
+
+	printf("EAX = %s\n",contexto->registrosCpu.EAX);
+	printf("EBX = %s\n",contexto->registrosCpu.EBX);
+	printf("ECX = %s\n",contexto->registrosCpu.ECX);
+	printf("EDX = %s\n",contexto->registrosCpu.EDX);
+
+	printf("RAX = %s\n",contexto->registrosCpu.RAX);
+	printf("RBX = %s\n",contexto->registrosCpu.RBX);
+	printf("RCX = %s\n",contexto->registrosCpu.RCX);
+	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
 	while(continuarLeyendo>0){
 
@@ -195,6 +274,26 @@ void iniciar_ejecucion(){
 
 	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
 	// serializarContexto()
+	printf("FIN DE INSTRUCCIONES \n");
+	printf("ULTIMA INTRUCCION EJECUTADA: %s\n",contexto->instruccion);
+	printf("PROGRAM COUNTER: %i\n",contexto->programCounter);
+	printf("TIEMPO BLOQUEADO: %i\n",contexto->tiempoBloqueado);
+	printf("RECURSO SOLICITADO: %s\n",contexto->recursoSolicitado);
+	printf("RECURSO A LIBERAR: %s\n",contexto->recursoALiberar);
+	printf("AX = %s\n",contexto->registrosCpu.AX);
+	printf("BX = %s\n",contexto->registrosCpu.BX);
+	printf("CX = %s\n",contexto->registrosCpu.CX);
+	printf("DX = %s\n",contexto->registrosCpu.DX);
+
+	printf("EAX = %s\n",contexto->registrosCpu.EAX);
+	printf("EBX = %s\n",contexto->registrosCpu.EBX);
+	printf("ECX = %s\n",contexto->registrosCpu.ECX);
+	printf("EDX = %s\n",contexto->registrosCpu.EDX);
+
+	printf("RAX = %s\n",contexto->registrosCpu.RAX);
+	printf("RBX = %s\n",contexto->registrosCpu.RBX);
+	printf("RCX = %s\n",contexto->registrosCpu.RCX);
+	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
 	return;
 }
@@ -202,90 +301,61 @@ void iniciar_ejecucion(){
 int ejecutarFuncion(char* proximaInstruccion){
 
 	int continuarLeyendo = 0;
+	//NO NOS SIRVE STRING_SPLIT, VAMOS A TENER QUE CREAR UNA FUNCIÓN NOSOTROS
 	char** arrayInstruccion = string_split(proximaInstruccion, " ");
 	char* nombreInstruccion = arrayInstruccion[0];
 
-	printf("%s", nombreInstruccion);
-
 	contexto->programCounter++;
-	switch (nombreInstruccion) {
-	   case SET:
-			char* setParam1 = string_new();
-			char* setParam2= string_new();
-			setParam1 = string_duplicate(arrayInstruccion[1]);
-			setParam2 = string_duplicate(arrayInstruccion[2]);
-			set_tp(setParam1, setParam2);
-			free(setParam1);
-			free(setParam2);
-			continuarLeyendo = 1;
-			break;
 
-		case YIELD:
-			yield_tp();
-			break;
+    if (strcmp(nombreInstruccion, "SET") == 0) {
+		char* setParam1 = string_new();
+		char* setParam2= string_new();
+		setParam1 = string_duplicate(arrayInstruccion[1]);
+		setParam2 = string_duplicate(arrayInstruccion[2]);
+		set_tp(setParam1, setParam2);
+		free(setParam1);
+		free(setParam2);
+		continuarLeyendo = 1;
+    } else if (strcmp(nombreInstruccion, "YIELD") == 0) {
+    	yield_tp();
+    } else if (strcmp(nombreInstruccion, "EXIT") == 0) {
+    	exit_tp();
+    } else if (strcmp(nombreInstruccion, "I/O") == 0) {
+    	int ioParam = arrayInstruccion[1];
+    	i_o_tp(ioParam);
+    } else if (strcmp(nombreInstruccion, "WAIT") == 0) {
+    	char* recursoWait = string_new();
+    	recursoWait = string_duplicate(arrayInstruccion[1]);
+    	wait_tp(recursoWait);
+    } else if (strcmp(nombreInstruccion, "SIGNAL") == 0) {
+    	char* recursoSignal = string_new();
+    	recursoSignal = string_duplicate(arrayInstruccion[1]);
+    	signal_tp(recursoSignal);
+    } else if (strcmp(nombreInstruccion, "MOV_IN") == 0) {
+    	continuarLeyendo = 1;
+    } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
+    	continuarLeyendo = 1;
+    } else if (strcmp(nombreInstruccion, "F_OPEN") == 0) {
 
-		case EXIT:
-			exit_tp();
-			break;
+    } else if (strcmp(nombreInstruccion, "F_CLOSE") == 0) {
 
-		case IO:
-			int ioParam = arrayInstruccion[1];
-			i_o_tp(ioParam);
-			break;
+    } else if (strcmp(nombreInstruccion, "F_SEEK") == 0) {
 
-		case WAIT:
-			char* recursoWait = string_new();
-			recursoWait = string_duplicate(arrayInstruccion[1]);
-			wait_tp(recursoWait);
-			break;
+    } else if (strcmp(nombreInstruccion, "F_READ") == 0) {
 
-		case SIGNAL:
-			char* recursoSignal = string_new();
-			recursoSignal = string_duplicate(arrayInstruccion[1]);
-			signal_tp(recursoSignal);
-			break;
+    } else if (strcmp(nombreInstruccion, "F_WRITE") == 0) {
 
-		case MOV_IN:
-			continuarLeyendo = 1;
-			break;
+    } else if (strcmp(nombreInstruccion, "F_TRUNCATE") == 0) {
 
-		case MOV_OUT:
-			continuarLeyendo = 1;
-			break;
+    } else if (strcmp(nombreInstruccion, "CREATE_SEGMENT") == 0) {
 
-		case F_OPEN:
-			break;
+    } else if (strcmp(nombreInstruccion, "DELETE_SEGMENT") == 0) {
 
-		case F_CLOSE:
-			break;
+    } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
 
-		case F_SEEK:
-			break;
-
-		case F_READ:
-			break;
-
-		case F_WRITE:
-			break;
-
-		case F_TRUNCATE:
-			break;
-
-		case CREATE_SEGMENT:
-			break;
-
-		case DELETE_SEGMENT:
-			break;
-
-
-		default:
-			log_warning(logger,"\Instruccion desconocida. No quieras meter la pata");
-			break;
-	}
-
-	//Reconoce la funcion (con split y head) y  despues sus parámetros (que se pasarian directo a la funcion)
-	//Ejecuta la función actualizando el contexto
-	//Dependiendo del tipo de funcion va a asignarle el valor correspondiente a continuarLeyendo
+    } else {
+        printf("Instruccion no reconocida.\n");
+    }
 
 	return continuarLeyendo;
 }
@@ -293,46 +363,113 @@ int ejecutarFuncion(char* proximaInstruccion){
 
 // FUNCIONES INSTRUCCIONES
 
-
-// REVISAR FUNCION SET
-// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
-void set_tp(char* registro, char* valor){
-	registro = string_duplicate(valor);
-	contexto->instruccion = string_duplicate("set");
-	return;
-	//delay 1000ml
-}
-
 // YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU.
 void yield_tp(){
-	contexto->instruccion = string_duplicate("yield");
+	contexto->instruccion = string_duplicate("YIELD");
     return;
 }
 
 // EXIT: Esta instrucción representa la syscall de finalización del proceso.
 void exit_tp(){
-	contexto->instruccion = string_duplicate("exit");
+	contexto->instruccion = string_duplicate("EXIT");
 	return;
 }
 
 //I/O (Tiempo): Esta instrucción representa una syscall de I/O bloqueante.
 //Se deberá devolver el Contexto de Ejecución actualizado al Kernel junto a la cantidad de unidades de tiempo que va a bloquearse el proceso
 void i_o_tp(int tiempoBloqueado) {
-	contexto->instruccion = string_duplicate("i/o");
+	contexto->instruccion = string_duplicate("I/O");
 	contexto->tiempoBloqueado = tiempoBloqueado;
 	return;
 }
 
 ////WAIT (Recurso): Esta instrucción solicita al Kernel que se asigne una instancia del recurso indicado por parámetro.
 void wait_tp(char* recurso) {
-	contexto->instruccion = string_duplicate("wait");
+	contexto->instruccion = string_duplicate("WAIT");
 	contexto->recursoSolicitado = string_duplicate(recurso);
 	return;
 }
 
 //SIGNAL (Recurso): Esta instrucción solicita al Kernel que se libere una instancia del recurso indicado por parámetro.
 void signal_tp(char* recurso) {
-	contexto->instruccion = string_duplicate("signal");
+	contexto->instruccion = string_duplicate("SIGNAL");
 	contexto->recursoALiberar = string_duplicate(recurso);
+	return;
+}
+
+// REVISAR FUNCION SET
+// SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
+void set_tp(char* registro, char* valor){
+
+	printf("REGISTRO A SETEAR: %s\n", registro);
+	printf("VALOR A SETEAR: %s\n", valor);
+
+	if (strcmp(registro, "AX") == 0) {
+		strcpy(contexto->registrosCpu.AX,valor);
+		printf("AX MODIFICADO\n");
+
+	} else if (strcmp(registro, "BX") == 0) {
+		strcpy(contexto->registrosCpu.BX,valor);
+		printf("BX MODIFICADO\n");
+
+	} else if (strcmp(registro, "CX") == 0) {
+		strcpy(contexto->registrosCpu.CX,valor);
+		printf("CX MODIFICADO\n");
+
+	} else if (strcmp(registro, "DX") == 0) {
+		strcpy(contexto->registrosCpu.DX,valor);
+		printf("DX MODIFICADO\n");
+
+	} else if (strcmp(registro, "EAX") == 0) {
+		strcpy(contexto->registrosCpu.EAX,valor);
+		printf("EAX MODIFICADO\n");
+
+	} else if (strcmp(registro, "EBX") == 0) {
+		strcpy(contexto->registrosCpu.EBX,valor);
+		printf("EBX MODIFICADO\n");
+
+	} else if (strcmp(registro, "ECX") == 0) {
+		strcpy(contexto->registrosCpu.ECX,valor);
+		printf("ECX MODIFICADO\n");
+
+	} else if (strcmp(registro, "EDX") == 0) {
+		strcpy(contexto->registrosCpu.EDX,valor);
+		printf("EDX MODIFICADO\n");
+
+	} else if (strcmp(registro, "RAX") == 0) {
+		strcpy(contexto->registrosCpu.RAX,valor);
+		printf("RAX MODIFICADO\n");
+
+	} else if (strcmp(registro, "RBX") == 0) {
+		strcpy(contexto->registrosCpu.RBX,valor);
+		printf("RBX MODIFICADO\n");
+
+	} else if (strcmp(registro, "RCX") == 0) {
+		strcpy(contexto->registrosCpu.RCX,valor);
+		printf("RCX MODIFICADO\n");
+
+	} else if (strcmp(registro, "RDX") == 0) {
+		strcpy(contexto->registrosCpu.RDX,valor);
+		printf("RDX MODIFICADO\n");
+	} else {
+		printf("Registro no válido.\n");
+	}
+
+	contexto->instruccion = string_duplicate("SET");
+	printf("AX = %s\n",contexto->registrosCpu.AX);
+	printf("BX = %s\n",contexto->registrosCpu.BX);
+	printf("CX = %s\n",contexto->registrosCpu.CX);
+	printf("DX = %s\n",contexto->registrosCpu.DX);
+
+	printf("EAX = %s\n",contexto->registrosCpu.EAX);
+	printf("EBX = %s\n",contexto->registrosCpu.EBX);
+	printf("ECX = %s\n",contexto->registrosCpu.ECX);
+	printf("EDX = %s\n",contexto->registrosCpu.EDX);
+
+	printf("RAX = %s\n",contexto->registrosCpu.RAX);
+	printf("RBX = %s\n",contexto->registrosCpu.RBX);
+	printf("RCX = %s\n",contexto->registrosCpu.RCX);
+	printf("RDX = %s\n",contexto->registrosCpu.RDX);
+
 	return;
 }

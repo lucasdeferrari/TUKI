@@ -272,7 +272,7 @@ void* serverKernel(void* ptr){
 
     				//cosas de consola
 
-        			//iniciarHiloClienteCPU();
+        			iniciarHiloClienteCPU();
     			}
     			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");

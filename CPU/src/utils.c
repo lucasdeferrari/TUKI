@@ -73,9 +73,54 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	recv(socket_cliente, paquete->buffer->stream, paquete->buffer->size, 0);
 
 	//Desserializamos el contenido
-	t_contextoEjecucion* contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
-	printf("Tamaño de AX = %d\n", sizeof(contextoPRUEBA->registrosCpu.AX));
 
+	//Inicializamos estructura de contexto
+	t_contextoEjecucion* contextoPRUEBA;
+	contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
+	contextoPRUEBA->listaInstrucciones = list_create();
+
+	contextoPRUEBA->instruccion_length = 0;
+	contextoPRUEBA->programCounter = 0;
+	contextoPRUEBA->tiempoBloqueado = 0;
+
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.AX); i++) {
+		contextoPRUEBA->registrosCpu.AX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.BX); i++) {
+		contextoPRUEBA->registrosCpu.BX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.CX); i++) {
+		contextoPRUEBA->registrosCpu.CX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.DX ); i++) {
+		contextoPRUEBA->registrosCpu.DX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EAX ); i++) {
+		contextoPRUEBA->registrosCpu.EAX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EBX ); i++) {
+		contextoPRUEBA->registrosCpu.EBX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.ECX ); i++) {
+		contextoPRUEBA->registrosCpu.ECX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EDX ); i++) {
+		contextoPRUEBA->registrosCpu.EDX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RAX ); i++) {
+		contextoPRUEBA->registrosCpu.RAX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RBX ); i++) {
+		contextoPRUEBA->registrosCpu.RBX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RCX ); i++) {
+		contextoPRUEBA->registrosCpu.RCX[i] = '\0';
+	}
+	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RDX ); i++) {
+		contextoPRUEBA->registrosCpu.RDX[i] = '\0';
+	}
+
+	///
 	void* stream = paquete->buffer->stream;
 
 	// Deserializamos los campos que tenemos en el buffer
@@ -118,6 +163,7 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	 memcpy(&(contextoPRUEBA->registrosCpu.RDX), stream, sizeof(contextoPRUEBA->registrosCpu.RDX));
 	 stream += sizeof(contextoPRUEBA->registrosCpu.RDX);
 
+	 eliminar_paquete(paquete);
 
 	 return contextoPRUEBA;
 
@@ -163,6 +209,7 @@ t_list* recibir_paquete(int socket_cliente)
 	}
 	free(buffer);
 	return valores;
+	free(valores);
 }
 
 //client
