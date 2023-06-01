@@ -25,7 +25,9 @@ void *serverCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void iniciarHiloCliente();
 void iniciarHiloServer();
-pthread_t serverCPU_thread, client_Memoria;
+pthread_t serverCPU_thread, client_Memoria, client_Kernel;
+void iniciarHiloClienteKernel();
+void* clientKernel(void *ptr);
 
 //Funciones instrucciones
 void yield_tp();
@@ -34,6 +36,7 @@ void i_o_tp(int);
 void wait_tp(char* );
 void signal_tp(char* );
 void set_tp(char* , char* );
+void serializar();
 
 int ejecutarFuncion(char*);
 void iniciar_ejecucion();

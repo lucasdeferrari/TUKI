@@ -1,5 +1,104 @@
 #include "CPU.h"
 t_config* config;
+int cliente_fd;
+
+
+
+//void serializarContexto(int unSocket){
+//
+//	//ELEMENTOS A SERIALIZAR
+//	//int instruccion_length;
+//	//char* instruccion;
+//	//char* recursoSolicitado;
+//	//int tiempoBloqueado;
+//	//int programCounter;
+//	//t_registrosCPU registrosCpu;
+//
+//	//BUFFER
+//	t_buffer* buffer = malloc(sizeof(t_buffer));
+//
+//	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion->registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion->registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion->registrosCpu.RAX)*4;
+//
+//	void* stream = malloc(buffer->size);
+//	int offset = 0; //desplazamiento
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->programCounter, sizeof(int));
+//	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.AX, sizeof(estadoEnEjecucion->registrosCpu.AX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.AX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.BX, sizeof(estadoEnEjecucion->registrosCpu.BX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.BX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.CX, sizeof(estadoEnEjecucion->registrosCpu.CX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.CX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.DX, sizeof(estadoEnEjecucion->registrosCpu.DX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.DX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EAX, sizeof(estadoEnEjecucion->registrosCpu.EAX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.EAX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EBX, sizeof(estadoEnEjecucion->registrosCpu.EBX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.EBX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.ECX, sizeof(estadoEnEjecucion->registrosCpu.ECX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.ECX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.EDX, sizeof(estadoEnEjecucion->registrosCpu.EDX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.EDX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RAX, sizeof(estadoEnEjecucion->registrosCpu.RAX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.RAX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RBX, sizeof(estadoEnEjecucion->registrosCpu.RBX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.RBX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RCX, sizeof(estadoEnEjecucion->registrosCpu.RCX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.RCX);
+//
+//	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RDX, sizeof(estadoEnEjecucion->registrosCpu.RDX));
+//	offset += sizeof(estadoEnEjecucion->registrosCpu.RDX);
+//
+//	buffer->stream = stream;
+//
+//
+//	//llenar el PAQUETE con el buffer
+//
+//	t_paquete* paquete = malloc(sizeof(t_paquete));
+//	paquete->codigo_operacion = CONTEXTO;
+//	paquete->buffer = buffer; // Nuestro buffer de antes.
+//
+//	// Armamos el stream a enviar
+//	//    tamaño               stream        size       codigo_operación
+//	void* a_enviar = malloc(buffer->size + sizeof(int) + sizeof(op_code)); //op_code -> int
+//	offset = 0;
+//
+//	memcpy(a_enviar + offset, &(paquete->codigo_operacion), sizeof(op_code));
+//	offset += sizeof(int);
+//
+//	memcpy(a_enviar + offset, &(paquete->buffer->size), sizeof(int));
+//    offset += sizeof(int);
+//
+//	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
+//	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
+//
+//	// Lo enviamos
+//	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
+//
+////	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.listaInstrucciones->head->data);
+//	printf("Contexto sin instrucciones enviado a CPU. \n");
+//
+//	//free memoria dinámica
+//	// Liberamos la memoria
+//	free(a_enviar);
+//	free(paquete->buffer->stream);
+//	free(paquete->buffer);
+//	free(paquete);
+//
+//	return;
+//}
 
 int main(void) {
 
@@ -21,7 +120,6 @@ int main(void) {
     //Inicializo contexto
     contexto = malloc(sizeof(t_contextoEjecucion));
     contexto->listaInstrucciones = list_create();
-
     vaciarContexto();
 
     //Server
@@ -71,6 +169,27 @@ void* clientMemoria(void* ptr) {
 	return NULL;
 }
 
+void iniciarHiloClienteKernel() {
+
+	int err = pthread_create( 	&client_Kernel,	// puntero al thread
+	     	        			NULL,
+								clientKernel, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
+
+	if (err != 0) {
+	printf("No se pudo crear el hilo del cliente Kernel del CPU.\n");
+	exit(7);
+	}
+	//printf("El hilo cliente de la Memoria se creo correctamente.\n");
+}
+
+void* clientKernel(void* ptr) {
+	int config=1;
+	//serializarContexto(cliente_fd); //enviamos el contexto
+	liberar_conexion(cliente_fd);
+	return NULL;
+}
+
 void iniciarHiloServer() {
 
     int err = pthread_create( 	&serverCPU_thread,	// puntero al thread
@@ -91,7 +210,7 @@ void* serverCPU(void* ptr){
 
     int server_fd = iniciar_servidor();
     log_info(logger, "CPU lista para recibir al Kernel");
-    int cliente_fd = esperar_cliente(server_fd);
+    cliente_fd = esperar_cliente(server_fd);
     int contadorContexto = 0;
     t_list* lista;
     while (1) {
@@ -273,7 +392,6 @@ void iniciar_ejecucion(){
 	}
 
 	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
-	// serializarContexto()
 	printf("FIN DE INSTRUCCIONES \n");
 	printf("ULTIMA INTRUCCION EJECUTADA: %s\n",contexto->instruccion);
 	printf("PROGRAM COUNTER: %i\n",contexto->programCounter);
@@ -295,13 +413,15 @@ void iniciar_ejecucion(){
 	printf("RCX = %s\n",contexto->registrosCpu.RCX);
 	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
+	serializar();
+
 	return;
 }
 
 int ejecutarFuncion(char* proximaInstruccion){
 
 	int continuarLeyendo = 0;
-	//NO NOS SIRVE STRING_SPLIT, VAMOS A TENER QUE CREAR UNA FUNCIÓN NOSOTROS
+	//REVISAR: NO NOS SIRVE STRING_SPLIT, VAMOS A TENER QUE CREAR UNA FUNCIÓN NOSOTROS
 	char** arrayInstruccion = string_split(proximaInstruccion, " ");
 	char* nombreInstruccion = arrayInstruccion[0];
 
@@ -360,6 +480,10 @@ int ejecutarFuncion(char* proximaInstruccion){
 	return continuarLeyendo;
 }
 
+void serializar(){
+
+}
+
 
 // FUNCIONES INSTRUCCIONES
 
@@ -397,7 +521,7 @@ void signal_tp(char* recurso) {
 	return;
 }
 
-// REVISAR FUNCION SET
+
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
 void set_tp(char* registro, char* valor){
 
