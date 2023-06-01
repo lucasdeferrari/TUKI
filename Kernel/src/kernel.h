@@ -11,6 +11,7 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <time.h>
 
 char* ip_cpu;
 char* puerto_cpu;

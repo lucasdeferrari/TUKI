@@ -488,13 +488,36 @@ void desencolarReady (){
 	return;
 }
 
-void calcularHRRN(){
-
-	//max R = (w + s) / s     -> w = tiempo de espera
-
-	// S = ESTIMACION_INICIAL           CPU = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
-
-}
+//void calcularHRRN(){
+//
+//	/////////tiempoEnEjecucion de infopcb/////////////
+//	//cuando se va de kernel
+//	time_t empiezaAEjecutar = time(NULL);
+//	//esperar que vuelva a kernel
+//	time_t terminaEjecutar = time(NULL);
+//	//tiempo transcurrido
+//	int tiempoRealCPU = terminaEjecutar - empiezaAEjecutar;
+//
+//	/////////tiempoEsperaReady de infopcb/////////////
+//	//tiempoLlegadaReady en infopcb
+//	time_t entraEnCola = time(NULL);
+//	//esperar que vuelva a kernel
+//	time_t pasaAEjecucion = time(NULL);
+//	//tiempo transcurrido
+//	int tiempoEspera = pasaAEjecucion - entraEnCola;
+//
+//	//como uso lo del config?
+//	//podria ser array con estimaciones que vaya agregandolas.
+//	//esto es el estimadoProxRafaga de infopcb????
+//	//tiempoCPU = estimacion[i] * HRRN_ALFA + tiempoRealCPU * (1 - HRRN_ALFA)
+//
+//	//int valorParaEjecucion =  (tiempoEspera + tiempoCPU) / tiempoCPU;
+//
+//	//max R = (w + s) / s     -> w = tiempo de espera
+//
+//	// E = ESTIMACION_INICIAL           CPU = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
+//
+//}
 
 
 
