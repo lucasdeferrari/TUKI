@@ -11,7 +11,6 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
-#include <time.h>
 
 char* ip_cpu;
 char* puerto_cpu;
@@ -63,7 +62,7 @@ void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
 void serializarContexto(int );
-
+void calcularHRRN(t_infopcb*);
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);

@@ -11,6 +11,7 @@
 #include<commons/collections/list.h>
 #include<string.h>
 #include<assert.h>
+#include<sys/time.h>
 
 //KERNEL
 #define IP "127.0.0.1"
@@ -83,12 +84,13 @@ typedef struct infopcb {
     int programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
     t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
     t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
-	int tiempoLlegadaReady;
 	t_nodoArchivos* punterosArchivos;
+	double rafaga;
 	double estimadoProxRafaga;
-	float tiempoEsperaReady;
-	float tiempoEnEjecucion;
-
+	double estimadoAnterior;
+	uint32_t empiezaAEjecutar;
+	uint32_t terminaEjecutar;
+	uint32_t entraEnColaReady;
 } t_infopcb;
 
 
@@ -134,5 +136,7 @@ void agregar_a_paquete(t_paquete* paquete, void* valor, int tamanio);
 void enviar_paquete(t_paquete* paquete, int socket_cliente);
 void liberar_conexion(int socket_cliente);
 void eliminar_paquete(t_paquete* paquete);
+uint32_t tomarTiempo();
+// FUNCION PARA CALCULAR TIEMPO HRRN
 
 #endif /* UTILS_H_ */

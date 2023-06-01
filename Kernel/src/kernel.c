@@ -341,8 +341,10 @@ void armarPCB(t_list* lista){
 
 
 	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-	nuevoPCB->estimadoProxRafaga = estimacion_inicial;
-	nuevoPCB->tiempoLlegadaReady = 0;
+	nuevoPCB->estimadoAnterior = estimacion_inicial;
+	nuevoPCB->empiezaAEjecutar = 0;
+	nuevoPCB->entraEnColaReady = 0;
+	nuevoPCB->terminaEjecutar = 0;
 	nuevoPCB->punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
 
 	//Encolamos en NEW (FIFO)
@@ -405,14 +407,17 @@ void encolarReady() {
 		if(lugaresDisponiblesReady > 0 ){
 
 			if(frenteColaNew != NULL){
+				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 
-				list_add(listaReady, unqueue(&frenteColaNew,&finColaNew));
+				list_add(listaReady, procesoADesencolar);
+
+				procesoADesencolar->entraEnColaReady = tomarTiempo();
 
 				cantidadElementosReady = list_size(listaReady);
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
 				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 				printf("Cola READY:\n");
-				t_infopcb* proceso = list_get(listaReady,0);
+				t_infopcb* proceso = list_get(listaReady,0); //que queriamos hacer con esto? porque mostraria el primero?
 				printf("PID: %d\n", proceso->pid);
 			}
 
@@ -449,7 +454,6 @@ void desencolarReady (){
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
-		//calcularHRRN()       //primero calculo HRRN y luego mando a ejecutar el que corresponda
 
 		int proxRafaga;
 		int maxRafaga = 0;
@@ -462,7 +466,8 @@ void desencolarReady (){
 		while( i < cantidadElementosReady ){
 
 			procesoActual = list_get(listaReady,i);
-			proxRafaga = procesoActual->estimadoProxRafaga;
+			calcularHRRN(procesoActual);
+			proxRafaga = procesoActual->rafaga;
 
 			if(proxRafaga > maxRafaga){
 				maxRafaga = proxRafaga;
@@ -482,42 +487,33 @@ void desencolarReady (){
 		printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
 		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
+		//CALCULA CUANDO SE VA DE KERNEL
+		estadoEnEjecucion->empiezaAEjecutar = tomarTiempo();
 	}
 
 
 	return;
 }
 
-//void calcularHRRN(){
-//
-//	/////////tiempoEnEjecucion de infopcb/////////////
-//	//cuando se va de kernel
-//	time_t empiezaAEjecutar = time(NULL);
-//	//esperar que vuelva a kernel
-//	time_t terminaEjecutar = time(NULL);
-//	//tiempo transcurrido
-//	int tiempoRealCPU = terminaEjecutar - empiezaAEjecutar;
-//
-//	/////////tiempoEsperaReady de infopcb/////////////
-//	//tiempoLlegadaReady en infopcb
-//	time_t entraEnCola = time(NULL);
-//	//esperar que vuelva a kernel
-//	time_t pasaAEjecucion = time(NULL);
-//	//tiempo transcurrido
-//	int tiempoEspera = pasaAEjecucion - entraEnCola;
-//
-//	//como uso lo del config?
-//	//podria ser array con estimaciones que vaya agregandolas.
-//	//esto es el estimadoProxRafaga de infopcb????
-//	//tiempoCPU = estimacion[i] * HRRN_ALFA + tiempoRealCPU * (1 - HRRN_ALFA)
-//
-//	//int valorParaEjecucion =  (tiempoEspera + tiempoCPU) / tiempoCPU;
-//
-//	//max R = (w + s) / s     -> w = tiempo de espera
-//
-//	// E = ESTIMACION_INICIAL           CPU = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
-//
-//}
+void calcularHRRN(t_infopcb* unProceso){
+	//tiempo transcurridoEnCpu
+	uint32_t tiempoRealCPU = unProceso->terminaEjecutar - unProceso->empiezaAEjecutar; //(falta poner terminaEjecutar)
+
+	//tiempo transcurrido en la cola de Ready
+	int tiempoEsperaReady = unProceso->empiezaAEjecutar - unProceso->entraEnColaReady;
+
+	unProceso->estimadoProxRafaga = unProceso->estimadoAnterior * hrrn_alfa + tiempoRealCPU * (1 - hrrn_alfa);
+
+	unProceso->rafaga = (tiempoEsperaReady + unProceso->estimadoProxRafaga) / unProceso->estimadoProxRafaga;
+
+	unProceso->estimadoAnterior = unProceso->estimadoProxRafaga;
+
+	//max R = (w + s) / s     -> w = tiempo de espera en ready
+
+	// E = ESTIMACION_INICIAL         S =  Estimacion = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
+	//estimacion anterior en la primera es estimacion inicial
+	//estimacion anterior despues es S
+}
 
 
 
@@ -610,7 +606,7 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
             tabla = tabla->sgte;
         }
         printf("Estimado próxima ráfaga: %f\n", frenteColaNew->info_pcb->estimadoProxRafaga);
-        printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->tiempoLlegadaReady);
+        printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->entraEnColaReady);
         printf("Punteros a archivos:\n");
         t_nodoArchivos* punteros = frenteColaNew->info_pcb->punterosArchivos;
         while (punteros != NULL) {

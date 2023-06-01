@@ -236,3 +236,11 @@ void liberar_conexion(int socket_cliente)
 	close(socket_cliente);
 }
 
+uint32_t tomarTiempo(){
+    struct timeval te;
+    gettimeofday(&te, NULL); // get current time
+    uint32_t milliseconds = te.tv_sec*1000LL + te.tv_usec/1000; // calculate milliseconds
+    return milliseconds;
+}
+
+
