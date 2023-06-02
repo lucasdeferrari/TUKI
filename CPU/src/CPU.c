@@ -10,7 +10,6 @@ int cliente_fd;
 //	//int instruccion_length;
 //	//char* instruccion;
 //	//char* recursoSolicitado;
-	//char* recursoALiberar;
 //	//int tiempoBloqueado;
 //	//int programCounter;
 //	//t_registrosCPU registrosCpu;
@@ -364,26 +363,12 @@ void iniciar_ejecucion(){
     contexto->instruccion = string_new();
     contexto->recursoSolicitado = string_new();
     contexto->recursoALiberar = string_new();
-    printf("ANTES DE INICIAR LA EJECUCION\n");
-	printf("AX = %s\n",contexto->registrosCpu.AX);
-	printf("BX = %s\n",contexto->registrosCpu.BX);
-	printf("CX = %s\n",contexto->registrosCpu.CX);
-	printf("DX = %s\n",contexto->registrosCpu.DX);
-
-	printf("EAX = %s\n",contexto->registrosCpu.EAX);
-	printf("EBX = %s\n",contexto->registrosCpu.EBX);
-	printf("ECX = %s\n",contexto->registrosCpu.ECX);
-	printf("EDX = %s\n",contexto->registrosCpu.EDX);
-
-	printf("RAX = %s\n",contexto->registrosCpu.RAX);
-	printf("RBX = %s\n",contexto->registrosCpu.RBX);
-	printf("RCX = %s\n",contexto->registrosCpu.RCX);
-	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
 	while(continuarLeyendo>0){
 
 		//list_get retorna el contenido de una posicion determianda de la lista
-		char* proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
+		char* proximaInstruccion =string_new();
+		proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
 
 		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
 
@@ -423,7 +408,8 @@ int ejecutarFuncion(char* proximaInstruccion){
 
 	int continuarLeyendo = 0;
 	//REVISAR: NO NOS SIRVE STRING_SPLIT, VAMOS A TENER QUE CREAR UNA FUNCIÓN NOSOTROS
-	char** arrayInstruccion = string_split(proximaInstruccion, " ");
+	char** arrayInstruccion= string_array_new();
+	arrayInstruccion = string_split(proximaInstruccion, " ");
 	char* nombreInstruccion = arrayInstruccion[0];
 
 	contexto->programCounter++;
@@ -433,6 +419,10 @@ int ejecutarFuncion(char* proximaInstruccion){
 		char* setParam2= string_new();
 		setParam1 = string_duplicate(arrayInstruccion[1]);
 		setParam2 = string_duplicate(arrayInstruccion[2]);
+
+		int tamanioValor = string_length(setParam2);
+		setParam2[tamanioValor-1] = '\0';
+
 		set_tp(setParam1, setParam2);
 		free(setParam1);
 		free(setParam2);
@@ -581,20 +571,6 @@ void set_tp(char* registro, char* valor){
 	}
 
 	contexto->instruccion = string_duplicate("SET");
-	printf("AX = %s\n",contexto->registrosCpu.AX);
-	printf("BX = %s\n",contexto->registrosCpu.BX);
-	printf("CX = %s\n",contexto->registrosCpu.CX);
-	printf("DX = %s\n",contexto->registrosCpu.DX);
-
-	printf("EAX = %s\n",contexto->registrosCpu.EAX);
-	printf("EBX = %s\n",contexto->registrosCpu.EBX);
-	printf("ECX = %s\n",contexto->registrosCpu.ECX);
-	printf("EDX = %s\n",contexto->registrosCpu.EDX);
-
-	printf("RAX = %s\n",contexto->registrosCpu.RAX);
-	printf("RBX = %s\n",contexto->registrosCpu.RBX);
-	printf("RCX = %s\n",contexto->registrosCpu.RCX);
-	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
 	return;
 }
