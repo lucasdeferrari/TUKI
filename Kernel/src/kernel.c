@@ -177,14 +177,34 @@ void* clientCPU(void* ptr) {
     //log_info(logger, "Ingrese sus mensajes para la CPU ");
     //paquete(conexion_CPU);
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
-
     //enviamos las intrucciones del contexto
     t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
     printf("Instrucciones enviadas a CPU. \n");
+    int cod_op = recibir_operacion(conexion_CPU);
 
+    //contextoActualizado = recibir_contexto(conexion_CPU);
+    recibir_contexto(conexion_CPU);
+
+    printf("Después de recibir el contexto\n");
+
+    printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
+    printf("AX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.AX);
+    printf("CX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.BX);
+    printf("BX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.CX);
+    printf("DX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.DX);
+
+    printf("EAX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EAX);
+    printf("EBX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EBX);
+    printf("ECX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.ECX);
+    printf("EDX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EDX);
+
+    printf("RAX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RAX);
+    printf("RBX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RBX);
+    printf("RCX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RCX);
+    printf("RDX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RDX);
 
     liberar_conexion(conexion_CPU);
 
@@ -292,6 +312,26 @@ void* serverKernel(void* ptr){
     			}
     			if (strcmp(handshake, "CPU") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
+//    				t_contextoEjecucion* contexto;
+//    				contexto = malloc(sizeof(t_contextoEjecucion));
+    				//vaciarContexto();
+//    				contexto = recibir_contexto(cliente_fd);
+//    				printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
+//    				printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
+//    				printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
+//    				printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
+//    				printf("DX recibido de Kernel = %s\n",contexto->registrosCpu.DX);
+//
+//    				printf("EAX recibido de Kernel = %s\n",contexto->registrosCpu.EAX);
+//    				printf("EBX recibido de Kernel = %s\n",contexto->registrosCpu.EBX);
+//    				printf("ECX recibido de Kernel = %s\n",contexto->registrosCpu.ECX);
+//    				printf("EDX recibido de Kernel = %s\n",contexto->registrosCpu.EDX);
+//
+//    				printf("RAX recibido de Kernel = %s\n",contexto->registrosCpu.RAX);
+//    				printf("RBX recibido de Kernel = %s\n",contexto->registrosCpu.RBX);
+//    				printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
+//    				printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
+
     				//cosas de cpu
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
@@ -768,29 +808,11 @@ void serializarContexto(int unSocket){
 	strcpy(estadoEnEjecucion->registrosCpu.RDX,"HOLA");
 
 
-//	list_add_all(contexto.listaInstrucciones, estadoEnEjecucion.listaInstrucciones);
-
-
-//	t_list_iterator* iterador = list_iterator_create(contexto.listaInstrucciones);
-//	t_list_iterator* iterador2 = list_iterator_create(contexto.listaInstrucciones);
-
-//	contextoPRUEBA.listaInstrucciones->head->data; //CHAR*
-//	contextoPRUEBA.listaInstrucciones->head->next; //PUNTERO A LA PROXIMA
-//	contextoPRUEBA.listaInstrucciones->elements_count; //INDICE DE LA INSTRUCCION
-
 	//BUFFER
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
 	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion->registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion->registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion->registrosCpu.RAX)*4;
-
-	//	while (list_iterator_has_next(iterador)) {
-	//
-	//		char* siguiente = list_iterator_next(iterador);
-	//		int tamanio = (strlen(siguiente))+1;
-	//		list_add(contextoPRUEBA.listaInstrucciones_length, tamanio);
-	//		buffer->size += tamanio + sizeof(int);
-	//	}
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
@@ -833,16 +855,6 @@ void serializarContexto(int unSocket){
 
 	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.RDX, sizeof(estadoEnEjecucion->registrosCpu.RDX));
 	offset += sizeof(estadoEnEjecucion->registrosCpu.RDX);
-
-//	while (list_iterator_has_next(iterador2)) {
-//		int indice = 0;
-//		char* siguiente = list_iterator_next(iterador2);
-//		memcpy(stream + offset, list_get(contextoPRUEBA.listaInstrucciones_length, indice), sizeof(int));
-//		offset += sizeof(int);
-//		memcpy(stream + offset, list_get(contextoPRUEBA.listaInstrucciones, indice), strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
-//		offset += sizeof(strlen(list_get(contextoPRUEBA.listaInstrucciones, indice)) + 1);
-//		indice++;
-//	}
 
 
 	buffer->stream = stream;
@@ -892,6 +904,120 @@ char* recibir_handshake(int socket_cliente)
 	char* buffer = recibir_buffer(&size, socket_cliente);
 	//log_info(logger, "Me llego el mensaje %s", buffer);
 	return buffer;
+}
+
+void recibir_contexto(int socket_cliente){
+
+	printf("DENTRO DE RECIBIR CONTEXTO\n");
+
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->buffer = malloc(sizeof(t_buffer));
+
+
+	// Recibimos el buffer.
+	//Recibimos el tamaño del buffer
+	recv(socket_cliente, &(paquete->buffer->size), sizeof(int), 0);
+
+	//Recibimos el contenido del buffer
+	paquete->buffer->stream = malloc(paquete->buffer->size);
+	recv(socket_cliente, paquete->buffer->stream, paquete->buffer->size, 0);
+
+	//Desserializamos el contenido
+
+	//Inicializamos estructura de contexto
+//	t_contextoEjecucion* contextoPRUEBA;
+//	contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
+//
+//	contextoPRUEBA->instruccion_length = 0;
+//	contextoPRUEBA->programCounter = 0;
+//	contextoPRUEBA->tiempoBloqueado = 0;
+//
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.AX); i++) {
+//		contextoPRUEBA->registrosCpu.AX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.BX); i++) {
+//		contextoPRUEBA->registrosCpu.BX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.CX); i++) {
+//		contextoPRUEBA->registrosCpu.CX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.DX ); i++) {
+//		contextoPRUEBA->registrosCpu.DX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EAX ); i++) {
+//		contextoPRUEBA->registrosCpu.EAX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EBX ); i++) {
+//		contextoPRUEBA->registrosCpu.EBX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.ECX ); i++) {
+//		contextoPRUEBA->registrosCpu.ECX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EDX ); i++) {
+//		contextoPRUEBA->registrosCpu.EDX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RAX ); i++) {
+//		contextoPRUEBA->registrosCpu.RAX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RBX ); i++) {
+//		contextoPRUEBA->registrosCpu.RBX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RCX ); i++) {
+//		contextoPRUEBA->registrosCpu.RCX[i] = '\0';
+//	}
+//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RDX ); i++) {
+//		contextoPRUEBA->registrosCpu.RDX[i] = '\0';
+//	}
+
+	///
+	void* stream = paquete->buffer->stream;
+
+	// Deserializamos los campos que tenemos en el buffer
+	 memcpy(&(estadoEnEjecucion->programCounter), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.AX), stream, sizeof(estadoEnEjecucion->registrosCpu.AX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.AX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.BX), stream, sizeof(estadoEnEjecucion->registrosCpu.BX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.BX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.CX), stream, sizeof(estadoEnEjecucion->registrosCpu.CX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.CX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.DX), stream, sizeof(estadoEnEjecucion->registrosCpu.DX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.DX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.EAX), stream, sizeof(estadoEnEjecucion->registrosCpu.EAX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.EAX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.EBX), stream, sizeof(estadoEnEjecucion->registrosCpu.EBX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.EBX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.ECX), stream, sizeof(estadoEnEjecucion->registrosCpu.ECX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.ECX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.EDX), stream, sizeof(estadoEnEjecucion->registrosCpu.EDX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.EDX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.RAX), stream, sizeof(estadoEnEjecucion->registrosCpu.RAX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.RAX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.RBX), stream, sizeof(estadoEnEjecucion->registrosCpu.RBX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.RBX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.RCX), stream, sizeof(estadoEnEjecucion->registrosCpu.RCX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.RCX);
+
+	 memcpy(&(estadoEnEjecucion->registrosCpu.RDX), stream, sizeof(estadoEnEjecucion->registrosCpu.RDX));
+	 stream += sizeof(estadoEnEjecucion->registrosCpu.RDX);
+
+	 printf("FIN DENTRO DE RECIBIR CONTEXTO\n");
+
+	 eliminar_paquete(paquete);
+
+	// return contextoPRUEBA;
+
 }
 
 

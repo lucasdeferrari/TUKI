@@ -101,15 +101,16 @@ typedef struct infopcb {
 
 
 typedef struct {
-	int instruccion_length;
 	char* instruccion;
+	int instruccion_length;
 	char* recursoSolicitado;
+	int recursoSolicitado_length;
+	char* recursoALiberar;
+	int recursoALiberar_length;
 	int tiempoBloqueado;
-	t_list* listaInstrucciones_length;
-	t_list* listaInstrucciones;
-	int programCounter; // numero de la siguiente instrucción a ejecutar
+	int programCounter;
 	t_registrosCPU registrosCpu;
-	t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+	//t_nodoTablaSegmentos* tablaSegmentos;
 } t_contextoEjecucion;
 
 

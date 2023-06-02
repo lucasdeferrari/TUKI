@@ -36,7 +36,7 @@ void i_o_tp(int);
 void wait_tp(char* );
 void signal_tp(char* );
 void set_tp(char* , char* );
-void serializar();
+void serializarContexto(int);
 
 int ejecutarFuncion(char*);
 void iniciar_ejecucion();
