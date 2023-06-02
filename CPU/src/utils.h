@@ -88,7 +88,9 @@ typedef struct registrosCPU {
 typedef struct {
 	int instruccion_length;
 	char* instruccion;
+	int recursoSolicitado_length;
 	char* recursoSolicitado;
+	int recursoALiberar_length;
 	char* recursoALiberar;
 	int tiempoBloqueado;
 	t_list* listaInstrucciones;

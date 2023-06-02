@@ -7,8 +7,6 @@ int cliente_fd;
 void serializarContexto(int unSocket){
 
 	//ELEMENTOS A SERIALIZAR
-	//int instruccion_length;
-	//char* instruccion;
 	//char* recursoSolicitado;
 	//char* recursoALiberar
 
@@ -17,15 +15,20 @@ void serializarContexto(int unSocket){
 	//int programCounter;
 	//t_registrosCPU registrosCpu;
 	//int tiempoBloqueado;
+	//int instruccion_length;
+	//char* instruccion;
 
-//	contextoPRUEBA.instruccion = calloc(1, 4+1);
+	//contexto->instruccion = calloc(1, 4+1);
 //	strcpy(contextoPRUEBA.instruccion, "Hola");
 //	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
+	contexto->instruccion_length = strlen(contexto->instruccion)+1;
+	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
+	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
 
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int) + sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4;
+	buffer->size = sizeof(int) + sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + strlen(contexto->instruccion) +1;
 
 
 	void* stream = malloc(buffer->size);
@@ -73,10 +76,28 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contexto->registrosCpu.RDX, sizeof(contexto->registrosCpu.RDX));
 	offset += sizeof(contexto->registrosCpu.RDX);
 
-	//instruccion, dinamica
-//	memcpy(stream + offset, &contextoPRUEBA.instruccion_length, sizeof(int));
+	//instruccion
+	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
+	offset += strlen(contexto->instruccion) +1;
+
+//	//recurso solicitado
+//	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
 //	offset += sizeof(int);
-//	memcpy(stream + offset, contextoPRUEBA.instruccion, strlen(contextoPRUEBA.instruccion) + 1);
+//
+//	memcpy(stream + offset, &contexto->recursoSolicitado, strlen(contexto->recursoSolicitado) +1);
+//	offset += strlen(contexto->recursoSolicitado) +1;
+//
+//
+//	//recurso a liberar
+//	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
+//	offset += sizeof(int);
+//
+//	memcpy(stream + offset, &contexto->recursoALiberar, strlen(contexto->recursoALiberar) +1);
+
+
 
 	buffer->stream = stream;
 
@@ -105,10 +126,17 @@ void serializarContexto(int unSocket){
 
 
 	printf("Contexto actualizado enviado a KERNEL. \n");
-	//printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.instruccion);
+//	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
+//	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
+
+//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoSolicitado_length);
+//	printf("recurso solicitado a KERNEL = %s\n", contexto->recursoSolicitado);
+//
+//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoALiberar_length);
+//	printf("recurso a liberar KERNEL = %s\n", contexto->recursoALiberar);
 
 	//free memoria dinámica
-//	free(contextoPRUEBA.instruccion);
+	free(contexto->instruccion);
 	// Liberamos la memoria
 	free(a_enviar);
 	free(paquete->buffer->stream);

@@ -99,8 +99,11 @@ typedef struct infopcb {
 	uint32_t entraEnColaReady;
 	int tiempoBloqueado;
 	char* recursoALiberar;
+	int recursoALiberar_length;
 	char* recursoSolicitado;
+	int recursoSolicitado_length;
 	char* ultimaInstruccion;
+	int ultimaInstruccion_length;
 } t_infopcb;
 
 

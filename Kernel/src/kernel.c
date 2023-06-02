@@ -191,21 +191,30 @@ void* clientCPU(void* ptr) {
     printf("Después de recibir el contexto\n");
 
     printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
-    printf("Tiempo bloqueado recibido de CPU= %d\n",estadoEnEjecucion->tiempoBloqueado);
-    printf("AX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.AX);
-    printf("CX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.BX);
-    printf("BX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.CX);
-    printf("DX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.DX);
+    printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
+    printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
+    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
+    printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
+    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
 
-    printf("EAX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EAX);
-    printf("EBX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EBX);
-    printf("ECX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.ECX);
-    printf("EDX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.EDX);
+    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
+    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
+    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
+    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
 
-    printf("RAX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RAX);
-    printf("RBX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RBX);
-    printf("RCX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RCX);
-    printf("RDX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.RDX);
+    printf("RAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RAX);
+    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
+    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
+    printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
+
+//    printf("Tamaño de ultima instruccion = %d\n",estadoEnEjecucion->ultimaInstruccion_length);
+//    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
+
+//    printf("Tamaño del recurso solicitado = %d\n",estadoEnEjecucion->recursoSolicitado_length);
+//    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
+//
+//    printf("Tamaño del recurso a liberar = %d\n",estadoEnEjecucion->recursoALiberar_length);
+//    printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
 
     liberar_conexion(conexion_CPU);
 
@@ -313,26 +322,6 @@ void* serverKernel(void* ptr){
     			}
     			if (strcmp(handshake, "CPU") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
-//    				t_contextoEjecucion* contexto;
-//    				contexto = malloc(sizeof(t_contextoEjecucion));
-    				//vaciarContexto();
-//    				contexto = recibir_contexto(cliente_fd);
-//    				printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
-//    				printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
-//    				printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
-//    				printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
-//    				printf("DX recibido de Kernel = %s\n",contexto->registrosCpu.DX);
-//
-//    				printf("EAX recibido de Kernel = %s\n",contexto->registrosCpu.EAX);
-//    				printf("EBX recibido de Kernel = %s\n",contexto->registrosCpu.EBX);
-//    				printf("ECX recibido de Kernel = %s\n",contexto->registrosCpu.ECX);
-//    				printf("EDX recibido de Kernel = %s\n",contexto->registrosCpu.EDX);
-//
-//    				printf("RAX recibido de Kernel = %s\n",contexto->registrosCpu.RAX);
-//    				printf("RBX recibido de Kernel = %s\n",contexto->registrosCpu.RBX);
-//    				printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
-//    				printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
-
     				//cosas de cpu
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
@@ -367,6 +356,12 @@ void armarPCB(t_list* lista){
 	nuevoPCB->listaInstrucciones = lista;
 	nuevoPCB->programCounter = 0;
 	nuevoPCB->tiempoBloqueado = 0;
+	nuevoPCB->ultimaInstruccion_length = 0;
+	nuevoPCB->recursoSolicitado_length = 0;
+	nuevoPCB->recursoALiberar_length = 0;
+	//nuevoPCB->recursoSolicitado = string_new();
+	//nuevoPCB->recursoALiberar = string_new();
+	//nuevoPCB->ultimaInstruccion = string_new();
 
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.AX); i++) {
 		nuevoPCB->registrosCpu.AX[i] = '\0';
@@ -404,7 +399,6 @@ void armarPCB(t_list* lista){
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RDX ); i++) {
 					nuevoPCB->registrosCpu.RDX[i] = '\0';
 						    }
-
 
 	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
 	nuevoPCB->estimadoAnterior = 0;
@@ -970,6 +964,33 @@ void recibir_contexto(int socket_cliente){
 
 	 memcpy(&(estadoEnEjecucion->registrosCpu.RDX), stream, sizeof(estadoEnEjecucion->registrosCpu.RDX));
 	 stream += sizeof(estadoEnEjecucion->registrosCpu.RDX);
+
+//	 //ultima intruccion
+//	 memcpy(&(estadoEnEjecucion->ultimaInstruccion_length), stream, sizeof(int));
+//	 stream += sizeof(int);
+//
+//	 estadoEnEjecucion->ultimaInstruccion = malloc(estadoEnEjecucion->ultimaInstruccion_length);
+//
+//	 memcpy( estadoEnEjecucion->ultimaInstruccion, stream, estadoEnEjecucion->ultimaInstruccion_length);
+//	 stream += estadoEnEjecucion->ultimaInstruccion_length;
+
+//	 //recurso solicitado
+//	 memcpy(&(estadoEnEjecucion->recursoSolicitado_length), stream, sizeof(int));
+//	 stream += sizeof(int);
+//
+//	 estadoEnEjecucion->recursoSolicitado = malloc(estadoEnEjecucion->recursoSolicitado_length);
+//
+//	 memcpy( estadoEnEjecucion->recursoSolicitado, stream, estadoEnEjecucion->recursoSolicitado_length);
+//	 stream += estadoEnEjecucion->recursoSolicitado_length;
+//
+//
+//	 //recurso a liberar
+//	 memcpy(&(estadoEnEjecucion->recursoALiberar_length), stream, sizeof(int));
+//	 stream += sizeof(int);
+//
+//	 estadoEnEjecucion->recursoALiberar = malloc(estadoEnEjecucion->recursoALiberar_length);
+//
+//	 memcpy( estadoEnEjecucion->recursoALiberar, stream, estadoEnEjecucion->recursoALiberar_length);
 
 
 	 eliminar_paquete(paquete);
