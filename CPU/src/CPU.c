@@ -10,6 +10,7 @@ int cliente_fd;
 //	//int instruccion_length;
 //	//char* instruccion;
 //	//char* recursoSolicitado;
+	//char* recursoALiberar;
 //	//int tiempoBloqueado;
 //	//int programCounter;
 //	//t_registrosCPU registrosCpu;

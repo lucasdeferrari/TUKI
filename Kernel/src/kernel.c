@@ -2,45 +2,52 @@
 
 t_config* config;
 
-//void inicializarRecursos(){
-//	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
-//	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
-//	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+void inicializarRecursos(){
+	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
+	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
+	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+
+	printf("Recurso: %s\n",recursos[0]);
+	printf("Recurso2: %s\n",recursos[1]);
+
+	printf("intancia 1: %s\n",instancias_recursos[0]);
+	printf("intancia 2: %s\n",instancias_recursos[1]);
+
+	while(!string_array_is_empty(recursos)){
+		t_recursos* unRecurso;
+		unRecurso = malloc(sizeof(t_recursos));
+		unRecurso->recurso = string_array_pop(recursos);
+
+		int instanciaRecurso= atoi(string_array_pop(instancias_recursos));
+		unRecurso->instancias = instanciaRecurso;
+		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
+
+	}
+
+	t_recursos* recurso1 = malloc(sizeof(t_recursos));
+	t_recursos* recurso2 = malloc(sizeof(t_recursos));
+	recurso1 = list_get(listaRecursos,0);
+	recurso2 = list_get(listaRecursos,1);
+
+
+	printf("RECURSO 1: %s\n",recurso1->recurso);
+	printf("INSTANCIAS 1: %d\n",recurso1->instancias);
+
+	printf("RECURSO 2: %s\n",recurso2->recurso);
+	printf("INSTANCIAS 2: %d\n",recurso2->instancias);
+
+	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
+	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
+//	    int i;
+//	    for (i=0;i<cantidadDeRecursos;i++){
 //
-//	//int cantidadRecursos = string_array_size(recursos);
-//	//int contador = 0;
 //
-//	while(!string_array_is_empty(recursos)){
-//		t_recursos* unRecurso;
-//		unRecurso = malloc(sizeof(t_recursos));
-//
-//		unRecurso->recurso = string_array_pop(recursos);
-//		int instanciaRecurso= string_array_pop(instancias_recursos);
-//		unRecurso->instancias = strtol(instanciaRecurso, NULL, 10);
-//		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
-//		//contador ++;
-//	}
-//
-//	    //valores prueba
-//	//    int instancias_recursos[] = {1,2};
-//	//    char* recursos[] = {"DISCO", "RECURSO_1"};
-//
-//	//   int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
-//
-//
-//
-//	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
-//	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
-////	    int i;
-////	    for (i=0;i<cantidadDeRecursos;i++){
-////
-////
-////	    }
-//		free(recursos);
-//		free(instancias_recursos);
-//
-//
-//}
+//	    }
+		free(recursos);
+		free(instancias_recursos);
+
+
+}
 
 int main(void) {
 	sem_init(&semKernelClientCPU,0,1);
@@ -78,7 +85,7 @@ int main(void) {
 
     listaReady = list_create();
     listaRecursos = list_create();
-    //inicializarRecursos();
+    inicializarRecursos();
 
 
 //    //THREADS CONEXIÓN
