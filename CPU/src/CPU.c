@@ -9,14 +9,14 @@ void serializarContexto(int unSocket){
 	//ELEMENTOS A SERIALIZAR
 	//char* recursoSolicitado;
 	//char* recursoALiberar
+	//char* instruccion;
 
 
 	//SERIALIZACION
 	//int programCounter;
 	//t_registrosCPU registrosCpu;
 	//int tiempoBloqueado;
-	//int instruccion_length;
-	//char* instruccion;
+
 
 	//contexto->instruccion = calloc(1, 4+1);
 //	strcpy(contextoPRUEBA.instruccion, "Hola");
@@ -76,12 +76,12 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contexto->registrosCpu.RDX, sizeof(contexto->registrosCpu.RDX));
 	offset += sizeof(contexto->registrosCpu.RDX);
 
-	//instruccion
-	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
-	offset += strlen(contexto->instruccion) +1;
+//	//instruccion
+//	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
+//	offset += sizeof(int);
+//
+//	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
+//	offset += strlen(contexto->instruccion) +1;
 
 //	//recurso solicitado
 //	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
