@@ -2,41 +2,45 @@
 
 t_config* config;
 
-void inicializarRecursos(){
-	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
-	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
-	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
-
-	//int cantidadRecursos = string_array_size(recursos);
-	//int contador = 0;
-
-	while(!string_array_is_empty(recursos)){
-		t_recursos* unRecurso;
-		unRecurso->recurso = string_array_pop(recursos);
-		int instanciaRecurso= string_array_pop(instancias_recursos);
-		unRecurso->instancias = strtol(instanciaRecurso, NULL, 10);
-		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
-		//contador ++;
-	}
-
-	    //valores prueba
-	//    int instancias_recursos[] = {1,2};
-	//    char* recursos[] = {"DISCO", "RECURSO_1"};
-
-	//   int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
-
-
-
-	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
-	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
-//	    int i;
-//	    for (i=0;i<cantidadDeRecursos;i++){
+//void inicializarRecursos(){
+//	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
+//	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
+//	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+//
+//	//int cantidadRecursos = string_array_size(recursos);
+//	//int contador = 0;
+//
+//	while(!string_array_is_empty(recursos)){
+//		t_recursos* unRecurso;
+//		unRecurso = malloc(sizeof(t_recursos));
+//
+//		unRecurso->recurso = string_array_pop(recursos);
+//		int instanciaRecurso= string_array_pop(instancias_recursos);
+//		unRecurso->instancias = strtol(instanciaRecurso, NULL, 10);
+//		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
+//		//contador ++;
+//	}
+//
+//	    //valores prueba
+//	//    int instancias_recursos[] = {1,2};
+//	//    char* recursos[] = {"DISCO", "RECURSO_1"};
+//
+//	//   int cantidadDeRecursos = sizeof(instancias_recursos) / sizeof(instancias_recursos[0]);
 //
 //
-//	    }
-
-
-}
+//
+//	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
+//	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
+////	    int i;
+////	    for (i=0;i<cantidadDeRecursos;i++){
+////
+////
+////	    }
+//		free(recursos);
+//		free(instancias_recursos);
+//
+//
+//}
 
 int main(void) {
 	sem_init(&semKernelClientCPU,0,1);
@@ -74,7 +78,7 @@ int main(void) {
 
     listaReady = list_create();
     listaRecursos = list_create();
-    inicializarRecursos();
+    //inicializarRecursos();
 
 
 //    //THREADS CONEXIÓN
@@ -109,6 +113,7 @@ int main(void) {
     sem_destroy(&semKernelClientFileSystem);
     sem_destroy(&semKernelServer);
 
+    free(estadoEnEjecucion);
     return EXIT_SUCCESS;
 }
 
@@ -353,7 +358,8 @@ void armarPCB(t_list* lista){
 
 
 	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-	nuevoPCB->estimadoAnterior = estimacion_inicial;
+	nuevoPCB->estimadoAnterior = 0;
+	nuevoPCB->estimadoProxRafaga = estimacion_inicial;
 	nuevoPCB->empiezaAEjecutar = 0;
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
@@ -469,7 +475,7 @@ void desencolarReady (){
 
 		int proxRafaga;
 		int maxRafaga = 0;
-		int pidMaxRafaga;
+		int pidMaxRafaga = 0;
 		int i=0;
 		int cantidadElementosReady = list_size(listaReady);
 		t_infopcb* procesoActual = NULL;
@@ -508,13 +514,16 @@ void desencolarReady (){
 }
 
 void calcularHRRN(t_infopcb* unProceso){
-	//tiempo transcurridoEnCpu
-	uint32_t tiempoRealCPU = unProceso->terminaEjecutar - unProceso->empiezaAEjecutar; //(falta poner terminaEjecutar)
+
+	//ESTA LOGICA VA CUANDO SE RECIBE EL CONTEXTO DE CPU
+//	//tiempo transcurridoEnCpu
+//	uint32_t tiempoRealCPU = unProceso->terminaEjecutar - unProceso->empiezaAEjecutar; //(falta poner terminaEjecutar)
+//
+//	unProceso->estimadoProxRafaga = unProceso->estimadoAnterior * hrrn_alfa + tiempoRealCPU * (1 - hrrn_alfa);
+
 
 	//tiempo transcurrido en la cola de Ready
 	int tiempoEsperaReady = unProceso->empiezaAEjecutar - unProceso->entraEnColaReady;
-
-	unProceso->estimadoProxRafaga = unProceso->estimadoAnterior * hrrn_alfa + tiempoRealCPU * (1 - hrrn_alfa);
 
 	unProceso->rafaga = (tiempoEsperaReady + unProceso->estimadoProxRafaga) / unProceso->estimadoProxRafaga;
 
@@ -617,7 +626,7 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
             printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
             tabla = tabla->sgte;
         }
-        printf("Estimado próxima ráfaga: %f\n", frenteColaNew->info_pcb->estimadoProxRafaga);
+        printf("Estimado próxima ráfaga: %d\n", frenteColaNew->info_pcb->estimadoProxRafaga);
         printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->entraEnColaReady);
         printf("Punteros a archivos:\n");
         t_nodoArchivos* punteros = frenteColaNew->info_pcb->punterosArchivos;
