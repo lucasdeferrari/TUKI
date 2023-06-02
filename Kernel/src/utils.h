@@ -97,21 +97,25 @@ typedef struct infopcb {
 	uint32_t empiezaAEjecutar;
 	uint32_t terminaEjecutar;
 	uint32_t entraEnColaReady;
+	int tiempoBloqueado;
+	char* recursoALiberar;
+	char* recursoSolicitado;
+	char* ultimaInstruccion;
 } t_infopcb;
 
 
-typedef struct {
-	char* instruccion;
-	int instruccion_length;
-	char* recursoSolicitado;
-	int recursoSolicitado_length;
-	char* recursoALiberar;
-	int recursoALiberar_length;
-	int tiempoBloqueado;
-	int programCounter;
-	t_registrosCPU registrosCpu;
-	//t_nodoTablaSegmentos* tablaSegmentos;
-} t_contextoEjecucion;
+//typedef struct {
+//	char* instruccion;
+//	int instruccion_length;
+//	char* recursoSolicitado;
+//	int recursoSolicitado_length;
+//	char* recursoALiberar;
+//	int recursoALiberar_length;
+//	int tiempoBloqueado;
+//	int programCounter;
+//	t_registrosCPU registrosCpu;
+//	//t_nodoTablaSegmentos* tablaSegmentos;
+//} t_contextoEjecucion;
 
 
 //EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar

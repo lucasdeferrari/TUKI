@@ -191,6 +191,7 @@ void* clientCPU(void* ptr) {
     printf("Después de recibir el contexto\n");
 
     printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
+    printf("Tiempo bloqueado recibido de CPU= %d\n",estadoEnEjecucion->tiempoBloqueado);
     printf("AX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.AX);
     printf("CX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.BX);
     printf("BX recibido de Kernel = %s\n",estadoEnEjecucion->registrosCpu.CX);
@@ -365,6 +366,7 @@ void armarPCB(t_list* lista){
 	nuevoPCB->pid = pid;
 	nuevoPCB->listaInstrucciones = lista;
 	nuevoPCB->programCounter = 0;
+	nuevoPCB->tiempoBloqueado = 0;
 
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.AX); i++) {
 		nuevoPCB->registrosCpu.AX[i] = '\0';
@@ -924,56 +926,13 @@ void recibir_contexto(int socket_cliente){
 
 	//Desserializamos el contenido
 
-	//Inicializamos estructura de contexto
-//	t_contextoEjecucion* contextoPRUEBA;
-//	contextoPRUEBA = malloc(sizeof(t_contextoEjecucion));
-//
-//	contextoPRUEBA->instruccion_length = 0;
-//	contextoPRUEBA->programCounter = 0;
-//	contextoPRUEBA->tiempoBloqueado = 0;
-//
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.AX); i++) {
-//		contextoPRUEBA->registrosCpu.AX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.BX); i++) {
-//		contextoPRUEBA->registrosCpu.BX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.CX); i++) {
-//		contextoPRUEBA->registrosCpu.CX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.DX ); i++) {
-//		contextoPRUEBA->registrosCpu.DX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EAX ); i++) {
-//		contextoPRUEBA->registrosCpu.EAX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EBX ); i++) {
-//		contextoPRUEBA->registrosCpu.EBX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.ECX ); i++) {
-//		contextoPRUEBA->registrosCpu.ECX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.EDX ); i++) {
-//		contextoPRUEBA->registrosCpu.EDX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RAX ); i++) {
-//		contextoPRUEBA->registrosCpu.RAX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RBX ); i++) {
-//		contextoPRUEBA->registrosCpu.RBX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RCX ); i++) {
-//		contextoPRUEBA->registrosCpu.RCX[i] = '\0';
-//	}
-//	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.RDX ); i++) {
-//		contextoPRUEBA->registrosCpu.RDX[i] = '\0';
-//	}
-
-	///
 	void* stream = paquete->buffer->stream;
 
 	// Deserializamos los campos que tenemos en el buffer
 	 memcpy(&(estadoEnEjecucion->programCounter), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->tiempoBloqueado), stream, sizeof(int));
 	 stream += sizeof(int);
 
 	 memcpy(&(estadoEnEjecucion->registrosCpu.AX), stream, sizeof(estadoEnEjecucion->registrosCpu.AX));
@@ -1012,7 +971,6 @@ void recibir_contexto(int socket_cliente){
 	 memcpy(&(estadoEnEjecucion->registrosCpu.RDX), stream, sizeof(estadoEnEjecucion->registrosCpu.RDX));
 	 stream += sizeof(estadoEnEjecucion->registrosCpu.RDX);
 
-	 printf("FIN DENTRO DE RECIBIR CONTEXTO\n");
 
 	 eliminar_paquete(paquete);
 

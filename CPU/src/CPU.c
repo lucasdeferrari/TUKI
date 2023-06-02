@@ -11,8 +11,6 @@ void serializarContexto(int unSocket){
 	//char* instruccion;
 	//char* recursoSolicitado;
 	//char* recursoALiberar
-	//
-
 
 
 	//SERIALIZACION
@@ -27,15 +25,17 @@ void serializarContexto(int unSocket){
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4;
-	//buffer->size = sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4;
-	//buffer->size = sizeof(int)*2 + strlen(contextoPRUEBA.instruccion)+1; //Program counter e instruccion
+	buffer->size = sizeof(int) + sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4;
+
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
 
 	memcpy(stream + offset, &contexto->programCounter, sizeof(int));
-	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->tiempoBloqueado, sizeof(int));
+	offset += sizeof(int);
 
 	memcpy(stream + offset, &contexto->registrosCpu.AX, sizeof(contexto->registrosCpu.AX));
 	offset += sizeof(contexto->registrosCpu.AX);
