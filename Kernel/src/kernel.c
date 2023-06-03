@@ -16,10 +16,13 @@ void inicializarRecursos(){
 	while(!string_array_is_empty(recursos)){
 		t_recursos* unRecurso;
 		unRecurso = malloc(sizeof(t_recursos));
+
 		unRecurso->recurso = string_array_pop(recursos);
 
 		int instanciaRecurso= atoi(string_array_pop(instancias_recursos));
 		unRecurso->instancias = instanciaRecurso;
+		unRecurso->finBloqueados = NULL;
+		unRecurso->frenteBloqueados = NULL;
 		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
 
 	}
@@ -86,7 +89,6 @@ int main(void) {
     listaReady = list_create();
     listaRecursos = list_create();
     inicializarRecursos();
-
 
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
@@ -188,6 +190,7 @@ void* clientCPU(void* ptr) {
     //contextoActualizado = recibir_contexto(conexion_CPU);
     recibir_contexto(conexion_CPU);
 
+
     printf("Después de recibir el contexto\n");
 
     printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
@@ -207,19 +210,78 @@ void* clientCPU(void* ptr) {
     printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
     printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
 
-    printf("Tamaño de ultima instruccion = %d\n",estadoEnEjecucion->ultimaInstruccion_length);
     printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
 
-    printf("Tamaño del recurso solicitado = %d\n",estadoEnEjecucion->recursoSolicitado_length);
     printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
 
-    printf("Tamaño del recurso a liberar = %d\n",estadoEnEjecucion->recursoALiberar_length);
     printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
+
+    manejar_recursos();
 
     liberar_conexion(conexion_CPU);
 
     sem_post(&semKernelClientMemoria);
 	return NULL;
+}
+
+void encolar_ready_ejecucion(t_infopcb* proceso) {
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+		queue(&frenteColaReady, &finColaReady,proceso);
+	}
+
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+		list_add(listaReady, proceso);
+		proceso->entraEnColaReady = tomarTiempo();
+	}
+	return;
+}
+
+void manejar_recursos() {
+	if (strcmp(estadoEnEjecucion->ultimaInstruccion, "WAIT") == 0) {
+		printf("Estoy dentro de wait.\n");
+		int i, tamanio_lista = list_size(listaRecursos);
+		for (i = 0; i<tamanio_lista; i++) {
+			t_recursos* recurso = list_get(listaRecursos, i);
+
+			if (strcmp(recurso->recurso, estadoEnEjecucion->recursoSolicitado) == 0){
+				if (recurso->instancias > 0) {
+					printf("recurso asignado %s\n", recurso->recurso);
+					recurso->instancias--;
+					encolar_ready_ejecucion(estadoEnEjecucion);
+				}
+				else {
+					printf("proceso bloqueado %s\n", recurso->recurso);
+					queue(recurso->frenteBloqueados, recurso->finBloqueados, estadoEnEjecucion);
+				}
+			}
+		}
+	}
+
+	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "SIGNAL") == 0) {
+		int i, tamanio_lista = list_size(listaRecursos);
+		for (i = 0; i<tamanio_lista; i++) {
+		t_recursos* recurso = list_get(listaRecursos, i);
+
+		printf("recurso-> recurso: %s\n", recurso->recurso);
+		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
+
+//		int tamanioValor = string_length(estadoEnEjecucion->recursoALiberar);
+//		estadoEnEjecucion->recursoALiberar[tamanioValor-1] = '\0';
+
+		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
+
+		if (string_contains(estadoEnEjecucion->recursoALiberar,recurso->recurso )){
+			printf("recurso liberado %s\n", recurso->recurso);
+			recurso->instancias++;
+			encolar_ready_ejecucion(estadoEnEjecucion);
+			if(recurso->frenteBloqueados != NULL) {
+				printf("proceso desbloqueado %s\n", recurso->recurso);
+				encolar_ready_ejecucion(unqueue(recurso->frenteBloqueados, recurso->finBloqueados));
+				recurso->instancias--;
+				}
+			}
+		}
+	}
 }
 
 void* clientMemoria(void* ptr) {
@@ -401,8 +463,8 @@ void armarPCB(t_list* lista){
 						    }
 
 	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-	nuevoPCB->estimadoAnterior = 0;
-	nuevoPCB->estimadoProxRafaga = estimacion_inicial;
+	nuevoPCB->estimadoAnterior = estimacion_inicial;
+	nuevoPCB->estimadoProxRafaga = 0;
 	nuevoPCB->empiezaAEjecutar = 0;
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
@@ -559,11 +621,9 @@ void desencolarReady (){
 void calcularHRRN(t_infopcb* unProceso){
 
 	//ESTA LOGICA VA CUANDO SE RECIBE EL CONTEXTO DE CPU
-//	//tiempo transcurridoEnCpu
-//	uint32_t tiempoRealCPU = unProceso->terminaEjecutar - unProceso->empiezaAEjecutar; //(falta poner terminaEjecutar)
-//
-//	unProceso->estimadoProxRafaga = unProceso->estimadoAnterior * hrrn_alfa + tiempoRealCPU * (1 - hrrn_alfa);
-
+	//tiempo transcurridoEnCpu
+	uint32_t tiempoRealCPU = unProceso->terminaEjecutar - unProceso->empiezaAEjecutar; //(falta poner terminaEjecutar)
+	unProceso->estimadoProxRafaga = unProceso->estimadoAnterior * hrrn_alfa + tiempoRealCPU * (1 - hrrn_alfa);
 
 	//tiempo transcurrido en la cola de Ready
 	int tiempoEsperaReady = unProceso->empiezaAEjecutar - unProceso->entraEnColaReady;
@@ -572,7 +632,7 @@ void calcularHRRN(t_infopcb* unProceso){
 
 	unProceso->estimadoAnterior = unProceso->estimadoProxRafaga;
 
-	//max R = (w + s) / s     -> w = tiempo de espera en ready
+	//max R = (w + s) / s-> w = tiempo de espera en ready
 
 	// E = ESTIMACION_INICIAL         S =  Estimacion = estimacion anterior * hrrn_alfa + real CPU (1 - hrrn_alfa)
 	//estimacion anterior en la primera es estimacion inicial
@@ -610,7 +670,6 @@ void paquete(int conexion){
 
 	free(leido);
 	eliminar_paquete(paquete);
-
 }
 
 //encolar
@@ -971,8 +1030,6 @@ void recibir_contexto(int socket_cliente){
 
 	 estadoEnEjecucion->ultimaInstruccion = malloc(estadoEnEjecucion->ultimaInstruccion_length);
 
-	 printf("%s\n",estadoEnEjecucion->ultimaInstruccion);
-
 	 memcpy( estadoEnEjecucion->ultimaInstruccion, stream, estadoEnEjecucion->ultimaInstruccion_length);
 	 stream += estadoEnEjecucion->ultimaInstruccion_length;
 
@@ -996,7 +1053,7 @@ void recibir_contexto(int socket_cliente){
 
 	 memcpy( estadoEnEjecucion->recursoALiberar, stream, estadoEnEjecucion->recursoALiberar_length);
 
-
+	 estadoEnEjecucion->terminaEjecutar = tomarTiempo();
 	 eliminar_paquete(paquete);
 
 	// return contextoPRUEBA;

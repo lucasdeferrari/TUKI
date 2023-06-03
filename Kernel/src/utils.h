@@ -38,12 +38,6 @@ typedef struct
 
 typedef struct
 {
-	int instancias;
-	char* recurso;
-} t_recursos;
-
-typedef struct
-{
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
@@ -128,6 +122,14 @@ typedef struct nodoCola {
     t_infopcb* info_pcb;
     struct nodoCola* sgte;
 } t_nodoCola;
+
+typedef struct
+{
+	int instancias;
+	char* recurso;
+	t_nodoCola* frenteBloqueados;
+	t_nodoCola* finBloqueados;
+} t_recursos;
 
 //Funciones servidor
 extern t_log* logger;
