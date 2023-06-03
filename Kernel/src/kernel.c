@@ -207,8 +207,8 @@ void* clientCPU(void* ptr) {
     printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
     printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
 
-//    printf("Tamaño de ultima instruccion = %d\n",estadoEnEjecucion->ultimaInstruccion_length);
-//    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
+    printf("Tamaño de ultima instruccion = %d\n",estadoEnEjecucion->ultimaInstruccion_length);
+    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
 
 //    printf("Tamaño del recurso solicitado = %d\n",estadoEnEjecucion->recursoSolicitado_length);
 //    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
@@ -965,14 +965,18 @@ void recibir_contexto(int socket_cliente){
 	 memcpy(&(estadoEnEjecucion->registrosCpu.RDX), stream, sizeof(estadoEnEjecucion->registrosCpu.RDX));
 	 stream += sizeof(estadoEnEjecucion->registrosCpu.RDX);
 
-//	 //ultima intruccion
-//	 memcpy(&(estadoEnEjecucion->ultimaInstruccion_length), stream, sizeof(int));
-//	 stream += sizeof(int);
-//
-//	 estadoEnEjecucion->ultimaInstruccion = malloc(estadoEnEjecucion->ultimaInstruccion_length);
-//
-//	 memcpy( estadoEnEjecucion->ultimaInstruccion, stream, estadoEnEjecucion->ultimaInstruccion_length);
-//	 stream += estadoEnEjecucion->ultimaInstruccion_length;
+	 //ultima intruccion
+	 memcpy(&(estadoEnEjecucion->ultimaInstruccion_length), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 estadoEnEjecucion->ultimaInstruccion = malloc(estadoEnEjecucion->ultimaInstruccion_length);
+
+	 printf("%s\n",estadoEnEjecucion->ultimaInstruccion);
+
+	 memcpy( estadoEnEjecucion->ultimaInstruccion, stream, estadoEnEjecucion->ultimaInstruccion_length);
+	 stream += estadoEnEjecucion->ultimaInstruccion_length;
+
+	 printf("%s\n",estadoEnEjecucion->ultimaInstruccion);
 
 //	 //recurso solicitado
 //	 memcpy(&(estadoEnEjecucion->recursoSolicitado_length), stream, sizeof(int));

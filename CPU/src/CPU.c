@@ -22,8 +22,8 @@ void serializarContexto(int unSocket){
 //	strcpy(contextoPRUEBA.instruccion, "Hola");
 //	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
 	contexto->instruccion_length = strlen(contexto->instruccion)+1;
-	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
-	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
+//	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
+//	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
 
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
@@ -76,12 +76,12 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contexto->registrosCpu.RDX, sizeof(contexto->registrosCpu.RDX));
 	offset += sizeof(contexto->registrosCpu.RDX);
 
-//	//instruccion
-//	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
-//	offset += sizeof(int);
-//
-//	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
-//	offset += strlen(contexto->instruccion) +1;
+	//instruccion
+	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
+	offset += strlen(contexto->instruccion) +1;
 
 //	//recurso solicitado
 //	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
@@ -96,7 +96,6 @@ void serializarContexto(int unSocket){
 //	offset += sizeof(int);
 //
 //	memcpy(stream + offset, &contexto->recursoALiberar, strlen(contexto->recursoALiberar) +1);
-
 
 
 	buffer->stream = stream;
@@ -126,8 +125,8 @@ void serializarContexto(int unSocket){
 
 
 	printf("Contexto actualizado enviado a KERNEL. \n");
-//	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
-//	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
+	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
+	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
 
 //	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoSolicitado_length);
 //	printf("recurso solicitado a KERNEL = %s\n", contexto->recursoSolicitado);
