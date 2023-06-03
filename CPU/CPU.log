@@ -88,3 +88,60 @@ el kernel se desconecto. Terminando servidor
 [INFO] 04:20:51:972 CPU/(90083:90086): Ingrese sus mensajes para la Memoria: 
 [INFO] 04:20:53:298 CPU/(90083:90086): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
 [INFO] 04:20:53:300 CPU/(90083:90085): CPU lista para recibir al Kernel
+[INFO] 03:08:57:346 CPU/(2664:2670): Ingrese sus mensajes para la Memoria: 
+[INFO] 03:09:03:331 CPU/(2664:2670): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 03:09:03:342 CPU/(2664:2669): CPU lista para recibir al Kernel
+[INFO] 03:09:38:652 CPU/(2664:2669): Se conecto un cliente
+[INFO] 03:09:38:711 CPU/(2664:2669): Instrucciones recibidas de Kernel:
+
+[INFO] 03:09:38:714 CPU/(2664:2669): SET AX PAZ
+
+[INFO] 03:09:38:715 CPU/(2664:2669): SET BX GATO
+
+[INFO] 03:09:38:724 CPU/(2664:2669): SET EAX PERROPAN
+
+[INFO] 03:09:38:725 CPU/(2664:2669): SET RAX HOLAAAAAA
+
+[INFO] 03:09:38:728 CPU/(2664:2669): SIGNAL DISCO
+
+[INFO] 03:09:38:730 CPU/(2664:2669): YIELD
+[ERROR] 03:09:38:805 CPU/(2664:2669): el kernel se desconecto. Terminando servidor
+
+[INFO] 03:12:31:701 CPU/(2863:2869): Ingrese sus mensajes para la Memoria: 
+[INFO] 03:12:33:989 CPU/(2863:2869): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 03:12:34:000 CPU/(2863:2868): CPU lista para recibir al Kernel
+[INFO] 03:12:50:467 CPU/(2863:2868): Se conecto un cliente
+[INFO] 03:12:50:511 CPU/(2863:2868): Instrucciones recibidas de Kernel:
+
+[INFO] 03:12:50:513 CPU/(2863:2868): SET AX PAZ
+
+[INFO] 03:12:50:520 CPU/(2863:2868): SET BX GATO
+
+[INFO] 03:12:50:524 CPU/(2863:2868): SET EAX PERROPAN
+
+[INFO] 03:12:50:524 CPU/(2863:2868): SET RAX HOLAAAAAA
+
+[INFO] 03:12:50:527 CPU/(2863:2868): SIGNAL DISCO
+
+[INFO] 03:12:50:529 CPU/(2863:2868): YIELD
+[ERROR] 03:12:50:607 CPU/(2863:2868): el kernel se desconecto. Terminando servidor
+
+[INFO] 03:20:09:103 CPU/(3147:3153): Ingrese sus mensajes para la Memoria: 
+[INFO] 03:20:11:699 CPU/(3147:3153): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 03:20:11:707 CPU/(3147:3152): CPU lista para recibir al Kernel
+[INFO] 03:20:32:110 CPU/(3147:3152): Se conecto un cliente
+[INFO] 03:20:32:163 CPU/(3147:3152): Instrucciones recibidas de Kernel:
+
+[INFO] 03:20:32:170 CPU/(3147:3152): SET AX PAZ
+
+[INFO] 03:20:32:171 CPU/(3147:3152): SET BX GATO
+
+[INFO] 03:20:32:173 CPU/(3147:3152): SET EAX PERROPAN
+
+[INFO] 03:20:32:174 CPU/(3147:3152): SET RAX HOLAAAAAA
+
+[INFO] 03:20:32:174 CPU/(3147:3152): SIGNAL DISCO
+
+[INFO] 03:20:32:177 CPU/(3147:3152): YIELD
+[ERROR] 03:20:32:230 CPU/(3147:3152): el kernel se desconecto. Terminando servidor
+

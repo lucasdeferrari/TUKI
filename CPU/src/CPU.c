@@ -28,7 +28,7 @@ void serializarContexto(int unSocket){
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int) + sizeof(int) + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + strlen(contexto->instruccion) +1;
+	buffer->size = sizeof(int)*3 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length;
 
 
 	void* stream = malloc(buffer->size);
@@ -80,8 +80,8 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
 	offset += sizeof(int);
 
-	memcpy(stream + offset, &contexto->instruccion, strlen(contexto->instruccion) +1);
-	offset += strlen(contexto->instruccion) +1;
+	memcpy(stream + offset, contexto->instruccion, contexto->instruccion_length);
+	offset += contexto->instruccion_length;
 
 //	//recurso solicitado
 //	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
