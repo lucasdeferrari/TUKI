@@ -210,11 +210,11 @@ void* clientCPU(void* ptr) {
     printf("Tamaño de ultima instruccion = %d\n",estadoEnEjecucion->ultimaInstruccion_length);
     printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
 
-//    printf("Tamaño del recurso solicitado = %d\n",estadoEnEjecucion->recursoSolicitado_length);
-//    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
-//
-//    printf("Tamaño del recurso a liberar = %d\n",estadoEnEjecucion->recursoALiberar_length);
-//    printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
+    printf("Tamaño del recurso solicitado = %d\n",estadoEnEjecucion->recursoSolicitado_length);
+    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
+
+    printf("Tamaño del recurso a liberar = %d\n",estadoEnEjecucion->recursoALiberar_length);
+    printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
 
     liberar_conexion(conexion_CPU);
 
@@ -978,23 +978,23 @@ void recibir_contexto(int socket_cliente){
 
 	 printf("%s\n",estadoEnEjecucion->ultimaInstruccion);
 
-//	 //recurso solicitado
-//	 memcpy(&(estadoEnEjecucion->recursoSolicitado_length), stream, sizeof(int));
-//	 stream += sizeof(int);
-//
-//	 estadoEnEjecucion->recursoSolicitado = malloc(estadoEnEjecucion->recursoSolicitado_length);
-//
-//	 memcpy( estadoEnEjecucion->recursoSolicitado, stream, estadoEnEjecucion->recursoSolicitado_length);
-//	 stream += estadoEnEjecucion->recursoSolicitado_length;
-//
-//
-//	 //recurso a liberar
-//	 memcpy(&(estadoEnEjecucion->recursoALiberar_length), stream, sizeof(int));
-//	 stream += sizeof(int);
-//
-//	 estadoEnEjecucion->recursoALiberar = malloc(estadoEnEjecucion->recursoALiberar_length);
-//
-//	 memcpy( estadoEnEjecucion->recursoALiberar, stream, estadoEnEjecucion->recursoALiberar_length);
+	 //recurso solicitado
+	 memcpy(&(estadoEnEjecucion->recursoSolicitado_length), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 estadoEnEjecucion->recursoSolicitado = malloc(estadoEnEjecucion->recursoSolicitado_length);
+
+	 memcpy( estadoEnEjecucion->recursoSolicitado, stream, estadoEnEjecucion->recursoSolicitado_length);
+	 stream += estadoEnEjecucion->recursoSolicitado_length;
+
+
+	 //recurso a liberar
+	 memcpy(&(estadoEnEjecucion->recursoALiberar_length), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 estadoEnEjecucion->recursoALiberar = malloc(estadoEnEjecucion->recursoALiberar_length);
+
+	 memcpy( estadoEnEjecucion->recursoALiberar, stream, estadoEnEjecucion->recursoALiberar_length);
 
 
 	 eliminar_paquete(paquete);

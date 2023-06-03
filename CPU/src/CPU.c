@@ -22,13 +22,13 @@ void serializarContexto(int unSocket){
 //	strcpy(contextoPRUEBA.instruccion, "Hola");
 //	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
 	contexto->instruccion_length = strlen(contexto->instruccion)+1;
-//	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
-//	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
+	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
+	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
 
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int)*3 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length;
+	buffer->size = sizeof(int)*5 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length;
 
 
 	void* stream = malloc(buffer->size);
@@ -83,19 +83,19 @@ void serializarContexto(int unSocket){
 	memcpy(stream + offset, contexto->instruccion, contexto->instruccion_length);
 	offset += contexto->instruccion_length;
 
-//	//recurso solicitado
-//	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
-//	offset += sizeof(int);
-//
-//	memcpy(stream + offset, &contexto->recursoSolicitado, strlen(contexto->recursoSolicitado) +1);
-//	offset += strlen(contexto->recursoSolicitado) +1;
-//
-//
-//	//recurso a liberar
-//	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
-//	offset += sizeof(int);
-//
-//	memcpy(stream + offset, &contexto->recursoALiberar, strlen(contexto->recursoALiberar) +1);
+	//recurso solicitado
+	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->recursoSolicitado, contexto->recursoSolicitado_length);
+	offset += contexto->recursoSolicitado_length;
+
+
+	//recurso a liberar
+	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->recursoALiberar, contexto->recursoALiberar_length);
 
 
 	buffer->stream = stream;
