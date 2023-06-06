@@ -1,7 +1,3 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
 -include ../makefile.init
 
 RM := rm -rf
@@ -31,16 +27,13 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: main-build
-
-# Main-build Target
-main-build: Kernel
+all: Kernel
 
 # Tool invocations
 Kernel: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc  -o "Kernel" $(OBJS) $(USER_OBJS) $(LIBS) -lpthread -lreadline -lcommons
+	gcc  -o "Kernel" $(OBJS) $(USER_OBJS) $(LIBS) -lcommons -lreadline -lpthread
 	@echo 'Finished building target: $@'
 	@echo ' '
 

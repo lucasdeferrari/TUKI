@@ -1,18 +1,14 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/kernel.c \
+../src/Kernel.c \
 ../src/utils.c 
 
 C_DEPS += \
-./src/kernel.d \
+./src/Kernel.d \
 ./src/utils.d 
 
 OBJS += \
-./src/kernel.o \
+./src/Kernel.o \
 ./src/utils.o 
 
 
@@ -28,7 +24,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/kernel.d ./src/kernel.o ./src/utils.d ./src/utils.o
+	-$(RM) ./src/Kernel.d ./src/Kernel.o ./src/utils.d ./src/utils.o
 
 .PHONY: clean-src
 
