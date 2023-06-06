@@ -4,146 +4,6 @@ int cliente_fd;
 
 
 
-void serializarContexto(int unSocket){
-
-	//ELEMENTOS A SERIALIZAR
-	//char* recursoSolicitado;
-	//char* recursoALiberar
-	//char* instruccion;
-
-
-	//SERIALIZACION
-	//int programCounter;
-	//t_registrosCPU registrosCpu;
-	//int tiempoBloqueado;
-
-
-	//contexto->instruccion = calloc(1, 4+1);
-//	strcpy(contextoPRUEBA.instruccion, "Hola");
-//	contextoPRUEBA.instruccion_length = strlen(contextoPRUEBA.instruccion)+1;
-	contexto->instruccion_length = strlen(contexto->instruccion)+1;
-	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
-	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
-
-	//BUFFER
-	t_buffer* buffer = malloc(sizeof(t_buffer));
-
-	buffer->size = sizeof(int)*5 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length;
-
-
-	void* stream = malloc(buffer->size);
-	int offset = 0; //desplazamiento
-
-	memcpy(stream + offset, &contexto->programCounter, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, &contexto->tiempoBloqueado, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, &contexto->registrosCpu.AX, sizeof(contexto->registrosCpu.AX));
-	offset += sizeof(contexto->registrosCpu.AX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.BX, sizeof(contexto->registrosCpu.BX));
-	offset += sizeof(contexto->registrosCpu.BX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.CX, sizeof(contexto->registrosCpu.CX));
-	offset += sizeof(contexto->registrosCpu.CX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.DX, sizeof(contexto->registrosCpu.DX));
-	offset += sizeof(contexto->registrosCpu.DX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.EAX, sizeof(contexto->registrosCpu.EAX));
-	offset += sizeof(contexto->registrosCpu.EAX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.EBX, sizeof(contexto->registrosCpu.EBX));
-	offset += sizeof(contexto->registrosCpu.EBX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.ECX, sizeof(contexto->registrosCpu.ECX));
-	offset += sizeof(contexto->registrosCpu.ECX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.EDX, sizeof(contexto->registrosCpu.EDX));
-	offset += sizeof(contexto->registrosCpu.EDX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.RAX, sizeof(contexto->registrosCpu.RAX));
-	offset += sizeof(contexto->registrosCpu.RAX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.RBX, sizeof(contexto->registrosCpu.RBX));
-	offset += sizeof(contexto->registrosCpu.RBX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.RCX, sizeof(contexto->registrosCpu.RCX));
-	offset += sizeof(contexto->registrosCpu.RCX);
-
-	memcpy(stream + offset, &contexto->registrosCpu.RDX, sizeof(contexto->registrosCpu.RDX));
-	offset += sizeof(contexto->registrosCpu.RDX);
-
-	//instruccion
-	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, contexto->instruccion, contexto->instruccion_length);
-	offset += contexto->instruccion_length;
-
-	//recurso solicitado
-	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, contexto->recursoSolicitado, contexto->recursoSolicitado_length);
-	offset += contexto->recursoSolicitado_length;
-
-
-	//recurso a liberar
-	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
-	offset += sizeof(int);
-
-	memcpy(stream + offset, contexto->recursoALiberar, contexto->recursoALiberar_length);
-
-
-	buffer->stream = stream;
-
-	//llenar el PAQUETE con el buffer
-
-	t_paquete* paquete = malloc(sizeof(t_paquete));
-	paquete->codigo_operacion = CONTEXTO;
-	paquete->buffer = buffer; // Nuestro buffer de antes.
-
-	// Armamos el stream a enviar
-	//    tamaño               stream        size       codigo_operación
-	void* a_enviar = malloc(buffer->size + sizeof(int) + sizeof(op_code)); //op_code -> int
-	offset = 0;
-
-	memcpy(a_enviar + offset, &(paquete->codigo_operacion), sizeof(op_code));
-	offset += sizeof(int);
-
-	memcpy(a_enviar + offset, &(paquete->buffer->size), sizeof(int));
-    offset += sizeof(int);
-
-	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
-	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
-
-	// Lo enviamos
-	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
-
-
-	printf("Contexto actualizado enviado a KERNEL. \n");
-	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
-	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
-
-//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoSolicitado_length);
-//	printf("recurso solicitado a KERNEL = %s\n", contexto->recursoSolicitado);
-//
-//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoALiberar_length);
-//	printf("recurso a liberar KERNEL = %s\n", contexto->recursoALiberar);
-
-	//free memoria dinámica
-	free(contexto->instruccion);
-	// Liberamos la memoria
-	free(a_enviar);
-	free(paquete->buffer->stream);
-	free(paquete->buffer);
-	free(paquete);
-
-	return;
-}
 
 int main(void) {
 
@@ -167,11 +27,19 @@ int main(void) {
     contexto->listaInstrucciones = list_create();
     vaciarContexto();
 
-    //Server
-    iniciarHiloServer();
-
     //Hilo Cliente
     iniciarHiloCliente();
+
+    //thread server
+
+	server_fd = iniciar_servidor();
+	log_info(logger, "CPU lista para escuchar al cliente\n");
+
+	while(1){
+		iniciarHiloServer();
+		pthread_join(serverCPU_thread, NULL);
+	}
+
 
     //pthread_join
     pthread_join(client_Memoria,NULL);
@@ -253,8 +121,8 @@ void* serverCPU(void* ptr){
 
 	sem_wait(&semCPUClientMemoria);
 
-    int server_fd = iniciar_servidor();
-    log_info(logger, "CPU lista para recibir al Kernel");
+    //int server_fd = iniciar_servidor();
+	log_info(logger, "CPU lista para recibir al cliente");
     cliente_fd = esperar_cliente(server_fd);
     int contadorContexto = 0;
     t_list* lista;
@@ -444,10 +312,136 @@ void iniciar_ejecucion(){
 	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
 	serializarContexto(cliente_fd);
-	//enviar_mensaje("SOY CPU", cliente_fd);
 
 	return;
 }
+
+void serializarContexto(int unSocket){
+
+	contexto->instruccion_length = strlen(contexto->instruccion)+1;
+	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
+	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
+
+	//BUFFER
+	t_buffer* buffer = malloc(sizeof(t_buffer));
+
+	buffer->size = sizeof(int)*5 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length;
+
+
+	void* stream = malloc(buffer->size);
+	int offset = 0; //desplazamiento
+
+	memcpy(stream + offset, &contexto->programCounter, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->tiempoBloqueado, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->registrosCpu.AX, sizeof(contexto->registrosCpu.AX));
+	offset += sizeof(contexto->registrosCpu.AX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.BX, sizeof(contexto->registrosCpu.BX));
+	offset += sizeof(contexto->registrosCpu.BX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.CX, sizeof(contexto->registrosCpu.CX));
+	offset += sizeof(contexto->registrosCpu.CX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.DX, sizeof(contexto->registrosCpu.DX));
+	offset += sizeof(contexto->registrosCpu.DX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.EAX, sizeof(contexto->registrosCpu.EAX));
+	offset += sizeof(contexto->registrosCpu.EAX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.EBX, sizeof(contexto->registrosCpu.EBX));
+	offset += sizeof(contexto->registrosCpu.EBX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.ECX, sizeof(contexto->registrosCpu.ECX));
+	offset += sizeof(contexto->registrosCpu.ECX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.EDX, sizeof(contexto->registrosCpu.EDX));
+	offset += sizeof(contexto->registrosCpu.EDX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.RAX, sizeof(contexto->registrosCpu.RAX));
+	offset += sizeof(contexto->registrosCpu.RAX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.RBX, sizeof(contexto->registrosCpu.RBX));
+	offset += sizeof(contexto->registrosCpu.RBX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.RCX, sizeof(contexto->registrosCpu.RCX));
+	offset += sizeof(contexto->registrosCpu.RCX);
+
+	memcpy(stream + offset, &contexto->registrosCpu.RDX, sizeof(contexto->registrosCpu.RDX));
+	offset += sizeof(contexto->registrosCpu.RDX);
+
+	//instruccion
+	memcpy(stream + offset, &contexto->instruccion_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->instruccion, contexto->instruccion_length);
+	offset += contexto->instruccion_length;
+
+	//recurso solicitado
+	memcpy(stream + offset, &contexto->recursoSolicitado_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->recursoSolicitado, contexto->recursoSolicitado_length);
+	offset += contexto->recursoSolicitado_length;
+
+
+	//recurso a liberar
+	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->recursoALiberar, contexto->recursoALiberar_length);
+
+
+	buffer->stream = stream;
+
+	//llenar el PAQUETE con el buffer
+
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = CONTEXTO;
+	paquete->buffer = buffer; // Nuestro buffer de antes.
+
+	// Armamos el stream a enviar
+	//    tamaño               stream        size       codigo_operación
+	void* a_enviar = malloc(buffer->size + sizeof(int) + sizeof(op_code)); //op_code -> int
+	offset = 0;
+
+	memcpy(a_enviar + offset, &(paquete->codigo_operacion), sizeof(op_code));
+	offset += sizeof(int);
+
+	memcpy(a_enviar + offset, &(paquete->buffer->size), sizeof(int));
+    offset += sizeof(int);
+
+	memcpy(a_enviar + offset, paquete->buffer->stream, paquete->buffer->size);
+	//offset += paquete->buffer->size;  //No tiene sentido seguir calculando el desplazamiento
+
+	// Lo enviamos
+	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
+
+
+	printf("Contexto actualizado enviado a KERNEL. \n");
+	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
+	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
+
+//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoSolicitado_length);
+//	printf("recurso solicitado a KERNEL = %s\n", contexto->recursoSolicitado);
+//
+//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoALiberar_length);
+//	printf("recurso a liberar KERNEL = %s\n", contexto->recursoALiberar);
+
+	//free memoria dinámica
+	free(contexto->instruccion);
+	// Liberamos la memoria
+	free(a_enviar);
+	free(paquete->buffer->stream);
+	free(paquete->buffer);
+	free(paquete);
+
+	return;
+}
+
 
 int ejecutarFuncion(char* proximaInstruccion){
 

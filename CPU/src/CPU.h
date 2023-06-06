@@ -19,6 +19,7 @@ char* puerto_memoria;
 sem_t semCPUServer;
 sem_t semCPUClientMemoria;
 t_contextoEjecucion* contexto;
+int server_fd;
 
 
 void *serverCPU(void *ptr);
