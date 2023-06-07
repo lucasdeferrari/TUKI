@@ -35,6 +35,7 @@ int main(void) {
     	 printf("No existe el path al superbloque.\n");
     	 exit(5);
     	 }
+
     archivo_superbloque = fopen(p_superbloque, "r");
     	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
@@ -45,6 +46,8 @@ int main(void) {
 
 	t_config* superbloque;
 	superbloque = config_create(p_superbloque);
+
+
 
 	 if (superbloque == NULL) {
 			printf("No se pudo crear el config para leer el superbloque.\n");
@@ -82,6 +85,19 @@ int main(void) {
        	 printf("No existe el path al bitmap.\n");
        	 exit(5);
        	 }
+
+    //CHEQUEO SI EL ARCHIVO YA EXISTE
+    if (access(p_bitmap, F_OK) == -1) {
+       printf("El archivo bitmap no existe.\n");
+       archivo_bitmap = fopen(p_bitmap, "w");
+       if (archivo_bitmap) {
+              printf("El archivo bitmap se ha creado exitosamente.\n");
+              fclose(archivo_bitmap);
+          } else {
+              printf("No se pudo crear el archivo bitmap.\n");
+          }
+    }
+
     archivo_bitmap = fopen(p_bitmap, "r+");
     if (archivo_bitmap == NULL) {
         fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
@@ -122,11 +138,20 @@ int main(void) {
 
    // Escribir en la memoria mapeada
    bitarray_set_bit(bitarray_mapeado, 0);
+   bitarray_set_bit(bitarray_mapeado, 1);
+   bitarray_set_bit(bitarray_mapeado, 2);
 
    // Ver el valor que acabo de modificar
    bool valor = bitarray_test_bit(bitarray_mapeado, 0);
+   bool valor2 = bitarray_test_bit(bitarray_mapeado, 1);
+   bool valor3 = bitarray_test_bit(bitarray_mapeado, 2);
+   bool valor4 = bitarray_test_bit(bitarray_mapeado, 3);
+
 
    printf("El valor del bit 0 es %i\n", valor);
+   printf("El valor del bit 1 es %i\n", valor2);
+   printf("El valor del bit 2 es %i\n", valor3);
+   printf("El valor del bit 3 es %i\n", valor4);
 
    // Sincronizar los cambios con el archivo en disco
    if (msync(mapping, block_count, MS_SYNC) == -1) {
@@ -148,7 +173,21 @@ int main(void) {
 		 printf("No existe el path a los bloques.\n");
 		 exit(5);
 		 }
+
+    if (access(p_bloques, F_OK) == -1) {
+           printf("El archivo bloques no existe.\n");
+           archivo_bloques = fopen(p_bloques, "w");
+           if (archivo_bloques) {
+                  printf("El archivo bloques se ha creado exitosamente.\n");
+                  fclose(archivo_bloques);
+              } else {
+                  printf("No se pudo crear el archivo bloques.\n");
+              }
+        }
+
     archivo_bloques = fopen(p_bloques, "r+");
+
+
 	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
 	if (archivo_bloques == NULL) {
@@ -181,6 +220,7 @@ int main(void) {
 		exit(1);
 	}
 
+	// CAMBIAR EL PRIMER VALOR DEL ARCHIVO BLOQUES
 //		char* mapped_data = (char*) mapping2;
 //		mapped_data[0] = 'A';
 
