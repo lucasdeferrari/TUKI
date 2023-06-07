@@ -243,8 +243,11 @@ int main(void) {
     //thread cliente Memoria
     iniciarHiloCliente();
 
-    //thread server consola
-    iniciarHiloServer();
+    //thread server
+    while(1){
+    		iniciarHiloServer();
+    		pthread_join(serverFileSystem_thread, NULL);
+    	}
 
     //pthread_join
     pthread_join(client_Memoria,NULL);

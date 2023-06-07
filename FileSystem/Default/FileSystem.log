@@ -79,3 +79,21 @@ el cliente se desconecto. Terminando servidor
 [INFO] 03:58:30:923 FileSystem/(3488:3490): a
 [ERROR] 03:58:30:924 FileSystem/(3488:3490): 
 el cliente se desconecto. Terminando servidor
+[INFO] 15:57:45:687 FileSystem/(2895:2896): Ingrese sus mensajes para la Memoria: 
+[INFO] 15:57:48:056 FileSystem/(2895:2896): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 15:57:48:057 FileSystem/(2895:2897): FileSystem listo para recibir a kernel
+[INFO] 15:58:02:062 FileSystem/(2895:2897): Se conecto un cliente!
+[INFO] 15:58:04:413 FileSystem/(2895:2897): Me llegaron los siguientes valores:
+
+[INFO] 15:58:04:413 FileSystem/(2895:2897): sdfs
+[ERROR] 15:58:04:413 FileSystem/(2895:2897): 
+el cliente se desconecto. Terminando servidor
+[INFO] 16:00:39:069 FileSystem/(3008:3009): Ingrese sus mensajes para la Memoria: 
+[INFO] 16:00:40:779 FileSystem/(3008:3009): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 16:00:40:779 FileSystem/(3008:3010): FileSystem listo para recibir a kernel
+[INFO] 16:00:45:583 FileSystem/(3008:3010): Se conecto un cliente!
+[INFO] 16:00:46:569 FileSystem/(3008:3010): Me llegaron los siguientes valores:
+
+[INFO] 16:00:46:570 FileSystem/(3008:3010): sfsd
+[ERROR] 16:00:46:570 FileSystem/(3008:3010): 
+el cliente se desconecto. Terminando servidor

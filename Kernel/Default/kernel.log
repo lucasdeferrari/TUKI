@@ -87,3 +87,23 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 03:58:33:508 Kernel/(3498:3500): 
 el cliente se desconecto. Terminando servidor
 [INFO] 03:58:33:508 Kernel/(3498:3504): Kernel listo para recibir al cliente
+[INFO] 15:58:02:062 Kernel/(2903:2903): Kernel listo para escuchar al cliente
+
+[INFO] 15:58:02:062 Kernel/(2903:2904): Ingrese sus mensajes para el FileSystem: 
+[INFO] 15:58:04:413 Kernel/(2903:2904): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 15:58:04:413 Kernel/(2903:2905): Kernel listo para recibir al cliente
+[INFO] 15:58:08:916 Kernel/(2903:2905): Se conecto una consola
+[INFO] 15:58:08:916 Kernel/(2903:2905): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 15:58:08:917 Kernel/(2903:2905): 
+el cliente se desconecto. Terminando servidor
+[INFO] 15:58:08:917 Kernel/(2903:2909): Kernel listo para recibir al cliente
+[INFO] 16:00:45:582 Kernel/(3016:3016): Kernel listo para escuchar al cliente
+
+[INFO] 16:00:45:583 Kernel/(3016:3017): Ingrese sus mensajes para el FileSystem: 
+[INFO] 16:00:46:570 Kernel/(3016:3017): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 16:00:46:570 Kernel/(3016:3018): Kernel listo para recibir al cliente
+[INFO] 16:00:49:552 Kernel/(3016:3018): Se conecto una consola
+[INFO] 16:00:49:552 Kernel/(3016:3018): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 16:00:49:552 Kernel/(3016:3018): 
+el cliente se desconecto. Terminando servidor
+[INFO] 16:00:49:553 Kernel/(3016:3024): Kernel listo para recibir al cliente
