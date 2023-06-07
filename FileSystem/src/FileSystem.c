@@ -4,6 +4,7 @@ t_config* config;
 
 int block_size = 0;
 int block_count = 0;
+int server_fd;
 
 int main(void) {
 
@@ -243,11 +244,15 @@ int main(void) {
     //thread cliente Memoria
     iniciarHiloCliente();
 
+
+	server_fd = iniciar_servidor();
+	log_info(logger, "FileSystem listo para escuchar al cliente\n");
+
     //thread server
     while(1){
-    		iniciarHiloServer();
-    		pthread_join(serverFileSystem_thread, NULL);
-    	}
+    	iniciarHiloServer();
+    	pthread_join(serverFileSystem_thread, NULL);
+    }
 
     //pthread_join
     pthread_join(client_Memoria,NULL);
@@ -302,9 +307,9 @@ void iniciarHiloServer() {
 }
 
 void* serverFileSystem(void* ptr){
-	sem_wait(&semFileSystemClientMemoria);
+	//sem_wait(&semFileSystemClientMemoria);
 
-    int server_fd = iniciar_servidor();
+
     log_info(logger, "FileSystem listo para recibir a kernel");
     int cliente_fd = esperar_cliente(server_fd);
 

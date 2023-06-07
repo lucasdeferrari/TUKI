@@ -78,7 +78,7 @@ void* clientMemoria(void* ptr) {
     recibir_mensaje(conexion_Memoria);
     liberar_conexion(conexion_Memoria);
 
-    sem_post(&semCPUClientMemoria);
+    //sem_post(&semCPUClientMemoria);
 	return NULL;
 }
 
@@ -119,7 +119,7 @@ void iniciarHiloServer() {
 
 void* serverCPU(void* ptr){
 
-	sem_wait(&semCPUClientMemoria);
+	//sem_wait(&semCPUClientMemoria);
 
     //int server_fd = iniciar_servidor();
 	log_info(logger, "CPU lista para recibir al cliente");
