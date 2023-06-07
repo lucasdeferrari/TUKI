@@ -36,7 +36,9 @@ Kernel: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	gcc  -o "Kernel" $(OBJS) $(USER_OBJS) $(LIBS) -lcommons -lreadline -lpthread
 	@echo 'Finished building target: $@'
 	@echo ' '
-
+	
+run:
+	./Kernel
 # Other Targets
 clean:
 	-$(RM) Kernel

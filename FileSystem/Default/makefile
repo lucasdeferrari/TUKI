@@ -27,7 +27,7 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: FileSystem
+all: FileSystem 
 
 # Tool invocations
 FileSystem: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
@@ -37,6 +37,9 @@ FileSystem: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
+run:
+	./FileSystem
+	
 # Other Targets
 clean:
 	-$(RM) FileSystem

@@ -27,7 +27,7 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: CPU
+all: CPU 
 
 # Tool invocations
 CPU: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
@@ -36,6 +36,9 @@ CPU: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	gcc  -o "CPU" $(OBJS) $(USER_OBJS) $(LIBS) -lcommons -lreadline -lpthread
 	@echo 'Finished building target: $@'
 	@echo ' '
+	
+run:
+	./CPU
 
 # Other Targets
 clean:
