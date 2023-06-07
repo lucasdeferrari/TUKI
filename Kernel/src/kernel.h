@@ -24,7 +24,7 @@ double estimacion_inicial;
 int hrrn_alfa;
 int grado_max_multiprogramación ;
 int server_fd;
-int cantidadElementosReady;
+int cantidadElementosSistema;
 
 //VERIFICAR TIPO
 //char ** recursos ;

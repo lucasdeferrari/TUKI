@@ -33,19 +33,13 @@ void inicializarRecursos(){
 	recurso2 = list_get(listaRecursos,1);
 
 
-	printf("RECURSO 1: %s\n",recurso1->recurso);
-	printf("INSTANCIAS 1: %d\n",recurso1->instancias);
-
-	printf("RECURSO 2: %s\n",recurso2->recurso);
-	printf("INSTANCIAS 2: %d\n",recurso2->instancias);
-
-	    // POR CADA RECURSO HAY QUE CREAR UNA COLA DE BLOQUEADOS
-	    // podriamos tener un ARRAY DE COLAS para manejar todos los array con el mismo índice
-//	    int i;
-//	    for (i=0;i<cantidadDeRecursos;i++){
+//	printf("RECURSO 1: %s\n",recurso1->recurso);
+//	printf("INSTANCIAS 1: %d\n",recurso1->instancias);
 //
-//
-//	    }
+//	printf("RECURSO 2: %s\n",recurso2->recurso);
+//	printf("INSTANCIAS 2: %d\n",recurso2->instancias);
+
+
 		free(recursos);
 		free(instancias_recursos);
 
@@ -87,7 +81,7 @@ int main(void) {
     estadoEnEjecucion->pid = ningunEstado;
 
     listaReady = list_create();
-    cantidadElementosReady = 0;
+    cantidadElementosSistema = 0;
     listaRecursos = list_create();
     inicializarRecursos();
 
@@ -188,7 +182,7 @@ void iniciarHiloIO() {
 }
 
 void* clientCPU(void* ptr) {
-	sem_wait(&semKernelClientCPU);
+	//sem_wait(&semKernelClientCPU);
 	int config=1;
     int conexion_CPU;
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
@@ -236,7 +230,7 @@ void* clientCPU(void* ptr) {
 
     liberar_conexion(conexion_CPU);
 
-    sem_post(&semKernelClientMemoria);
+    //sem_post(&semKernelClientMemoria);
 	return NULL;
 }
 
@@ -266,7 +260,7 @@ void manejar_recursos() {
 				if (recurso->instancias > 0) {
 					printf("recurso asignado %s\n", recurso->recurso);
 					recurso->instancias--;
-					printf("recurso asignado instancias %s\n", recurso->instancias);
+					//printf("recurso asignado instancias %s\n", recurso->instancias);
 					encolar_ready_ejecucion(estadoEnEjecucion);
 				}
 				else {
@@ -288,13 +282,9 @@ void manejar_recursos() {
 		for (i = 0; i<tamanio_lista; i++) {
 		t_recursos* recurso = list_get(listaRecursos, i);
 
-		printf("recurso-> recurso: %s\n", recurso->recurso);
-		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
+//		printf("recurso-> recurso: %s\n", recurso->recurso);
+//		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
 
-//		int tamanioValor = string_length(estadoEnEjecucion->recursoALiberar);
-//		estadoEnEjecucion->recursoALiberar[tamanioValor-1] = '\0';
-
-		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
 
 		if (string_contains(estadoEnEjecucion->recursoALiberar,recurso->recurso )){
 			printf("recurso liberado %s\n", recurso->recurso);
@@ -327,10 +317,43 @@ void manejar_recursos() {
 void pasarAExit(t_infopcb* estadoEnEjecucion) {
 
 //		Dar aviso al modulo de Mmemoria para que lo libere.
-//		Avisar a usuario por consola (dar aviso a consola con un log).
-//		Liberar recursos que tenga asignados.
+//		Liberar recursos que tenga asignados. --> CONSULTAR
+
+
+	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
+
 	//Si la cola de ready tiene elementos desencolar, si esta vacia pasar pid de estadoEnEjecucion a -1
-	desencolarReady();
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+		if(frenteColaReady != NULL){
+			cantidadElementosSistema--;
+			desencolarReady();
+		}
+		else{
+			estadoEnEjecucion->pid = -1;
+			cantidadElementosSistema--;
+		}
+
+	}
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+
+		if( !list_is_empty(listaReady) ){
+			printf("lista ready NO vacia\n");
+
+			cantidadElementosSistema--;
+			desencolarReady();
+		}
+		else{
+			estadoEnEjecucion->pid = -1;
+			cantidadElementosSistema--;
+		}
+
+	}
+
+
+
+
 
 }
 
@@ -393,7 +416,7 @@ void iniciarHiloServer() {
 
 void* serverKernel(void* ptr){
 
-	sem_wait(&semKernelServer);
+	//sem_wait(&semKernelServer);
 
     //int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir al cliente");
@@ -456,7 +479,7 @@ void* serverKernel(void* ptr){
     			break;
     		case -1:
     			free(handshake);
-    			sem_post(&semKernelServer);
+    			//sem_post(&semKernelServer);
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
     		default:
@@ -545,7 +568,7 @@ void encolarReady() {
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
-		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 
 		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
@@ -555,9 +578,9 @@ void encolarReady() {
 			if(frenteColaNew != NULL){
 				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
 
-				cantidadElementosReady++;
+				cantidadElementosSistema++;
 
-				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
 		}
@@ -579,10 +602,10 @@ void encolarReady() {
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
-		printf("Cantidad de elementos en READY: %d \n",cantidadElementosReady);
+		printf("Cantidad de elementos en READY: %d \n",cantidadElementosSistema);
 
 
-		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
 
@@ -593,11 +616,11 @@ void encolarReady() {
 
 				list_add(listaReady, procesoADesencolar);
 
-				cantidadElementosReady++;
+				cantidadElementosSistema++;
 
 				procesoADesencolar->entraEnColaReady = tomarTiempo();
 
-				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
+				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 				printf("Cola READY:\n");
 				t_infopcb* proceso = list_get(listaReady,0); //que queriamos hacer con esto? porque mostraria el primero?
@@ -908,19 +931,19 @@ t_paquete* empaquetar(t_list* cabeza) {
 void serializarContexto(int unSocket){
 
 	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
-	estadoEnEjecucion->programCounter = 0;
-	strcpy(estadoEnEjecucion->registrosCpu.AX,"HOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.BX,"HOL");
-	strcpy(estadoEnEjecucion->registrosCpu.CX,"HO");
-	strcpy(estadoEnEjecucion->registrosCpu.DX,"H");
-	strcpy(estadoEnEjecucion->registrosCpu.EAX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.EBX,"HOLAHOL");
-	strcpy(estadoEnEjecucion->registrosCpu.ECX,"HOLAHO");
-	strcpy(estadoEnEjecucion->registrosCpu.EDX,"HOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.RBX,"HOLAHOLAHOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.RCX,"HOLAHOLA");
-	strcpy(estadoEnEjecucion->registrosCpu.RDX,"HOLA");
+
+//	strcpy(estadoEnEjecucion->registrosCpu.AX,"HOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.BX,"HOL");
+//	strcpy(estadoEnEjecucion->registrosCpu.CX,"HO");
+//	strcpy(estadoEnEjecucion->registrosCpu.DX,"H");
+//	strcpy(estadoEnEjecucion->registrosCpu.EAX,"HOLAHOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.EBX,"HOLAHOL");
+//	strcpy(estadoEnEjecucion->registrosCpu.ECX,"HOLAHO");
+//	strcpy(estadoEnEjecucion->registrosCpu.EDX,"HOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.RBX,"HOLAHOLAHOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.RCX,"HOLAHOLA");
+//	strcpy(estadoEnEjecucion->registrosCpu.RDX,"HOLA");
 
 
 	//BUFFER

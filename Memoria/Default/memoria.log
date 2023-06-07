@@ -136,3 +136,30 @@ el cliente se desconecto. Terminando servidor
 [INFO] 16:00:43:980 Memoria/(2893:3011): sfsd
 [ERROR] 16:00:43:980 Memoria/(2893:3011): 
 el cliente se desconecto. Terminando servidor
+[INFO] 21:52:13:447 Memoria/(4631:4631): Listo para escuchar al cliente
+[INFO] 21:52:13:448 Memoria/(4631:4631): Memoria lista para recibir al cliente
+
+[INFO] 21:52:28:934 Memoria/(4631:4632): Se conecto un cliente!
+[INFO] 21:52:28:934 Memoria/(4631:4632): se conecto la cpu
+[INFO] 21:52:35:396 Memoria/(4631:4632): Me llegaron los siguientes valores:
+[INFO] 21:52:35:396 Memoria/(4631:4632): hola
+[ERROR] 21:52:35:396 Memoria/(4631:4632): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:52:51:670 Memoria/(4631:4666): Se conecto un cliente!
+[INFO] 21:52:51:671 Memoria/(4631:4666): se conecto el filesystem
+[INFO] 21:53:12:922 Memoria/(4631:4666): Me llegaron los siguientes valores:
+[INFO] 21:53:12:922 Memoria/(4631:4666): hola
+[ERROR] 21:53:12:922 Memoria/(4631:4666): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:56:52:477 Memoria/(4631:4730): Se conecto un cliente!
+[INFO] 21:56:52:478 Memoria/(4631:4730): se conecto la cpu
+[INFO] 21:56:55:443 Memoria/(4631:4730): Me llegaron los siguientes valores:
+[INFO] 21:56:55:444 Memoria/(4631:4730): hola
+[ERROR] 21:56:55:444 Memoria/(4631:4730): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:16:604 Memoria/(4631:6001): Se conecto un cliente!
+[INFO] 22:10:16:604 Memoria/(4631:6001): se conecto la cpu
+[INFO] 22:10:18:455 Memoria/(4631:6001): Me llegaron los siguientes valores:
+[INFO] 22:10:18:455 Memoria/(4631:6001): hola
+[ERROR] 22:10:18:455 Memoria/(4631:6001): 
+el cliente se desconecto. Terminando servidor
