@@ -4,3 +4,108 @@
 [INFO] 01:50:17:324 Memoria/(15490:15490): Listo para escuchar al cliente
 [INFO] 01:50:17:325 Memoria/(15490:15490): Memoria lista para recibir al cliente
 
+[INFO] 03:35:47:619 Memoria/(2840:2840): Listo para escuchar al cliente
+[INFO] 03:35:47:621 Memoria/(2840:2840): Memoria lista para recibir al cliente
+
+[INFO] 03:39:54:967 Memoria/(2840:2841): Se conecto un cliente!
+[INFO] 03:39:54:968 Memoria/(2840:2841): se conecto el filesystem
+[INFO] 03:39:58:880 Memoria/(2840:2841): Me llegaron los siguientes valores:
+[INFO] 03:39:58:880 Memoria/(2840:2841): hola
+[ERROR] 03:39:58:881 Memoria/(2840:2841): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:40:09:728 Memoria/(2840:2946): Se conecto un cliente!
+[INFO] 03:40:09:729 Memoria/(2840:2946): se conecto la cpu
+[INFO] 03:40:14:430 Memoria/(2840:2946): Me llegaron los siguientes valores:
+[INFO] 03:40:14:430 Memoria/(2840:2946): hola
+[ERROR] 03:40:14:430 Memoria/(2840:2946): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:45:35:389 Memoria/(2840:2951): Se conecto un cliente!
+[INFO] 03:45:35:391 Memoria/(2840:2951): se conecto el filesystem
+[INFO] 03:45:50:122 Memoria/(2840:2951): Me llegaron los siguientes valores:
+[INFO] 03:45:50:122 Memoria/(2840:2951): hola
+[ERROR] 03:45:50:123 Memoria/(2840:2951): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:47:01:085 Memoria/(2840:3044): Se conecto un cliente!
+[INFO] 03:47:01:085 Memoria/(2840:3044): se conecto el filesystem
+[INFO] 03:47:03:636 Memoria/(2840:3044): Me llegaron los siguientes valores:
+[INFO] 03:47:03:636 Memoria/(2840:3044): hola
+[ERROR] 03:47:03:636 Memoria/(2840:3044): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:47:09:443 Memoria/(2840:3059): Se conecto un cliente!
+[INFO] 03:47:09:444 Memoria/(2840:3059): se conecto la cpu
+[INFO] 03:47:13:052 Memoria/(2840:3059): Me llegaron los siguientes valores:
+[INFO] 03:47:13:052 Memoria/(2840:3059): hola
+[ERROR] 03:47:13:052 Memoria/(2840:3059): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:48:14:160 Memoria/(2840:3064): Se conecto un cliente!
+[INFO] 03:48:14:160 Memoria/(2840:3064): se conecto el filesystem
+[INFO] 03:48:16:246 Memoria/(2840:3064): Me llegaron los siguientes valores:
+[INFO] 03:48:16:246 Memoria/(2840:3064): hola
+[ERROR] 03:48:16:246 Memoria/(2840:3064): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:48:19:243 Memoria/(2840:3107): Se conecto un cliente!
+[INFO] 03:48:19:244 Memoria/(2840:3107): se conecto la cpu
+[INFO] 03:48:20:630 Memoria/(2840:3107): Me llegaron los siguientes valores:
+[INFO] 03:48:20:630 Memoria/(2840:3107): hola
+[ERROR] 03:48:20:631 Memoria/(2840:3107): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:52:05:452 Memoria/(2840:3112): Se conecto un cliente!
+[INFO] 03:52:05:452 Memoria/(2840:3112): se conecto el filesystem
+[INFO] 03:52:07:052 Memoria/(2840:3112): Me llegaron los siguientes valores:
+[INFO] 03:52:07:052 Memoria/(2840:3112): h
+[ERROR] 03:52:07:052 Memoria/(2840:3112): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:52:11:064 Memoria/(2840:3199): Se conecto un cliente!
+[INFO] 03:52:11:065 Memoria/(2840:3199): se conecto la cpu
+[INFO] 03:52:12:042 Memoria/(2840:3199): Me llegaron los siguientes valores:
+[INFO] 03:52:12:042 Memoria/(2840:3199): h
+[ERROR] 03:52:12:042 Memoria/(2840:3199): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:53:39:586 Memoria/(2840:3204): Se conecto un cliente!
+[INFO] 03:53:39:588 Memoria/(2840:3204): se conecto el filesystem
+[INFO] 03:53:41:175 Memoria/(2840:3204): Me llegaron los siguientes valores:
+[INFO] 03:53:41:175 Memoria/(2840:3204): f
+[ERROR] 03:53:41:175 Memoria/(2840:3204): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:53:44:578 Memoria/(2840:3303): Se conecto un cliente!
+[INFO] 03:53:44:580 Memoria/(2840:3303): se conecto la cpu
+[INFO] 03:53:45:818 Memoria/(2840:3303): Me llegaron los siguientes valores:
+[INFO] 03:53:45:818 Memoria/(2840:3303): d
+[ERROR] 03:53:45:818 Memoria/(2840:3303): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:54:41:710 Memoria/(2840:3308): Se conecto un cliente!
+[INFO] 03:54:41:711 Memoria/(2840:3308): se conecto el filesystem
+[INFO] 03:54:42:784 Memoria/(2840:3308): Me llegaron los siguientes valores:
+[INFO] 03:54:42:784 Memoria/(2840:3308): s
+[ERROR] 03:54:42:785 Memoria/(2840:3308): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:54:46:137 Memoria/(2840:3368): Se conecto un cliente!
+[INFO] 03:54:46:137 Memoria/(2840:3368): se conecto la cpu
+[INFO] 03:54:47:123 Memoria/(2840:3368): Me llegaron los siguientes valores:
+[INFO] 03:54:47:123 Memoria/(2840:3368): s
+[ERROR] 03:54:47:123 Memoria/(2840:3368): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:55:39:627 Memoria/(2840:3373): Se conecto un cliente!
+[INFO] 03:55:39:628 Memoria/(2840:3373): se conecto el filesystem
+[INFO] 03:55:40:832 Memoria/(2840:3373): Me llegaron los siguientes valores:
+[INFO] 03:55:40:832 Memoria/(2840:3373): s
+[ERROR] 03:55:40:833 Memoria/(2840:3373): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:55:43:299 Memoria/(2840:3427): Se conecto un cliente!
+[INFO] 03:55:43:300 Memoria/(2840:3427): se conecto la cpu
+[INFO] 03:55:44:345 Memoria/(2840:3427): Me llegaron los siguientes valores:
+[INFO] 03:55:44:345 Memoria/(2840:3427): s
+[ERROR] 03:55:44:345 Memoria/(2840:3427): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:58:20:273 Memoria/(2840:3432): Se conecto un cliente!
+[INFO] 03:58:20:274 Memoria/(2840:3432): se conecto el filesystem
+[INFO] 03:58:21:739 Memoria/(2840:3432): Me llegaron los siguientes valores:
+[INFO] 03:58:21:740 Memoria/(2840:3432): s
+[ERROR] 03:58:21:741 Memoria/(2840:3432): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:58:24:728 Memoria/(2840:3491): Se conecto un cliente!
+[INFO] 03:58:24:728 Memoria/(2840:3491): se conecto la cpu
+[INFO] 03:58:25:934 Memoria/(2840:3491): Me llegaron los siguientes valores:
+[INFO] 03:58:25:934 Memoria/(2840:3491): a
+[ERROR] 03:58:25:935 Memoria/(2840:3491): 
+el cliente se desconecto. Terminando servidor

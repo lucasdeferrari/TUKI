@@ -1,0 +1,89 @@
+[INFO] 03:40:19:663 Kernel/(2953:2953): Kernel listo para escuchar al cliente
+
+[INFO] 03:40:19:664 Kernel/(2953:2954): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:40:22:246 Kernel/(2953:2954): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:40:22:246 Kernel/(2953:2955): Kernel listo para recibir al cliente
+[INFO] 03:40:27:592 Kernel/(2953:2955): Se conecto una consola
+[INFO] 03:40:27:593 Kernel/(2953:2955): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:40:27:594 Kernel/(2953:2955): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:40:27:595 Kernel/(2953:2959): Kernel listo para recibir al cliente
+[INFO] 03:45:57:999 Kernel/(3046:3046): Kernel listo para escuchar al cliente
+
+[INFO] 03:45:58:000 Kernel/(3046:3047): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:46:01:615 Kernel/(3046:3047): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:46:01:615 Kernel/(3046:3048): Kernel listo para recibir al cliente
+[INFO] 03:46:13:385 Kernel/(3046:3048): Se conecto una consola
+[INFO] 03:46:13:385 Kernel/(3046:3048): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:46:13:388 Kernel/(3046:3048): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:46:13:389 Kernel/(3046:3053): Kernel listo para recibir al cliente
+[INFO] 03:47:19:310 Kernel/(3066:3066): Kernel listo para escuchar al cliente
+
+[INFO] 03:47:19:310 Kernel/(3066:3067): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:47:21:611 Kernel/(3066:3067): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:47:21:611 Kernel/(3066:3068): Kernel listo para recibir al cliente
+[INFO] 03:47:26:324 Kernel/(3066:3068): Se conecto una consola
+[INFO] 03:47:26:324 Kernel/(3066:3068): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:47:26:325 Kernel/(3066:3068): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:47:26:326 Kernel/(3066:3072): Kernel listo para recibir al cliente
+[INFO] 03:48:24:194 Kernel/(3114:3114): Kernel listo para escuchar al cliente
+
+[INFO] 03:48:24:195 Kernel/(3114:3115): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:48:26:509 Kernel/(3114:3115): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:48:26:509 Kernel/(3114:3116): Kernel listo para recibir al cliente
+[INFO] 03:48:29:886 Kernel/(3114:3116): Se conecto una consola
+[INFO] 03:48:29:887 Kernel/(3114:3116): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:48:29:887 Kernel/(3114:3116): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:48:29:888 Kernel/(3114:3120): Kernel listo para recibir al cliente
+[INFO] 03:52:15:870 Kernel/(3206:3206): Kernel listo para escuchar al cliente
+
+[INFO] 03:52:15:871 Kernel/(3206:3207): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:52:17:421 Kernel/(3206:3207): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:52:17:421 Kernel/(3206:3208): Kernel listo para recibir al cliente
+[INFO] 03:52:21:088 Kernel/(3206:3208): Se conecto una consola
+[INFO] 03:52:21:089 Kernel/(3206:3208): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:52:21:089 Kernel/(3206:3208): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:52:21:090 Kernel/(3206:3212): Kernel listo para recibir al cliente
+[INFO] 03:53:48:710 Kernel/(3310:3310): Kernel listo para escuchar al cliente
+
+[INFO] 03:53:48:711 Kernel/(3310:3311): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:53:49:640 Kernel/(3310:3311): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:53:49:640 Kernel/(3310:3312): Kernel listo para recibir al cliente
+[INFO] 03:53:53:049 Kernel/(3310:3312): Se conecto una consola
+[INFO] 03:53:53:049 Kernel/(3310:3312): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:53:53:051 Kernel/(3310:3312): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:53:53:052 Kernel/(3310:3316): Kernel listo para recibir al cliente
+[INFO] 03:54:49:968 Kernel/(3375:3375): Kernel listo para escuchar al cliente
+
+[INFO] 03:54:49:969 Kernel/(3375:3376): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:54:51:104 Kernel/(3375:3376): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:54:51:104 Kernel/(3375:3377): Kernel listo para recibir al cliente
+[INFO] 03:54:54:190 Kernel/(3375:3377): Se conecto una consola
+[INFO] 03:54:54:190 Kernel/(3375:3377): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:54:54:191 Kernel/(3375:3377): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:54:54:192 Kernel/(3375:3381): Kernel listo para recibir al cliente
+[INFO] 03:55:48:934 Kernel/(3434:3434): Kernel listo para escuchar al cliente
+
+[INFO] 03:55:48:935 Kernel/(3434:3435): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:55:50:171 Kernel/(3434:3435): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:55:50:171 Kernel/(3434:3436): Kernel listo para recibir al cliente
+[INFO] 03:55:53:180 Kernel/(3434:3436): Se conecto una consola
+[INFO] 03:55:53:180 Kernel/(3434:3436): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:55:53:185 Kernel/(3434:3436): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:58:30:200 Kernel/(3498:3498): Kernel listo para escuchar al cliente
+
+[INFO] 03:58:30:201 Kernel/(3498:3499): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:58:30:923 Kernel/(3498:3499): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 03:58:30:923 Kernel/(3498:3500): Kernel listo para recibir al cliente
+[INFO] 03:58:33:497 Kernel/(3498:3500): Se conecto una consola
+[INFO] 03:58:33:497 Kernel/(3498:3500): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 03:58:33:508 Kernel/(3498:3500): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:58:33:508 Kernel/(3498:3504): Kernel listo para recibir al cliente

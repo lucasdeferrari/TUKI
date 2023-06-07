@@ -24,6 +24,7 @@ double estimacion_inicial;
 int hrrn_alfa;
 int grado_max_multiprogramación ;
 int server_fd;
+int cantidadElementosReady;
 
 //VERIFICAR TIPO
 //char ** recursos ;
@@ -49,22 +50,25 @@ int pid = 1; //Contador del PID de los PCB
 
 
 //Semaforos e hilos
-sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer,semReady;
-pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria,encolar_ready;
+sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer, semReady;
+pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 
 void *serverKernel(void *ptr);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void* clientFileSystem(void *ptr);
+void* interrupcionIO(void *ptr);
 void encolarReady();
 void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
 void iniciarHiloServer();
+void iniciarHiloIO();
 void serializarContexto(int );
 void calcularHRRN(t_infopcb*);
 void manejar_recursos();
 void encolar_ready_ejecucion(t_infopcb*);
+void pasarAExit(t_infopcb*);
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);

@@ -23,7 +23,7 @@ void inicializarRecursos(){
 		unRecurso->instancias = instanciaRecurso;
 		unRecurso->finBloqueados = NULL;
 		unRecurso->frenteBloqueados = NULL;
-		list_add(listaRecursos, unRecurso); //lista de recursos en kernel.h - linea: 75 y la cree en kenel.c - linea:76
+		list_add(listaRecursos, unRecurso);
 
 	}
 
@@ -87,6 +87,7 @@ int main(void) {
     estadoEnEjecucion->pid = ningunEstado;
 
     listaReady = list_create();
+    cantidadElementosReady = 0;
     listaRecursos = list_create();
     inicializarRecursos();
 
@@ -171,6 +172,21 @@ void iniciarHiloClienteFileSystem() {
 
 }
 
+void iniciarHiloIO() {
+
+	int err = pthread_create( 	&interrupcion_IO,	// puntero al thread
+								NULL,
+								interrupcionIO, // le paso la def de la función que quiero que ejecute mientras viva
+								NULL); // argumentos de la función
+
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo de interrupcion I/O.");
+	exit(7);
+	}
+	//printf("El hilo cliente de la Memoria se creo correctamente.");
+
+}
+
 void* clientCPU(void* ptr) {
 	sem_wait(&semKernelClientCPU);
 	int config=1;
@@ -225,13 +241,14 @@ void* clientCPU(void* ptr) {
 }
 
 void encolar_ready_ejecucion(t_infopcb* proceso) {
+	t_infopcb* unProceso = proceso;
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-		queue(&frenteColaReady, &finColaReady,proceso);
+		queue(&frenteColaReady, &finColaReady, unProceso);
 	}
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-		list_add(listaReady, proceso);
-		proceso->entraEnColaReady = tomarTiempo();
+		list_add(listaReady, unProceso);
+		unProceso->entraEnColaReady = tomarTiempo();
 	}
 	return;
 }
@@ -240,20 +257,29 @@ void manejar_recursos() {
 	if (strcmp(estadoEnEjecucion->ultimaInstruccion, "WAIT") == 0) {
 		printf("Estoy dentro de wait.\n");
 		int i, tamanio_lista = list_size(listaRecursos);
+		int recursoEncontrado = 0;
 		for (i = 0; i<tamanio_lista; i++) {
 			t_recursos* recurso = list_get(listaRecursos, i);
 
-			if (strcmp(recurso->recurso, estadoEnEjecucion->recursoSolicitado) == 0){
+			if (string_contains(estadoEnEjecucion->recursoSolicitado, recurso->recurso)){
+				recursoEncontrado++;
 				if (recurso->instancias > 0) {
 					printf("recurso asignado %s\n", recurso->recurso);
 					recurso->instancias--;
+					printf("recurso asignado instancias %s\n", recurso->instancias);
 					encolar_ready_ejecucion(estadoEnEjecucion);
 				}
 				else {
 					printf("proceso bloqueado %s\n", recurso->recurso);
 					queue(recurso->frenteBloqueados, recurso->finBloqueados, estadoEnEjecucion);
 				}
+				desencolarReady();
 			}
+		}
+
+		if (recursoEncontrado == 0) {
+			//Crear funcion pasarAExit
+			pasarAExit(estadoEnEjecucion);
 		}
 	}
 
@@ -273,7 +299,8 @@ void manejar_recursos() {
 		if (string_contains(estadoEnEjecucion->recursoALiberar,recurso->recurso )){
 			printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
-			encolar_ready_ejecucion(estadoEnEjecucion);
+			//encolar_ready_ejecucion(estadoEnEjecucion);
+			iniciarHiloClienteCPU();
 			if(recurso->frenteBloqueados != NULL) {
 				printf("proceso desbloqueado %s\n", recurso->recurso);
 				encolar_ready_ejecucion(unqueue(recurso->frenteBloqueados, recurso->finBloqueados));
@@ -282,6 +309,29 @@ void manejar_recursos() {
 			}
 		}
 	}
+
+	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "YIELD") == 0) {
+		encolar_ready_ejecucion(estadoEnEjecucion);
+		desencolarReady();
+	}
+
+	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "EXIT") == 0) {
+		pasarAExit(estadoEnEjecucion);
+	}
+
+	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "I/O") == 0) {
+		iniciarHiloIO();
+	}
+}
+
+void pasarAExit(t_infopcb* estadoEnEjecucion) {
+
+//		Dar aviso al modulo de Mmemoria para que lo libere.
+//		Avisar a usuario por consola (dar aviso a consola con un log).
+//		Liberar recursos que tenga asignados.
+	//Si la cola de ready tiene elementos desencolar, si esta vacia pasar pid de estadoEnEjecucion a -1
+	desencolarReady();
+
 }
 
 void* clientMemoria(void* ptr) {
@@ -314,6 +364,16 @@ void* clientFileSystem(void* ptr) {
     liberar_conexion(conexion_FileSystem);
 
     sem_post(&semKernelServer);
+	return NULL;
+}
+
+void* interrupcionIO(void* ptr) {
+	//sleep de estadoEnEjecucion
+	t_infopcb* unProceso = estadoEnEjecucion;
+	desencolarReady();
+	sleep(unProceso->tiempoBloqueado);
+	encolar_ready_ejecucion(unProceso);
+
 	return NULL;
 }
 
@@ -485,7 +545,6 @@ void encolarReady() {
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
-		int cantidadElementosReady = cantidadElementosCola(frenteColaReady);
 		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
 
 		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
@@ -496,7 +555,8 @@ void encolarReady() {
 			if(frenteColaNew != NULL){
 				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
 
-				cantidadElementosReady = cantidadElementosCola(frenteColaReady);
+				cantidadElementosReady++;
+
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
 				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
@@ -519,7 +579,6 @@ void encolarReady() {
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
-		int cantidadElementosReady = list_size(listaReady);
 		printf("Cantidad de elementos en READY: %d \n",cantidadElementosReady);
 
 
@@ -534,9 +593,10 @@ void encolarReady() {
 
 				list_add(listaReady, procesoADesencolar);
 
+				cantidadElementosReady++;
+
 				procesoADesencolar->entraEnColaReady = tomarTiempo();
 
-				cantidadElementosReady = list_size(listaReady);
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosReady;
 				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 				printf("Cola READY:\n");
@@ -565,7 +625,7 @@ void desencolarReady (){
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
 		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
-
+		iniciarHiloClienteCPU();
 		printf("Cola READY:\n");
 		mostrarCola(frenteColaReady);
 
@@ -604,7 +664,7 @@ void desencolarReady (){
 
 
 		estadoEnEjecucion = list_get(listaReady,pidMaxRafaga);
-
+		iniciarHiloClienteCPU();
 		list_remove(listaReady,pidMaxRafaga);
 
 		printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
