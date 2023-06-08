@@ -104,6 +104,7 @@ int main(void) {
 	}
 
     pthread_detach(client_CPU);
+    pthread_detach(interrupcion_IO);
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
 
@@ -388,10 +389,26 @@ void* clientFileSystem(void* ptr) {
 }
 
 void* interrupcionIO(void* ptr) {
-	//sleep de estadoEnEjecucion
+	printf("dentro del hilo IO\n");
+
 	t_infopcb* unProceso = estadoEnEjecucion;
-	desencolarReady();
+
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+		if(frenteColaReady != NULL){
+			desencolarReady();
+		}
+	}
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+
+		if( !list_is_empty(listaReady) ){
+			desencolarReady();
+		}
+	}
+
 	sleep(unProceso->tiempoBloqueado);
+	printf("después del tiempo bloqueado\n");
 	encolar_ready_ejecucion(unProceso);
 
 	return NULL;

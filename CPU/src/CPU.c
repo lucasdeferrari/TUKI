@@ -466,12 +466,12 @@ int ejecutarFuncion(char* proximaInstruccion){
 		free(setParam1);
 		free(setParam2);
 		continuarLeyendo = 1;
-    } else if (strcmp(nombreInstruccion, "YIELD") == 0) {
+    } else if (  string_contains(nombreInstruccion,"YIELD")  ) {
     	yield_tp();
     } else if (strcmp(nombreInstruccion, "EXIT") == 0) {
     	exit_tp();
     } else if (strcmp(nombreInstruccion, "I/O") == 0) {
-    	int ioParam = arrayInstruccion[1];
+    	int ioParam = atoi(arrayInstruccion[1]);
     	i_o_tp(ioParam);
     } else if (strcmp(nombreInstruccion, "WAIT") == 0) {
     	char* recursoWait = string_new();

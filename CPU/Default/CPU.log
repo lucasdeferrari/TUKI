@@ -8342,3 +8342,377 @@
 [ERROR] 04:34:38:624 CPU/(13966:14063): el kernel se desconecto. Terminando servidor
 
 [INFO] 04:34:38:624 CPU/(13966:14065): CPU lista para recibir al cliente
+[INFO] 04:46:28:630 CPU/(13966:14065): Se conecto un cliente
+[INFO] 04:46:28:631 CPU/(13966:14065): Instrucciones recibidas de Kernel:
+
+[INFO] 04:46:28:631 CPU/(13966:14065): SET AX PAZ
+
+[INFO] 04:46:28:631 CPU/(13966:14065): SIGNAL DISCO
+
+[INFO] 04:46:28:631 CPU/(13966:14065): YIELD
+
+[INFO] 04:46:28:631 CPU/(13966:14065): EXIT
+[ERROR] 04:46:28:631 CPU/(13966:14065): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:46:28:633 CPU/(13966:14252): CPU lista para recibir al cliente
+[INFO] 04:46:28:633 CPU/(13966:14252): Se conecto un cliente
+[INFO] 04:46:28:635 CPU/(13966:14252): Instrucciones recibidas de Kernel:
+
+[INFO] 04:46:28:635 CPU/(13966:14252): SET AX PAZ
+
+[INFO] 04:46:28:635 CPU/(13966:14252): SIGNAL DISCO
+
+[INFO] 04:46:28:635 CPU/(13966:14252): YIELD
+
+[INFO] 04:46:28:635 CPU/(13966:14252): EXIT
+[ERROR] 04:46:28:637 CPU/(13966:14252): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:46:28:637 CPU/(13966:14254): CPU lista para recibir al cliente
+[INFO] 04:47:43:706 CPU/(14524:14524): CPU lista para escuchar al cliente
+
+[INFO] 04:47:43:707 CPU/(14524:14526): CPU lista para recibir al cliente
+[INFO] 04:47:43:707 CPU/(14524:14525): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:47:44:732 CPU/(14524:14525): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:47:52:145 CPU/(14524:14526): Se conecto un cliente
+[INFO] 04:47:52:145 CPU/(14524:14526): Instrucciones recibidas de Kernel:
+
+[INFO] 04:47:52:145 CPU/(14524:14526): SET AX PAZ
+
+[INFO] 04:47:52:145 CPU/(14524:14526): SIGNAL DISCO
+
+[INFO] 04:47:52:145 CPU/(14524:14526): YIELD
+
+[INFO] 04:47:52:145 CPU/(14524:14526): EXIT
+[ERROR] 04:47:52:146 CPU/(14524:14526): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:47:52:147 CPU/(14524:14537): CPU lista para recibir al cliente
+[INFO] 04:47:52:147 CPU/(14524:14537): Se conecto un cliente
+[INFO] 04:47:52:149 CPU/(14524:14537): Instrucciones recibidas de Kernel:
+
+[INFO] 04:47:52:150 CPU/(14524:14537): SET AX PAZ
+
+[INFO] 04:47:52:150 CPU/(14524:14537): SIGNAL DISCO
+
+[INFO] 04:47:52:150 CPU/(14524:14537): YIELD
+
+[INFO] 04:47:52:151 CPU/(14524:14537): EXIT
+[ERROR] 04:47:52:151 CPU/(14524:14537): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:47:52:152 CPU/(14524:14539): CPU lista para recibir al cliente
+[INFO] 04:47:52:152 CPU/(14524:14539): Se conecto un cliente
+[INFO] 04:47:52:153 CPU/(14524:14539): Instrucciones recibidas de Kernel:
+
+[INFO] 04:47:52:153 CPU/(14524:14539): SET AX PAZ
+
+[INFO] 04:47:52:153 CPU/(14524:14539): SIGNAL DISCO
+
+[INFO] 04:47:52:154 CPU/(14524:14539): YIELD
+
+[INFO] 04:47:52:154 CPU/(14524:14539): EXIT
+[ERROR] 04:47:52:154 CPU/(14524:14539): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:47:52:155 CPU/(14524:14541): CPU lista para recibir al cliente
+[INFO] 04:49:01:978 CPU/(14524:14541): Se conecto un cliente
+[INFO] 04:49:01:978 CPU/(14524:14541): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:01:978 CPU/(14524:14541): SET AX PAZ
+
+[INFO] 04:49:01:978 CPU/(14524:14541): SIGNAL DISCO
+
+[INFO] 04:49:01:978 CPU/(14524:14541): YIELD
+
+[INFO] 04:49:01:979 CPU/(14524:14541): EXIT
+[ERROR] 04:49:01:979 CPU/(14524:14541): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:01:981 CPU/(14524:14549): CPU lista para recibir al cliente
+[INFO] 04:49:01:981 CPU/(14524:14549): Se conecto un cliente
+[INFO] 04:49:01:983 CPU/(14524:14549): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:01:983 CPU/(14524:14549): SET AX PAZ
+
+[INFO] 04:49:01:984 CPU/(14524:14549): SIGNAL DISCO
+
+[INFO] 04:49:01:984 CPU/(14524:14549): YIELD
+
+[INFO] 04:49:01:984 CPU/(14524:14549): EXIT
+[ERROR] 04:49:01:985 CPU/(14524:14549): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:01:986 CPU/(14524:14551): CPU lista para recibir al cliente
+[INFO] 04:49:01:986 CPU/(14524:14551): Se conecto un cliente
+[INFO] 04:49:01:987 CPU/(14524:14551): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:01:987 CPU/(14524:14551): SET AX PAZ
+
+[INFO] 04:49:01:987 CPU/(14524:14551): SIGNAL DISCO
+
+[INFO] 04:49:01:987 CPU/(14524:14551): YIELD
+
+[INFO] 04:49:01:987 CPU/(14524:14551): EXIT
+[ERROR] 04:49:01:988 CPU/(14524:14551): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:01:989 CPU/(14524:14553): CPU lista para recibir al cliente
+[INFO] 04:49:07:656 CPU/(14524:14553): Se conecto un cliente
+[INFO] 04:49:07:656 CPU/(14524:14553): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:07:656 CPU/(14524:14553): SET AX PAZ
+
+[INFO] 04:49:07:656 CPU/(14524:14553): SIGNAL DISCO
+
+[INFO] 04:49:07:657 CPU/(14524:14553): YIELD
+
+[INFO] 04:49:07:657 CPU/(14524:14553): EXIT
+[ERROR] 04:49:07:658 CPU/(14524:14553): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:07:660 CPU/(14524:14558): CPU lista para recibir al cliente
+[INFO] 04:49:07:660 CPU/(14524:14558): Se conecto un cliente
+[INFO] 04:49:07:662 CPU/(14524:14558): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:07:662 CPU/(14524:14558): SET AX PAZ
+
+[INFO] 04:49:07:662 CPU/(14524:14558): SIGNAL DISCO
+
+[INFO] 04:49:07:662 CPU/(14524:14558): YIELD
+
+[INFO] 04:49:07:662 CPU/(14524:14558): EXIT
+[ERROR] 04:49:07:664 CPU/(14524:14558): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:07:664 CPU/(14524:14560): CPU lista para recibir al cliente
+[INFO] 04:49:07:665 CPU/(14524:14560): Se conecto un cliente
+[INFO] 04:49:07:666 CPU/(14524:14560): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:07:666 CPU/(14524:14560): SET AX PAZ
+
+[INFO] 04:49:07:666 CPU/(14524:14560): SIGNAL DISCO
+
+[INFO] 04:49:07:666 CPU/(14524:14560): YIELD
+
+[INFO] 04:49:07:666 CPU/(14524:14560): EXIT
+[ERROR] 04:49:07:667 CPU/(14524:14560): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:07:668 CPU/(14524:14562): CPU lista para recibir al cliente
+[INFO] 04:49:08:655 CPU/(14524:14562): Se conecto un cliente
+[INFO] 04:49:08:656 CPU/(14524:14562): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:08:656 CPU/(14524:14562): SET AX PAZ
+
+[INFO] 04:49:08:656 CPU/(14524:14562): SIGNAL DISCO
+
+[INFO] 04:49:08:656 CPU/(14524:14562): YIELD
+
+[INFO] 04:49:08:656 CPU/(14524:14562): EXIT
+[ERROR] 04:49:08:659 CPU/(14524:14562): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:08:661 CPU/(14524:14567): CPU lista para recibir al cliente
+[INFO] 04:49:08:662 CPU/(14524:14567): Se conecto un cliente
+[INFO] 04:49:08:663 CPU/(14524:14567): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:08:663 CPU/(14524:14567): SET AX PAZ
+
+[INFO] 04:49:08:664 CPU/(14524:14567): SIGNAL DISCO
+
+[INFO] 04:49:08:664 CPU/(14524:14567): YIELD
+
+[INFO] 04:49:08:664 CPU/(14524:14567): EXIT
+[ERROR] 04:49:08:664 CPU/(14524:14567): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:08:665 CPU/(14524:14570): CPU lista para recibir al cliente
+[INFO] 04:49:08:665 CPU/(14524:14570): Se conecto un cliente
+[INFO] 04:49:08:666 CPU/(14524:14570): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:08:666 CPU/(14524:14570): SET AX PAZ
+
+[INFO] 04:49:08:666 CPU/(14524:14570): SIGNAL DISCO
+
+[INFO] 04:49:08:666 CPU/(14524:14570): YIELD
+
+[INFO] 04:49:08:666 CPU/(14524:14570): EXIT
+[ERROR] 04:49:08:667 CPU/(14524:14570): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:08:667 CPU/(14524:14571): CPU lista para recibir al cliente
+[INFO] 04:49:09:454 CPU/(14524:14571): Se conecto un cliente
+[INFO] 04:49:09:455 CPU/(14524:14571): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:09:455 CPU/(14524:14571): SET AX PAZ
+
+[INFO] 04:49:09:455 CPU/(14524:14571): SIGNAL DISCO
+
+[INFO] 04:49:09:455 CPU/(14524:14571): YIELD
+
+[INFO] 04:49:09:455 CPU/(14524:14571): EXIT
+[ERROR] 04:49:09:456 CPU/(14524:14571): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:09:459 CPU/(14524:14576): CPU lista para recibir al cliente
+[INFO] 04:49:09:460 CPU/(14524:14576): Se conecto un cliente
+[INFO] 04:49:09:461 CPU/(14524:14576): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:09:461 CPU/(14524:14576): SET AX PAZ
+
+[INFO] 04:49:09:461 CPU/(14524:14576): SIGNAL DISCO
+
+[INFO] 04:49:09:461 CPU/(14524:14576): YIELD
+
+[INFO] 04:49:09:462 CPU/(14524:14576): EXIT
+[ERROR] 04:49:09:463 CPU/(14524:14576): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:09:463 CPU/(14524:14578): CPU lista para recibir al cliente
+[INFO] 04:49:09:463 CPU/(14524:14578): Se conecto un cliente
+[INFO] 04:49:09:465 CPU/(14524:14578): Instrucciones recibidas de Kernel:
+
+[INFO] 04:49:09:465 CPU/(14524:14578): SET AX PAZ
+
+[INFO] 04:49:09:465 CPU/(14524:14578): SIGNAL DISCO
+
+[INFO] 04:49:09:465 CPU/(14524:14578): YIELD
+
+[INFO] 04:49:09:465 CPU/(14524:14578): EXIT
+[ERROR] 04:49:09:466 CPU/(14524:14578): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:49:09:466 CPU/(14524:14580): CPU lista para recibir al cliente
+[INFO] 04:51:32:375 CPU/(14524:14580): Se conecto un cliente
+[INFO] 04:51:32:376 CPU/(14524:14580): Instrucciones recibidas de Kernel:
+
+[INFO] 04:51:32:376 CPU/(14524:14580): SET AX PAZ
+
+[INFO] 04:51:32:376 CPU/(14524:14580): SET AX PAZ
+
+[INFO] 04:51:32:376 CPU/(14524:14580): SET BX SOL
+
+[INFO] 04:51:32:376 CPU/(14524:14580): WAIT DISCO
+
+[INFO] 04:51:32:376 CPU/(14524:14580): YIELD
+
+[INFO] 04:51:32:376 CPU/(14524:14580): EXIT
+[ERROR] 04:51:32:376 CPU/(14524:14580): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:51:32:380 CPU/(14524:14635): CPU lista para recibir al cliente
+[INFO] 04:51:32:380 CPU/(14524:14635): Se conecto un cliente
+[INFO] 04:51:32:381 CPU/(14524:14635): Instrucciones recibidas de Kernel:
+
+[INFO] 04:51:32:381 CPU/(14524:14635): SET AX PAZ
+
+[INFO] 04:51:32:382 CPU/(14524:14635): SET AX PAZ
+
+[INFO] 04:51:32:382 CPU/(14524:14635): SET BX SOL
+
+[INFO] 04:51:32:382 CPU/(14524:14635): WAIT DISCO
+
+[INFO] 04:51:32:382 CPU/(14524:14635): YIELD
+
+[INFO] 04:51:32:382 CPU/(14524:14635): EXIT
+[ERROR] 04:51:32:384 CPU/(14524:14635): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:51:32:384 CPU/(14524:14637): CPU lista para recibir al cliente
+[INFO] 04:51:32:384 CPU/(14524:14637): Se conecto un cliente
+[INFO] 04:51:32:385 CPU/(14524:14637): Instrucciones recibidas de Kernel:
+
+[INFO] 04:51:32:385 CPU/(14524:14637): SET AX PAZ
+
+[INFO] 04:51:32:386 CPU/(14524:14637): SET AX PAZ
+
+[INFO] 04:51:32:386 CPU/(14524:14637): SET BX SOL
+
+[INFO] 04:51:32:386 CPU/(14524:14637): WAIT DISCO
+
+[INFO] 04:51:32:386 CPU/(14524:14637): YIELD
+
+[INFO] 04:51:32:386 CPU/(14524:14637): EXIT
+[ERROR] 04:51:32:387 CPU/(14524:14637): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:51:32:387 CPU/(14524:14639): CPU lista para recibir al cliente
+[INFO] 04:52:17:095 CPU/(14524:14639): Se conecto un cliente
+[INFO] 04:52:17:095 CPU/(14524:14639): Instrucciones recibidas de Kernel:
+
+[INFO] 04:52:17:095 CPU/(14524:14639): SET AX PAZ
+
+[INFO] 04:52:17:095 CPU/(14524:14639): SET AX PAZ
+
+[INFO] 04:52:17:095 CPU/(14524:14639): SET BX SOL
+
+[INFO] 04:52:17:095 CPU/(14524:14639): WAIT PACHAMAMA
+
+[INFO] 04:52:17:095 CPU/(14524:14639): YIELD
+
+[INFO] 04:52:17:096 CPU/(14524:14639): EXIT
+[ERROR] 04:52:17:096 CPU/(14524:14639): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:52:17:100 CPU/(14524:14684): CPU lista para recibir al cliente
+[INFO] 04:54:51:516 CPU/(14524:14684): Se conecto un cliente
+[INFO] 04:54:51:516 CPU/(14524:14684): Instrucciones recibidas de Kernel:
+
+[INFO] 04:54:51:516 CPU/(14524:14684): SET AX PAZ
+
+[INFO] 04:54:51:516 CPU/(14524:14684): I/O 10
+
+[INFO] 04:54:51:516 CPU/(14524:14684): WAIT PACHAMAMA
+
+[INFO] 04:54:51:516 CPU/(14524:14684): YIELD
+
+[INFO] 04:54:51:516 CPU/(14524:14684): EXIT
+[ERROR] 04:54:51:517 CPU/(14524:14684): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:54:51:518 CPU/(14524:14806): CPU lista para recibir al cliente
+[INFO] 04:56:20:388 CPU/(14878:14878): CPU lista para escuchar al cliente
+
+[INFO] 04:56:20:388 CPU/(14878:14880): CPU lista para recibir al cliente
+[INFO] 04:56:20:388 CPU/(14878:14879): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:56:21:959 CPU/(14878:14879): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:56:35:600 CPU/(14878:14880): Se conecto un cliente
+[INFO] 04:56:35:601 CPU/(14878:14880): Instrucciones recibidas de Kernel:
+
+[INFO] 04:56:35:601 CPU/(14878:14880): SET AX PAZ
+
+[INFO] 04:56:35:601 CPU/(14878:14880): I/O 10
+
+[INFO] 04:56:35:601 CPU/(14878:14880): WAIT PACHAMAMA
+
+[INFO] 04:56:35:601 CPU/(14878:14880): YIELD
+
+[INFO] 04:56:35:601 CPU/(14878:14880): EXIT
+[ERROR] 04:56:35:603 CPU/(14878:14880): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:56:35:605 CPU/(14878:14920): CPU lista para recibir al cliente
+[INFO] 04:58:20:057 CPU/(14878:14920): Se conecto un cliente
+[INFO] 04:58:20:058 CPU/(14878:14920): Instrucciones recibidas de Kernel:
+
+[INFO] 04:58:20:058 CPU/(14878:14920): SET AX PAZ
+
+[INFO] 04:58:20:058 CPU/(14878:14920): I/O 10
+
+[INFO] 04:58:20:058 CPU/(14878:14920): WAIT PACHAMAMA
+
+[INFO] 04:58:20:058 CPU/(14878:14920): YIELD
+
+[INFO] 04:58:20:058 CPU/(14878:14920): EXIT
+[ERROR] 04:58:20:060 CPU/(14878:14920): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:58:20:062 CPU/(14878:15043): CPU lista para recibir al cliente
+[INFO] 05:00:41:781 CPU/(14878:15043): Se conecto un cliente
+[INFO] 05:00:41:781 CPU/(14878:15043): Instrucciones recibidas de Kernel:
+
+[INFO] 05:00:41:781 CPU/(14878:15043): SET AX PAZ
+
+[INFO] 05:00:41:781 CPU/(14878:15043): I/O 10
+
+[INFO] 05:00:41:781 CPU/(14878:15043): WAIT PACHAMAMA
+
+[INFO] 05:00:41:781 CPU/(14878:15043): YIELD
+
+[INFO] 05:00:41:781 CPU/(14878:15043): EXIT
+[ERROR] 05:00:41:782 CPU/(14878:15043): el kernel se desconecto. Terminando servidor
+
+[INFO] 05:00:41:783 CPU/(14878:15225): CPU lista para recibir al cliente
+[INFO] 05:02:16:005 CPU/(14878:15225): Se conecto un cliente
+[INFO] 05:02:16:005 CPU/(14878:15225): Instrucciones recibidas de Kernel:
+
+[INFO] 05:02:16:005 CPU/(14878:15225): SET AX PAZ
+
+[INFO] 05:02:16:005 CPU/(14878:15225): I/O 10
+
+[INFO] 05:02:16:005 CPU/(14878:15225): WAIT PACHAMAMA
+
+[INFO] 05:02:16:005 CPU/(14878:15225): YIELD
+
+[INFO] 05:02:16:005 CPU/(14878:15225): EXIT
+[ERROR] 05:02:16:006 CPU/(14878:15225): el kernel se desconecto. Terminando servidor
+
+[INFO] 05:02:16:009 CPU/(14878:15396): CPU lista para recibir al cliente

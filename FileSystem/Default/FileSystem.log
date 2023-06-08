@@ -377,3 +377,45 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 04:33:42:579 FileSystem/(11369:13999): 
 el cliente se desconecto. Terminando servidor
 [INFO] 04:33:42:579 FileSystem/(11369:14018): FileSystem listo para recibir a kernel
+[INFO] 04:46:25:228 FileSystem/(11369:14018): Se conecto un cliente!
+[INFO] 04:46:26:454 FileSystem/(11369:14018): Me llegaron los siguientes valores:
+
+[INFO] 04:46:26:455 FileSystem/(11369:14018): hjhj
+[ERROR] 04:46:26:455 FileSystem/(11369:14018): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:46:26:456 FileSystem/(11369:14247): FileSystem listo para recibir a kernel
+[INFO] 04:47:48:483 FileSystem/(11369:14247): Se conecto un cliente!
+[INFO] 04:47:49:710 FileSystem/(11369:14247): Me llegaron los siguientes valores:
+
+[INFO] 04:47:49:710 FileSystem/(11369:14247): asdas
+[ERROR] 04:47:49:710 FileSystem/(11369:14247): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:47:49:711 FileSystem/(11369:14532): FileSystem listo para recibir a kernel
+[INFO] 04:56:31:906 FileSystem/(11369:14532): Se conecto un cliente!
+[INFO] 04:56:33:520 FileSystem/(11369:14532): Me llegaron los siguientes valores:
+
+[INFO] 04:56:33:520 FileSystem/(11369:14532): jk
+[ERROR] 04:56:33:520 FileSystem/(11369:14532): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:56:33:521 FileSystem/(11369:14915): FileSystem listo para recibir a kernel
+[INFO] 04:58:17:028 FileSystem/(11369:14915): Se conecto un cliente!
+[INFO] 04:58:18:053 FileSystem/(11369:14915): Me llegaron los siguientes valores:
+
+[INFO] 04:58:18:053 FileSystem/(11369:14915): asa
+[ERROR] 04:58:18:053 FileSystem/(11369:14915): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:58:18:054 FileSystem/(11369:15038): FileSystem listo para recibir a kernel
+[INFO] 05:00:37:136 FileSystem/(11369:15038): Se conecto un cliente!
+[INFO] 05:00:38:514 FileSystem/(11369:15038): Me llegaron los siguientes valores:
+
+[INFO] 05:00:38:515 FileSystem/(11369:15038): asa
+[ERROR] 05:00:38:515 FileSystem/(11369:15038): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:00:38:515 FileSystem/(11369:15220): FileSystem listo para recibir a kernel
+[INFO] 05:02:12:749 FileSystem/(11369:15220): Se conecto un cliente!
+[INFO] 05:02:13:628 FileSystem/(11369:15220): Me llegaron los siguientes valores:
+
+[INFO] 05:02:13:628 FileSystem/(11369:15220): asda
+[ERROR] 05:02:13:628 FileSystem/(11369:15220): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:02:13:629 FileSystem/(11369:15391): FileSystem listo para recibir a kernel
