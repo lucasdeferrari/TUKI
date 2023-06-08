@@ -468,3 +468,16 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 05:47:49:250 FileSystem/(11369:16698): 
 el cliente se desconecto. Terminando servidor
 [INFO] 05:47:49:251 FileSystem/(11369:16952): FileSystem listo para recibir a kernel
+[INFO] 05:50:48:269 FileSystem/(11369:16952): Se conecto un cliente!
+[INFO] 05:50:49:791 FileSystem/(11369:16952): Me llegaron los siguientes valores:
+
+[INFO] 05:50:49:791 FileSystem/(11369:16952): dfsf
+[ERROR] 05:50:49:792 FileSystem/(11369:16952): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:50:49:792 FileSystem/(11369:17093): FileSystem listo para recibir a kernel
+[INFO] 05:54:00:493 FileSystem/(11369:17093): Se conecto un cliente!
+[INFO] 05:54:25:024 FileSystem/(17441:17441): FileSystem listo para escuchar al cliente
+
+[INFO] 05:54:25:024 FileSystem/(17441:17443): FileSystem listo para recibir a kernel
+[INFO] 05:54:25:025 FileSystem/(17441:17442): Ingrese sus mensajes para la Memoria: 
+[INFO] 05:54:25:981 FileSystem/(17441:17442): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!

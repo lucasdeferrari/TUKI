@@ -521,3 +521,28 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 05:48:38:070 Kernel/(16949:17028): Proceso finalizado: 1
 
+[INFO] 05:50:48:268 Kernel/(17090:17090): Kernel listo para escuchar al cliente
+
+[INFO] 05:50:48:269 Kernel/(17090:17092): Kernel listo para recibir al cliente
+[INFO] 05:50:48:269 Kernel/(17090:17091): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:50:49:792 Kernel/(17090:17091): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:50:55:173 Kernel/(17090:17092): Se conecto una consola
+[INFO] 05:50:55:173 Kernel/(17090:17092): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:50:55:174 Kernel/(17090:17092): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:50:55:175 Kernel/(17090:17126): Kernel listo para recibir al cliente
+[INFO] 05:50:55:183 Kernel/(17090:17128): Proceso finalizado: 1
+
+[INFO] 05:51:00:276 Kernel/(17090:17126): Se conecto una consola
+[INFO] 05:51:00:277 Kernel/(17090:17126): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:51:00:277 Kernel/(17090:17126): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:51:00:278 Kernel/(17090:17133): Kernel listo para recibir al cliente
+[INFO] 05:59:56:282 Kernel/(17805:17805): Kernel listo para escuchar al cliente
+
+[INFO] 05:59:56:283 Kernel/(17805:17807): Kernel listo para recibir al cliente
+[INFO] 05:59:56:283 Kernel/(17805:17806): Ingrese sus mensajes para el FileSystem: 
+[INFO] 06:00:18:207 Kernel/(17851:17851): Kernel listo para escuchar al cliente
+
+[INFO] 06:00:18:207 Kernel/(17851:17853): Kernel listo para recibir al cliente
+[INFO] 06:00:18:207 Kernel/(17851:17852): Ingrese sus mensajes para el FileSystem: 

@@ -364,3 +364,15 @@ el cliente se desconecto. Terminando servidor
 [INFO] 05:33:14:977 Memoria/(11281:15681): hjhj
 [ERROR] 05:33:14:977 Memoria/(11281:15681): 
 el cliente se desconecto. Terminando servidor
+[INFO] 05:54:25:024 Memoria/(11281:16034): Se conecto un cliente!
+[INFO] 05:54:25:025 Memoria/(11281:16034): se conecto el filesystem
+[INFO] 05:54:25:981 Memoria/(11281:16034): Me llegaron los siguientes valores:
+[INFO] 05:54:25:981 Memoria/(11281:16034): jkjk
+[ERROR] 05:54:25:981 Memoria/(11281:16034): 
+el cliente se desconecto. Terminando servidor
+[INFO] 06:16:23:471 Memoria/(11281:17444): Se conecto un cliente!
+[INFO] 06:16:23:472 Memoria/(11281:17444): se conecto la cpu
+[INFO] 06:16:24:830 Memoria/(11281:17444): Me llegaron los siguientes valores:
+[INFO] 06:16:24:830 Memoria/(11281:17444): kjkj
+[ERROR] 06:16:24:831 Memoria/(11281:17444): 
+el cliente se desconecto. Terminando servidor

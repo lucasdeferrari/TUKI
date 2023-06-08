@@ -2,49 +2,7 @@
 
 t_config* config;
 
-void inicializarRecursos(){
-	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
-	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
-	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
 
-	printf("Recurso: %s\n",recursos[0]);
-	printf("Recurso2: %s\n",recursos[1]);
-
-	printf("intancia 1: %s\n",instancias_recursos[0]);
-	printf("intancia 2: %s\n",instancias_recursos[1]);
-
-	while(!string_array_is_empty(recursos)){
-		t_recursos* unRecurso;
-		unRecurso = malloc(sizeof(t_recursos));
-
-		unRecurso->recurso = string_array_pop(recursos);
-
-		int instanciaRecurso= atoi(string_array_pop(instancias_recursos));
-		unRecurso->instancias = instanciaRecurso;
-		unRecurso->finBloqueados = NULL;
-		unRecurso->frenteBloqueados = NULL;
-		list_add(listaRecursos, unRecurso);
-
-	}
-
-	t_recursos* recurso1 = malloc(sizeof(t_recursos));
-	t_recursos* recurso2 = malloc(sizeof(t_recursos));
-	recurso1 = list_get(listaRecursos,0);
-	recurso2 = list_get(listaRecursos,1);
-
-
-//	printf("RECURSO 1: %s\n",recurso1->recurso);
-//	printf("INSTANCIAS 1: %d\n",recurso1->instancias);
-//
-//	printf("RECURSO 2: %s\n",recurso2->recurso);
-//	printf("INSTANCIAS 2: %d\n",recurso2->instancias);
-
-
-		free(recursos);
-		free(instancias_recursos);
-
-
-}
 
 int main(void) {
 	sem_init(&semKernelClientCPU,0,1);
@@ -120,6 +78,49 @@ int main(void) {
 
     free(estadoEnEjecucion);
     return EXIT_SUCCESS;
+}
+
+void inicializarRecursos(){
+	//Manejo de recursos, VER COMO INICIALIZAR VARIABLES
+	char** recursos = config_get_array_value(config, "RECURSOS"); // El array que devuelve termina en NULL
+	char** instancias_recursos = config_get_array_value(config, "INSTANCIAS_RECURSOS");
+
+//	printf("Recurso: %s\n",recursos[0]);
+//	printf("Recurso2: %s\n",recursos[1]);
+//
+//	printf("intancia 1: %s\n",instancias_recursos[0]);
+//	printf("intancia 2: %s\n",instancias_recursos[1]);
+
+	while(!string_array_is_empty(recursos)){
+		t_recursos* unRecurso;
+		unRecurso = malloc(sizeof(t_recursos));
+
+		unRecurso->recurso = string_array_pop(recursos);
+
+		int instanciaRecurso= atoi(string_array_pop(instancias_recursos));
+		unRecurso->instancias = instanciaRecurso;
+		unRecurso->finBloqueados = NULL;
+		unRecurso->frenteBloqueados = NULL;
+		list_add(listaRecursos, unRecurso);
+
+	}
+
+	t_recursos* recurso1 = malloc(sizeof(t_recursos));
+	t_recursos* recurso2 = malloc(sizeof(t_recursos));
+	recurso1 = list_get(listaRecursos,0);
+	recurso2 = list_get(listaRecursos,1);
+
+
+//	printf("RECURSO 1: %s\n",recurso1->recurso);
+//	printf("INSTANCIAS 1: %d\n",recurso1->instancias);
+//
+//	printf("RECURSO 2: %s\n",recurso2->recurso);
+//	printf("INSTANCIAS 2: %d\n",recurso2->instancias);
+
+
+		free(recursos);
+		free(instancias_recursos);
+
 }
 
 void iniciarHiloClienteCPU() {
@@ -255,26 +256,56 @@ void encolar_ready_ejecucion(t_infopcb* proceso) {
 }
 
 void manejar_recursos() {
-	if (strcmp(estadoEnEjecucion->ultimaInstruccion, "WAIT") == 0) {
+
+	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
+	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
+
+
+
+
+	if (strcmp(unProceso->ultimaInstruccion, "WAIT") == 0) {
 		printf("Estoy dentro de wait.\n");
 		int i, tamanio_lista = list_size(listaRecursos);
 		int recursoEncontrado = 0;
 		for (i = 0; i<tamanio_lista; i++) {
 			t_recursos* recurso = list_get(listaRecursos, i);
 
-			if (string_contains(estadoEnEjecucion->recursoSolicitado, recurso->recurso)){
+			if (string_contains(unProceso->recursoSolicitado, recurso->recurso)){
 				recursoEncontrado++;
 				if (recurso->instancias > 0) {
 					printf("recurso asignado %s\n", recurso->recurso);
 					recurso->instancias--;
 					//printf("recurso asignado instancias %s\n", recurso->instancias);
-					encolar_ready_ejecucion(estadoEnEjecucion);
+					encolar_ready_ejecucion(unProceso);
 				}
 				else {
 					printf("proceso bloqueado %s\n", recurso->recurso);
-					queue(recurso->frenteBloqueados, recurso->finBloqueados, estadoEnEjecucion);
+					estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
+					//FALLABA EN EL QUEUE, FALTABAN LOS &
+					queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
 				}
-				desencolarReady();
+
+				//HAY Q VERIFICAR SI HAY ALGO EN READY PARA DESENCOLAR
+				//PODRIAMOS HACER ESTO DIRECTAMENTE DENTRO DE DESENCOLARREADY ASI NO REPETIMOS
+
+				if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+						if(frenteColaReady != NULL){
+							desencolarReady();
+							//printf("Lista no vacia, proceso desencolado de ready \n");
+						}
+					}
+					if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+
+						if( !list_is_empty(listaReady) ){
+							desencolarReady();
+							//printf("Lista no vacia, proceso desencolado de ready \n");
+						}
+				}
+
+
+				//desencolarReady();
 			}
 		}
 
@@ -284,7 +315,7 @@ void manejar_recursos() {
 		}
 	}
 
-	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "SIGNAL") == 0) {
+	else if (strcmp(unProceso->ultimaInstruccion, "SIGNAL") == 0) {
 		int i, tamanio_lista = list_size(listaRecursos);
 		for (i = 0; i<tamanio_lista; i++) {
 		t_recursos* recurso = list_get(listaRecursos, i);
@@ -293,30 +324,30 @@ void manejar_recursos() {
 //		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
 
 
-		if (string_contains(estadoEnEjecucion->recursoALiberar,recurso->recurso )){
+		if (string_contains(unProceso->recursoALiberar,recurso->recurso )){
 			printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
 			//encolar_ready_ejecucion(estadoEnEjecucion);
 			iniciarHiloClienteCPU();
 			if(recurso->frenteBloqueados != NULL) {
 				printf("proceso desbloqueado %s\n", recurso->recurso);
-				encolar_ready_ejecucion(unqueue(recurso->frenteBloqueados, recurso->finBloqueados));
+				encolar_ready_ejecucion(unqueue(&recurso->frenteBloqueados, &recurso->finBloqueados));
 				recurso->instancias--;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "YIELD") == 0) {
-		encolar_ready_ejecucion(estadoEnEjecucion);
+	else if (strcmp(unProceso->ultimaInstruccion, "YIELD") == 0) {
+		encolar_ready_ejecucion(unProceso);
 		desencolarReady();
 	}
 
-	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "EXIT") == 0) {
+	else if (strcmp(unProceso->ultimaInstruccion, "EXIT") == 0) {
 		pasarAExit();
 	}
 
-	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "I/O") == 0) {
+	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
 		iniciarHiloIO();
 	}
 }
