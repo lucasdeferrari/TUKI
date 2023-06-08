@@ -199,7 +199,7 @@ void* clientCPU(void* ptr) {
 
     //contextoActualizado = recibir_contexto(conexion_CPU);
     recibir_contexto(conexion_CPU);
-
+    liberar_conexion(conexion_CPU);
 
     printf("Después de recibir el contexto\n");
 
@@ -228,7 +228,6 @@ void* clientCPU(void* ptr) {
 
     manejar_recursos();
 
-    liberar_conexion(conexion_CPU);
 
     //sem_post(&semKernelClientMemoria);
 	return NULL;
@@ -273,7 +272,7 @@ void manejar_recursos() {
 
 		if (recursoEncontrado == 0) {
 			//Crear funcion pasarAExit
-			pasarAExit(estadoEnEjecucion);
+			pasarAExit();
 		}
 	}
 
@@ -306,7 +305,7 @@ void manejar_recursos() {
 	}
 
 	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "EXIT") == 0) {
-		pasarAExit(estadoEnEjecucion);
+		pasarAExit();
 	}
 
 	else if (strcmp(estadoEnEjecucion->ultimaInstruccion, "I/O") == 0) {
@@ -314,7 +313,7 @@ void manejar_recursos() {
 	}
 }
 
-void pasarAExit(t_infopcb* estadoEnEjecucion) {
+void pasarAExit() {
 
 //		Dar aviso al modulo de Mmemoria para que lo libere.
 //		Liberar recursos que tenga asignados. --> CONSULTAR
@@ -345,15 +344,13 @@ void pasarAExit(t_infopcb* estadoEnEjecucion) {
 			desencolarReady();
 		}
 		else{
+			printf("lista ready vacia\n");
 			estadoEnEjecucion->pid = -1;
 			cantidadElementosSistema--;
+			//printf("lista ready vacia sin pid -1\n");
 		}
 
 	}
-
-
-
-
 
 }
 
@@ -456,10 +453,8 @@ void* serverKernel(void* ptr){
         			if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
         				desencolarReady();
         			}
-
     				//cosas de consola
 
-        			iniciarHiloClienteCPU();
     			}
     			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");

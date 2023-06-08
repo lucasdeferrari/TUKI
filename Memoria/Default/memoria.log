@@ -163,3 +163,180 @@ el cliente se desconecto. Terminando servidor
 [INFO] 22:10:18:455 Memoria/(4631:6001): hola
 [ERROR] 22:10:18:455 Memoria/(4631:6001): 
 el cliente se desconecto. Terminando servidor
+[INFO] 03:45:40:805 Memoria/(11281:11281): Listo para escuchar al cliente
+[INFO] 03:45:40:807 Memoria/(11281:11281): Memoria lista para recibir al cliente
+
+[INFO] 03:46:04:523 Memoria/(11281:11282): Se conecto un cliente!
+[INFO] 03:46:04:523 Memoria/(11281:11282): se conecto la cpu
+[INFO] 03:46:06:407 Memoria/(11281:11282): Me llegaron los siguientes valores:
+[INFO] 03:46:06:407 Memoria/(11281:11282): hola
+[ERROR] 03:46:06:407 Memoria/(11281:11282): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:46:32:940 Memoria/(11281:11324): Se conecto un cliente!
+[INFO] 03:46:32:940 Memoria/(11281:11324): se conecto el filesystem
+[INFO] 03:46:34:526 Memoria/(11281:11324): Me llegaron los siguientes valores:
+[INFO] 03:46:34:527 Memoria/(11281:11324): hola
+[ERROR] 03:46:34:527 Memoria/(11281:11324): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:47:23:837 Memoria/(11281:11372): Se conecto un cliente!
+[INFO] 03:47:23:837 Memoria/(11281:11372): se conecto la cpu
+[INFO] 03:47:24:694 Memoria/(11281:11372): Me llegaron los siguientes valores:
+[INFO] 03:47:24:694 Memoria/(11281:11372): sadas
+[ERROR] 03:47:24:695 Memoria/(11281:11372): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:50:08:879 Memoria/(11281:11466): Se conecto un cliente!
+[INFO] 03:50:08:880 Memoria/(11281:11466): se conecto la cpu
+[INFO] 03:50:09:866 Memoria/(11281:11466): Me llegaron los siguientes valores:
+[INFO] 03:50:09:866 Memoria/(11281:11466): asad
+[ERROR] 03:50:09:867 Memoria/(11281:11466): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:50:57:221 Memoria/(11281:11719): Se conecto un cliente!
+[INFO] 03:50:57:221 Memoria/(11281:11719): se conecto la cpu
+[INFO] 03:50:58:646 Memoria/(11281:11719): Me llegaron los siguientes valores:
+[INFO] 03:50:58:646 Memoria/(11281:11719): jj
+[ERROR] 03:50:58:646 Memoria/(11281:11719): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:52:26:028 Memoria/(11281:11856): Se conecto un cliente!
+[INFO] 03:52:26:028 Memoria/(11281:11856): se conecto la cpu
+[INFO] 03:52:27:072 Memoria/(11281:11856): Me llegaron los siguientes valores:
+[INFO] 03:52:27:072 Memoria/(11281:11856): hjhj
+[ERROR] 03:52:27:072 Memoria/(11281:11856): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:54:16:287 Memoria/(11281:11937): Se conecto un cliente!
+[INFO] 03:54:16:288 Memoria/(11281:11937): se conecto la cpu
+[INFO] 03:54:17:544 Memoria/(11281:11937): Me llegaron los siguientes valores:
+[INFO] 03:54:17:545 Memoria/(11281:11937): hjhjh
+[ERROR] 03:54:17:545 Memoria/(11281:11937): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:55:54:753 Memoria/(11281:12057): Se conecto un cliente!
+[INFO] 03:55:54:753 Memoria/(11281:12057): se conecto la cpu
+[INFO] 03:55:56:048 Memoria/(11281:12057): Me llegaron los siguientes valores:
+[INFO] 03:55:56:048 Memoria/(11281:12057): hjhjh
+[ERROR] 03:55:56:048 Memoria/(11281:12057): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:56:31:827 Memoria/(11281:12140): Se conecto un cliente!
+[INFO] 03:56:31:827 Memoria/(11281:12140): se conecto la cpu
+[INFO] 03:56:33:277 Memoria/(11281:12140): Me llegaron los siguientes valores:
+[INFO] 03:56:33:277 Memoria/(11281:12140): ghghg
+[ERROR] 03:56:33:277 Memoria/(11281:12140): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:57:54:957 Memoria/(11281:12182): Se conecto un cliente!
+[INFO] 03:57:54:957 Memoria/(11281:12182): se conecto la cpu
+[INFO] 03:57:56:384 Memoria/(11281:12182): Me llegaron los siguientes valores:
+[INFO] 03:57:56:384 Memoria/(11281:12182): hjhjh
+[ERROR] 03:57:56:384 Memoria/(11281:12182): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:59:34:754 Memoria/(11281:12275): Se conecto un cliente!
+[INFO] 03:59:34:755 Memoria/(11281:12275): se conecto la cpu
+[INFO] 03:59:35:995 Memoria/(11281:12275): Me llegaron los siguientes valores:
+[INFO] 03:59:35:995 Memoria/(11281:12275): HJHJH
+[ERROR] 03:59:35:996 Memoria/(11281:12275): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:00:24:611 Memoria/(11281:12394): Se conecto un cliente!
+[INFO] 04:00:24:612 Memoria/(11281:12394): se conecto la cpu
+[INFO] 04:00:25:866 Memoria/(11281:12394): Me llegaron los siguientes valores:
+[INFO] 04:00:25:867 Memoria/(11281:12394): ghghg
+[ERROR] 04:00:25:867 Memoria/(11281:12394): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:01:29:057 Memoria/(11281:12453): Se conecto un cliente!
+[INFO] 04:01:29:057 Memoria/(11281:12453): se conecto la cpu
+[INFO] 04:01:30:185 Memoria/(11281:12453): Me llegaron los siguientes valores:
+[INFO] 04:01:30:185 Memoria/(11281:12453): hjhj
+[ERROR] 04:01:30:185 Memoria/(11281:12453): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:02:27:900 Memoria/(11281:12499): Se conecto un cliente!
+[INFO] 04:02:27:900 Memoria/(11281:12499): se conecto la cpu
+[INFO] 04:02:29:056 Memoria/(11281:12499): Me llegaron los siguientes valores:
+[INFO] 04:02:29:056 Memoria/(11281:12499): hjhj
+[ERROR] 04:02:29:056 Memoria/(11281:12499): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:03:15:457 Memoria/(11281:12578): Se conecto un cliente!
+[INFO] 04:03:15:457 Memoria/(11281:12578): se conecto la cpu
+[INFO] 04:03:16:500 Memoria/(11281:12578): Me llegaron los siguientes valores:
+[INFO] 04:03:16:500 Memoria/(11281:12578): hjhj
+[ERROR] 04:03:16:500 Memoria/(11281:12578): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:03:56:608 Memoria/(11281:12690): Se conecto un cliente!
+[INFO] 04:03:56:608 Memoria/(11281:12690): se conecto la cpu
+[INFO] 04:03:57:602 Memoria/(11281:12690): Me llegaron los siguientes valores:
+[INFO] 04:03:57:602 Memoria/(11281:12690): hjhj
+[ERROR] 04:03:57:602 Memoria/(11281:12690): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:10:801 Memoria/(11281:12768): Se conecto un cliente!
+[INFO] 04:05:10:801 Memoria/(11281:12768): se conecto la cpu
+[INFO] 04:05:12:565 Memoria/(11281:12768): Me llegaron los siguientes valores:
+[INFO] 04:05:12:565 Memoria/(11281:12768): hjhjhj
+[ERROR] 04:05:12:566 Memoria/(11281:12768): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:57:183 Memoria/(11281:12852): Se conecto un cliente!
+[INFO] 04:05:57:183 Memoria/(11281:12852): se conecto la cpu
+[INFO] 04:05:58:400 Memoria/(11281:12852): Me llegaron los siguientes valores:
+[INFO] 04:05:58:400 Memoria/(11281:12852): hjhjh
+[ERROR] 04:05:58:400 Memoria/(11281:12852): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:06:34:149 Memoria/(11281:12884): Se conecto un cliente!
+[INFO] 04:06:34:150 Memoria/(11281:12884): se conecto la cpu
+[INFO] 04:06:35:192 Memoria/(11281:12884): Me llegaron los siguientes valores:
+[INFO] 04:06:35:192 Memoria/(11281:12884): hjhj
+[ERROR] 04:06:35:192 Memoria/(11281:12884): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:06:56:979 Memoria/(11281:12927): Se conecto un cliente!
+[INFO] 04:06:56:980 Memoria/(11281:12927): se conecto la cpu
+[INFO] 04:06:58:240 Memoria/(11281:12927): Me llegaron los siguientes valores:
+[INFO] 04:06:58:240 Memoria/(11281:12927): gghg
+[ERROR] 04:06:58:241 Memoria/(11281:12927): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:07:26:009 Memoria/(11281:12955): Se conecto un cliente!
+[INFO] 04:07:26:009 Memoria/(11281:12955): se conecto la cpu
+[INFO] 04:07:27:278 Memoria/(11281:12955): Me llegaron los siguientes valores:
+[INFO] 04:07:27:278 Memoria/(11281:12955): ghgh
+[ERROR] 04:07:27:279 Memoria/(11281:12955): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:07:55:795 Memoria/(11281:12993): Se conecto un cliente!
+[INFO] 04:07:55:795 Memoria/(11281:12993): se conecto la cpu
+[INFO] 04:07:57:099 Memoria/(11281:12993): Me llegaron los siguientes valores:
+[INFO] 04:07:57:099 Memoria/(11281:12993): gghgh
+[ERROR] 04:07:57:100 Memoria/(11281:12993): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:08:37:132 Memoria/(11281:13027): Se conecto un cliente!
+[INFO] 04:08:37:132 Memoria/(11281:13027): se conecto la cpu
+[INFO] 04:08:38:855 Memoria/(11281:13027): Me llegaron los siguientes valores:
+[INFO] 04:08:38:855 Memoria/(11281:13027): hjhj
+[ERROR] 04:08:38:855 Memoria/(11281:13027): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:11:27:324 Memoria/(11281:13085): Se conecto un cliente!
+[INFO] 04:11:27:324 Memoria/(11281:13085): se conecto la cpu
+[INFO] 04:11:28:491 Memoria/(11281:13085): Me llegaron los siguientes valores:
+[INFO] 04:11:28:491 Memoria/(11281:13085): ghgh
+[ERROR] 04:11:28:491 Memoria/(11281:13085): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:20:23:452 Memoria/(11281:13203): Se conecto un cliente!
+[INFO] 04:20:23:454 Memoria/(11281:13203): se conecto la cpu
+[INFO] 04:20:24:977 Memoria/(11281:13203): Me llegaron los siguientes valores:
+[INFO] 04:20:24:977 Memoria/(11281:13203): hjhjh
+[ERROR] 04:20:24:978 Memoria/(11281:13203): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:22:15:618 Memoria/(11281:13419): Se conecto un cliente!
+[INFO] 04:22:15:618 Memoria/(11281:13419): se conecto la cpu
+[INFO] 04:22:16:857 Memoria/(11281:13419): Me llegaron los siguientes valores:
+[INFO] 04:22:16:857 Memoria/(11281:13419): jkjk
+[ERROR] 04:22:16:858 Memoria/(11281:13419): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:28:12:142 Memoria/(11281:13527): Se conecto un cliente!
+[INFO] 04:28:12:142 Memoria/(11281:13527): se conecto la cpu
+[INFO] 04:28:12:997 Memoria/(11281:13527): Me llegaron los siguientes valores:
+[INFO] 04:28:12:997 Memoria/(11281:13527): ASDASD
+[ERROR] 04:28:12:997 Memoria/(11281:13527): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:30:20:076 Memoria/(11281:13792): Se conecto un cliente!
+[INFO] 04:30:20:076 Memoria/(11281:13792): se conecto la cpu
+[INFO] 04:30:21:272 Memoria/(11281:13792): Me llegaron los siguientes valores:
+[INFO] 04:30:21:272 Memoria/(11281:13792): hjhj
+[ERROR] 04:30:21:272 Memoria/(11281:13792): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:33:09:123 Memoria/(11281:13866): Se conecto un cliente!
+[INFO] 04:33:09:124 Memoria/(11281:13866): se conecto la cpu
+[INFO] 04:33:10:456 Memoria/(11281:13866): Me llegaron los siguientes valores:
+[INFO] 04:33:10:456 Memoria/(11281:13866): jhjj
+[ERROR] 04:33:10:456 Memoria/(11281:13866): 
+el cliente se desconecto. Terminando servidor

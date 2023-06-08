@@ -68,7 +68,7 @@ void serializarContexto(int );
 void calcularHRRN(t_infopcb*);
 void manejar_recursos();
 void encolar_ready_ejecucion(t_infopcb*);
-void pasarAExit(t_infopcb*);
+void pasarAExit();
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
