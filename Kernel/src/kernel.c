@@ -235,7 +235,14 @@ void* clientCPU(void* ptr) {
 }
 
 void encolar_ready_ejecucion(t_infopcb* proceso) {
-	t_infopcb* unProceso = proceso;
+	//t_infopcb* unProceso = proceso;
+	// cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
+	//se reflejará en ambas variables, ya que apuntan al mismo lugar en la memoria.
+
+	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
+	memcpy(unProceso, proceso, sizeof(t_infopcb));
+
+
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		queue(&frenteColaReady, &finColaReady, unProceso);
 	}
@@ -391,12 +398,20 @@ void* clientFileSystem(void* ptr) {
 void* interrupcionIO(void* ptr) {
 	printf("dentro del hilo IO\n");
 
-	t_infopcb* unProceso = estadoEnEjecucion;
+	//t_infopcb* unProceso = estadoEnEjecucion;
+	// cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
+	//se reflejará en ambas variables, ya que apuntan al mismo lugar en la memoria.
+
+	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
+	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
+
+	estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
 		if(frenteColaReady != NULL){
 			desencolarReady();
+			printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
@@ -404,12 +419,30 @@ void* interrupcionIO(void* ptr) {
 
 		if( !list_is_empty(listaReady) ){
 			desencolarReady();
+			printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
 
 	sleep(unProceso->tiempoBloqueado);
-	printf("después del tiempo bloqueado\n");
 	encolar_ready_ejecucion(unProceso);
+	printf("Después del tiempo bloqueado, proceso encolado en Ready\n");
+	printf("Proceso desbloqueado: %d\n",unProceso->pid);
+
+	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+		if(frenteColaReady != NULL){
+			desencolarReady();
+			printf("Lista no vacia, proceso desencolado de ready \n");
+		}
+	}
+	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+
+		if( !list_is_empty(listaReady) ){
+			desencolarReady();
+			printf("Lista no vacia, proceso desencolado de ready \n");
+		}
+	}
 
 	return NULL;
 }

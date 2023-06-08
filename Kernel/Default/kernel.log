@@ -390,3 +390,134 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 05:02:18:868 Kernel/(15388:15395): 
 el cliente se desconecto. Terminando servidor
 [INFO] 05:02:18:868 Kernel/(15388:15400): Kernel listo para recibir al cliente
+[INFO] 05:29:20:820 Kernel/(15683:15683): Kernel listo para escuchar al cliente
+
+[INFO] 05:29:20:820 Kernel/(15683:15685): Kernel listo para recibir al cliente
+[INFO] 05:29:20:820 Kernel/(15683:15684): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:29:21:989 Kernel/(15683:15684): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:29:23:551 Kernel/(15683:15685): Se conecto una consola
+[INFO] 05:29:23:551 Kernel/(15683:15685): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:29:23:552 Kernel/(15683:15685): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:29:23:553 Kernel/(15683:15690): Kernel listo para recibir al cliente
+[INFO] 05:30:45:584 Kernel/(15869:15869): Kernel listo para escuchar al cliente
+
+[INFO] 05:30:45:584 Kernel/(15869:15871): Kernel listo para recibir al cliente
+[INFO] 05:30:45:584 Kernel/(15869:15870): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:30:46:802 Kernel/(15869:15870): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:30:48:291 Kernel/(15869:15871): Se conecto una consola
+[INFO] 05:30:48:291 Kernel/(15869:15871): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:30:48:292 Kernel/(15869:15871): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:30:48:292 Kernel/(15869:15876): Kernel listo para recibir al cliente
+[INFO] 05:30:58:312 Kernel/(15869:15879): Proceso finalizado: 1
+
+[INFO] 05:31:42:931 Kernel/(15869:15876): Se conecto una consola
+[INFO] 05:31:42:931 Kernel/(15869:15876): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:31:42:932 Kernel/(15869:15876): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:31:42:932 Kernel/(15869:15920): Kernel listo para recibir al cliente
+[INFO] 05:31:42:944 Kernel/(15869:15924): Proceso finalizado: 2
+
+[INFO] 05:32:13:482 Kernel/(15869:15920): Se conecto una consola
+[INFO] 05:32:13:483 Kernel/(15869:15920): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:32:13:484 Kernel/(15869:15920): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:32:13:485 Kernel/(15869:15981): Kernel listo para recibir al cliente
+[INFO] 05:32:33:468 Kernel/(15869:15981): Se conecto una consola
+[INFO] 05:32:33:469 Kernel/(15869:15981): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:32:33:469 Kernel/(15869:15981): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:32:33:470 Kernel/(15869:16021): Kernel listo para recibir al cliente
+[INFO] 05:32:33:506 Kernel/(15869:16026): Proceso finalizado: 4
+
+[INFO] 05:32:33:509 Kernel/(15869:16028): Proceso finalizado: 3
+
+[INFO] 05:33:44:941 Kernel/(16096:16096): Kernel listo para escuchar al cliente
+
+[INFO] 05:33:44:941 Kernel/(16096:16098): Kernel listo para recibir al cliente
+[INFO] 05:33:44:942 Kernel/(16096:16097): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:33:46:521 Kernel/(16096:16097): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:33:53:654 Kernel/(16096:16098): Se conecto una consola
+[INFO] 05:33:53:655 Kernel/(16096:16098): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:33:53:655 Kernel/(16096:16098): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:33:53:656 Kernel/(16096:16105): Kernel listo para recibir al cliente
+[INFO] 05:34:09:732 Kernel/(16096:16105): Se conecto una consola
+[INFO] 05:34:09:732 Kernel/(16096:16105): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:34:09:733 Kernel/(16096:16105): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:34:09:733 Kernel/(16096:16144): Kernel listo para recibir al cliente
+[INFO] 05:34:23:664 Kernel/(16096:16145): Proceso finalizado: 2
+
+[INFO] 05:34:23:674 Kernel/(16096:16148): Proceso finalizado: 1
+
+[INFO] 05:36:21:756 Kernel/(16230:16230): Kernel listo para escuchar al cliente
+
+[INFO] 05:36:21:756 Kernel/(16230:16232): Kernel listo para recibir al cliente
+[INFO] 05:36:21:757 Kernel/(16230:16231): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:36:23:033 Kernel/(16230:16231): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:36:51:741 Kernel/(16230:16232): Se conecto una consola
+[INFO] 05:36:51:741 Kernel/(16230:16232): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:36:51:742 Kernel/(16230:16232): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:36:51:743 Kernel/(16230:16276): Kernel listo para recibir al cliente
+[INFO] 05:37:06:078 Kernel/(16230:16276): Se conecto una consola
+[INFO] 05:37:06:078 Kernel/(16230:16276): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:37:06:079 Kernel/(16230:16276): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:37:06:079 Kernel/(16230:16311): Kernel listo para recibir al cliente
+[INFO] 05:37:06:083 Kernel/(16230:16310): Proceso finalizado: 2
+
+[INFO] 05:37:21:760 Kernel/(16230:16313): Proceso finalizado: -1
+
+[INFO] 05:39:53:888 Kernel/(16528:16528): Kernel listo para escuchar al cliente
+
+[INFO] 05:39:53:888 Kernel/(16528:16530): Kernel listo para recibir al cliente
+[INFO] 05:39:53:888 Kernel/(16528:16529): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:39:54:677 Kernel/(16528:16529): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:40:31:553 Kernel/(16528:16530): Se conecto una consola
+[INFO] 05:40:31:554 Kernel/(16528:16530): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:40:31:554 Kernel/(16528:16530): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:40:31:555 Kernel/(16528:16569): Kernel listo para recibir al cliente
+[INFO] 05:40:41:660 Kernel/(16528:16569): Se conecto una consola
+[INFO] 05:40:41:661 Kernel/(16528:16569): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:40:41:661 Kernel/(16528:16569): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:40:41:662 Kernel/(16528:16609): Kernel listo para recibir al cliente
+[INFO] 05:40:41:664 Kernel/(16528:16608): Proceso finalizado: 2
+
+[INFO] 05:41:01:568 Kernel/(16528:16611): Proceso finalizado: -1
+
+[INFO] 05:45:32:524 Kernel/(16695:16695): Kernel listo para escuchar al cliente
+
+[INFO] 05:45:32:524 Kernel/(16695:16697): Kernel listo para recibir al cliente
+[INFO] 05:45:32:525 Kernel/(16695:16696): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:45:33:595 Kernel/(16695:16696): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:45:51:317 Kernel/(16695:16697): Se conecto una consola
+[INFO] 05:45:51:317 Kernel/(16695:16697): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:45:51:318 Kernel/(16695:16697): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:45:51:318 Kernel/(16695:16737): Kernel listo para recibir al cliente
+[INFO] 05:46:01:333 Kernel/(16695:16740): Proceso finalizado: 1
+
+[INFO] 05:47:48:319 Kernel/(16949:16949): Kernel listo para escuchar al cliente
+
+[INFO] 05:47:48:320 Kernel/(16949:16951): Kernel listo para recibir al cliente
+[INFO] 05:47:48:320 Kernel/(16949:16950): Ingrese sus mensajes para el FileSystem: 
+[INFO] 05:47:49:250 Kernel/(16949:16950): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 05:48:08:058 Kernel/(16949:16951): Se conecto una consola
+[INFO] 05:48:08:058 Kernel/(16949:16951): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:48:08:058 Kernel/(16949:16951): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:48:08:059 Kernel/(16949:16991): Kernel listo para recibir al cliente
+[INFO] 05:48:21:305 Kernel/(16949:16991): Se conecto una consola
+[INFO] 05:48:21:305 Kernel/(16949:16991): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 05:48:21:305 Kernel/(16949:16991): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:48:21:306 Kernel/(16949:17026): Kernel listo para recibir al cliente
+[INFO] 05:48:21:310 Kernel/(16949:17025): Proceso finalizado: 2
+
+[INFO] 05:48:38:070 Kernel/(16949:17028): Proceso finalizado: 1
+
