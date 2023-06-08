@@ -376,3 +376,8 @@ el cliente se desconecto. Terminando servidor
 [INFO] 06:16:24:830 Memoria/(11281:17444): kjkj
 [ERROR] 06:16:24:831 Memoria/(11281:17444): 
 el cliente se desconecto. Terminando servidor
+[INFO] 15:53:35:069 Memoria/(22058:22058): Listo para escuchar al cliente
+[INFO] 15:53:35:069 Memoria/(22058:22058): Memoria lista para recibir al cliente
+
+[INFO] 15:53:46:811 Memoria/(22058:22059): Se conecto un cliente!
+[INFO] 15:53:46:811 Memoria/(22058:22059): se conecto el filesystem

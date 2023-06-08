@@ -105,10 +105,10 @@ void inicializarRecursos(){
 
 	}
 
-	t_recursos* recurso1 = malloc(sizeof(t_recursos));
-	t_recursos* recurso2 = malloc(sizeof(t_recursos));
-	recurso1 = list_get(listaRecursos,0);
-	recurso2 = list_get(listaRecursos,1);
+	//t_recursos* recurso1 = malloc(sizeof(t_recursos));
+	//t_recursos* recurso2 = malloc(sizeof(t_recursos));
+	//recurso1 = list_get(listaRecursos,0);
+	//recurso2 = list_get(listaRecursos,1);
 
 
 //	printf("RECURSO 1: %s\n",recurso1->recurso);
@@ -208,18 +208,18 @@ void* clientCPU(void* ptr) {
     printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
     printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
     printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
-    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
-    printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
-    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
-
-    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
-    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
-    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
-    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
+    printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
+//    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
+//    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
+//
+//    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
+//    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
+//    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
+//    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
 
     printf("RAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RAX);
-    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
-    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
+//    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
+//    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
     printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
 
     printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
@@ -316,6 +316,7 @@ void manejar_recursos() {
 	}
 
 	else if (strcmp(unProceso->ultimaInstruccion, "SIGNAL") == 0) {
+		int recursoEncontrado = 0;
 		int i, tamanio_lista = list_size(listaRecursos);
 		for (i = 0; i<tamanio_lista; i++) {
 		t_recursos* recurso = list_get(listaRecursos, i);
@@ -325,6 +326,7 @@ void manejar_recursos() {
 
 
 		if (string_contains(unProceso->recursoALiberar,recurso->recurso )){
+			recursoEncontrado++;
 			printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
 			//encolar_ready_ejecucion(estadoEnEjecucion);
@@ -336,6 +338,10 @@ void manejar_recursos() {
 				}
 			}
 		}
+		if (recursoEncontrado == 0) {
+					//Crear funcion pasarAExit
+					pasarAExit();
+			}
 	}
 
 	else if (strcmp(unProceso->ultimaInstruccion, "YIELD") == 0) {
