@@ -42,6 +42,7 @@ int main(void) {
     cantidadElementosSistema = 0;
     listaRecursos = list_create();
     inicializarRecursos();
+    cantidadElementosBloqueados = 0;
 
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
@@ -99,8 +100,9 @@ void inicializarRecursos(){
 
 		int instanciaRecurso= atoi(string_array_pop(instancias_recursos));
 		unRecurso->instancias = instanciaRecurso;
-		unRecurso->finBloqueados = NULL;
-		unRecurso->frenteBloqueados = NULL;
+//		unRecurso->finBloqueados = NULL;
+//		unRecurso->frenteBloqueados = NULL;
+		unRecurso->colaBloqueados = queue_create();
 		list_add(listaRecursos, unRecurso);
 
 	}
@@ -192,6 +194,7 @@ void* clientCPU(void* ptr) {
     //paquete(conexion_CPU);
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
     //enviamos las intrucciones del contexto
+    printf("CLIEN CPU DSPS \n");
     t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
@@ -260,29 +263,40 @@ void manejar_recursos() {
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
 	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
 
-
-
-
 	if (strcmp(unProceso->ultimaInstruccion, "WAIT") == 0) {
 		printf("Estoy dentro de wait.\n");
-		int i, tamanio_lista = list_size(listaRecursos);
+		int i,tamanio_lista = list_size(listaRecursos);
 		int recursoEncontrado = 0;
 		for (i = 0; i<tamanio_lista; i++) {
 			t_recursos* recurso = list_get(listaRecursos, i);
 
 			if (string_contains(unProceso->recursoSolicitado, recurso->recurso)){
 				recursoEncontrado++;
+
 				if (recurso->instancias > 0) {
 					printf("recurso asignado %s\n", recurso->recurso);
 					recurso->instancias--;
-					//printf("recurso asignado instancias %s\n", recurso->instancias);
+
+					t_recursos* unRecurso;
+					unRecurso = malloc(sizeof(t_recursos));
+					unRecurso->recurso = string_duplicate(recurso->recurso);
+					list_add(unProceso->recursosAsignados, unRecurso);
+
 					encolar_ready_ejecucion(unProceso);
 				}
 				else {
 					printf("proceso bloqueado %s\n", recurso->recurso);
 					estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
-					//FALLABA EN EL QUEUE, FALTABAN LOS &
-					queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
+					//queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
+					queue_push(recurso->colaBloqueados,unProceso);
+					cantidadElementosBloqueados++;
+
+					printf("Cantidad de elementos bloqueados: %d\n",cantidadElementosBloqueados);
+
+					if( cantidadElementosBloqueados  == grado_max_multiprogramación){
+						printf("HAY DEADLOCK\n");
+					}
+
 				}
 
 				//HAY Q VERIFICAR SI HAY ALGO EN READY PARA DESENCOLAR
@@ -292,25 +306,21 @@ void manejar_recursos() {
 
 						if(frenteColaReady != NULL){
 							desencolarReady();
-							//printf("Lista no vacia, proceso desencolado de ready \n");
 						}
 					}
+
 					if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 
 						if( !list_is_empty(listaReady) ){
 							desencolarReady();
-							//printf("Lista no vacia, proceso desencolado de ready \n");
 						}
 				}
 
-
-				//desencolarReady();
 			}
 		}
 
 		if (recursoEncontrado == 0) {
-			//Crear funcion pasarAExit
 			pasarAExit();
 		}
 	}
@@ -321,20 +331,26 @@ void manejar_recursos() {
 		for (i = 0; i<tamanio_lista; i++) {
 		t_recursos* recurso = list_get(listaRecursos, i);
 
-//		printf("recurso-> recurso: %s\n", recurso->recurso);
-//		printf("recurso solicitado: %s\n", estadoEnEjecucion->recursoALiberar);
-
-
 		if (string_contains(unProceso->recursoALiberar,recurso->recurso )){
 			recursoEncontrado++;
 			printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
-			//encolar_ready_ejecucion(estadoEnEjecucion);
+
+			list_remove_element(unProceso->recursosAsignados,recurso->recurso);
+
+
 			iniciarHiloClienteCPU();
-			if(recurso->frenteBloqueados != NULL) {
+			if(!queue_is_empty(recurso->colaBloqueados)) {
 				printf("proceso desbloqueado %s\n", recurso->recurso);
-				encolar_ready_ejecucion(unqueue(&recurso->frenteBloqueados, &recurso->finBloqueados));
+				encolar_ready_ejecucion(queue_pop(recurso->colaBloqueados));
 				recurso->instancias--;
+
+				t_recursos* unRecurso;
+				unRecurso = malloc(sizeof(t_recursos));
+				strcpy(unRecurso->recurso,recurso->recurso);
+				list_add(unProceso->recursosAsignados, unRecurso);
+
+				cantidadElementosBloqueados--;
 				}
 			}
 		}
@@ -363,7 +379,7 @@ void pasarAExit() {
 //		Dar aviso al modulo de Mmemoria para que lo libere.
 //		Liberar recursos que tenga asignados. --> CONSULTAR
 
-
+	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
 
 	//Si la cola de ready tiene elementos desencolar, si esta vacia pasar pid de estadoEnEjecucion a -1
@@ -392,11 +408,33 @@ void pasarAExit() {
 			printf("lista ready vacia\n");
 			estadoEnEjecucion->pid = -1;
 			cantidadElementosSistema--;
-			//printf("lista ready vacia sin pid -1\n");
 		}
 
 	}
 
+}
+
+
+void liberarRecursosAsignados(){
+	int cantidadRecursos = list_size(estadoEnEjecucion->recursosAsignados);
+	int i,j;
+	int tamanio_listaRecursos = list_size(listaRecursos);
+
+	for(i=0; i<cantidadRecursos; i++){
+		t_recursos* structALiberar = list_get(estadoEnEjecucion->recursosAsignados, i);
+		char* recursoALiberar = structALiberar->recurso;
+
+		for(j=0;j<tamanio_listaRecursos;j++){
+			t_recursos* recurso = list_get(listaRecursos, i);
+
+			if(string_contains(recurso->recurso,recursoALiberar)){
+				recurso->instancias++;
+				printf("Recurso liberado: %s\n",recursoALiberar);
+			}
+
+		}
+
+	}
 }
 
 void* clientMemoria(void* ptr) {
@@ -442,7 +480,9 @@ void* interrupcionIO(void* ptr) {
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
 	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
 
+
 	estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
+	printf("Soy el proceso: %d , pase a -1 el pid\n",unProceso->pid);
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
@@ -461,25 +501,38 @@ void* interrupcionIO(void* ptr) {
 	}
 
 	sleep(unProceso->tiempoBloqueado);
-	encolar_ready_ejecucion(unProceso);
-	printf("Después del tiempo bloqueado, proceso encolado en Ready\n");
+
+
 	printf("Proceso desbloqueado: %d\n",unProceso->pid);
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-		if(frenteColaReady != NULL){
+		printf("PID DEL ESTADO EJ EJECUCION: %d\n",estadoEnEjecucion->pid);
+		if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
+			encolar_ready_ejecucion(unProceso);
+			printf("Después del tiempo bloqueado, proceso encolado en Ready: %d\n",unProceso->pid);
 			desencolarReady();
-			printf("Lista no vacia, proceso desencolado de ready \n");
+			printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+		}
+		else{
+			encolar_ready_ejecucion(unProceso);
+			printf("ENCOLE EN READY DESDE IO\n");
 		}
 	}
-	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+	else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 
-		if( !list_is_empty(listaReady) ){
+		if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
+			encolar_ready_ejecucion(unProceso);
+			printf("Después del tiempo bloqueado, proceso encolado en Ready\n");
 			desencolarReady();
-			printf("Lista no vacia, proceso desencolado de ready \n");
+			printf("Lista vacia, proceso desencolado de ready \n");
+		}
+		else{
+			encolar_ready_ejecucion(unProceso);
+			printf("ENCOLE EN READY DESDE IO\n");
 		}
 	}
+
 
 	return NULL;
 }
@@ -634,6 +687,7 @@ void armarPCB(t_list* lista){
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
 	nuevoPCB->punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
+	nuevoPCB->recursosAsignados = list_create();
 
 	//Encolamos en NEW (FIFO)
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
@@ -672,7 +726,7 @@ void encolarReady() {
 
 		printf("Cola NEW:\n");
 		mostrarCola(frenteColaNew);
-		printf("Cola READY:\n");
+		//printf("Cola READY:\n");
 		//mostrarCola(frenteColaReady);
 
 	}
@@ -731,8 +785,8 @@ void desencolarReady (){
 		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
 		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
 		iniciarHiloClienteCPU();
-		printf("Cola READY:\n");
-		mostrarCola(frenteColaReady);
+		//printf("Cola READY:\n");
+		//mostrarCola(frenteColaReady);
 
 		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 	}

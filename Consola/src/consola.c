@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
 
 
 	while (fgets(linea, 99, archivo) != NULL) {
-			char*nueva_linea = string_new();
+			char* nueva_linea = string_new();
 			nueva_linea = string_duplicate(linea);
 			list_add(lista,nueva_linea);
 		}
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
 	fclose(archivo);
 
 	while (fgets(linea2, 99, archivo2) != NULL) {
-			char*nueva_linea2 = string_new();
+			char* nueva_linea2 = string_new();
 			nueva_linea2 = string_duplicate(linea2);
 			list_add(lista2,nueva_linea2);
 			}
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
 	fclose(archivo2);
 
 //	while (fgets(linea3, 99, archivo3) != NULL) {
-//				char*nueva_linea3 = string_new();
+//				char* nueva_linea3 = string_new();
 //				nueva_linea3 = string_duplicate(linea3);
 //				list_add(lista3,nueva_linea3);
 //				}
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
 //		fclose(archivo3);
 //
 //	while (fgets(linea4, 99, archivo4) != NULL) {
-//				char*nueva_linea4 = string_new();
+//				char* nueva_linea4 = string_new();
 //				nueva_linea4 = string_duplicate(linea4);
 //				list_add(lista4,nueva_linea4);
 //				}
@@ -139,7 +139,7 @@ int main(int argc, char *argv[]) {
 	t_list_iterator* iterador2 = list_iterator_create(lista2);
 	t_paquete* paquete2 = empaquetar(lista2);
 
-//	t_list_iterator* iterador3 = list_iterator_create(lista3);
+	//t_list_iterator* iterador3 = list_iterator_create(lista3);
 //	t_paquete* paquete3 = empaquetar(lista3);
 //
 //	t_list_iterator* iterador4 = list_iterator_create(lista4);
@@ -148,7 +148,7 @@ int main(int argc, char *argv[]) {
 	enviar_mensaje("consola",conexion_kernel); //Envía el handshake
 	enviar_paquete(paquete, conexion_kernel);
 	enviar_paquete(paquete2, conexion_kernel);
-//	enviar_paquete(paquete3, conexion_kernel);
+	//enviar_paquete(paquete3, conexion_kernel);
 //	enviar_paquete(paquete4, conexion_kernel);
 
 	eliminar_paquete(paquete);

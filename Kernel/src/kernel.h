@@ -25,6 +25,7 @@ int hrrn_alfa;
 int grado_max_multiprogramación ;
 int server_fd;
 int cantidadElementosSistema;
+int cantidadElementosBloqueados;
 
 //VERIFICAR TIPO
 //char ** recursos ;
@@ -70,6 +71,7 @@ void manejar_recursos();
 void encolar_ready_ejecucion(t_infopcb*);
 void pasarAExit();
 void inicializarRecursos();
+void liberarRecursosAsignados();
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);

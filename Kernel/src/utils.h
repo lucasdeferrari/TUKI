@@ -9,6 +9,7 @@
 #include<netdb.h>
 #include<commons/log.h>
 #include<commons/collections/list.h>
+#include <commons/collections/queue.h>
 #include<string.h>
 #include<assert.h>
 #include<sys/time.h>
@@ -98,6 +99,7 @@ typedef struct infopcb {
 	int recursoSolicitado_length;
 	char* ultimaInstruccion;
 	int ultimaInstruccion_length;
+	t_list* recursosAsignados;
 } t_infopcb;
 
 
@@ -127,8 +129,9 @@ typedef struct
 {
 	int instancias;
 	char* recurso;
-	t_nodoCola* frenteBloqueados;
-	t_nodoCola* finBloqueados;
+	t_queue* colaBloqueados;
+//	t_nodoCola* frenteBloqueados;
+//	t_nodoCola* finBloqueados;
 } t_recursos;
 
 //Funciones servidor

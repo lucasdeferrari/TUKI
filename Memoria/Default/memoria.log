@@ -381,3 +381,24 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 15:53:46:811 Memoria/(22058:22059): Se conecto un cliente!
 [INFO] 15:53:46:811 Memoria/(22058:22059): se conecto el filesystem
+[INFO] 19:16:00:189 Memoria/(2604:2604): Listo para escuchar al cliente
+[INFO] 19:16:00:190 Memoria/(2604:2604): Memoria lista para recibir al cliente
+
+[INFO] 19:16:09:269 Memoria/(2604:2605): Se conecto un cliente!
+[INFO] 19:16:09:269 Memoria/(2604:2605): se conecto la cpu
+[INFO] 19:16:10:468 Memoria/(2604:2605): Me llegaron los siguientes valores:
+[INFO] 19:16:10:468 Memoria/(2604:2605): dsd
+[ERROR] 19:16:10:468 Memoria/(2604:2605): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:16:18:349 Memoria/(2604:2641): Se conecto un cliente!
+[INFO] 19:16:18:349 Memoria/(2604:2641): se conecto el filesystem
+[INFO] 19:16:20:091 Memoria/(2604:2641): Me llegaron los siguientes valores:
+[INFO] 19:16:20:091 Memoria/(2604:2641): dss
+[ERROR] 19:16:20:091 Memoria/(2604:2641): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:56:55:472 Memoria/(2604:2675): Se conecto un cliente!
+[INFO] 19:56:55:472 Memoria/(2604:2675): se conecto la cpu
+[INFO] 19:56:57:003 Memoria/(2604:2675): Me llegaron los siguientes valores:
+[INFO] 19:56:57:004 Memoria/(2604:2675): hola
+[ERROR] 19:56:57:004 Memoria/(2604:2675): 
+el cliente se desconecto. Terminando servidor
