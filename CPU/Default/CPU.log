@@ -17753,3 +17753,37 @@
 [ERROR] 21:27:02:993 CPU/(3832:10058): el kernel se desconecto. Terminando servidor
 
 [INFO] 21:27:02:994 CPU/(3832:10060): CPU lista para recibir al cliente
+[INFO] 03:57:39:437 CPU/(3089:3089): CPU lista para escuchar al cliente
+
+[INFO] 03:57:39:437 CPU/(3089:3090): Ingrese sus mensajes para la Memoria: 
+[INFO] 03:57:39:438 CPU/(3089:3091): CPU lista para recibir al cliente
+[INFO] 03:57:40:935 CPU/(3089:3090): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:03:49:648 CPU/(3158:3158): CPU lista para escuchar al cliente
+
+[INFO] 04:03:49:649 CPU/(3158:3160): CPU lista para recibir al cliente
+[INFO] 04:03:49:649 CPU/(3158:3159): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:03:50:671 CPU/(3158:3159): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:03:57:694 CPU/(3158:3160): Se conecto un cliente
+[ERROR] 04:03:57:892 CPU/(3158:3160): el kernel se desconecto. Terminando servidor
+
+[INFO] 04:03:57:893 CPU/(3158:3174): CPU lista para recibir al cliente
+[INFO] 04:05:10:109 CPU/(3296:3296): CPU lista para escuchar al cliente
+
+[INFO] 04:05:10:109 CPU/(3296:3297): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:05:10:110 CPU/(3296:3298): CPU lista para recibir al cliente
+[INFO] 04:05:11:215 CPU/(3296:3297): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:07:16:397 CPU/(3416:3416): CPU lista para escuchar al cliente
+
+[INFO] 04:07:16:397 CPU/(3416:3418): CPU lista para recibir al cliente
+[INFO] 04:07:27:172 CPU/(3419:3419): CPU lista para escuchar al cliente
+
+[INFO] 04:07:27:172 CPU/(3419:3421): CPU lista para recibir al cliente
+[INFO] 04:08:00:924 CPU/(3430:3430): CPU lista para escuchar al cliente
+
+[INFO] 04:08:00:925 CPU/(3430:3431): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:08:00:925 CPU/(3430:3432): CPU lista para recibir al cliente
+[INFO] 04:08:05:519 CPU/(3430:3431): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 04:23:34:933 CPU/(3944:3944): CPU lista para escuchar al cliente
+
+[INFO] 04:23:34:933 CPU/(3944:3945): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:23:34:934 CPU/(3944:3946): CPU lista para recibir al cliente

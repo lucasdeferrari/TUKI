@@ -46,8 +46,8 @@ int main(void) {
 
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
-//  iniciarHiloClienteCPU();
-//  iniciarHiloClienteMemoria();
+  //iniciarHiloClienteCPU();
+ // iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
 
 

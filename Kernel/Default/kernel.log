@@ -939,3 +939,23 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 21:27:02:994 Kernel/(10048:10059): Proceso finalizado: 1
 
+[INFO] 03:57:53:668 Kernel/(3097:3097): Kernel listo para escuchar al cliente
+
+[INFO] 03:57:53:669 Kernel/(3097:3098): Ingrese sus mensajes para el FileSystem: 
+[INFO] 03:57:53:670 Kernel/(3097:3099): Kernel listo para recibir al cliente
+[INFO] 03:57:55:111 Kernel/(3097:3098): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 04:03:57:693 Kernel/(3167:3167): Kernel listo para escuchar al cliente
+
+[INFO] 04:03:57:693 Kernel/(3167:3171): Kernel listo para recibir al cliente
+[INFO] 04:03:57:693 Kernel/(3167:3170): Ingrese sus mensajes para el FileSystem: 
+[INFO] 04:04:16:665 Kernel/(3231:3231): Kernel listo para escuchar al cliente
+
+[INFO] 04:04:16:665 Kernel/(3231:3234): Kernel listo para recibir al cliente
+[INFO] 04:04:16:665 Kernel/(3231:3233): Ingrese sus mensajes para el FileSystem: 
+[INFO] 04:04:18:731 Kernel/(3231:3233): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 04:05:14:165 Kernel/(3300:3300): Kernel listo para escuchar al cliente
+
+[INFO] 04:05:14:166 Kernel/(3300:3303): Kernel listo para recibir al cliente
+[INFO] 04:05:14:166 Kernel/(3300:3302): Ingrese sus mensajes para el FileSystem: 
+[INFO] 04:05:14:167 Kernel/(3300:3301): Ingrese sus mensajes para la Memoria: 
+[INFO] 04:05:16:499 Kernel/(3300:3302): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!

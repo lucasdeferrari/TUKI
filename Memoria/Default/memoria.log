@@ -402,3 +402,74 @@ el cliente se desconecto. Terminando servidor
 [INFO] 19:56:57:004 Memoria/(2604:2675): hola
 [ERROR] 19:56:57:004 Memoria/(2604:2675): 
 el cliente se desconecto. Terminando servidor
+[INFO] 03:57:35:108 Memoria/(3087:3087): Listo para escuchar al cliente
+[INFO] 03:57:35:108 Memoria/(3087:3087): Memoria lista para recibir al cliente
+
+[INFO] 03:57:39:437 Memoria/(3087:3088): Se conecto un cliente!
+[INFO] 03:57:39:437 Memoria/(3087:3088): se conecto la cpu
+[INFO] 03:57:40:935 Memoria/(3087:3088): Me llegaron los siguientes valores:
+[INFO] 03:57:40:935 Memoria/(3087:3088): sfsd
+[ERROR] 03:57:40:935 Memoria/(3087:3088): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:57:45:136 Memoria/(3087:3092): Se conecto un cliente!
+[INFO] 03:57:45:136 Memoria/(3087:3092): se conecto el filesystem
+[INFO] 03:57:46:699 Memoria/(3087:3092): Me llegaron los siguientes valores:
+[INFO] 03:57:46:699 Memoria/(3087:3092): sfsd
+[ERROR] 03:57:46:700 Memoria/(3087:3092): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:03:46:196 Memoria/(3156:3156): Listo para escuchar al cliente
+[INFO] 04:03:46:196 Memoria/(3156:3156): Memoria lista para recibir al cliente
+
+[INFO] 04:03:49:649 Memoria/(3156:3157): Se conecto un cliente!
+[INFO] 04:03:49:649 Memoria/(3156:3157): se conecto la cpu
+[INFO] 04:03:50:671 Memoria/(3156:3157): Me llegaron los siguientes valores:
+[INFO] 04:03:50:671 Memoria/(3156:3157): sfsd
+[ERROR] 04:03:50:671 Memoria/(3156:3157): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:03:52:762 Memoria/(3156:3161): Se conecto un cliente!
+[INFO] 04:03:52:763 Memoria/(3156:3161): se conecto el filesystem
+[INFO] 04:03:53:819 Memoria/(3156:3161): Me llegaron los siguientes valores:
+[INFO] 04:03:53:819 Memoria/(3156:3161): sfsdf
+[ERROR] 04:03:53:819 Memoria/(3156:3161): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:05:016 Memoria/(3290:3290): Listo para escuchar al cliente
+[INFO] 04:05:05:016 Memoria/(3290:3290): Memoria lista para recibir al cliente
+
+[INFO] 04:05:07:498 Memoria/(3290:3291): Se conecto un cliente!
+[INFO] 04:05:07:498 Memoria/(3290:3291): se conecto el filesystem
+[INFO] 04:05:08:463 Memoria/(3290:3291): Me llegaron los siguientes valores:
+[INFO] 04:05:08:463 Memoria/(3290:3291): sdfsdf
+[ERROR] 04:05:08:463 Memoria/(3290:3291): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:10:109 Memoria/(3290:3295): Se conecto un cliente!
+[INFO] 04:05:10:109 Memoria/(3290:3295): se conecto la cpu
+[INFO] 04:05:11:215 Memoria/(3290:3295): Me llegaron los siguientes valores:
+[INFO] 04:05:11:215 Memoria/(3290:3295): sfsdf
+[ERROR] 04:05:11:215 Memoria/(3290:3295): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:05:14:166 Memoria/(3290:3299): Se conecto un cliente!
+[INFO] 04:05:14:167 Memoria/(3290:3299): se conecto el kernel
+[INFO] 04:07:13:813 Memoria/(3414:3414): Listo para escuchar al cliente
+[INFO] 04:07:13:813 Memoria/(3414:3414): Memoria lista para recibir al cliente
+
+[INFO] 04:07:58:500 Memoria/(3428:3428): Listo para escuchar al cliente
+[INFO] 04:07:58:500 Memoria/(3428:3428): Memoria lista para recibir al cliente
+
+[INFO] 04:08:00:925 Memoria/(3428:3429): Se conecto un cliente!
+[INFO] 04:08:00:925 Memoria/(3428:3429): se conecto la cpu
+[INFO] 04:08:05:519 Memoria/(3428:3429): Me llegaron los siguientes valores:
+[INFO] 04:08:05:519 Memoria/(3428:3429): adad
+[ERROR] 04:08:05:519 Memoria/(3428:3429): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:08:08:789 Memoria/(3428:3433): Se conecto un cliente!
+[INFO] 04:08:08:790 Memoria/(3428:3433): se conecto el filesystem
+[INFO] 04:08:10:343 Memoria/(3428:3433): Me llegaron los siguientes valores:
+[INFO] 04:08:10:343 Memoria/(3428:3433): adasd
+[ERROR] 04:08:10:343 Memoria/(3428:3433): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:08:10:343 Memoria/(3428:3428): Se conectaron todos los modulos.
+[INFO] 04:23:21:204 Memoria/(3942:3942): Listo para escuchar al cliente
+[INFO] 04:23:21:204 Memoria/(3942:3942): Memoria lista para recibir al cliente
+
+[INFO] 04:23:34:933 Memoria/(3942:3943): Se conecto un cliente!
+[INFO] 04:23:34:933 Memoria/(3942:3943): se conecto la cpu
