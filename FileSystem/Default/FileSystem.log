@@ -723,3 +723,39 @@ el cliente se desconecto. Terminando servidor
 [INFO] 04:08:08:789 FileSystem/(3434:3436): FileSystem listo para recibir a kernel
 [INFO] 04:08:08:790 FileSystem/(3434:3435): Ingrese sus mensajes para la Memoria: 
 [INFO] 04:08:10:343 FileSystem/(3434:3435): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 22:34:01:959 FileSystem/(2625:2625): FileSystem listo para escuchar al cliente
+
+[INFO] 22:34:01:960 FileSystem/(2625:2626): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:34:01:960 FileSystem/(2625:2627): FileSystem listo para recibir a kernel
+[INFO] 22:34:03:208 FileSystem/(2625:2626): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 22:34:06:656 FileSystem/(2625:2627): Se conecto un cliente!
+[INFO] 22:34:11:709 FileSystem/(2625:2627): Me llegaron los siguientes valores:
+
+[INFO] 22:34:11:709 FileSystem/(2625:2627): sfsd
+[ERROR] 22:34:11:709 FileSystem/(2625:2627): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:34:11:709 FileSystem/(2625:2631): FileSystem listo para recibir a kernel
+[INFO] 22:49:11:348 FileSystem/(2752:2752): FileSystem listo para escuchar al cliente
+
+[INFO] 22:49:11:349 FileSystem/(2752:2754): FileSystem listo para recibir a kernel
+[INFO] 22:49:11:349 FileSystem/(2752:2753): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:49:12:590 FileSystem/(2752:2753): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 22:49:16:692 FileSystem/(2752:2754): Se conecto un cliente!
+[INFO] 22:49:18:690 FileSystem/(2752:2754): Me llegaron los siguientes valores:
+
+[INFO] 22:49:18:690 FileSystem/(2752:2754): sfsdf
+[ERROR] 22:49:18:690 FileSystem/(2752:2754): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:18:690 FileSystem/(2752:2758): FileSystem listo para recibir a kernel
+[INFO] 22:59:20:755 FileSystem/(2849:2849): FileSystem listo para escuchar al cliente
+
+[INFO] 22:59:20:755 FileSystem/(2849:2851): FileSystem listo para recibir a kernel
+[INFO] 22:59:20:756 FileSystem/(2849:2850): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:59:21:970 FileSystem/(2849:2850): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 22:59:24:340 FileSystem/(2849:2851): Se conecto un cliente!
+[INFO] 22:59:25:442 FileSystem/(2849:2851): Me llegaron los siguientes valores:
+
+[INFO] 22:59:25:442 FileSystem/(2849:2851): sfsd
+[ERROR] 22:59:25:442 FileSystem/(2849:2851): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:59:25:443 FileSystem/(2849:2855): FileSystem listo para recibir a kernel

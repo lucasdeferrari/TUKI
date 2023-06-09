@@ -1359,3 +1359,74 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 16:48:50:043 Kernel/(34453:34486): 
 el cliente se desconecto. Terminando servidor
 [INFO] 16:48:50:045 Kernel/(34453:34536): Kernel listo para recibir al cliente
+[INFO] 22:34:06:655 Kernel/(2628:2628): Kernel listo para escuchar al cliente
+
+[INFO] 22:34:06:656 Kernel/(2628:2629): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:34:06:656 Kernel/(2628:2630): Kernel listo para recibir al cliente
+[INFO] 22:34:11:709 Kernel/(2628:2629): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 22:35:25:724 Kernel/(2628:2630): Se conecto una consola
+[INFO] 22:35:25:724 Kernel/(2628:2630): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 22:35:25:724 Kernel/(2628:2630): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:35:25:725 Kernel/(2628:2653): Kernel listo para recibir al cliente
+[INFO] 22:35:25:729 Kernel/(2628:2655): Proceso finalizado: 1
+
+[INFO] 22:37:55:226 Kernel/(2628:2653): Se conecto una consola
+[INFO] 22:37:55:227 Kernel/(2628:2653): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 22:37:55:227 Kernel/(2628:2653): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:55:227 Kernel/(2628:2663): Kernel listo para recibir al cliente
+[INFO] 22:37:55:229 Kernel/(2628:2662): Proceso finalizado: 2
+
+[INFO] 22:49:16:691 Kernel/(2755:2755): Kernel listo para escuchar al cliente
+
+[INFO] 22:49:16:692 Kernel/(2755:2757): Kernel listo para recibir al cliente
+[INFO] 22:49:16:692 Kernel/(2755:2756): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:49:18:690 Kernel/(2755:2756): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 22:49:26:680 Kernel/(2755:2757): Se conecto una consola
+[INFO] 22:49:26:680 Kernel/(2755:2757): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 22:49:26:680 Kernel/(2755:2757): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:26:681 Kernel/(2755:2761): Kernel listo para recibir al cliente
+[INFO] 22:49:26:688 Kernel/(2755:2763): Proceso finalizado: 1
+
+[INFO] 22:49:32:975 Kernel/(2755:2761): Se conecto una consola
+[INFO] 22:49:32:975 Kernel/(2755:2761): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 22:49:32:976 Kernel/(2755:2761): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:32:976 Kernel/(2755:2767): Kernel listo para recibir al cliente
+[INFO] 22:49:33:012 Kernel/(2755:2782): Proceso finalizado: 2
+
+[INFO] 22:49:34:992 Kernel/(2755:2767): Se conecto una consola
+[INFO] 22:49:34:992 Kernel/(2755:2767): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 22:49:34:993 Kernel/(2755:2767): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:34:993 Kernel/(2755:2787): Kernel listo para recibir al cliente
+[INFO] 22:49:35:025 Kernel/(2755:2802): Proceso finalizado: 3
+
+[INFO] 22:59:24:339 Kernel/(2852:2852): Kernel listo para escuchar al cliente
+
+[INFO] 22:59:24:340 Kernel/(2852:2853): Ingrese sus mensajes para el FileSystem: 
+[INFO] 22:59:24:340 Kernel/(2852:2854): Kernel listo para recibir al cliente
+[INFO] 22:59:25:442 Kernel/(2852:2853): Me llego el mensaje Hola kernel, gracias por comunicarte con el fileSystem!
+[INFO] 23:00:02:483 Kernel/(2852:2854): Se conecto una consola
+[INFO] 23:00:02:484 Kernel/(2852:2854): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 23:00:02:484 Kernel/(2852:2854): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:00:02:485 Kernel/(2852:2876): Kernel listo para recibir al cliente
+[INFO] 23:00:02:485 Kernel/(2852:2876): Se conecto una consola
+[INFO] 23:00:02:485 Kernel/(2852:2876): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 23:00:02:489 Kernel/(2852:2876): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:00:02:492 Kernel/(2852:2877): Kernel listo para recibir al cliente
+[INFO] 23:00:02:492 Kernel/(2852:2877): Se conecto una consola
+[INFO] 23:00:02:492 Kernel/(2852:2877): Iniciando procedimiento al recibir un paquete de CONSOLA
+[ERROR] 23:00:02:494 Kernel/(2852:2877): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:00:02:494 Kernel/(2852:2880): Kernel listo para recibir al cliente
+[INFO] 23:00:02:514 Kernel/(2852:2889): Proceso finalizado: 3
+
+[INFO] 23:00:02:560 Kernel/(2852:2913): Proceso finalizado: 1
+
+[INFO] 23:00:02:564 Kernel/(2852:2915): Proceso finalizado: 2
+

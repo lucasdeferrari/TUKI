@@ -473,3 +473,51 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 04:23:34:933 Memoria/(3942:3943): Se conecto un cliente!
 [INFO] 04:23:34:933 Memoria/(3942:3943): se conecto la cpu
+[INFO] 22:33:50:211 Memoria/(2619:2619): Listo para escuchar al cliente
+[INFO] 22:33:50:211 Memoria/(2619:2619): Memoria lista para recibir al cliente
+
+[INFO] 22:33:54:765 Memoria/(2619:2620): Se conecto un cliente!
+[INFO] 22:33:54:766 Memoria/(2619:2620): se conecto la cpu
+[INFO] 22:33:58:230 Memoria/(2619:2620): Me llegaron los siguientes valores:
+[INFO] 22:33:58:230 Memoria/(2619:2620): adsa
+[ERROR] 22:33:58:230 Memoria/(2619:2620): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:34:01:959 Memoria/(2619:2624): Se conecto un cliente!
+[INFO] 22:34:01:960 Memoria/(2619:2624): se conecto el filesystem
+[INFO] 22:34:03:208 Memoria/(2619:2624): Me llegaron los siguientes valores:
+[INFO] 22:34:03:208 Memoria/(2619:2624): adas
+[ERROR] 22:34:03:208 Memoria/(2619:2624): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:34:03:208 Memoria/(2619:2619): Se conectaron todos los modulos.
+[INFO] 22:49:03:840 Memoria/(2746:2746): Listo para escuchar al cliente
+[INFO] 22:49:03:840 Memoria/(2746:2746): Memoria lista para recibir al cliente
+
+[INFO] 22:49:06:498 Memoria/(2746:2747): Se conecto un cliente!
+[INFO] 22:49:06:498 Memoria/(2746:2747): se conecto la cpu
+[INFO] 22:49:08:105 Memoria/(2746:2747): Me llegaron los siguientes valores:
+[INFO] 22:49:08:105 Memoria/(2746:2747): sdfsdf
+[ERROR] 22:49:08:105 Memoria/(2746:2747): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:11:349 Memoria/(2746:2751): Se conecto un cliente!
+[INFO] 22:49:11:349 Memoria/(2746:2751): se conecto el filesystem
+[INFO] 22:49:12:590 Memoria/(2746:2751): Me llegaron los siguientes valores:
+[INFO] 22:49:12:590 Memoria/(2746:2751): sdfsd
+[ERROR] 22:49:12:590 Memoria/(2746:2751): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:49:12:591 Memoria/(2746:2746): Se conectaron todos los modulos.
+[INFO] 22:59:15:343 Memoria/(2843:2843): Listo para escuchar al cliente
+[INFO] 22:59:15:343 Memoria/(2843:2843): Memoria lista para recibir al cliente
+
+[INFO] 22:59:17:804 Memoria/(2843:2844): Se conecto un cliente!
+[INFO] 22:59:17:804 Memoria/(2843:2844): se conecto la cpu
+[INFO] 22:59:18:882 Memoria/(2843:2844): Me llegaron los siguientes valores:
+[INFO] 22:59:18:882 Memoria/(2843:2844): sfsd
+[ERROR] 22:59:18:883 Memoria/(2843:2844): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:59:20:756 Memoria/(2843:2848): Se conecto un cliente!
+[INFO] 22:59:20:756 Memoria/(2843:2848): se conecto el filesystem
+[INFO] 22:59:21:970 Memoria/(2843:2848): Me llegaron los siguientes valores:
+[INFO] 22:59:21:970 Memoria/(2843:2848): sdfsd
+[ERROR] 22:59:21:970 Memoria/(2843:2848): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:59:21:970 Memoria/(2843:2843): Se conectaron todos los modulos.
