@@ -102,6 +102,8 @@ typedef struct infopcb {
 	char* ultimaInstruccion;
 	int ultimaInstruccion_length;
 	int tiempoBloqueado;
+	int idSegmento;
+	int tamanioSegmento;
 	//recursos
 	char* recursoALiberar;
 	int recursoALiberar_length;

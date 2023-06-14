@@ -31864,3 +31864,367 @@
 [ERROR] 20:48:12:735 CPU/(16904:16916): el kernel se desconecto. Terminando servidor
 
 [INFO] 20:48:12:736 CPU/(16904:16955): CPU lista para recibir al cliente
+[INFO] 21:02:18:246 CPU/(19234:19234): CPU lista para escuchar al cliente
+
+[INFO] 21:02:18:246 CPU/(19234:19236): CPU lista para recibir al cliente
+[INFO] 21:02:18:247 CPU/(19234:19235): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:02:19:610 CPU/(19234:19235): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:03:22:336 CPU/(19234:19236): Se conecto un cliente
+[INFO] 21:03:22:337 CPU/(19234:19236): Instrucciones recibidas de Kernel:
+
+[INFO] 21:03:22:337 CPU/(19234:19236): SET AX HOLA
+
+[INFO] 21:03:22:337 CPU/(19234:19236): CREATE_SEGMENT 5 20
+
+[INFO] 21:03:22:337 CPU/(19234:19236): DELETE_SEGMENT 12
+[INFO] 21:10:55:949 CPU/(19747:19747): CPU lista para escuchar al cliente
+
+[INFO] 21:10:55:949 CPU/(19747:19749): CPU lista para recibir al cliente
+[INFO] 21:10:55:950 CPU/(19747:19748): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:10:56:958 CPU/(19747:19748): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:11:15:962 CPU/(19747:19749): Se conecto un cliente
+[INFO] 21:11:15:963 CPU/(19747:19749): Instrucciones recibidas de Kernel:
+
+[INFO] 21:11:15:963 CPU/(19747:19749): SET AX HOLA
+
+[INFO] 21:11:15:963 CPU/(19747:19749): CREATE_SEGMENT 5 20
+
+[INFO] 21:11:15:963 CPU/(19747:19749): DELETE_SEGMENT 12
+[INFO] 21:11:38:164 CPU/(19767:19767): CPU lista para escuchar al cliente
+
+[INFO] 21:11:38:164 CPU/(19767:19769): CPU lista para recibir al cliente
+[INFO] 21:11:38:165 CPU/(19767:19768): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:11:38:846 CPU/(19767:19768): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:14:55:213 CPU/(19948:19948): CPU lista para escuchar al cliente
+
+[INFO] 21:14:55:213 CPU/(19948:19950): CPU lista para recibir al cliente
+[INFO] 21:14:55:214 CPU/(19948:19949): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:14:56:342 CPU/(19948:19949): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:15:06:419 CPU/(19948:19950): Se conecto un cliente
+[INFO] 21:15:06:419 CPU/(19948:19950): Instrucciones recibidas de Kernel:
+
+[INFO] 21:15:06:419 CPU/(19948:19950): SET AX HOLA
+
+[INFO] 21:15:06:419 CPU/(19948:19950): F_OPEN ARCHIVO
+
+[INFO] 21:15:06:419 CPU/(19948:19950): CREATE_SEGMENT 5 20
+
+[INFO] 21:15:06:419 CPU/(19948:19950): DELETE_SEGMENT 12
+[ERROR] 21:15:07:421 CPU/(19948:19950): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:15:07:423 CPU/(19948:19989): CPU lista para recibir al cliente
+[INFO] 21:15:45:705 CPU/(19995:19995): CPU lista para escuchar al cliente
+
+[INFO] 21:15:45:706 CPU/(19995:19997): CPU lista para recibir al cliente
+[INFO] 21:15:45:706 CPU/(19995:19996): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:15:46:817 CPU/(19995:19996): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:15:55:724 CPU/(19995:19997): Se conecto un cliente
+[INFO] 21:15:55:724 CPU/(19995:19997): Instrucciones recibidas de Kernel:
+
+[INFO] 21:15:55:724 CPU/(19995:19997): SET AX HOLA
+
+[INFO] 21:15:55:724 CPU/(19995:19997): YIELD
+
+[INFO] 21:15:55:724 CPU/(19995:19997): F_OPEN ARCHIVO
+
+[INFO] 21:15:55:724 CPU/(19995:19997): CREATE_SEGMENT 5 20
+
+[INFO] 21:15:55:724 CPU/(19995:19997): DELETE_SEGMENT 12
+[INFO] 21:18:50:168 CPU/(20180:20180): CPU lista para escuchar al cliente
+
+[INFO] 21:18:50:168 CPU/(20180:20182): CPU lista para recibir al cliente
+[INFO] 21:18:50:169 CPU/(20180:20181): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:18:51:189 CPU/(20180:20181): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:18:56:751 CPU/(20180:20182): Se conecto un cliente
+[INFO] 21:18:56:751 CPU/(20180:20182): Instrucciones recibidas de Kernel:
+
+[INFO] 21:18:56:751 CPU/(20180:20182): SET AX HOLA
+
+[INFO] 21:18:56:751 CPU/(20180:20182): YIELD
+
+[INFO] 21:18:56:751 CPU/(20180:20182): F_OPEN ARCHIVO
+
+[INFO] 21:18:56:751 CPU/(20180:20182): CREATE_SEGMENT 5 20
+
+[INFO] 21:18:56:751 CPU/(20180:20182): DELETE_SEGMENT 12
+[ERROR] 21:18:57:752 CPU/(20180:20182): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:18:57:753 CPU/(20180:20193): CPU lista para recibir al cliente
+[INFO] 21:18:57:753 CPU/(20180:20193): Se conecto un cliente
+[INFO] 21:18:57:754 CPU/(20180:20193): Instrucciones recibidas de Kernel:
+
+[INFO] 21:18:57:754 CPU/(20180:20193): SET AX HOLA
+
+[INFO] 21:18:57:754 CPU/(20180:20193): YIELD
+
+[INFO] 21:18:57:754 CPU/(20180:20193): F_OPEN ARCHIVO
+
+[INFO] 21:18:57:755 CPU/(20180:20193): CREATE_SEGMENT 5 20
+
+[INFO] 21:18:57:755 CPU/(20180:20193): DELETE_SEGMENT 12
+[ERROR] 21:18:57:756 CPU/(20180:20193): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:18:57:756 CPU/(20180:20194): CPU lista para recibir al cliente
+[INFO] 21:19:04:719 CPU/(20196:20196): CPU lista para escuchar al cliente
+
+[INFO] 21:19:04:720 CPU/(20196:20198): CPU lista para recibir al cliente
+[INFO] 21:19:04:720 CPU/(20196:20197): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:19:05:416 CPU/(20196:20197): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:19:21:089 CPU/(20196:20198): Se conecto un cliente
+[INFO] 21:19:21:090 CPU/(20196:20198): Instrucciones recibidas de Kernel:
+
+[INFO] 21:19:21:090 CPU/(20196:20198): SET AX HOLA
+
+[INFO] 21:19:21:090 CPU/(20196:20198): YIELD
+
+[INFO] 21:19:21:090 CPU/(20196:20198): F_OPEN ARCHIVO
+
+[INFO] 21:19:21:090 CPU/(20196:20198): CREATE_SEGMENT 5 20
+
+[INFO] 21:19:21:090 CPU/(20196:20198): DELETE_SEGMENT 12
+[ERROR] 21:19:22:092 CPU/(20196:20198): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:19:22:094 CPU/(20196:20242): CPU lista para recibir al cliente
+[INFO] 21:19:22:095 CPU/(20196:20242): Se conecto un cliente
+[INFO] 21:19:22:096 CPU/(20196:20242): Instrucciones recibidas de Kernel:
+
+[INFO] 21:19:22:096 CPU/(20196:20242): SET AX HOLA
+
+[INFO] 21:19:22:096 CPU/(20196:20242): YIELD
+
+[INFO] 21:19:22:096 CPU/(20196:20242): F_OPEN ARCHIVO
+
+[INFO] 21:19:22:096 CPU/(20196:20242): CREATE_SEGMENT 5 20
+
+[INFO] 21:19:22:096 CPU/(20196:20242): DELETE_SEGMENT 12
+[ERROR] 21:19:22:098 CPU/(20196:20242): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:19:22:098 CPU/(20196:20244): CPU lista para recibir al cliente
+[INFO] 21:19:52:944 CPU/(20196:20244): Se conecto un cliente
+[INFO] 21:19:52:945 CPU/(20196:20244): Instrucciones recibidas de Kernel:
+
+[INFO] 21:19:52:945 CPU/(20196:20244): SET AX HOLA
+
+[INFO] 21:19:52:945 CPU/(20196:20244): YIELD
+
+[INFO] 21:19:52:945 CPU/(20196:20244): CREATE_SEGMENT 5 20
+
+[INFO] 21:19:52:945 CPU/(20196:20244): DELETE_SEGMENT 12
+[ERROR] 21:19:53:947 CPU/(20196:20244): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:19:53:949 CPU/(20196:20288): CPU lista para recibir al cliente
+[INFO] 21:19:53:950 CPU/(20196:20288): Se conecto un cliente
+[INFO] 21:19:53:953 CPU/(20196:20288): Instrucciones recibidas de Kernel:
+
+[INFO] 21:19:53:953 CPU/(20196:20288): SET AX HOLA
+
+[INFO] 21:19:53:953 CPU/(20196:20288): YIELD
+
+[INFO] 21:19:53:954 CPU/(20196:20288): CREATE_SEGMENT 5 20
+
+[INFO] 21:19:53:954 CPU/(20196:20288): DELETE_SEGMENT 12
+[ERROR] 21:19:53:957 CPU/(20196:20288): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:19:53:958 CPU/(20196:20290): CPU lista para recibir al cliente
+[INFO] 21:20:34:253 CPU/(20292:20292): CPU lista para escuchar al cliente
+
+[INFO] 21:20:34:254 CPU/(20292:20294): CPU lista para recibir al cliente
+[INFO] 21:20:34:254 CPU/(20292:20293): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:20:34:941 CPU/(20292:20293): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:20:40:480 CPU/(20292:20294): Se conecto un cliente
+[INFO] 21:20:40:480 CPU/(20292:20294): Instrucciones recibidas de Kernel:
+
+[INFO] 21:20:40:480 CPU/(20292:20294): SET AX HOLA
+
+[INFO] 21:20:40:480 CPU/(20292:20294): YIELD
+
+[INFO] 21:20:40:480 CPU/(20292:20294): CREATE_SEGMENT 5 20
+
+[INFO] 21:20:40:480 CPU/(20292:20294): DELETE_SEGMENT 12
+[ERROR] 21:20:41:482 CPU/(20292:20294): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:20:41:485 CPU/(20292:20304): CPU lista para recibir al cliente
+[INFO] 21:20:41:486 CPU/(20292:20304): Se conecto un cliente
+[INFO] 21:20:41:488 CPU/(20292:20304): Instrucciones recibidas de Kernel:
+
+[INFO] 21:20:41:488 CPU/(20292:20304): SET AX HOLA
+
+[INFO] 21:20:41:488 CPU/(20292:20304): YIELD
+
+[INFO] 21:20:41:488 CPU/(20292:20304): CREATE_SEGMENT 5 20
+
+[INFO] 21:20:41:488 CPU/(20292:20304): DELETE_SEGMENT 12
+[ERROR] 21:20:41:492 CPU/(20292:20304): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:20:41:492 CPU/(20292:20306): CPU lista para recibir al cliente
+[INFO] 21:24:20:649 CPU/(20400:20400): CPU lista para escuchar al cliente
+
+[INFO] 21:24:20:649 CPU/(20400:20402): CPU lista para recibir al cliente
+[INFO] 21:24:20:649 CPU/(20400:20401): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:24:21:232 CPU/(20400:20401): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:24:37:143 CPU/(20400:20402): Se conecto un cliente
+[INFO] 21:24:37:143 CPU/(20400:20402): Instrucciones recibidas de Kernel:
+
+[INFO] 21:24:37:143 CPU/(20400:20402): SET AX HOLA
+
+[INFO] 21:24:37:143 CPU/(20400:20402): F_OPEN ARCHIVO
+
+[ERROR] 21:24:38:144 CPU/(20400:20402): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:24:38:146 CPU/(20400:20470): CPU lista para recibir al cliente
+[INFO] 21:25:20:901 CPU/(20400:20470): Se conecto un cliente
+[INFO] 21:25:20:902 CPU/(20400:20470): Instrucciones recibidas de Kernel:
+
+[INFO] 21:25:20:902 CPU/(20400:20470): SET AX HOLA
+
+[INFO] 21:25:20:902 CPU/(20400:20470): EXIT
+
+[INFO] 21:25:20:902 CPU/(20400:20470): F_OPEN ARCHIVO
+
+[ERROR] 21:25:21:903 CPU/(20400:20470): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:25:21:903 CPU/(20400:20519): CPU lista para recibir al cliente
+[INFO] 21:26:27:745 CPU/(20560:20560): CPU lista para escuchar al cliente
+
+[INFO] 21:26:27:745 CPU/(20560:20562): CPU lista para recibir al cliente
+[INFO] 21:26:27:746 CPU/(20560:20561): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:26:28:301 CPU/(20560:20561): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:26:33:770 CPU/(20560:20562): Se conecto un cliente
+[INFO] 21:26:33:771 CPU/(20560:20562): Instrucciones recibidas de Kernel:
+
+[INFO] 21:26:33:771 CPU/(20560:20562): SET AX HOLA
+
+[INFO] 21:26:33:771 CPU/(20560:20562): EXIT
+
+[INFO] 21:26:33:771 CPU/(20560:20562): F_OPEN ARCHIVO
+
+[ERROR] 21:26:34:774 CPU/(20560:20562): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:26:34:774 CPU/(20560:20572): CPU lista para recibir al cliente
+[INFO] 21:26:51:689 CPU/(20575:20575): CPU lista para escuchar al cliente
+
+[INFO] 21:26:51:689 CPU/(20575:20577): CPU lista para recibir al cliente
+[INFO] 21:26:51:690 CPU/(20575:20576): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:26:54:003 CPU/(20575:20576): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:27:04:569 CPU/(20575:20577): Se conecto un cliente
+[INFO] 21:27:04:570 CPU/(20575:20577): Instrucciones recibidas de Kernel:
+
+[INFO] 21:27:04:570 CPU/(20575:20577): SET AX HOLA
+
+[INFO] 21:27:04:570 CPU/(20575:20577): YIELD
+
+[INFO] 21:27:04:570 CPU/(20575:20577): EXIT
+
+[INFO] 21:27:04:570 CPU/(20575:20577): F_OPEN ARCHIVO
+
+[ERROR] 21:27:05:572 CPU/(20575:20577): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:27:05:573 CPU/(20575:20617): CPU lista para recibir al cliente
+[INFO] 21:27:05:577 CPU/(20575:20617): Se conecto un cliente
+[INFO] 21:27:05:581 CPU/(20575:20617): Instrucciones recibidas de Kernel:
+
+[INFO] 21:27:05:581 CPU/(20575:20617): SET AX HOLA
+
+[INFO] 21:27:05:581 CPU/(20575:20617): YIELD
+
+[INFO] 21:27:05:581 CPU/(20575:20617): EXIT
+
+[INFO] 21:27:05:581 CPU/(20575:20617): F_OPEN ARCHIVO
+
+[ERROR] 21:27:05:587 CPU/(20575:20617): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:27:05:587 CPU/(20575:20619): CPU lista para recibir al cliente
+[INFO] 21:27:51:139 CPU/(20651:20651): CPU lista para escuchar al cliente
+
+[INFO] 21:27:51:139 CPU/(20651:20653): CPU lista para recibir al cliente
+[INFO] 21:27:51:140 CPU/(20651:20652): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:27:52:661 CPU/(20651:20652): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:28:02:820 CPU/(20651:20653): Se conecto un cliente
+[INFO] 21:28:02:821 CPU/(20651:20653): Instrucciones recibidas de Kernel:
+
+[INFO] 21:28:02:821 CPU/(20651:20653): SET AX HOLA
+
+[INFO] 21:28:02:821 CPU/(20651:20653): 
+
+[INFO] 21:28:02:821 CPU/(20651:20653): EXIT
+
+[INFO] 21:28:02:821 CPU/(20651:20653): 
+
+[ERROR] 21:28:03:824 CPU/(20651:20653): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:28:03:825 CPU/(20651:20693): CPU lista para recibir al cliente
+[INFO] 21:28:24:116 CPU/(20695:20695): CPU lista para escuchar al cliente
+
+[INFO] 21:28:24:116 CPU/(20695:20697): CPU lista para recibir al cliente
+[INFO] 21:28:24:116 CPU/(20695:20696): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:28:25:016 CPU/(20695:20696): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:28:31:917 CPU/(20695:20697): Se conecto un cliente
+[INFO] 21:28:31:918 CPU/(20695:20697): Instrucciones recibidas de Kernel:
+
+[INFO] 21:28:31:918 CPU/(20695:20697): SET AX HOLA
+
+[INFO] 21:28:31:918 CPU/(20695:20697): EXIT
+
+[INFO] 21:28:31:919 CPU/(20695:20697): 
+
+[ERROR] 21:28:32:921 CPU/(20695:20697): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:28:32:923 CPU/(20695:20736): CPU lista para recibir al cliente
+[INFO] 21:30:07:695 CPU/(20952:20952): CPU lista para escuchar al cliente
+
+[INFO] 21:30:07:695 CPU/(20952:20954): CPU lista para recibir al cliente
+[INFO] 21:30:07:695 CPU/(20952:20953): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:30:08:436 CPU/(20952:20953): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:30:22:496 CPU/(20952:20954): Se conecto un cliente
+[INFO] 21:30:22:497 CPU/(20952:20954): Instrucciones recibidas de Kernel:
+
+[INFO] 21:30:22:497 CPU/(20952:20954): SET AX HOLA
+
+[INFO] 21:30:22:497 CPU/(20952:20954): CREATE_SEGMENT 5 452
+
+[INFO] 21:30:22:497 CPU/(20952:20954): CREATE_SEGMENT 7 452
+[ERROR] 21:30:23:499 CPU/(20952:20954): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:30:23:503 CPU/(20952:21022): CPU lista para recibir al cliente
+[INFO] 21:31:33:365 CPU/(21193:21193): CPU lista para escuchar al cliente
+
+[INFO] 21:31:33:366 CPU/(21193:21195): CPU lista para recibir al cliente
+[INFO] 21:31:33:366 CPU/(21193:21194): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:31:34:075 CPU/(21193:21194): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:31:49:203 CPU/(21193:21195): Se conecto un cliente
+[INFO] 21:31:49:204 CPU/(21193:21195): Instrucciones recibidas de Kernel:
+
+[INFO] 21:31:49:204 CPU/(21193:21195): SET AX HOLA
+
+[INFO] 21:31:49:204 CPU/(21193:21195): DELETE_SEGMENT 7
+
+[ERROR] 21:31:50:207 CPU/(21193:21195): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:31:50:208 CPU/(21193:21263): CPU lista para recibir al cliente
+[INFO] 21:32:24:266 CPU/(21271:21271): CPU lista para escuchar al cliente
+
+[INFO] 21:32:24:266 CPU/(21271:21273): CPU lista para recibir al cliente
+[INFO] 21:32:24:267 CPU/(21271:21272): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:32:25:746 CPU/(21271:21272): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:32:34:999 CPU/(21271:21273): Se conecto un cliente
+[INFO] 21:32:35:001 CPU/(21271:21273): Instrucciones recibidas de Kernel:
+
+[INFO] 21:32:35:001 CPU/(21271:21273): SET AX HOLA
+
+[INFO] 21:32:35:001 CPU/(21271:21273): YIELD
+
+[INFO] 21:32:35:001 CPU/(21271:21273): DELETE_SEGMENT 7
+[ERROR] 21:32:36:003 CPU/(21271:21273): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:32:36:005 CPU/(21271:21312): CPU lista para recibir al cliente
+[INFO] 21:32:36:006 CPU/(21271:21312): Se conecto un cliente
+[INFO] 21:32:36:009 CPU/(21271:21312): Instrucciones recibidas de Kernel:
+
+[INFO] 21:32:36:009 CPU/(21271:21312): SET AX HOLA
+
+[INFO] 21:32:36:010 CPU/(21271:21312): YIELD
+
+[INFO] 21:32:36:010 CPU/(21271:21312): DELETE_SEGMENT 7
+[ERROR] 21:32:36:013 CPU/(21271:21312): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:32:36:013 CPU/(21271:21314): CPU lista para recibir al cliente

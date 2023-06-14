@@ -208,7 +208,10 @@ void* clientCPU(void* ptr) {
     printf("Después de recibir el contexto\n");
 
     printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
+    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
     printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
+    printf("Id del segmento = %d\n",estadoEnEjecucion->idSegmento);
+    printf("Tamaño del segmento = %d\n",estadoEnEjecucion->tamanioSegmento);
     printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
     printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
     printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
@@ -223,8 +226,6 @@ void* clientCPU(void* ptr) {
     printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
     printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
     printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
-
-    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
 
     printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
 
@@ -1082,22 +1083,6 @@ t_paquete* empaquetar(t_list* cabeza) {
 
 void serializarContexto(int unSocket){
 
-	//VALORES DE PRUEBA, LO PASE ACA PORQUE PROBE YA DIRECTAMENTE QUE USEMOS EL PCB QUE NOS MANDA CONSOLA
-
-//	strcpy(estadoEnEjecucion->registrosCpu.AX,"HOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.BX,"HOL");
-//	strcpy(estadoEnEjecucion->registrosCpu.CX,"HO");
-//	strcpy(estadoEnEjecucion->registrosCpu.DX,"H");
-//	strcpy(estadoEnEjecucion->registrosCpu.EAX,"HOLAHOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.EBX,"HOLAHOL");
-//	strcpy(estadoEnEjecucion->registrosCpu.ECX,"HOLAHO");
-//	strcpy(estadoEnEjecucion->registrosCpu.EDX,"HOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.RAX,"HOLAHOLAHOLAHOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.RBX,"HOLAHOLAHOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.RCX,"HOLAHOLA");
-//	strcpy(estadoEnEjecucion->registrosCpu.RDX,"HOLA");
-
-
 	//BUFFER
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
@@ -1108,7 +1093,7 @@ void serializarContexto(int unSocket){
 	int offset = 0; //desplazamiento
 
 	memcpy(stream + offset, &estadoEnEjecucion->programCounter, sizeof(int));
-	offset += sizeof(int); //No tiene sentido seguir calculando el desplazamiento, ya ocupamos el buffer completo
+	offset += sizeof(int);
 
 	memcpy(stream + offset, &estadoEnEjecucion->registrosCpu.AX, sizeof(estadoEnEjecucion->registrosCpu.AX));
 	offset += sizeof(estadoEnEjecucion->registrosCpu.AX);
@@ -1177,7 +1162,7 @@ void serializarContexto(int unSocket){
 	printf("Contexto sin instrucciones enviado a CPU. \n");
 
 	//free memoria dinámica
-	//free(contextoPRUEBA.instruccion);
+
 	// Liberamos la memoria
 	free(a_enviar);
 	free(paquete->buffer->stream);
@@ -1233,6 +1218,12 @@ void recibir_contexto(int socket_cliente){
 	 stream += sizeof(int);
 
 	 memcpy(&(estadoEnEjecucion->tamanioArchivo), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->idSegmento), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->tamanioSegmento), stream, sizeof(int));
 	 stream += sizeof(int);
 
 	 memcpy(&(estadoEnEjecucion->registrosCpu.AX), stream, sizeof(estadoEnEjecucion->registrosCpu.AX));

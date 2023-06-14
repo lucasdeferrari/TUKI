@@ -145,3 +145,16 @@ el kernel se desconecto. Terminando servidor
 [INFO] 03:20:32:177 CPU/(3147:3152): YIELD
 [ERROR] 03:20:32:230 CPU/(3147:3152): el kernel se desconecto. Terminando servidor
 
+[INFO] 21:07:10:245 CPU/(19405:19411): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:07:10:208 CPU/(19405:19405): CPU lista para escuchar al cliente
+
+[INFO] 21:07:10:528 CPU/(19405:19412): CPU lista para recibir al cliente
+[INFO] 21:07:12:830 CPU/(19405:19411): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:07:17:590 CPU/(19405:19412): Se conecto un cliente
+[INFO] 21:07:17:629 CPU/(19405:19412): Instrucciones recibidas de Kernel:
+
+[INFO] 21:07:17:637 CPU/(19405:19412): SET AX HOLA
+
+[INFO] 21:07:17:640 CPU/(19405:19412): CREATE_SEGMENT 5 20
+
+[INFO] 21:07:17:642 CPU/(19405:19412): DELETE_SEGMENT 12

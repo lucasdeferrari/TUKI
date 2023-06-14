@@ -94,6 +94,8 @@ typedef struct {
 	int instruccion_length;
 	char* instruccion;
 	int tiempoBloqueado;
+	int idSegmento;
+	int tamanioSegmento;
 
 	//recursos
 	int recursoSolicitado_length;

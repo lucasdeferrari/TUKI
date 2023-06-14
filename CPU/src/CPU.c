@@ -149,7 +149,7 @@ void* serverCPU(void* ptr){
     			}
     			break;
     		case CONTEXTO:
-    			printf("CONTEXTO RECIBIDO");
+    			printf("CONTEXTO RECIBIDO\n");
     			contexto = recibir_contexto(cliente_fd);
     			contadorContexto++;
     			printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
@@ -232,6 +232,8 @@ void vaciarContexto(){
 	contexto->cantBytesArchivo = 0;
 	contexto->direcFisicaArchivo = 0;
 	contexto->tamanioArchivo = 0;
+	contexto->idSegmento = 0;
+	contexto->tamanioSegmento = 0;
 
 	for (int i = 0; i < sizeof(contexto->registrosCpu.AX); i++) {
 		contexto->registrosCpu.AX[i] = '\0';
@@ -279,6 +281,7 @@ void iniciar_ejecucion(){
     contexto->instruccion = string_new();
     contexto->recursoSolicitado = string_new();
     contexto->recursoALiberar = string_new();
+    contexto->nombreArchivo = string_new();
 
 	while(continuarLeyendo>0){
 
@@ -300,6 +303,8 @@ void iniciar_ejecucion(){
 	printf("TIEMPO BLOQUEADO: %i\n",contexto->tiempoBloqueado);
 	printf("RECURSO SOLICITADO: %s\n",contexto->recursoSolicitado);
 	printf("RECURSO A LIBERAR: %s\n",contexto->recursoALiberar);
+	printf("ID SEGMENTO: %i\n",contexto->idSegmento);
+	printf("TAMANIO SEGMENTO: %i\n",contexto->tamanioSegmento);
 	printf("AX = %s\n",contexto->registrosCpu.AX);
 	printf("BX = %s\n",contexto->registrosCpu.BX);
 	printf("CX = %s\n",contexto->registrosCpu.CX);
@@ -339,7 +344,7 @@ void serializarContexto(int unSocket){
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
 	                                //length
-	buffer->size = sizeof(int)*6 + sizeof(int)*4 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length + contexto->nombreArchivo_length;
+	buffer->size = sizeof(int)*8 + sizeof(int)*4 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length + contexto->nombreArchivo_length;
 
 
 	void* stream = malloc(buffer->size);
@@ -361,6 +366,12 @@ void serializarContexto(int unSocket){
 	offset += sizeof(int);
 
 	memcpy(stream + offset, &contexto->tamanioArchivo, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->idSegmento, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->tamanioSegmento, sizeof(int));
 	offset += sizeof(int);
 
 	memcpy(stream + offset, &contexto->registrosCpu.AX, sizeof(contexto->registrosCpu.AX));
@@ -412,7 +423,6 @@ void serializarContexto(int unSocket){
 
 	memcpy(stream + offset, contexto->recursoSolicitado, contexto->recursoSolicitado_length);
 	offset += contexto->recursoSolicitado_length;
-
 
 	//recurso a liberar
 	memcpy(stream + offset, &contexto->recursoALiberar_length, sizeof(int));
@@ -499,7 +509,7 @@ int ejecutarFuncion(char* proximaInstruccion){
 		continuarLeyendo = 1;
     } else if (  string_contains(nombreInstruccion,"YIELD")  ) {
     	yield_tp();
-    } else if (strcmp(nombreInstruccion, "EXIT") == 0) {
+    } else if (string_contains(nombreInstruccion,"EXIT")) {
     	exit_tp();
     } else if (strcmp(nombreInstruccion, "I/O") == 0) {
     	int ioParam = atoi(arrayInstruccion[1]);
@@ -559,9 +569,15 @@ int ejecutarFuncion(char* proximaInstruccion){
     	ftruncate_tp(ftruncateParam1,ftruncateParam2);
     	free(ftruncateParam1);
     } else if (strcmp(nombreInstruccion, "CREATE_SEGMENT") == 0) {
+    	int createParam1 = atoi(arrayInstruccion[1]);
+    	int createParam2 = atoi(arrayInstruccion[2]);
+
+    	createSeg_tp(createParam1,createParam2);
 
     } else if (strcmp(nombreInstruccion, "DELETE_SEGMENT") == 0) {
+    	int deleteParam1 = atoi(arrayInstruccion[1]);
 
+    	deleteSeg_tp(deleteParam1);
     } else {
         printf("Instruccion no reconocida.\n");
     }
@@ -578,11 +594,28 @@ int MMU(int direcLogica){
 
 // FUNCIONES INSTRUCCIONES
 
-//CREATE_SEGMENT (Id del Segmento, Tamaño): Esta instrucción solicita al kernel la creación del segmento con el Id y tamaño indicado por parámetro.
-//DELETE_SEGMENT (Id del Segmento): Esta instrucción solicita al kernel que se elimine el segmento cuyo Id se pasa por parámetro.
 //MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
 
+//CREATE_SEGMENT (Id del Segmento, Tamaño): Esta instrucción solicita al kernel la creación del segmento con el Id y tamaño indicado por parámetro.
+void createSeg_tp(int idSegmento, int tamanioSegmento){
+
+	contexto->idSegmento = idSegmento;
+	contexto->tamanioSegmento = tamanioSegmento;
+
+	contexto->instruccion = string_duplicate("CREATE_SEGMENT");
+    return;
+}
+
+
+//DELETE_SEGMENT (Id del Segmento): Esta instrucción solicita al kernel que se elimine el segmento cuyo Id se pasa por parámetro.
+void deleteSeg_tp(int idSegmento){
+
+	contexto->idSegmento = idSegmento;
+
+	contexto->instruccion = string_duplicate("DELETE_SEGMENT");
+    return;
+}
 
 //F_OPEN (Nombre Archivo): Esta instrucción solicita al kernel que abra o cree el archivo pasado por parámetro.
 void fopen_tp(char* archivo){

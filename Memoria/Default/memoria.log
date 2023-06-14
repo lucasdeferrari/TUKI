@@ -763,3 +763,105 @@ el cliente se desconecto. Terminando servidor
 [INFO] 20:47:41:164 Memoria/(10092:16728): gola
 [ERROR] 20:47:41:164 Memoria/(10092:16728): 
 el cliente se desconecto. Terminando servidor
+[INFO] 21:02:18:246 Memoria/(10092:16907): Se conecto un cliente!
+[INFO] 21:02:18:247 Memoria/(10092:16907): se conecto la cpu
+[INFO] 21:02:19:610 Memoria/(10092:16907): Me llegaron los siguientes valores:
+[INFO] 21:02:19:610 Memoria/(10092:16907): hola
+[ERROR] 21:02:19:610 Memoria/(10092:16907): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:07:10:181 Memoria/(10092:19237): Se conecto un cliente!
+[INFO] 21:07:10:244 Memoria/(10092:19237): se conecto la cpu
+[INFO] 21:07:12:828 Memoria/(10092:19237): Me llegaron los siguientes valores:
+[INFO] 21:07:12:828 Memoria/(10092:19237): asdas
+[ERROR] 21:07:12:834 Memoria/(10092:19237): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:10:55:950 Memoria/(10092:19413): Se conecto un cliente!
+[INFO] 21:10:55:950 Memoria/(10092:19413): se conecto la cpu
+[INFO] 21:10:56:958 Memoria/(10092:19413): Me llegaron los siguientes valores:
+[INFO] 21:10:56:958 Memoria/(10092:19413): sdl
+[ERROR] 21:10:56:959 Memoria/(10092:19413): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:11:38:165 Memoria/(10092:19750): Se conecto un cliente!
+[INFO] 21:11:38:165 Memoria/(10092:19750): se conecto la cpu
+[INFO] 21:11:38:845 Memoria/(10092:19750): Me llegaron los siguientes valores:
+[INFO] 21:11:38:845 Memoria/(10092:19750): ASDSA
+[ERROR] 21:11:38:846 Memoria/(10092:19750): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:14:55:213 Memoria/(10092:19770): Se conecto un cliente!
+[INFO] 21:14:55:214 Memoria/(10092:19770): se conecto la cpu
+[INFO] 21:14:56:342 Memoria/(10092:19770): Me llegaron los siguientes valores:
+[INFO] 21:14:56:342 Memoria/(10092:19770): asd
+[ERROR] 21:14:56:342 Memoria/(10092:19770): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:15:45:706 Memoria/(10092:19951): Se conecto un cliente!
+[INFO] 21:15:45:706 Memoria/(10092:19951): se conecto la cpu
+[INFO] 21:15:46:817 Memoria/(10092:19951): Me llegaron los siguientes valores:
+[INFO] 21:15:46:817 Memoria/(10092:19951): jk
+[ERROR] 21:15:46:817 Memoria/(10092:19951): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:18:50:168 Memoria/(10092:19998): Se conecto un cliente!
+[INFO] 21:18:50:169 Memoria/(10092:19998): se conecto la cpu
+[INFO] 21:18:51:189 Memoria/(10092:19998): Me llegaron los siguientes valores:
+[INFO] 21:18:51:189 Memoria/(10092:19998): asd
+[ERROR] 21:18:51:189 Memoria/(10092:19998): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:19:04:720 Memoria/(10092:20183): Se conecto un cliente!
+[INFO] 21:19:04:720 Memoria/(10092:20183): se conecto la cpu
+[INFO] 21:19:05:416 Memoria/(10092:20183): Me llegaron los siguientes valores:
+[INFO] 21:19:05:416 Memoria/(10092:20183): asd
+[ERROR] 21:19:05:416 Memoria/(10092:20183): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:20:34:254 Memoria/(10092:20199): Se conecto un cliente!
+[INFO] 21:20:34:254 Memoria/(10092:20199): se conecto la cpu
+[INFO] 21:20:34:941 Memoria/(10092:20199): Me llegaron los siguientes valores:
+[INFO] 21:20:34:941 Memoria/(10092:20199): asd
+[ERROR] 21:20:34:942 Memoria/(10092:20199): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:24:20:649 Memoria/(10092:20295): Se conecto un cliente!
+[INFO] 21:24:20:649 Memoria/(10092:20295): se conecto la cpu
+[INFO] 21:24:21:232 Memoria/(10092:20295): Me llegaron los siguientes valores:
+[INFO] 21:24:21:232 Memoria/(10092:20295): asd
+[ERROR] 21:24:21:232 Memoria/(10092:20295): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:26:27:745 Memoria/(10092:20403): Se conecto un cliente!
+[INFO] 21:26:27:746 Memoria/(10092:20403): se conecto la cpu
+[INFO] 21:26:28:301 Memoria/(10092:20403): Me llegaron los siguientes valores:
+[INFO] 21:26:28:301 Memoria/(10092:20403): asd
+[ERROR] 21:26:28:301 Memoria/(10092:20403): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:26:51:690 Memoria/(10092:20563): Se conecto un cliente!
+[INFO] 21:26:51:690 Memoria/(10092:20563): se conecto la cpu
+[INFO] 21:26:54:003 Memoria/(10092:20563): Me llegaron los siguientes valores:
+[INFO] 21:26:54:003 Memoria/(10092:20563): jk
+[ERROR] 21:26:54:004 Memoria/(10092:20563): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:27:51:140 Memoria/(10092:20579): Se conecto un cliente!
+[INFO] 21:27:51:140 Memoria/(10092:20579): se conecto la cpu
+[INFO] 21:27:52:661 Memoria/(10092:20579): Me llegaron los siguientes valores:
+[INFO] 21:27:52:661 Memoria/(10092:20579): jk
+[ERROR] 21:27:52:661 Memoria/(10092:20579): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:28:24:116 Memoria/(10092:20654): Se conecto un cliente!
+[INFO] 21:28:24:116 Memoria/(10092:20654): se conecto la cpu
+[INFO] 21:28:25:016 Memoria/(10092:20654): Me llegaron los siguientes valores:
+[INFO] 21:28:25:016 Memoria/(10092:20654): jk
+[ERROR] 21:28:25:016 Memoria/(10092:20654): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:30:07:695 Memoria/(10092:20698): Se conecto un cliente!
+[INFO] 21:30:07:695 Memoria/(10092:20698): se conecto la cpu
+[INFO] 21:30:08:436 Memoria/(10092:20698): Me llegaron los siguientes valores:
+[INFO] 21:30:08:436 Memoria/(10092:20698): asd
+[ERROR] 21:30:08:436 Memoria/(10092:20698): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:31:33:366 Memoria/(10092:20955): Se conecto un cliente!
+[INFO] 21:31:33:366 Memoria/(10092:20955): se conecto la cpu
+[INFO] 21:31:34:075 Memoria/(10092:20955): Me llegaron los siguientes valores:
+[INFO] 21:31:34:075 Memoria/(10092:20955): asd
+[ERROR] 21:31:34:075 Memoria/(10092:20955): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:32:24:266 Memoria/(10092:21196): Se conecto un cliente!
+[INFO] 21:32:24:267 Memoria/(10092:21196): se conecto la cpu
+[INFO] 21:32:25:746 Memoria/(10092:21196): Me llegaron los siguientes valores:
+[INFO] 21:32:25:746 Memoria/(10092:21196): jk
+[ERROR] 21:32:25:746 Memoria/(10092:21196): 
+el cliente se desconecto. Terminando servidor
