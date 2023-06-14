@@ -3,8 +3,6 @@ t_config* config;
 int cliente_fd;
 
 
-
-
 int main(void) {
 
 	sem_init(&semCPUServer,0,1);
@@ -487,22 +485,50 @@ int ejecutarFuncion(char* proximaInstruccion){
     } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
     	continuarLeyendo = 1;
     } else if (strcmp(nombreInstruccion, "F_OPEN") == 0) {
-
+    	char* fopenParam1 = string_new();
+    	fopenParam1 = string_duplicate(arrayInstruccion[1]);
+    	fopen_tp(fopenParam1);
+    	free(fopenParam1);
     } else if (strcmp(nombreInstruccion, "F_CLOSE") == 0) {
-
+    	char* fcloseParam1 = string_new();
+    	fcloseParam1 = string_duplicate(arrayInstruccion[1]);
+    	fclose_tp(fcloseParam1);
+    	free(fcloseParam1);
     } else if (strcmp(nombreInstruccion, "F_SEEK") == 0) {
-
+    	char* fseekParam1 = string_new();
+    	fseekParam1 = string_duplicate(arrayInstruccion[1]);
+    	int fseekParam2 = atoi(arrayInstruccion[2]);
+    	fseek_tp(fseekParam1,fseekParam2);
+    	free(fseekParam1);
     } else if (strcmp(nombreInstruccion, "F_READ") == 0) {
+    	char* freadParam1 = string_new();
+    	freadParam1 = string_duplicate(arrayInstruccion[1]);
 
+    	int freadParam2 = atoi(arrayInstruccion[2]);
+    	int freadParam3 = atoi(arrayInstruccion[3]);
+
+    	fread_tp(freadParam1,freadParam2,freadParam3);
+
+    	free(freadParam1);
     } else if (strcmp(nombreInstruccion, "F_WRITE") == 0) {
+    	char* fwriteParam1 = string_new();
+    	fwriteParam1 = string_duplicate(arrayInstruccion[1]);
 
+    	int fwriteParam2 = atoi(arrayInstruccion[2]);
+    	int fwriteParam3 = atoi(arrayInstruccion[3]);
+
+    	fwrite_tp(fwriteParam1,fwriteParam2,fwriteParam3);
+
+    	free(fwriteParam1);
     } else if (strcmp(nombreInstruccion, "F_TRUNCATE") == 0) {
-
+    	char* ftruncateParam1 = string_new();
+    	ftruncateParam1 = string_duplicate(arrayInstruccion[1]);
+    	int ftruncateParam2 = atoi(arrayInstruccion[2]);
+    	ftruncate_tp(ftruncateParam1,ftruncateParam2);
+    	free(ftruncateParam1);
     } else if (strcmp(nombreInstruccion, "CREATE_SEGMENT") == 0) {
 
     } else if (strcmp(nombreInstruccion, "DELETE_SEGMENT") == 0) {
-
-    } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
 
     } else {
         printf("Instruccion no reconocida.\n");
@@ -511,9 +537,91 @@ int ejecutarFuncion(char* proximaInstruccion){
 	return continuarLeyendo;
 }
 
+//FALTA HACER MMU
+int MMU(int direcLogica){
+	int direcFisica = 0;
 
+	return direcFisica;
+}
 
 // FUNCIONES INSTRUCCIONES
+
+//CREATE_SEGMENT (Id del Segmento, Tamaño): Esta instrucción solicita al kernel la creación del segmento con el Id y tamaño indicado por parámetro.
+//DELETE_SEGMENT (Id del Segmento): Esta instrucción solicita al kernel que se elimine el segmento cuyo Id se pasa por parámetro.
+//MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
+//MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
+
+
+//F_OPEN (Nombre Archivo): Esta instrucción solicita al kernel que abra o cree el archivo pasado por parámetro.
+void fopen_tp(char* archivo){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	contexto->instruccion = string_duplicate("F_OPEN");
+    return;
+}
+
+//F_CLOSE (Nombre Archivo): Esta instrucción solicita al kernel que cierre el archivo pasado por parámetro.
+void fclose_tp(char* archivo){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	contexto->instruccion = string_duplicate("F_CLOSE");
+    return;
+}
+
+//F_SEEK (Nombre Archivo, Posición): Esta instrucción solicita al kernel actualizar el puntero del archivo a la posición pasada por parámetro.
+void fseek_tp(char* archivo, int posicion){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	contexto->posicionArchivo = posicion;
+	printf("Posicion del archivo: %d\n", contexto->posicionArchivo);
+	contexto->instruccion = string_duplicate("F_SEEK");
+    return;
+}
+
+//F_READ (Nombre Archivo, Dirección Lógica, Cantidad de Bytes): Esta instrucción solicita al Kernel que se lea del archivo indicado, la cantidad de bytes pasada por parámetro y se escriba en la dirección física de Memoria la información leída.
+void fread_tp(char* archivo, int direcLogica, int cantBytes){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+
+	int direcFisica = MMU(direcLogica);
+
+	contexto->direcFisicaArchivo = direcFisica;
+	printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+
+	contexto->cantBytesArchivo = cantBytes;
+	printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
+
+	contexto->instruccion = string_duplicate("F_READ");
+    return;
+}
+
+//F_WRITE (Nombre Archivo, Dirección Lógica, Cantidad de bytes): Esta instrucción solicita al Kernel que se escriba en el archivo indicado, la cantidad de bytes pasada por parámetro cuya información es obtenida a partir de la dirección física de Memoria.
+void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+
+	int direcFisica = MMU(direcLogica);
+
+	contexto->direcFisicaArchivo = direcFisica;
+	printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+
+	contexto->cantBytesArchivo = cantBytes;
+	printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
+
+	contexto->instruccion = string_duplicate("F_WRITE");
+    return;
+}
+
+//F_TRUNCATE (Nombre Archivo, Tamaño): Esta instrucción solicita al Kernel que se modifique el tamaño del archivo al indicado por parámetro.
+void ftruncate_tp(char* archivo, int tamanio){
+	contexto->nombreArchivo = string_duplicate(archivo);
+	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	contexto->tamanioArchivo = tamanio;
+	printf("Tamaño del archivo: %d\n", contexto->tamanioArchivo );
+	contexto->instruccion = string_duplicate("F_TRUNCATE");
+    return;
+}
+
 
 // YIELD: Esta instrucción desaloja voluntariamente el proceso de la CPU.
 void yield_tp(){

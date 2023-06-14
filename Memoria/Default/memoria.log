@@ -684,3 +684,46 @@ el cliente se desconecto. Terminando servidor
 [INFO] 03:31:45:866 Memoria/(25895:25895): Listo para escuchar al cliente
 [INFO] 03:31:45:866 Memoria/(25895:25895): Memoria lista para recibir al cliente
 
+[INFO] 19:25:20:774 Memoria/(8514:8514): Listo para escuchar al cliente
+[INFO] 19:25:20:775 Memoria/(8514:8514): Memoria lista para recibir al cliente
+
+[INFO] 19:25:35:854 Memoria/(8514:8515): Se conecto un cliente!
+[INFO] 19:25:35:855 Memoria/(8514:8515): se conecto la cpu
+[INFO] 19:25:37:972 Memoria/(8514:8515): Me llegaron los siguientes valores:
+[INFO] 19:25:37:972 Memoria/(8514:8515): hola
+[ERROR] 19:25:37:972 Memoria/(8514:8515): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:26:05:337 Memoria/(8514:8557): Se conecto un cliente!
+[INFO] 19:26:05:338 Memoria/(8514:8557): se conecto el filesystem
+[INFO] 19:26:06:590 Memoria/(8514:8557): Me llegaron los siguientes valores:
+[INFO] 19:26:06:591 Memoria/(8514:8557): hola
+[ERROR] 19:26:06:591 Memoria/(8514:8557): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:26:06:591 Memoria/(8514:8514): Se conectaron todos los modulos.
+[INFO] 19:35:21:051 Memoria/(10092:10092): Listo para escuchar al cliente
+[INFO] 19:35:21:052 Memoria/(10092:10092): Memoria lista para recibir al cliente
+
+[INFO] 19:35:26:112 Memoria/(10092:10093): Se conecto un cliente!
+[INFO] 19:35:26:113 Memoria/(10092:10093): se conecto la cpu
+[INFO] 19:35:28:031 Memoria/(10092:10093): Me llegaron los siguientes valores:
+[INFO] 19:35:28:031 Memoria/(10092:10093): hola
+[ERROR] 19:35:28:031 Memoria/(10092:10093): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:38:50:958 Memoria/(10092:10098): Se conecto un cliente!
+[INFO] 19:38:50:958 Memoria/(10092:10098): se conecto la cpu
+[INFO] 19:38:52:597 Memoria/(10092:10098): Me llegaron los siguientes valores:
+[INFO] 19:38:52:597 Memoria/(10092:10098): hola
+[ERROR] 19:38:52:598 Memoria/(10092:10098): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:44:53:474 Memoria/(10092:10999): Se conecto un cliente!
+[INFO] 19:44:53:474 Memoria/(10092:10999): se conecto la cpu
+[INFO] 19:44:54:948 Memoria/(10092:10999): Me llegaron los siguientes valores:
+[INFO] 19:44:54:948 Memoria/(10092:10999): hola
+[ERROR] 19:44:54:949 Memoria/(10092:10999): 
+el cliente se desconecto. Terminando servidor
+[INFO] 19:55:13:642 Memoria/(10092:12402): Se conecto un cliente!
+[INFO] 19:55:13:642 Memoria/(10092:12402): se conecto la cpu
+[INFO] 19:55:14:997 Memoria/(10092:12402): Me llegaron los siguientes valores:
+[INFO] 19:55:14:997 Memoria/(10092:12402): hola
+[ERROR] 19:55:14:998 Memoria/(10092:12402): 
+el cliente se desconecto. Terminando servidor

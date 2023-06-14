@@ -31645,3 +31645,83 @@
 [ERROR] 03:32:09:393 CPU/(25886:25969): el kernel se desconecto. Terminando servidor
 
 [INFO] 03:32:09:394 CPU/(25886:25970): CPU lista para recibir al cliente
+[INFO] 19:25:35:854 CPU/(8554:8554): CPU lista para escuchar al cliente
+
+[INFO] 19:25:35:855 CPU/(8554:8555): Ingrese sus mensajes para la Memoria: 
+[INFO] 19:25:35:858 CPU/(8554:8556): CPU lista para recibir al cliente
+[INFO] 19:25:37:972 CPU/(8554:8555): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 19:28:13:568 CPU/(8554:8556): Se conecto un cliente
+[INFO] 19:28:13:568 CPU/(8554:8556): Instrucciones recibidas de Kernel:
+
+[INFO] 19:28:13:568 CPU/(8554:8556): SET AX HOLA
+
+[INFO] 19:28:13:568 CPU/(8554:8556): F_OPEN ARCHIVO
+[ERROR] 19:28:14:569 CPU/(8554:8556): el kernel se desconecto. Terminando servidor
+
+[INFO] 19:28:14:570 CPU/(8554:8721): CPU lista para recibir al cliente
+[INFO] 19:35:07:627 CPU/(10089:10089): CPU lista para escuchar al cliente
+
+[INFO] 19:35:26:112 CPU/(10095:10095): CPU lista para escuchar al cliente
+
+[INFO] 19:35:26:113 CPU/(10095:10096): Ingrese sus mensajes para la Memoria: 
+[INFO] 19:35:26:114 CPU/(10095:10097): CPU lista para recibir al cliente
+[INFO] 19:35:28:031 CPU/(10095:10096): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 19:35:35:092 CPU/(10095:10097): Se conecto un cliente
+[INFO] 19:35:35:098 CPU/(10095:10097): Instrucciones recibidas de Kernel:
+
+[INFO] 19:35:35:098 CPU/(10095:10097): SET AX HOLA
+
+[INFO] 19:35:35:098 CPU/(10095:10097): F_SEEK ARCHIVO2 10
+
+[INFO] 19:35:35:098 CPU/(10095:10097): F_OPEN ARCHIVO
+[ERROR] 19:35:36:100 CPU/(10095:10097): el kernel se desconecto. Terminando servidor
+
+[INFO] 19:35:36:100 CPU/(10095:10132): CPU lista para recibir al cliente
+[INFO] 19:38:50:958 CPU/(10996:10996): CPU lista para escuchar al cliente
+
+[INFO] 19:38:50:958 CPU/(10996:10998): CPU lista para recibir al cliente
+[INFO] 19:38:50:958 CPU/(10996:10997): Ingrese sus mensajes para la Memoria: 
+[INFO] 19:38:52:597 CPU/(10996:10997): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 19:39:01:240 CPU/(10996:10998): Se conecto un cliente
+[INFO] 19:39:01:245 CPU/(10996:10998): Instrucciones recibidas de Kernel:
+
+[INFO] 19:39:01:245 CPU/(10996:10998): SET AX HOLA
+
+[INFO] 19:39:01:245 CPU/(10996:10998): F_TRUNCATE ARCHIVO 10
+
+[INFO] 19:39:01:245 CPU/(10996:10998): F_OPEN ARCHIVO
+[ERROR] 19:39:02:246 CPU/(10996:10998): el kernel se desconecto. Terminando servidor
+
+[INFO] 19:39:02:247 CPU/(10996:11033): CPU lista para recibir al cliente
+[INFO] 19:44:53:473 CPU/(12399:12399): CPU lista para escuchar al cliente
+
+[INFO] 19:44:53:474 CPU/(12399:12401): CPU lista para recibir al cliente
+[INFO] 19:44:53:474 CPU/(12399:12400): Ingrese sus mensajes para la Memoria: 
+[INFO] 19:44:54:948 CPU/(12399:12400): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 19:45:02:608 CPU/(12399:12401): Se conecto un cliente
+[INFO] 19:45:02:609 CPU/(12399:12401): Instrucciones recibidas de Kernel:
+
+[INFO] 19:45:02:609 CPU/(12399:12401): SET AX HOLA
+
+[INFO] 19:45:02:609 CPU/(12399:12401): F_WRITE ARCHIVO 15 10
+
+[INFO] 19:45:02:609 CPU/(12399:12401): F_OPEN ARCHIVO
+[ERROR] 19:45:03:610 CPU/(12399:12401): el kernel se desconecto. Terminando servidor
+
+[INFO] 19:45:03:610 CPU/(12399:12436): CPU lista para recibir al cliente
+[INFO] 19:55:13:641 CPU/(13182:13182): CPU lista para escuchar al cliente
+
+[INFO] 19:55:13:641 CPU/(13182:13184): CPU lista para recibir al cliente
+[INFO] 19:55:13:642 CPU/(13182:13183): Ingrese sus mensajes para la Memoria: 
+[INFO] 19:55:14:998 CPU/(13182:13183): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 19:55:30:687 CPU/(13182:13184): Se conecto un cliente
+[INFO] 19:55:30:687 CPU/(13182:13184): Instrucciones recibidas de Kernel:
+
+[INFO] 19:55:30:687 CPU/(13182:13184): SET AX HOLA
+
+[INFO] 19:55:30:687 CPU/(13182:13184): F_READ ARCHIVO 15 10
+
+[INFO] 19:55:30:687 CPU/(13182:13184): F_OPEN ARCHIVO
+[ERROR] 19:55:31:689 CPU/(13182:13184): el kernel se desconecto. Terminando servidor
+
+[INFO] 19:55:31:691 CPU/(13182:13224): CPU lista para recibir al cliente
