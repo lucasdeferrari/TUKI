@@ -55,17 +55,17 @@ int main(int argc, char *argv[]) {
 	t_config* config;
 
 
-	//if(argc == 3){
-//	char* pathProgram = argv[0];
-//	char* pathConfig = string_new();
-//	pathConfig = string_duplicate(argv[1]);
-//	char* pathCode = string_new();
-//	pathCode = string_duplicate(argv[2]);
+	if(argc == 3){
+	char* pathProgram = argv[0];
+	char* pathConfig = string_new();
+	pathConfig = string_duplicate(argv[1]);
+	char* pathCode = string_new();
+	pathCode = string_duplicate(argv[2]);
 
 
 	logger = log_create("../consola.log", "Consola", true, LOG_LEVEL_INFO);
 	//Cambiar la ruta del config por pathConfig
-	config = config_create("../consola.config");
+	config = config_create(pathConfig);
 	//"../consola.config"
 
 	if (config == NULL) {
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
 	conexion_kernel = crear_conexion(ip_kernel, puerto_kernel);
 
 	//Cambiar la ruta del archivo por pathCode
-	archivo = fopen("/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt", "r");
+	archivo = fopen(pathCode, "r");
 	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
 	if (archivo == NULL) {
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 	eliminar_paquete(paquete);
 
 	liberarConexiones(conexion_kernel, logger, config);
-// }
+ }
 }
 
 
