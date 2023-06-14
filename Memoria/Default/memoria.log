@@ -521,3 +521,166 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 22:59:21:970 Memoria/(2843:2848): 
 el cliente se desconecto. Terminando servidor
 [INFO] 22:59:21:970 Memoria/(2843:2843): Se conectaron todos los modulos.
+[INFO] 01:53:46:820 Memoria/(20524:20524): Listo para escuchar al cliente
+[INFO] 01:53:46:821 Memoria/(20524:20524): Memoria lista para recibir al cliente
+
+[INFO] 01:54:27:481 Memoria/(20524:20525): Se conecto un cliente!
+[INFO] 01:54:27:482 Memoria/(20524:20525): se conecto la cpu
+[INFO] 01:54:31:542 Memoria/(20524:20525): Me llegaron los siguientes valores:
+[INFO] 01:54:31:542 Memoria/(20524:20525): hola
+[ERROR] 01:54:31:542 Memoria/(20524:20525): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:55:04:671 Memoria/(20524:20576): Se conecto un cliente!
+[INFO] 01:55:04:671 Memoria/(20524:20576): se conecto el filesystem
+[INFO] 01:55:07:136 Memoria/(20524:20576): Me llegaron los siguientes valores:
+[INFO] 01:55:07:136 Memoria/(20524:20576): hola
+[ERROR] 01:55:07:136 Memoria/(20524:20576): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:55:07:136 Memoria/(20524:20524): Se conectaron todos los modulos.
+[INFO] 03:04:17:657 Memoria/(24133:24133): Listo para escuchar al cliente
+[INFO] 03:04:17:658 Memoria/(24133:24133): Memoria lista para recibir al cliente
+
+[INFO] 03:04:20:178 Memoria/(24133:24134): Se conecto un cliente!
+[INFO] 03:04:20:178 Memoria/(24133:24134): se conecto la cpu
+[INFO] 03:04:22:542 Memoria/(24133:24134): Me llegaron los siguientes valores:
+[INFO] 03:04:22:542 Memoria/(24133:24134): a
+[ERROR] 03:04:22:542 Memoria/(24133:24134): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:04:31:609 Memoria/(24133:24139): Se conecto un cliente!
+[INFO] 03:04:31:609 Memoria/(24133:24139): se conecto el filesystem
+[INFO] 03:04:32:710 Memoria/(24133:24139): Me llegaron los siguientes valores:
+[INFO] 03:04:32:710 Memoria/(24133:24139): kk
+[ERROR] 03:04:32:710 Memoria/(24133:24139): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:04:32:710 Memoria/(24133:24133): Se conectaron todos los modulos.
+[INFO] 03:12:55:714 Memoria/(24586:24586): Listo para escuchar al cliente
+[INFO] 03:12:55:715 Memoria/(24586:24586): Memoria lista para recibir al cliente
+
+[INFO] 03:13:01:835 Memoria/(24586:24587): Se conecto un cliente!
+[INFO] 03:13:01:836 Memoria/(24586:24587): se conecto la cpu
+[INFO] 03:13:03:550 Memoria/(24586:24587): Me llegaron los siguientes valores:
+[INFO] 03:13:03:550 Memoria/(24586:24587): s
+[ERROR] 03:13:03:550 Memoria/(24586:24587): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:13:10:400 Memoria/(24586:24621): Se conecto un cliente!
+[INFO] 03:13:10:400 Memoria/(24586:24621): se conecto el filesystem
+[INFO] 03:13:11:326 Memoria/(24586:24621): Me llegaron los siguientes valores:
+[INFO] 03:13:11:326 Memoria/(24586:24621): d
+[ERROR] 03:13:11:326 Memoria/(24586:24621): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:13:11:326 Memoria/(24586:24586): Se conectaron todos los modulos.
+[INFO] 03:17:47:474 Memoria/(24846:24846): Listo para escuchar al cliente
+[INFO] 03:17:47:475 Memoria/(24846:24846): Memoria lista para recibir al cliente
+
+[INFO] 03:17:56:196 Memoria/(24846:24847): Se conecto un cliente!
+[INFO] 03:17:56:196 Memoria/(24846:24847): se conecto la cpu
+[INFO] 03:17:57:222 Memoria/(24846:24847): Me llegaron los siguientes valores:
+[INFO] 03:17:57:222 Memoria/(24846:24847): A
+[ERROR] 03:17:57:222 Memoria/(24846:24847): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:18:03:259 Memoria/(24846:24881): Se conecto un cliente!
+[INFO] 03:18:03:259 Memoria/(24846:24881): se conecto el filesystem
+[INFO] 03:18:04:246 Memoria/(24846:24881): Me llegaron los siguientes valores:
+[INFO] 03:18:04:246 Memoria/(24846:24881): A
+[ERROR] 03:18:04:247 Memoria/(24846:24881): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:18:04:247 Memoria/(24846:24846): Se conectaron todos los modulos.
+[INFO] 03:19:36:730 Memoria/(25041:25041): Listo para escuchar al cliente
+[INFO] 03:19:36:730 Memoria/(25041:25041): Memoria lista para recibir al cliente
+
+[INFO] 03:19:43:723 Memoria/(25041:25042): Se conecto un cliente!
+[INFO] 03:19:43:723 Memoria/(25041:25042): se conecto la cpu
+[INFO] 03:19:46:031 Memoria/(25041:25042): Me llegaron los siguientes valores:
+[INFO] 03:19:46:031 Memoria/(25041:25042): aa
+[ERROR] 03:19:46:031 Memoria/(25041:25042): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:19:53:335 Memoria/(25041:25076): Se conecto un cliente!
+[INFO] 03:19:53:335 Memoria/(25041:25076): se conecto el filesystem
+[INFO] 03:19:55:374 Memoria/(25041:25076): Me llegaron los siguientes valores:
+[INFO] 03:19:55:374 Memoria/(25041:25076): c
+[ERROR] 03:19:55:375 Memoria/(25041:25076): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:19:55:375 Memoria/(25041:25041): Se conectaron todos los modulos.
+[INFO] 03:22:45:794 Memoria/(25283:25283): Listo para escuchar al cliente
+[INFO] 03:22:45:795 Memoria/(25283:25283): Memoria lista para recibir al cliente
+
+[INFO] 03:22:52:052 Memoria/(25283:25284): Se conecto un cliente!
+[INFO] 03:22:52:052 Memoria/(25283:25284): se conecto la cpu
+[INFO] 03:22:54:662 Memoria/(25283:25284): Me llegaron los siguientes valores:
+[INFO] 03:22:54:663 Memoria/(25283:25284): S
+[ERROR] 03:22:54:663 Memoria/(25283:25284): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:23:02:353 Memoria/(25283:25318): Se conecto un cliente!
+[INFO] 03:23:02:353 Memoria/(25283:25318): se conecto el filesystem
+[INFO] 03:23:03:734 Memoria/(25283:25318): Me llegaron los siguientes valores:
+[INFO] 03:23:03:735 Memoria/(25283:25318): S
+[ERROR] 03:23:03:735 Memoria/(25283:25318): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:23:03:735 Memoria/(25283:25283): Se conectaron todos los modulos.
+[INFO] 03:27:57:090 Memoria/(25545:25545): Listo para escuchar al cliente
+[INFO] 03:27:57:091 Memoria/(25545:25545): Memoria lista para recibir al cliente
+
+[INFO] 03:28:03:821 Memoria/(25545:25546): Se conecto un cliente!
+[INFO] 03:28:03:821 Memoria/(25545:25546): se conecto la cpu
+[INFO] 03:28:05:767 Memoria/(25545:25546): Me llegaron los siguientes valores:
+[INFO] 03:28:05:767 Memoria/(25545:25546): C
+[ERROR] 03:28:05:767 Memoria/(25545:25546): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:28:12:256 Memoria/(25545:25580): Se conecto un cliente!
+[INFO] 03:28:12:256 Memoria/(25545:25580): se conecto el filesystem
+[INFO] 03:28:13:551 Memoria/(25545:25580): Me llegaron los siguientes valores:
+[INFO] 03:28:13:551 Memoria/(25545:25580): C
+[ERROR] 03:28:13:551 Memoria/(25545:25580): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:28:13:551 Memoria/(25545:25545): Se conectaron todos los modulos.
+[INFO] 03:30:08:899 Memoria/(25767:25767): Listo para escuchar al cliente
+[INFO] 03:30:08:899 Memoria/(25767:25767): Memoria lista para recibir al cliente
+
+[INFO] 03:30:16:196 Memoria/(25767:25768): Se conecto un cliente!
+[INFO] 03:30:16:197 Memoria/(25767:25768): se conecto la cpu
+[INFO] 03:30:17:575 Memoria/(25767:25768): Me llegaron los siguientes valores:
+[INFO] 03:30:17:575 Memoria/(25767:25768): C
+[ERROR] 03:30:17:575 Memoria/(25767:25768): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:30:21:373 Memoria/(25767:25802): Se conecto un cliente!
+[INFO] 03:30:21:373 Memoria/(25767:25802): se conecto el filesystem
+[INFO] 03:30:23:447 Memoria/(25767:25802): Me llegaron los siguientes valores:
+[INFO] 03:30:23:447 Memoria/(25767:25802): C
+[ERROR] 03:30:23:447 Memoria/(25767:25802): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:30:23:447 Memoria/(25767:25767): Se conectaron todos los modulos.
+[INFO] 03:30:34:114 Memoria/(25837:25837): Listo para escuchar al cliente
+[INFO] 03:30:34:114 Memoria/(25837:25837): Memoria lista para recibir al cliente
+
+[INFO] 03:30:37:885 Memoria/(25837:25838): Se conecto un cliente!
+[INFO] 03:30:37:885 Memoria/(25837:25838): se conecto la cpu
+[INFO] 03:30:38:999 Memoria/(25837:25838): Me llegaron los siguientes valores:
+[INFO] 03:30:38:999 Memoria/(25837:25838): C
+[ERROR] 03:30:38:999 Memoria/(25837:25838): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:30:44:717 Memoria/(25837:25843): Se conecto un cliente!
+[INFO] 03:30:44:717 Memoria/(25837:25843): se conecto el filesystem
+[INFO] 03:30:47:087 Memoria/(25837:25843): Me llegaron los siguientes valores:
+[INFO] 03:30:47:087 Memoria/(25837:25843): C
+[ERROR] 03:30:47:087 Memoria/(25837:25843): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:30:47:087 Memoria/(25837:25837): Se conectaron todos los modulos.
+[INFO] 03:31:02:839 Memoria/(25883:25883): Listo para escuchar al cliente
+[INFO] 03:31:02:840 Memoria/(25883:25883): Memoria lista para recibir al cliente
+
+[INFO] 03:31:06:995 Memoria/(25883:25884): Se conecto un cliente!
+[INFO] 03:31:06:996 Memoria/(25883:25884): se conecto la cpu
+[INFO] 03:31:08:623 Memoria/(25883:25884): Me llegaron los siguientes valores:
+[INFO] 03:31:08:623 Memoria/(25883:25884): C
+[ERROR] 03:31:08:623 Memoria/(25883:25884): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:31:17:815 Memoria/(25883:25889): Se conecto un cliente!
+[INFO] 03:31:17:815 Memoria/(25883:25889): se conecto el filesystem
+[INFO] 03:31:19:935 Memoria/(25883:25889): Me llegaron los siguientes valores:
+[INFO] 03:31:19:935 Memoria/(25883:25889): C
+[ERROR] 03:31:19:935 Memoria/(25883:25889): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:31:19:935 Memoria/(25883:25883): Se conectaron todos los modulos.
+[INFO] 03:31:45:866 Memoria/(25895:25895): Listo para escuchar al cliente
+[INFO] 03:31:45:866 Memoria/(25895:25895): Memoria lista para recibir al cliente
+

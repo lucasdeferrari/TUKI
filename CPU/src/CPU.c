@@ -21,6 +21,7 @@ int main(void) {
 
     ip_memoria= config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
+    retardo_instruccion = config_get_int_value(config, "RETARDO_INSTRUCCION");
 
     //Inicializo contexto
     contexto = malloc(sizeof(t_contextoEjecucion));
@@ -551,7 +552,7 @@ void signal_tp(char* recurso) {
 
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
 void set_tp(char* registro, char* valor){
-
+	sleep_ms(retardo_instruccion);
 	printf("REGISTRO A SETEAR: %s\n", registro);
 	printf("VALOR A SETEAR: %s\n", valor);
 

@@ -51,21 +51,21 @@ int main(void) {
     iniciarHiloClienteFileSystem();
 
 
-
-    //thread server
-
-	server_fd = iniciar_servidor();
-	log_info(logger, "Kernel listo para escuchar al cliente\n");
-
-	while(1){
-		iniciarHiloServer();
-		pthread_join(serverKernel_thread, NULL);
-	}
-
     pthread_detach(client_CPU);
     pthread_detach(interrupcion_IO);
     pthread_detach(client_Memoria);
     pthread_detach(client_FileSystem);
+
+    //thread server
+
+    server_fd = iniciar_servidor();
+    log_info(logger, "Kernel listo para escuchar al cliente\n");
+
+    while(1){
+    	iniciarHiloServer(server_fd);
+    }
+
+
 
     //libero memoria
     log_destroy(logger);
@@ -500,7 +500,7 @@ void* interrupcionIO(void* ptr) {
 		}
 	}
 
-	sleep(unProceso->tiempoBloqueado);
+	sleep_ms(unProceso->tiempoBloqueado);
 
 
 	printf("Proceso desbloqueado: %d\n",unProceso->pid);
@@ -537,31 +537,30 @@ void* interrupcionIO(void* ptr) {
 	return NULL;
 }
 
-void iniciarHiloServer() {
+int iniciarHiloServer(int server_fd) {
+	log_info(logger, "Entre a hilo server");
+	int cliente_fd = esperar_cliente(server_fd); // se conecta el cliente
+	log_info(logger, "espere cliente");
+			if(cliente_fd != -1) {
+				pthread_t hilo_cliente;
+				pthread_create(&hilo_cliente, NULL, (void*) serverKernel, (void *)cliente_fd); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
+				log_info(logger, "Kernel creo el hilo");
+				pthread_detach(hilo_cliente);
+				return 1;
+			} else {
+				log_error(logger, "Error al escuchar clientes... Finalizando servidor \n"); // log para fallo de comunicaciones
+			}
 
-    int err = pthread_create( 	&serverKernel_thread,	// puntero al thread
-								NULL,
-								&serverKernel, // le paso la def de la función que quiero que ejecute mientras viva
-								NULL); // argumentos de la función
-
-	if (err != 0) {
-	printf("\nNo se pudo crear el hilo de la conexión consola-kernel.\n");
-	exit(7);
-	}
-	//printf("\nEl hilo de la conexión consola-kernel se creo correctamente.\n");
+	return 0;
 }
 
-void* serverKernel(void* ptr){
+void* serverKernel(int cliente_fd){
 
-	//sem_wait(&semKernelServer);
-
-    //int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir al cliente");
-    int cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
-    while (1) {
-    	int cod_op = recibir_operacion(cliente_fd);
+   while (1) {
+    int cod_op = recibir_operacion(cliente_fd);
     	switch (cod_op) {
     		case MENSAJE:
     			char* handshake = recibir_handshake(cliente_fd);
@@ -585,16 +584,10 @@ void* serverKernel(void* ptr){
     		case PAQUETE:
     			lista = recibir_paquete(cliente_fd); //Recibe paquete de instrucciones
     			if (strcmp(handshake, "consola") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
-        			armarPCB(lista);  //arma el PCB y lo encola en NEW
-        			printf("PCB encolado en NEW\n");
-        			encolarReady();  //Si corresponde lo encola en Ready
-        			printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
-        			if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
-        				desencolarReady();
-        			}
-    				//cosas de consola
+    			log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
+        		armarPCB(lista);  //arma el PCB y lo encola en NEW
 
+    				//cosas de consola
     			}
     			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
@@ -608,15 +601,11 @@ void* serverKernel(void* ptr){
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
     				//cosas de fs
     			}
-
-    			//log_info(logger, "Me llegaron los siguientes valores:\n");
-    			//list_iterate(lista, (void*) iterator);
     			break;
     		case -1:
-    			free(handshake);
-    			//sem_post(&semKernelServer);
-    			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
-    			return EXIT_FAILURE;
+    		    	free(handshake);
+    		    	log_error(logger, "\nel cliente se desconecto. Terminando servidor");
+    		    	return EXIT_FAILURE;
     		default:
     			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
     			break;
@@ -691,13 +680,22 @@ void armarPCB(t_list* lista){
 
 	//Encolamos en NEW (FIFO)
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
+	printf("PCB encolado en NEW\n");
 
 	printf("Cola NEW:\n");
 	mostrarCola(frenteColaNew);
 
 	pid++;
-}
 
+	finalizarEncolar();
+}
+void finalizarEncolar(){
+	encolarReady();  //Si corresponde lo encola en Ready
+	printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
+	if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
+		desencolarReady();
+	}
+}
 void encolarReady() {
 
 	// SI EL ALGORITMO DE PLANIFICACION ES FIFO VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
@@ -846,7 +844,7 @@ void calcularHRRN(t_infopcb* unProceso){
 
 	//tiempo transcurrido en la cola de Ready
 	int tiempoEsperaReady = unProceso->empiezaAEjecutar - unProceso->entraEnColaReady;
-
+	printf("el proceso %d tarda %d: ", unProceso->pid, tiempoEsperaReady);
 	unProceso->rafaga = (tiempoEsperaReady + unProceso->estimadoProxRafaga) / unProceso->estimadoProxRafaga;
 
 	unProceso->estimadoAnterior = unProceso->estimadoProxRafaga;

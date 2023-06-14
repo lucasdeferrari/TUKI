@@ -11,6 +11,7 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <unistd.h>
 
 char* ip_cpu;
 char* puerto_cpu;
@@ -54,7 +55,7 @@ int pid = 1; //Contador del PID de los PCB
 sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer, semReady;
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 
-void *serverKernel(void *ptr);
+void *serverKernel(int);
 void* clientCPU(void *ptr);
 void* clientMemoria(void *ptr);
 void* clientFileSystem(void *ptr);
@@ -63,7 +64,7 @@ void encolarReady();
 void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria();
 void iniciarHiloClienteFileSystem();
-void iniciarHiloServer();
+int iniciarHiloServer(int);
 void iniciarHiloIO();
 void serializarContexto(int );
 void calcularHRRN(t_infopcb*);
@@ -83,6 +84,8 @@ void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
 t_list* listaRecursos;
 
+void finalizarEncolar();
+
 void iterator(char* value);
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
@@ -100,5 +103,7 @@ void liberarConexiones(int conexion, t_log* logger, t_config* config)
 	liberar_conexion(conexion);
 
 }
-
+void sleep_ms(unsigned int milliseconds) {
+    usleep(milliseconds * 1000);
+}
 #endif /* KERNEL_H_ */

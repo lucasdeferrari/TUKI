@@ -12,7 +12,7 @@
 #include <readline/readline.h>
 #include <pthread.h>
 #include <semaphore.h>
-
+#include <unistd.h>
 
 char* ip_memoria;
 char* puerto_memoria;
@@ -20,7 +20,7 @@ sem_t semCPUServer;
 sem_t semCPUClientMemoria;
 t_contextoEjecucion* contexto;
 int server_fd;
-
+int retardo_instruccion;
 
 void *serverCPU(void *ptr);
 void* clientMemoria(void *ptr);
@@ -59,4 +59,9 @@ void liberarConexiones(int conexion, t_log* logger, t_config* config)
 	config_destroy(config);
 	liberar_conexion(conexion);
 
+}
+
+
+void sleep_ms(unsigned int milliseconds) {
+    usleep(milliseconds * 1000);
 }
