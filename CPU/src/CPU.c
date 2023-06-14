@@ -227,6 +227,11 @@ void vaciarContexto(){
 	contexto->instruccion_length = 0;
 	contexto->programCounter = 0;
 	contexto->tiempoBloqueado = 0;
+	contexto->nombreArchivo_length = 0;
+	contexto->posicionArchivo = 0;
+	contexto->cantBytesArchivo = 0;
+	contexto->direcFisicaArchivo = 0;
+	contexto->tamanioArchivo = 0;
 
 	for (int i = 0; i < sizeof(contexto->registrosCpu.AX); i++) {
 		contexto->registrosCpu.AX[i] = '\0';
@@ -310,6 +315,12 @@ void iniciar_ejecucion(){
 	printf("RCX = %s\n",contexto->registrosCpu.RCX);
 	printf("RDX = %s\n",contexto->registrosCpu.RDX);
 
+	printf("ARCHIVO = %s\n",contexto->nombreArchivo);
+	printf("POSICION = %d\n",contexto->posicionArchivo);
+	printf("CANTIDAD BYTES = %d\n",contexto->cantBytesArchivo);
+	printf("DIRECCIÓN FÍSICA = %d\n",contexto->direcFisicaArchivo);
+	printf("TAMAÑO  = %d\n",contexto->tamanioArchivo);
+
 	serializarContexto(cliente_fd);
 
 	return;
@@ -318,13 +329,17 @@ void iniciar_ejecucion(){
 void serializarContexto(int unSocket){
 
 	contexto->instruccion_length = strlen(contexto->instruccion)+1;
+	//recursos
 	contexto->recursoALiberar_length = strlen(contexto->recursoALiberar)+1;
 	contexto->recursoSolicitado_length = strlen(contexto->recursoSolicitado)+1;
+	//archivo
+	contexto->nombreArchivo_length = strlen(contexto->nombreArchivo)+1;
 
 	//BUFFER
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int)*5 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length;
+	                                //length
+	buffer->size = sizeof(int)*6 + sizeof(int)*4 + sizeof(contexto->registrosCpu.AX) * 4 + sizeof(contexto->registrosCpu.EAX) *4 + sizeof(contexto->registrosCpu.RAX)*4 + contexto->instruccion_length + contexto->recursoALiberar_length + contexto->recursoSolicitado_length + contexto->nombreArchivo_length;
 
 
 	void* stream = malloc(buffer->size);
@@ -334,6 +349,18 @@ void serializarContexto(int unSocket){
 	offset += sizeof(int);
 
 	memcpy(stream + offset, &contexto->tiempoBloqueado, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->posicionArchivo, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->cantBytesArchivo, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->direcFisicaArchivo, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, &contexto->tamanioArchivo, sizeof(int));
 	offset += sizeof(int);
 
 	memcpy(stream + offset, &contexto->registrosCpu.AX, sizeof(contexto->registrosCpu.AX));
@@ -392,6 +419,15 @@ void serializarContexto(int unSocket){
 	offset += sizeof(int);
 
 	memcpy(stream + offset, contexto->recursoALiberar, contexto->recursoALiberar_length);
+	offset += contexto->recursoALiberar_length;
+
+	//nombre del archivo
+	memcpy(stream + offset, &contexto->nombreArchivo_length, sizeof(int));
+	offset += sizeof(int);
+
+	memcpy(stream + offset, contexto->nombreArchivo, contexto->nombreArchivo_length);
+	offset += contexto->nombreArchivo_length;
+
 
 
 	buffer->stream = stream;
@@ -421,17 +457,13 @@ void serializarContexto(int unSocket){
 
 
 	printf("Contexto actualizado enviado a KERNEL. \n");
-	printf("tamaño enviado a KERNEL = %d\n", contexto->instruccion_length);
-	printf("instruccion enviado a KERNEL = %s\n", contexto->instruccion);
-
-//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoSolicitado_length);
-//	printf("recurso solicitado a KERNEL = %s\n", contexto->recursoSolicitado);
-//
-//	printf("tamaño enviado a KERNEL = %d\n", contexto->recursoALiberar_length);
-//	printf("recurso a liberar KERNEL = %s\n", contexto->recursoALiberar);
 
 	//free memoria dinámica
 	free(contexto->instruccion);
+	free(contexto->recursoSolicitado);
+	free(contexto->recursoALiberar);
+	free(contexto->nombreArchivo);
+
 	// Liberamos la memoria
 	free(a_enviar);
 	free(paquete->buffer->stream);
@@ -539,7 +571,7 @@ int ejecutarFuncion(char* proximaInstruccion){
 
 //FALTA HACER MMU
 int MMU(int direcLogica){
-	int direcFisica = 0;
+	int direcFisica = -1;
 
 	return direcFisica;
 }
@@ -555,7 +587,7 @@ int MMU(int direcLogica){
 //F_OPEN (Nombre Archivo): Esta instrucción solicita al kernel que abra o cree el archivo pasado por parámetro.
 void fopen_tp(char* archivo){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->instruccion = string_duplicate("F_OPEN");
     return;
 }
@@ -563,7 +595,7 @@ void fopen_tp(char* archivo){
 //F_CLOSE (Nombre Archivo): Esta instrucción solicita al kernel que cierre el archivo pasado por parámetro.
 void fclose_tp(char* archivo){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->instruccion = string_duplicate("F_CLOSE");
     return;
 }
@@ -571,9 +603,9 @@ void fclose_tp(char* archivo){
 //F_SEEK (Nombre Archivo, Posición): Esta instrucción solicita al kernel actualizar el puntero del archivo a la posición pasada por parámetro.
 void fseek_tp(char* archivo, int posicion){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->posicionArchivo = posicion;
-	printf("Posicion del archivo: %d\n", contexto->posicionArchivo);
+	//printf("Posicion del archivo: %d\n", contexto->posicionArchivo);
 	contexto->instruccion = string_duplicate("F_SEEK");
     return;
 }
@@ -581,15 +613,15 @@ void fseek_tp(char* archivo, int posicion){
 //F_READ (Nombre Archivo, Dirección Lógica, Cantidad de Bytes): Esta instrucción solicita al Kernel que se lea del archivo indicado, la cantidad de bytes pasada por parámetro y se escriba en la dirección física de Memoria la información leída.
 void fread_tp(char* archivo, int direcLogica, int cantBytes){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 
 	int direcFisica = MMU(direcLogica);
 
 	contexto->direcFisicaArchivo = direcFisica;
-	printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+	//printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
 
 	contexto->cantBytesArchivo = cantBytes;
-	printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
+	//printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
 
 	contexto->instruccion = string_duplicate("F_READ");
     return;
@@ -598,15 +630,15 @@ void fread_tp(char* archivo, int direcLogica, int cantBytes){
 //F_WRITE (Nombre Archivo, Dirección Lógica, Cantidad de bytes): Esta instrucción solicita al Kernel que se escriba en el archivo indicado, la cantidad de bytes pasada por parámetro cuya información es obtenida a partir de la dirección física de Memoria.
 void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 
 	int direcFisica = MMU(direcLogica);
 
 	contexto->direcFisicaArchivo = direcFisica;
-	printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+	//printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
 
 	contexto->cantBytesArchivo = cantBytes;
-	printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
+	//printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
 
 	contexto->instruccion = string_duplicate("F_WRITE");
     return;
@@ -615,9 +647,9 @@ void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 //F_TRUNCATE (Nombre Archivo, Tamaño): Esta instrucción solicita al Kernel que se modifique el tamaño del archivo al indicado por parámetro.
 void ftruncate_tp(char* archivo, int tamanio){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
+	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->tamanioArchivo = tamanio;
-	printf("Tamaño del archivo: %d\n", contexto->tamanioArchivo );
+	//printf("Tamaño del archivo: %d\n", contexto->tamanioArchivo );
 	contexto->instruccion = string_duplicate("F_TRUNCATE");
     return;
 }

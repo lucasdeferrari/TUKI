@@ -727,3 +727,39 @@ el cliente se desconecto. Terminando servidor
 [INFO] 19:55:14:997 Memoria/(10092:12402): hola
 [ERROR] 19:55:14:998 Memoria/(10092:12402): 
 el cliente se desconecto. Terminando servidor
+[INFO] 20:23:19:080 Memoria/(10092:13185): Se conecto un cliente!
+[INFO] 20:23:19:081 Memoria/(10092:13185): se conecto la cpu
+[INFO] 20:23:22:641 Memoria/(10092:13185): Me llegaron los siguientes valores:
+[INFO] 20:23:22:641 Memoria/(10092:13185): hola
+[ERROR] 20:23:22:641 Memoria/(10092:13185): 
+el cliente se desconecto. Terminando servidor
+[INFO] 20:31:27:568 Memoria/(10092:14953): Se conecto un cliente!
+[INFO] 20:31:27:568 Memoria/(10092:14953): se conecto la cpu
+[INFO] 20:31:29:776 Memoria/(10092:14953): Me llegaron los siguientes valores:
+[INFO] 20:31:29:776 Memoria/(10092:14953): hola
+[ERROR] 20:31:29:777 Memoria/(10092:14953): 
+el cliente se desconecto. Terminando servidor
+[INFO] 20:37:33:709 Memoria/(10092:15719): Se conecto un cliente!
+[INFO] 20:37:33:710 Memoria/(10092:15719): se conecto la cpu
+[INFO] 20:37:35:025 Memoria/(10092:15719): Me llegaron los siguientes valores:
+[INFO] 20:37:35:025 Memoria/(10092:15719): hola
+[ERROR] 20:37:35:025 Memoria/(10092:15719): 
+el cliente se desconecto. Terminando servidor
+[INFO] 20:43:10:602 Memoria/(10092:16230): Se conecto un cliente!
+[INFO] 20:43:10:602 Memoria/(10092:16230): se conecto la cpu
+[INFO] 20:43:12:125 Memoria/(10092:16230): Me llegaron los siguientes valores:
+[INFO] 20:43:12:125 Memoria/(10092:16230): hola
+[ERROR] 20:43:12:126 Memoria/(10092:16230): 
+el cliente se desconecto. Terminando servidor
+[INFO] 20:43:46:651 Memoria/(10092:16685): Se conecto un cliente!
+[INFO] 20:43:46:651 Memoria/(10092:16685): se conecto la cpu
+[INFO] 20:43:48:204 Memoria/(10092:16685): Me llegaron los siguientes valores:
+[INFO] 20:43:48:204 Memoria/(10092:16685): hola
+[ERROR] 20:43:48:205 Memoria/(10092:16685): 
+el cliente se desconecto. Terminando servidor
+[INFO] 20:47:40:048 Memoria/(10092:16728): Se conecto un cliente!
+[INFO] 20:47:40:048 Memoria/(10092:16728): se conecto la cpu
+[INFO] 20:47:41:164 Memoria/(10092:16728): Me llegaron los siguientes valores:
+[INFO] 20:47:41:164 Memoria/(10092:16728): gola
+[ERROR] 20:47:41:164 Memoria/(10092:16728): 
+el cliente se desconecto. Terminando servidor

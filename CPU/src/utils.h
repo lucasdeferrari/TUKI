@@ -86,19 +86,22 @@ typedef struct registrosCPU {
 } t_registrosCPU;
 
 typedef struct {
-	t_list* listaInstrucciones;
-
-	t_registrosCPU registrosCpu;
 	int programCounter;
+	t_list* listaInstrucciones;
+	t_registrosCPU registrosCpu;
+	//t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 
 	int instruccion_length;
 	char* instruccion;
+	int tiempoBloqueado;
+
+	//recursos
 	int recursoSolicitado_length;
 	char* recursoSolicitado;
 	int recursoALiberar_length;
 	char* recursoALiberar;
-	int tiempoBloqueado;
 
+	//archivos
 	int nombreArchivo_length;
 	char* nombreArchivo;
 	int posicionArchivo;
@@ -106,7 +109,6 @@ typedef struct {
 	int direcFisicaArchivo;
 	int tamanioArchivo;
 
-	//t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 } t_contextoEjecucion;
 
 

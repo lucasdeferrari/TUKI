@@ -78,46 +78,44 @@ typedef struct registrosCPU {
 	char RDX[17];
 } t_registrosCPU;
 
-//REVEER: LOS TIPOS DE DATOS DE LAS LISTAS (TENEMOS PUNTEROS A LISTAS, PODRÍAMOS TENER DIRECTAMENTE LAS LISTAS)
+
 typedef struct infopcb {
     int pid;
     t_list* listaInstrucciones;
-    int programCounter; // numero de la siguiente instrucción a ejecutar --> uint32_t
-    t_registrosCPU registrosCpu;// el CPU debe tener un 'mapa' y conocer que posición corresponde a cada registro
+    int programCounter;
+    t_registrosCPU registrosCpu;
+    t_list* recursosAsignados;
+
+    //VERIFICAR TIPOS
     t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
 	t_nodoArchivos* punterosArchivos;
+
+	//HRRN
 	double rafaga;
 	double estimadoProxRafaga;
 	double estimadoAnterior;
 	uint32_t empiezaAEjecutar;
 	uint32_t terminaEjecutar;
 	uint32_t entraEnColaReady;
+
+	//recibimos de CPU + programCounter + registrosCPU
+	char* ultimaInstruccion;
+	int ultimaInstruccion_length;
 	int tiempoBloqueado;
+	//recursos
 	char* recursoALiberar;
 	int recursoALiberar_length;
 	char* recursoSolicitado;
 	int recursoSolicitado_length;
-	char* ultimaInstruccion;
-	int ultimaInstruccion_length;
-	t_list* recursosAsignados;
+	//archivos
+	char* nombreArchivo;
+	int nombreArchivo_length;
+	int posicionArchivo;
+	int cantBytesArchivo;
+	int direcFisicaArchivo;
+	int tamanioArchivo;
 } t_infopcb;
 
-
-//typedef struct {
-//	char* instruccion;
-//	int instruccion_length;
-//	char* recursoSolicitado;
-//	int recursoSolicitado_length;
-//	char* recursoALiberar;
-//	int recursoALiberar_length;
-//	int tiempoBloqueado;
-//	int programCounter;
-//	t_registrosCPU registrosCpu;
-//	//t_nodoTablaSegmentos* tablaSegmentos;
-//} t_contextoEjecucion;
-
-
-//EXIT, el kerner debe reconocer qué proceso se esta ejecutando en CPU para cdo reciba un mensaje de EXIT, saber que proceso finalizar
 
 ///COLA
 typedef struct nodoCola {

@@ -190,16 +190,15 @@ void* clientCPU(void* ptr) {
 	int config=1;
     int conexion_CPU;
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
-    //log_info(logger, "Ingrese sus mensajes para la CPU ");
-    //paquete(conexion_CPU);
+
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
     //enviamos las intrucciones del contexto
-    printf("CLIEN CPU DSPS \n");
     t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
-    printf("Instrucciones enviadas a CPU. \n");
+
+    printf("Contexto enviado a CPU. \n");
     int cod_op = recibir_operacion(conexion_CPU);
 
     //contextoActualizado = recibir_contexto(conexion_CPU);
@@ -212,17 +211,17 @@ void* clientCPU(void* ptr) {
     printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
     printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
     printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
-//    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
-//    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
-//
-//    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
-//    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
-//    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
-//    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
+    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
+    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
+
+    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
+    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
+    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
+    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
 
     printf("RAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RAX);
-//    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
-//    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
+    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
+    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
     printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
 
     printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
@@ -231,10 +230,15 @@ void* clientCPU(void* ptr) {
 
     printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
 
+    printf("Nombre del archivo = %s\n",estadoEnEjecucion->nombreArchivo);
+    printf("Posicion del archivo = %d\n",estadoEnEjecucion->posicionArchivo);
+    printf("Cant bytes del archivo = %d\n",estadoEnEjecucion->cantBytesArchivo);
+    printf("Direccion física del archivo = %d\n",estadoEnEjecucion->direcFisicaArchivo);
+    printf("Tamaño del archivo = %d\n",estadoEnEjecucion->tamanioArchivo);
+
     manejar_recursos();
 
 
-    //sem_post(&semKernelClientMemoria);
 	return NULL;
 }
 
@@ -355,7 +359,6 @@ void manejar_recursos() {
 			}
 		}
 		if (recursoEncontrado == 0) {
-					//Crear funcion pasarAExit
 					pasarAExit();
 			}
 	}
@@ -372,12 +375,15 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
 		iniciarHiloIO();
 	}
+	else{
+		printf("Instruccion no reconocida.\n");
+	}
 }
 
 void pasarAExit() {
 
-//		Dar aviso al modulo de Mmemoria para que lo libere.
-//		Liberar recursos que tenga asignados. --> CONSULTAR
+//		Dar aviso al modulo de Memoria para que lo libere.
+//		Liberar recursos que tenga asignados.
 
 	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
@@ -628,6 +634,15 @@ void armarPCB(t_list* lista){
 	nuevoPCB->ultimaInstruccion_length = 0;
 	nuevoPCB->recursoSolicitado_length = 0;
 	nuevoPCB->recursoALiberar_length = 0;
+
+	nuevoPCB->nombreArchivo_length = 0;
+	nuevoPCB->posicionArchivo = 0;
+	nuevoPCB->cantBytesArchivo = 0;
+	nuevoPCB->direcFisicaArchivo = 0;
+	nuevoPCB->tamanioArchivo = 0;
+
+	nuevoPCB->recursosAsignados = list_create();
+
 	//nuevoPCB->recursoSolicitado = string_new();
 	//nuevoPCB->recursoALiberar = string_new();
 	//nuevoPCB->ultimaInstruccion = string_new();
@@ -669,14 +684,17 @@ void armarPCB(t_list* lista){
 					nuevoPCB->registrosCpu.RDX[i] = '\0';
 						    }
 
-	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
+	//HRRN
 	nuevoPCB->estimadoAnterior = estimacion_inicial;
 	nuevoPCB->estimadoProxRafaga = 0;
 	nuevoPCB->empiezaAEjecutar = 0;
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
+
 	nuevoPCB->punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-	nuevoPCB->recursosAsignados = list_create();
+	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
+
+
 
 	//Encolamos en NEW (FIFO)
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
@@ -1180,7 +1198,7 @@ char* recibir_handshake(int socket_cliente)
 
 void recibir_contexto(int socket_cliente){
 
-	printf("DENTRO DE RECIBIR CONTEXTO\n");
+	//printf("DENTRO DE RECIBIR CONTEXTO\n");
 
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 	paquete->buffer = malloc(sizeof(t_buffer));
@@ -1203,6 +1221,18 @@ void recibir_contexto(int socket_cliente){
 	 stream += sizeof(int);
 
 	 memcpy(&(estadoEnEjecucion->tiempoBloqueado), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->posicionArchivo), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->cantBytesArchivo), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->direcFisicaArchivo), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 memcpy(&(estadoEnEjecucion->tamanioArchivo), stream, sizeof(int));
 	 stream += sizeof(int);
 
 	 memcpy(&(estadoEnEjecucion->registrosCpu.AX), stream, sizeof(estadoEnEjecucion->registrosCpu.AX));
@@ -1250,8 +1280,6 @@ void recibir_contexto(int socket_cliente){
 	 memcpy( estadoEnEjecucion->ultimaInstruccion, stream, estadoEnEjecucion->ultimaInstruccion_length);
 	 stream += estadoEnEjecucion->ultimaInstruccion_length;
 
-	 printf("%s\n",estadoEnEjecucion->ultimaInstruccion);
-
 	 //recurso solicitado
 	 memcpy(&(estadoEnEjecucion->recursoSolicitado_length), stream, sizeof(int));
 	 stream += sizeof(int);
@@ -1261,7 +1289,6 @@ void recibir_contexto(int socket_cliente){
 	 memcpy( estadoEnEjecucion->recursoSolicitado, stream, estadoEnEjecucion->recursoSolicitado_length);
 	 stream += estadoEnEjecucion->recursoSolicitado_length;
 
-
 	 //recurso a liberar
 	 memcpy(&(estadoEnEjecucion->recursoALiberar_length), stream, sizeof(int));
 	 stream += sizeof(int);
@@ -1269,11 +1296,21 @@ void recibir_contexto(int socket_cliente){
 	 estadoEnEjecucion->recursoALiberar = malloc(estadoEnEjecucion->recursoALiberar_length);
 
 	 memcpy( estadoEnEjecucion->recursoALiberar, stream, estadoEnEjecucion->recursoALiberar_length);
+	 stream += estadoEnEjecucion->recursoALiberar_length;
 
+	 //archivo
+	 memcpy(&(estadoEnEjecucion->nombreArchivo_length), stream, sizeof(int));
+	 stream += sizeof(int);
+
+	 estadoEnEjecucion->nombreArchivo = malloc(estadoEnEjecucion->nombreArchivo_length);
+
+	 memcpy( estadoEnEjecucion->nombreArchivo, stream, estadoEnEjecucion->nombreArchivo_length);
+	 stream += estadoEnEjecucion->nombreArchivo_length;
+
+
+	 //finalizamos
 	 estadoEnEjecucion->terminaEjecutar = tomarTiempo();
 	 eliminar_paquete(paquete);
-
-	// return contextoPRUEBA;
 
 }
 

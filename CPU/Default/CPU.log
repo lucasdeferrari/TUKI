@@ -31725,3 +31725,142 @@
 [ERROR] 19:55:31:689 CPU/(13182:13184): el kernel se desconecto. Terminando servidor
 
 [INFO] 19:55:31:691 CPU/(13182:13224): CPU lista para recibir al cliente
+[INFO] 20:23:19:078 CPU/(14950:14950): CPU lista para escuchar al cliente
+
+[INFO] 20:23:19:079 CPU/(14950:14951): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:23:19:080 CPU/(14950:14952): CPU lista para recibir al cliente
+[INFO] 20:23:22:641 CPU/(14950:14951): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:23:45:514 CPU/(14950:14952): Se conecto un cliente
+[INFO] 20:23:45:515 CPU/(14950:14952): Instrucciones recibidas de Kernel:
+
+[INFO] 20:23:45:515 CPU/(14950:14952): SET AX HOLA
+
+[INFO] 20:23:45:515 CPU/(14950:14952): F_OPEN ARCHIVO1
+[ERROR] 20:23:46:516 CPU/(14950:14952): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:23:46:517 CPU/(14950:15020): CPU lista para recibir al cliente
+[INFO] 20:31:27:567 CPU/(15716:15716): CPU lista para escuchar al cliente
+
+[INFO] 20:31:27:567 CPU/(15716:15718): CPU lista para recibir al cliente
+[INFO] 20:31:27:568 CPU/(15716:15717): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:31:29:776 CPU/(15716:15717): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:31:44:659 CPU/(15716:15718): Se conecto un cliente
+[INFO] 20:31:44:660 CPU/(15716:15718): Instrucciones recibidas de Kernel:
+
+[INFO] 20:31:44:660 CPU/(15716:15718): SET AX HOLA
+
+[INFO] 20:31:44:660 CPU/(15716:15718): F_SEEK ARCHIVO 20
+[ERROR] 20:31:45:661 CPU/(15716:15718): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:31:45:663 CPU/(15716:15786): CPU lista para recibir al cliente
+[INFO] 20:37:33:709 CPU/(16227:16227): CPU lista para escuchar al cliente
+
+[INFO] 20:37:33:709 CPU/(16227:16229): CPU lista para recibir al cliente
+[INFO] 20:37:33:710 CPU/(16227:16228): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:37:35:025 CPU/(16227:16228): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:37:50:063 CPU/(16227:16229): Se conecto un cliente
+[INFO] 20:37:50:064 CPU/(16227:16229): Instrucciones recibidas de Kernel:
+
+[INFO] 20:37:50:064 CPU/(16227:16229): SET AX HOLA
+
+[INFO] 20:37:50:064 CPU/(16227:16229): F_SEEK ARCHIVO 20
+[ERROR] 20:37:51:067 CPU/(16227:16229): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:37:51:067 CPU/(16227:16269): CPU lista para recibir al cliente
+[INFO] 20:43:10:601 CPU/(16682:16682): CPU lista para escuchar al cliente
+
+[INFO] 20:43:10:602 CPU/(16682:16684): CPU lista para recibir al cliente
+[INFO] 20:43:10:602 CPU/(16682:16683): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:43:12:126 CPU/(16682:16683): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:43:23:631 CPU/(16682:16684): Se conecto un cliente
+[INFO] 20:43:23:631 CPU/(16682:16684): Instrucciones recibidas de Kernel:
+
+[INFO] 20:43:23:631 CPU/(16682:16684): SET AX HOLA
+
+[INFO] 20:43:23:631 CPU/(16682:16684): F_SEEK ARCHIVO 20
+[ERROR] 20:43:24:632 CPU/(16682:16684): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:24:632 CPU/(16682:16723): CPU lista para recibir al cliente
+[INFO] 20:43:46:650 CPU/(16725:16725): CPU lista para escuchar al cliente
+
+[INFO] 20:43:46:650 CPU/(16725:16727): CPU lista para recibir al cliente
+[INFO] 20:43:46:651 CPU/(16725:16726): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:43:48:204 CPU/(16725:16726): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:44:19:258 CPU/(16725:16727): Se conecto un cliente
+[INFO] 20:44:19:258 CPU/(16725:16727): Instrucciones recibidas de Kernel:
+
+[INFO] 20:44:19:258 CPU/(16725:16727): SET AX HOLA
+
+[INFO] 20:44:19:258 CPU/(16725:16727): F_TRUNCATE ARCHIVO 5
+[ERROR] 20:44:20:260 CPU/(16725:16727): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:44:20:262 CPU/(16725:16767): CPU lista para recibir al cliente
+[INFO] 20:46:06:537 CPU/(16725:16767): Se conecto un cliente
+[INFO] 20:46:06:539 CPU/(16725:16767): Instrucciones recibidas de Kernel:
+
+[INFO] 20:46:06:539 CPU/(16725:16767): SET AX HOLA
+
+[INFO] 20:46:06:539 CPU/(16725:16767): F_OPEN ARCHIVO 
+
+[INFO] 20:46:06:539 CPU/(16725:16767): F_CLOSE ARCHIVO 
+
+[INFO] 20:46:06:539 CPU/(16725:16767): F_READ ARCHIVO 234 400
+
+[INFO] 20:46:06:539 CPU/(16725:16767): F_WRITE ARCHIVO 721 20
+
+[ERROR] 20:46:07:541 CPU/(16725:16767): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:46:07:544 CPU/(16725:16815): CPU lista para recibir al cliente
+[INFO] 20:46:39:722 CPU/(16725:16815): Se conecto un cliente
+[INFO] 20:46:39:723 CPU/(16725:16815): Instrucciones recibidas de Kernel:
+
+[INFO] 20:46:39:723 CPU/(16725:16815): SET AX HOLA
+
+[INFO] 20:46:39:723 CPU/(16725:16815): F_CLOSE ARCHIVO 
+
+[INFO] 20:46:39:723 CPU/(16725:16815): F_READ ARCHIVO 234 400
+
+[INFO] 20:46:39:723 CPU/(16725:16815): F_WRITE ARCHIVO 721 20
+
+[ERROR] 20:46:40:725 CPU/(16725:16815): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:46:40:727 CPU/(16725:16828): CPU lista para recibir al cliente
+[INFO] 20:47:03:769 CPU/(16725:16828): Se conecto un cliente
+[INFO] 20:47:03:769 CPU/(16725:16828): Instrucciones recibidas de Kernel:
+
+[INFO] 20:47:03:769 CPU/(16725:16828): SET AX HOLA
+
+[INFO] 20:47:03:769 CPU/(16725:16828): F_READ ARCHIVO 234 400
+
+[INFO] 20:47:03:769 CPU/(16725:16828): F_WRITE ARCHIVO 721 20
+
+[ERROR] 20:47:04:771 CPU/(16725:16828): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:04:771 CPU/(16725:16866): CPU lista para recibir al cliente
+[INFO] 20:47:40:048 CPU/(16904:16904): CPU lista para escuchar al cliente
+
+[INFO] 20:47:40:048 CPU/(16904:16906): CPU lista para recibir al cliente
+[INFO] 20:47:40:049 CPU/(16904:16905): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:47:41:164 CPU/(16904:16905): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:47:47:549 CPU/(16904:16906): Se conecto un cliente
+[INFO] 20:47:47:550 CPU/(16904:16906): Instrucciones recibidas de Kernel:
+
+[INFO] 20:47:47:550 CPU/(16904:16906): SET AX HOLA
+
+[INFO] 20:47:47:550 CPU/(16904:16906): F_READ ARCHIVO 234 400
+
+[INFO] 20:47:47:550 CPU/(16904:16906): F_WRITE ARCHIVO 721 20
+
+[ERROR] 20:47:48:551 CPU/(16904:16906): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:48:551 CPU/(16904:16916): CPU lista para recibir al cliente
+[INFO] 20:48:11:732 CPU/(16904:16916): Se conecto un cliente
+[INFO] 20:48:11:733 CPU/(16904:16916): Instrucciones recibidas de Kernel:
+
+[INFO] 20:48:11:733 CPU/(16904:16916): SET AX HOLA
+
+[INFO] 20:48:11:733 CPU/(16904:16916): F_WRITE ARCHIVO 721 20
+
+[ERROR] 20:48:12:735 CPU/(16904:16916): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:12:736 CPU/(16904:16955): CPU lista para recibir al cliente
