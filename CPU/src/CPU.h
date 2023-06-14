@@ -21,6 +21,7 @@ sem_t semCPUClientMemoria;
 t_contextoEjecucion* contexto;
 int server_fd;
 int retardo_instruccion;
+int tam_max_segmento;
 
 void *serverCPU(void *ptr);
 void* clientMemoria(void *ptr);

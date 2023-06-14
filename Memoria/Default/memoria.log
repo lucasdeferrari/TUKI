@@ -865,3 +865,21 @@ el cliente se desconecto. Terminando servidor
 [INFO] 21:32:25:746 Memoria/(10092:21196): jk
 [ERROR] 21:32:25:746 Memoria/(10092:21196): 
 el cliente se desconecto. Terminando servidor
+[INFO] 22:19:13:489 Memoria/(10092:21274): Se conecto un cliente!
+[INFO] 22:19:13:490 Memoria/(10092:21274): se conecto la cpu
+[INFO] 22:19:15:801 Memoria/(10092:21274): Me llegaron los siguientes valores:
+[INFO] 22:19:15:801 Memoria/(10092:21274): asd
+[ERROR] 22:19:15:802 Memoria/(10092:21274): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:17:970 Memoria/(10092:22490): Se conecto un cliente!
+[INFO] 22:28:17:970 Memoria/(10092:22490): se conecto la cpu
+[INFO] 22:28:18:934 Memoria/(10092:22490): Me llegaron los siguientes valores:
+[INFO] 22:28:18:934 Memoria/(10092:22490): asd
+[ERROR] 22:28:18:934 Memoria/(10092:22490): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:30:39:748 Memoria/(10092:23445): Se conecto un cliente!
+[INFO] 22:30:39:749 Memoria/(10092:23445): se conecto la cpu
+[INFO] 22:30:40:410 Memoria/(10092:23445): Me llegaron los siguientes valores:
+[INFO] 22:30:40:410 Memoria/(10092:23445): sd
+[ERROR] 22:30:40:410 Memoria/(10092:23445): 
+el cliente se desconecto. Terminando servidor

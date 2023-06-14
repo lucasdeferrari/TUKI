@@ -20,6 +20,7 @@ int main(void) {
     ip_memoria= config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
     retardo_instruccion = config_get_int_value(config, "RETARDO_INSTRUCCION");
+    tam_max_segmento = config_get_int_value(config, "TAM_MAX_SEGMENTO");
 
     //Inicializo contexto
     contexto = malloc(sizeof(t_contextoEjecucion));
@@ -586,8 +587,21 @@ int ejecutarFuncion(char* proximaInstruccion){
 }
 
 //FALTA HACER MMU
-int MMU(int direcLogica){
-	int direcFisica = -1;
+int MMU(int direcLogica,int cantBytes){
+
+	int num_segmento = floor(direcLogica / tam_max_segmento);
+	int desplazamiento_segmento = direcLogica % tam_max_segmento;
+
+	printf("num_segmento: %d\n",num_segmento);
+	printf("desplazamiento_segmento: %d\n",desplazamiento_segmento);
+
+	if((desplazamiento_segmento+cantBytes)>tam_max_segmento){
+		printf("ERROR: SEGMENTATION FAULT\n");
+		return -1;
+	}
+
+	int direcFisica = -2;
+	//int direcFisica = baseSegmento + desplazamiento_segmento;
 
 	return direcFisica;
 }
@@ -648,32 +662,36 @@ void fread_tp(char* archivo, int direcLogica, int cantBytes){
 	contexto->nombreArchivo = string_duplicate(archivo);
 	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 
-	int direcFisica = MMU(direcLogica);
+	int direcFisica = MMU(direcLogica, cantBytes);
 
-	contexto->direcFisicaArchivo = direcFisica;
-	//printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+	if (direcFisica == -1){
+		contexto->instruccion = string_duplicate("SEG_FAULT");
+	}
+	else{
+		contexto->direcFisicaArchivo = direcFisica;
+		contexto->cantBytesArchivo = cantBytes;
+		contexto->instruccion = string_duplicate("F_READ");
+	}
 
-	contexto->cantBytesArchivo = cantBytes;
-	//printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
-
-	contexto->instruccion = string_duplicate("F_READ");
     return;
 }
 
 //F_WRITE (Nombre Archivo, Dirección Lógica, Cantidad de bytes): Esta instrucción solicita al Kernel que se escriba en el archivo indicado, la cantidad de bytes pasada por parámetro cuya información es obtenida a partir de la dirección física de Memoria.
 void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 
-	int direcFisica = MMU(direcLogica);
 
-	contexto->direcFisicaArchivo = direcFisica;
-	//printf("Direc física del archivo: %d\n", contexto->direcFisicaArchivo);
+	int direcFisica = MMU(direcLogica, cantBytes);
 
-	contexto->cantBytesArchivo = cantBytes;
-	//printf("Cant bytes del archivo: %d\n", contexto->cantBytesArchivo);
+	if (direcFisica == -1){
+		contexto->instruccion = string_duplicate("SEG_FAULT");
+	}
+	else{
+		contexto->direcFisicaArchivo = direcFisica;
+		contexto->cantBytesArchivo = cantBytes;
+		contexto->instruccion = string_duplicate("F_WRITE");
+	}
 
-	contexto->instruccion = string_duplicate("F_WRITE");
     return;
 }
 

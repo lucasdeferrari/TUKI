@@ -1234,3 +1234,31 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 21:32:27:377 FileSystem/(8598:21229): 
 el cliente se desconecto. Terminando servidor
 [INFO] 21:32:27:377 FileSystem/(8598:21278): FileSystem listo para recibir a kernel
+[INFO] 22:19:06:090 FileSystem/(8598:21278): Se conecto un cliente!
+[INFO] 22:19:06:905 FileSystem/(8598:21278): Me llegaron los siguientes valores:
+
+[INFO] 22:19:06:905 FileSystem/(8598:21278): asd
+[ERROR] 22:19:06:905 FileSystem/(8598:21278): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:19:06:905 FileSystem/(8598:22456): FileSystem listo para recibir a kernel
+[INFO] 22:28:27:470 FileSystem/(8598:22456): Se conecto un cliente!
+[INFO] 22:28:28:294 FileSystem/(8598:22456): Me llegaron los siguientes valores:
+
+[INFO] 22:28:28:294 FileSystem/(8598:22456): sd
+[ERROR] 22:28:28:294 FileSystem/(8598:22456): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:28:294 FileSystem/(8598:23478): FileSystem listo para recibir a kernel
+[INFO] 22:29:55:316 FileSystem/(8598:23478): Se conecto un cliente!
+[INFO] 22:29:56:297 FileSystem/(8598:23478): Me llegaron los siguientes valores:
+
+[INFO] 22:29:56:297 FileSystem/(8598:23478): jk
+[ERROR] 22:29:56:297 FileSystem/(8598:23478): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:29:56:297 FileSystem/(8598:23532): FileSystem listo para recibir a kernel
+[INFO] 22:30:44:247 FileSystem/(8598:23532): Se conecto un cliente!
+[INFO] 22:30:44:932 FileSystem/(8598:23532): Me llegaron los siguientes valores:
+
+[INFO] 22:30:44:932 FileSystem/(8598:23532): sd
+[ERROR] 22:30:44:933 FileSystem/(8598:23532): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:30:44:933 FileSystem/(8598:23604): FileSystem listo para recibir a kernel

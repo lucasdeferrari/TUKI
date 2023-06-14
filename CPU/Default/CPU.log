@@ -32228,3 +32228,54 @@
 [ERROR] 21:32:36:013 CPU/(21271:21312): el kernel se desconecto. Terminando servidor
 
 [INFO] 21:32:36:013 CPU/(21271:21314): CPU lista para recibir al cliente
+[INFO] 22:19:13:487 CPU/(22487:22487): CPU lista para escuchar al cliente
+
+[INFO] 22:19:13:487 CPU/(22487:22488): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:19:13:490 CPU/(22487:22489): CPU lista para recibir al cliente
+[INFO] 22:19:15:802 CPU/(22487:22488): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 22:19:33:227 CPU/(22487:22489): Se conecto un cliente
+[INFO] 22:19:33:228 CPU/(22487:22489): Instrucciones recibidas de Kernel:
+
+[INFO] 22:19:33:228 CPU/(22487:22489): SET AX HOLA
+
+[INFO] 22:19:33:228 CPU/(22487:22489): F_READ ARCHIVO 1 128
+[ERROR] 22:19:34:229 CPU/(22487:22489): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:19:34:229 CPU/(22487:22529): CPU lista para recibir al cliente
+[INFO] 22:28:17:969 CPU/(23442:23442): CPU lista para escuchar al cliente
+
+[INFO] 22:28:17:970 CPU/(23442:23444): CPU lista para recibir al cliente
+[INFO] 22:28:17:970 CPU/(23442:23443): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:28:18:934 CPU/(23442:23443): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 22:28:35:278 CPU/(23442:23444): Se conecto un cliente
+[INFO] 22:28:35:278 CPU/(23442:23444): Instrucciones recibidas de Kernel:
+
+[INFO] 22:28:35:278 CPU/(23442:23444): SET AX HOLA
+
+[INFO] 22:28:35:278 CPU/(23442:23444): F_READ ARCHIVO 1 128
+[ERROR] 22:28:36:279 CPU/(23442:23444): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:28:36:280 CPU/(23442:23512): CPU lista para recibir al cliente
+[INFO] 22:30:05:588 CPU/(23442:23512): Se conecto un cliente
+[INFO] 22:30:05:588 CPU/(23442:23512): Instrucciones recibidas de Kernel:
+
+[INFO] 22:30:05:588 CPU/(23442:23512): SET AX HOLA
+
+[INFO] 22:30:05:588 CPU/(23442:23512): F_READ ARCHIVO 1 128
+[ERROR] 22:30:06:590 CPU/(23442:23512): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:30:06:592 CPU/(23442:23566): CPU lista para recibir al cliente
+[INFO] 22:30:39:748 CPU/(23597:23597): CPU lista para escuchar al cliente
+
+[INFO] 22:30:39:748 CPU/(23597:23599): CPU lista para recibir al cliente
+[INFO] 22:30:39:749 CPU/(23597:23598): Ingrese sus mensajes para la Memoria: 
+[INFO] 22:30:40:410 CPU/(23597:23598): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 22:30:47:840 CPU/(23597:23599): Se conecto un cliente
+[INFO] 22:30:47:841 CPU/(23597:23599): Instrucciones recibidas de Kernel:
+
+[INFO] 22:30:47:841 CPU/(23597:23599): SET AX HOLA
+
+[INFO] 22:30:47:841 CPU/(23597:23599): F_READ ARCHIVO 1 128
+[ERROR] 22:30:48:843 CPU/(23597:23599): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:30:48:844 CPU/(23597:23609): CPU lista para recibir al cliente
