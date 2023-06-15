@@ -586,7 +586,7 @@ int ejecutarFuncion(char* proximaInstruccion){
 	return continuarLeyendo;
 }
 
-//FALTA HACER MMU
+//FALTA TERMINAR MMU
 int MMU(int direcLogica,int cantBytes){
 
 	int num_segmento = floor(direcLogica / tam_max_segmento);
@@ -601,6 +601,7 @@ int MMU(int direcLogica,int cantBytes){
 	}
 
 	int direcFisica = -2;
+	printf("FALTA CALCULAR LA DIRECCIÓN FÍSICA \n");
 	//int direcFisica = baseSegmento + desplazamiento_segmento;
 
 	return direcFisica;
@@ -616,7 +617,6 @@ void createSeg_tp(int idSegmento, int tamanioSegmento){
 
 	contexto->idSegmento = idSegmento;
 	contexto->tamanioSegmento = tamanioSegmento;
-
 	contexto->instruccion = string_duplicate("CREATE_SEGMENT");
     return;
 }
@@ -626,7 +626,6 @@ void createSeg_tp(int idSegmento, int tamanioSegmento){
 void deleteSeg_tp(int idSegmento){
 
 	contexto->idSegmento = idSegmento;
-
 	contexto->instruccion = string_duplicate("DELETE_SEGMENT");
     return;
 }
@@ -634,7 +633,6 @@ void deleteSeg_tp(int idSegmento){
 //F_OPEN (Nombre Archivo): Esta instrucción solicita al kernel que abra o cree el archivo pasado por parámetro.
 void fopen_tp(char* archivo){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->instruccion = string_duplicate("F_OPEN");
     return;
 }
@@ -642,7 +640,6 @@ void fopen_tp(char* archivo){
 //F_CLOSE (Nombre Archivo): Esta instrucción solicita al kernel que cierre el archivo pasado por parámetro.
 void fclose_tp(char* archivo){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->instruccion = string_duplicate("F_CLOSE");
     return;
 }
@@ -650,9 +647,7 @@ void fclose_tp(char* archivo){
 //F_SEEK (Nombre Archivo, Posición): Esta instrucción solicita al kernel actualizar el puntero del archivo a la posición pasada por parámetro.
 void fseek_tp(char* archivo, int posicion){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->posicionArchivo = posicion;
-	//printf("Posicion del archivo: %d\n", contexto->posicionArchivo);
 	contexto->instruccion = string_duplicate("F_SEEK");
     return;
 }
@@ -698,9 +693,7 @@ void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 //F_TRUNCATE (Nombre Archivo, Tamaño): Esta instrucción solicita al Kernel que se modifique el tamaño del archivo al indicado por parámetro.
 void ftruncate_tp(char* archivo, int tamanio){
 	contexto->nombreArchivo = string_duplicate(archivo);
-	//printf("Nombre del archivo: %s\n", contexto->nombreArchivo);
 	contexto->tamanioArchivo = tamanio;
-	//printf("Tamaño del archivo: %d\n", contexto->tamanioArchivo );
 	contexto->instruccion = string_duplicate("F_TRUNCATE");
     return;
 }
