@@ -372,9 +372,49 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "EXIT") == 0) {
 		pasarAExit();
 	}
-
 	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
 		iniciarHiloIO();
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_OPEN") == 0) {
+
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_CLOSE") == 0) {
+
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_SEEK") == 0) {
+		//Actualiza el puntero del archivo en la tabla de archivos abiertos hacia la ubicación pasada por parámetro
+		//iniciarHiloClienteCPU() devolver el contexto de ejecución a la CPU para que continúe el mismo proceso
+
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
+		//iniciarHiloClienteFileSystem()
+		//El proceso que llamó a F_READ deberá permanecer en estado bloqueado
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
+		//iniciarHiloClienteFileSystem()
+		// El proceso que llamó a F_WRITE deberá permanecer en estado bloqueado
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
+		//iniciarHiloClienteFileSystem()
+		// El proceso que llamó a F_TRUNCATE deberá permanecer en estado bloqueado
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
+		//iniciarHiloClienteMemoria()
+		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
+		//podemos recibir resultados diferentes
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
+	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
+		//iniciarHiloClienteMemoria()
+		//enviarle a la Memoria el Id del segmento a eliminar
+		//recibimos como respuesta de la Memoria la tabla de segmentos actualizada
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
 	}
 	else{
 		printf("Instruccion no reconocida.\n");
@@ -717,6 +757,8 @@ void finalizarEncolar(){
 }
 void encolarReady() {
 
+
+
 	// SI EL ALGORITMO DE PLANIFICACION ES FIFO VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -730,6 +772,9 @@ void encolarReady() {
 
 			if(frenteColaNew != NULL){
 				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
+				//iniciarHiloClienteMemoria()
+				//ENVIAR MENSAJE A MEMORIA PARA QUE INICIALICE LAS ESTRUCUTRAS NECESARIAS
+				//NOS DEVUELVE LA TABLA DE SEGMENTOS INICIAL DEL PROCESO QUE ALMACENAMOS EN EL PCB
 
 				cantidadElementosSistema++;
 
@@ -768,6 +813,9 @@ void encolarReady() {
 				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 
 				list_add(listaReady, procesoADesencolar);
+				//iniciarHiloClienteMemoria()
+				//ENVIAR MENSAJE A MEMORIA PARA QUE INICIALICE LAS ESTRUCUTRAS NECESARIAS
+				//NOS DEVUELVE LA TABLA DE SEGMENTOS INICIAL DEL PROCESO QUE ALMACENAMOS EN EL PCB
 
 				cantidadElementosSistema++;
 
