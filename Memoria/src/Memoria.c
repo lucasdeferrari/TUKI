@@ -11,6 +11,8 @@ bool seConectoKernel = 0;
 bool seConectoCPU = 0;
 bool seConectoFS = 0;
 
+const char* algoritmoAsignacion = string_new();
+
 
 // memoria es un void* que apunta al inicio del espacio de memoria contiguo del espacio de usuario
 // y tamanio es la cantidad de bytes disponibles en ese espacio
@@ -20,24 +22,64 @@ typedef struct {
     size_t tamanio;
 } EspacioUsuario;
 
-EspacioUsuario crearEspacioMemoria(size_t tamanio) {
+EspacioUsuario espacioUsuario;
+
+EspacioUsuario crearEspacioUsuario(size_t tamanio) {
 	EspacioUsuario espacio;
     espacio.tamanio = tamanio;
     espacio.memoria = malloc(tamanio);
     return espacio;
 }
 
-void liberarEspacioMemoria(EspacioUsuario* espacio) {
+void liberarEspacioUsuario(EspacioUsuario* espacio) {
     free(espacio->memoria);
     espacio->tamanio = 0;
+}
+
+typedef struct {
+    int numeroSegmento;
+    size_t base;
+    size_t desplazamiento;
+} Segmento;
+
+int crearSegmento(int numeroSegmento, size_t base, size_t tamanio) {
+	if(puedoCrearSegmento(tamanio)) {
+	Segmento segmento;
+	segmento.numeroSegmento = numeroSegmento;
+	segmento.base = base;
+	segmento.desplazamiento = tamanio;
+    agregarSegmentoAMemoria(segmento);
+	return 1;}
+
+	else {
+		return -1;
+	}
+}
+
+typedef struct {
+    void* base;
+    size_t desplazamiento;
+} HuecoLibre;
+
+HuecoLibre crearHuecoLibre(size_t tamanio) {
+	HuecoLibre hueco;
+	hueco.desplazamiento = tamanio;
+	hueco.base = malloc(tamanio);
+    return hueco;
 }
 
 void iterator(char* value) {
 	log_info(logger,"%s", value);
 }
 
+//bool sePuedecrearSegmento(size_t tamanio) {
+//
+//}
+
+HuecoLibre listaDeHuecosLibres[1];
+
 int main(void) {
-	int tamanioSeg0;
+	int tamanioSeg0, tamanioMemoria;
 
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
@@ -61,6 +103,24 @@ int main(void) {
 	    		 exit(-1);
 	    	 }
 
+	if (config_has_property(config, "TAM_MEMORIA")) {
+			 printf("Existe el valor para el tamaño de la memoria.\n");
+			 tamanioMemoria = config_get_int_value(config, "TAM_MEMORIA");
+			 }
+			 else {
+				 log_error(logger, "No existe el valor para el tamaño de la memoria.\n");
+				 exit(-1);
+			 }
+
+	if (config_has_property(config, "ALGORITMO_ASIGNACION")) {
+			 printf("Existe el valor para el algoritmo de asignacion.\n");
+			 algoritmoAsignacion = config_get_string_value(config, "ALGORITMO_ASIGNACION");
+			 }
+			 else {
+				 log_error(logger, "No existe el valor para el algoritmo de asignacion.\n");
+				 exit(-1);
+			 }
+
 	//printf("Tamanio del segmento 0: %i\n" , tamanioSeg0);
 
 //	esperarTodasLasConexiones
@@ -77,32 +137,37 @@ int main(void) {
 
 	// LA FUNCION crearSegmento() DEBE VERIFICAR SI HAY ESPACIO PARA CREAR EL SEGMENTO. EN CASO DE QUE
 	// HAYA ESPACIO CREARA EL SEGMENTO Y DEVOLVERA SU DIRECCION BASE
-	int segmentoCero = crearSegmento(tamanioSeg0);
 
-	if (segmentoCero == -1) {
-		// ESA FUNCION LE INFORMA AL KERNEL QUE NO HAY ESPACIO LIBRE PARA CREAR EL SEGMENTO
-		informarKernelFaltaDeEspacio();
-		log_error(logger, "Error al crear el segmento.");
+	espacioUsuario = crearEspacioUsuario(tamanioMemoria);
+
+	int resultado = crearSegmento(0,0,tamanioSeg0);
+
+	if(resultado < 0) {
+		log_error(logger, "No se pudo crear el segmento.");
 		exit(-1);
 	}
 
-
-
-
-
-
+	t_list * listaDeHuecosLibres = list_create();
+	HuecoLibre huecoBase = crearHuecoLibre(tamanioMemoria-tamanioSeg0);
+//	huecoBase->base = &
+//	list_add(listaDeHuecosLibres, )
 
 
 
 	return EXIT_SUCCESS;
 }
 
-int crearSegmento(int tamanio) {
-	return 1;
-}
 
 void informarKernelFaltaDeEspacio() {
 
+}
+
+void agregarSegmentoAMemoria(Segmento unSegmento) {
+
+}
+
+bool puedoCrearSegmento (int tamanio) {
+	return true;
 }
 
 void iniciarHiloServer() {
