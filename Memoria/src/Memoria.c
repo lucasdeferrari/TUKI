@@ -100,7 +100,17 @@ size_t buscarPorBest(size_t tamanio) {
 }
 
 size_t buscarPorWorst(size_t tamanio) {
-	return 5;
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+		HuecoLibre *elegido;
+		elegido->desplazamiento = 0;
+
+		while(list_iterator_has_next(iterador)) {
+			HuecoLibre *siguiente = list_iterator_next(iterador);
+			if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento >= elegido->desplazamiento) {
+					elegido = siguiente;
+			}
+		}
+		return elegido->base;
 }
 
 
