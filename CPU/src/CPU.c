@@ -505,43 +505,84 @@ int ejecutarFuncion(char* proximaInstruccion){
 		setParam2[tamanioValor-1] = '\0';
 
 		set_tp(setParam1, setParam2);
+
+		//TENEMOS QUE HACER QUE EL CONTECTO TENGA PID Y VER TIPO DEL DATO DEL PARAMETRO
+		//log minimo y obligatorio
+		//log_info(logger, "PID: %d - Ejecutando: SET - [%s, %s]\n", contexto->pid, setParam1, setParam2);
+
 		free(setParam1);
 		free(setParam2);
 		continuarLeyendo = 1;
+
+
+
     } else if (  string_contains(nombreInstruccion,"YIELD")  ) {
     	yield_tp();
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: YIELD\n", contexto->pid;
     } else if (string_contains(nombreInstruccion,"EXIT")) {
     	exit_tp();
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: EXIT\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "I/O") == 0) {
     	int ioParam = atoi(arrayInstruccion[1]);
     	i_o_tp(ioParam);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: I/O - [%s]\n", contexto->pid, ioParam);
     } else if (strcmp(nombreInstruccion, "WAIT") == 0) {
     	char* recursoWait = string_new();
     	recursoWait = string_duplicate(arrayInstruccion[1]);
     	wait_tp(recursoWait);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: WAIT - [%s]\n", contexto->pid, recursoWait);
     } else if (strcmp(nombreInstruccion, "SIGNAL") == 0) {
     	char* recursoSignal = string_new();
     	recursoSignal = string_duplicate(arrayInstruccion[1]);
     	signal_tp(recursoSignal);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: SIGNAL - [%s]\n", contexto->pid, recursoSignal);
     } else if (strcmp(nombreInstruccion, "MOV_IN") == 0) {
     	continuarLeyendo = 1;
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: MOV_IN\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
     	continuarLeyendo = 1;
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: MOV_OUT\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "F_OPEN") == 0) {
     	char* fopenParam1 = string_new();
     	fopenParam1 = string_duplicate(arrayInstruccion[1]);
     	fopen_tp(fopenParam1);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_OPEN - [%s]\n", contexto->pid, fopenParam1);
+
     	free(fopenParam1);
     } else if (strcmp(nombreInstruccion, "F_CLOSE") == 0) {
     	char* fcloseParam1 = string_new();
     	fcloseParam1 = string_duplicate(arrayInstruccion[1]);
     	fclose_tp(fcloseParam1);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_CLOSE - [%s]\n", contexto->pid, fcloseParam1);
+
     	free(fcloseParam1);
     } else if (strcmp(nombreInstruccion, "F_SEEK") == 0) {
     	char* fseekParam1 = string_new();
     	fseekParam1 = string_duplicate(arrayInstruccion[1]);
     	int fseekParam2 = atoi(arrayInstruccion[2]);
     	fseek_tp(fseekParam1,fseekParam2);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_SEEK - [%s, %s]\n", contexto->pid, fseekParam1, fseekParam2);
+
     	free(fseekParam1);
     } else if (strcmp(nombreInstruccion, "F_READ") == 0) {
     	char* freadParam1 = string_new();
@@ -551,6 +592,9 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int freadParam3 = atoi(arrayInstruccion[3]);
 
     	fread_tp(freadParam1,freadParam2,freadParam3);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_READ - [%s, %s, %s]\n", contexto->pid, freadParam1, freadParam2, freadParam3);
 
     	free(freadParam1);
     } else if (strcmp(nombreInstruccion, "F_WRITE") == 0) {
@@ -562,12 +606,19 @@ int ejecutarFuncion(char* proximaInstruccion){
 
     	fwrite_tp(fwriteParam1,fwriteParam2,fwriteParam3);
 
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_WRITE - [%s, %s, %s]\n", contexto->pid, fwriteParam1, fwriteParam2, fwriteParam3);
+
     	free(fwriteParam1);
     } else if (strcmp(nombreInstruccion, "F_TRUNCATE") == 0) {
     	char* ftruncateParam1 = string_new();
     	ftruncateParam1 = string_duplicate(arrayInstruccion[1]);
     	int ftruncateParam2 = atoi(arrayInstruccion[2]);
     	ftruncate_tp(ftruncateParam1,ftruncateParam2);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: F_TRUNCATE - [%s, %s]\n", contexto->pid, ftruncateParam1, ftruncateParam2);
+
     	free(ftruncateParam1);
     } else if (strcmp(nombreInstruccion, "CREATE_SEGMENT") == 0) {
     	int createParam1 = atoi(arrayInstruccion[1]);
@@ -575,10 +626,16 @@ int ejecutarFuncion(char* proximaInstruccion){
 
     	createSeg_tp(createParam1,createParam2);
 
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: CREATE_SEGMENT - [%s, %s]\n", contexto->pid, createParam1, createParam2);
+
     } else if (strcmp(nombreInstruccion, "DELETE_SEGMENT") == 0) {
     	int deleteParam1 = atoi(arrayInstruccion[1]);
 
     	deleteSeg_tp(deleteParam1);
+
+    	//log minimo y obligatorio
+    	//log_info(logger, "PID: %d - Ejecutando: DELETE_SEGMENT - [%s]\n", contexto->pid, deleteParam1);
     } else {
         printf("Instruccion no reconocida.\n");
     }
@@ -597,6 +654,10 @@ int MMU(int direcLogica,int cantBytes){
 
 	if((desplazamiento_segmento+cantBytes)>tam_max_segmento){
 		printf("ERROR: SEGMENTATION FAULT\n");
+
+		//log minimo y obligatorio
+		//TAMAÑO??
+		//log_info(logger, "“PID: %d - Error SEG_FAULT- Segmento: %d - Offset: %d - Tamaño: %d\n", contexto->pid, num_segmento, desplazamiento_segmento, //TAMAÑO);
 		return -1;
 	}
 

@@ -270,6 +270,10 @@ void manejar_recursos() {
 
 	if (strcmp(unProceso->ultimaInstruccion, "WAIT") == 0) {
 		printf("Estoy dentro de wait.\n");
+
+		//log minimo y obligatorio
+		//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, );
+
 		int i,tamanio_lista = list_size(listaRecursos);
 		int recursoEncontrado = 0;
 		for (i = 0; i<tamanio_lista; i++) {
@@ -281,6 +285,9 @@ void manejar_recursos() {
 				if (recurso->instancias > 0) {
 					printf("recurso asignado %s\n", recurso->recurso);
 					recurso->instancias--;
+
+					//log minimo y obligatorio
+					//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
 
 					t_recursos* unRecurso;
 					unRecurso = malloc(sizeof(t_recursos));
@@ -294,6 +301,12 @@ void manejar_recursos() {
 					estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
 					//queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
 					queue_push(recurso->colaBloqueados,unProceso);
+
+					//log minimo y obligatorio
+					//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+					//log minimo y obligatorio
+					//log_info(logger, "PID: %d - Bloqueado por: %s>\n", unProceso->pid, unProceso->recursoSolicitado);
+
 					cantidadElementosBloqueados++;
 
 					printf("Cantidad de elementos bloqueados: %d\n",cantidadElementosBloqueados);
@@ -326,7 +339,11 @@ void manejar_recursos() {
 		}
 
 		if (recursoEncontrado == 0) {
+			int pid = unProceso->pid;
 			pasarAExit();
+
+			//Log minimo y obligaotrio
+			//log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
 		}
 	}
 
@@ -341,6 +358,9 @@ void manejar_recursos() {
 			printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
 
+			//log minimo y obligatorio
+			//log_info(logger, "PID: %d - Signal: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
+
 			list_remove_element(unProceso->recursosAsignados,recurso->recurso);
 
 
@@ -348,6 +368,10 @@ void manejar_recursos() {
 			if(!queue_is_empty(recurso->colaBloqueados)) {
 				printf("proceso desbloqueado %s\n", recurso->recurso);
 				encolar_ready_ejecucion(queue_pop(recurso->colaBloqueados));
+
+				//log minimo y obligatorio
+				//log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
+
 				recurso->instancias--;
 
 				t_recursos* unRecurso;
@@ -360,8 +384,12 @@ void manejar_recursos() {
 			}
 		}
 		if (recursoEncontrado == 0) {
-					pasarAExit();
-			}
+			int pid = unProceso->pid;
+			pasarAExit();
+
+			//Log minimo y obligaotrio
+			//log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
+		}
 	}
 
 	else if (strcmp(unProceso->ultimaInstruccion, "YIELD") == 0) {
@@ -370,9 +398,16 @@ void manejar_recursos() {
 	}
 
 	else if (strcmp(unProceso->ultimaInstruccion, "EXIT") == 0) {
+		int pid = unProceso->pid;
 		pasarAExit();
+
+		//Log minimo y obligaotrio
+		//log_info(logger, "Finaliza el proceso &d - Motivo: SUCCESS\n", unProceso->pid);
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
+		//log minimo y obligatorio
+		//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+		//log_info(logger, "PID: %d - Bloqueado por: I/O>\n", unProceso->pid);
 		iniciarHiloIO();
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_OPEN") == 0) {
@@ -409,13 +444,19 @@ void manejar_recursos() {
 		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
 		//podemos recibir resultados diferentes
 		printf("FALTA HACER EL PROCEDIMIENTO\n");
+
+		//log minimo y obligatorio
+		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid);
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
 		//iniciarHiloClienteMemoria()
 		//enviarle a la Memoria el Id del segmento a eliminar
 		//recibimos como respuesta de la Memoria la tabla de segmentos actualizada
 		printf("FALTA HACER EL PROCEDIMIENTO\n");
-	}
+
+		//log minimo y obligatorio
+		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
+	} //NO HABRÍA QUE HACER U ELSE IF PARA SEG_FAULT??
 	else{
 		printf("Instruccion no reconocida.\n");
 	}
@@ -428,6 +469,9 @@ void pasarAExit() {
 
 	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
+
+	//Log minimo y obligatorio
+	//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Exit\n", estadoEnEjecucion->pid);
 
 	//Si la cola de ready tiene elementos desencolar, si esta vacia pasar pid de estadoEnEjecucion a -1
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -549,6 +593,9 @@ void* interrupcionIO(void* ptr) {
 
 	sleep_ms(unProceso->tiempoBloqueado);
 
+	//Log minimo y obligatorio
+	//log_info(logger, "“PID: %d - Ejecuta IO: %d\n", unProceso->pid, unProceso->tiempoBloqueado);
+
 
 	printf("Proceso desbloqueado: %d\n",unProceso->pid);
 
@@ -580,6 +627,8 @@ void* interrupcionIO(void* ptr) {
 		}
 	}
 
+	//Log minimo y obligaotrio
+	//log_info(logger, "PID: %d - Estado Anterior: I/O - Estado Actual: Ready\n", unProceso->pid);
 
 	return NULL;
 }
@@ -741,6 +790,9 @@ void armarPCB(t_list* lista){
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
 	printf("PCB encolado en NEW\n");
 
+	//Log minimo y obligatorio
+	//log_info(logger, "Se crea el proceso %d en NEW\n", nuevoPCB->pid);
+
 	printf("Cola NEW:\n");
 	mostrarCola(frenteColaNew);
 
@@ -771,7 +823,8 @@ void encolarReady() {
 		if(lugaresDisponiblesReady > 0 ){
 
 			if(frenteColaNew != NULL){
-				queue(&frenteColaReady, &finColaReady,unqueue(&frenteColaNew,&finColaNew));
+				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
 				//iniciarHiloClienteMemoria()
 				//ENVIAR MENSAJE A MEMORIA PARA QUE INICIALICE LAS ESTRUCUTRAS NECESARIAS
 				//NOS DEVUELVE LA TABLA DE SEGMENTOS INICIAL DEL PROCESO QUE ALMACENAMOS EN EL PCB
@@ -780,6 +833,9 @@ void encolarReady() {
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+
+				//Log minimo y obligatorio
+				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
 			}
 		}
 		else{
@@ -823,6 +879,10 @@ void encolarReady() {
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+
+				//log minimo y obligatorio
+				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
+
 				printf("Cola READY:\n");
 				t_infopcb* proceso = list_get(listaReady,0); //que queriamos hacer con esto? porque mostraria el primero?
 				printf("PID: %d\n", proceso->pid);
@@ -849,11 +909,15 @@ void desencolarReady (){
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
 		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
+
 		iniciarHiloClienteCPU();
 		//printf("Cola READY:\n");
 		//mostrarCola(frenteColaReady);
 
 		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
+
+		//log minimo y obligatorio
+		//log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
 	}
 
 
@@ -893,6 +957,9 @@ void desencolarReady (){
 
 		printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
 		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
+
+		//log minimo y obligatorio
+		//log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
 
 		//CALCULA CUANDO SE VA DE KERNEL
 		estadoEnEjecucion->empiezaAEjecutar = tomarTiempo();
