@@ -38,6 +38,12 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
+typedef struct
+{
+	int pid;
+	t_list* segmentos;
+}TablaDeSegmentos;
+
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);
@@ -48,6 +54,7 @@ t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
 char* recibir_handshake(int socket_cliente);
+bool hayTablaSegmentosDe(int idProceso);
 
 //client
 int crear_conexion(char* ip, char* puerto);

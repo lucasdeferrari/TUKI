@@ -118,7 +118,7 @@ void* serializar_paquete(t_paquete* paquete, int bytes)
 	return magic;
 }
 
-int crear_conexion(char *ip, char* puerto)
+int crear_conexion(char *ip, char *puerto)
 {
 	//log_info(logger,"estoy adentro de crear conexion");
 

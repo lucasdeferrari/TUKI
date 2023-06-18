@@ -19,8 +19,20 @@ typedef struct {
     size_t desplazamiento;
 } Segmento;
 
+typedef struct {
+    size_t base;
+    size_t desplazamiento;
+} HuecoLibre;
 
+t_list * listaDeHuecosLibres;
+t_list* tablasDeSegmento;
+
+char* algoritmoAsignacion;
 sem_t semMemoriaServer;
+
+int tamanioSeg0, tamanioMemoria;
+
+void* espacioUsuario;
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
@@ -30,6 +42,17 @@ int crearSegmento(int );
 void informarKernelFaltaDeEspacio();
 Segmento *crearSegmento0(size_t);
 char* recibir_buffer_mio(int socket_cliente);
+size_t buscarLugarParaElSegmento(size_t tamanio);
+void crearTablaSegmentosDe(int idProceso);
+void agregarSegmentoATabla(Segmento *segmento, int idProceso);
+void eliminar_segmento(Segmento *segmento);
+bool hayLugarParaCrearSegmento(size_t tamanio);
+bool hayLugarContiguoPara(size_t tamanio);
+void agregarSegmentoATabla(Segmento *segmento, int idProceso);
+int asignarIdSegmento();
+size_t buscarPorFirst (size_t tamanio);
+size_t buscarPorBest(size_t tamanio);
+size_t buscarPorWorst(size_t tamanio);
 
 void iterator(char *value);
 

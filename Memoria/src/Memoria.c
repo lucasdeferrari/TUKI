@@ -4,6 +4,7 @@
 char* ip_memoria;
 char* puerto_memoria;
 int server_fd;
+int contadorSegmentos = 0;
 
 t_config* config;
 
@@ -11,12 +12,116 @@ bool seConectoKernel = 0;
 bool seConectoCPU = 0;
 bool seConectoFS = 0;
 
+
+
 // memoria es un void* que apunta al inicio del espacio de memoria contiguo del espacio de usuario
 // y tamanio es la cantidad de bytes disponibles en ese espacio
 
 
 int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
-	return 2;
+
+	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
+	if(!hayLugarParaCrearSegmento(tamanio)) {
+		return -1;
+	}
+
+	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
+	else if(!hayLugarContiguoPara(tamanio)) {
+		return 0;
+	}
+
+	if(!hayTablaSegmentosDe(idProceso)) {
+		crearTablaSegmentosDe(idProceso);
+	}
+
+	Segmento *segmento= malloc(sizeof(Segmento));
+		if(segmento != NULL) {
+			segmento->desplazamiento = tamanio;
+			segmento->base = buscarLugarParaElSegmento(tamanio);
+			segmento->idSegmento = asignarIdSegmento();
+			agregarSegmentoATabla(segmento, idProceso);
+		}
+	return segmento->base;
+}
+
+bool hayTablaSegmentosDe(int idProceso) {
+	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+
+	while(list_iterator_has_next(iterador)) {
+		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+		if(idProceso == siguiente->pid) {
+			return true;
+		}
+	}
+	return false;
+}
+
+int asignarIdSegmento() {
+	contadorSegmentos++;
+	return contadorSegmentos;
+}
+
+size_t buscarLugarParaElSegmento(size_t tamanio) {
+	if (string_contains(algoritmoAsignacion, "FIRST")) {
+		return buscarPorFirst(tamanio);
+	}
+	if (string_contains(algoritmoAsignacion, "WORST")) {
+		return buscarPorWorst(tamanio);
+	}
+	if (string_contains(algoritmoAsignacion, "BEST")) {
+		return buscarPorBest(tamanio);
+	}
+
+}
+
+size_t buscarPorFirst (size_t tamanio) {
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+
+	while(list_iterator_has_next(iterador)) {
+		HuecoLibre *siguiente = list_iterator_next(iterador);
+		if(siguiente->desplazamiento >= tamanio) {
+			return siguiente->base;
+		}
+	}
+}
+
+size_t buscarPorBest(size_t tamanio) {
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	HuecoLibre *elegido;
+	elegido->desplazamiento = tamanioMemoria;
+
+	while(list_iterator_has_next(iterador)) {
+		HuecoLibre *siguiente = list_iterator_next(iterador);
+		if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento <= elegido->desplazamiento) {
+				elegido = siguiente;
+		}
+	}
+	return elegido->base;
+}
+
+size_t buscarPorWorst(size_t tamanio) {
+	return 5;
+}
+
+
+void crearTablaSegmentosDe(int idProceso) {
+	TablaDeSegmentos *tablaDeSegmentos = malloc(sizeof(tablaDeSegmentos));
+	t_list* segmentos = list_create();
+	tablaDeSegmentos->pid = idProceso;
+	tablaDeSegmentos->segmentos = segmentos;
+}
+
+void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
+	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+
+
+	while(list_iterator_has_next(iterador)) {
+		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+		if(idProceso == siguiente->pid) {
+			list_add(siguiente->segmentos, segmento);
+			memcpy(espacioUsuario, segmento, segmento->desplazamiento);
+		}
+	}
 }
 
 void eliminar_segmento(Segmento *segmento) {
@@ -50,10 +155,7 @@ void eliminar_segmento(Segmento *segmento) {
 
 
 
-typedef struct {
-    size_t base;
-    size_t desplazamiento;
-} HuecoLibre;
+
 
 HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base) {
 	HuecoLibre *hueco = malloc(sizeof(HuecoLibre));
@@ -72,11 +174,12 @@ void iterator(char* value) {
 //
 //}
 
-HuecoLibre listaDeHuecosLibres[1];
-
 int main(void) {
-	int tamanioSeg0, tamanioMemoria;
-	char* algoritmoAsignacion = string_new();
+
+	algoritmoAsignacion = string_new();
+
+	listaDeHuecosLibres = list_create();
+	tablasDeSegmento = list_create();
 
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
@@ -130,7 +233,7 @@ int main(void) {
 		pthread_join(serverMemoria_thread, NULL);
 	}
 
-	log_info(logger, "Se conectaron todos los modulos.");
+	log_info(logger, "Se conectaron todos los modulos.\n");
 
 
 	// LA FUNCION crearSegmento() DEBE VERIFICAR SI HAY ESPACIO PARA CREAR EL SEGMENTO. EN CASO DE QUE
@@ -139,31 +242,32 @@ int main(void) {
 
 
 
-	void* espacioUsuario = malloc(tamanioMemoria);
+	espacioUsuario = malloc(tamanioMemoria);
 	if(espacioUsuario == NULL) {
-		log_error(logger, "Error al crear la memoria.");
+		log_error(logger, "Error al crear la memoria.\n");
 		exit(-1);
 	}
 
 
 	Segmento *segmento0 = crearSegmento0(tamanioSeg0);
 	if(segmento0 == NULL) {
-		log_error(logger, "Erorr al crear el segmento 0.");
+		log_error(logger, "Erorr al crear el segmento 0.\n");
 		exit(-1);
 	}
 
-	memcpy(espacioUsuario, segmento0, sizeof(Segmento));
+	memcpy(espacioUsuario, segmento0, segmento0->desplazamiento);
 
-	t_list * listaDeHuecosLibres = list_create();
 	HuecoLibre *huecoBase = crearHuecoLibre(tamanioMemoria-tamanioSeg0, 0);
 	if(huecoBase == NULL) {
-		log_error(logger, "No se pudo crear el hueco libre base.");
+		log_error(logger, "No se pudo crear el hueco libre base.\n");
 		exit(-1);
 	}
 
 	huecoBase->base = segmento0->base + segmento0->desplazamiento;
 
 	list_add(listaDeHuecosLibres, huecoBase);
+
+	log_info(logger, "Se crearon todas las estructuras correctamente.\n");
 
 	while(1){
 			iniciarHiloServer();
@@ -175,6 +279,33 @@ int main(void) {
 	free(espacioUsuario);
 	free(segmento0);
 	return EXIT_SUCCESS;
+}
+
+bool hayLugarParaCrearSegmento(size_t tamanio) {
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	int tamanioLibre = 0;
+
+	while(list_iterator_has_next(iterador)) {
+		HuecoLibre *siguiente = list_iterator_next(iterador);
+		int desplazamientoSiguiente = siguiente->desplazamiento;
+		tamanioLibre += desplazamientoSiguiente;
+	}
+	return tamanio <= tamanioLibre;
+}
+
+bool hayLugarContiguoPara(size_t tamanio) {
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	int max = 0;
+
+	while(list_iterator_has_next(iterador)) {
+		HuecoLibre *siguiente = list_iterator_next(iterador);
+		int desplazamientoSiguiente = siguiente->desplazamiento;
+
+		if(desplazamientoSiguiente > max) {
+			max = desplazamientoSiguiente;
+		}
+	}
+	return tamanio <= max;
 }
 
 void compactar_memoria() {
@@ -198,10 +329,6 @@ Segmento *crearSegmento0(size_t tamanio){
 		segmento0->idSegmento=0;
 	}
 	return segmento0;
-}
-
-void agregarSegmentoATabla(int idProceso, Segmento segmento) {
-
 }
 
 void asignarPorFirstFit() {
@@ -262,7 +389,7 @@ void* serverMemoria(void* ptr){
     			break;
 
 
-    		//crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
+    		// crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
     		// LO QUE HARIA EL KERNEL SERIA CREAR UN PAQUETE, DONDE CADA RENGLON DEL MISMO
     		// SEA UN PARAMETRO DE ESA FUNCION. ES DECIR, MANDARIA UN PAQUETE CON 3 ELEMENTOS:
     		// PID, ID Y TAMANIO.
@@ -280,6 +407,8 @@ void* serverMemoria(void* ptr){
     			 int pid = arrayPaquete[0];
     			 int idSegmento = arrayPaquete[1];
     			 int tamanio = arrayPaquete[2];
+
+    			 //CALCULAMOS NUESTRO IdSEGMENTO
 
     			int resultado = crear_segmento(pid, idSegmento,tamanio);
     			enviar_respuesta_crearSegmento(cliente_fd, resultado);
