@@ -13,6 +13,13 @@
 #include <semaphore.h>
 
 
+typedef struct {
+    int idSegmento;
+    size_t base;
+    size_t desplazamiento;
+} Segmento;
+
+
 sem_t semMemoriaServer;
 
 void* serverMemoria(void *ptr);
@@ -21,6 +28,8 @@ void enviar_respuesta(int socket_cliente, char* quien_es);
 pthread_t serverMemoria_thread;
 int crearSegmento(int );
 void informarKernelFaltaDeEspacio();
+Segmento *crearSegmento0(size_t);
+char* recibir_buffer_mio(int socket_cliente);
 
 void iterator(char *value);
 

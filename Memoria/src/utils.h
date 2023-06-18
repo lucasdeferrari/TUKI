@@ -19,7 +19,10 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE
+	PAQUETE,
+	CREAR_SEGMENTO,
+	ELIMINAR_SEGMENTO,
+	COMPACTAR_MEMORIA
 }op_code;
 
 //client
