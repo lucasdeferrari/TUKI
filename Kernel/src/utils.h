@@ -52,14 +52,14 @@ typedef struct nodoArchivos {
 
 typedef struct infoTablaSegmentos {
     int id;
-    char* direccionBase; //VER TIPO
-    int tamanio;
+    size_t direccionBase; //VER TIPO
+    size_t tamanio;
 } t_infoTablaSegmentos;
 
-typedef struct nodoTablaSegmentos {
-	t_infoTablaSegmentos info_tablaSegmentos;
-    struct nodoTablaSegmentos* sgte;
-} t_nodoTablaSegmentos;
+//typedef struct nodoTablaSegmentos {
+//	t_infoTablaSegmentos info_tablaSegmentos;
+//    struct nodoTablaSegmentos* sgte;
+//} t_nodoTablaSegmentos;
 
 
 //DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
@@ -87,7 +87,7 @@ typedef struct infopcb {
     t_list* recursosAsignados;
 
     //VERIFICAR TIPOS
-    t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+    t_list* tablaSegmentos;// direccion base = char*?
 	t_nodoArchivos* punterosArchivos;
 
 	//HRRN
@@ -103,7 +103,7 @@ typedef struct infopcb {
 	int ultimaInstruccion_length;
 	int tiempoBloqueado;
 	int idSegmento;
-	int tamanioSegmento;
+	size_t tamanioSegmento;
 	//recursos
 	char* recursoALiberar;
 	int recursoALiberar_length;

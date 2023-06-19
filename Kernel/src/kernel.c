@@ -440,13 +440,17 @@ void manejar_recursos() {
 		printf("FALTA HACER EL PROCEDIMIENTO\n");
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
-		//iniciarHiloClienteMemoria()
-		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
-		//podemos recibir resultados diferentes
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
 
 		//log minimo y obligatorio
-		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid);
+		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
+
+		iniciarHiloClienteMemoria();
+		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
+		//podemos recibir resultados diferentes
+
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+
+
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
 		//iniciarHiloClienteMemoria()
@@ -533,15 +537,76 @@ void* clientMemoria(void* ptr) {
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("kernel",conexion_Memoria);
-    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-    paquete(conexion_Memoria);
+//    enviar_mensaje("kernel",conexion_Memoria);
+//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+
+    t_paquete* paquete = crear_paquete();
+
+    // Leemos y esta vez agregamos las lineas al paquete
+    if (string_contains(estadoEnEjecucion->ultimaInstruccion, "CREATE_SEGMENT")) {
+    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->tamanioSegmento, sizeof(size_t));
+
+    	enviar_paquete(paquete, conexion_Memoria);
+
+    	eliminar_paquete(paquete);
+
+    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "DELETE_SEGMENT")) {
+    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
+
+    	enviar_paquete(paquete, conexion_Memoria);
+
+    	eliminar_paquete(paquete);
+    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "COMPACTAR_SEGMENTO")){
+
+    }
+
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_Memoria);
+
+    switch (cod_op) {
+        		case MENSAJE:
+        			char* mensajeMemoria = recibir_handshake(conexion_Memoria);
+
+        			if (mensajeMemoria == "1") {
+
+        				//Log minimo y obligaotrio
+        				//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
+
+        				pasarAExit();
+
+        			} else if (mensajeMemoria == "2"){
+
+        				//Revisar si hay conexion entre FileSystem y Memoria
+
+//        				Mandarle a memoria que compacte
+
+        			} else {
+        				size_t base = strtol(mensajeMemoria, NULL, 10);
+
+        				t_infoTablaSegmentos* nuevoSegmento;
+
+        				nuevoSegmento->id = estadoEnEjecucion->idSegmento;
+        				nuevoSegmento->direccionBase = base;
+        				nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
+
+        				list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
+
+        				iniciarHiloClienteCPU();
+
+        			}
+
+        			//falta ver cuando nos mandan la tabla de segmentos despues de eliminar segmento y despues de compactacion
+
+        		break;
+    }
+
     liberar_conexion(conexion_Memoria);
 
     sem_post(&semKernelClientFileSystem);
+
 	return NULL;
 }
 
@@ -565,7 +630,7 @@ void* interrupcionIO(void* ptr) {
 	printf("dentro del hilo IO\n");
 
 	//t_infopcb* unProceso = estadoEnEjecucion;
-	// cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
+	//cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
 	//se reflejará en ambas variables, ya que apuntan al mismo lugar en la memoria.
 
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
@@ -683,7 +748,7 @@ void* serverKernel(int cliente_fd){
     			log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
         		armarPCB(lista);  //arma el PCB y lo encola en NEW
 
-    				//cosas de consola
+    			//cosas de consola
     			}
     			if (strcmp(handshake, "memoria") == 0) {
     				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
@@ -751,28 +816,28 @@ void armarPCB(t_list* lista){
 		    }
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EAX ); i++) {
 		nuevoPCB->registrosCpu.EAX[i] = '\0';
-			    }
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EBX ); i++) {
-			nuevoPCB->registrosCpu.EBX[i] = '\0';
-				    }
+		nuevoPCB->registrosCpu.EBX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.ECX ); i++) {
-				nuevoPCB->registrosCpu.ECX[i] = '\0';
-					    }
+		nuevoPCB->registrosCpu.ECX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.EDX ); i++) {
-					nuevoPCB->registrosCpu.EDX[i] = '\0';
-						    }
+		nuevoPCB->registrosCpu.EDX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RAX ); i++) {
-			nuevoPCB->registrosCpu.RAX[i] = '\0';
-				    }
+		nuevoPCB->registrosCpu.RAX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RBX ); i++) {
-				nuevoPCB->registrosCpu.RBX[i] = '\0';
-					    }
+		nuevoPCB->registrosCpu.RBX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RCX ); i++) {
-					nuevoPCB->registrosCpu.RCX[i] = '\0';
-						    }
+		nuevoPCB->registrosCpu.RCX[i] = '\0';
+			}
 	for (int i = 0; i < sizeof(nuevoPCB->registrosCpu.RDX ); i++) {
-					nuevoPCB->registrosCpu.RDX[i] = '\0';
-						    }
+		nuevoPCB->registrosCpu.RDX[i] = '\0';
+			}
 
 	//HRRN
 	nuevoPCB->estimadoAnterior = estimacion_inicial;
@@ -1071,14 +1136,14 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
 //        for (int i = 0; i < 12; i++) {
 //            printf("Registro %d: %s\n", i, frenteColaNew->info_pcb.registrosCpu[i]);
 //        }
-        printf("Tabla de segmentos:\n");
-        t_nodoTablaSegmentos* tabla = frenteColaNew->info_pcb->tablaSegmentos;
-        while (tabla != NULL) {
-        	printf("Id: %p\n", tabla->info_tablaSegmentos.id);
-            printf("Base: %p\n", tabla->info_tablaSegmentos.direccionBase);
-            printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
-            tabla = tabla->sgte;
-        }
+//        printf("Tabla de segmentos:\n");
+//        t_nodoTablaSegmentos* tabla = frenteColaNew->info_pcb->tablaSegmentos;
+//        while (tabla != NULL) {
+//        	printf("Id: %p\n", tabla->info_tablaSegmentos.id);
+//            printf("Base: %p\n", tabla->info_tablaSegmentos.direccionBase);
+//            printf("Base: %p\n", tabla->info_tablaSegmentos.tamanio);
+//            tabla = tabla->sgte;
+//        }
         printf("Estimado próxima ráfaga: %d\n", frenteColaNew->info_pcb->estimadoProxRafaga);
         printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->entraEnColaReady);
         printf("Punteros a archivos:\n");

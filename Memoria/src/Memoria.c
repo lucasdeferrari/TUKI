@@ -403,7 +403,7 @@ void* serverMemoria(void* ptr){
     		// LO QUE HARIA EL KERNEL SERIA CREAR UN PAQUETE, DONDE CADA RENGLON DEL MISMO
     		// SEA UN PARAMETRO DE ESA FUNCION. ES DECIR, MANDARIA UN PAQUETE CON 3 ELEMENTOS:
     		// PID, ID Y TAMANIO.
-    		case CREAR_SEGMENTO:
+    		case CREATE_SEGMENT:
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iterador = list_iterator_create(lista);
 
@@ -424,7 +424,7 @@ void* serverMemoria(void* ptr){
     			enviar_respuesta_crearSegmento(cliente_fd, resultado);
     			break;
 
-    		case ELIMINAR_SEGMENTO:
+    		case DELETE_SEGMENT:
     			char* segmento = string_new();
     			segmento = recibir_buffer_mio(cliente_fd);
     			eliminar_segmento(segmento);
