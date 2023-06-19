@@ -32279,3 +32279,23 @@
 [ERROR] 22:30:48:843 CPU/(23597:23599): el kernel se desconecto. Terminando servidor
 
 [INFO] 22:30:48:844 CPU/(23597:23609): CPU lista para recibir al cliente
+[INFO] 21:09:40:141 CPU/(36606:36606): CPU lista para escuchar al cliente
+
+[INFO] 21:09:40:141 CPU/(36606:36608): CPU lista para recibir al cliente
+[INFO] 21:09:40:142 CPU/(36606:36607): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:09:42:018 CPU/(36606:36607): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:11:16:658 CPU/(36720:36720): CPU lista para escuchar al cliente
+
+[INFO] 21:11:16:659 CPU/(36720:36722): CPU lista para recibir al cliente
+[INFO] 21:11:16:659 CPU/(36720:36721): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:11:18:260 CPU/(36720:36721): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:16:11:493 CPU/(37534:37534): CPU lista para escuchar al cliente
+
+[INFO] 21:16:11:494 CPU/(37534:37535): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:16:11:495 CPU/(37534:37536): CPU lista para recibir al cliente
+[INFO] 21:16:14:624 CPU/(37534:37535): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:17:58:131 CPU/(37616:37616): CPU lista para escuchar al cliente
+
+[INFO] 21:17:58:132 CPU/(37616:37618): CPU lista para recibir al cliente
+[INFO] 21:17:58:132 CPU/(37616:37617): Ingrese sus mensajes para la Memoria: 
+[INFO] 21:17:59:335 CPU/(37616:37617): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!

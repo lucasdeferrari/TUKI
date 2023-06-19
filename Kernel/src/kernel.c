@@ -44,6 +44,9 @@ int main(void) {
     inicializarRecursos();
     cantidadElementosBloqueados = 0;
 
+    //HANDSHAKE
+    enviar_handshake_memoria();
+
 //    //THREADS CONEXIÓN
 //    //thread clients CPU, FS, Memoria
   //iniciarHiloClienteCPU();
@@ -79,6 +82,20 @@ int main(void) {
 
     free(estadoEnEjecucion);
     return EXIT_SUCCESS;
+}
+
+//HANDSHAKES
+void enviar_handshake_memoria(){
+	int config = 1;
+	int conexion_Memoria;
+
+	conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+	enviar_mensaje("kernel",conexion_Memoria);
+	log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+	paquete(conexion_Memoria);
+	int cod_op = recibir_operacion(conexion_Memoria);
+	recibir_mensaje(conexion_Memoria);
+	liberar_conexion(conexion_Memoria);
 }
 
 void inicializarRecursos(){
@@ -153,6 +170,80 @@ void iniciarHiloClienteMemoria() {
 	}
 	//printf("El hilo cliente de la Memoria se creo correctamente.");
 
+}
+
+void* clientMemoria(void* ptr) {
+	//sem_wait(&semKernelClientMemoria);
+	int config = 1;
+    int conexion_Memoria;
+    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    enviar_mensaje("kernel",conexion_Memoria);
+
+
+    // Leemos y esta vez agregamos las lineas al paquete
+    if (string_contains(estadoEnEjecucion->ultimaInstruccion, "CREATE_SEGMENT")) {
+    	t_paquete* paquete = crear_paquete_create_segment();
+    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->tamanioSegmento, sizeof(size_t));
+
+    	enviar_paquete(paquete, conexion_Memoria);
+
+    	eliminar_paquete(paquete);
+
+    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "DELETE_SEGMENT")) {
+    	t_paquete* paquete = crear_paquete_delete_segment();
+    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
+    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
+
+    	enviar_paquete(paquete, conexion_Memoria);
+
+    	eliminar_paquete(paquete);
+    }
+
+    int cod_op = recibir_operacion(conexion_Memoria);
+    printf("codigo de operacion: %i\n", cod_op);
+
+    switch (cod_op) {
+        		case MENSAJE:
+        			char* mensajeMemoria = recibir_handshake(conexion_Memoria);
+
+        			if (mensajeMemoria == "1") {
+
+        				//Log minimo y obligaotrio
+        				//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
+
+        				pasarAExit();
+
+        			} else if (mensajeMemoria == "2"){
+
+        				//Revisar si hay conexion entre FileSystem y Memoria
+
+//        				Mandarle a memoria que compacte
+
+        			} else {
+        				size_t base = strtol(mensajeMemoria, NULL, 10);
+
+        				t_infoTablaSegmentos* nuevoSegmento;
+
+        				nuevoSegmento->id = estadoEnEjecucion->idSegmento;
+        				nuevoSegmento->direccionBase = base;
+        				nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
+
+        				list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
+
+        				iniciarHiloClienteCPU();
+
+        			}
+
+        			//falta ver cuando nos mandan la tabla de segmentos despues de eliminar segmento y despues de compactacion
+
+        		break;
+    }
+
+    liberar_conexion(conexion_Memoria);
+
+	return NULL;
 }
 
 void iniciarHiloClienteFileSystem() {
@@ -532,83 +623,6 @@ void liberarRecursosAsignados(){
 	}
 }
 
-void* clientMemoria(void* ptr) {
-	sem_wait(&semKernelClientMemoria);
-	int config = 1;
-    int conexion_Memoria;
-    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-//    enviar_mensaje("kernel",conexion_Memoria);
-//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-
-    t_paquete* paquete = crear_paquete();
-
-    // Leemos y esta vez agregamos las lineas al paquete
-    if (string_contains(estadoEnEjecucion->ultimaInstruccion, "CREATE_SEGMENT")) {
-    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
-    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
-    	agregar_a_paquete(paquete, estadoEnEjecucion->tamanioSegmento, sizeof(size_t));
-
-    	enviar_paquete(paquete, conexion_Memoria);
-
-    	eliminar_paquete(paquete);
-
-    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "DELETE_SEGMENT")) {
-    	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
-    	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
-
-    	enviar_paquete(paquete, conexion_Memoria);
-
-    	eliminar_paquete(paquete);
-    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "COMPACTAR_SEGMENTO")){
-
-    }
-
-    int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
-
-    switch (cod_op) {
-        		case MENSAJE:
-        			char* mensajeMemoria = recibir_handshake(conexion_Memoria);
-
-        			if (mensajeMemoria == "1") {
-
-        				//Log minimo y obligaotrio
-        				//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
-
-        				pasarAExit();
-
-        			} else if (mensajeMemoria == "2"){
-
-        				//Revisar si hay conexion entre FileSystem y Memoria
-
-//        				Mandarle a memoria que compacte
-
-        			} else {
-        				size_t base = strtol(mensajeMemoria, NULL, 10);
-
-        				t_infoTablaSegmentos* nuevoSegmento;
-
-        				nuevoSegmento->id = estadoEnEjecucion->idSegmento;
-        				nuevoSegmento->direccionBase = base;
-        				nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
-
-        				list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
-
-        				iniciarHiloClienteCPU();
-
-        			}
-
-        			//falta ver cuando nos mandan la tabla de segmentos despues de eliminar segmento y despues de compactacion
-
-        		break;
-    }
-
-    liberar_conexion(conexion_Memoria);
-
-    sem_post(&semKernelClientFileSystem);
-
-	return NULL;
-}
 
 void* clientFileSystem(void* ptr) {
 	//sem_wait(&semKernelClientFileSystem);

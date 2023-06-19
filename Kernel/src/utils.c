@@ -204,6 +204,22 @@ t_paquete* crear_paquete_instrucciones(void)
 	return paquete;
 }
 
+t_paquete* crear_paquete_create_segment(void)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = 2;
+	crear_buffer(paquete);
+	return paquete;
+}
+
+t_paquete* crear_paquete_delete_segment(void)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = 3;
+	crear_buffer(paquete);
+	return paquete;
+}
+
 void agregar_a_paquete(t_paquete* paquete, void* valor, int tamanio)
 {
 	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->size + tamanio + sizeof(int));

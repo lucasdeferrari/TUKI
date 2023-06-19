@@ -150,6 +150,8 @@ int crear_conexion(char* ip, char* puerto);
 void enviar_mensaje(char* mensaje, int socket_cliente);
 t_paquete* crear_paquete(void);
 t_paquete* crear_paquete_instrucciones(void);
+t_paquete* crear_paquete_create_segment(void);
+t_paquete* crear_paquete_delete_segment(void);
 t_paquete* crear_super_paquete(void);
 void agregar_a_paquete(t_paquete* paquete, void* valor, int tamanio);
 void enviar_paquete(t_paquete* paquete, int socket_cliente);

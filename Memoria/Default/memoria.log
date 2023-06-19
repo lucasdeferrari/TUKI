@@ -883,3 +883,74 @@ el cliente se desconecto. Terminando servidor
 [INFO] 22:30:40:410 Memoria/(10092:23445): sd
 [ERROR] 22:30:40:410 Memoria/(10092:23445): 
 el cliente se desconecto. Terminando servidor
+[INFO] 21:09:20:254 Memoria/(36566:36566): Listo para escuchar al cliente
+[INFO] 21:09:20:254 Memoria/(36566:36566): Memoria lista para recibir al cliente
+
+[INFO] 21:09:40:141 Memoria/(36566:36567): Se conecto un cliente!
+[INFO] 21:09:40:142 Memoria/(36566:36567): se conecto la cpu
+[INFO] 21:09:42:018 Memoria/(36566:36567): Me llegaron los siguientes valores:
+[INFO] 21:09:42:018 Memoria/(36566:36567): hola
+[ERROR] 21:09:42:019 Memoria/(36566:36567): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:09:58:400 Memoria/(36566:36609): Se conecto un cliente!
+[INFO] 21:09:58:400 Memoria/(36566:36609): se conecto el filesystem
+[INFO] 21:09:59:880 Memoria/(36566:36609): Me llegaron los siguientes valores:
+[INFO] 21:09:59:880 Memoria/(36566:36609): hola
+[ERROR] 21:09:59:880 Memoria/(36566:36609): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:09:59:880 Memoria/(36566:36566): Se conectaron todos los modulos.
+
+[INFO] 21:09:59:880 Memoria/(36566:36566): Se crearon todas las estructuras correctamente.
+
+[INFO] 21:11:16:659 Memoria/(36566:36647): Se conecto un cliente!
+[INFO] 21:11:16:659 Memoria/(36566:36647): se conecto la cpu
+[INFO] 21:11:18:260 Memoria/(36566:36647): Me llegaron los siguientes valores:
+[INFO] 21:11:18:260 Memoria/(36566:36647): hola
+[ERROR] 21:11:18:260 Memoria/(36566:36647): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:11:20:924 Memoria/(36566:36723): Se conecto un cliente!
+[INFO] 21:11:20:924 Memoria/(36566:36723): se conecto el filesystem
+[INFO] 21:11:22:088 Memoria/(36566:36723): Me llegaron los siguientes valores:
+[INFO] 21:11:22:088 Memoria/(36566:36723): hola
+[ERROR] 21:11:22:088 Memoria/(36566:36723): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:16:07:480 Memoria/(37531:37531): Listo para escuchar al cliente
+[INFO] 21:16:07:480 Memoria/(37531:37531): Memoria lista para recibir al cliente
+
+[INFO] 21:16:11:493 Memoria/(37531:37532): Se conecto un cliente!
+[INFO] 21:16:11:494 Memoria/(37531:37532): se conecto la cpu
+[INFO] 21:16:14:624 Memoria/(37531:37532): Me llegaron los siguientes valores:
+[INFO] 21:16:14:624 Memoria/(37531:37532): hola
+[ERROR] 21:16:14:624 Memoria/(37531:37532): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:16:20:768 Memoria/(37531:37537): Se conecto un cliente!
+[INFO] 21:16:20:768 Memoria/(37531:37537): se conecto el filesystem
+[INFO] 21:16:22:267 Memoria/(37531:37537): Me llegaron los siguientes valores:
+[INFO] 21:16:22:267 Memoria/(37531:37537): hola
+[ERROR] 21:16:22:267 Memoria/(37531:37537): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:17:55:592 Memoria/(37613:37613): Listo para escuchar al cliente
+[INFO] 21:17:55:592 Memoria/(37613:37613): Memoria lista para recibir al cliente
+
+[INFO] 21:17:58:132 Memoria/(37613:37614): Se conecto un cliente!
+[INFO] 21:17:58:132 Memoria/(37613:37614): se conecto la cpu
+[INFO] 21:17:59:335 Memoria/(37613:37614): Me llegaron los siguientes valores:
+[INFO] 21:17:59:335 Memoria/(37613:37614): asd
+[ERROR] 21:17:59:336 Memoria/(37613:37614): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:18:01:282 Memoria/(37613:37619): Se conecto un cliente!
+[INFO] 21:18:01:282 Memoria/(37613:37619): se conecto el filesystem
+[INFO] 21:18:02:160 Memoria/(37613:37619): Me llegaron los siguientes valores:
+[INFO] 21:18:02:160 Memoria/(37613:37619): asd
+[ERROR] 21:18:02:160 Memoria/(37613:37619): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:18:09:881 Memoria/(37613:37624): Se conecto un cliente!
+[INFO] 21:18:09:881 Memoria/(37613:37624): se conecto el kernel
+[INFO] 21:18:12:341 Memoria/(37613:37624): Me llegaron los siguientes valores:
+[INFO] 21:18:12:341 Memoria/(37613:37624): hola
+[ERROR] 21:18:12:341 Memoria/(37613:37624): 
+el cliente se desconecto. Terminando servidor
+[INFO] 21:18:12:341 Memoria/(37613:37613): Se conectaron todos los modulos.
+
+[INFO] 21:18:12:341 Memoria/(37613:37613): Se crearon todas las estructuras correctamente.
+

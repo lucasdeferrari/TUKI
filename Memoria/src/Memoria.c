@@ -238,7 +238,7 @@ int main(void) {
 
 
 	//FALTA AGREGAR seConectoKernel CUANDO HAGAN EL HANDSHAKE AHI
-	while(!( seConectoCPU && seConectoFS)){
+	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
 		iniciarHiloServer();
 		pthread_join(serverMemoria_thread, NULL);
 	}
