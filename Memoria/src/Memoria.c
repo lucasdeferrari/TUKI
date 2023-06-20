@@ -4,7 +4,7 @@
 char* ip_memoria;
 char* puerto_memoria;
 int server_fd;
-int contadorSegmentos = 0;
+int contadorSegmentos = 0, cantidadSegmentos;
 
 t_config* config;
 
@@ -12,6 +12,7 @@ bool seConectoKernel = 0;
 bool seConectoCPU = 0;
 bool seConectoFS = 0;
 
+Segmento *segmento0;
 
 
 // memoria es un void* que apunta al inicio del espacio de memoria contiguo del espacio de usuario
@@ -38,10 +39,21 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 		if(segmento != NULL) {
 			segmento->desplazamiento = tamanio;
 			segmento->base = buscarLugarParaElSegmento(tamanio);
-			segmento->idSegmento = asignarIdSegmento();
+			segmento->idSegmentoMemoria = asignarIdSegmento();
+			segmento->idSegmentoKernel = idSegmento;
 			agregarSegmentoATabla(segmento, idProceso);
 		}
 	return segmento->base;
+}
+
+Segmento *crearSegmento0(size_t tamanio){
+	segmento0 = malloc(sizeof(Segmento));
+	if(segmento0 != NULL) {
+		segmento0->base= 0;
+		segmento0->desplazamiento=tamanio;
+		segmento0->idSegmentoMemoria=0;
+	}
+	return segmento0;
 }
 
 bool hayTablaSegmentosDe(int idProceso) {
@@ -80,6 +92,7 @@ size_t buscarPorFirst (size_t tamanio) {
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio) {
+			actualizarHuecosLibres(siguiente, tamanio);
 			return siguiente->base;
 		}
 	}
@@ -96,6 +109,7 @@ size_t buscarPorBest(size_t tamanio) {
 				elegido = siguiente;
 		}
 	}
+	actualizarHuecosLibres(elegido, tamanio);
 	return elegido->base;
 }
 
@@ -110,15 +124,49 @@ size_t buscarPorWorst(size_t tamanio) {
 					elegido = siguiente;
 			}
 		}
+		actualizarHuecosLibres(elegido, tamanio);
 		return elegido->base;
 }
 
+void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio) {
+	bool resultado = list_remove_element(listaDeHuecosLibres, siguiente);
+	if(!resultado) {
+		log_error(logger, "Error al eliminar hueco libre. ");
+	}
 
-void crearTablaSegmentosDe(int idProceso) {
+	HuecoLibre *nuevoHueco;
+	nuevoHueco->base = siguiente->base + tamanio;
+	size_t base = buscarSiguienteLugarOcupado(nuevoHueco->base);
+	nuevoHueco->desplazamiento = base - nuevoHueco->base;
+	list_add(listaDeHuecosLibres,nuevoHueco);
+}
+
+size_t buscarSiguienteLugarOcupado(size_t base) {
+	int cantidadTablasSegmentos = list_size(tablasDeSegmento);
+	size_t baseMenor = tamanioMemoria;
+
+	for(int i = 0; i<cantidadTablasSegmentos; i++) {
+		TablaDeSegmentos *tablaActual = list_get(tablasDeSegmento, i);
+		int cantidadSegmentos = list_size(tablaActual->segmentos);
+		for(int j= 0; j<cantidadSegmentos; j++) {
+			Segmento *segmentoActual = list_get(tablaActual->segmentos, j);
+			if(segmentoActual->base < baseMenor && segmentoActual->base > base) {
+				baseMenor = segmentoActual->base;
+			}
+		}
+	}
+	return baseMenor;
+}
+
+
+TablaDeSegmentos* crearTablaSegmentosDe(int idProceso) {
 	TablaDeSegmentos *tablaDeSegmentos = malloc(sizeof(tablaDeSegmentos));
 	t_list* segmentos = list_create();
 	tablaDeSegmentos->pid = idProceso;
 	tablaDeSegmentos->segmentos = segmentos;
+	list_add(tablaDeSegmentos->segmentos, segmento0);
+	list_add(tablasDeSegmento, tablaDeSegmentos);
+	return tablaDeSegmentos;
 }
 
 void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
@@ -232,6 +280,15 @@ int main(void) {
 				 exit(-1);
 			 }
 
+	if (config_has_property(config, "CANT_SEGMENTOS")) {
+			 printf("Existe el valor para la cantidad de segmentos.\n");
+			 cantidadSegmentos = config_get_int_value(config, "CANT_SEGMENTOS");
+			 }
+			 else {
+				 log_error(logger, "No existe el valor para la cantidad de segmentos.\n");
+				 exit(-1);
+			 }
+
 	//printf("Tamanio del segmento 0: %i\n" , tamanioSeg0);
 
 //	esperarTodasLasConexiones
@@ -331,16 +388,6 @@ bool puedoCrearSegmentoPorTamanio(int tamanio) {
 	return true;
 }
 
-Segmento *crearSegmento0(size_t tamanio){
-	Segmento *segmento0 = malloc(sizeof(Segmento));
-	if(segmento0 != NULL) {
-		segmento0->base= 0;
-		segmento0->desplazamiento=tamanio;
-		segmento0->idSegmento=0;
-	}
-	return segmento0;
-}
-
 void asignarPorFirstFit() {
 
 }
@@ -355,6 +402,17 @@ void iniciarHiloServer() {
     	      printf("\nNo se pudo crear el hilo de la conexión.\n");
     	      exit(7);
     	     }
+}
+
+void crearYDevolverProceso(int pid, int cliente_fd) {
+	if(!hayTablaSegmentosDe(pid)){
+		TablaDeSegmentos *tablaDeSegmentos;
+		tablaDeSegmentos = crearTablaSegmentosDe(pid);
+		//SERIALIZAR LA TABLA Y ENVIAR A KERNEL
+	}
+	else {
+		enviar_mensaje("Este proceso ya esta creado.", cliente_fd);
+	}
 }
 
 void* serverMemoria(void* ptr){
@@ -398,6 +456,10 @@ void* serverMemoria(void* ptr){
     			enviar_respuesta(cliente_fd, handshake);
     			break;
 
+    		case PROCESO_NUEVO:
+    			int pid = recibir_buffer_mio(cliente_fd);
+    			crearYDevolverProceso(pid, cliente_fd);
+    			break;
 
     		// crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
     		// LO QUE HARIA EL KERNEL SERIA CREAR UN PAQUETE, DONDE CADA RENGLON DEL MISMO
@@ -414,7 +476,7 @@ void* serverMemoria(void* ptr){
 					arrayPaquete[i] = siguiente;
     			    }
 
-    			 int pid = arrayPaquete[0];
+    			 pid = arrayPaquete[0];
     			 int idSegmento = arrayPaquete[1];
     			 int tamanio = arrayPaquete[2];
 
@@ -425,9 +487,20 @@ void* serverMemoria(void* ptr){
     			break;
 
     		case DELETE_SEGMENT:
-    			char* segmento = string_new();
-    			segmento = recibir_buffer_mio(cliente_fd);
-    			eliminar_segmento(segmento);
+//    			lista = recibir_paquete(cliente_fd);
+//				t_list_iterator* iterador = list_iterator_create(lista);
+//
+//				int arrayPaquete[3] = {};
+//
+//				 for (int i = 0; i<3; i++) {
+//					char* siguiente = list_iterator_next(iterador);
+//					arrayPaquete[i] = siguiente;
+//					}
+//
+//				 pid = arrayPaquete[0];
+//				 int idSegmento = arrayPaquete[1];
+//				 int tamanio = arrayPaquete[2];
+//    			eliminar_segmento(segmento);
     			break;
 
     		case COMPACTAR_MEMORIA:

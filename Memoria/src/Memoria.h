@@ -14,7 +14,8 @@
 
 
 typedef struct {
-    int idSegmento;
+    int idSegmentoMemoria;
+    int idSegmentoKernel;
     size_t base;
     size_t desplazamiento;
 } Segmento;
@@ -43,7 +44,6 @@ void informarKernelFaltaDeEspacio();
 Segmento *crearSegmento0(size_t);
 char* recibir_buffer_mio(int socket_cliente);
 size_t buscarLugarParaElSegmento(size_t tamanio);
-void crearTablaSegmentosDe(int idProceso);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
 void eliminar_segmento(Segmento *segmento);
 bool hayLugarParaCrearSegmento(size_t tamanio);
@@ -53,6 +53,10 @@ int asignarIdSegmento();
 size_t buscarPorFirst (size_t tamanio);
 size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
+void crearYDevolverProceso();
+TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
+void enviar_respuesta_crearSegmento(int socket_cliente, int resultado);
+size_t buscarSiguienteLugarOcupado(size_t base);
 
 void iterator(char *value);
 
