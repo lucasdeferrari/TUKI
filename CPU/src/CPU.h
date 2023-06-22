@@ -40,6 +40,16 @@ void signal_tp(char* );
 void set_tp(char* , char* );
 void serializarContexto(int);
 
+int MMU(int ,int);
+void createSeg_tp(int , size_t);
+void deleteSeg_tp(int);
+void fopen_tp(char*);
+void fclose_tp(char*);
+void fseek_tp(char*, int);
+void fread_tp(char*, int, int);
+void fwrite_tp(char*, int, int);
+void ftruncate_tp(char*, int);
+
 int ejecutarFuncion(char*);
 void iniciar_ejecucion();
 void vaciarContexto();

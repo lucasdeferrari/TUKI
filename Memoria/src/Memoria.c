@@ -412,6 +412,9 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 	}
 	else {
 		enviar_mensaje("Este proceso ya esta creado.", cliente_fd);
+		//Holis soy sol, dsps cambien la frase por algun numero que nos sirva de código en kernel
+		//lo mismo cuando serialicen y envíen la tabla (ahi necesitemos usar un cod_op)
+		//así podemos reconocer en kernel que nos envían
 	}
 }
 
@@ -557,16 +560,24 @@ void enviar_respuesta_crearSegmento(int socket_cliente, int resultado) {
 
 	if (resultado == -1) {
 		respuesta = "No hay espacio libre para crear el segmento.";
+		// Holis soy sol, dsps van a tener que cambiar la frase
+		// en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 1
+		//desps avisen si nos cambian el cod_op, por ahora en kernel tenemos: MENSAJE
 	}
 
 	else if (resultado == 0) {
 		respuesta = "Se debe solicitar una compactacion previa a crear el segmento.";
+		//en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 2
 	}
 
 	else {
 		char* resultadoString = string_itoa(resultado);
 		respuesta= "La direccion base del segmento es: ";
 		string_append(respuesta, resultadoString);
+		// Holis soy sol, dsps van a tener que cambiar la frase
+		// que el contenido del mensaje sea la base
+
+
 	}
 
 	enviar_mensaje(respuesta,socket_cliente);

@@ -674,7 +674,7 @@ int MMU(int direcLogica,int cantBytes){
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
 
 //CREATE_SEGMENT (Id del Segmento, Tamaño): Esta instrucción solicita al kernel la creación del segmento con el Id y tamaño indicado por parámetro.
-void createSeg_tp(int idSegmento, int tamanioSegmento){
+void createSeg_tp(int idSegmento, size_t tamanioSegmento){
 
 	contexto->idSegmento = idSegmento;
 	contexto->tamanioSegmento = tamanioSegmento;

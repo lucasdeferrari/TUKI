@@ -44,11 +44,14 @@ int main(void) {
     inicializarRecursos();
     cantidadElementosBloqueados = 0;
 
-    //HANDSHAKE
+    //HANDSHAKE -> queda arreglar que memoria no espere que escriba en consola
     enviar_handshake_memoria();
 
-//    //THREADS CONEXIÓN
-//    //thread clients CPU, FS, Memoria
+
+   //THREADS CONEXIÓN
+   //thread clients CPU, FS, Memoria
+
+
   //iniciarHiloClienteCPU();
  // iniciarHiloClienteMemoria();
     iniciarHiloClienteFileSystem();
@@ -60,15 +63,12 @@ int main(void) {
     pthread_detach(client_FileSystem);
 
     //thread server
-
     server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para escuchar al cliente\n");
 
     while(1){
     	iniciarHiloServer(server_fd);
     }
-
-
 
     //libero memoria
     log_destroy(logger);
@@ -157,12 +157,12 @@ void iniciarHiloClienteCPU() {
 
 }
 
-void iniciarHiloClienteMemoria() {
+void iniciarHiloClienteMemoria(int cod_memoria) {
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 								NULL,
 								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-								NULL); // argumentos de la función
+								(void *)cod_memoria); // argumentos de la función
 
 	if (err != 0) {
 	printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
@@ -172,17 +172,24 @@ void iniciarHiloClienteMemoria() {
 
 }
 
-void* clientMemoria(void* ptr) {
-	//sem_wait(&semKernelClientMemoria);
+
+void* clientMemoria(int cod_memoria) {
+
+//	0 -> MENSAJE
+//	1 -> PAQUETE
+//	2 -> CREATE_SEGMENT
+//	3 -> DELETE_SEGMENT
+//	4 -> COMPACTAR_MEMORIA
+//	5 -> PROCESO_NUEVO
+
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
     enviar_mensaje("kernel",conexion_Memoria);
 
 
-    // Leemos y esta vez agregamos las lineas al paquete
-    if (string_contains(estadoEnEjecucion->ultimaInstruccion, "CREATE_SEGMENT")) {
-    	t_paquete* paquete = crear_paquete_create_segment();
+    if (cod_memoria == 2) { //CREATE_SEGMENT
+    	t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
     	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
     	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
     	agregar_a_paquete(paquete, estadoEnEjecucion->tamanioSegmento, sizeof(size_t));
@@ -191,15 +198,21 @@ void* clientMemoria(void* ptr) {
 
     	eliminar_paquete(paquete);
 
-    } else if (string_contains(estadoEnEjecucion->ultimaInstruccion, "DELETE_SEGMENT")) {
-    	t_paquete* paquete = crear_paquete_delete_segment();
+    } else if (cod_memoria == 3) { //DELETE_SEGMENT
+    	t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
     	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
     	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
 
     	enviar_paquete(paquete, conexion_Memoria);
 
     	eliminar_paquete(paquete);
-    }
+    } else if (cod_memoria == 5) { //PROCESO_NUEVO
+
+		t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
+		agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
+		enviar_paquete(paquete, conexion_Memoria);
+		eliminar_paquete(paquete);
+	}
 
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
@@ -207,24 +220,26 @@ void* clientMemoria(void* ptr) {
     switch (cod_op) {
         		case MENSAJE:
         			char* mensajeMemoria = recibir_handshake(conexion_Memoria);
+        			int cod_mensaje = atoi(mensajeMemoria);
 
-        			if (mensajeMemoria == "1") {
+        			if (cod_mensaje == 1) {
 
         				//Log minimo y obligaotrio
         				//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
 
         				pasarAExit();
 
-        			} else if (mensajeMemoria == "2"){
+        			} else if (cod_mensaje == 2){
 
         				//Revisar si hay conexion entre FileSystem y Memoria
+        				//Mandarle a memoria que compacte
 
-//        				Mandarle a memoria que compacte
+        				//procedimiento_compactar();
 
         			} else {
         				size_t base = strtol(mensajeMemoria, NULL, 10);
 
-        				t_infoTablaSegmentos* nuevoSegmento;
+        				t_infoTablaSegmentos* nuevoSegmento = NULL;
 
         				nuevoSegmento->id = estadoEnEjecucion->idSegmento;
         				nuevoSegmento->direccionBase = base;
@@ -239,12 +254,42 @@ void* clientMemoria(void* ptr) {
         			//falta ver cuando nos mandan la tabla de segmentos despues de eliminar segmento y despues de compactacion
 
         		break;
+        		case PAQUETE:
+
+
+
+        		break;
     }
 
     liberar_conexion(conexion_Memoria);
 
 	return NULL;
 }
+
+
+
+void procedimiento_compactar(){
+	printf("FALTA HACER PROCEDIMIENTO COMPACTAR\n");
+	//Revisar si hay conexion entre FileSystem y Memoria
+	//Mandarle a memoria que compacte
+	//compactar();
+	return;
+}
+
+void compactar(){
+	printf("FALTA HACER COMPACTAR\n");
+	//	0 -> MENSAJE
+	//	1 -> PAQUETE
+	//	2 -> CREATE_SEGMENT
+	//	3 -> DELETE_SEGMENT
+	//	4 -> COMPACTAR_MEMORIA
+	//	5 -> PROCESO_NUEVO
+
+	iniciarHiloClienteMemoria(4);
+	return;
+}
+
+
 
 void iniciarHiloClienteFileSystem() {
 
@@ -335,9 +380,6 @@ void* clientCPU(void* ptr) {
 }
 
 void encolar_ready_ejecucion(t_infopcb* proceso) {
-	//t_infopcb* unProceso = proceso;
-	// cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
-	//se reflejará en ambas variables, ya que apuntan al mismo lugar en la memoria.
 
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
 	memcpy(unProceso, proceso, sizeof(t_infopcb));
@@ -527,7 +569,7 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//iniciarHiloClienteFileSystem()
-		// El proceso que llamó a F_TRUNCATE deberá permanecer en estado bloqueado
+		//El proceso que llamó a F_TRUNCATE deberá permanecer en estado bloqueado
 		printf("FALTA HACER EL PROCEDIMIENTO\n");
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
@@ -535,7 +577,15 @@ void manejar_recursos() {
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
 
-		iniciarHiloClienteMemoria();
+		//	0 -> MENSAJE
+		//	1 -> PAQUETE
+		//	2 -> CREATE_SEGMENT
+		//	3 -> DELETE_SEGMENT
+		//	4 -> COMPACTAR_MEMORIA
+		//	5 -> PROCESO_NUEVO
+		iniciarHiloClienteMemoria(2);
+
+
 		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
 		//podemos recibir resultados diferentes
 
@@ -544,14 +594,24 @@ void manejar_recursos() {
 
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
-		//iniciarHiloClienteMemoria()
+
 		//enviarle a la Memoria el Id del segmento a eliminar
 		//recibimos como respuesta de la Memoria la tabla de segmentos actualizada
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+
+		//	0 -> MENSAJE
+		//	1 -> PAQUETE
+		//	2 -> CREATE_SEGMENT
+		//	3 -> DELETE_SEGMENT
+		//	4 -> COMPACTAR_MEMORIA
+		//	5 -> PROCESO_NUEVO
+		iniciarHiloClienteMemoria(3);
 
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
-	} //NO HABRÍA QUE HACER U ELSE IF PARA SEG_FAULT??
+	}else if (strcmp(unProceso->ultimaInstruccion, "SEG_FAULT") == 0) {
+
+		printf("FALTA HACER EL PROCEDIMIENTO\n");
+	}
 	else{
 		printf("Instruccion no reconocida.\n");
 	}
@@ -888,8 +948,6 @@ void finalizarEncolar(){
 }
 void encolarReady() {
 
-
-
 	// SI EL ALGORITMO DE PLANIFICACION ES FIFO VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -904,9 +962,15 @@ void encolarReady() {
 			if(frenteColaNew != NULL){
 				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
-				//iniciarHiloClienteMemoria()
-				//ENVIAR MENSAJE A MEMORIA PARA QUE INICIALICE LAS ESTRUCUTRAS NECESARIAS
-				//NOS DEVUELVE LA TABLA DE SEGMENTOS INICIAL DEL PROCESO QUE ALMACENAMOS EN EL PCB
+
+				//	0 -> MENSAJE
+				//	1 -> PAQUETE
+				//	2 -> CREATE_SEGMENT
+				//	3 -> DELETE_SEGMENT
+				//	4 -> COMPACTAR_MEMORIA
+				//	5 -> PROCESO_NUEVO
+				iniciarHiloClienteMemoria(5);
+				//LE AVISO A MEMORIA QUE HAY UN NUEVO PROCESO
 
 				cantidadElementosSistema++;
 
@@ -948,9 +1012,14 @@ void encolarReady() {
 				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 
 				list_add(listaReady, procesoADesencolar);
-				//iniciarHiloClienteMemoria()
-				//ENVIAR MENSAJE A MEMORIA PARA QUE INICIALICE LAS ESTRUCUTRAS NECESARIAS
-				//NOS DEVUELVE LA TABLA DE SEGMENTOS INICIAL DEL PROCESO QUE ALMACENAMOS EN EL PCB
+
+				//	0 -> MENSAJE
+				//	1 -> PAQUETE
+				//	2 -> CREATE_SEGMENT
+				//	3 -> DELETE_SEGMENT
+				//	4 -> COMPACTAR_MEMORIA
+				//	5 -> PROCESO_NUEVO
+				iniciarHiloClienteMemoria(5);
 
 				cantidadElementosSistema++;
 

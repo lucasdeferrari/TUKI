@@ -59,14 +59,10 @@ typedef struct
 //  CONTEXTO
 typedef struct infoTablaSegmentos {
     int id;
-    char* direccionBase; //VER TIPO
-    int tamanio;
+    size_t direccionBase;
+    size_t tamanio;
 } t_infoTablaSegmentos;
 
-typedef struct nodoTablaSegmentos {
-	t_infoTablaSegmentos info_tablaSegmentos;
-    struct nodoTablaSegmentos* sgte;
-} t_nodoTablaSegmentos;
 
 //UTILIZAMOS UN STRUCT PARA LOS REGISTROS EN VEZ DE UN VECTOR
 //DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
@@ -89,7 +85,7 @@ typedef struct {
 	int programCounter;
 	t_list* listaInstrucciones;
 	t_registrosCPU registrosCpu;
-	//t_nodoTablaSegmentos* tablaSegmentos;// direccion base = char*?
+	//t_list* tablaSegmentos;
 
 	int instruccion_length;
 	char* instruccion;

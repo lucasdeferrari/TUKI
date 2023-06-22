@@ -55,9 +55,9 @@ int pid = 1; //Contador del PID de los PCB
 sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer, semReady;
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 
-void *serverKernel(int);
+void* serverKernel(int);
 void* clientCPU(void *ptr);
-void* clientMemoria(void *ptr);
+void* clientMemoria(int);
 void* clientFileSystem(void *ptr);
 void* interrupcionIO(void *ptr);
 void encolarReady();
