@@ -12,21 +12,13 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-
-typedef struct {
-    int idSegmentoMemoria;
-    int idSegmentoKernel;
-    size_t base;
-    size_t desplazamiento;
-} Segmento;
-
-typedef struct {
-    size_t base;
-    size_t desplazamiento;
-} HuecoLibre;
+pthread_t client_Kernel;
 
 t_list * listaDeHuecosLibres;
 t_list* tablasDeSegmento;
+
+
+size_t base;
 
 char* algoritmoAsignacion;
 sem_t semMemoriaServer;
@@ -57,7 +49,8 @@ void crearYDevolverProceso();
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 void enviar_respuesta_crearSegmento(int socket_cliente, int resultado);
 size_t buscarSiguienteLugarOcupado(size_t base);
-
+t_paquete* empaquetarTabla(int pid, t_list* cabeza);
+void* clientKernel(int cod_kernel, int cliente_fd);
 void iterator(char *value);
 
 t_log* iniciar_logger(void);

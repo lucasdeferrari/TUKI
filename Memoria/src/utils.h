@@ -9,6 +9,7 @@
 #include<netdb.h>
 #include<commons/log.h>
 #include<commons/collections/list.h>
+#include<commons/string.h>
 #include<string.h>
 #include<assert.h>
 
@@ -23,8 +24,10 @@ typedef enum
 	CREATE_SEGMENT,
 	DELETE_SEGMENT,
 	COMPACTAR_MEMORIA,
-	PROCESO_NUEVO
-}op_code;
+	PROCESO_NUEVO,
+	TABLA_SEGMENTOS,
+	SIN_ESPACIO
+}op_code_Kernel;
 
 //client
 typedef struct
@@ -35,7 +38,7 @@ typedef struct
 
 typedef struct
 {
-	op_code codigo_operacion;
+	op_code_Kernel codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
 
@@ -45,6 +48,22 @@ typedef struct
 	t_list* segmentos;
 }TablaDeSegmentos;
 
+typedef struct {
+    int idSegmentoMemoria;
+    int idSegmentoKernel;
+    size_t base;
+    size_t desplazamiento;
+} Segmento;
+
+typedef struct {
+    size_t base;
+    size_t desplazamiento;
+} HuecoLibre;
+
+typedef struct {
+    int cod_kernel;
+    int cliente_fd;
+} ClientKernelArgs;
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);
@@ -66,5 +85,6 @@ void agregar_a_paquete(t_paquete* paquete, void* valor, int tamanio);
 void enviar_paquete(t_paquete* paquete, int socket_cliente);
 void liberar_conexion(int socket_cliente);
 void eliminar_paquete(t_paquete* paquete);
+t_paquete* crear_paquete_cod_operacion(int cod_operacion);
 
 #endif /* UTILS_H_ */

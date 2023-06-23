@@ -226,3 +226,35 @@ void liberar_conexion(int socket_cliente)
 {
 	close(socket_cliente);
 }
+
+t_paquete* crear_paquete_cod_operacion(int cod_operacion)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = cod_operacion;
+	crear_buffer(paquete);
+	return paquete;
+}
+
+t_paquete* empaquetarTabla(int pid, t_list* cabeza) {
+    t_list_iterator* iterador = list_iterator_create(cabeza);
+    t_paquete* paquete = crear_paquete_cod_operacion(TABLA_SEGMENTOS);
+
+    char* pidstr = string_new();
+    string_append_with_format(&pidstr, "%d", pid);
+    agregar_a_paquete(paquete, pidstr, strlen(pidstr) + 1);
+
+    while (list_iterator_has_next(iterador)) {
+        Segmento* siguiente = list_iterator_next(iterador);
+        char* unaPalabra = string_new();
+
+        string_append_with_format(&unaPalabra, "%d %zu %zu",
+        						siguiente->idSegmentoKernel,
+											siguiente->base,
+								siguiente->desplazamiento);
+
+        int tamanio = strlen(unaPalabra) + 1;
+        agregar_a_paquete(paquete, unaPalabra, tamanio);
+    }
+
+    return paquete;
+}

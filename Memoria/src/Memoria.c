@@ -23,12 +23,12 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 
 	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
 	if(!hayLugarParaCrearSegmento(tamanio)) {
-		return -1;
+		return 7;
 	}
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
 	else if(!hayLugarContiguoPara(tamanio)) {
-		return 0;
+		return 4;
 	}
 
 	if(!hayTablaSegmentosDe(idProceso)) {
@@ -43,7 +43,8 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 			segmento->idSegmentoKernel = idSegmento;
 			agregarSegmentoATabla(segmento, idProceso);
 		}
-	return segmento->base;
+	base = segmento->base;
+	return 2;
 }
 
 Segmento *crearSegmento0(size_t tamanio){
@@ -301,7 +302,7 @@ int main(void) {
 	}
 
 	log_info(logger, "Se conectaron todos los modulos.\n");
-
+	pthread_detach(client_Kernel);
 
 	// LA FUNCION crearSegmento() DEBE VERIFICAR SI HAY ESPACIO PARA CREAR EL SEGMENTO. EN CASO DE QUE
 	// HAYA ESPACIO CREARA EL SEGMENTO Y DEVOLVERA SU DIRECCION BASE
@@ -408,7 +409,11 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 	if(!hayTablaSegmentosDe(pid)){
 		TablaDeSegmentos *tablaDeSegmentos;
 		tablaDeSegmentos = crearTablaSegmentosDe(pid);
-		//SERIALIZAR LA TABLA Y ENVIAR A KERNEL
+
+		//EMPAQUETAR LA TABLA Y ENVIAR A KERNEL
+		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos);
+		enviar_paquete(paquete, cliente_fd);
+		eliminar_paquete(paquete);
 	}
 	else {
 		enviar_mensaje("Este proceso ya esta creado.", cliente_fd);
@@ -486,7 +491,7 @@ void* serverMemoria(void* ptr){
     			 //CALCULAMOS NUESTRO IdSEGMENTO
 
     			int resultado = crear_segmento(pid, idSegmento,tamanio);
-    			enviar_respuesta_crearSegmento(cliente_fd, resultado);
+    			iniciarHiloClienteKernel(resultado, cliente_fd);
     			break;
 
     		case DELETE_SEGMENT:
@@ -525,7 +530,44 @@ void* serverMemoria(void* ptr){
 	return NULL;
 }
 
+void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd) {
+	ClientKernelArgs args;
+	args.cod_kernel = cod_kernel;
+	args.cliente_fd = cliente_fd;
 
+	int err = pthread_create( 	&client_Kernel,	// puntero al thread
+								NULL,
+								clientKernel, // le paso la def de la función que quiero que ejecute mientras viva
+								(void *)&args); // argumentos de la función
+
+	if (err != 0) {
+	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
+	exit(7);
+	}
+	//printf("El hilo cliente de la Memoria se creo correctamente.");
+
+}
+
+
+void* clientKernel(int cod_kernel, int cliente_fd) {
+//	MENSAJE --> 0
+//	PAQUETE --> 1
+//	CREATE_SEGMENT --> 2
+//	DELETE_SEGMENT --> 3
+//	COMPACTAR_MEMORIA --> 4
+//	PROCESO_NUEVO --> 5
+//	TABLA_SEGMENTOS --> 6
+// 	SIN_ESPACIO --> 7
+
+	switch(cod_kernel){
+		break;
+		case SIN_ESPACIO:
+		break;
+		case CREATE_SEGMENT:
+			//enviar_mensaje(base, cliente_fd);
+
+	}
+}
 
 void enviar_respuesta(int socket_cliente, char* quien_es) {
 	char* handshake = quien_es;
@@ -552,36 +594,36 @@ void enviar_respuesta(int socket_cliente, char* quien_es) {
 		free(handshake);
 }
 
-void enviar_respuesta_crearSegmento(int socket_cliente, int resultado) {
-	char* respuesta = string_new();
-
-	// IDEA BASICA, NO ESTA BIEN PORQUE NO SE MANDARIAN STRINGS, SINO OTRO TIPO DE DATO
-	// QUE PUEDA SER INTERPRETADO POR EL KERNEL, PERO NO ESTOY DEL TODO SEGURO DE QUE SERIA
-
-	if (resultado == -1) {
-		respuesta = "No hay espacio libre para crear el segmento.";
-		// Holis soy sol, dsps van a tener que cambiar la frase
-		// en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 1
-		//desps avisen si nos cambian el cod_op, por ahora en kernel tenemos: MENSAJE
-	}
-
-	else if (resultado == 0) {
-		respuesta = "Se debe solicitar una compactacion previa a crear el segmento.";
-		//en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 2
-	}
-
-	else {
-		char* resultadoString = string_itoa(resultado);
-		respuesta= "La direccion base del segmento es: ";
-		string_append(respuesta, resultadoString);
-		// Holis soy sol, dsps van a tener que cambiar la frase
-		// que el contenido del mensaje sea la base
-
-
-	}
-
-	enviar_mensaje(respuesta,socket_cliente);
-}
+//void enviar_respuesta_crearSegmento(int socket_cliente, int resultado) {
+//	char* respuesta = string_new();
+//
+//	// IDEA BASICA, NO ESTA BIEN PORQUE NO SE MANDARIAN STRINGS, SINO OTRO TIPO DE DATO
+//	// QUE PUEDA SER INTERPRETADO POR EL KERNEL, PERO NO ESTOY DEL TODO SEGURO DE QUE SERIA
+//
+//	if (resultado == -1) {
+//		respuesta = "No hay espacio libre para crear el segmento.";
+//		// Holis soy sol, dsps van a tener que cambiar la frase
+//		// en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 1
+//		//desps avisen si nos cambian el cod_op, por ahora en kernel tenemos: MENSAJE
+//	}
+//
+//	else if (resultado == 0) {
+//		respuesta = "Se debe solicitar una compactacion previa a crear el segmento.";
+//		//en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 2
+//	}
+//
+//	else {
+//		char* resultadoString = string_itoa(resultado);
+//		respuesta= "La direccion base del segmento es: ";
+//		string_append(respuesta, resultadoString);
+//		// Holis soy sol, dsps van a tener que cambiar la frase
+//		// que el contenido del mensaje sea la base
+//
+//
+//	}
+//
+//	enviar_mensaje(respuesta,socket_cliente);
+//}
 
 char* recibir_buffer_mio(int socket_cliente)
 {
