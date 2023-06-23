@@ -181,6 +181,7 @@ void* clientMemoria(int cod_memoria) {
 //	3 -> DELETE_SEGMENT
 //	4 -> COMPACTAR_MEMORIA
 //	5 -> PROCESO_NUEVO
+//  6 -> TABLA_SEGMENTOS   -> podríamos usar directamente delete_segment
 
 	int config = 1;
     int conexion_Memoria;
@@ -212,13 +213,16 @@ void* clientMemoria(int cod_memoria) {
 		agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
 		enviar_paquete(paquete, conexion_Memoria);
 		eliminar_paquete(paquete);
+	} else if (cod_memoria == 4) { //COMPACTAR_MEMORIA
+
+		printf("FALTA ENVIAR MENSAJE PARA COMPACTAR\n");
 	}
 
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
 
     switch (cod_op) {
-        		case MENSAJE:
+        		case 2: //CREATE_SEGMENT
         			char* mensajeMemoria = recibir_handshake(conexion_Memoria);
         			int cod_mensaje = atoi(mensajeMemoria);
 
@@ -250,13 +254,15 @@ void* clientMemoria(int cod_memoria) {
         				iniciarHiloClienteCPU();
 
         			}
-
-        			//falta ver cuando nos mandan la tabla de segmentos despues de eliminar segmento y despues de compactacion
+        		break;
+        		case 6: //TABLA_SEGMENTOS ->  DELETE_SEGMENT
+        			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
+        			estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
 
         		break;
-        		case PAQUETE:
+        		case 4:   //COMPACTAR_MEMORIA
 
-
+        		//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
 
         		break;
     }
@@ -266,7 +272,41 @@ void* clientMemoria(int cod_memoria) {
 	return NULL;
 }
 
+t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
+	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
+	t_list* tablaSegmentosActualizada = list_create();
+	t_infoTablaSegmentos* nuevoSegmento = NULL;
+
+	char* siguiente = list_iterator_next(iterador);  //REVISAR, salteo el pid en este caso
+
+	int pidProceso = atoi(siguiente); //solo para comprobar si funciona
+	if(pidProceso == estadoEnEjecucion->pid){ //solo para comprobar si funciona
+
+	while (list_iterator_has_next(iterador)) {
+
+		//REVISAR SI ESTA BIEN QUE ESTAN DEFINIDOS ACA DENTRO LOS TIPOS DE LAS VARIABLES
+
+		char* siguiente = list_iterator_next(iterador);
+
+		char** arraySegmento = string_array_new();
+		arraySegmento = string_split(siguiente, " ");
+
+		int idSegmento = atoi(arraySegmento[0]);
+		int baseSegmento = atoi(arraySegmento[1]);
+		int tamanioSegmento = atoi(arraySegmento[2]);
+
+		nuevoSegmento->id = idSegmento;
+		nuevoSegmento->direccionBase = baseSegmento;
+		nuevoSegmento->tamanio = tamanioSegmento;
+
+		list_add(tablaSegmentosActualizada,nuevoSegmento);
+	 }
+
+	}
+
+	return tablaSegmentosActualizada;
+}
 
 void procedimiento_compactar(){
 	printf("FALTA HACER PROCEDIMIENTO COMPACTAR\n");
@@ -277,7 +317,6 @@ void procedimiento_compactar(){
 }
 
 void compactar(){
-	printf("FALTA HACER COMPACTAR\n");
 	//	0 -> MENSAJE
 	//	1 -> PAQUETE
 	//	2 -> CREATE_SEGMENT

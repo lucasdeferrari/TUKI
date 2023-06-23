@@ -287,7 +287,7 @@ void iniciar_ejecucion(){
 	while(continuarLeyendo>0){
 
 		//list_get retorna el contenido de una posicion determianda de la lista
-		char* proximaInstruccion =string_new();
+		char* proximaInstruccion = string_new();
 		proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
 
 		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
