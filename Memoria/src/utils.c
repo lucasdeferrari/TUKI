@@ -167,7 +167,25 @@ void enviar_mensaje(char* mensaje, int socket_cliente)
 	free(a_enviar);
 	eliminar_paquete(paquete);
 }
+void enviar_cod_operacion(char* mensaje, int socket_cliente, int cod_operacion)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
 
+	paquete->codigo_operacion = cod_operacion;
+	paquete->buffer = malloc(sizeof(t_buffer));
+	paquete->buffer->size = strlen(mensaje) + 1;
+	paquete->buffer->stream = malloc(paquete->buffer->size);
+	memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
+
+	int bytes = paquete->buffer->size + 2*sizeof(int);
+
+	void* a_enviar = serializar_paquete(paquete, bytes);
+
+	send(socket_cliente, a_enviar, bytes, 0);
+
+	free(a_enviar);
+	eliminar_paquete(paquete);
+}
 
 void crear_buffer(t_paquete* paquete)
 {
@@ -235,19 +253,16 @@ t_paquete* crear_paquete_cod_operacion(int cod_operacion)
 	return paquete;
 }
 
-t_paquete* empaquetarTabla(int pid, t_list* cabeza) {
+t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion) {
     t_list_iterator* iterador = list_iterator_create(cabeza);
-    t_paquete* paquete = crear_paquete_cod_operacion(TABLA_SEGMENTOS);
-
-    char* pidstr = string_new();
-    string_append_with_format(&pidstr, "%d", pid);
-    agregar_a_paquete(paquete, pidstr, strlen(pidstr) + 1);
+    t_paquete* paquete = crear_paquete_cod_operacion(cod_operacion);
 
     while (list_iterator_has_next(iterador)) {
         Segmento* siguiente = list_iterator_next(iterador);
         char* unaPalabra = string_new();
 
-        string_append_with_format(&unaPalabra, "%d %zu %zu",
+        string_append_with_format(&unaPalabra, "%d %d %zu %zu",
+        						pid,
         						siguiente->idSegmentoKernel,
 											siguiente->base,
 								siguiente->desplazamiento);

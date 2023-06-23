@@ -23,12 +23,12 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 
 	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
 	if(!hayLugarParaCrearSegmento(tamanio)) {
-		return 7;
+		return SIN_ESPACIO;
 	}
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
 	else if(!hayLugarContiguoPara(tamanio)) {
-		return 4;
+		return COMPACTAR_MEMORIA;
 	}
 
 	if(!hayTablaSegmentosDe(idProceso)) {
@@ -42,8 +42,10 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 			segmento->idSegmentoMemoria = asignarIdSegmento();
 			segmento->idSegmentoKernel = idSegmento;
 			agregarSegmentoATabla(segmento, idProceso);
+			list_add(segmentos,segmento);
 		}
 	base = segmento->base;
+
 	return 2;
 }
 
@@ -53,6 +55,7 @@ Segmento *crearSegmento0(size_t tamanio){
 		segmento0->base= 0;
 		segmento0->desplazamiento=tamanio;
 		segmento0->idSegmentoMemoria=0;
+		list_add(segmentos,segmento0);
 	}
 	return segmento0;
 }
@@ -135,7 +138,7 @@ void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio) {
 		log_error(logger, "Error al eliminar hueco libre. ");
 	}
 
-	HuecoLibre *nuevoHueco;
+	HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
 	nuevoHueco->base = siguiente->base + tamanio;
 	size_t base = buscarSiguienteLugarOcupado(nuevoHueco->base);
 	nuevoHueco->desplazamiento = base - nuevoHueco->base;
@@ -178,15 +181,50 @@ void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
 		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
 		if(idProceso == siguiente->pid) {
 			list_add(siguiente->segmentos, segmento);
-			memcpy(espacioUsuario, segmento, segmento->desplazamiento);
+			memcpy(espacioUsuario + segmento->base, segmento, segmento->desplazamiento);
 		}
 	}
 }
 
-void eliminar_segmento(Segmento *segmento) {
+void eliminar_segmento(int id_proceso, int id_segmento) {
+	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
 
+		while(list_iterator_has_next(iterador)) {
+			TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+			if(id_proceso == siguiente->pid) {
+				int largoLista = list_size(siguiente->segmentos);
+				int i = 0;
+				t_list_iterator* iterador2 = list_iterator_create(siguiente->segmentos);
+				while(list_iterator_has_next(iterador2)){
+					Segmento *segmento = list_iterator_next(iterador2);
+					if(segmento->idSegmentoKernel == id_segmento){
+						HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
+						nuevoHueco->base = segmento->base;
+						nuevoHueco->desplazamiento = segmento ->desplazamiento;
+						list_add(listaDeHuecosLibres,nuevoHueco);
+						list_remove_element(siguiente->segmentos, segmento);
+						juntarHuecosContiguos(listaDeHuecosLibres);
+						list_remove_element(segmentos,segmento);
+					}
+				}
+			}
+		}
 }
-
+void juntarHuecosContiguos(t_list* listaDeHuecosLibres){
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	while(list_iterator_has_next(iterador)) {
+		HuecoLibre *nuevoHueco = list_iterator_next(iterador);
+		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
+		while(list_iterator_has_next(iterador2)){
+			HuecoLibre *nuevoHueco2 = list_iterator_next(iterador2);
+			if(nuevoHueco->base + nuevoHueco->desplazamiento == nuevoHueco2->base){
+				nuevoHueco2->base = nuevoHueco->base;
+				nuevoHueco2->desplazamiento = nuevoHueco->desplazamiento + nuevoHueco2->desplazamiento;
+				list_remove_element(listaDeHuecosLibres, nuevoHueco);
+			}
+		}
+	}
+}
 //typedef struct {
 //    void* memoria;
 //    size_t tamanio;
@@ -214,8 +252,6 @@ void eliminar_segmento(Segmento *segmento) {
 
 
 
-
-
 HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base) {
 	HuecoLibre *hueco = malloc(sizeof(HuecoLibre));
 	if(hueco != NULL) {
@@ -239,6 +275,7 @@ int main(void) {
 
 	listaDeHuecosLibres = list_create();
 	tablasDeSegmento = list_create();
+	segmentos = list_create();
 
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
@@ -379,8 +416,30 @@ bool hayLugarContiguoPara(size_t tamanio) {
 void compactar_memoria() {
 	//un while donde se fija si hay un segmento con base == tamaño+base del hueco libre, si hay,
 	// se pasa el segmento a esa base y se borra el hueco libre
+	t_list_iterator* iterador = list_iterator_create(segmentos);
+	while(list_iterator_has_next(iterador)){
+		Segmento *segmento = list_iterator_next(iterador);
+		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
+		while(list_iterator_has_next(iterador2)){
+			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
+			if(segmento->base + segmento->desplazamiento == huecoLibre->base && !segmentoEsElUltimo(segmento, segmentos)){
+				//terminar funcion
+			}
+		}
+	}
 }
+bool segmentoEsElUltimo(Segmento* segmentoAVerificar, t_list* segmentos){
+	int tamanioMaximo = 0;
+	t_list_iterator* iterador = list_iterator_create(segmentos);
+	while(list_iterator_has_next(iterador)){
+		Segmento *segmento = list_iterator_next(iterador);
+		if(segmento->base + segmento->desplazamiento > tamanioMaximo){
+			tamanioMaximo = segmento->base + segmento->desplazamiento;
+		}
+	}
+	return (segmentoAVerificar->base + segmentoAVerificar->desplazamiento) >= tamanioMaximo;
 
+}
 bool puedoCrearSegmentoEnProceso (size_t tamanio, int idProceso) {
 	return true;
 }
@@ -411,15 +470,12 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 		tablaDeSegmentos = crearTablaSegmentosDe(pid);
 
 		//EMPAQUETAR LA TABLA Y ENVIAR A KERNEL
-		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos);
+		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_SEGMENTOS);
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
 	}
 	else {
-		enviar_mensaje("Este proceso ya esta creado.", cliente_fd);
-		//Holis soy sol, dsps cambien la frase por algun numero que nos sirva de código en kernel
-		//lo mismo cuando serialicen y envíen la tabla (ahi necesitemos usar un cod_op)
-		//así podemos reconocer en kernel que nos envían
+		log_info(logger, "Este proceso ya esta creado.");
 	}
 }
 
@@ -495,20 +551,29 @@ void* serverMemoria(void* ptr){
     			break;
 
     		case DELETE_SEGMENT:
-//    			lista = recibir_paquete(cliente_fd);
-//				t_list_iterator* iterador = list_iterator_create(lista);
-//
-//				int arrayPaquete[3] = {};
-//
-//				 for (int i = 0; i<3; i++) {
-//					char* siguiente = list_iterator_next(iterador);
-//					arrayPaquete[i] = siguiente;
-//					}
-//
-//				 pid = arrayPaquete[0];
-//				 int idSegmento = arrayPaquete[1];
-//				 int tamanio = arrayPaquete[2];
-//    			eliminar_segmento(segmento);
+    			lista = recibir_paquete(cliente_fd);
+				t_list_iterator* iterador = list_iterator_create(lista);
+
+				int arrayPaquete[2] = {};
+
+				 for (int i = 0; i<3; i++) {
+						int siguiente = list_iterator_next(iterador);
+						arrayPaquete[i] = siguiente;
+				    	}
+				int idProceso = arrayPaquete[0];
+				int idSegmento = arrayPaquete[1];
+    			eliminar_segmento(idProceso, idSegmento);
+    			t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+
+				while(list_iterator_has_next(iterador)) {
+					TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+					if(idProceso == siguiente->pid) {
+						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, TABLA_SEGMENTOS);
+						enviar_paquete(paquete, cliente_fd);
+						eliminar_paquete(paquete);
+					}
+				}
+
     			break;
 
     		case COMPACTAR_MEMORIA:
@@ -560,13 +625,15 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 // 	SIN_ESPACIO --> 7
 
 	switch(cod_kernel){
-		break;
 		case SIN_ESPACIO:
+			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
 		break;
 		case CREATE_SEGMENT:
-			//enviar_mensaje(base, cliente_fd);
-
+			char* baseStr = string_from_format("%zu", base);
+			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
+		break;
 	}
+	return NULL;
 }
 
 void enviar_respuesta(int socket_cliente, char* quien_es) {
@@ -594,36 +661,6 @@ void enviar_respuesta(int socket_cliente, char* quien_es) {
 		free(handshake);
 }
 
-//void enviar_respuesta_crearSegmento(int socket_cliente, int resultado) {
-//	char* respuesta = string_new();
-//
-//	// IDEA BASICA, NO ESTA BIEN PORQUE NO SE MANDARIAN STRINGS, SINO OTRO TIPO DE DATO
-//	// QUE PUEDA SER INTERPRETADO POR EL KERNEL, PERO NO ESTOY DEL TODO SEGURO DE QUE SERIA
-//
-//	if (resultado == -1) {
-//		respuesta = "No hay espacio libre para crear el segmento.";
-//		// Holis soy sol, dsps van a tener que cambiar la frase
-//		// en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 1
-//		//desps avisen si nos cambian el cod_op, por ahora en kernel tenemos: MENSAJE
-//	}
-//
-//	else if (resultado == 0) {
-//		respuesta = "Se debe solicitar una compactacion previa a crear el segmento.";
-//		//en kernel pusimos que cuando no hay espacio nos mandan el mensaje con un 2
-//	}
-//
-//	else {
-//		char* resultadoString = string_itoa(resultado);
-//		respuesta= "La direccion base del segmento es: ";
-//		string_append(respuesta, resultadoString);
-//		// Holis soy sol, dsps van a tener que cambiar la frase
-//		// que el contenido del mensaje sea la base
-//
-//
-//	}
-//
-//	enviar_mensaje(respuesta,socket_cliente);
-//}
 
 char* recibir_buffer_mio(int socket_cliente)
 {

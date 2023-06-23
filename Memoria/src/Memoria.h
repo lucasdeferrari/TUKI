@@ -12,10 +12,12 @@
 #include <pthread.h>
 #include <semaphore.h>
 
+
 pthread_t client_Kernel;
 
 t_list * listaDeHuecosLibres;
 t_list* tablasDeSegmento;
+t_list * segmentos;
 
 
 size_t base;
@@ -29,6 +31,9 @@ void* espacioUsuario;
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
+void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
+void* clientKernel(int cod_kernel, int cliente_fd);
+
 void enviar_respuesta(int socket_cliente, char* quien_es);
 pthread_t serverMemoria_thread;
 int crearSegmento(int );
@@ -37,7 +42,7 @@ Segmento *crearSegmento0(size_t);
 char* recibir_buffer_mio(int socket_cliente);
 size_t buscarLugarParaElSegmento(size_t tamanio);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
-void eliminar_segmento(Segmento *segmento);
+void eliminar_segmento(int id_proceso, int id_segmento);
 bool hayLugarParaCrearSegmento(size_t tamanio);
 bool hayLugarContiguoPara(size_t tamanio);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
@@ -47,11 +52,11 @@ size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
 void crearYDevolverProceso();
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
-void enviar_respuesta_crearSegmento(int socket_cliente, int resultado);
 size_t buscarSiguienteLugarOcupado(size_t base);
-t_paquete* empaquetarTabla(int pid, t_list* cabeza);
-void* clientKernel(int cod_kernel, int cliente_fd);
 void iterator(char *value);
+void juntarHuecosContiguos(t_list* listaDeHuecosLibres);
+
+bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
