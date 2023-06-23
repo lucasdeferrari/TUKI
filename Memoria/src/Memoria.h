@@ -55,8 +55,10 @@ TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 size_t buscarSiguienteLugarOcupado(size_t base);
 void iterator(char *value);
 void juntarHuecosContiguos(t_list* listaDeHuecosLibres);
+void enviarTodasLasTablas(int cliente_fd);
 
 bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
+bool* comparador(void* elem1, void* elem2);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);

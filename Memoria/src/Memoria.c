@@ -422,12 +422,34 @@ void compactar_memoria() {
 		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
 		while(list_iterator_has_next(iterador2)){
 			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
-			if(segmento->base + segmento->desplazamiento == huecoLibre->base && !segmentoEsElUltimo(segmento, segmentos)){
-				//terminar funcion
+			Segmento *segmento2 = list_get(segmentos, list_iterator_index(iterator)+1);
+			t_list* listaOrdenada = list_sorted(segmentos,comparador(segmento, segmento2));
+			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada));
+			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
+				Segmento *proximoSegmento = list_get(segmentos, list_iterator_index(iterador)+1);
+				proximoSegmento->base = segmento->base + segmento->desplazamiento;
+				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento);
 			}
 		}
 	}
 }
+
+bool* comparador(void* elem1, void* elem2) {
+		Segmento* seg1 = (Segmento*)elem1;
+		Segmento* seg2 = (Segmento*)elem2;
+	return seg1->base < seg2->base;
+	}
+
+void enviarTodasLasTablas(int cliente_fd){
+	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+	while(list_iterator_has_next(iterador)){
+		TablaDeSegmentos *tablaDeSegmentos = list_iterator_next(iterador);
+		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_SEGMENTOS);
+		enviar_paquete(paquete, cliente_fd);
+		eliminar_paquete(paquete);
+	}
+}
+
 bool segmentoEsElUltimo(Segmento* segmentoAVerificar, t_list* segmentos){
 	int tamanioMaximo = 0;
 	t_list_iterator* iterador = list_iterator_create(segmentos);
@@ -552,21 +574,21 @@ void* serverMemoria(void* ptr){
 
     		case DELETE_SEGMENT:
     			lista = recibir_paquete(cliente_fd);
-				t_list_iterator* iterador = list_iterator_create(lista);
+				t_list_iterator* iterador1 = list_iterator_create(lista);
 
-				int arrayPaquete[2] = {};
+				int intPaquete[2] = {};
 
 				 for (int i = 0; i<3; i++) {
-						int siguiente = list_iterator_next(iterador);
-						arrayPaquete[i] = siguiente;
+						int siguiente = list_iterator_next(iterador1);
+						intPaquete[i] = siguiente;
 				    	}
-				int idProceso = arrayPaquete[0];
-				int idSegmento = arrayPaquete[1];
-    			eliminar_segmento(idProceso, idSegmento);
-    			t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+				int idProceso = intPaquete[0];
+				int id_Segmento = intPaquete[1];
+    			eliminar_segmento(idProceso, id_Segmento);
+    			t_list_iterator* iterador2 = list_iterator_create(tablasDeSegmento);
 
-				while(list_iterator_has_next(iterador)) {
-					TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+				while(list_iterator_has_next(iterador2)) {
+					TablaDeSegmentos *siguiente = list_iterator_next(iterador2);
 					if(idProceso == siguiente->pid) {
 						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, TABLA_SEGMENTOS);
 						enviar_paquete(paquete, cliente_fd);
@@ -578,6 +600,7 @@ void* serverMemoria(void* ptr){
 
     		case COMPACTAR_MEMORIA:
     			compactar_memoria();
+    			enviarTodasLasTablas(cliente_fd);
     			break;
 
     		case -1:
