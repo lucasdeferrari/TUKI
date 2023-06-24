@@ -24,41 +24,44 @@ size_t base;
 
 char* algoritmoAsignacion;
 sem_t semMemoriaServer;
-
+pthread_t serverMemoria_thread;
 int tamanioSeg0, tamanioMemoria;
 
 void* espacioUsuario;
+void iterator(char *value);
+bool* comparador(void* elem1, void* elem2);
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
 void* clientKernel(int cod_kernel, int cliente_fd);
 
-void enviar_respuesta(int socket_cliente, char* quien_es);
-pthread_t serverMemoria_thread;
-int crearSegmento(int );
 void informarKernelFaltaDeEspacio();
-Segmento *crearSegmento0(size_t);
+
+void enviar_respuesta(int socket_cliente, char* quien_es);
 char* recibir_buffer_mio(int socket_cliente);
+
+int crearSegmento(int );
+Segmento *crearSegmento0(size_t);
+void crearYDevolverProceso();
 size_t buscarLugarParaElSegmento(size_t tamanio);
+TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
 void eliminar_segmento(int id_proceso, int id_segmento);
 bool hayLugarParaCrearSegmento(size_t tamanio);
-bool hayLugarContiguoPara(size_t tamanio);
-void agregarSegmentoATabla(Segmento *segmento, int idProceso);
 int asignarIdSegmento();
+bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
+
+bool hayLugarContiguoPara(size_t tamanio);
 size_t buscarPorFirst (size_t tamanio);
 size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
-void crearYDevolverProceso();
-TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 size_t buscarSiguienteLugarOcupado(size_t base);
-void iterator(char *value);
 void juntarHuecosContiguos(t_list* listaDeHuecosLibres);
 void enviarTodasLasTablas(int cliente_fd);
+void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
 
-bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
-bool* comparador(void* elem1, void* elem2);
+int buscarIdMemoria(int idSegmentoMemoria);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);

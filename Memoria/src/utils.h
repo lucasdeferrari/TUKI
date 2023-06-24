@@ -29,8 +29,11 @@ typedef enum
 	SIN_ESPACIO,
 	PEDIR_COMPACTACION,
 	ELIMINAR_PROCESO,
-	TABLA_GLOBAL
+	TABLA_GLOBAL,
+	MOV_IN,
+	MOV_OUT
 }op_code_Kernel;
+
 
 //client
 typedef struct
