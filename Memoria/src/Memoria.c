@@ -105,7 +105,7 @@ size_t buscarPorFirst (size_t tamanio) {
 
 size_t buscarPorBest(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
-	HuecoLibre *elegido;
+	HuecoLibre *elegido = malloc(sizeof(HuecoLibre));
 	elegido->desplazamiento = tamanioMemoria;
 
 	while(list_iterator_has_next(iterador)) {
@@ -120,7 +120,7 @@ size_t buscarPorBest(size_t tamanio) {
 
 size_t buscarPorWorst(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
-		HuecoLibre *elegido;
+		HuecoLibre *elegido = malloc(sizeof(HuecoLibre));
 		elegido->desplazamiento = 0;
 
 		while(list_iterator_has_next(iterador)) {
@@ -416,14 +416,13 @@ bool hayLugarContiguoPara(size_t tamanio) {
 void compactar_memoria() {
 	//un while donde se fija si hay un segmento con base == tamaño+base del hueco libre, si hay,
 	// se pasa el segmento a esa base y se borra el hueco libre
-	t_list_iterator* iterador = list_iterator_create(segmentos);
+	t_list* listaOrdenada = list_sorted(segmentos, comparador);
+	t_list_iterator* iterador = list_iterator_create(listaOrdenada);
 	while(list_iterator_has_next(iterador)){
 		Segmento *segmento = list_iterator_next(iterador);
 		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
 		while(list_iterator_has_next(iterador2)){
 			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
-			Segmento *segmento2 = list_get(segmentos, list_iterator_index(iterador)+1);
-			t_list* listaOrdenada = list_sorted(segmentos,comparador(segmento, segmento2));
 			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada));
 			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
 				Segmento *proximoSegmento = list_get(listaOrdenada, list_iterator_index(iterador)+1);
@@ -452,10 +451,11 @@ int buscarIdMemoria(int idSegmentoMemoria){
 	return -1;
 }
 
-bool* comparador(void* elem1, void* elem2) {
-		Segmento* seg1 = (Segmento*)elem1;
-		Segmento* seg2 = (Segmento*)elem2;
-	return seg1->base < seg2->base;
+bool comparador(void* elem1, void* elem2) {
+	Segmento* seg1 = (Segmento*) elem1;
+	Segmento* seg2 = (Segmento*) elem2;
+
+	return (seg1->base < seg2->base);
 	}
 
 void enviarTodasLasTablas(int cliente_fd){
@@ -509,16 +509,17 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 	}
 }
 
-void eliminar_proceso(int idProceso){
+void eliminar_proceso(int *idProceso){
 	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+	int idProcesoInt = *idProceso;
 
 	while(list_iterator_has_next(iterador)) {
 		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
-		if(idProceso == siguiente->pid) {
+		if(idProcesoInt == siguiente->pid) {
 			t_list_iterator* iterador1 = list_iterator_create(siguiente->segmentos);
 				while(list_iterator_has_next(iterador1)){
 					Segmento *segmento = list_iterator_next(iterador1);
-					eliminar_segmento(idProceso, segmento->idSegmentoKernel);
+					eliminar_segmento(idProcesoInt, segmento->idSegmentoKernel);
 				}
 		}
 	}
@@ -568,8 +569,10 @@ void* serverMemoria(void* ptr){
     			break;
 
     		case PROCESO_NUEVO:
-    			int pid = recibir_buffer_mio(cliente_fd);
-    			crearYDevolverProceso(pid, cliente_fd);
+    			char* pid = recibir_buffer_mio(cliente_fd);
+    			int pidInt = atoi(pid);
+
+    			crearYDevolverProceso(pidInt, cliente_fd);
     			break;
 
     		// crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
@@ -584,16 +587,18 @@ void* serverMemoria(void* ptr){
 
     			 for (int i = 0; i<3; i++) {
 					char* siguiente = list_iterator_next(iterador);
-					arrayPaquete[i] = siguiente;
+					int siguienteInt = atoi(siguiente);
+
+					arrayPaquete[i] = siguienteInt;
     			    }
 
-    			 pid = arrayPaquete[0];
+    			 pidInt = arrayPaquete[0];
     			 int idSegmento = arrayPaquete[1];
     			 int tamanio = arrayPaquete[2];
 
     			 //CALCULAMOS NUESTRO IdSEGMENTO
 
-    			int resultado = crear_segmento(pid, idSegmento,tamanio);
+    			int resultado = crear_segmento(pidInt, idSegmento,tamanio);
     			iniciarHiloClienteKernel(resultado, cliente_fd);
     		break;
 
@@ -604,8 +609,9 @@ void* serverMemoria(void* ptr){
 				int intPaquete[2] = {};
 
 				 for (int i = 0; i<3; i++) {
-						int siguiente = list_iterator_next(iterador1);
-						intPaquete[i] = siguiente;
+						char* siguiente = list_iterator_next(iterador1);
+						int siguienteInt = atoi(siguiente);
+						intPaquete[i] = siguienteInt;
 				    	}
 				int idProceso = intPaquete[0];
 				int id_Segmento = intPaquete[1];
@@ -628,9 +634,14 @@ void* serverMemoria(void* ptr){
     			enviarTodasLasTablas(cliente_fd);
     		break;
     		case ELIMINAR_PROCESO:
-    			int pid2 = recibir_buffer_mio(cliente_fd);
-    			eliminar_proceso(pid2);
-    			log_info(logger, "Eliminación de Proceso PID: %d", pid2);
+    			char* pid2 = recibir_buffer_mio(cliente_fd);
+    			int pid2Int = atoi(pid2);
+
+    			int *puntero = NULL;
+    			puntero = &pid2Int;
+
+    			eliminar_proceso(puntero);
+    			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
     		break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");

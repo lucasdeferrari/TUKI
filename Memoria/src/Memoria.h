@@ -29,14 +29,12 @@ int tamanioSeg0, tamanioMemoria;
 
 void* espacioUsuario;
 void iterator(char *value);
-bool* comparador(void* elem1, void* elem2);
+bool comparador(void* elem1, void* elem2);
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
 void* clientKernel(int cod_kernel, int cliente_fd);
-
-void informarKernelFaltaDeEspacio();
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 char* recibir_buffer_mio(int socket_cliente);
