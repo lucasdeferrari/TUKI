@@ -70,6 +70,7 @@ bool hayTablaSegmentosDe(int idProceso) {
 			return true;
 		}
 	}
+	list_iterator_destroy(iterador);
 	return false;
 }
 
@@ -98,6 +99,7 @@ size_t buscarPorFirst (size_t tamanio) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio) {
 			actualizarHuecosLibres(siguiente, tamanio);
+			list_iterator_destroy(iterador);
 			return siguiente->base;
 		}
 	}
@@ -115,6 +117,7 @@ size_t buscarPorBest(size_t tamanio) {
 		}
 	}
 	actualizarHuecosLibres(elegido, tamanio);
+	list_iterator_destroy(iterador);
 	return elegido->base;
 }
 
@@ -130,6 +133,7 @@ size_t buscarPorWorst(size_t tamanio) {
 			}
 		}
 		actualizarHuecosLibres(elegido, tamanio);
+		list_iterator_destroy(iterador);
 		return elegido->base;
 }
 
@@ -185,6 +189,7 @@ void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
 			memcpy(espacioUsuario + segmento->base, segmento, segmento->desplazamiento);
 		}
 	}
+	list_iterator_destroy(iterador);
 }
 
 void eliminar_segmento(int id_proceso, int id_segmento) {
@@ -206,9 +211,10 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 						list_remove_element(segmentos,segmento);
 						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu",id_proceso, id_segmento,nuevoHueco->base,nuevoHueco->desplazamiento);					}
 				}
+				list_iterator_destroy(iterador2);
 			}
 		}
-
+		list_iterator_destroy(iterador);
 }
 void juntarHuecosContiguos(t_list* listaDeHuecosLibres){
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
@@ -223,7 +229,9 @@ void juntarHuecosContiguos(t_list* listaDeHuecosLibres){
 				list_remove_element(listaDeHuecosLibres, nuevoHueco);
 			}
 		}
+		list_iterator_destroy(iterador2);
 	}
+	list_iterator_destroy(iterador);
 }
 //typedef struct {
 //    void* memoria;
@@ -395,6 +403,7 @@ bool hayLugarParaCrearSegmento(size_t tamanio) {
 		int desplazamientoSiguiente = siguiente->desplazamiento;
 		tamanioLibre += desplazamientoSiguiente;
 	}
+	list_iterator_destroy(iterador);
 	return tamanio <= tamanioLibre;
 }
 
@@ -410,6 +419,7 @@ bool hayLugarContiguoPara(size_t tamanio) {
 			max = desplazamientoSiguiente;
 		}
 	}
+	list_iterator_destroy(iterador);
 	return tamanio <= max;
 }
 
@@ -433,7 +443,9 @@ void compactar_memoria() {
 
 			}
 		}
+		list_iterator_destroy(iterador2);
 	}
+	list_iterator_destroy(iterador);
 }
 
 int buscarIdMemoria(int idSegmentoMemoria){
@@ -444,10 +456,12 @@ int buscarIdMemoria(int idSegmentoMemoria){
 		while(list_iterator_has_next(iterador2)){
 			Segmento *segmento = list_iterator_next(iterador2);
 			if(segmento->idSegmentoMemoria == idSegmentoMemoria){
+				list_iterator_destroy(iterador2);
 				return tablaDeSegmentos->pid;
 			}
 		}
 	}
+	list_iterator_destroy(iterador);
 	return -1;
 }
 
@@ -466,6 +480,7 @@ void enviarTodasLasTablas(int cliente_fd){
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
 	}
+	list_iterator_destroy(iterador);
 }
 
 bool segmentoEsElUltimo(Segmento* segmentoAVerificar, t_list* segmentos){
@@ -477,6 +492,7 @@ bool segmentoEsElUltimo(Segmento* segmentoAVerificar, t_list* segmentos){
 			tamanioMaximo = segmento->base + segmento->desplazamiento;
 		}
 	}
+	list_iterator_destroy(iterador);
 	return (segmentoAVerificar->base + segmentoAVerificar->desplazamiento) >= tamanioMaximo;
 
 }
@@ -523,6 +539,7 @@ void eliminar_proceso(int *idProceso){
 				}
 		}
 	}
+	list_iterator_destroy(iterador);
 	list_remove_element(tablasDeSegmento, idProceso);
 
 }
@@ -592,6 +609,8 @@ void* serverMemoria(void* ptr){
 					arrayPaquete[i] = siguienteInt;
     			    }
 
+    			 list_iterator_destroy(iterador);
+
     			 pidInt = arrayPaquete[0];
     			 int idSegmento = arrayPaquete[1];
     			 int tamanio = arrayPaquete[2];
@@ -613,6 +632,8 @@ void* serverMemoria(void* ptr){
 						int siguienteInt = atoi(siguiente);
 						intPaquete[i] = siguienteInt;
 				    	}
+				 list_iterator_destroy(iterador1);
+
 				int idProceso = intPaquete[0];
 				int id_Segmento = intPaquete[1];
     			eliminar_segmento(idProceso, id_Segmento);
@@ -626,6 +647,8 @@ void* serverMemoria(void* ptr){
 						eliminar_paquete(paquete);
 					}
 				}
+
+				list_iterator_destroy(iterador2);
 
     		break;
     		case COMPACTAR_MEMORIA:
