@@ -28,7 +28,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
 	else if(!hayLugarContiguoPara(tamanio)) {
-		return COMPACTAR_MEMORIA;
+		return PEDIR_COMPACTACION;
 	}
 
 	if(!hayTablaSegmentosDe(idProceso)) {
@@ -46,7 +46,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 		}
 	base = segmento->base;
 
-	return 2;
+	return CREATE_SEGMENT;
 }
 
 Segmento *crearSegmento0(size_t tamanio){
@@ -426,7 +426,7 @@ void compactar_memoria() {
 			t_list* listaOrdenada = list_sorted(segmentos,comparador(segmento, segmento2));
 			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada));
 			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
-				Segmento *proximoSegmento = list_get(segmentos, list_iterator_index(iterador)+1);
+				Segmento *proximoSegmento = list_get(listaOrdenada, list_iterator_index(iterador)+1);
 				proximoSegmento->base = segmento->base + segmento->desplazamiento;
 				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento);
 			}
@@ -444,7 +444,7 @@ void enviarTodasLasTablas(int cliente_fd){
 	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
 	while(list_iterator_has_next(iterador)){
 		TablaDeSegmentos *tablaDeSegmentos = list_iterator_next(iterador);
-		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_SEGMENTOS);
+		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_GLOBAL);
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
 	}
@@ -460,17 +460,6 @@ bool segmentoEsElUltimo(Segmento* segmentoAVerificar, t_list* segmentos){
 		}
 	}
 	return (segmentoAVerificar->base + segmentoAVerificar->desplazamiento) >= tamanioMaximo;
-
-}
-bool puedoCrearSegmentoEnProceso (size_t tamanio, int idProceso) {
-	return true;
-}
-
-bool puedoCrearSegmentoPorTamanio(int tamanio) {
-	return true;
-}
-
-void asignarPorFirstFit() {
 
 }
 
@@ -545,6 +534,7 @@ void* serverMemoria(void* ptr){
     		case PROCESO_NUEVO:
     			int pid = recibir_buffer_mio(cliente_fd);
     			crearYDevolverProceso(pid, cliente_fd);
+    			log_info(logger, "Creación de Proceso PID: %d", pid);
     			break;
 
     		// crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
@@ -597,11 +587,12 @@ void* serverMemoria(void* ptr){
 				}
 
     			break;
-
     		case COMPACTAR_MEMORIA:
     			compactar_memoria();
     			enviarTodasLasTablas(cliente_fd);
     			break;
+    		case ELIMINAR_PROCESO:
+    			eliminar_proceso();
 
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
@@ -646,14 +637,18 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 //	PROCESO_NUEVO --> 5
 //	TABLA_SEGMENTOS --> 6
 // 	SIN_ESPACIO --> 7
+//	PEDIR_COMPACTACION-->8
 
 	switch(cod_kernel){
-		case SIN_ESPACIO:
-			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
-		break;
 		case CREATE_SEGMENT:
 			char* baseStr = string_from_format("%zu", base);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
+		break;
+		case SIN_ESPACIO:
+			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
+		break;
+		case PEDIR_COMPACTACION:
+			enviar_cod_operacion("",cliente_fd, PEDIR_COMPACTACION);
 		break;
 	}
 	return NULL;

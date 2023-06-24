@@ -26,7 +26,10 @@ typedef enum
 	COMPACTAR_MEMORIA,
 	PROCESO_NUEVO,
 	TABLA_SEGMENTOS,
-	SIN_ESPACIO
+	SIN_ESPACIO,
+	PEDIR_COMPACTACION,
+	ELIMINAR_PROCESO,
+	TABLA_GLOBAL
 }op_code_Kernel;
 
 //client
@@ -38,7 +41,7 @@ typedef struct
 
 typedef struct
 {
-	op_code_Kernel codigo_operacion;
+	int codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
 
