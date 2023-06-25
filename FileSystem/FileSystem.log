@@ -67,3 +67,7 @@ el cliente se desconecto. Terminando servidor
 [INFO] 04:20:58:533 FileSystem/(90079:90081): a
 [ERROR] 04:20:58:533 FileSystem/(90079:90081): 
 el cliente se desconecto. Terminando servidor
+[INFO] 20:47:33:077 FileSystem/(3986:3986): FileSystem listo para escuchar al cliente
+
+[INFO] 20:47:33:081 FileSystem/(3986:3991): Ingrese sus mensajes para la Memoria: 
+[INFO] 20:47:33:082 FileSystem/(3986:3992): FileSystem listo para recibir a kernel

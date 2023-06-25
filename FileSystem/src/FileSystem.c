@@ -5,6 +5,7 @@ t_config* config;
 int block_size = 0;
 int block_count = 0;
 int server_fd;
+int cliente_fd;
 
 int main(void) {
 
@@ -239,6 +240,9 @@ int main(void) {
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
 
+    //Inicializo la lista de FCBs
+    listaFCB = list_create();
+
     //THREADS CONEXIÓN
 
     //thread cliente Memoria
@@ -311,11 +315,12 @@ void* serverFileSystem(void* ptr){
 
 
     log_info(logger, "FileSystem listo para recibir a kernel");
-    int cliente_fd = esperar_cliente(server_fd);
+    cliente_fd = esperar_cliente(server_fd);
 
     t_list* lista;
     while (1) {
     	int cod_op = recibir_operacion(cliente_fd);
+    	char* nombreArchivo;
     	switch (cod_op) {
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);
@@ -331,7 +336,33 @@ void* serverFileSystem(void* ptr){
     			return EXIT_FAILURE;
     			default:
     			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-    		break;
+    			break;
+    		case F_OPEN:
+    			//En realidad habria que ver como nos va a mandar Kernel estos datos
+    			nombreArchivo = recibir_buffer_mio(cliente_fd);
+    			abrir_archivo(nombreArchivo);
+    			break;
+    		case CREAR_ARCHIVO:
+    			nombreArchivo = recibir_buffer_mio(cliente_fd);
+    			crearArchivo(nombreArchivo);
+    			break;
+    		case F_TRUNCATE:
+    			lista = recibir_paquete(cliente_fd);
+    			t_list_iterator* iterador1 = list_iterator_create(lista);
+
+    			char* paquete[2] = {};
+
+    			for (int i = 0; i<3; i++) {
+    				char* siguiente = list_iterator_next(iterador1);
+    				paquete[i] = siguiente;
+    			}
+
+    			list_iterator_destroy(iterador1);
+
+    			nombreArchivo = paquete[0];
+    			int tamanioArchivo = atoi(paquete[1]);
+
+    			truncar_archivo(nombreArchivo, tamanioArchivo);
     	}
     }
 
@@ -375,8 +406,78 @@ void paquete(int conexion)
 }
 
 void enviar_respuesta(int socket_cliente, char* quien_es) {
+	//Para que esta el handshake?
 	char* handshake = quien_es;
 	char* respuesta = string_new();
 	respuesta = "Hola kernel, gracias por comunicarte con el fileSystem!";
 	enviar_mensaje(respuesta, socket_cliente);
 }
+
+void crearArchivo(char* nombreArchivo) {
+
+	t_infofcb* nuevoFCB = malloc(sizeof(t_infofcb));
+
+	nuevoFCB->nombreArchivo = nombreArchivo;
+	nuevoFCB->tamanioArchivo = 0;
+
+	list_add(listaFCB, nuevoFCB);
+
+	printf("Archivo creado");
+
+	enviar_mensaje("Archivo creado", cliente_fd);
+	//Agregar una lista? Al archivo de bloques? La lista de FCBs tiene que persistir.
+
+}
+
+void abrir_archivo(char* nombreArchivo){
+	t_list_iterator* iterador = list_iterator_create(listaFCB);
+	char* nombreArchivoSeleccionado;
+
+	while(list_iterator_has_next(iterador)) {
+		t_infofcb *siguiente = list_iterator_next(iterador);
+		if(nombreArchivo == siguiente->nombreArchivo) {
+			nombreArchivoSeleccionado = nombreArchivo;
+		}
+	}
+
+	if (string_is_empty(nombreArchivoSeleccionado)) {
+		//Enviar mensaje Kernel "Archivo Inexistente"
+		enviar_mensaje("Archivo inexistente", cliente_fd);
+
+		printf("Archivo inexistente");
+	} else {
+		//Enviar mensaje Kernel OK
+		enviar_mensaje("Archivo abierto", cliente_fd);
+	}
+
+	list_iterator_destroy(iterador);
+
+}
+
+void truncar_archivo(char* nombreArchivo, int tamanio){
+	t_list_iterator* iterador = list_iterator_create(listaFCB);
+
+	while(list_iterator_has_next(iterador)) {
+		t_infofcb *siguiente = list_iterator_next(iterador);
+		if(nombreArchivo == siguiente->nombreArchivo) {
+			if (tamanio < siguiente->tamanioArchivo){
+//				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
+//				se deberán marcar como libres todos los bloques que ya no sean necesarios para direccionar
+//				el tamaño del archivo (descartando desde el final del archivo hacia el principio).
+			} else if (tamanio < siguiente->tamanioArchivo){
+//				Ampliar el tamaño del archivo: Al momento de ampliar el tamaño del archivo deberá actualizar
+//				el tamaño del archivo en el FCB y se le deberán asignar tantos bloques como sea necesario para
+//				poder direccionar el nuevo tamaño.
+			}
+		}
+	}
+}
+
+
+char* recibir_buffer_mio(int socket_cliente) {
+	int size;
+	char* buffer = recibir_buffer(&size, socket_cliente);
+	return buffer;
+}
+
+

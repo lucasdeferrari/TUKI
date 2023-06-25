@@ -20,7 +20,14 @@ char* puerto_memoria;
 sem_t semFileSystemServer;
 sem_t semFileSystemClientMemoria;
 
+t_list* listaFCB;
+char* recibir_buffer_mio(int socket_cliente);
+void abrir_archivo(char* nombreArchivo);
+void crearArchivo(char* nombreArchivo);
+void truncar_archivo(char* nombreArchivo, int tamanio);
 
+//Preguntar a Lucas o Sol
+void enviar_respuesta(int socket_cliente, char* quien_es);
 
 void *serverFileSystem(void *ptr);
 void* clientMemoria(void *ptr);

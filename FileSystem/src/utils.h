@@ -19,7 +19,10 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE
+	PAQUETE,
+	F_OPEN,
+	CREAR_ARCHIVO,
+	F_TRUNCATE
 }op_code;
 
 //client
@@ -34,6 +37,15 @@ typedef struct
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
+
+
+// EL puntero indirecto es un bloque en realidad... pero todavía no entiendo que tiene un bloque... no se como tipearlo
+typedef struct infofcb {
+	char* nombreArchivo;
+    int tamanioArchivo;
+    uint32_t punteroDirecto;
+    uint32_t punteroIndirecto;
+} t_infofcb;
 
 extern t_log* logger;
 
