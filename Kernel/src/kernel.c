@@ -91,8 +91,8 @@ void enviar_handshake_memoria(){
 
 	conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 	enviar_mensaje("kernel",conexion_Memoria);
-	log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-	paquete(conexion_Memoria);
+//	log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+//	paquete(conexion_Memoria);
 	int cod_op = recibir_operacion(conexion_Memoria);
 	recibir_mensaje(conexion_Memoria);
 	liberar_conexion(conexion_Memoria);
@@ -275,7 +275,7 @@ void* clientMemoria(int cod_memoria) {
 t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
-	t_list* tablaSegmentosActualizada = list_create();
+	t_list* tablaSegmentosActualizadaLista = list_create();
 	t_infoTablaSegmentos* nuevoSegmento = NULL;
 
 	char* siguiente = list_iterator_next(iterador);  //REVISAR, salteo el pid en este caso
@@ -300,12 +300,12 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		nuevoSegmento->direccionBase = baseSegmento;
 		nuevoSegmento->tamanio = tamanioSegmento;
 
-		list_add(tablaSegmentosActualizada,nuevoSegmento);
+		list_add(tablaSegmentosActualizadaLista,nuevoSegmento);
 	 }
 
 	}
 
-	return tablaSegmentosActualizada;
+	return tablaSegmentosActualizadaLista;
 }
 
 void procedimiento_compactar(){
@@ -728,8 +728,8 @@ void* clientFileSystem(void* ptr) {
 	int config = 1;
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
-    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
-    paquete(conexion_FileSystem);
+//    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
+//    paquete(conexion_FileSystem);
     int cod_op = recibir_operacion(conexion_FileSystem);
     printf("codigo de operacion: %i\n", cod_op);
     recibir_mensaje(conexion_FileSystem);

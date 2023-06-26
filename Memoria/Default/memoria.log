@@ -959,3 +959,28 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 02:29:01:579 Memoria/(2570:2571): Se conecto un cliente!
 [INFO] 02:29:01:580 Memoria/(2570:2571): se conecto la cpu
+[INFO] 02:34:42:919 Memoria/(2722:2722): Listo para escuchar al cliente
+[INFO] 02:34:42:920 Memoria/(2722:2722): Memoria lista para recibir al cliente
+
+[INFO] 02:34:47:880 Memoria/(2722:2723): Se conecto un cliente!
+[INFO] 02:34:47:880 Memoria/(2722:2723): se conecto la cpu
+[ERROR] 02:34:47:881 Memoria/(2722:2723): 
+el cliente se desconecto. Terminando servidor
+[INFO] 02:37:41:620 Memoria/(2722:2727): Se conecto un cliente!
+[INFO] 02:37:41:620 Memoria/(2722:2727): se conecto el filesystem
+[ERROR] 02:37:41:620 Memoria/(2722:2727): 
+el cliente se desconecto. Terminando servidor
+[INFO] 02:45:47:795 Memoria/(2722:2878): Se conecto un cliente!
+[INFO] 02:45:47:795 Memoria/(2722:2878): se conecto el kernel
+[INFO] 02:45:50:885 Memoria/(2722:2878): Me llegaron los siguientes valores:
+[INFO] 02:45:50:885 Memoria/(2722:2878): sdfsd
+[ERROR] 02:45:50:886 Memoria/(2722:2878): 
+el cliente se desconecto. Terminando servidor
+[INFO] 02:45:50:886 Memoria/(2722:2722): Se conectaron todos los modulos.
+
+[INFO] 02:45:50:886 Memoria/(2722:2722): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:47:01:336 Memoria/(2722:3116): Se conecto un cliente!
+[INFO] 02:47:01:336 Memoria/(2722:3116): se conecto el kernel
+[ERROR] 02:47:01:336 Memoria/(2722:3116): 
+el cliente se desconecto. Terminando servidor

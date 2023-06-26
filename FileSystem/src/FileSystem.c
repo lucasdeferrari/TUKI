@@ -286,8 +286,8 @@ void* clientMemoria(void* ptr) {
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
     enviar_mensaje("filesystem",conexion_Memoria);
-    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-    paquete(conexion_Memoria);
+//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
+//    paquete(conexion_Memoria);
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
     recibir_mensaje(conexion_Memoria);

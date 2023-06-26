@@ -83,6 +83,7 @@ void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
 void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
 t_list* listaRecursos;
+t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida);
 
 void finalizarEncolar();
 

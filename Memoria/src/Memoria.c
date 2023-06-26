@@ -582,16 +582,19 @@ void* serverMemoria(void* ptr){
     			if (strcmp(handshake, "kernel") == 0) {
     				log_info(logger, "se conecto el kernel");
     				seConectoKernel = 1;
+    				enviar_respuesta(cliente_fd, handshake);
 
     			}
     			if (strcmp(handshake, "CPU") == 0) {
     				log_info(logger, "se conecto la cpu");
     				seConectoCPU = 1;
+    				enviar_respuesta(cliente_fd, handshake);
 
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
     				log_info(logger, "se conecto el filesystem");
     				seConectoFS = 1;
+    				enviar_respuesta(cliente_fd, handshake);
     			}
     			//free(handshake);
     			break;
