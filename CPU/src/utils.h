@@ -16,11 +16,23 @@
 #define IP "127.0.0.1"
 #define PUERTO "8001"
 
+//HAY Q UNIFICAR
 typedef enum
 {
 	MENSAJE,
-	PAQUETE,
-	CONTEXTO,
+	PAQUETE, //Memoria-Kernel
+	//CREATE_SEGMENT,
+	//DELETE_SEGMENT,
+	COMPACTAR_MEMORIA,
+	PROCESO_NUEVO,
+	TABLA_SEGMENTOS,
+	SIN_ESPACIO,
+	PEDIR_COMPACTACION,
+	ELIMINAR_PROCESO,
+	TABLA_GLOBAL,
+	//MOV_IN,//Memoria-CPU
+	//MOV_OUT,
+	CONTEXTO, //CPU-Kernel
 	INSTRUCCIONES
 }op_code;
 
@@ -43,6 +55,14 @@ typedef enum
 	CREATE_SEGMENT,
 	DELETE_SEGMENT
 }nombre_instruccion;
+
+typedef struct
+{
+	int cod_memoria;
+	char* registro;
+	int direccionFisica;
+} t_infoClienteMemoria;
+
 //client
 typedef struct
 {
@@ -85,7 +105,7 @@ typedef struct {
 	int programCounter;
 	t_list* listaInstrucciones;
 	t_registrosCPU registrosCpu;
-	//t_list* tablaSegmentos;
+	t_list* tablaSegmentos;
 
 	int instruccion_length;
 	char* instruccion;

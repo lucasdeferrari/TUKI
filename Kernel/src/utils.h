@@ -25,10 +25,22 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE,
-	CONTEXTO,
+	PAQUETE, //Memoria-Kernel
+	CREATE_SEGMENT,
+	DELETE_SEGMENT,
+	COMPACTAR_MEMORIA,
+	PROCESO_NUEVO,
+	TABLA_SEGMENTOS,
+	SIN_ESPACIO,
+	PEDIR_COMPACTACION,
+	ELIMINAR_PROCESO,
+	TABLA_GLOBAL,
+	MOV_IN,//Memoria-CPU
+	MOV_OUT,
+	CONTEXTO, //CPU-Kernel
 	INSTRUCCIONES
 }op_code;
+
 
 //client
 typedef struct
@@ -36,6 +48,12 @@ typedef struct
 	int size;
 	void* stream;
 } t_buffer;
+
+typedef struct
+{
+	int cod_memoria;
+	int pid;
+} t_clientMemoria;
 
 typedef struct
 {

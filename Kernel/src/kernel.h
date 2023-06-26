@@ -47,7 +47,7 @@ t_list* listaReady;
 
 t_infopcb* estadoEnEjecucion;
 int pid = 1; //Contador del PID de los PCB
-
+int pidProcesoNuevo;
 
 
 
@@ -57,12 +57,12 @@ pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, en
 
 void* serverKernel(int);
 void* clientCPU(void *ptr);
-void* clientMemoria(int);
+void* clientMemoria(t_clientMemoria*);
 void* clientFileSystem(void *ptr);
 void* interrupcionIO(void *ptr);
 void encolarReady();
 void iniciarHiloClienteCPU();
-void iniciarHiloClienteMemoria();
+void iniciarHiloClienteMemoria(t_clientMemoria*);
 void iniciarHiloClienteFileSystem();
 int iniciarHiloServer(int);
 void iniciarHiloIO();
@@ -96,6 +96,7 @@ void terminar_programa(int, t_log*, t_config*);
 void recibir_contexto(int );
 char* recibir_handshake(int );
 t_paquete* empaquetar(t_list*);
+t_paquete* empaquetarTabla(t_list* );
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
 {

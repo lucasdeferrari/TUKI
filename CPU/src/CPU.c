@@ -28,7 +28,8 @@ int main(void) {
     vaciarContexto();
 
     //Hilo Cliente
-    iniciarHiloCliente();
+    //iniciarHiloClienteMemoria();
+    printf("FALTA EL HANDSHAKE CON MEMORIA\n");
 
     //thread server
 
@@ -52,12 +53,12 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-void iniciarHiloCliente() {
+void iniciarHiloClienteMemoria(t_infoClienteMemoria* infoClienteMemoria) {
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 	     	        			NULL,
 								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-								NULL); // argumentos de la función
+								(void *)infoClienteMemoria); // argumentos de la función
 
 	if (err != 0) {
 	printf("No se pudo crear el hilo del cliente Memoria del CPU.\n");
@@ -66,7 +67,13 @@ void iniciarHiloCliente() {
 	printf("El hilo cliente de la Memoria se creo correctamente.\n");
 }
 
-void* clientMemoria(void* ptr) {
+void* clientMemoria(t_infoClienteMemoria* infoClienteMemoria) {
+
+	int cod_memoria = infoClienteMemoria->cod_memoria;
+	int direcFisica = infoClienteMemoria->direccionFisica;
+	char* registro;
+	strcpy(registro,infoClienteMemoria->registro);
+
 	int config = 1;
     int conexion_Memoria;
 
@@ -140,12 +147,22 @@ void* serverCPU(void* ptr){
     			list_iterate(lista, (void*) iterator);
     			list_destroy(lista);
     			break;
+
+    		case TABLA_SEGMENTOS:
+    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
+    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
+    			log_info(logger, "Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT\n");
+    			contadorContexto++;
+    			if(contadorContexto == 3){
+    				iniciar_ejecucion();
+    			}
+    			break;
     		case INSTRUCCIONES:
     			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
     			contadorContexto++;
     			log_info(logger, "Instrucciones recibidas de Kernel:\n");
     			list_iterate(contexto->listaInstrucciones, (void*) iterator);
-    			if(contadorContexto == 2){
+    			if(contadorContexto == 3){
     				iniciar_ejecucion();
     			}
     			break;
@@ -169,7 +186,7 @@ void* serverCPU(void* ptr){
     			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
     			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
-    			if(contadorContexto == 2){
+    			if(contadorContexto == 3){
     				iniciar_ejecucion();
     			}
 
@@ -547,11 +564,32 @@ int ejecutarFuncion(char* proximaInstruccion){
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: SIGNAL - [%s]\n", contexto->pid, recursoSignal);
     } else if (strcmp(nombreInstruccion, "MOV_IN") == 0) {
+
+    	char* mov_in_param1 = string_new();
+    	mov_in_param1 = string_duplicate(arrayInstruccion[1]);
+
+    	int mov_in_param2 = atoi(arrayInstruccion[2]);
+
+    	mov_in_tp(mov_in_param1,mov_in_param2);
+
+    	free(mov_in_param1);
+
     	continuarLeyendo = 1;
 
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: MOV_IN\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
+
+    	int mov_out_param1 = atoi(arrayInstruccion[1]);
+
+    	char* mov_out_param2 = string_new();
+    	mov_out_param2 = string_duplicate(arrayInstruccion[2]);
+
+    	mov_out_tp(mov_out_param1,mov_out_param2);
+
+    	free(mov_out_param1);
+    	free(mov_out_param2);
+
     	continuarLeyendo = 1;
 
     	//log minimo y obligatorio
@@ -643,8 +681,37 @@ int ejecutarFuncion(char* proximaInstruccion){
 	return continuarLeyendo;
 }
 
+t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
+
+	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
+	t_list* tablaSegmentosActualizadaLista = list_create();
+	t_infoTablaSegmentos* nuevoSegmento = NULL;
+
+	while (list_iterator_has_next(iterador)) {
+
+		//REVISAR SI ESTA BIEN QUE ESTAN DEFINIDOS ACA DENTRO LOS TIPOS DE LAS VARIABLES
+
+		char* siguiente = list_iterator_next(iterador);
+
+		char** arraySegmento = string_array_new();
+		arraySegmento = string_split(siguiente, " ");
+
+		int idSegmento = atoi(arraySegmento[0]);
+		int baseSegmento = atoi(arraySegmento[1]);
+		int tamanioSegmento = atoi(arraySegmento[2]);
+
+		nuevoSegmento->id = idSegmento;
+		nuevoSegmento->direccionBase = baseSegmento;
+		nuevoSegmento->tamanio = tamanioSegmento;
+
+		list_add(tablaSegmentosActualizadaLista,nuevoSegmento);
+	 }
+
+	return tablaSegmentosActualizadaLista;
+}
+
 //FALTA TERMINAR MMU
-int MMU(int direcLogica,int cantBytes){
+int MMU(int direcLogica, int cantBytes){
 
 	int num_segmento = floor(direcLogica / tam_max_segmento);
 	int desplazamiento_segmento = direcLogica % tam_max_segmento;
@@ -656,13 +723,13 @@ int MMU(int direcLogica,int cantBytes){
 		printf("ERROR: SEGMENTATION FAULT\n");
 
 		//log minimo y obligatorio
-		//TAMAÑO??
+		//TAMAÑO?? FALTA RECIBIRLO EN MMU
 		//log_info(logger, "“PID: %d - Error SEG_FAULT- Segmento: %d - Offset: %d - Tamaño: %d\n", contexto->pid, num_segmento, desplazamiento_segmento, //TAMAÑO);
 		return -1;
 	}
 
 	int direcFisica = -2;
-	printf("FALTA CALCULAR LA DIRECCIÓN FÍSICA \n");
+	printf("FALTA CALCULAR LA DIRECCIÓN FÍSICA, DUDAS CON NUM:SEGMENTO Y ID \n");
 	//int direcFisica = baseSegmento + desplazamiento_segmento;
 
 	return direcFisica;
@@ -671,10 +738,36 @@ int MMU(int direcLogica,int cantBytes){
 // FUNCIONES INSTRUCCIONES
 
 //MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
+void mov_in_tp(char* registro, int direccionLogica){
+
+	t_infoClienteMemoria* infoClienteMemoria;
+	infoClienteMemoria->cod_memoria = 11;
+	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
+	strcpy(infoClienteMemoria->registro,registro);
+
+	iniciarHiloClienteMemoria(infoClienteMemoria);
+
+	contexto->instruccion = string_duplicate("MOV_IN");
+    return;
+}
+
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
+void mov_out_tp(int direccionLogica, char* registro){
+
+	t_infoClienteMemoria* infoClienteMemoria;
+	infoClienteMemoria->cod_memoria = 12;
+	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
+	strcpy(infoClienteMemoria->registro,registro);
+
+	iniciarHiloClienteMemoria(infoClienteMemoria);
+
+	contexto->instruccion = string_duplicate("MOV_OUT");
+    return;
+}
+
 
 //CREATE_SEGMENT (Id del Segmento, Tamaño): Esta instrucción solicita al kernel la creación del segmento con el Id y tamaño indicado por parámetro.
-void createSeg_tp(int idSegmento, size_t tamanioSegmento){
+void createSeg_tp(int idSegmento, int tamanioSegmento){
 
 	contexto->idSegmento = idSegmento;
 	contexto->tamanioSegmento = tamanioSegmento;
