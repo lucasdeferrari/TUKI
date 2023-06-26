@@ -32307,3 +32307,7 @@
 
 [INFO] 02:34:47:880 CPU/(2724:2725): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
 [INFO] 02:34:47:881 CPU/(2724:2726): CPU lista para recibir al cliente
+[INFO] 04:48:30:195 CPU/(5184:5184): CPU lista para escuchar al cliente
+
+[INFO] 04:48:30:195 CPU/(5184:5186): CPU lista para recibir al cliente
+[INFO] 04:48:30:196 CPU/(5184:5185): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!

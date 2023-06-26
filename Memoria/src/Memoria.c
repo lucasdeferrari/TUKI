@@ -560,7 +560,6 @@ void eliminar_proceso(int *idProceso){
 
 }
 
-
 void* serverMemoria(void* ptr){
 
 	//sem_wait(&semKernelClientFileSystem);
@@ -574,8 +573,7 @@ void* serverMemoria(void* ptr){
     t_list* lista;
     while (1) {
     	int cod_op = recibir_operacion(cliente_fd);
-    	switch (cod_op) {
-    		case MENSAJE:
+    		if(cod_op == MENSAJE) {
 
     			char* handshake = recibir_buffer_mio(cliente_fd);
 
@@ -597,26 +595,28 @@ void* serverMemoria(void* ptr){
     				enviar_respuesta(cliente_fd, handshake);
     			}
     			//free(handshake);
-    			break;
-    		case PAQUETE:
+    		}
+    		else if (cod_op == PAQUETE) {
+    			char* handshake = recibir_buffer_mio(cliente_fd);
+
     			lista = recibir_paquete(cliente_fd);
     			log_info(logger, "Me llegaron los siguientes valores:");
     			list_iterate(lista, (void*) iterator);
     			enviar_respuesta(cliente_fd, handshake);
-    			break;
+    		}
 
-    		case PROCESO_NUEVO:
+    		else if(cod_op == PROCESO_NUEVO) {
     			char* pid = recibir_buffer_mio(cliente_fd);
     			int pidInt = atoi(pid);
 
     			crearYDevolverProceso(pidInt, cliente_fd);
-    			break;
+    		}
 
     		// crearSegmento(pid= 1, id= 1, tamanio= 100); EJEMPLO DE LO QUE MANDARIA KERNEL
     		// LO QUE HARIA EL KERNEL SERIA CREAR UN PAQUETE, DONDE CADA RENGLON DEL MISMO
     		// SEA UN PARAMETRO DE ESA FUNCION. ES DECIR, MANDARIA UN PAQUETE CON 3 ELEMENTOS:
     		// PID, ID Y TAMANIO.
-    		case CREATE_SEGMENT:
+    		else if(cod_op == CREATE_SEGMENT) {
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iterador = list_iterator_create(lista);
 
@@ -631,7 +631,7 @@ void* serverMemoria(void* ptr){
 
     			 list_iterator_destroy(iterador);
 
-    			 pidInt = arrayPaquete[0];
+    			 int pidInt = arrayPaquete[0];
     			 int idSegmento = arrayPaquete[1];
     			 int tamanio = arrayPaquete[2];
 
@@ -639,9 +639,9 @@ void* serverMemoria(void* ptr){
 
     			int resultado = crear_segmento(pidInt, idSegmento,tamanio);
     			iniciarHiloClienteKernel(resultado, cliente_fd);
-    		break;
+    		}
 
-    		case DELETE_SEGMENT:
+    		else if(cod_op == DELETE_SEGMENT) {
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador1 = list_iterator_create(lista);
 
@@ -670,15 +670,16 @@ void* serverMemoria(void* ptr){
 
 				list_iterator_destroy(iterador2);
 
-    		break;
-    		case COMPACTAR_MEMORIA:
+    		}
+
+    		else if(cod_op == COMPACTAR_MEMORIA) {
     			log_info(logger, "Solicitud de Compactación");
     			compactar_memoria();
     			sleep_ms(retardoCompactacion);
     			enviarTodasLasTablas(cliente_fd);
-    		break;
+    		}
 
-    		case ELIMINAR_PROCESO:
+    		else if(cod_op == ELIMINAR_PROCESO) {
     			char* pid2 = recibir_buffer_mio(cliente_fd);
     			int pid2Int = atoi(pid2);
 
@@ -687,19 +688,43 @@ void* serverMemoria(void* ptr){
 
     			eliminar_proceso(puntero);
     			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
-    		break;
+    		}
 
-    		case MOV_IN:
-    			char* direccionFisicaStr = recibir_buffer_mio(cliente_fd);
+    		else if(cod_op == MOV_IN) {
+    			lista = recibir_paquete(cliente_fd);
+				t_list_iterator* iterador_mov_in = list_iterator_create(lista);
+
+				// ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
+
+				char* paquete[4] = {};
+
+				 for (int i = 0; i<4; i++) {
+						char* siguiente = list_iterator_next(iterador_mov_in);
+						paquete[i] = siguiente;
+						}
+				 list_iterator_destroy(iterador_mov_in);
+
+				char* pid = paquete[0];
+				char* quienMeHabla = paquete[1];
+				char* direccionFisicaStr = paquete[2];
+				char* tamanioStr = paquete[3];
+
+				int tamanio = atoi(tamanioStr);
     			int direccionFisica = atoi(direccionFisicaStr);
-    			void* destino = malloc(sizeof(espacioUsuario) + sizeof(direccionFisica));
-    			memcpy(destino, espacioUsuario + direccionFisica, (sizeof(espacioUsuario) + sizeof(int)));
-    			sleep_ms(retardoMemoria);
-    			enviarValorLectura(destino, cliente_fd);
-    			log_info(logger, "PID: %i - Acción: LEER - Dirección física: %i - Tamaño: <TAMAÑO> - Origen: <CPU / FS>", pid, direccionFisica );
-    		break;
 
-    		case MOV_OUT:
+    			char* destinoArray [tamanio];
+
+    			for(int i =0; i<= tamanio; i++) {
+    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, (sizeof(espacioUsuario) + sizeof(int) + sizeof(int)));
+    			}
+
+    			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
+
+    			sleep_ms(retardoMemoria);
+    			enviarValorLectura(destinoArray, tamanio, cliente_fd);
+    		}
+
+    		else if(cod_op == MOV_OUT) {
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador3 = list_iterator_create(lista);
 
@@ -717,14 +742,17 @@ void* serverMemoria(void* ptr){
 				memcpy(espacioUsuario + direccionFisicaRecibida,  aEscribir, strlen(aEscribir) + 1);
 				sleep_ms(retardoMemoria);
 				enviarRespuestaEscritura(cliente_fd);
-    		break;
-    		case -1:
+    		}
+
+    		else if(cod_op == -1) {
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
-    		default:
+    		}
+
+    		else {
     			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-    		break;
-    	}
+    		}
+
     }
 
     //sem_post(&semKernelServer);
@@ -779,19 +807,20 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 	return NULL;
 }
 
-void enviarValorLectura(void* destino, int cliente_fd){
-	char* handshake = recibir_buffer_mio(cliente_fd);
-	 // Conversión explícita a un puntero char*
-	    char *charPtr = (char *)destino;
+void enviarValorLectura(char* array[], int longitud, int cliente_fd){
+	//char* handshake = recibir_buffer_mio(cliente_fd);
+	 // Conversión explícita a un puntero char
 	 // Accediendo al contenido a través de charPtr
-	    char* value = *charPtr;
 
-	if (strcmp(handshake, "CPU") == 0){
-		enviar_cod_operacion(value, cliente_fd, MOV_IN);
-	 }
-	else if(strcmp(handshake, "filesystem") == 0){
-		enviar_cod_operacion(value, cliente_fd, MOV_IN);
+	t_paquete *paquete_mov_in = crear_paquete_cod_operacion(MOV_IN);
+
+	for(int i=0; i< longitud; i++) {
+		agregar_a_paquete(paquete_mov_in, array[i], 1);
 	}
+
+	enviar_paquete(paquete_mov_in, cliente_fd);
+
+
 }
 void enviarRespuestaEscritura(int cliente_fd){
 	char* handshake = recibir_buffer_mio(cliente_fd);

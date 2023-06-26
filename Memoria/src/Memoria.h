@@ -64,7 +64,7 @@ void enviarTodasLasTablas(int cliente_fd);
 void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
 
 int buscarIdMemoria(int idSegmentoMemoria);
-void enviarValorLectura(void* destino, int cliente_fd);
+void enviarValorLectura(char* array[], int longitud, int cliente_fd);
 void enviarRespuestaEscritura(int cliente_fd);
 
 t_log* iniciar_logger(void);
