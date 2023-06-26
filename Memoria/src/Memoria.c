@@ -334,6 +334,22 @@ int main(void) {
 				 log_error(logger, "No existe el valor para la cantidad de segmentos.\n");
 				 exit(-1);
 			 }
+	if (config_has_property(config, "RETARDO_MEMORIA")) {
+			 printf("Existe el valor para el retardo memoria.\n");
+			 retardoMemoria = config_get_int_value(config, "RETARDO_MEMORIA");
+			 }
+			 else {
+				 log_error(logger, "No existe el valor para el retardo memoria.\n");
+				 exit(-1);
+			 }
+	if (config_has_property(config, "RETARDO_COMPACTACION")) {
+			 printf("Existe el valor para el retardo compactacion.\n");
+			 retardoCompactacion = config_get_int_value(config, "RETARDO_COMPACTACION");
+			 }
+			 else {
+				 log_error(logger, "No existe el valor para el retardo compactacion.\n");
+				 exit(-1);
+			 }
 
 	//printf("Tamanio del segmento 0: %i\n" , tamanioSeg0);
 
@@ -544,6 +560,7 @@ void eliminar_proceso(int *idProceso){
 
 }
 
+
 void* serverMemoria(void* ptr){
 
 	//sem_wait(&semKernelClientFileSystem);
@@ -654,6 +671,7 @@ void* serverMemoria(void* ptr){
     		case COMPACTAR_MEMORIA:
     			log_info(logger, "Solicitud de Compactación");
     			compactar_memoria();
+    			sleep_ms(retardoCompactacion);
     			enviarTodasLasTablas(cliente_fd);
     		break;
     		case ELIMINAR_PROCESO:
@@ -666,10 +684,38 @@ void* serverMemoria(void* ptr){
     			eliminar_proceso(puntero);
     			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
     		break;
+    		case MOV_IN:
+    			//log_info(logger, "PID: <PID> - Acción: <LEER / ESCRIBIR> - Dirección física: <DIRECCIÓN_FÍSICA> - Tamaño: <TAMAÑO> - Origen: <CPU / FS>");
+    			char* direccionFisicaStr = recibir_buffer_mio(cliente_fd);
+    			int direccionFisica = atoi(direccionFisicaStr);
+    			void* destino = malloc(sizeof(espacioUsuario + direccionFisica));
+    			memcpy(destino, espacioUsuario + direccionFisica, sizeof(espacioUsuario + direccionFisica));
+    			sleep_ms(retardoMemoria);
+    			enviarValorLectura(destino, cliente_fd);
+
+    		break;
+    		case MOV_OUT:
+    			lista = recibir_paquete(cliente_fd);
+				t_list_iterator* iterador3 = list_iterator_create(lista);
+
+				char* paqueteDireccion[2] = {};
+
+				 for (int i = 0; i<3; i++) {
+						char* siguiente = list_iterator_next(iterador3);
+						paqueteDireccion[i] = siguiente;
+						}
+				 list_iterator_destroy(iterador3);
+
+
+				int direccionFisicaRecibida = atoi(paqueteDireccion[0]);
+				char* aEscribir = paqueteDireccion[1];
+				memcpy(espacioUsuario + direccionFisicaRecibida,  aEscribir, strlen(aEscribir) + 1);
+				sleep_ms(retardoMemoria);
+				enviarRespuestaEscritura(cliente_fd);
+    		break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
-
     		default:
     			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
     		break;
@@ -710,6 +756,8 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 //	TABLA_SEGMENTOS --> 6
 // 	SIN_ESPACIO --> 7
 //	PEDIR_COMPACTACION-->8
+//	ELIMINAR_PROCESO-->9
+//	TABLA_GLOBAL-->10
 
 	switch(cod_kernel){
 		case CREATE_SEGMENT:
@@ -726,6 +774,102 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 	return NULL;
 }
 
+void enviarValorLectura(void* destino, int cliente_fd){
+	char* handshake = recibir_buffer_mio(cliente_fd);
+	 // Conversión explícita a un puntero char*
+	    char *charPtr = (char *)destino;
+	 // Accediendo al contenido a través de charPtr
+	    char* value = *charPtr;
+
+	if (strcmp(handshake, "CPU") == 0){
+		enviar_cod_operacion(value, cliente_fd, MOV_IN);
+	 }
+	else if(strcmp(handshake, "filesystem") == 0){
+		enviar_cod_operacion(value, cliente_fd, MOV_IN);
+	}
+}
+void enviarRespuestaEscritura(int cliente_fd){
+	char* handshake = recibir_buffer_mio(cliente_fd);
+	if (strcmp(handshake, "CPU") == 0){
+		enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
+	}
+	else if(strcmp(handshake, "filesystem") == 0){
+		enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
+	}
+}
+
+//void iniciarHiloClienteCPU(int cod_op,int cliente_fd) {
+//	ClientCPUArgs args;
+//	args.cod_op = cod_op;
+//	args.cliente_fd = cliente_fd;
+//
+//	int err = pthread_create( 	&client_CPU,	// puntero al thread
+//								NULL,
+//								clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
+//								(void *)&args); // argumentos de la función
+//
+//	if (err != 0) {
+//	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
+//	exit(7);
+//	}
+//	//printf("El hilo cliente de la Memoria se creo correctamente.");
+//
+//}
+//
+//
+//void* clientCPU(int op_code, int cliente_fd) {
+////	MENSAJE --> 0
+////	PAQUETE --> 1
+////	MOV_IN --> 11
+////	MOV_OUT-->12
+//
+//	switch(op_code){
+//		case MOV_IN:
+////			char* baseStr = string_from_format("%zu", base);
+////			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
+//		break;
+//		case MOV_OUT:
+////			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
+//		break;
+//	}
+//	return NULL;
+//}
+//void iniciarHiloClienteFS(int cod_op,int cliente_fd) {
+//	ClientFSArgs args;
+//	args.cod_op = cod_op;
+//	args.cliente_fd = cliente_fd;
+//
+//	int err = pthread_create( 	&client_FS,	// puntero al thread
+//								NULL,
+//								clientFS, // le paso la def de la función que quiero que ejecute mientras viva
+//								(void *)&args); // argumentos de la función
+//
+//	if (err != 0) {
+//	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
+//	exit(7);
+//	}
+//	//printf("El hilo cliente de la Memoria se creo correctamente.");
+//
+//}
+//
+//
+//void* clientFS(int op_code, int cliente_fd) {
+//	//	MENSAJE --> 0
+//	//	PAQUETE --> 1
+//	//	MOV_IN --> 11
+//	//	MOV_OUT-->12
+//
+//		switch(op_code){
+//			case MOV_IN:
+//	//			char* baseStr = string_from_format("%zu", base);
+//	//			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
+//			break;
+//			case MOV_OUT:
+//	//			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
+//			break;
+//		}
+//		return NULL;
+//}
 void enviar_respuesta(int socket_cliente, char* quien_es) {
 	char* handshake = quien_es;
 	char* respuesta = string_new();

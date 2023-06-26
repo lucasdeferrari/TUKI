@@ -32,7 +32,7 @@ typedef enum
 	TABLA_GLOBAL,
 	MOV_IN,
 	MOV_OUT
-}op_code_Kernel;
+}op_code;
 
 
 //client
@@ -70,6 +70,17 @@ typedef struct {
     int cod_kernel;
     int cliente_fd;
 } ClientKernelArgs;
+
+typedef struct {
+    int cod_op;
+    int cliente_fd;
+} ClientCPUArgs;
+
+typedef struct {
+    int cod_op;
+    int cliente_fd;
+} ClientFSArgs;
+
 extern t_log* logger;
 
 void* recibir_buffer(int*, int);

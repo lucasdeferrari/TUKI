@@ -13,7 +13,7 @@
 #include <semaphore.h>
 
 
-pthread_t client_Kernel;
+pthread_t client_Kernel, client_CPU, client_FS;
 
 t_list * listaDeHuecosLibres;
 t_list* tablasDeSegmento;
@@ -25,7 +25,7 @@ size_t base;
 char* algoritmoAsignacion;
 sem_t semMemoriaServer;
 pthread_t serverMemoria_thread;
-int tamanioSeg0, tamanioMemoria;
+int tamanioSeg0, tamanioMemoria, retardoMemoria, retardoCompactacion;
 
 void* espacioUsuario;
 void iterator(char *value);
@@ -35,6 +35,10 @@ void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
 void* clientKernel(int cod_kernel, int cliente_fd);
+void iniciarHiloClienteCPU(int cod_op,int cliente_fd);
+void* clientCPU(int cod_op, int cliente_fd);
+void iniciarHiloClienteFS(int cod_op,int cliente_fd);
+void* clientFS(int cod_op, int cliente_fd);
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 char* recibir_buffer_mio(int socket_cliente);
@@ -60,6 +64,8 @@ void enviarTodasLasTablas(int cliente_fd);
 void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
 
 int buscarIdMemoria(int idSegmentoMemoria);
+void enviarValorLectura(void* destino, int cliente_fd);
+void enviarRespuestaEscritura(int cliente_fd);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
@@ -67,6 +73,10 @@ void leer_consola(t_log*);
 void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
 #endif /* FILE_SYSTEM_H_ */
+
+void sleep_ms(unsigned int milliseconds) {
+    usleep(milliseconds * 1000);
+}
 
 void liberarConexiones(int conexion, t_log *logger, t_config *config) {
 	log_destroy(logger);
