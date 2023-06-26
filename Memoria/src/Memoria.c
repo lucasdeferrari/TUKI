@@ -715,7 +715,7 @@ void* serverMemoria(void* ptr){
     			char* destinoArray [tamanio];
 
     			for(int i =0; i<= tamanio; i++) {
-    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, (sizeof(espacioUsuario) + sizeof(int) + sizeof(int)));
+    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, 1);
     			}
 
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
@@ -724,22 +724,31 @@ void* serverMemoria(void* ptr){
     			enviarValorLectura(destinoArray, tamanio, cliente_fd);
     		}
 
+
+    		// ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
     		else if(cod_op == MOV_OUT) {
     			lista = recibir_paquete(cliente_fd);
-				t_list_iterator* iterador3 = list_iterator_create(lista);
+				t_list_iterator* iterador_mov_out = list_iterator_create(lista);
 
-				char* paqueteDireccion[2] = {};
+				char* paqueteDireccion[5] = {};
 
-				 for (int i = 0; i<3; i++) {
-						char* siguiente = list_iterator_next(iterador3);
+				 for (int i = 0; i<5; i++) {
+						char* siguiente = list_iterator_next(iterador_mov_out);
 						paqueteDireccion[i] = siguiente;
 						}
-				 list_iterator_destroy(iterador3);
+				 list_iterator_destroy(iterador_mov_out);
 
+				 char* pid = paqueteDireccion[0];
+				 char* quienMeHabla = paqueteDireccion[1];
+				 int tamanio = atoi(paqueteDireccion[3]);
+				 char valorRegistro[tamanio];
+				 strcpy(valorRegistro, paqueteDireccion[2]);
+				 int direccionFisicaRecibida = atoi(paqueteDireccion[4]);
 
-				int direccionFisicaRecibida = atoi(paqueteDireccion[0]);
-				char* aEscribir = paqueteDireccion[1];
-				memcpy(espacioUsuario + direccionFisicaRecibida,  aEscribir, strlen(aEscribir) + 1);
+				 for(int i =0; i<= tamanio; i++) {
+					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  valorRegistro[i], 1);
+				     }
+
 				sleep_ms(retardoMemoria);
 				enviarRespuestaEscritura(cliente_fd);
     		}
@@ -819,6 +828,7 @@ void enviarValorLectura(char* array[], int longitud, int cliente_fd){
 	}
 
 	enviar_paquete(paquete_mov_in, cliente_fd);
+	eliminar_paquete(paquete_mov_in);
 
 
 }
