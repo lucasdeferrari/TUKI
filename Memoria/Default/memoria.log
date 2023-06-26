@@ -954,3 +954,8 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 21:18:12:341 Memoria/(37613:37613): Se crearon todas las estructuras correctamente.
 
+[INFO] 02:28:53:029 Memoria/(2570:2570): Listo para escuchar al cliente
+[INFO] 02:28:53:030 Memoria/(2570:2570): Memoria lista para recibir al cliente
+
+[INFO] 02:29:01:579 Memoria/(2570:2571): Se conecto un cliente!
+[INFO] 02:29:01:580 Memoria/(2570:2571): se conecto la cpu

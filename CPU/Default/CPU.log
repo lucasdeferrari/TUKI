@@ -32299,3 +32299,7 @@
 [INFO] 21:17:58:132 CPU/(37616:37618): CPU lista para recibir al cliente
 [INFO] 21:17:58:132 CPU/(37616:37617): Ingrese sus mensajes para la Memoria: 
 [INFO] 21:17:59:335 CPU/(37616:37617): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:29:01:579 CPU/(2572:2572): CPU lista para escuchar al cliente
+
+[INFO] 02:29:01:580 CPU/(2572:2573): Ingrese sus mensajes para la Memoria: 
+[INFO] 02:29:01:581 CPU/(2572:2574): CPU lista para recibir al cliente

@@ -674,6 +674,7 @@ void* serverMemoria(void* ptr){
     			sleep_ms(retardoCompactacion);
     			enviarTodasLasTablas(cliente_fd);
     		break;
+
     		case ELIMINAR_PROCESO:
     			char* pid2 = recibir_buffer_mio(cliente_fd);
     			int pid2Int = atoi(pid2);
@@ -684,16 +685,17 @@ void* serverMemoria(void* ptr){
     			eliminar_proceso(puntero);
     			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
     		break;
+
     		case MOV_IN:
-    			//log_info(logger, "PID: <PID> - Acción: <LEER / ESCRIBIR> - Dirección física: <DIRECCIÓN_FÍSICA> - Tamaño: <TAMAÑO> - Origen: <CPU / FS>");
     			char* direccionFisicaStr = recibir_buffer_mio(cliente_fd);
     			int direccionFisica = atoi(direccionFisicaStr);
-    			void* destino = malloc(sizeof(espacioUsuario + direccionFisica));
-    			memcpy(destino, espacioUsuario + direccionFisica, sizeof(espacioUsuario + direccionFisica));
+    			void* destino = malloc(sizeof(espacioUsuario) + sizeof(direccionFisica));
+    			memcpy(destino, espacioUsuario + direccionFisica, (sizeof(espacioUsuario) + sizeof(int)));
     			sleep_ms(retardoMemoria);
     			enviarValorLectura(destino, cliente_fd);
-
+    			log_info(logger, "PID: %i - Acción: LEER - Dirección física: %i - Tamaño: <TAMAÑO> - Origen: <CPU / FS>", pid, direccionFisica );
     		break;
+
     		case MOV_OUT:
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador3 = list_iterator_create(lista);
