@@ -750,7 +750,7 @@ void* serverMemoria(void* ptr){
 				     }
 
 				sleep_ms(retardoMemoria);
-				enviarRespuestaEscritura(cliente_fd);
+				enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
     		}
 
     		else if(cod_op == -1) {
@@ -832,15 +832,7 @@ void enviarValorLectura(char* array[], int longitud, int cliente_fd){
 
 
 }
-void enviarRespuestaEscritura(int cliente_fd){
-	char* handshake = recibir_buffer_mio(cliente_fd);
-	if (strcmp(handshake, "CPU") == 0){
-		enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
-	}
-	else if(strcmp(handshake, "filesystem") == 0){
-		enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
-	}
-}
+
 
 //void iniciarHiloClienteCPU(int cod_op,int cliente_fd) {
 //	ClientCPUArgs args;
