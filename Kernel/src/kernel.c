@@ -246,8 +246,17 @@ void* clientMemoria(int cod_memoria) {
         	nuevoSegmento->id = estadoEnEjecucion->idSegmento;
         	nuevoSegmento->direccionBase = base;
         	nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
-        	printf("FALTA AGREGAR EL NUEVO SEGMENTO AL PROCESO\n");
-        	//list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
+
+        	list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
+
+        	printf("Tabla de segmentos: \n");
+        	t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->tablaSegmentos);
+        	while (list_iterator_has_next(iterador)) {
+        		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+        		printf("IdSegmento: %d\n",siguiente->id);
+        		printf("Base: %zu\n",siguiente->direccionBase);
+        		printf("Tamaño: %zu\n",siguiente->tamanio);
+        	}
 
         	iniciarHiloClienteCPU();
         break;
@@ -923,6 +932,8 @@ void armarPCB(t_list* lista){
 	nuevoPCB->tamanioArchivo = 0;
 
 	nuevoPCB->recursosAsignados = list_create();
+	nuevoPCB->punterosArchivos = list_create();
+	nuevoPCB->tablaSegmentos = list_create();
 
 	//nuevoPCB->recursoSolicitado = string_new();
 	//nuevoPCB->recursoALiberar = string_new();
@@ -972,8 +983,6 @@ void armarPCB(t_list* lista){
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
 
-	nuevoPCB->punterosArchivos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
-	nuevoPCB->tablaSegmentos = NULL; //YA NO TIRA ERROR, SE VE Q FALLABA OTRA COSA - REVISAR
 
 
 
@@ -1278,12 +1287,12 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
 //        }
         printf("Estimado próxima ráfaga: %d\n", frenteColaNew->info_pcb->estimadoProxRafaga);
         printf("Tiempo llegada a Ready: %d\n", frenteColaNew->info_pcb->entraEnColaReady);
-        printf("Punteros a archivos:\n");
-        t_nodoArchivos* punteros = frenteColaNew->info_pcb->punterosArchivos;
-        while (punteros != NULL) {
-            printf("%s\n", punteros->info_archivos);
-            punteros = punteros->sgte;
-        }
+//        printf("Punteros a archivos:\n");
+//        t_nodoArchivos* punteros = frenteColaNew->info_pcb->punterosArchivos;
+//        while (punteros != NULL) {
+//            printf("%s\n", punteros->info_archivos);
+//            punteros = punteros->sgte;
+//        }
         frenteColaNew = frenteColaNew->sgte;
     }
 }

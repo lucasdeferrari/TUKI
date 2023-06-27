@@ -649,9 +649,9 @@ void* serverMemoria(void* ptr){
     			 printf("Tamaño recibido de Kernel: %d\n",tamanio);
 
     			 //CALCULAMOS NUESTRO IdSEGMENTO
-    			printf("Antes de crear_segmento.\n");
+
     			int resultado = crear_segmento(pidInt, idSegmento,tamanio);
-    			printf("Despues de crear_segmento.\n");
+
     			iniciarHiloClienteKernel(resultado, cliente_fd);
     		}
 
@@ -822,13 +822,8 @@ void* clientKernel(void *arg) {
 //	TABLA_GLOBAL-->10
 
 
-	printf("cod_kernel: %d\n",cod_kernel);
-	printf("cliente_fd: %d\n",cliente_fd);
-
 	switch(cod_kernel){
 		case CREATE_SEGMENT:
-			printf("cod_kernel: %d\n",cod_kernel);
-			printf("cliente_fd: %d\n",cliente_fd);
 			char* baseStr = string_from_format("%zu", base);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
 			printf("CREATE_SEGMENT ENVIADO\n");

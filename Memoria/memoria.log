@@ -248,3 +248,6 @@ el cliente se desconecto. Terminando servidor
 [INFO] 03:44:05:139 Memoria/(30303:30454): PID: 1 - Crear Segmento: 1 - Base: 0 - TAMAÑO: 128
 [ERROR] 03:44:29:039 Memoria/(30303:30454): 
 el cliente se desconecto. Terminando servidor
+[INFO] 05:01:23:173 Memoria/(33934:33934): Listo para escuchar al cliente
+[INFO] 05:01:23:174 Memoria/(33934:33934): Memoria lista para recibir al cliente
+
