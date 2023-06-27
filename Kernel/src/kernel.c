@@ -205,11 +205,22 @@ void* clientMemoria(int cod_memoria) {
         	eliminar_paquete(paquete);
         break;
     	case 3:
-    		agregar_a_paquete(paquete, &estadoEnEjecucion->pid, sizeof(int));
-    		agregar_a_paquete(paquete, &estadoEnEjecucion->idSegmento, sizeof(int));
+
+    		char* pidDelete = string_new();
+    		char* idSegmentoDelete = string_new();
+
+    		string_append_with_format(&pidDelete, "%d", estadoEnEjecucion->pid);
+    		string_append_with_format(&idSegmentoDelete, "%d", estadoEnEjecucion->idSegmento);
+
+    		printf("pid enviado a Memoria: %s\n", pidDelete);
+    		printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
+
+        	agregar_a_paquete(paquete, pidDelete, strlen(pidDelete)+1);
+        	agregar_a_paquete(paquete, idSegmentoDelete, strlen(idSegmentoDelete)+1);
 
     		enviar_paquete(paquete, conexion_Memoria);
 
+    		printf("DELETE_SEGMENT enviado a MEMORIA.\n");
     		eliminar_paquete(paquete);
     	break;
     	case 5:
@@ -235,13 +246,12 @@ void* clientMemoria(int cod_memoria) {
 			printf("FALTA PROCEDIMIENTO DE PROCESO_NUEVO\n");
 			//t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
 			//crearTablaSegmentos(pidProceso,tablaSegmentosActualizada(tablaSegmentos));
-
+			liberar_conexion(conexion_Memoria);
 		break;
         case 2:
         	char* mensajeMemoria = recibir_handshake(conexion_Memoria);
         	size_t base = strtol(mensajeMemoria, NULL, 10);
 
-        	//t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
         	t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
         	nuevoSegmento->id = estadoEnEjecucion->idSegmento;
         	nuevoSegmento->direccionBase = base;
@@ -257,23 +267,24 @@ void* clientMemoria(int cod_memoria) {
         		printf("Base: %zu\n",siguiente->direccionBase);
         		printf("Tamaño: %zu\n",siguiente->tamanio);
         	}
-
+        	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteCPU();
         break;
         case 7:
     		//Log minimo y obligaotrio
     		//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
-    		pasarAExit();
+        	liberar_conexion(conexion_Memoria);
+        	pasarAExit();
         break;
         case 8:
     		//Revisar si hay conexion entre FileSystem y Memoria
     		//Mandarle a memoria que compacte
-
-    		procedimiento_compactar();
+        	procedimiento_compactar();
         break;
         case 6:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
+        	 liberar_conexion(conexion_Memoria);
         break;
         case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
@@ -281,11 +292,12 @@ void* clientMemoria(int cod_memoria) {
         break;
 		default:
 			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+			 liberar_conexion(conexion_Memoria);
 		break;
 
     }
 
-    liberar_conexion(conexion_Memoria);
+
 
 	return NULL;
 }
