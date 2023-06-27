@@ -41,8 +41,10 @@ typedef struct
 typedef struct
 {
 	int cod_memoria;
-	int pid;
-} t_clientMemoria;
+	int pidProceso;
+} ClientMemoriaArgs;
+
+
 
 typedef struct
 {
@@ -151,6 +153,7 @@ int esperar_cliente(int);
 t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
+void enviar_mensaje_cod_operacion(char* , int , int );
 
 //Funciones cliente
 int crear_conexion(char* ip, char* puerto);

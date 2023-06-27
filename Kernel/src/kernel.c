@@ -157,12 +157,16 @@ void iniciarHiloClienteCPU() {
 
 }
 
-void iniciarHiloClienteMemoria(int cod_memoria) {
+void iniciarHiloClienteMemoria(int cod_memoria,int pidProceso) {
+	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
+	args->cod_memoria = cod_memoria;
+	args->pidProceso= pidProceso;
+	printf("Cod_memoria en el hilo: %d\n", args->cod_memoria);
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 								NULL,
 								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-								(void *)cod_memoria); // argumentos de la función
+								(void *)args); // argumentos de la función
 
 	if (err != 0) {
 	printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
@@ -172,15 +176,20 @@ void iniciarHiloClienteMemoria(int cod_memoria) {
 
 }
 
-void* clientMemoria(int cod_memoria) {
 
-	//int cod_memoria = infoClienteMemoria->cod_memoria;
-	//int pidProceso = infoClienteMemoria->pid;
+void* clientMemoria(void *arg) {
+
+	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
+	int cod_memoria = args->cod_memoria;
+	int pidProceso = args->pidProceso;
+	printf("Cod_memoria en cliente: %d\n", cod_memoria);
+	//t_infopcb* procesoADesencolar = malloc(sizeof(t_infopcb));
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
+    printf("Cod_memoria: %d\n",cod_memoria);
     switch(cod_memoria){
     	case 2:
     		char* pid = string_new();
@@ -224,17 +233,19 @@ void* clientMemoria(int cod_memoria) {
     		eliminar_paquete(paquete);
     	break;
     	case 5:
-    		printf("FALTA PROCEDIMIENTO DE PROCESO_NUEVO\n");
-    		//agregar_a_paquete(paquete, pidProceso, sizeof(int));
-    		//enviar_paquete(paquete, conexion_Memoria);
-    		//eliminar_paquete(paquete);
+    		//char* pidNuevo = string_new();
+    		//procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+    		//string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
+    		//printf("pid enviado a Memoria: %s\n", pidNuevo);
+    		//enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
+
     	break;
     	case 4:
     		enviar_paquete(paquete, conexion_Memoria);
     		eliminar_paquete(paquete);
     	break;
 		default:
-			log_warning(logger,"\nOperacion desconocida. ClientMemoria");
+			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
 		break;
     }
 
@@ -242,10 +253,11 @@ void* clientMemoria(int cod_memoria) {
     printf("codigo de operacion: %i\n", cod_op);
 
     switch (cod_op) {
-		case 5:
-			printf("FALTA PROCEDIMIENTO DE PROCESO_NUEVO\n");
-			//t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
-			//crearTablaSegmentos(pidProceso,tablaSegmentosActualizada(tablaSegmentos));
+		case 6:
+			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
+			//queue(&frenteColaReady, &finColaReady,procesoADesencolar);
+			//procesoADesencolar->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			sem_post(&semKernelClientMemoria);
 			liberar_conexion(conexion_Memoria);
 		break;
         case 2:
@@ -281,10 +293,10 @@ void* clientMemoria(int cod_memoria) {
     		//Mandarle a memoria que compacte
         	procedimiento_compactar();
         break;
-        case 6:   //Después de delete_segment
+        case 3:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
-        	 liberar_conexion(conexion_Memoria);
+        	liberar_conexion(conexion_Memoria);
         break;
         case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
@@ -298,37 +310,47 @@ void* clientMemoria(int cod_memoria) {
     }
 
 
-
+    free(args);
 	return NULL;
 }
 
-void crearTablaSegmentos(int pidProceso, t_list* tablaSegmentosActualizada){
-	printf("FALTA CREAR LA TABLA INICIAL\n");
-
-
-	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-	}
-
-
-
-	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-
-	}
-
-
-	return;
-}
+//void crearTablaSegmentos(int pidProceso, t_list* tablaSegmentosActualizada){
+//
+//	printf("Tabla de segmentos actualizada: \n");
+//
+//	t_list_iterator* iterador = list_iterator_create(tablaSegmentosActualizada);
+//
+//	while (list_iterator_has_next(iterador)) {
+//		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+//		printf("IdSegmento: %d\n",siguiente->id);
+//		printf("Base: %zu\n",siguiente->direccionBase);
+//		printf("Tamaño: %zu\n",siguiente->tamanio);
+//	}
+//
+//	printf("FALTA CREAR LA TABLA INICIAL\n");
+//	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//
+//
+//
+//	}
+//
+//
+//
+//	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+//
+//	}
+//
+//
+//	return;
+//}
 
 t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
-	t_list* tablaSegmentosActualizadaLista = list_create();
-	t_infoTablaSegmentos* nuevoSegmento = NULL;
+	t_list* tablaSegmentosActualizada= list_create();
+	t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
 
 	while (list_iterator_has_next(iterador)) {
-
-		//REVISAR SI ESTA BIEN QUE ESTAN DEFINIDOS ACA DENTRO LOS TIPOS DE LAS VARIABLES
 
 		char* siguiente = list_iterator_next(iterador);
 
@@ -339,15 +361,18 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		int idSegmento = atoi(arraySegmento[1]);
 		int baseSegmento = atoi(arraySegmento[2]);
 		int tamanioSegmento = atoi(arraySegmento[3]);
+		printf("idSegmento: %d\n",idSegmento);
+		printf("baseSegmento: %d\n",baseSegmento);
+		printf("tamanioSegmento: %d\n",tamanioSegmento);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;
 		nuevoSegmento->tamanio = tamanioSegmento;
 
-		list_add(tablaSegmentosActualizadaLista,nuevoSegmento);
+		list_add(tablaSegmentosActualizada,nuevoSegmento);
 	 }
 
-	return tablaSegmentosActualizadaLista;
+	return tablaSegmentosActualizada;
 }
 
 void procedimiento_compactar(){
@@ -361,7 +386,7 @@ void procedimiento_compactar(){
 void compactar(){
 	//t_clientMemoria* infoClientMemoria;
 	//infoClientMemoria->cod_memoria = 4;
-	iniciarHiloClienteMemoria(4);
+	iniciarHiloClienteMemoria(4,0);
 	return;
 }
 
@@ -662,7 +687,7 @@ void manejar_recursos() {
 
 		//t_clientMemoria* infoClientMemoria;
 		//infoClientMemoria->cod_memoria = 2;
-		iniciarHiloClienteMemoria(2);
+		iniciarHiloClienteMemoria(2,0);
 
 
 		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
@@ -677,7 +702,7 @@ void manejar_recursos() {
 
 		//t_clientMemoria* infoClientMemoria;
 		//infoClientMemoria->cod_memoria = 3;
-		iniciarHiloClienteMemoria(3);
+		iniciarHiloClienteMemoria(3,0);
 
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
@@ -1034,24 +1059,15 @@ void encolarReady() {
 
 			if(frenteColaNew != NULL){
 				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+				//iniciarHiloClienteMemoria(5,0);
 				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
-
-
-				//EN VEZ DE HACER ESTO, PODRIAMOS MANDARLO A UNA COLA DE PENDIENTES
-				//QUE, PRIMERO CREE LA TABLA DE SEGMENTOS INICIAL Y DSPS SE ENCOLE EN READY
-				//COMENTADO
-				//t_clientMemoria* infoClientMemoria;
-				//infoClientMemoria->cod_memoria = PROCESO_NUEVO;
-				//infoClientMemoria->pid = procesoADesencolar->pid;
-				//iniciarHiloClienteMemoria(infoClientMemoria);
-
+				//sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
-
-				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
-				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
 				//Log minimo y obligatorio
 				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
+				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
+				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
 		}
 		else{
@@ -1084,12 +1100,14 @@ void encolarReady() {
 			if(frenteColaNew != NULL){
 				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 
+				int pidProceso = procesoADesencolar->pid;
+				//iniciarHiloClienteMemoria(5,pidProceso);
+
+				//PASAR DENTRO DE CLIENT MEMORIA
+
 				list_add(listaReady, procesoADesencolar);
 
-//				t_clientMemoria* infoClientMemoria;
-//				infoClientMemoria->cod_memoria = 5;
-//				infoClientMemoria->pid = procesoADesencolar->pid;
-//				iniciarHiloClienteMemoria(infoClientMemoria);
+
 
 				cantidadElementosSistema++;
 

@@ -268,6 +268,10 @@ t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion) {
 											siguiente->base,
 								siguiente->desplazamiento);
 
+        printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
+        printf("base: %d\n",siguiente->base);
+        printf("desplazamiento: %d\n",siguiente->desplazamiento);
+
         int tamanio = strlen(unaPalabra) + 1;
         agregar_a_paquete(paquete, unaPalabra, tamanio);
     }

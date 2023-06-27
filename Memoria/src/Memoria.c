@@ -617,7 +617,6 @@ void* serverMemoria(void* ptr){
     		else if(cod_op == PROCESO_NUEVO) {
     			char* pid = recibir_buffer_mio(cliente_fd);
     			int pidInt = atoi(pid);
-
     			crearYDevolverProceso(pidInt, cliente_fd);
     		}
 
@@ -676,7 +675,7 @@ void* serverMemoria(void* ptr){
 				while(list_iterator_has_next(iterador2)) {
 					TablaDeSegmentos *siguiente = list_iterator_next(iterador2);
 					if(idProceso == siguiente->pid) {
-						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, TABLA_SEGMENTOS);
+						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, DELETE_SEGMENT);
 						enviar_paquete(paquete, cliente_fd);
 						eliminar_paquete(paquete);
 					}

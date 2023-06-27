@@ -57,12 +57,12 @@ pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, en
 
 void* serverKernel(int);
 void* clientCPU(void *ptr);
-void* clientMemoria(int);
+void* clientMemoria(void *arg);
 void* clientFileSystem(void *ptr);
 void* interrupcionIO(void *ptr);
 void encolarReady();
 void iniciarHiloClienteCPU();
-void iniciarHiloClienteMemoria(int);
+void iniciarHiloClienteMemoria(int,int);
 void iniciarHiloClienteFileSystem();
 int iniciarHiloServer(int);
 void iniciarHiloIO();
@@ -84,7 +84,7 @@ void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
 t_list* listaRecursos;
 t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida);
-
+void crearTablaSegmentos(int , t_list* );
 void finalizarEncolar();
 
 void iterator(char* value);
