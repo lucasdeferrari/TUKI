@@ -716,7 +716,7 @@ int MMU(int direcLogica, int cantBytes){
 	int num_segmento = floor(direcLogica / tam_max_segmento);
 	int desplazamiento_segmento = direcLogica % tam_max_segmento;
 
-	printf("num_segmento: %d\n",num_segmento);
+	printf("num_segmento: %d\n",num_segmento); // = al id del segmento
 	printf("desplazamiento_segmento: %d\n",desplazamiento_segmento);
 
 	if((desplazamiento_segmento+cantBytes)>tam_max_segmento){

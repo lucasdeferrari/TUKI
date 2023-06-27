@@ -1495,3 +1495,79 @@ el cliente se desconecto. Terminando servidor
 el cliente se desconecto. Terminando servidor
 [INFO] 01:03:08:368 FileSystem/(15797:27489): FileSystem listo para recibir a kernel
 [INFO] 01:03:16:239 FileSystem/(15797:27489): Se conecto un cliente!
+[ERROR] 01:35:52:485 FileSystem/(15797:27489): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:35:52:487 FileSystem/(15797:27706): FileSystem listo para recibir a kernel
+[INFO] 01:37:03:472 FileSystem/(15797:27706): Se conecto un cliente!
+[INFO] 01:40:00:163 FileSystem/(27908:27908): FileSystem listo para escuchar al cliente
+
+[INFO] 01:40:00:163 FileSystem/(27908:27910): FileSystem listo para recibir a kernel
+[INFO] 01:40:00:164 FileSystem/(27908:27909): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 01:40:04:268 FileSystem/(27908:27910): Se conecto un cliente!
+[ERROR] 01:47:11:156 FileSystem/(27908:27910): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:47:11:157 FileSystem/(27908:28217): FileSystem listo para recibir a kernel
+[INFO] 01:47:16:490 FileSystem/(27908:28217): Se conecto un cliente!
+[ERROR] 01:50:50:331 FileSystem/(27908:28217): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:50:50:332 FileSystem/(27908:28299): FileSystem listo para recibir a kernel
+[INFO] 01:50:58:450 FileSystem/(27908:28299): Se conecto un cliente!
+[INFO] 01:51:04:647 FileSystem/(28322:28322): FileSystem listo para escuchar al cliente
+
+[INFO] 01:51:04:648 FileSystem/(28322:28324): FileSystem listo para recibir a kernel
+[INFO] 01:51:04:649 FileSystem/(28322:28323): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 01:53:45:730 FileSystem/(28579:28579): FileSystem listo para escuchar al cliente
+
+[INFO] 01:53:45:730 FileSystem/(28579:28581): FileSystem listo para recibir a kernel
+[INFO] 01:53:45:731 FileSystem/(28579:28580): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 01:53:48:961 FileSystem/(28579:28581): Se conecto un cliente!
+[ERROR] 03:29:17:313 FileSystem/(28579:28581): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:29:17:315 FileSystem/(28579:29493): FileSystem listo para recibir a kernel
+[INFO] 03:29:40:194 FileSystem/(29543:29543): FileSystem listo para escuchar al cliente
+
+[INFO] 03:29:40:195 FileSystem/(29543:29545): FileSystem listo para recibir a kernel
+[INFO] 03:29:40:195 FileSystem/(29543:29544): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:29:44:872 FileSystem/(29543:29545): Se conecto un cliente!
+[ERROR] 03:31:49:820 FileSystem/(29543:29545): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:31:49:821 FileSystem/(29543:29710): FileSystem listo para recibir a kernel
+[INFO] 03:32:15:278 FileSystem/(29788:29788): FileSystem listo para escuchar al cliente
+
+[INFO] 03:32:15:279 FileSystem/(29788:29790): FileSystem listo para recibir a kernel
+[INFO] 03:32:15:279 FileSystem/(29788:29789): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:32:29:879 FileSystem/(29788:29790): Se conecto un cliente!
+[INFO] 03:32:49:060 FileSystem/(29809:29809): FileSystem listo para escuchar al cliente
+
+[INFO] 03:32:49:060 FileSystem/(29809:29811): FileSystem listo para recibir a kernel
+[INFO] 03:32:49:061 FileSystem/(29809:29810): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:33:44:903 FileSystem/(29859:29859): FileSystem listo para escuchar al cliente
+
+[INFO] 03:33:44:904 FileSystem/(29859:29861): FileSystem listo para recibir a kernel
+[INFO] 03:33:44:905 FileSystem/(29859:29860): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:33:55:320 FileSystem/(29859:29861): Se conecto un cliente!
+[ERROR] 03:37:25:497 FileSystem/(29859:29861): 
+el cliente se desconecto. Terminando servidor
+[INFO] 03:37:25:498 FileSystem/(29859:30045): FileSystem listo para recibir a kernel
+[INFO] 03:37:49:035 FileSystem/(30059:30059): FileSystem listo para escuchar al cliente
+
+[INFO] 03:37:49:036 FileSystem/(30059:30061): FileSystem listo para recibir a kernel
+[INFO] 03:37:49:037 FileSystem/(30059:30060): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:38:06:304 FileSystem/(30059:30061): Se conecto un cliente!
+[INFO] 03:39:58:299 FileSystem/(30315:30315): FileSystem listo para escuchar al cliente
+
+[INFO] 03:39:58:299 FileSystem/(30315:30317): FileSystem listo para recibir a kernel
+[INFO] 03:39:58:304 FileSystem/(30315:30316): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:43:38:097 FileSystem/(30448:30448): FileSystem listo para escuchar al cliente
+
+[INFO] 03:43:38:098 FileSystem/(30448:30450): FileSystem listo para recibir a kernel
+[INFO] 03:43:38:102 FileSystem/(30448:30449): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:43:40:560 FileSystem/(30448:30450): Se conecto un cliente!
+[ERROR] 04:04:40:767 FileSystem/(30448:30450): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:04:40:770 FileSystem/(30448:31634): FileSystem listo para recibir a kernel
+[INFO] 04:05:20:480 FileSystem/(30448:31634): Se conecto un cliente!
+[INFO] 04:05:42:602 FileSystem/(31701:31701): FileSystem listo para escuchar al cliente
+
+[INFO] 04:05:42:603 FileSystem/(31701:31703): FileSystem listo para recibir a kernel
+[INFO] 04:05:42:603 FileSystem/(31701:31702): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!

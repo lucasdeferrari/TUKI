@@ -179,7 +179,6 @@ void* clientMemoria(int cod_memoria) {
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("kernel",conexion_Memoria);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
     switch(cod_memoria){
@@ -228,7 +227,6 @@ void* clientMemoria(int cod_memoria) {
 		break;
     }
 
-
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("codigo de operacion: %i\n", cod_op);
 
@@ -242,13 +240,14 @@ void* clientMemoria(int cod_memoria) {
         case 2:
         	char* mensajeMemoria = recibir_handshake(conexion_Memoria);
         	size_t base = strtol(mensajeMemoria, NULL, 10);
-        	t_infoTablaSegmentos* nuevoSegmento = NULL;
 
+        	//t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
+        	t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
         	nuevoSegmento->id = estadoEnEjecucion->idSegmento;
         	nuevoSegmento->direccionBase = base;
         	nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
-
-        	list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
+        	printf("FALTA AGREGAR EL NUEVO SEGMENTO AL PROCESO\n");
+        	//list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
 
         	iniciarHiloClienteCPU();
         break;
@@ -306,11 +305,6 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 	t_list* tablaSegmentosActualizadaLista = list_create();
 	t_infoTablaSegmentos* nuevoSegmento = NULL;
 
-	char* siguiente = list_iterator_next(iterador);  //REVISAR, salteo el pid en este caso
-
-	//int pidProceso = atoi(siguiente); //solo para comprobar si funciona
-
-
 	while (list_iterator_has_next(iterador)) {
 
 		//REVISAR SI ESTA BIEN QUE ESTAN DEFINIDOS ACA DENTRO LOS TIPOS DE LAS VARIABLES
@@ -320,9 +314,10 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		char** arraySegmento = string_array_new();
 		arraySegmento = string_split(siguiente, " ");
 
-		int idSegmento = atoi(arraySegmento[0]);
-		int baseSegmento = atoi(arraySegmento[1]);
-		int tamanioSegmento = atoi(arraySegmento[2]);
+		int pid = atoi(arraySegmento[0]);
+		int idSegmento = atoi(arraySegmento[1]);
+		int baseSegmento = atoi(arraySegmento[2]);
+		int tamanioSegmento = atoi(arraySegmento[3]);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;
@@ -1539,10 +1534,10 @@ char* recibir_handshake(int socket_cliente)
 void recibir_contexto(int socket_cliente){
 
 	//printf("DENTRO DE RECIBIR CONTEXTO\n");
+	//comentario
 
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 	paquete->buffer = malloc(sizeof(t_buffer));
-
 
 	// Recibimos el buffer.
 	//Recibimos el tamaño del buffer

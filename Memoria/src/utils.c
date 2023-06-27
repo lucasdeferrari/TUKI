@@ -167,7 +167,7 @@ void enviar_mensaje(char* mensaje, int socket_cliente)
 	free(a_enviar);
 	eliminar_paquete(paquete);
 }
-void enviar_cod_operacion(char* mensaje, int socket_cliente, int cod_operacion)
+void enviar_cod_operacion(char* mensaje, int socket_cliente, op_code cod_operacion)
 {
 	t_paquete* paquete = malloc(sizeof(t_paquete));
 
@@ -182,6 +182,7 @@ void enviar_cod_operacion(char* mensaje, int socket_cliente, int cod_operacion)
 	void* a_enviar = serializar_paquete(paquete, bytes);
 
 	send(socket_cliente, a_enviar, bytes, 0);
+	printf("cod_op: %d\n",cod_operacion);
 
 	free(a_enviar);
 	eliminar_paquete(paquete);

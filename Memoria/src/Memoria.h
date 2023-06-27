@@ -34,7 +34,7 @@ bool comparador(void* elem1, void* elem2);
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
-void* clientKernel(int cod_kernel, int cliente_fd);
+void* clientKernel(void *arg);
 void iniciarHiloClienteCPU(int cod_op,int cliente_fd);
 void* clientCPU(int cod_op, int cliente_fd);
 void iniciarHiloClienteFS(int cod_op,int cliente_fd);

@@ -361,10 +361,14 @@ int main(void) {
 
 
 	//FALTA AGREGAR seConectoKernel CUANDO HAGAN EL HANDSHAKE AHI
-	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
-		iniciarHiloServer();
-		pthread_join(serverMemoria_thread, NULL);
-	}
+//	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
+//		iniciarHiloServer();
+//		pthread_join(serverMemoria_thread, NULL);
+//	}
+	while(!( seConectoFS && seConectoKernel)){
+			iniciarHiloServer();
+			pthread_join(serverMemoria_thread, NULL);
+		}
 
 	log_info(logger, "Se conectaron todos los modulos.\n");
 	pthread_detach(client_Kernel);
@@ -577,6 +581,7 @@ void* serverMemoria(void* ptr){
     t_list* lista;
     while (1) {
     	int cod_op = recibir_operacion(cliente_fd);
+    	printf("cod_op en serverkernel en memoria: %d\n",cod_op);
     		if(cod_op == MENSAJE) {
 
     			char* handshake = recibir_buffer_mio(cliente_fd);
@@ -644,7 +649,7 @@ void* serverMemoria(void* ptr){
     			 printf("Tamaño recibido de Kernel: %d\n",tamanio);
 
     			 //CALCULAMOS NUESTRO IdSEGMENTO
-    			 printf("Antes de crear_segmento.\n");
+    			printf("Antes de crear_segmento.\n");
     			int resultado = crear_segmento(pidInt, idSegmento,tamanio);
     			printf("Despues de crear_segmento.\n");
     			iniciarHiloClienteKernel(resultado, cliente_fd);
@@ -797,7 +802,13 @@ void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd) {
 }
 
 
-void* clientKernel(int cod_kernel, int cliente_fd) {
+void* clientKernel(void *arg) {
+
+	printf("Dentro del hilo clientKernel\n");
+	ClientKernelArgs *args = (ClientKernelArgs *)arg;
+	int cod_kernel = args->cod_kernel;
+	int cliente_fd = args->cliente_fd;
+
 //	MENSAJE --> 0
 //	PAQUETE --> 1
 //	CREATE_SEGMENT --> 2
@@ -809,12 +820,15 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 //	PEDIR_COMPACTACION-->8
 //	ELIMINAR_PROCESO-->9
 //	TABLA_GLOBAL-->10
-	printf("Dentro del hilo clientKernel\n");
+
+
 	printf("cod_kernel: %d\n",cod_kernel);
 	printf("cliente_fd: %d\n",cliente_fd);
 
 	switch(cod_kernel){
 		case CREATE_SEGMENT:
+			printf("cod_kernel: %d\n",cod_kernel);
+			printf("cliente_fd: %d\n",cliente_fd);
 			char* baseStr = string_from_format("%zu", base);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
 			printf("CREATE_SEGMENT ENVIADO\n");
