@@ -197,10 +197,6 @@ void* clientMemoria(void *arg) {
             string_append_with_format(&idSegmento, "%d", estadoEnEjecucion->idSegmento);
             string_append_with_format(&tamanioSegmento, "%d", estadoEnEjecucion->tamanioSegmento);
 
-    		printf("pid enviado a Memoria: %s\n", pid);
-    		printf("idSegmento enviado a Memoria: %s\n", idSegmento);
-    		printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
-
         	agregar_a_paquete(paquete, pid, strlen(pid)+1);
         	agregar_a_paquete(paquete, idSegmento, strlen(idSegmento)+1);
         	agregar_a_paquete(paquete, tamanioSegmento, strlen(tamanioSegmento)+1);
@@ -208,6 +204,10 @@ void* clientMemoria(void *arg) {
         	enviar_paquete(paquete, conexion_Memoria);
 
         	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
+        	printf("pid enviado a Memoria: %s\n", pid);
+        	printf("idSegmento enviado a Memoria: %s\n", idSegmento);
+        	printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
+
         	eliminar_paquete(paquete);
         break;
     	case 3:
@@ -313,42 +313,13 @@ void* clientMemoria(void *arg) {
 	return NULL;
 }
 
-//void crearTablaSegmentos(int pidProceso, t_list* tablaSegmentosActualizada){
-//
-//	printf("Tabla de segmentos actualizada: \n");
-//
-//	t_list_iterator* iterador = list_iterator_create(tablaSegmentosActualizada);
-//
-//	while (list_iterator_has_next(iterador)) {
-//		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-//		printf("IdSegmento: %d\n",siguiente->id);
-//		printf("Base: %zu\n",siguiente->direccionBase);
-//		printf("Tamaño: %zu\n",siguiente->tamanio);
-//	}
-//
-//	printf("FALTA CREAR LA TABLA INICIAL\n");
-//	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-//
-//
-//
-//	}
-//
-//
-//
-//	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-//
-//	}
-//
-//
-//	return;
-//}
 
 t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
 	t_list* tablaSegmentosActualizada= list_create();
 	t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
-
+	printf("Tabla de segmentos: \n");
 	while (list_iterator_has_next(iterador)) {
 
 		char* siguiente = list_iterator_next(iterador);
@@ -360,6 +331,7 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		int idSegmento = atoi(arraySegmento[1]);
 		int baseSegmento = atoi(arraySegmento[2]);
 		int tamanioSegmento = atoi(arraySegmento[3]);
+
 		printf("idSegmento: %d\n",idSegmento);
 		printf("baseSegmento: %d\n",baseSegmento);
 		printf("tamanioSegmento: %d\n",tamanioSegmento);
