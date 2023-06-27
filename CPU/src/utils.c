@@ -81,6 +81,7 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 
 	contextoPRUEBA->instruccion_length = 0;
 	contextoPRUEBA->programCounter = 0;
+	contextoPRUEBA->pid = 0;
 	contextoPRUEBA->tiempoBloqueado = 0;
 
 	for (int i = 0; i < sizeof(contextoPRUEBA->registrosCpu.AX); i++) {
@@ -124,6 +125,9 @@ t_contextoEjecucion* recibir_contexto(int socket_cliente){
 	void* stream = paquete->buffer->stream;
 
 	// Deserializamos los campos que tenemos en el buffer
+	 memcpy(&(contextoPRUEBA->pid), stream, sizeof(int));
+	 stream += sizeof(int);
+
 	 memcpy(&(contextoPRUEBA->programCounter), stream, sizeof(int));
 	 stream += sizeof(int);
 

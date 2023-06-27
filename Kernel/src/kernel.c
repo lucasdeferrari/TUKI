@@ -405,15 +405,16 @@ void* clientCPU(void* ptr) {
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
+    printf("Contexto enviado a CPU. \n");
 
     //enviamos tabla Segmentos
     //COMENTADO
-    //printf("ENVIAMOS TABLA SEGMENTOS A CPU, NO PROBADO, POSIBLE SEG_FAULT.\n");
-    //t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
-    //enviar_paquete(tabla, conexion_CPU);
-    //eliminar_paquete(tabla);
+//    printf("ENVIAMOS TABLA SEGMENTOS A CPU, NO PROBADO, POSIBLE SEG_FAULT.\n");
+//    t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
+//    enviar_paquete(tabla, conexion_CPU);
+//    eliminar_paquete(tabla);
+//    printf("Tabla de Segmentos enviada a CPU. \n");
 
-    printf("Contexto enviado a CPU. \n");
     int cod_op = recibir_operacion(conexion_CPU);
 
     //contextoActualizado = recibir_contexto(conexion_CPU);
@@ -1412,32 +1413,29 @@ t_paquete* empaquetarTabla(t_list* cabezaTabla) {
 
     	t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
 
-    	int idSegmento = siguiente->id;
-    	char idSegmentoStr[20];
-    	sprintf(idSegmentoStr, "%d", idSegmento);
+		char* idSegmento = string_new();
+		char* tamanioSegmento = string_new();
+		char* baseSegmento = string_new();
 
-        size_t direccionBase = siguiente->direccionBase;
-        char direccionBaseStr[20];
-        sprintf(direccionBaseStr, "%zu", direccionBase);
+        string_append_with_format(&idSegmento, "%d", siguiente->id);
+        string_append_with_format(&tamanioSegmento, "%zu", siguiente->tamanio);
+        string_append_with_format(&baseSegmento, "%zu", siguiente->direccionBase);
 
-        size_t tamanioSegmento = siguiente->tamanio;
-        char tamanioStr[20];
-        sprintf(tamanioStr, "%zu", tamanioSegmento);
+        char* segmento = string_new();
 
-        char* segmento;
-        string_append(segmento, idSegmentoStr);
+        string_append(segmento, idSegmento);
         string_append(segmento, " ");
 
-        string_append(segmento, direccionBaseStr);
+        string_append(segmento, tamanioSegmento);
         string_append(segmento, " ");
 
-        string_append(segmento, tamanioStr);
+        string_append(segmento, baseSegmento);
+        printf("Segmento: %d\n",segmento);
 
-
-    	int tamanio = (strlen(segmento))+1;
-    	agregar_a_paquete(paquete, segmento,tamanio );
+        agregar_a_paquete(paquete, segmento, strlen(segmento)+1);
 
     }
+
     return paquete;
 }
 
@@ -1447,10 +1445,13 @@ void serializarContexto(int unSocket){
 
 	t_buffer* buffer = malloc(sizeof(t_buffer));
 
-	buffer->size = sizeof(int) + sizeof(estadoEnEjecucion->registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion->registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion->registrosCpu.RAX)*4;
+	buffer->size = sizeof(int)+ sizeof(int) + sizeof(estadoEnEjecucion->registrosCpu.AX) * 4 + sizeof(estadoEnEjecucion->registrosCpu.EAX) *4 + sizeof(estadoEnEjecucion->registrosCpu.RAX)*4;
 
 	void* stream = malloc(buffer->size);
 	int offset = 0; //desplazamiento
+
+	memcpy(stream + offset, &estadoEnEjecucion->pid, sizeof(int));
+	offset += sizeof(int);
 
 	memcpy(stream + offset, &estadoEnEjecucion->programCounter, sizeof(int));
 	offset += sizeof(int);

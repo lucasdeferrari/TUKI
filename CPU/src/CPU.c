@@ -148,10 +148,18 @@ void* serverCPU(void* ptr){
     			list_destroy(lista);
     			break;
     			//COMENTADO Y CAMBIE A CONTADOCONTEXTO == 2
-//    		case TABLA_SEGMENTOS:
+//    		case 6: //TABLA_SEGMENTOS
 //    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
 //    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
 //    			log_info(logger, "Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT\n");
+//            	printf("Tabla de segmentos: \n");
+//            	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
+//            	while (list_iterator_has_next(iterador)) {
+//            		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+//            		printf("IdSegmento: %d\n",siguiente->id);
+//            		printf("Base: %zu\n",siguiente->direccionBase);
+//            		printf("Tamaño: %zu\n",siguiente->tamanio);
+//            	}
 //    			contadorContexto++;
 //    			if(contadorContexto == 3){
 //    				iniciar_ejecucion();
@@ -170,6 +178,7 @@ void* serverCPU(void* ptr){
     			printf("CONTEXTO RECIBIDO\n");
     			contexto = recibir_contexto(cliente_fd);
     			contadorContexto++;
+    			printf("pid recibido de Kernel = %d\n",contexto->pid);
     			printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
     			printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
     			printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);

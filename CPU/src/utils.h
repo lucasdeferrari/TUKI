@@ -91,6 +91,7 @@ typedef struct registrosCPU {
 } t_registrosCPU;
 
 typedef struct {
+	int pid;
 	int programCounter;
 	t_list* listaInstrucciones;
 	t_registrosCPU registrosCpu;
