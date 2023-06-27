@@ -161,7 +161,6 @@ void iniciarHiloClienteMemoria(int cod_memoria,int pidProceso) {
 	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
 	args->cod_memoria = cod_memoria;
 	args->pidProceso= pidProceso;
-	printf("Cod_memoria en el hilo: %d\n", args->cod_memoria);
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 								NULL,
@@ -182,14 +181,12 @@ void* clientMemoria(void *arg) {
 	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
 	int cod_memoria = args->cod_memoria;
 	int pidProceso = args->pidProceso;
-	printf("Cod_memoria en cliente: %d\n", cod_memoria);
-	//t_infopcb* procesoADesencolar = malloc(sizeof(t_infopcb));
+	t_infopcb* procesoADesencolar = malloc(sizeof(t_infopcb));
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
-    printf("Cod_memoria: %d\n",cod_memoria);
     switch(cod_memoria){
     	case 2:
     		char* pid = string_new();
@@ -233,14 +230,15 @@ void* clientMemoria(void *arg) {
     		eliminar_paquete(paquete);
     	break;
     	case 5:
-    		//char* pidNuevo = string_new();
-    		//procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
-    		//string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
-    		//printf("pid enviado a Memoria: %s\n", pidNuevo);
-    		//enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
+    		char* pidNuevo = string_new();
+    		procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+    		string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
+
+    		printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
+    		enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
 
     	break;
-    	case 4:
+    	case 4: //compactar memoria
     		enviar_paquete(paquete, conexion_Memoria);
     		eliminar_paquete(paquete);
     	break;
@@ -250,13 +248,14 @@ void* clientMemoria(void *arg) {
     }
 
     int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
+    //printf("codigo de operacion: %i\n", cod_op);
 
     switch (cod_op) {
 		case 6:
 			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
-			//queue(&frenteColaReady, &finColaReady,procesoADesencolar);
-			//procesoADesencolar->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			procesoADesencolar->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			queue(&frenteColaReady, &finColaReady,procesoADesencolar);
+			printf("PROCESO_NUEVO - Tabla inicial actualizada.\n");
 			sem_post(&semKernelClientMemoria);
 			liberar_conexion(conexion_Memoria);
 		break;
@@ -1058,10 +1057,10 @@ void encolarReady() {
 		if(lugaresDisponiblesReady > 0 ){
 
 			if(frenteColaNew != NULL){
-				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
-				//iniciarHiloClienteMemoria(5,0);
-				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
-				//sem_wait(&semKernelClientMemoria);
+				//t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+				iniciarHiloClienteMemoria(5,0);
+				//queue(&frenteColaReady, &finColaReady,procesoADesencolar);
+				sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
 
 				//Log minimo y obligatorio
