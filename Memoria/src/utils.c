@@ -257,9 +257,21 @@ t_paquete* crear_paquete_cod_operacion(int cod_operacion)
 t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion) {
     t_list_iterator* iterador = list_iterator_create(cabeza);
     t_paquete* paquete = crear_paquete_cod_operacion(cod_operacion);
+    Segmento* siguiente = malloc(sizeof(Segmento));
 
     while (list_iterator_has_next(iterador)) {
-        Segmento* siguiente = list_iterator_next(iterador);
+
+    	siguiente->idSegmentoKernel = 0;
+    	siguiente->base =  (size_t)0;
+    	siguiente->desplazamiento =  (size_t)0;
+    	siguiente = list_iterator_next(iterador);
+
+    	//EL PROBLEMA CREO QUE ES: siguiente->idSegmentoKernel
+
+    	printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
+    	printf("base: %zu\n",siguiente->base);
+    	printf("desplazamiento: %zu\n",siguiente->desplazamiento);
+
         char* unaPalabra = string_new();
 
         string_append_with_format(&unaPalabra, "%d %d %zu %zu",
@@ -268,13 +280,11 @@ t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion) {
 											siguiente->base,
 								siguiente->desplazamiento);
 
-        printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
-        printf("base: %d\n",siguiente->base);
-        printf("desplazamiento: %d\n",siguiente->desplazamiento);
+
 
         int tamanio = strlen(unaPalabra) + 1;
         agregar_a_paquete(paquete, unaPalabra, tamanio);
     }
-
+    list_iterator_destroy(iterador);
     return paquete;
 }

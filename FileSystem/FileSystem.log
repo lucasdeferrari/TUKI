@@ -71,3 +71,15 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 20:47:33:081 FileSystem/(3986:3991): Ingrese sus mensajes para la Memoria: 
 [INFO] 20:47:33:082 FileSystem/(3986:3992): FileSystem listo para recibir a kernel
+[INFO] 22:33:22:954 FileSystem/(13639:13639): FileSystem listo para escuchar al cliente
+
+[INFO] 22:33:22:959 FileSystem/(13639:13645): FileSystem listo para recibir a kernel
+[INFO] 22:33:22:960 FileSystem/(13639:13644): Me llego el mensaje เห.ต
+[INFO] 22:33:41:466 FileSystem/(13664:13664): FileSystem listo para escuchar al cliente
+
+[INFO] 22:33:41:469 FileSystem/(13664:13670): FileSystem listo para recibir a kernel
+[INFO] 22:33:41:470 FileSystem/(13664:13669): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 22:33:49:661 FileSystem/(13664:13670): Se conecto un cliente!
+[ERROR] 22:34:03:637 FileSystem/(13664:13670): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:34:03:643 FileSystem/(13664:13693): FileSystem listo para recibir a kernel

@@ -365,10 +365,6 @@ int main(void) {
 //		iniciarHiloServer();
 //		pthread_join(serverMemoria_thread, NULL);
 //	}
-	while(!( seConectoFS && seConectoKernel)){
-			iniciarHiloServer();
-			pthread_join(serverMemoria_thread, NULL);
-		}
 
 	log_info(logger, "Se conectaron todos los modulos.\n");
 	pthread_detach(client_Kernel);
@@ -658,9 +654,9 @@ void* serverMemoria(void* ptr){
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador1 = list_iterator_create(lista);
 
-				int intPaquete[2] = {};
+				int intPaquete[2] = {0};
 
-				 for (int i = 0; i<3; i++) {
+				 for (int i = 0; i<2; i++) {
 						char* siguiente = list_iterator_next(iterador1);
 						int siguienteInt = atoi(siguiente);
 						intPaquete[i] = siguienteInt;
@@ -673,8 +669,12 @@ void* serverMemoria(void* ptr){
     			t_list_iterator* iterador2 = list_iterator_create(tablasDeSegmento);
 
 				while(list_iterator_has_next(iterador2)) {
-					TablaDeSegmentos *siguiente = list_iterator_next(iterador2);
+					TablaDeSegmentos *siguiente = malloc(sizeof(TablaDeSegmentos));
+					siguiente->pid = 0;
+					siguiente->segmentos = list_create();
+					siguiente = list_iterator_next(iterador2);
 					if(idProceso == siguiente->pid) {
+
 						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, DELETE_SEGMENT);
 						enviar_paquete(paquete, cliente_fd);
 						eliminar_paquete(paquete);
