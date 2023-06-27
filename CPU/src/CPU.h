@@ -24,8 +24,10 @@ int retardo_instruccion;
 int tam_max_segmento;
 
 void *serverCPU(void *ptr);
-void* clientMemoria(t_infoClienteMemoria*);
-void iniciarHiloClienteMemoria(t_infoClienteMemoria*);
+void* clientMemoria();
+void iniciarHiloClienteMemoria();
+//void* clientMemoria(t_infoClienteMemoria*);
+//void iniciarHiloClienteMemoria(t_infoClienteMemoria*);
 void iniciarHiloServer();
 pthread_t serverCPU_thread, client_Memoria, client_Kernel;
 void iniciarHiloClienteKernel();

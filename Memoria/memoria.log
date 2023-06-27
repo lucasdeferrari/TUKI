@@ -186,3 +186,14 @@ el cliente se desconecto. Terminando servidor
 [INFO] 04:20:53:296 Memoria/(89328:90082): a
 [ERROR] 04:20:53:298 Memoria/(89328:90082): 
 el cliente se desconecto. Terminando servidor
+[INFO] 01:00:14:798 Memoria/(27230:27230): Listo para escuchar al cliente
+[INFO] 01:00:14:799 Memoria/(27230:27230): Memoria lista para recibir al cliente
+
+[INFO] 01:00:18:967 Memoria/(27230:27239): Se conecto un cliente!
+[INFO] 01:00:18:969 Memoria/(27230:27239): se conecto el kernel
+[ERROR] 01:00:18:971 Memoria/(27230:27239): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:00:36:110 Memoria/(27230:27245): Se conecto un cliente!
+[INFO] 01:00:36:112 Memoria/(27230:27245): se conecto el kernel
+[ERROR] 01:01:10:000 Memoria/(27230:27245): 
+el cliente se desconecto. Terminando servidor

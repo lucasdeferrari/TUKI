@@ -158,3 +158,323 @@ el kernel se desconecto. Terminando servidor
 [INFO] 21:07:17:640 CPU/(19405:19412): CREATE_SEGMENT 5 20
 
 [INFO] 21:07:17:642 CPU/(19405:19412): DELETE_SEGMENT 12
+[INFO] 23:17:36:372 CPU/(16391:16391): CPU lista para escuchar al cliente
+
+[INFO] 23:17:38:706 CPU/(16391:16416): CPU lista para recibir al cliente
+[INFO] 23:17:45:056 CPU/(16391:16416): Se conecto un cliente
+[WARNING] 23:17:45:060 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:060 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:060 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:061 CPU/(16391:16416): Me llego el mensaje ðÿø
+[INFO] 23:17:45:063 CPU/(16391:16416): Me llego el mensaje ðÿø
+[WARNING] 23:17:45:063 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:063 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:064 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:064 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:064 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:064 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:065 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:17:45:066 CPU/(16391:16416): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:18:18:977 CPU/(16452:16452): CPU lista para escuchar al cliente
+
+[INFO] 23:18:23:888 CPU/(16452:16463): CPU lista para recibir al cliente
+[INFO] 23:19:04:023 CPU/(16517:16517): CPU lista para escuchar al cliente
+
+[INFO] 23:19:08:394 CPU/(16517:16524): CPU lista para recibir al cliente
+[INFO] 23:19:12:794 CPU/(16517:16524): Se conecto un cliente
+[WARNING] 23:19:12:801 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:801 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:801 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:802 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:802 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:802 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:802 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:802 CPU/(16517:16524): Me llego el mensaje ðÿø
+[INFO] 23:19:12:803 CPU/(16517:16524): Me llego el mensaje ðÿø
+[WARNING] 23:19:12:803 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:803 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:19:12:804 CPU/(16517:16524): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:24:23:954 CPU/(16635:16635): CPU lista para escuchar al cliente
+
+[INFO] 23:24:23:960 CPU/(16635:16642): CPU lista para recibir al cliente
+[INFO] 23:26:07:960 CPU/(16689:16689): CPU lista para escuchar al cliente
+
+[INFO] 23:26:07:971 CPU/(16689:16695): CPU lista para recibir al cliente
+[INFO] 23:26:13:102 CPU/(16689:16695): Se conecto un cliente
+[WARNING] 23:26:13:105 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:106 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:106 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:107 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:107 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[INFO] 23:26:13:109 CPU/(16689:16695): Me llego el mensaje ðK§ƒ}
+[WARNING] 23:26:13:109 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:109 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:109 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:110 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:111 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:112 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:112 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:113 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:114 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:115 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:116 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:117 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:26:13:118 CPU/(16689:16695): Operacion desconocida. No quieras meter la pata
+

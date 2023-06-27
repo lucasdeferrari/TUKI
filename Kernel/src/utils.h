@@ -25,19 +25,8 @@
 typedef enum
 {
 	MENSAJE,
-	PAQUETE, //Memoria-Kernel
-	CREATE_SEGMENT,
-	DELETE_SEGMENT,
-	COMPACTAR_MEMORIA,
-	PROCESO_NUEVO,
-	TABLA_SEGMENTOS,
-	SIN_ESPACIO,
-	PEDIR_COMPACTACION,
-	ELIMINAR_PROCESO,
-	TABLA_GLOBAL,
-	MOV_IN,//Memoria-CPU
-	MOV_OUT,
-	CONTEXTO, //CPU-Kernel
+	PAQUETE,
+	CONTEXTO,
 	INSTRUCCIONES
 }op_code;
 
@@ -121,7 +110,7 @@ typedef struct infopcb {
 	int ultimaInstruccion_length;
 	int tiempoBloqueado;
 	int idSegmento;
-	size_t tamanioSegmento;
+	int tamanioSegmento; //size_t
 	//recursos
 	char* recursoALiberar;
 	int recursoALiberar_length;

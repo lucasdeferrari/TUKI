@@ -57,12 +57,12 @@ pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, en
 
 void* serverKernel(int);
 void* clientCPU(void *ptr);
-void* clientMemoria(t_clientMemoria*);
+void* clientMemoria(int);
 void* clientFileSystem(void *ptr);
 void* interrupcionIO(void *ptr);
 void encolarReady();
 void iniciarHiloClienteCPU();
-void iniciarHiloClienteMemoria(t_clientMemoria*);
+void iniciarHiloClienteMemoria(int);
 void iniciarHiloClienteFileSystem();
 int iniciarHiloServer(int);
 void iniciarHiloIO();

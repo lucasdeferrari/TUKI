@@ -157,12 +157,12 @@ void iniciarHiloClienteCPU() {
 
 }
 
-void iniciarHiloClienteMemoria(t_clientMemoria* infoClienteMemoria) {
+void iniciarHiloClienteMemoria(int cod_memoria) {
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 								NULL,
 								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-								(void *)infoClienteMemoria); // argumentos de la función
+								(void *)cod_memoria); // argumentos de la función
 
 	if (err != 0) {
 	printf("\nNo se pudo crear el hilo del cliente Memoria del kernel.");
@@ -172,10 +172,10 @@ void iniciarHiloClienteMemoria(t_clientMemoria* infoClienteMemoria) {
 
 }
 
-void* clientMemoria(t_clientMemoria* infoClienteMemoria) {
+void* clientMemoria(int cod_memoria) {
 
-	int cod_memoria = infoClienteMemoria->cod_memoria;
-	int pidProceso = infoClienteMemoria->pid;
+	//int cod_memoria = infoClienteMemoria->cod_memoria;
+	//int pidProceso = infoClienteMemoria->pid;
 	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
@@ -183,29 +183,43 @@ void* clientMemoria(t_clientMemoria* infoClienteMemoria) {
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
     switch(cod_memoria){
-    	case CREATE_SEGMENT:
-        	agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
-        	agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
-        	agregar_a_paquete(paquete, estadoEnEjecucion->tamanioSegmento, sizeof(size_t));
+    	case 2:
+    		char* pid = string_new();
+    		char* idSegmento = string_new();
+    		char* tamanioSegmento = string_new();
+
+            string_append_with_format(&pid, "%d", estadoEnEjecucion->pid);
+            string_append_with_format(&idSegmento, "%d", estadoEnEjecucion->idSegmento);
+            string_append_with_format(&tamanioSegmento, "%d", estadoEnEjecucion->tamanioSegmento);
+
+    		printf("pid enviado a Memoria: %s\n", pid);
+    		printf("idSegmento enviado a Memoria: %s\n", idSegmento);
+    		printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
+
+        	agregar_a_paquete(paquete, pid, strlen(pid)+1);
+        	agregar_a_paquete(paquete, idSegmento, strlen(idSegmento)+1);
+        	agregar_a_paquete(paquete, tamanioSegmento, strlen(tamanioSegmento)+1);
 
         	enviar_paquete(paquete, conexion_Memoria);
 
+        	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
         	eliminar_paquete(paquete);
         break;
-    	case DELETE_SEGMENT:
-    		agregar_a_paquete(paquete, estadoEnEjecucion->pid, sizeof(int));
-    		agregar_a_paquete(paquete, estadoEnEjecucion->idSegmento, sizeof(int));
+    	case 3:
+    		agregar_a_paquete(paquete, &estadoEnEjecucion->pid, sizeof(int));
+    		agregar_a_paquete(paquete, &estadoEnEjecucion->idSegmento, sizeof(int));
 
     		enviar_paquete(paquete, conexion_Memoria);
 
     		eliminar_paquete(paquete);
     	break;
-    	case PROCESO_NUEVO:
-    		agregar_a_paquete(paquete, pidProceso, sizeof(int));
-    		enviar_paquete(paquete, conexion_Memoria);
-    		eliminar_paquete(paquete);
+    	case 5:
+    		printf("FALTA PROCEDIMIENTO DE PROCESO_NUEVO\n");
+    		//agregar_a_paquete(paquete, pidProceso, sizeof(int));
+    		//enviar_paquete(paquete, conexion_Memoria);
+    		//eliminar_paquete(paquete);
     	break;
-    	case COMPACTAR_MEMORIA:
+    	case 4:
     		enviar_paquete(paquete, conexion_Memoria);
     		eliminar_paquete(paquete);
     	break;
@@ -219,12 +233,13 @@ void* clientMemoria(t_clientMemoria* infoClienteMemoria) {
     printf("codigo de operacion: %i\n", cod_op);
 
     switch (cod_op) {
-		case PROCESO_NUEVO:
-			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
-			crearTablaSegmentos(pidProceso,tablaSegmentosActualizada(tablaSegmentos));
+		case 5:
+			printf("FALTA PROCEDIMIENTO DE PROCESO_NUEVO\n");
+			//t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
+			//crearTablaSegmentos(pidProceso,tablaSegmentosActualizada(tablaSegmentos));
 
 		break;
-        case CREATE_SEGMENT:
+        case 2:
         	char* mensajeMemoria = recibir_handshake(conexion_Memoria);
         	size_t base = strtol(mensajeMemoria, NULL, 10);
         	t_infoTablaSegmentos* nuevoSegmento = NULL;
@@ -237,25 +252,29 @@ void* clientMemoria(t_clientMemoria* infoClienteMemoria) {
 
         	iniciarHiloClienteCPU();
         break;
-        case SIN_ESPACIO:
+        case 7:
     		//Log minimo y obligaotrio
     		//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
     		pasarAExit();
         break;
-        case PEDIR_COMPACTACION:
+        case 8:
     		//Revisar si hay conexion entre FileSystem y Memoria
     		//Mandarle a memoria que compacte
 
     		procedimiento_compactar();
         break;
-        case TABLA_SEGMENTOS:   //Después de delete_segment
+        case 6:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
         break;
-        case COMPACTAR_MEMORIA:
+        case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
         break;
+		default:
+			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+		break;
+
     }
 
     liberar_conexion(conexion_Memoria);
@@ -324,9 +343,9 @@ void procedimiento_compactar(){
 }
 
 void compactar(){
-	t_clientMemoria* infoClientMemoria;
-	infoClientMemoria->cod_memoria = COMPACTAR_MEMORIA;
-	iniciarHiloClienteMemoria(infoClientMemoria);
+	//t_clientMemoria* infoClientMemoria;
+	//infoClientMemoria->cod_memoria = 4;
+	iniciarHiloClienteMemoria(4);
 	return;
 }
 
@@ -370,15 +389,17 @@ void* clientCPU(void* ptr) {
 
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
     //enviamos las intrucciones del contextos
+    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
 
     //enviamos tabla Segmentos
-    printf("ENVIAMOS TABLA SEGMENTOS A CPU, NO PROBADO, POSIBLE SEG_FAULT.\n");
-    t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
-    enviar_paquete(tabla, conexion_CPU);
-    eliminar_paquete(tabla);
+    //COMENTADO
+    //printf("ENVIAMOS TABLA SEGMENTOS A CPU, NO PROBADO, POSIBLE SEG_FAULT.\n");
+    //t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
+    //enviar_paquete(tabla, conexion_CPU);
+    //eliminar_paquete(tabla);
 
     printf("Contexto enviado a CPU. \n");
     int cod_op = recibir_operacion(conexion_CPU);
@@ -623,15 +644,13 @@ void manejar_recursos() {
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
 
-		t_clientMemoria* infoClientMemoria;
-		infoClientMemoria->cod_memoria = CREATE_SEGMENT;
-		iniciarHiloClienteMemoria(infoClientMemoria);
+		//t_clientMemoria* infoClientMemoria;
+		//infoClientMemoria->cod_memoria = 2;
+		iniciarHiloClienteMemoria(2);
 
 
 		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
 		//podemos recibir resultados diferentes
-
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
 
 
 	}
@@ -640,15 +659,15 @@ void manejar_recursos() {
 		//enviarle a la Memoria el Id del segmento a eliminar
 		//recibimos como respuesta de la Memoria la tabla de segmentos actualizada
 
-		t_clientMemoria* infoClientMemoria;
-		infoClientMemoria->cod_memoria = DELETE_SEGMENT;
-		iniciarHiloClienteMemoria(infoClientMemoria);
+		//t_clientMemoria* infoClientMemoria;
+		//infoClientMemoria->cod_memoria = 3;
+		iniciarHiloClienteMemoria(3);
 
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
 	}else if (strcmp(unProceso->ultimaInstruccion, "SEG_FAULT") == 0) {
 
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+		pasarAExit();
 	}
 	else{
 		printf("Instruccion no reconocida.\n");
@@ -1004,10 +1023,11 @@ void encolarReady() {
 
 				//EN VEZ DE HACER ESTO, PODRIAMOS MANDARLO A UNA COLA DE PENDIENTES
 				//QUE, PRIMERO CREE LA TABLA DE SEGMENTOS INICIAL Y DSPS SE ENCOLE EN READY
-				t_clientMemoria* infoClientMemoria;
-				infoClientMemoria->cod_memoria = PROCESO_NUEVO;
-				infoClientMemoria->pid = procesoADesencolar->pid;
-				iniciarHiloClienteMemoria(infoClientMemoria);
+				//COMENTADO
+				//t_clientMemoria* infoClientMemoria;
+				//infoClientMemoria->cod_memoria = PROCESO_NUEVO;
+				//infoClientMemoria->pid = procesoADesencolar->pid;
+				//iniciarHiloClienteMemoria(infoClientMemoria);
 
 				cantidadElementosSistema++;
 
@@ -1050,10 +1070,10 @@ void encolarReady() {
 
 				list_add(listaReady, procesoADesencolar);
 
-				t_clientMemoria* infoClientMemoria;
-				infoClientMemoria->cod_memoria = PROCESO_NUEVO;
-				infoClientMemoria->pid = procesoADesencolar->pid;
-				iniciarHiloClienteMemoria(infoClientMemoria);
+//				t_clientMemoria* infoClientMemoria;
+//				infoClientMemoria->cod_memoria = 5;
+//				infoClientMemoria->pid = procesoADesencolar->pid;
+//				iniciarHiloClienteMemoria(infoClientMemoria);
 
 				cantidadElementosSistema++;
 
@@ -1381,7 +1401,7 @@ t_paquete* empaquetar(t_list* cabeza) {
 t_paquete* empaquetarTabla(t_list* cabezaTabla) {
 
     t_list_iterator* iterador = list_iterator_create(cabezaTabla);
-    t_paquete* paquete = crear_paquete_cod_operacion(TABLA_SEGMENTOS);
+    t_paquete* paquete = crear_paquete_cod_operacion(6);
 
     while (list_iterator_has_next(iterador)) {
 

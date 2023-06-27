@@ -991,3 +991,324 @@ el cliente se desconecto. Terminando servidor
 [INFO] 04:48:30:196 Memoria/(5182:5183): se conecto la cpu
 [ERROR] 04:48:30:196 Memoria/(5182:5183): 
 el cliente se desconecto. Terminando servidor
+[INFO] 22:56:27:717 Memoria/(15725:15725): Listo para escuchar al cliente
+[INFO] 22:56:27:717 Memoria/(15725:15725): Memoria lista para recibir al cliente
+
+[INFO] 22:57:40:098 Memoria/(15725:15726): Se conecto un cliente!
+[INFO] 22:57:40:098 Memoria/(15725:15726): se conecto el filesystem
+[ERROR] 22:57:40:098 Memoria/(15725:15726): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:58:43:885 Memoria/(15725:15800): Se conecto un cliente!
+[INFO] 22:58:43:886 Memoria/(15725:15800): se conecto el kernel
+[ERROR] 22:58:43:886 Memoria/(15725:15800): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:15:22:937 Memoria/(15725:15836): Se conecto un cliente!
+[INFO] 23:15:22:938 Memoria/(15725:15836): se conecto el kernel
+[ERROR] 23:15:22:946 Memoria/(15725:15836): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:17:05:845 Memoria/(15725:16314): Se conecto un cliente!
+[INFO] 23:17:05:850 Memoria/(15725:16314): se conecto el kernel
+[ERROR] 23:17:05:854 Memoria/(15725:16314): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:18:14:325 Memoria/(15725:16359): Se conecto un cliente!
+[INFO] 23:18:14:325 Memoria/(15725:16359): se conecto el kernel
+[ERROR] 23:18:14:325 Memoria/(15725:16359): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:18:37:847 Memoria/(15725:16461): Se conecto un cliente!
+[INFO] 23:18:37:847 Memoria/(15725:16461): se conecto el kernel
+[ERROR] 23:18:37:847 Memoria/(15725:16461): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:18:50:645 Memoria/(15725:16480): Se conecto un cliente!
+[INFO] 23:18:50:645 Memoria/(15725:16480): se conecto el kernel
+[ERROR] 23:18:50:646 Memoria/(15725:16480): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:22:55:970 Memoria/(15725:16495): Se conecto un cliente!
+[INFO] 23:22:55:971 Memoria/(15725:16495): se conecto el kernel
+[ERROR] 23:22:55:972 Memoria/(15725:16495): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:24:10:338 Memoria/(15725:16593): Se conecto un cliente!
+[INFO] 23:24:10:338 Memoria/(15725:16593): se conecto el kernel
+[ERROR] 23:24:10:339 Memoria/(15725:16593): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:24:38:069 Memoria/(15725:16614): Se conecto un cliente!
+[INFO] 23:24:38:070 Memoria/(15725:16614): se conecto el kernel
+[ERROR] 23:24:38:071 Memoria/(15725:16614): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:25:08:536 Memoria/(15725:16657): Se conecto un cliente!
+[INFO] 23:25:08:536 Memoria/(15725:16657): se conecto el kernel
+[ERROR] 23:25:08:536 Memoria/(15725:16657): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:34:43:835 Memoria/(17080:17080): Listo para escuchar al cliente
+[INFO] 23:34:43:836 Memoria/(17080:17080): Memoria lista para recibir al cliente
+
+[INFO] 23:35:02:949 Memoria/(17080:17081): Se conecto un cliente!
+[INFO] 23:35:02:949 Memoria/(17080:17081): se conecto el kernel
+[ERROR] 23:35:02:950 Memoria/(17080:17081): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:35:59:350 Memoria/(17080:17145): Se conecto un cliente!
+[INFO] 23:35:59:350 Memoria/(17080:17145): se conecto el kernel
+[ERROR] 23:35:59:351 Memoria/(17080:17145): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:36:38:133 Memoria/(17080:17238): Se conecto un cliente!
+[INFO] 23:36:38:134 Memoria/(17080:17238): se conecto el kernel
+[ERROR] 23:36:38:139 Memoria/(17080:17238): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:37:23:703 Memoria/(17080:17278): Se conecto un cliente!
+[INFO] 23:37:23:703 Memoria/(17080:17278): se conecto el kernel
+[ERROR] 23:37:23:703 Memoria/(17080:17278): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:40:05:961 Memoria/(17080:17296): Se conecto un cliente!
+[INFO] 23:40:05:961 Memoria/(17080:17296): se conecto el kernel
+[ERROR] 23:40:05:970 Memoria/(17080:17296): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:43:10:735 Memoria/(17080:17686): Se conecto un cliente!
+[INFO] 23:43:10:735 Memoria/(17080:17686): se conecto el kernel
+[ERROR] 23:43:10:735 Memoria/(17080:17686): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:43:14:321 Memoria/(17080:18157): Se conecto un cliente!
+[INFO] 23:43:14:322 Memoria/(17080:18157): se conecto el kernel
+[ERROR] 23:43:14:484 Memoria/(17080:18157): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:44:50:857 Memoria/(17080:18169): Se conecto un cliente!
+[INFO] 23:44:50:858 Memoria/(17080:18169): se conecto el kernel
+[ERROR] 23:44:50:858 Memoria/(17080:18169): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:44:54:693 Memoria/(17080:18394): Se conecto un cliente!
+[INFO] 23:44:54:693 Memoria/(17080:18394): se conecto el kernel
+[ERROR] 23:44:54:842 Memoria/(17080:18394): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:45:44:812 Memoria/(17080:18404): Se conecto un cliente!
+[INFO] 23:45:44:815 Memoria/(17080:18404): se conecto el kernel
+[ERROR] 23:45:44:902 Memoria/(17080:18404): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:45:48:694 Memoria/(17080:18460): Se conecto un cliente!
+[INFO] 23:45:48:694 Memoria/(17080:18460): se conecto el kernel
+[ERROR] 23:45:48:966 Memoria/(17080:18460): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:48:30:921 Memoria/(17080:18469): Se conecto un cliente!
+[INFO] 23:48:30:921 Memoria/(17080:18469): se conecto el kernel
+[ERROR] 23:48:30:922 Memoria/(17080:18469): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:48:35:933 Memoria/(17080:18686): Se conecto un cliente!
+[INFO] 23:48:35:934 Memoria/(17080:18686): se conecto el kernel
+[ERROR] 23:48:36:101 Memoria/(17080:18686): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:49:13:343 Memoria/(17080:18696): Se conecto un cliente!
+[INFO] 23:49:13:343 Memoria/(17080:18696): se conecto el kernel
+[ERROR] 23:49:13:343 Memoria/(17080:18696): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:49:16:753 Memoria/(17080:18777): Se conecto un cliente!
+[INFO] 23:49:16:753 Memoria/(17080:18777): se conecto el kernel
+[ERROR] 23:49:16:912 Memoria/(17080:18777): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:52:52:796 Memoria/(17080:18791): Se conecto un cliente!
+[INFO] 23:52:52:797 Memoria/(17080:18791): se conecto el kernel
+[ERROR] 23:52:52:797 Memoria/(17080:18791): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:52:56:760 Memoria/(17080:19068): Se conecto un cliente!
+[INFO] 23:52:56:761 Memoria/(17080:19068): se conecto el kernel
+[INFO] 23:52:56:761 Memoria/(17080:19068): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 23:52:56:762 Memoria/(17080:19068): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:59:32:497 Memoria/(17080:19077): Se conecto un cliente!
+[INFO] 23:59:32:497 Memoria/(17080:19077): se conecto el kernel
+[ERROR] 23:59:32:498 Memoria/(17080:19077): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:59:36:679 Memoria/(17080:19182): Se conecto un cliente!
+[INFO] 23:59:36:680 Memoria/(17080:19182): se conecto el kernel
+[INFO] 23:59:36:680 Memoria/(17080:19182): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 23:59:36:681 Memoria/(17080:19182): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:00:46:448 Memoria/(17080:19191): Se conecto un cliente!
+[INFO] 00:00:46:448 Memoria/(17080:19191): se conecto el kernel
+[ERROR] 00:00:46:448 Memoria/(17080:19191): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:00:51:227 Memoria/(17080:19322): Se conecto un cliente!
+[INFO] 00:00:51:227 Memoria/(17080:19322): se conecto el kernel
+[INFO] 00:00:51:227 Memoria/(17080:19322): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:00:51:228 Memoria/(17080:19322): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:03:19:956 Memoria/(19573:19573): Listo para escuchar al cliente
+[INFO] 00:03:19:956 Memoria/(19573:19573): Memoria lista para recibir al cliente
+
+[INFO] 00:03:37:131 Memoria/(19573:19574): Se conecto un cliente!
+[INFO] 00:03:37:131 Memoria/(19573:19574): se conecto el kernel
+[ERROR] 00:03:37:132 Memoria/(19573:19574): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:03:40:952 Memoria/(19573:19608): Se conecto un cliente!
+[INFO] 00:03:40:952 Memoria/(19573:19608): se conecto el kernel
+[INFO] 00:03:40:953 Memoria/(19573:19608): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:03:40:955 Memoria/(19573:19608): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:05:41:128 Memoria/(20031:20031): Listo para escuchar al cliente
+[INFO] 00:05:41:128 Memoria/(20031:20031): Memoria lista para recibir al cliente
+
+[INFO] 00:05:43:846 Memoria/(20031:20032): Se conecto un cliente!
+[INFO] 00:05:43:846 Memoria/(20031:20032): se conecto el kernel
+[ERROR] 00:05:43:847 Memoria/(20031:20032): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:05:47:661 Memoria/(20031:20036): Se conecto un cliente!
+[INFO] 00:05:47:661 Memoria/(20031:20036): se conecto el kernel
+[INFO] 00:05:47:662 Memoria/(20031:20036): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:05:47:662 Memoria/(20031:20036): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:11:35:888 Memoria/(21286:21286): Listo para escuchar al cliente
+[INFO] 00:11:35:888 Memoria/(21286:21286): Memoria lista para recibir al cliente
+
+[INFO] 00:11:41:558 Memoria/(21286:21287): Se conecto un cliente!
+[INFO] 00:11:41:558 Memoria/(21286:21287): se conecto el kernel
+[ERROR] 00:11:41:558 Memoria/(21286:21287): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:11:45:164 Memoria/(21286:21321): Se conecto un cliente!
+[INFO] 00:11:45:164 Memoria/(21286:21321): se conecto el kernel
+[ERROR] 00:11:45:348 Memoria/(21286:21321): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:15:16:583 Memoria/(21286:21331): Se conecto un cliente!
+[INFO] 00:15:16:587 Memoria/(21286:21331): se conecto el kernel
+[ERROR] 00:15:16:588 Memoria/(21286:21331): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:15:20:103 Memoria/(21286:21844): Se conecto un cliente!
+[INFO] 00:15:20:104 Memoria/(21286:21844): se conecto el kernel
+[INFO] 00:15:20:106 Memoria/(21286:21844): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:15:20:108 Memoria/(21286:21844): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:16:45:774 Memoria/(21286:21853): Se conecto un cliente!
+[INFO] 00:16:45:774 Memoria/(21286:21853): se conecto el kernel
+[ERROR] 00:16:45:774 Memoria/(21286:21853): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:16:48:858 Memoria/(21286:22008): Se conecto un cliente!
+[INFO] 00:16:48:858 Memoria/(21286:22008): se conecto el kernel
+[INFO] 00:16:48:858 Memoria/(21286:22008): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:16:48:862 Memoria/(21286:22008): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:31:45:118 Memoria/(22329:22329): Listo para escuchar al cliente
+[INFO] 00:31:45:119 Memoria/(22329:22329): Memoria lista para recibir al cliente
+
+[INFO] 00:31:47:698 Memoria/(22329:22330): Se conecto un cliente!
+[INFO] 00:31:47:698 Memoria/(22329:22330): se conecto el kernel
+[ERROR] 00:31:47:699 Memoria/(22329:22330): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:31:50:907 Memoria/(22329:22333): Se conecto un cliente!
+[INFO] 00:31:50:907 Memoria/(22329:22333): se conecto el kernel
+[INFO] 00:31:50:908 Memoria/(22329:22333): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:31:50:908 Memoria/(22329:22333): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:32:18:949 Memoria/(22388:22388): Listo para escuchar al cliente
+[INFO] 00:32:18:949 Memoria/(22388:22388): Memoria lista para recibir al cliente
+
+[INFO] 00:32:21:058 Memoria/(22388:22389): Se conecto un cliente!
+[INFO] 00:32:21:058 Memoria/(22388:22389): se conecto el kernel
+[ERROR] 00:32:21:059 Memoria/(22388:22389): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:32:24:147 Memoria/(22388:22392): Se conecto un cliente!
+[INFO] 00:32:24:147 Memoria/(22388:22392): se conecto el kernel
+[INFO] 00:35:55:345 Memoria/(23787:23787): Listo para escuchar al cliente
+[INFO] 00:35:55:345 Memoria/(23787:23787): Memoria lista para recibir al cliente
+
+[INFO] 00:36:01:864 Memoria/(23787:23788): Se conecto un cliente!
+[INFO] 00:36:01:865 Memoria/(23787:23788): se conecto el kernel
+[ERROR] 00:36:01:865 Memoria/(23787:23788): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:36:05:307 Memoria/(23787:23799): Se conecto un cliente!
+[INFO] 00:36:05:308 Memoria/(23787:23799): se conecto el kernel
+[INFO] 00:36:05:308 Memoria/(23787:23799): PID: 0 - Crear Segmento: 0 - Base: 0 - TAMAÑO: 0
+[ERROR] 00:36:05:309 Memoria/(23787:23799): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:37:42:132 Memoria/(23787:23808): Se conecto un cliente!
+[INFO] 00:37:42:133 Memoria/(23787:23808): se conecto el kernel
+[ERROR] 00:37:42:133 Memoria/(23787:23808): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:37:45:678 Memoria/(23787:23950): Se conecto un cliente!
+[INFO] 00:37:45:679 Memoria/(23787:23950): se conecto el kernel
+[ERROR] 00:37:45:860 Memoria/(23787:23950): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:44:16:808 Memoria/(23787:23960): Se conecto un cliente!
+[INFO] 00:44:16:809 Memoria/(23787:23960): se conecto el kernel
+[ERROR] 00:44:16:809 Memoria/(23787:23960): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:44:49:874 Memoria/(23787:25245): Se conecto un cliente!
+[INFO] 00:44:49:877 Memoria/(23787:25245): se conecto el kernel
+[ERROR] 00:44:49:972 Memoria/(23787:25245): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:45:43:097 Memoria/(23787:25323): Se conecto un cliente!
+[INFO] 00:45:43:101 Memoria/(23787:25323): se conecto el kernel
+[ERROR] 00:45:43:228 Memoria/(23787:25323): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:45:51:208 Memoria/(23787:25438): Se conecto un cliente!
+[INFO] 00:45:51:208 Memoria/(23787:25438): se conecto el kernel
+[ERROR] 00:45:51:235 Memoria/(23787:25438): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:46:17:017 Memoria/(23787:25449): Se conecto un cliente!
+[INFO] 00:46:17:017 Memoria/(23787:25449): se conecto el kernel
+[ERROR] 00:46:17:017 Memoria/(23787:25449): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:46:21:868 Memoria/(23787:25537): Se conecto un cliente!
+[INFO] 00:46:21:868 Memoria/(23787:25537): se conecto el kernel
+[ERROR] 00:46:21:869 Memoria/(23787:25537): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:47:11:376 Memoria/(25691:25691): Listo para escuchar al cliente
+[INFO] 00:47:11:376 Memoria/(25691:25691): Memoria lista para recibir al cliente
+
+[INFO] 00:47:14:675 Memoria/(25691:25692): Se conecto un cliente!
+[INFO] 00:47:14:675 Memoria/(25691:25692): se conecto el kernel
+[ERROR] 00:47:14:675 Memoria/(25691:25692): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:47:17:645 Memoria/(25691:25697): Se conecto un cliente!
+[INFO] 00:47:17:646 Memoria/(25691:25697): se conecto el kernel
+[ERROR] 00:47:17:647 Memoria/(25691:25697): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:52:40:820 Memoria/(26128:26128): Listo para escuchar al cliente
+[INFO] 00:52:40:820 Memoria/(26128:26128): Memoria lista para recibir al cliente
+
+[INFO] 00:52:45:075 Memoria/(26128:26129): Se conecto un cliente!
+[INFO] 00:52:45:075 Memoria/(26128:26129): se conecto el kernel
+[ERROR] 00:52:45:076 Memoria/(26128:26129): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:52:48:504 Memoria/(26128:26133): Se conecto un cliente!
+[INFO] 00:52:48:504 Memoria/(26128:26133): se conecto el kernel
+[ERROR] 00:52:48:505 Memoria/(26128:26133): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:57:15:463 Memoria/(26825:26825): Listo para escuchar al cliente
+[INFO] 00:57:15:463 Memoria/(26825:26825): Memoria lista para recibir al cliente
+
+[INFO] 00:57:21:449 Memoria/(26825:26826): Se conecto un cliente!
+[INFO] 00:57:21:450 Memoria/(26825:26826): se conecto el kernel
+[ERROR] 00:57:21:450 Memoria/(26825:26826): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:57:24:419 Memoria/(26825:26843): Se conecto un cliente!
+[INFO] 00:57:24:419 Memoria/(26825:26843): se conecto el kernel
+[ERROR] 00:57:24:421 Memoria/(26825:26843): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:58:44:627 Memoria/(27105:27105): Listo para escuchar al cliente
+[INFO] 00:58:44:628 Memoria/(27105:27105): Memoria lista para recibir al cliente
+
+[INFO] 00:58:47:379 Memoria/(27105:27106): Se conecto un cliente!
+[INFO] 00:58:47:380 Memoria/(27105:27106): se conecto el kernel
+[ERROR] 00:58:47:380 Memoria/(27105:27106): 
+el cliente se desconecto. Terminando servidor
+[INFO] 00:58:53:640 Memoria/(27105:27110): Se conecto un cliente!
+[INFO] 00:58:53:641 Memoria/(27105:27110): se conecto el kernel
+[ERROR] 00:58:53:642 Memoria/(27105:27110): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:02:43:962 Memoria/(27458:27458): Listo para escuchar al cliente
+[INFO] 01:02:43:962 Memoria/(27458:27458): Memoria lista para recibir al cliente
+
+[INFO] 01:02:46:679 Memoria/(27458:27459): Se conecto un cliente!
+[INFO] 01:02:46:680 Memoria/(27458:27459): se conecto el kernel
+[ERROR] 01:02:46:680 Memoria/(27458:27459): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:02:49:444 Memoria/(27458:27462): Se conecto un cliente!
+[INFO] 01:02:49:445 Memoria/(27458:27462): se conecto el kernel
+[ERROR] 01:02:49:448 Memoria/(27458:27462): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:03:14:176 Memoria/(27522:27522): Listo para escuchar al cliente
+[INFO] 01:03:14:176 Memoria/(27522:27522): Memoria lista para recibir al cliente
+
+[INFO] 01:03:16:237 Memoria/(27522:27523): Se conecto un cliente!
+[INFO] 01:03:16:237 Memoria/(27522:27523): se conecto el kernel
+[ERROR] 01:03:16:238 Memoria/(27522:27523): 
+el cliente se desconecto. Terminando servidor
+[INFO] 01:03:19:163 Memoria/(27522:27527): Se conecto un cliente!
+[INFO] 01:03:19:163 Memoria/(27522:27527): se conecto el kernel
+[ERROR] 01:03:19:165 Memoria/(27522:27527): 
+el cliente se desconecto. Terminando servidor

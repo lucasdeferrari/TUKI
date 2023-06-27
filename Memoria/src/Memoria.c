@@ -21,13 +21,17 @@ Segmento *segmento0;
 
 int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 
+
+
 	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
 	if(!hayLugarParaCrearSegmento(tamanio)) {
+		printf("SIN_ESPACIO.\n");
 		return SIN_ESPACIO;
 	}
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
 	else if(!hayLugarContiguoPara(tamanio)) {
+		printf("PEDIR_COMPACTACION.\n");
 		return PEDIR_COMPACTACION;
 	}
 
@@ -46,7 +50,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 		}
 	base = segmento->base;
 	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, base, tamanio);
-
+	printf("CREATE_SEGMENT.\n");
 	return CREATE_SEGMENT;
 }
 
@@ -617,6 +621,7 @@ void* serverMemoria(void* ptr){
     		// SEA UN PARAMETRO DE ESA FUNCION. ES DECIR, MANDARIA UN PAQUETE CON 3 ELEMENTOS:
     		// PID, ID Y TAMANIO.
     		else if(cod_op == CREATE_SEGMENT) {
+    			printf("Instruccion recibida de Kernel: CREATE_SEGMENT.\n");
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iterador = list_iterator_create(lista);
 
@@ -632,12 +637,16 @@ void* serverMemoria(void* ptr){
     			 list_iterator_destroy(iterador);
 
     			 int pidInt = arrayPaquete[0];
+    			 printf("PID recibido de Kernel: %d\n",pidInt);
     			 int idSegmento = arrayPaquete[1];
+    			 printf("IdSegmento recibido de Kernel: %d\n",idSegmento);
     			 int tamanio = arrayPaquete[2];
+    			 printf("Tamaño recibido de Kernel: %d\n",tamanio);
 
     			 //CALCULAMOS NUESTRO IdSEGMENTO
-
+    			 printf("Antes de crear_segmento.\n");
     			int resultado = crear_segmento(pidInt, idSegmento,tamanio);
+    			printf("Despues de crear_segmento.\n");
     			iniciarHiloClienteKernel(resultado, cliente_fd);
     		}
 
@@ -800,17 +809,23 @@ void* clientKernel(int cod_kernel, int cliente_fd) {
 //	PEDIR_COMPACTACION-->8
 //	ELIMINAR_PROCESO-->9
 //	TABLA_GLOBAL-->10
+	printf("Dentro del hilo clientKernel\n");
+	printf("cod_kernel: %d\n",cod_kernel);
+	printf("cliente_fd: %d\n",cliente_fd);
 
 	switch(cod_kernel){
 		case CREATE_SEGMENT:
 			char* baseStr = string_from_format("%zu", base);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
+			printf("CREATE_SEGMENT ENVIADO\n");
 		break;
 		case SIN_ESPACIO:
 			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
+			printf("SIN_ESPACIO ENVIADO\n");
 		break;
 		case PEDIR_COMPACTACION:
 			enviar_cod_operacion("",cliente_fd, PEDIR_COMPACTACION);
+			printf("PEDIR_COMPACTACION ENVIADO\n");
 		break;
 	}
 	return NULL;

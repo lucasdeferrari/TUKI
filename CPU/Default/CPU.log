@@ -32311,3 +32311,835 @@
 
 [INFO] 04:48:30:195 CPU/(5184:5186): CPU lista para recibir al cliente
 [INFO] 04:48:30:196 CPU/(5184:5185): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 22:56:49:463 CPU/(15761:15761): CPU lista para escuchar al cliente
+
+[INFO] 22:56:49:463 CPU/(15761:15762): CPU lista para recibir al cliente
+[INFO] 23:12:27:816 CPU/(15761:15762): Se conecto un cliente
+[WARNING] 23:12:27:817 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:818 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:818 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[INFO] 23:12:27:819 CPU/(15761:15762): Me llego el mensaje ð°
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:819 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:12:27:820 CPU/(15761:15762): Operacion desconocida. No quieras meter la pata
+
+[ERROR] 23:12:51:137 CPU/(15761:15762): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:12:51:146 CPU/(15761:16255): CPU lista para recibir al cliente
+[INFO] 23:15:30:342 CPU/(15761:16255): Se conecto un cliente
+[WARNING] 23:15:30:342 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:342 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:343 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[INFO] 23:15:30:344 CPU/(15761:16255): Me llego el mensaje p°
+[WARNING] 23:15:30:344 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:344 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:345 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:15:30:346 CPU/(15761:16255): Operacion desconocida. No quieras meter la pata
+
+[ERROR] 23:15:44:943 CPU/(15761:16255): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:15:44:945 CPU/(15761:16327): CPU lista para recibir al cliente
+[INFO] 23:23:05:822 CPU/(16598:16598): CPU lista para escuchar al cliente
+
+[INFO] 23:23:05:822 CPU/(16598:16599): CPU lista para recibir al cliente
+[INFO] 23:23:27:757 CPU/(16598:16599): Se conecto un cliente
+[WARNING] 23:23:27:757 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:757 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:757 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:758 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:758 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:758 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:758 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:761 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[INFO] 23:23:27:761 CPU/(16598:16599): Me llego el mensaje ðK:]”
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:761 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:762 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:763 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:764 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:765 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[WARNING] 23:23:27:766 CPU/(16598:16599): Operacion desconocida. No quieras meter la pata
+
+[INFO] 23:34:52:069 CPU/(17112:17112): CPU lista para escuchar al cliente
+
+[INFO] 23:34:52:070 CPU/(17112:17113): CPU lista para recibir al cliente
+[INFO] 23:35:10:552 CPU/(17112:17113): Se conecto un cliente
+[INFO] 23:35:10:552 CPU/(17112:17113): Instrucciones recibidas de Kernel:
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET AX AAAA
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET BX BBBB
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET CX CCCC
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET DX DDDD
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET EAX AAAAAAAA
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET EBX BBBBBBBB
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET ECX CCCCCCCC
+
+[INFO] 23:35:10:552 CPU/(17112:17113): SET EDX DDDDDDDD
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RAX AAAAAAAAAAAAAAAA
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RBX BBBBBBBBBBBBBBBB
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RCX CCCCCCCCCCCCCCCC
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RDX DDDDDDDDDDDDDDDD
+
+[INFO] 23:35:10:553 CPU/(17112:17113): YIELD
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RAX TCHOUAMENIAFUERA
+
+[INFO] 23:35:10:553 CPU/(17112:17113): SET RBX SEGUNDO_FRANCIA_
+
+[INFO] 23:35:10:553 CPU/(17112:17113): EXIT
+[ERROR] 23:35:22:561 CPU/(17112:17113): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:35:22:563 CPU/(17112:17159): CPU lista para recibir al cliente
+[INFO] 23:35:22:564 CPU/(17112:17159): Se conecto un cliente
+[INFO] 23:35:22:565 CPU/(17112:17159): Instrucciones recibidas de Kernel:
+
+[INFO] 23:35:22:565 CPU/(17112:17159): SET AX ARG0
+
+[INFO] 23:35:22:565 CPU/(17112:17159): SET BX FRA0
+
+[INFO] 23:35:22:565 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:565 CPU/(17112:17159): SET AX ARG1
+
+[INFO] 23:35:22:565 CPU/(17112:17159): SET BX FRA0
+
+[INFO] 23:35:22:565 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET AX ARG2
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET BX FRA0
+
+[INFO] 23:35:22:566 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET AX ARG2
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET BX FRA1
+
+[INFO] 23:35:22:566 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET AX ARG2
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET BX FRA2
+
+[INFO] 23:35:22:566 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET AX ARG3
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET BX FRA2
+
+[INFO] 23:35:22:566 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET AX ARG3
+
+[INFO] 23:35:22:566 CPU/(17112:17159): SET BX FRA3
+
+[INFO] 23:35:22:566 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:567 CPU/(17112:17159): SET RDX VAMOSALOSPENALES
+
+[INFO] 23:35:22:567 CPU/(17112:17159): YIELD
+
+[INFO] 23:35:22:567 CPU/(17112:17159): SET RAX ARGENTINACAMPEON
+
+[INFO] 23:35:22:567 CPU/(17112:17159): EXIT
+[ERROR] 23:35:24:570 CPU/(17112:17159): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:35:24:571 CPU/(17112:17161): CPU lista para recibir al cliente
+[INFO] 23:35:24:572 CPU/(17112:17161): Se conecto un cliente
+[INFO] 23:35:24:574 CPU/(17112:17161): Instrucciones recibidas de Kernel:
+
+[INFO] 23:35:24:575 CPU/(17112:17161): SET AX ARG0
+
+[INFO] 23:35:24:575 CPU/(17112:17161): SET BX FRA0
+
+[INFO] 23:35:24:576 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:576 CPU/(17112:17161): SET AX ARG1
+
+[INFO] 23:35:24:576 CPU/(17112:17161): SET BX FRA0
+
+[INFO] 23:35:24:577 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:577 CPU/(17112:17161): SET AX ARG2
+
+[INFO] 23:35:24:577 CPU/(17112:17161): SET BX FRA0
+
+[INFO] 23:35:24:578 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:578 CPU/(17112:17161): SET AX ARG2
+
+[INFO] 23:35:24:578 CPU/(17112:17161): SET BX FRA1
+
+[INFO] 23:35:24:578 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:579 CPU/(17112:17161): SET AX ARG2
+
+[INFO] 23:35:24:579 CPU/(17112:17161): SET BX FRA2
+
+[INFO] 23:35:24:579 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:580 CPU/(17112:17161): SET AX ARG3
+
+[INFO] 23:35:24:580 CPU/(17112:17161): SET BX FRA2
+
+[INFO] 23:35:24:580 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:581 CPU/(17112:17161): SET AX ARG3
+
+[INFO] 23:35:24:581 CPU/(17112:17161): SET BX FRA3
+
+[INFO] 23:35:24:581 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:583 CPU/(17112:17161): SET RDX VAMOSALOSPENALES
+
+[INFO] 23:35:24:583 CPU/(17112:17161): YIELD
+
+[INFO] 23:35:24:583 CPU/(17112:17161): SET RAX ARGENTINACAMPEON
+
+[INFO] 23:35:24:583 CPU/(17112:17161): EXIT
+[ERROR] 23:35:26:585 CPU/(17112:17161): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:35:26:587 CPU/(17112:17163): CPU lista para recibir al cliente
+[INFO] 23:35:26:587 CPU/(17112:17163): Se conecto un cliente
+[INFO] 23:35:26:588 CPU/(17112:17163): Instrucciones recibidas de Kernel:
+
+[INFO] 23:35:26:588 CPU/(17112:17163): SET AX AAAA
+
+[INFO] 23:35:26:588 CPU/(17112:17163): SET BX BBBB
+
+[INFO] 23:35:26:588 CPU/(17112:17163): SET CX CCCC
+
+[INFO] 23:35:26:589 CPU/(17112:17163): SET DX DDDD
+
+[INFO] 23:35:26:589 CPU/(17112:17163): SET EAX AAAAAAAA
+
+[INFO] 23:35:26:589 CPU/(17112:17163): SET EBX BBBBBBBB
+
+[INFO] 23:35:26:589 CPU/(17112:17163): SET ECX CCCCCCCC
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET EDX DDDDDDDD
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET RAX AAAAAAAAAAAAAAAA
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET RBX BBBBBBBBBBBBBBBB
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET RCX CCCCCCCCCCCCCCCC
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET RDX DDDDDDDDDDDDDDDD
+
+[INFO] 23:35:26:590 CPU/(17112:17163): YIELD
+
+[INFO] 23:35:26:590 CPU/(17112:17163): SET RAX TCHOUAMENIAFUERA
+
+[INFO] 23:35:26:591 CPU/(17112:17163): SET RBX SEGUNDO_FRANCIA_
+
+[INFO] 23:35:26:591 CPU/(17112:17163): EXIT
+[INFO] 23:35:52:783 CPU/(17209:17209): CPU lista para escuchar al cliente
+
+[INFO] 23:35:52:784 CPU/(17209:17210): CPU lista para recibir al cliente
+[INFO] 23:37:20:019 CPU/(17292:17292): CPU lista para escuchar al cliente
+
+[INFO] 23:37:20:019 CPU/(17292:17293): CPU lista para recibir al cliente
+[INFO] 23:37:26:820 CPU/(17292:17293): Se conecto un cliente
+[INFO] 23:37:26:821 CPU/(17292:17293): Instrucciones recibidas de Kernel:
+
+[INFO] 23:37:26:821 CPU/(17292:17293): SET AX HOLA
+
+[INFO] 23:37:26:821 CPU/(17292:17293): CREATE_SEGMENT 1 128
+
+[INFO] 23:37:26:821 CPU/(17292:17293): EXIT
+[ERROR] 23:37:27:822 CPU/(17292:17293): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:37:27:822 CPU/(17292:17306): CPU lista para recibir al cliente
+[INFO] 23:39:57:810 CPU/(17650:17650): CPU lista para escuchar al cliente
+
+[INFO] 23:39:57:811 CPU/(17650:17651): CPU lista para recibir al cliente
+[INFO] 23:40:09:478 CPU/(17650:17651): Se conecto un cliente
+[INFO] 23:40:09:478 CPU/(17650:17651): Instrucciones recibidas de Kernel:
+
+[INFO] 23:40:09:478 CPU/(17650:17651): SET AX HOLA
+
+[INFO] 23:40:09:478 CPU/(17650:17651): CREATE_SEGMENT 1 128
+
+[INFO] 23:40:09:478 CPU/(17650:17651): EXIT
+[ERROR] 23:40:10:479 CPU/(17650:17651): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:40:10:479 CPU/(17650:17693): CPU lista para recibir al cliente
+[INFO] 23:43:13:319 CPU/(17650:17693): Se conecto un cliente
+[INFO] 23:43:13:320 CPU/(17650:17693): Instrucciones recibidas de Kernel:
+
+[INFO] 23:43:13:320 CPU/(17650:17693): SET AX HOLA
+
+[INFO] 23:43:13:320 CPU/(17650:17693): CREATE_SEGMENT 1 128
+
+[INFO] 23:43:13:320 CPU/(17650:17693): EXIT
+[ERROR] 23:43:14:321 CPU/(17650:17693): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:43:14:321 CPU/(17650:18166): CPU lista para recibir al cliente
+[INFO] 23:44:53:687 CPU/(17650:18166): Se conecto un cliente
+[INFO] 23:44:53:688 CPU/(17650:18166): Instrucciones recibidas de Kernel:
+
+[INFO] 23:44:53:688 CPU/(17650:18166): SET AX HOLA
+
+[INFO] 23:44:53:688 CPU/(17650:18166): CREATE_SEGMENT 1 128
+
+[INFO] 23:44:53:688 CPU/(17650:18166): EXIT
+[ERROR] 23:44:54:690 CPU/(17650:18166): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:44:54:692 CPU/(17650:18400): CPU lista para recibir al cliente
+[INFO] 23:45:47:621 CPU/(17650:18400): Se conecto un cliente
+[INFO] 23:45:47:647 CPU/(17650:18400): Instrucciones recibidas de Kernel:
+
+[INFO] 23:45:47:647 CPU/(17650:18400): SET AX HOLA
+
+[INFO] 23:45:47:647 CPU/(17650:18400): CREATE_SEGMENT 1 128
+
+[INFO] 23:45:47:647 CPU/(17650:18400): EXIT
+[ERROR] 23:45:48:659 CPU/(17650:18400): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:45:48:667 CPU/(17650:18466): CPU lista para recibir al cliente
+[INFO] 23:48:24:184 CPU/(18651:18651): CPU lista para escuchar al cliente
+
+[INFO] 23:48:24:184 CPU/(18651:18652): CPU lista para recibir al cliente
+[INFO] 23:48:34:930 CPU/(18651:18652): Se conecto un cliente
+[INFO] 23:48:34:931 CPU/(18651:18652): Instrucciones recibidas de Kernel:
+
+[INFO] 23:48:34:931 CPU/(18651:18652): SET AX HOLA
+
+[INFO] 23:48:34:931 CPU/(18651:18652): CREATE_SEGMENT 1 128
+
+[INFO] 23:48:34:931 CPU/(18651:18652): EXIT
+[ERROR] 23:48:35:932 CPU/(18651:18652): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:48:35:933 CPU/(18651:18692): CPU lista para recibir al cliente
+[INFO] 23:49:15:750 CPU/(18651:18692): Se conecto un cliente
+[INFO] 23:49:15:751 CPU/(18651:18692): Instrucciones recibidas de Kernel:
+
+[INFO] 23:49:15:751 CPU/(18651:18692): SET AX HOLA
+
+[INFO] 23:49:15:751 CPU/(18651:18692): CREATE_SEGMENT 1 128
+
+[INFO] 23:49:15:751 CPU/(18651:18692): EXIT
+[ERROR] 23:49:16:752 CPU/(18651:18692): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:49:16:753 CPU/(18651:18788): CPU lista para recibir al cliente
+[INFO] 23:52:55:754 CPU/(18651:18788): Se conecto un cliente
+[INFO] 23:52:55:755 CPU/(18651:18788): Instrucciones recibidas de Kernel:
+
+[INFO] 23:52:55:755 CPU/(18651:18788): SET AX HOLA
+
+[INFO] 23:52:55:755 CPU/(18651:18788): CREATE_SEGMENT 1 128
+
+[INFO] 23:52:55:755 CPU/(18651:18788): EXIT
+[ERROR] 23:52:56:757 CPU/(18651:18788): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:52:56:759 CPU/(18651:19074): CPU lista para recibir al cliente
+[INFO] 23:59:35:674 CPU/(18651:19074): Se conecto un cliente
+[INFO] 23:59:35:675 CPU/(18651:19074): Instrucciones recibidas de Kernel:
+
+[INFO] 23:59:35:675 CPU/(18651:19074): SET AX HOLA
+
+[INFO] 23:59:35:675 CPU/(18651:19074): CREATE_SEGMENT 1 128
+
+[INFO] 23:59:35:675 CPU/(18651:19074): EXIT
+[ERROR] 23:59:36:677 CPU/(18651:19074): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:59:36:679 CPU/(18651:19188): CPU lista para recibir al cliente
+[INFO] 00:00:36:506 CPU/(19218:19218): CPU lista para escuchar al cliente
+
+[INFO] 00:00:36:507 CPU/(19218:19219): CPU lista para recibir al cliente
+[INFO] 00:00:50:224 CPU/(19218:19219): Se conecto un cliente
+[INFO] 00:00:50:224 CPU/(19218:19219): Instrucciones recibidas de Kernel:
+
+[INFO] 00:00:50:225 CPU/(19218:19219): SET AX HOLA
+
+[INFO] 00:00:50:225 CPU/(19218:19219): CREATE_SEGMENT 1 128
+
+[INFO] 00:00:50:225 CPU/(19218:19219): EXIT
+[ERROR] 00:00:51:226 CPU/(19218:19219): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:00:51:227 CPU/(19218:19329): CPU lista para recibir al cliente
+[INFO] 00:03:39:946 CPU/(19218:19329): Se conecto un cliente
+[INFO] 00:03:39:947 CPU/(19218:19329): Instrucciones recibidas de Kernel:
+
+[INFO] 00:03:39:947 CPU/(19218:19329): SET AX HOLA
+
+[INFO] 00:03:39:947 CPU/(19218:19329): CREATE_SEGMENT 1 128
+
+[INFO] 00:03:39:947 CPU/(19218:19329): EXIT
+[ERROR] 00:03:40:950 CPU/(19218:19329): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:03:40:951 CPU/(19218:19615): CPU lista para recibir al cliente
+[INFO] 00:05:46:659 CPU/(19218:19615): Se conecto un cliente
+[INFO] 00:05:46:660 CPU/(19218:19615): Instrucciones recibidas de Kernel:
+
+[INFO] 00:05:46:660 CPU/(19218:19615): SET AX HOLA
+
+[INFO] 00:05:46:660 CPU/(19218:19615): CREATE_SEGMENT 1 128
+
+[INFO] 00:05:46:660 CPU/(19218:19615): EXIT
+[ERROR] 00:05:47:661 CPU/(19218:19615): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:05:47:661 CPU/(19218:20043): CPU lista para recibir al cliente
+[INFO] 00:11:44:162 CPU/(19218:20043): Se conecto un cliente
+[INFO] 00:11:44:162 CPU/(19218:20043): Instrucciones recibidas de Kernel:
+
+[INFO] 00:11:44:162 CPU/(19218:20043): SET AX HOLA
+
+[INFO] 00:11:44:163 CPU/(19218:20043): CREATE_SEGMENT 1 128
+
+[INFO] 00:11:44:163 CPU/(19218:20043): EXIT
+[ERROR] 00:11:45:163 CPU/(19218:20043): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:11:45:164 CPU/(19218:21327): CPU lista para recibir al cliente
+[INFO] 00:15:19:097 CPU/(19218:21327): Se conecto un cliente
+[INFO] 00:15:19:098 CPU/(19218:21327): Instrucciones recibidas de Kernel:
+
+[INFO] 00:15:19:098 CPU/(19218:21327): SET AX HOLA
+
+[INFO] 00:15:19:098 CPU/(19218:21327): CREATE_SEGMENT 1 128
+
+[INFO] 00:15:19:098 CPU/(19218:21327): EXIT
+[ERROR] 00:15:20:101 CPU/(19218:21327): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:15:20:102 CPU/(19218:21851): CPU lista para recibir al cliente
+[INFO] 00:16:47:856 CPU/(19218:21851): Se conecto un cliente
+[INFO] 00:16:47:856 CPU/(19218:21851): Instrucciones recibidas de Kernel:
+
+[INFO] 00:16:47:856 CPU/(19218:21851): SET AX HOLA
+
+[INFO] 00:16:47:856 CPU/(19218:21851): CREATE_SEGMENT 1 128
+
+[INFO] 00:16:47:856 CPU/(19218:21851): EXIT
+[ERROR] 00:16:48:857 CPU/(19218:21851): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:16:48:858 CPU/(19218:22015): CPU lista para recibir al cliente
+[INFO] 00:31:49:905 CPU/(19218:22015): Se conecto un cliente
+[INFO] 00:31:49:906 CPU/(19218:22015): Instrucciones recibidas de Kernel:
+
+[INFO] 00:31:49:906 CPU/(19218:22015): SET AX HOLA
+
+[INFO] 00:31:49:906 CPU/(19218:22015): CREATE_SEGMENT 1 128
+
+[INFO] 00:31:49:906 CPU/(19218:22015): EXIT
+[ERROR] 00:31:50:907 CPU/(19218:22015): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:31:50:907 CPU/(19218:22340): CPU lista para recibir al cliente
+[INFO] 00:32:23:142 CPU/(19218:22340): Se conecto un cliente
+[INFO] 00:32:23:143 CPU/(19218:22340): Instrucciones recibidas de Kernel:
+
+[INFO] 00:32:23:143 CPU/(19218:22340): SET AX HOLA
+
+[INFO] 00:32:23:143 CPU/(19218:22340): CREATE_SEGMENT 1 128
+
+[INFO] 00:32:23:143 CPU/(19218:22340): EXIT
+[ERROR] 00:32:24:145 CPU/(19218:22340): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:32:24:147 CPU/(19218:22401): CPU lista para recibir al cliente
+[INFO] 00:36:04:305 CPU/(19218:22401): Se conecto un cliente
+[INFO] 00:36:04:305 CPU/(19218:22401): Instrucciones recibidas de Kernel:
+
+[INFO] 00:36:04:306 CPU/(19218:22401): SET AX HOLA
+
+[INFO] 00:36:04:306 CPU/(19218:22401): CREATE_SEGMENT 1 128
+
+[INFO] 00:36:04:306 CPU/(19218:22401): EXIT
+[ERROR] 00:36:05:307 CPU/(19218:22401): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:36:05:308 CPU/(19218:23806): CPU lista para recibir al cliente
+[INFO] 00:37:44:673 CPU/(19218:23806): Se conecto un cliente
+[INFO] 00:37:44:674 CPU/(19218:23806): Instrucciones recibidas de Kernel:
+
+[INFO] 00:37:44:674 CPU/(19218:23806): SET AX HOLA
+
+[INFO] 00:37:44:674 CPU/(19218:23806): CREATE_SEGMENT 1 128
+
+[INFO] 00:37:44:674 CPU/(19218:23806): EXIT
+[ERROR] 00:37:45:677 CPU/(19218:23806): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:37:45:679 CPU/(19218:23957): CPU lista para recibir al cliente
+[INFO] 00:44:18:837 CPU/(19218:23957): Se conecto un cliente
+[ERROR] 00:44:19:026 CPU/(19218:23957): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:44:19:027 CPU/(19218:25254): CPU lista para recibir al cliente
+[INFO] 00:44:56:922 CPU/(19218:25254): Se conecto un cliente
+[ERROR] 00:44:57:207 CPU/(19218:25254): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:44:57:212 CPU/(19218:25330): CPU lista para recibir al cliente
+[INFO] 00:45:50:123 CPU/(19218:25330): Se conecto un cliente
+[INFO] 00:45:50:165 CPU/(19218:25330): Instrucciones recibidas de Kernel:
+
+[INFO] 00:45:50:165 CPU/(19218:25330): SET AX HOLA
+
+[INFO] 00:45:50:165 CPU/(19218:25330): CREATE_SEGMENT 1 128
+
+[INFO] 00:45:50:165 CPU/(19218:25330): EXIT
+[ERROR] 00:45:51:172 CPU/(19218:25330): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:45:51:174 CPU/(19218:25446): CPU lista para recibir al cliente
+[INFO] 00:46:20:866 CPU/(19218:25446): Se conecto un cliente
+[INFO] 00:46:20:867 CPU/(19218:25446): Instrucciones recibidas de Kernel:
+
+[INFO] 00:46:20:867 CPU/(19218:25446): SET AX HOLA
+
+[INFO] 00:46:20:867 CPU/(19218:25446): CREATE_SEGMENT 1 128
+
+[INFO] 00:46:20:867 CPU/(19218:25446): EXIT
+[ERROR] 00:46:21:868 CPU/(19218:25446): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:46:21:868 CPU/(19218:25544): CPU lista para recibir al cliente
+[INFO] 00:47:16:640 CPU/(19218:25544): Se conecto un cliente
+[INFO] 00:47:16:640 CPU/(19218:25544): Instrucciones recibidas de Kernel:
+
+[INFO] 00:47:16:640 CPU/(19218:25544): SET AX HOLA
+
+[INFO] 00:47:16:640 CPU/(19218:25544): CREATE_SEGMENT 1 128
+
+[INFO] 00:47:16:640 CPU/(19218:25544): EXIT
+[ERROR] 00:47:17:643 CPU/(19218:25544): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:47:17:644 CPU/(19218:25704): CPU lista para recibir al cliente
+[INFO] 00:52:47:502 CPU/(19218:25704): Se conecto un cliente
+[INFO] 00:52:47:503 CPU/(19218:25704): Instrucciones recibidas de Kernel:
+
+[INFO] 00:52:47:503 CPU/(19218:25704): SET AX HOLA
+
+[INFO] 00:52:47:503 CPU/(19218:25704): CREATE_SEGMENT 1 128
+
+[INFO] 00:52:47:503 CPU/(19218:25704): EXIT
+[ERROR] 00:52:48:503 CPU/(19218:25704): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:52:48:504 CPU/(19218:26139): CPU lista para recibir al cliente
+[INFO] 00:57:23:417 CPU/(19218:26139): Se conecto un cliente
+[INFO] 00:57:23:418 CPU/(19218:26139): Instrucciones recibidas de Kernel:
+
+[INFO] 00:57:23:418 CPU/(19218:26139): SET AX HOLA
+
+[INFO] 00:57:23:418 CPU/(19218:26139): CREATE_SEGMENT 1 128
+
+[INFO] 00:57:23:418 CPU/(19218:26139): EXIT
+[ERROR] 00:57:24:419 CPU/(19218:26139): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:57:24:420 CPU/(19218:26850): CPU lista para recibir al cliente
+[INFO] 00:58:52:635 CPU/(19218:26850): Se conecto un cliente
+[INFO] 00:58:52:636 CPU/(19218:26850): Instrucciones recibidas de Kernel:
+
+[INFO] 00:58:52:636 CPU/(19218:26850): SET AX HOLA
+
+[INFO] 00:58:52:636 CPU/(19218:26850): CREATE_SEGMENT 1 128
+
+[INFO] 00:58:52:636 CPU/(19218:26850): EXIT
+[ERROR] 00:58:53:637 CPU/(19218:26850): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:58:53:639 CPU/(19218:27116): CPU lista para recibir al cliente
+[INFO] 01:00:35:107 CPU/(19218:27116): Se conecto un cliente
+[INFO] 01:00:35:107 CPU/(19218:27116): Instrucciones recibidas de Kernel:
+
+[INFO] 01:00:35:107 CPU/(19218:27116): SET AX HOLA
+
+[INFO] 01:00:35:107 CPU/(19218:27116): CREATE_SEGMENT 1 128
+
+[INFO] 01:00:35:107 CPU/(19218:27116): EXIT
+[ERROR] 01:00:36:109 CPU/(19218:27116): el kernel se desconecto. Terminando servidor
+
+[INFO] 01:00:36:129 CPU/(19218:27252): CPU lista para recibir al cliente
+[INFO] 01:02:48:438 CPU/(19218:27252): Se conecto un cliente
+[INFO] 01:02:48:439 CPU/(19218:27252): Instrucciones recibidas de Kernel:
+
+[INFO] 01:02:48:439 CPU/(19218:27252): SET AX HOLA
+
+[INFO] 01:02:48:439 CPU/(19218:27252): CREATE_SEGMENT 1 128
+
+[INFO] 01:02:48:439 CPU/(19218:27252): EXIT
+[ERROR] 01:02:49:442 CPU/(19218:27252): el kernel se desconecto. Terminando servidor
+
+[INFO] 01:02:49:443 CPU/(19218:27469): CPU lista para recibir al cliente
+[INFO] 01:03:18:158 CPU/(19218:27469): Se conecto un cliente
+[INFO] 01:03:18:159 CPU/(19218:27469): Instrucciones recibidas de Kernel:
+
+[INFO] 01:03:18:159 CPU/(19218:27469): SET AX HOLA
+
+[INFO] 01:03:18:159 CPU/(19218:27469): CREATE_SEGMENT 1 128
+
+[INFO] 01:03:18:159 CPU/(19218:27469): EXIT
+[ERROR] 01:03:19:161 CPU/(19218:27469): el kernel se desconecto. Terminando servidor
+
+[INFO] 01:03:19:163 CPU/(19218:27534): CPU lista para recibir al cliente

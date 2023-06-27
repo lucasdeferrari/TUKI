@@ -147,22 +147,22 @@ void* serverCPU(void* ptr){
     			list_iterate(lista, (void*) iterator);
     			list_destroy(lista);
     			break;
-
-    		case TABLA_SEGMENTOS:
-    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
-    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
-    			log_info(logger, "Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT\n");
-    			contadorContexto++;
-    			if(contadorContexto == 3){
-    				iniciar_ejecucion();
-    			}
-    			break;
+    			//COMENTADO Y CAMBIE A CONTADOCONTEXTO == 2
+//    		case TABLA_SEGMENTOS:
+//    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
+//    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
+//    			log_info(logger, "Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT\n");
+//    			contadorContexto++;
+//    			if(contadorContexto == 3){
+//    				iniciar_ejecucion();
+//    			}
+//    		break;
     		case INSTRUCCIONES:
     			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
     			contadorContexto++;
     			log_info(logger, "Instrucciones recibidas de Kernel:\n");
     			list_iterate(contexto->listaInstrucciones, (void*) iterator);
-    			if(contadorContexto == 3){
+    			if(contadorContexto == 2){
     				iniciar_ejecucion();
     			}
     			break;
@@ -186,7 +186,7 @@ void* serverCPU(void* ptr){
     			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
     			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
-    			if(contadorContexto == 3){
+    			if(contadorContexto == 2){
     				iniciar_ejecucion();
     			}
 
