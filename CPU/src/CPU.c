@@ -53,40 +53,189 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-void iniciarHiloClienteMemoria(t_infoClienteMemoria* infoClienteMemoria) {
+void iniciarHiloClienteMemoria(int cod_memoria, char* registro, int direcFisica) {
+	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
+	args->cod_memoria = cod_memoria;
+	strcpy(args->registro,registro);
+	args->direccionFisica = direcFisica;
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 	     	        			NULL,
 								clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-								(void *)infoClienteMemoria); // argumentos de la función
+								(void *)args); // argumentos de la función
 
 	if (err != 0) {
 	printf("No se pudo crear el hilo del cliente Memoria del CPU.\n");
 	exit(7);
 	}
-	printf("El hilo cliente de la Memoria se creo correctamente.\n");
 }
 
-void* clientMemoria(t_infoClienteMemoria* infoClienteMemoria) {
+void* clientMemoria(void *arg) {
 
-	int cod_memoria = infoClienteMemoria->cod_memoria;
-	int direcFisica = infoClienteMemoria->direccionFisica;
-	char* registro;
-	strcpy(registro,infoClienteMemoria->registro);
+	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
+	int cod_memoria = args->cod_memoria;
+	int direcFisica = args->direccionFisica;
+	char* registro = args->registro;
+	int tamanio = tamanioRegistro(registro);
+	char* valorRegistro = contenidoRegistro(registro);
 
 	int config = 1;
     int conexion_Memoria;
-
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("CPU",conexion_Memoria);
-//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-//    paquete(conexion_Memoria);
+
+    t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
+        switch(cod_memoria){
+        	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
+        		char* pidMI = string_new();
+        		char* CPUMI = string_new();
+        		char* direcFisicaMI = string_new();
+        		char* tamanioMI = string_new();
+
+                string_append_with_format(&pidMI, "%d", contexto->pid);
+                string_append_with_format(&CPUMI, "%s", "CPU");
+                string_append_with_format(&direcFisicaMI, "%d", direcFisica);
+                string_append_with_format(&tamanioMI, "%d", tamanio);
+
+            	agregar_a_paquete(paquete, pidMI, strlen(pidMI)+1);
+            	agregar_a_paquete(paquete, CPUMI, strlen(CPUMI)+1);
+            	agregar_a_paquete(paquete, direcFisicaMI, strlen(direcFisicaMI)+1);
+            	agregar_a_paquete(paquete, tamanioMI, strlen(tamanioMI)+1);
+
+            	enviar_paquete(paquete, conexion_Memoria);
+
+            	printf("MOV_IN enviado a MEMORIA.\n");
+            	printf("pid enviado a Memoria: %s\n", pidMI);
+            	printf("quienSoy enviado a Memoria: %s\n", CPUMI);
+            	printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
+            	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
+
+            	eliminar_paquete(paquete);
+            break;
+        	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
+           		char* pidMO = string_new();
+				char* CPUMO = string_new();
+				char* valorRegistroMO = string_new();
+				char* tamanioMO = string_new();
+				char* direcFisicaMO = string_new();
+
+
+				string_append_with_format(&pidMO, "%d", contexto->pid);
+				string_append_with_format(&CPUMO, "%s", "CPU");
+				string_append_with_format(&valorRegistroMO, "%s", valorRegistro);
+				string_append_with_format(&tamanioMO, "%d", tamanio);
+				string_append_with_format(&direcFisicaMO, "%d", direcFisica);
+
+
+				agregar_a_paquete(paquete, pidMO, strlen(pidMO)+1);
+				agregar_a_paquete(paquete, CPUMO, strlen(CPUMO)+1);
+				agregar_a_paquete(paquete, valorRegistroMO, strlen(valorRegistroMO)+1);
+				agregar_a_paquete(paquete, tamanioMO, strlen(tamanioMO)+1);
+				agregar_a_paquete(paquete, direcFisicaMO, strlen(direcFisicaMO)+1);
+
+
+				enviar_paquete(paquete, conexion_Memoria);
+
+				printf("MOV_IN enviado a MEMORIA.\n");
+				printf("pid enviado a Memoria: %s\n", pidMO);
+				printf("quienSoy enviado a Memoria: %s\n", CPUMO);
+				printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
+				printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
+				printf("tamanio enviado a Memoria: %s\n", tamanioMO);
+
+                	eliminar_paquete(paquete);
+        	break;
+    		default:
+    			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
+    		break;
+        }
+
+
     int cod_op = recibir_operacion(conexion_Memoria);
-    recibir_mensaje(conexion_Memoria);
+    switch (cod_op) {
+    		case 11:
+    			char* valorLeido = recibir_handshake(cliente_fd);
+    			set_tp(registro,valorLeido);
+    		break;
+            case 12:  //RECIBO UN OK
+            	char* respuesta = recibir_handshake(cliente_fd);
+            	printf("Respuesta MOV_OUT: %s\n",respuesta);
+            break;
+    		default:
+    			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+    			 liberar_conexion(conexion_Memoria);
+    		break;
+        }
+
     liberar_conexion(conexion_Memoria);
 
-    //sem_post(&semCPUClientMemoria);
 	return NULL;
+}
+
+char* contenidoRegistro(char* nombreRegistro){
+	char* valorRegistro = NULL;
+
+	if (strcmp(nombreRegistro, "AX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.AX);
+	} else if (strcmp(nombreRegistro, "BX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.BX);
+	} else if (strcmp(nombreRegistro, "CX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.CX);
+	} else if (strcmp(nombreRegistro, "DX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.DX);
+	} else if (strcmp(nombreRegistro, "EAX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.EAX);
+	} else if (strcmp(nombreRegistro, "EBX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.EBX);
+	} else if (strcmp(nombreRegistro, "ECX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.ECX);
+	} else if (strcmp(nombreRegistro, "EDX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.EDX);
+	} else if (strcmp(nombreRegistro, "RAX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.RAX);
+	} else if (strcmp(nombreRegistro, "RBX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.RBX);
+	} else if (strcmp(nombreRegistro, "RCX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.RCX);
+	} else if (strcmp(nombreRegistro, "RDX") == 0) {
+		strcpy(valorRegistro, contexto->registrosCpu.RDX);
+	} else {
+		printf("Registro no válido.\n");
+	}
+
+	return valorRegistro;
+}
+
+int tamanioRegistro(char* registro){
+	int tamanio = -1;
+	if (strcmp(registro, "AX") == 0) {
+		tamanio = 4;
+	} else if (strcmp(registro, "BX") == 0) {
+		tamanio = 4;
+	} else if (strcmp(registro, "CX") == 0) {
+		tamanio = 4;
+	} else if (strcmp(registro, "DX") == 0) {
+		tamanio = 4;
+	} else if (strcmp(registro, "EAX") == 0) {
+		tamanio = 8;
+	} else if (strcmp(registro, "EBX") == 0) {
+		tamanio = 8;
+	} else if (strcmp(registro, "ECX") == 0) {
+		tamanio = 8;
+	} else if (strcmp(registro, "EDX") == 0) {
+		tamanio = 8;
+	} else if (strcmp(registro, "RAX") == 0) {
+		tamanio = 16;
+	} else if (strcmp(registro, "RBX") == 0) {
+		tamanio = 16;
+	} else if (strcmp(registro, "RCX") == 0) {
+		tamanio = 16;
+	} else if (strcmp(registro, "RDX") == 0) {
+		tamanio = 16;
+	} else {
+		printf("Registro no válido.\n");
+	}
+
+	return tamanio;
 }
 
 void iniciarHiloClienteKernel() {

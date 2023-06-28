@@ -24,8 +24,8 @@ int retardo_instruccion;
 int tam_max_segmento;
 
 void *serverCPU(void *ptr);
-void* clientMemoria();
-void iniciarHiloClienteMemoria();
+void* clientMemoria(void *arg);
+void iniciarHiloClienteMemoria(int,char*,int);
 //void* clientMemoria(t_infoClienteMemoria*);
 //void iniciarHiloClienteMemoria(t_infoClienteMemoria*);
 void iniciarHiloServer();
@@ -42,6 +42,8 @@ void signal_tp(char* );
 void set_tp(char* , char* );
 void serializarContexto(int);
 t_list* tablaSegmentosActualizada(t_list*);
+int tamanioRegistro(char* );
+char* contenidoRegistro(char* );
 
 int MMU(int ,int);
 void mov_in_tp(char* , int );
