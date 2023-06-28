@@ -48,8 +48,8 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 			agregarSegmentoATabla(segmento, idProceso);
 			list_add(segmentos,segmento);
 		}
-	base = segmento->base;
-	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, base, tamanio);
+	//base = segmento->base;
+	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, segmento->base, tamanio);
 	printf("CREATE_SEGMENT.\n");
 	return CREATE_SEGMENT;
 }
@@ -60,6 +60,7 @@ Segmento *crearSegmento0(size_t tamanio){
 		segmento0->base= 0;
 		segmento0->desplazamiento=tamanio;
 		segmento0->idSegmentoMemoria=0;
+		segmento0->idSegmentoKernel=0;
 		list_add(segmentos,segmento0);
 	}
 	return segmento0;
@@ -85,12 +86,15 @@ int asignarIdSegmento() {
 
 size_t buscarLugarParaElSegmento(size_t tamanio) {
 	if (string_contains(algoritmoAsignacion, "FIRST")) {
+		printf("ENTRE POR FIRTS");
 		return buscarPorFirst(tamanio);
 	}
 	if (string_contains(algoritmoAsignacion, "WORST")) {
+		printf("ENTRE POR WORST");
 		return buscarPorWorst(tamanio);
 	}
 	if (string_contains(algoritmoAsignacion, "BEST")) {
+		printf("ENTRE POR BEST");
 		return buscarPorBest(tamanio);
 	}
 
@@ -117,7 +121,8 @@ size_t buscarPorBest(size_t tamanio) {
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento <= elegido->desplazamiento) {
-				elegido = siguiente;
+				elegido->base = siguiente->base;
+				elegido->desplazamiento = siguiente->desplazamiento;
 		}
 	}
 	actualizarHuecosLibres(elegido, tamanio);
@@ -133,7 +138,8 @@ size_t buscarPorWorst(size_t tamanio) {
 		while(list_iterator_has_next(iterador)) {
 			HuecoLibre *siguiente = list_iterator_next(iterador);
 			if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento >= elegido->desplazamiento) {
-					elegido = siguiente;
+				elegido->base = siguiente->base;
+				elegido->desplazamiento = siguiente->desplazamiento;
 			}
 		}
 		actualizarHuecosLibres(elegido, tamanio);
@@ -184,7 +190,6 @@ TablaDeSegmentos* crearTablaSegmentosDe(int idProceso) {
 
 void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
 	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
-
 
 	while(list_iterator_has_next(iterador)) {
 		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
@@ -322,7 +327,6 @@ int main(void) {
 
 	if (config_has_property(config, "ALGORITMO_ASIGNACION")) {
 			 printf("Existe el valor para el algoritmo de asignacion.\n");
-			 const
 			 algoritmoAsignacion = config_get_string_value(config, "ALGORITMO_ASIGNACION");
 			 }
 			 else {
@@ -390,13 +394,14 @@ int main(void) {
 
 	memcpy(espacioUsuario, segmento0, segmento0->desplazamiento);
 
-	HuecoLibre *huecoBase = crearHuecoLibre(tamanioMemoria-tamanioSeg0, 0);
+	HuecoLibre *huecoBase = crearHuecoLibre(tamanioMemoria-tamanioSeg0, segmento0->desplazamiento);
 	if(huecoBase == NULL) {
 		log_error(logger, "No se pudo crear el hueco libre base.\n");
 		exit(-1);
 	}
-
-	huecoBase->base = segmento0->base + segmento0->desplazamiento;
+	printf("base del hueco base: %zu \n", huecoBase->base);
+	printf("desplazamiento del hueco base: %zu \n", huecoBase->desplazamiento);
+	//huecoBase->base = segmento0->base + segmento0->desplazamiento;
 
 	list_add(listaDeHuecosLibres, huecoBase);
 
