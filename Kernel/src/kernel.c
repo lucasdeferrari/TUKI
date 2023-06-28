@@ -400,6 +400,7 @@ void* clientCPU(void* ptr) {
     conexion_CPU = crear_conexion(ip_cpu, puerto_cpu);
 
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
+
     //enviamos las intrucciones del contextos
     t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
@@ -408,13 +409,12 @@ void* clientCPU(void* ptr) {
     printf("Contexto enviado a CPU. \n");
 
     //enviamos tabla Segmentos
-    //COMENTADO
-//    printf("ENVIAMOS TABLA SEGMENTOS A CPU, NO PROBADO, POSIBLE SEG_FAULT.\n");
-//    t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
-//    enviar_paquete(tabla, conexion_CPU);
-//    eliminar_paquete(tabla);
-//    printf("Tabla de Segmentos enviada a CPU. \n");
+    t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
+    enviar_paquete(tabla, conexion_CPU);
+    eliminar_paquete(tabla);
+    printf("Tabla de Segmentos enviada a CPU. \n");
 
+    //RESPUESTA DE CPU
     int cod_op = recibir_operacion(conexion_CPU);
 
     //contextoActualizado = recibir_contexto(conexion_CPU);
@@ -1409,31 +1409,32 @@ t_paquete* empaquetarTabla(t_list* cabezaTabla) {
     t_list_iterator* iterador = list_iterator_create(cabezaTabla);
     t_paquete* paquete = crear_paquete_cod_operacion(6);
 
+
     while (list_iterator_has_next(iterador)) {
-
+    	char* idSegmento = string_new();
+    	char* tamanioSegmento = string_new();
+    	char* baseSegmento = string_new();
+    	char* segmento = string_new();
     	t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-
-		char* idSegmento = string_new();
-		char* tamanioSegmento = string_new();
-		char* baseSegmento = string_new();
+    	printf("Datos del segmento: \n");
+    	printf("idSegmento: %d\n",siguiente->id);
+    	printf("tamanioSegmento: %zu\n",siguiente->tamanio);
+    	printf("baseSegmento: %zu\n",siguiente->direccionBase);
 
         string_append_with_format(&idSegmento, "%d", siguiente->id);
         string_append_with_format(&tamanioSegmento, "%zu", siguiente->tamanio);
         string_append_with_format(&baseSegmento, "%zu", siguiente->direccionBase);
 
-        char* segmento = string_new();
+        string_append(&segmento, idSegmento);
+        string_append(&segmento, " ");
 
-        string_append(segmento, idSegmento);
-        string_append(segmento, " ");
+        string_append(&segmento, tamanioSegmento);
+        string_append(&segmento, " ");
 
-        string_append(segmento, tamanioSegmento);
-        string_append(segmento, " ");
-
-        string_append(segmento, baseSegmento);
-        printf("Segmento: %d\n",segmento);
+        string_append(&segmento, baseSegmento);
+        printf("Segmento: %s\n",segmento);
 
         agregar_a_paquete(paquete, segmento, strlen(segmento)+1);
-
     }
 
     return paquete;

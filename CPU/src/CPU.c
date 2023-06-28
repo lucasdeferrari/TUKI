@@ -148,29 +148,30 @@ void* serverCPU(void* ptr){
     			list_destroy(lista);
     			break;
     			//COMENTADO Y CAMBIE A CONTADOCONTEXTO == 2
-//    		case 6: //TABLA_SEGMENTOS
-//    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
-//    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
-//    			log_info(logger, "Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT\n");
-//            	printf("Tabla de segmentos: \n");
-//            	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
-//            	while (list_iterator_has_next(iterador)) {
-//            		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-//            		printf("IdSegmento: %d\n",siguiente->id);
-//            		printf("Base: %zu\n",siguiente->direccionBase);
-//            		printf("Tamaño: %zu\n",siguiente->tamanio);
-//            	}
-//    			contadorContexto++;
-//    			if(contadorContexto == 3){
-//    				iniciar_ejecucion();
-//    			}
-//    		break;
+    		case 6: //TABLA_SEGMENTOS
+    			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
+    			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
+    			log_info(logger, "Tabla de Segmentos recibida de Kernel: \n");
+
+            	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
+            	while (list_iterator_has_next(iterador)) {
+            		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+            		printf("IdSegmento: %d\n",siguiente->id);
+            		printf("Tamaño: %zu\n",siguiente->tamanio);
+            		printf("Base: %zu\n",siguiente->direccionBase);
+
+            	}
+    			contadorContexto++;
+    			if(contadorContexto == 3){
+    				iniciar_ejecucion();
+    			}
+    		break;
     		case INSTRUCCIONES:
     			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
     			contadorContexto++;
     			log_info(logger, "Instrucciones recibidas de Kernel:\n");
     			list_iterate(contexto->listaInstrucciones, (void*) iterator);
-    			if(contadorContexto == 2){
+    			if(contadorContexto == 3){
     				iniciar_ejecucion();
     			}
     			break;
@@ -195,7 +196,7 @@ void* serverCPU(void* ptr){
     			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
     			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
-    			if(contadorContexto == 2){
+    			if(contadorContexto == 3){
     				iniciar_ejecucion();
     			}
 
@@ -694,20 +695,28 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
 	t_list* tablaSegmentosActualizadaLista = list_create();
-	t_infoTablaSegmentos* nuevoSegmento = NULL;
+
+	char** arraySegmento = string_array_new();
 
 	while (list_iterator_has_next(iterador)) {
 
-		//REVISAR SI ESTA BIEN QUE ESTAN DEFINIDOS ACA DENTRO LOS TIPOS DE LAS VARIABLES
+		t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
+		nuevoSegmento->id = 0;
+		nuevoSegmento->direccionBase = (size_t)0;
+		nuevoSegmento->tamanio = (size_t)0;
 
 		char* siguiente = list_iterator_next(iterador);
 
-		char** arraySegmento = string_array_new();
 		arraySegmento = string_split(siguiente, " ");
 
 		int idSegmento = atoi(arraySegmento[0]);
-		int baseSegmento = atoi(arraySegmento[1]);
-		int tamanioSegmento = atoi(arraySegmento[2]);
+		int tamanioSegmento = atoi(arraySegmento[1]);
+		int baseSegmento = atoi(arraySegmento[2]);
+
+    	printf("Datos del segmento DENTRO DE LA FUNCION: \n");
+    	printf("idSegmento: %d\n",idSegmento);
+    	printf("tamanioSegmento: %d\n",tamanioSegmento);
+    	printf("baseSegmento: %d\n",baseSegmento);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;

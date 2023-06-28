@@ -34774,3 +34774,279 @@
 [ERROR] 23:47:57:459 CPU/(26194:26229): el kernel se desconecto. Terminando servidor
 
 [INFO] 23:47:57:464 CPU/(26194:26233): CPU lista para recibir al cliente
+[INFO] 23:50:08:687 CPU/(26395:26395): CPU lista para escuchar al cliente
+
+[INFO] 23:50:08:687 CPU/(26395:26396): CPU lista para recibir al cliente
+[INFO] 23:50:28:288 CPU/(26408:26408): CPU lista para escuchar al cliente
+
+[INFO] 23:50:28:288 CPU/(26408:26409): CPU lista para recibir al cliente
+[INFO] 23:50:49:287 CPU/(26466:26466): CPU lista para escuchar al cliente
+
+[INFO] 23:50:49:288 CPU/(26466:26467): CPU lista para recibir al cliente
+[INFO] 23:50:57:880 CPU/(26466:26467): Se conecto un cliente
+[INFO] 23:50:57:880 CPU/(26466:26467): Instrucciones recibidas de Kernel:
+
+[INFO] 23:50:57:880 CPU/(26466:26467): SET AX HOLA
+
+[INFO] 23:50:57:880 CPU/(26466:26467): CREATE_SEGMENT 1 128
+
+[INFO] 23:50:57:880 CPU/(26466:26467): EXIT
+[ERROR] 23:50:58:055 CPU/(26466:26467): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:50:58:055 CPU/(26466:26508): CPU lista para recibir al cliente
+[INFO] 23:53:05:099 CPU/(26689:26689): CPU lista para escuchar al cliente
+
+[INFO] 23:53:05:100 CPU/(26689:26690): CPU lista para recibir al cliente
+[INFO] 23:53:40:993 CPU/(26760:26760): CPU lista para escuchar al cliente
+
+[INFO] 23:53:40:994 CPU/(26760:26761): CPU lista para recibir al cliente
+[INFO] 23:54:00:582 CPU/(26760:26761): Se conecto un cliente
+[INFO] 23:54:00:599 CPU/(26760:26761): Instrucciones recibidas de Kernel:
+
+[INFO] 23:54:00:599 CPU/(26760:26761): SET AX HOLA
+
+[INFO] 23:54:00:599 CPU/(26760:26761): CREATE_SEGMENT 1 128
+
+[INFO] 23:54:00:599 CPU/(26760:26761): EXIT
+[ERROR] 23:54:01:096 CPU/(26760:26761): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:54:01:100 CPU/(26760:26797): CPU lista para recibir al cliente
+[INFO] 23:57:09:194 CPU/(27393:27393): CPU lista para escuchar al cliente
+
+[INFO] 23:57:09:195 CPU/(27393:27394): CPU lista para recibir al cliente
+[INFO] 23:57:36:058 CPU/(27393:27394): Se conecto un cliente
+[INFO] 23:57:36:089 CPU/(27393:27394): Instrucciones recibidas de Kernel:
+
+[INFO] 23:57:36:089 CPU/(27393:27394): SET AX HOLA
+
+[INFO] 23:57:36:089 CPU/(27393:27394): CREATE_SEGMENT 1 128
+
+[INFO] 23:57:36:089 CPU/(27393:27394): EXIT
+[ERROR] 23:57:36:773 CPU/(27393:27394): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:57:36:787 CPU/(27393:27423): CPU lista para recibir al cliente
+[INFO] 23:59:21:510 CPU/(27813:27813): CPU lista para escuchar al cliente
+
+[INFO] 23:59:21:511 CPU/(27813:27814): CPU lista para recibir al cliente
+[INFO] 23:59:40:255 CPU/(27813:27814): Se conecto un cliente
+[INFO] 23:59:40:276 CPU/(27813:27814): Instrucciones recibidas de Kernel:
+
+[INFO] 23:59:40:276 CPU/(27813:27814): SET AX HOLA
+
+[INFO] 23:59:40:277 CPU/(27813:27814): CREATE_SEGMENT 1 128
+
+[INFO] 23:59:40:277 CPU/(27813:27814): EXIT
+[INFO] 00:01:06:446 CPU/(28651:28651): CPU lista para escuchar al cliente
+
+[INFO] 00:01:06:447 CPU/(28651:28652): CPU lista para recibir al cliente
+[INFO] 00:01:23:473 CPU/(28651:28652): Se conecto un cliente
+[INFO] 00:01:23:506 CPU/(28651:28652): Instrucciones recibidas de Kernel:
+
+[INFO] 00:01:23:507 CPU/(28651:28652): SET AX HOLA
+
+[INFO] 00:01:23:507 CPU/(28651:28652): CREATE_SEGMENT 1 128
+
+[INFO] 00:01:23:507 CPU/(28651:28652): EXIT
+[INFO] 00:03:24:693 CPU/(29985:29985): CPU lista para escuchar al cliente
+
+[INFO] 00:03:24:694 CPU/(29985:29986): CPU lista para recibir al cliente
+[INFO] 00:03:42:832 CPU/(29985:29986): Se conecto un cliente
+[INFO] 00:03:42:885 CPU/(29985:29986): Instrucciones recibidas de Kernel:
+
+[INFO] 00:03:42:886 CPU/(29985:29986): SET AX HOLA
+
+[INFO] 00:03:42:886 CPU/(29985:29986): CREATE_SEGMENT 1 128
+
+[INFO] 00:03:42:886 CPU/(29985:29986): EXIT
+[INFO] 00:05:05:202 CPU/(30647:30647): CPU lista para escuchar al cliente
+
+[INFO] 00:05:05:203 CPU/(30647:30648): CPU lista para recibir al cliente
+[INFO] 00:05:25:399 CPU/(30647:30648): Se conecto un cliente
+[INFO] 00:05:25:417 CPU/(30647:30648): Instrucciones recibidas de Kernel:
+
+[INFO] 00:05:25:417 CPU/(30647:30648): SET AX HOLA
+
+[INFO] 00:05:25:417 CPU/(30647:30648): CREATE_SEGMENT 1 128
+
+[INFO] 00:05:25:417 CPU/(30647:30648): EXIT
+[INFO] 00:06:36:962 CPU/(31314:31314): CPU lista para escuchar al cliente
+
+[INFO] 00:06:36:962 CPU/(31314:31315): CPU lista para recibir al cliente
+[INFO] 00:07:17:830 CPU/(31314:31315): Se conecto un cliente
+[INFO] 00:07:17:850 CPU/(31314:31315): Instrucciones recibidas de Kernel:
+
+[INFO] 00:07:17:850 CPU/(31314:31315): SET AX HOLA
+
+[INFO] 00:07:17:850 CPU/(31314:31315): CREATE_SEGMENT 1 128
+
+[INFO] 00:07:17:850 CPU/(31314:31315): EXIT
+[INFO] 00:18:40:809 CPU/(33258:33258): CPU lista para escuchar al cliente
+
+[INFO] 00:18:40:809 CPU/(33258:33259): CPU lista para recibir al cliente
+[INFO] 00:18:57:602 CPU/(33258:33259): Se conecto un cliente
+[INFO] 00:18:57:602 CPU/(33258:33259): Instrucciones recibidas de Kernel:
+
+[INFO] 00:18:57:602 CPU/(33258:33259): SET AX HOLA
+
+[INFO] 00:18:57:602 CPU/(33258:33259): CREATE_SEGMENT 1 128
+
+[INFO] 00:18:57:602 CPU/(33258:33259): EXIT
+[INFO] 00:18:57:603 CPU/(33258:33259): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:18:58:604 CPU/(33258:33259): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:18:58:606 CPU/(33258:33300): CPU lista para recibir al cliente
+[INFO] 00:18:58:609 CPU/(33258:33300): Se conecto un cliente
+[INFO] 00:18:58:610 CPU/(33258:33300): Instrucciones recibidas de Kernel:
+
+[INFO] 00:18:58:610 CPU/(33258:33300): SET AX HOLA
+
+[INFO] 00:18:58:610 CPU/(33258:33300): CREATE_SEGMENT 1 128
+
+[INFO] 00:18:58:610 CPU/(33258:33300): EXIT
+[ERROR] 00:18:58:799 CPU/(33258:33300): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:18:58:800 CPU/(33258:33314): CPU lista para recibir al cliente
+[INFO] 00:19:34:002 CPU/(33324:33324): CPU lista para escuchar al cliente
+
+[INFO] 00:19:34:003 CPU/(33324:33325): CPU lista para recibir al cliente
+[INFO] 00:19:49:103 CPU/(33324:33325): Se conecto un cliente
+[INFO] 00:19:49:104 CPU/(33324:33325): Instrucciones recibidas de Kernel:
+
+[INFO] 00:19:49:104 CPU/(33324:33325): SET AX HOLA
+
+[INFO] 00:19:49:104 CPU/(33324:33325): CREATE_SEGMENT 1 128
+
+[INFO] 00:19:49:104 CPU/(33324:33325): EXIT
+[INFO] 00:19:49:106 CPU/(33324:33325): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:19:50:108 CPU/(33324:33325): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:19:50:111 CPU/(33324:33376): CPU lista para recibir al cliente
+[INFO] 00:19:50:114 CPU/(33324:33376): Se conecto un cliente
+[INFO] 00:19:50:115 CPU/(33324:33376): Instrucciones recibidas de Kernel:
+
+[INFO] 00:19:50:116 CPU/(33324:33376): SET AX HOLA
+
+[INFO] 00:19:50:116 CPU/(33324:33376): CREATE_SEGMENT 1 128
+
+[INFO] 00:19:50:116 CPU/(33324:33376): EXIT
+[ERROR] 00:19:50:282 CPU/(33324:33376): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:19:50:287 CPU/(33324:33382): CPU lista para recibir al cliente
+[INFO] 00:22:23:393 CPU/(33473:33473): CPU lista para escuchar al cliente
+
+[INFO] 00:22:23:394 CPU/(33473:33474): CPU lista para recibir al cliente
+[INFO] 00:22:33:892 CPU/(33473:33474): Se conecto un cliente
+[INFO] 00:22:33:896 CPU/(33473:33474): Instrucciones recibidas de Kernel:
+
+[INFO] 00:22:33:896 CPU/(33473:33474): SET AX HOLA
+
+[INFO] 00:22:33:897 CPU/(33473:33474): CREATE_SEGMENT 1 128
+
+[INFO] 00:22:33:897 CPU/(33473:33474): EXIT
+[INFO] 00:22:33:897 CPU/(33473:33474): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:22:34:902 CPU/(33473:33474): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:22:34:909 CPU/(33473:33498): CPU lista para recibir al cliente
+[INFO] 00:22:34:917 CPU/(33473:33498): Se conecto un cliente
+[INFO] 00:22:34:917 CPU/(33473:33498): Instrucciones recibidas de Kernel:
+
+[INFO] 00:22:34:917 CPU/(33473:33498): SET AX HOLA
+
+[INFO] 00:22:34:917 CPU/(33473:33498): CREATE_SEGMENT 1 128
+
+[INFO] 00:22:34:917 CPU/(33473:33498): EXIT
+[INFO] 00:22:34:918 CPU/(33473:33498): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:22:34:920 CPU/(33473:33498): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:22:34:921 CPU/(33473:33502): CPU lista para recibir al cliente
+[INFO] 00:23:42:344 CPU/(33659:33659): CPU lista para escuchar al cliente
+
+[INFO] 00:23:42:345 CPU/(33659:33660): CPU lista para recibir al cliente
+[INFO] 00:23:54:392 CPU/(33659:33660): Se conecto un cliente
+[INFO] 00:23:54:392 CPU/(33659:33660): Instrucciones recibidas de Kernel:
+
+[INFO] 00:23:54:392 CPU/(33659:33660): SET AX HOLA
+
+[INFO] 00:23:54:392 CPU/(33659:33660): CREATE_SEGMENT 1 128
+
+[INFO] 00:23:54:392 CPU/(33659:33660): EXIT
+[INFO] 00:23:54:393 CPU/(33659:33660): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:23:55:395 CPU/(33659:33660): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:23:55:396 CPU/(33659:33689): CPU lista para recibir al cliente
+[INFO] 00:23:55:404 CPU/(33659:33689): Se conecto un cliente
+[INFO] 00:23:55:405 CPU/(33659:33689): Instrucciones recibidas de Kernel:
+
+[INFO] 00:23:55:405 CPU/(33659:33689): SET AX HOLA
+
+[INFO] 00:23:55:405 CPU/(33659:33689): CREATE_SEGMENT 1 128
+
+[INFO] 00:23:55:405 CPU/(33659:33689): EXIT
+[INFO] 00:23:55:410 CPU/(33659:33689): Tabla de Segmentos recibida de Kernel, NO PROBADA, POSIBLE SEG_FAULT
+
+[ERROR] 00:23:55:412 CPU/(33659:33689): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:23:55:413 CPU/(33659:33693): CPU lista para recibir al cliente
+[INFO] 00:29:14:666 CPU/(33869:33869): CPU lista para escuchar al cliente
+
+[INFO] 00:29:14:666 CPU/(33869:33870): CPU lista para recibir al cliente
+[INFO] 00:29:29:616 CPU/(33869:33870): Se conecto un cliente
+[INFO] 00:29:29:617 CPU/(33869:33870): Instrucciones recibidas de Kernel:
+
+[INFO] 00:29:29:617 CPU/(33869:33870): SET AX HOLA
+
+[INFO] 00:29:29:617 CPU/(33869:33870): CREATE_SEGMENT 1 128
+
+[INFO] 00:29:29:618 CPU/(33869:33870): EXIT
+[INFO] 00:29:29:618 CPU/(33869:33870): Tabla de Segmentos recibida de Kernel
+
+[ERROR] 00:29:30:620 CPU/(33869:33870): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:29:30:622 CPU/(33869:33924): CPU lista para recibir al cliente
+[INFO] 00:29:30:628 CPU/(33869:33924): Se conecto un cliente
+[INFO] 00:29:30:629 CPU/(33869:33924): Instrucciones recibidas de Kernel:
+
+[INFO] 00:29:30:629 CPU/(33869:33924): SET AX HOLA
+
+[INFO] 00:29:30:629 CPU/(33869:33924): CREATE_SEGMENT 1 128
+
+[INFO] 00:29:30:629 CPU/(33869:33924): EXIT
+[INFO] 00:29:30:635 CPU/(33869:33924): Tabla de Segmentos recibida de Kernel
+
+[ERROR] 00:29:30:636 CPU/(33869:33924): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:29:30:637 CPU/(33869:33928): CPU lista para recibir al cliente
+[INFO] 00:32:12:983 CPU/(34223:34223): CPU lista para escuchar al cliente
+
+[INFO] 00:32:12:983 CPU/(34223:34224): CPU lista para recibir al cliente
+[INFO] 00:32:25:187 CPU/(34223:34224): Se conecto un cliente
+[INFO] 00:32:25:187 CPU/(34223:34224): Instrucciones recibidas de Kernel:
+
+[INFO] 00:32:25:187 CPU/(34223:34224): SET AX HOLA
+
+[INFO] 00:32:25:187 CPU/(34223:34224): CREATE_SEGMENT 1 128
+
+[INFO] 00:32:25:187 CPU/(34223:34224): EXIT
+[INFO] 00:32:25:188 CPU/(34223:34224): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 00:32:26:190 CPU/(34223:34224): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:32:26:192 CPU/(34223:34246): CPU lista para recibir al cliente
+[INFO] 00:32:26:196 CPU/(34223:34246): Se conecto un cliente
+[INFO] 00:32:26:198 CPU/(34223:34246): Instrucciones recibidas de Kernel:
+
+[INFO] 00:32:26:198 CPU/(34223:34246): SET AX HOLA
+
+[INFO] 00:32:26:198 CPU/(34223:34246): CREATE_SEGMENT 1 128
+
+[INFO] 00:32:26:198 CPU/(34223:34246): EXIT
+[INFO] 00:32:26:203 CPU/(34223:34246): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 00:32:26:204 CPU/(34223:34246): el kernel se desconecto. Terminando servidor
+
+[INFO] 00:32:26:210 CPU/(34223:34250): CPU lista para recibir al cliente
