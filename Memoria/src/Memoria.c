@@ -48,7 +48,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 			agregarSegmentoATabla(segmento, idProceso);
 			list_add(segmentos,segmento);
 		}
-	//base = segmento->base;
+	base = segmento->base;
 	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, segmento->base, tamanio);
 	printf("CREATE_SEGMENT.\n");
 	return CREATE_SEGMENT;
@@ -829,6 +829,7 @@ void* clientKernel(void *arg) {
 	switch(cod_kernel){
 		case CREATE_SEGMENT:
 			char* baseStr = string_from_format("%zu", base);
+			printf("Base enviada a Kernel: %s\n",baseStr);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
 			printf("CREATE_SEGMENT ENVIADO\n");
 		break;

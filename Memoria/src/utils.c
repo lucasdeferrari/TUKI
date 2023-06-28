@@ -280,10 +280,9 @@ t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion) {
 											siguiente->base,
 								siguiente->desplazamiento);
 
-
-
         int tamanio = strlen(unaPalabra) + 1;
         agregar_a_paquete(paquete, unaPalabra, tamanio);
+
     }
     list_iterator_destroy(iterador);
     return paquete;

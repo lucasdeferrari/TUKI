@@ -3259,3 +3259,75 @@ el cliente se desconecto. Terminando servidor
 [INFO] 22:48:50:590 Memoria/(4819:4893): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
 [ERROR] 22:48:50:591 Memoria/(4819:4893): 
 el cliente se desconecto. Terminando servidor
+[INFO] 23:07:17:090 Memoria/(2586:2586): Listo para escuchar al cliente
+[INFO] 23:07:17:090 Memoria/(2586:2586): Memoria lista para recibir al cliente
+
+[INFO] 23:07:17:091 Memoria/(2586:2586): Se conectaron todos los modulos.
+
+[INFO] 23:07:17:091 Memoria/(2586:2586): Se crearon todas las estructuras correctamente.
+
+[INFO] 23:07:57:012 Memoria/(2586:2587): Se conecto un cliente!
+[INFO] 23:07:57:013 Memoria/(2586:2587): se conecto el filesystem
+[ERROR] 23:07:57:014 Memoria/(2586:2587): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:08:13:717 Memoria/(2586:2661): Se conecto un cliente!
+[INFO] 23:08:13:717 Memoria/(2586:2661): se conecto el kernel
+[ERROR] 23:08:13:717 Memoria/(2586:2661): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:08:35:034 Memoria/(2586:2697): Se conecto un cliente!
+[INFO] 23:08:35:035 Memoria/(2586:2697): Creación de Proceso PID: 1
+[ERROR] 23:08:35:035 Memoria/(2586:2697): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:08:36:040 Memoria/(2586:2737): Se conecto un cliente!
+[ERROR] 23:08:36:041 Memoria/(2586:2737): Error al eliminar hueco libre. 
+[INFO] 23:08:36:041 Memoria/(2586:2737): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 23:08:36:045 Memoria/(2586:2737): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:19:52:723 Memoria/(4098:4098): Listo para escuchar al cliente
+[INFO] 23:19:52:723 Memoria/(4098:4098): Memoria lista para recibir al cliente
+
+[INFO] 23:19:52:724 Memoria/(4098:4098): Se conectaron todos los modulos.
+
+[INFO] 23:19:52:724 Memoria/(4098:4098): Se crearon todas las estructuras correctamente.
+
+[INFO] 23:19:59:248 Memoria/(4098:4099): Se conecto un cliente!
+[INFO] 23:19:59:248 Memoria/(4098:4099): se conecto el filesystem
+[ERROR] 23:19:59:249 Memoria/(4098:4099): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:20:05:891 Memoria/(4098:4107): Se conecto un cliente!
+[INFO] 23:20:05:891 Memoria/(4098:4107): se conecto el kernel
+[ERROR] 23:20:05:891 Memoria/(4098:4107): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:20:08:526 Memoria/(4098:4111): Se conecto un cliente!
+[INFO] 23:20:08:526 Memoria/(4098:4111): Creación de Proceso PID: 1
+[ERROR] 23:20:08:527 Memoria/(4098:4111): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:20:09:529 Memoria/(4098:4118): Se conecto un cliente!
+[ERROR] 23:20:09:529 Memoria/(4098:4118): Error al eliminar hueco libre. 
+[INFO] 23:20:09:529 Memoria/(4098:4118): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 23:20:09:530 Memoria/(4098:4118): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:22:57:752 Memoria/(4211:4211): Listo para escuchar al cliente
+[INFO] 23:22:57:753 Memoria/(4211:4211): Memoria lista para recibir al cliente
+
+[INFO] 23:22:57:753 Memoria/(4211:4211): Se conectaron todos los modulos.
+
+[INFO] 23:22:57:754 Memoria/(4211:4211): Se crearon todas las estructuras correctamente.
+
+[INFO] 23:23:00:773 Memoria/(4211:4212): Se conecto un cliente!
+[INFO] 23:23:00:773 Memoria/(4211:4212): se conecto el filesystem
+[ERROR] 23:23:00:774 Memoria/(4211:4212): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:23:02:109 Memoria/(4211:4220): Se conecto un cliente!
+[INFO] 23:23:02:109 Memoria/(4211:4220): se conecto el kernel
+[ERROR] 23:23:02:110 Memoria/(4211:4220): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:23:03:044 Memoria/(4211:4223): Se conecto un cliente!
+[INFO] 23:23:03:044 Memoria/(4211:4223): Creación de Proceso PID: 1
+[ERROR] 23:23:03:045 Memoria/(4211:4223): 
+el cliente se desconecto. Terminando servidor
+[INFO] 23:23:04:048 Memoria/(4211:4230): Se conecto un cliente!
+[ERROR] 23:23:04:048 Memoria/(4211:4230): Error al eliminar hueco libre. 
+[INFO] 23:23:04:048 Memoria/(4211:4230): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 23:23:04:049 Memoria/(4211:4230): 
+el cliente se desconecto. Terminando servidor
