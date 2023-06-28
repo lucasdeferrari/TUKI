@@ -645,7 +645,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
 		//iniciarHiloClienteFileSystem()
 		// El proceso que llamó a F_WRITE deberá permanecer en estado bloqueado
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+		printf("FALTA HACER EL PROCEDIMIENTO: F_WRITE\n");
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//iniciarHiloClienteFileSystem()

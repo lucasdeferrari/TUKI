@@ -728,29 +728,32 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 	return tablaSegmentosActualizadaLista;
 }
 
-//FALTA TERMINAR MMU
+
 int MMU(int direcLogica, int cantBytes){
 
+	int error = -2;
 	int num_segmento = floor(direcLogica / tam_max_segmento);
 	int desplazamiento_segmento = direcLogica % tam_max_segmento;
 
 	printf("num_segmento: %d\n",num_segmento); // = al id del segmento
 	printf("desplazamiento_segmento: %d\n",desplazamiento_segmento);
 
-	if((desplazamiento_segmento+cantBytes)>tam_max_segmento){
-		printf("ERROR: SEGMENTATION FAULT\n");
-
-		//log minimo y obligatorio
-		//TAMAÑO?? FALTA RECIBIRLO EN MMU
-		//log_info(logger, "“PID: %d - Error SEG_FAULT- Segmento: %d - Offset: %d - Tamaño: %d\n", contexto->pid, num_segmento, desplazamiento_segmento, //TAMAÑO);
+	if(  (desplazamiento_segmento + cantBytes) > tam_max_segmento  ){
+		log_info(logger, "PID: %d - Error SEG_FAULT- Segmento: %d - Offset: %d - Tamaño: %d\n", contexto->pid, num_segmento, desplazamiento_segmento, cantBytes);
 		return -1;
 	}
 
-	int direcFisica = -2;
-	printf("FALTA CALCULAR LA DIRECCIÓN FÍSICA, DUDAS CON NUM:SEGMENTO Y ID \n");
-	//int direcFisica = baseSegmento + desplazamiento_segmento;
+	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
 
-	return direcFisica;
+	while (list_iterator_has_next(iterador)) {
+		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+
+		if(num_segmento == siguiente->id){
+			return siguiente->direccionBase + desplazamiento_segmento;
+		}
+	}
+
+	return error;
 }
 
 // FUNCIONES INSTRUCCIONES
@@ -758,12 +761,12 @@ int MMU(int direcLogica, int cantBytes){
 //MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
 void mov_in_tp(char* registro, int direccionLogica){
 
-	t_infoClienteMemoria* infoClienteMemoria;
-	infoClienteMemoria->cod_memoria = 11;
-	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
-	strcpy(infoClienteMemoria->registro,registro);
+//	t_infoClienteMemoria* infoClienteMemoria;
+//	infoClienteMemoria->cod_memoria = 11;
+//	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
+//	strcpy(infoClienteMemoria->registro,registro);
 
-	iniciarHiloClienteMemoria(infoClienteMemoria);
+//	iniciarHiloClienteMemoria(infoClienteMemoria);
 
 	contexto->instruccion = string_duplicate("MOV_IN");
     return;
@@ -772,12 +775,12 @@ void mov_in_tp(char* registro, int direccionLogica){
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
 void mov_out_tp(int direccionLogica, char* registro){
 
-	t_infoClienteMemoria* infoClienteMemoria;
-	infoClienteMemoria->cod_memoria = 12;
-	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
-	strcpy(infoClienteMemoria->registro,registro);
-
-	iniciarHiloClienteMemoria(infoClienteMemoria);
+//	t_infoClienteMemoria* infoClienteMemoria;
+//	infoClienteMemoria->cod_memoria = 12;
+//	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
+//	strcpy(infoClienteMemoria->registro,registro);
+//
+//	iniciarHiloClienteMemoria(infoClienteMemoria);
 
 	contexto->instruccion = string_duplicate("MOV_OUT");
     return;
@@ -852,6 +855,8 @@ void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 
 	if (direcFisica == -1){
 		contexto->instruccion = string_duplicate("SEG_FAULT");
+	}else if(direcFisica == -2){
+		printf("ERROR AL CALCULAR LA DIRECCION FÍSICA");
 	}
 	else{
 		contexto->direcFisicaArchivo = direcFisica;
