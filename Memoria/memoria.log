@@ -736,3 +736,14 @@ el cliente se desconecto. Terminando servidor
 [INFO] 23:26:01:434 Memoria/(23075:23108): PID: 1 - Eliminar Segmento: 1 - Base: 0 - TAMAÑO: 128
 [ERROR] 23:26:01:446 Memoria/(23075:23108): 
 el cliente se desconecto. Terminando servidor
+[INFO] 02:54:44:411 Memoria/(13986:13986): Listo para escuchar al cliente
+[INFO] 02:54:44:413 Memoria/(13986:13986): Memoria lista para recibir al cliente
+
+[INFO] 02:54:44:413 Memoria/(13986:13986): Se conectaron todos los modulos.
+
+[INFO] 02:54:44:413 Memoria/(13986:13986): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:54:48:873 Memoria/(13986:13991): Se conecto un cliente!
+[INFO] 02:54:48:877 Memoria/(13986:13991): se conecto el filesystem
+[ERROR] 02:54:48:877 Memoria/(13986:13991): 
+el cliente se desconecto. Terminando servidor

@@ -704,7 +704,8 @@ void* serverMemoria(void* ptr){
     			int *puntero = NULL;
     			puntero = &pid2Int;
 
-    			eliminar_proceso(puntero);
+    			//COMENTO ESTA LINEA PARA PODER PROBAR PORQUE TIRA SEG_FAULT
+    			//eliminar_proceso(puntero);
     			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
     		}
 

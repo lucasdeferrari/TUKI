@@ -31,8 +31,7 @@ typedef enum
 	ELIMINAR_PROCESO,
 	TABLA_GLOBAL,
 	MOV_IN,
-	MOV_OUT,
-	ELIMINAR_PROCESO
+	MOV_OUT
 }op_code;
 
 

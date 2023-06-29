@@ -243,9 +243,12 @@ void* clientMemoria(void *arg) {
     		enviar_paquete(paquete, conexion_Memoria);
     		eliminar_paquete(paquete);
     	break;
-    	case 13: //Eliminar proceso
-    		enviar_paquete(paquete, conexion_Memoria);
-    		eliminar_paquete(paquete);
+    	case 9: //Eliminar proceso
+    		char* pidNuevoEliminarProceso = string_new();
+    		string_append_with_format(&pidNuevoEliminarProceso, "%d", pidProceso);
+    		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
+    		liberar_conexion(conexion_Memoria);
+    		return NULL;
     	break;
 		default:
 			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
@@ -322,11 +325,6 @@ void* clientMemoria(void *arg) {
         case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
-        break;
-        case 13:
-        	char* respuesta = recibir_handshake(conexion_Memoria);
-        	printf("Respuesta ELIMINAR_PROCESO: %s\n",respuesta);
-        	liberar_conexion(conexion_Memoria);
         break;
 		default:
 			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
@@ -853,7 +851,7 @@ void pasarAExit() {
 //		Dar aviso al modulo de Memoria para que lo libere.
 //		Liberar recursos que tenga asignados.
 
-	iniciarHiloClienteMemoria(13,0);
+	iniciarHiloClienteMemoria(9,estadoEnEjecucion->pid);
 
 	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
