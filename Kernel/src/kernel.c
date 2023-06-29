@@ -757,24 +757,73 @@ void manejar_recursos() {
 	    		printf("Puntero del archivo: %s actualizado.\n", siguiente->nombreArchivo );
 	    	}
 	    }
-
+	    //Devuelvo el contexto de ejecución a la CPU para que continúe el mismo proceso.
 		iniciarHiloClienteCPU();
 
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
 		//iniciarHiloClienteFileSystem()
+
 		//El proceso que llamó a F_READ deberá permanecer en estado bloqueado
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+
+		printf("FALTA HACER EL PROCEDIMIENTO F_READ\n");
+
+	    //Desencolo ready si es que hay algun proceso en la lista
+		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+			if(frenteColaReady != NULL){
+				desencolarReady();
+			}
+		}
+
+		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+			if( !list_is_empty(listaReady) ){
+				desencolarReady();
+			}
+		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
 		//iniciarHiloClienteFileSystem()
+
 		// El proceso que llamó a F_WRITE deberá permanecer en estado bloqueado
 		printf("FALTA HACER EL PROCEDIMIENTO: F_WRITE\n");
+
+	    //Desencolo ready si es que hay algun proceso en la lista
+		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+			if(frenteColaReady != NULL){
+				desencolarReady();
+			}
+		}
+
+		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+			if( !list_is_empty(listaReady) ){
+				desencolarReady();
+			}
+		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//iniciarHiloClienteFileSystem()
+
 		//El proceso que llamó a F_TRUNCATE deberá permanecer en estado bloqueado
 		printf("FALTA HACER EL PROCEDIMIENTO\n");
+
+	    //Desencolo ready si es que hay algun proceso en la lista
+		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+			if(frenteColaReady != NULL){
+				desencolarReady();
+			}
+		}
+
+		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+			if( !list_is_empty(listaReady) ){
+				desencolarReady();
+			}
+		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
 
