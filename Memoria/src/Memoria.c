@@ -411,9 +411,11 @@ void compactar_memoria() {
 	// se pasa el segmento a esa base y se borra el hueco libre
 	t_list* listaOrdenada = list_sorted(segmentos, comparador);
 	t_list_iterator* iterador = list_iterator_create(listaOrdenada);
+
+	t_list* copiaHuecosLibres = list_duplicate(listaDeHuecosLibres);
 	while(list_iterator_has_next(iterador)){
 		Segmento *segmento = list_iterator_next(iterador);
-		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
+		t_list_iterator* iterador2 = list_iterator_create(copiaHuecosLibres);
 		while(list_iterator_has_next(iterador2)){
 			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
 			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada));
@@ -675,9 +677,6 @@ void* serverMemoria(void* ptr){
     			char* pid2 = recibir_buffer_mio(cliente_fd);
     			int pid2Int = atoi(pid2);
 
-//    			int *puntero = NULL;
-//    			puntero = &pid2Int;
-
     			eliminar_proceso(pid2Int);
     			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
     		}
@@ -837,79 +836,6 @@ void enviarValorLectura(char* array[], int longitud, int cliente_fd){
 
 }
 
-
-//void iniciarHiloClienteCPU(int cod_op,int cliente_fd) {
-//	ClientCPUArgs args;
-//	args.cod_op = cod_op;
-//	args.cliente_fd = cliente_fd;
-//
-//	int err = pthread_create( 	&client_CPU,	// puntero al thread
-//								NULL,
-//								clientCPU, // le paso la def de la función que quiero que ejecute mientras viva
-//								(void *)&args); // argumentos de la función
-//
-//	if (err != 0) {
-//	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
-//	exit(7);
-//	}
-//	//printf("El hilo cliente de la Memoria se creo correctamente.");
-//
-//}
-//
-//
-//void* clientCPU(int op_code, int cliente_fd) {
-////	MENSAJE --> 0
-////	PAQUETE --> 1
-////	MOV_IN --> 11
-////	MOV_OUT-->12
-//
-//	switch(op_code){
-//		case MOV_IN:
-////			char* baseStr = string_from_format("%zu", base);
-////			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
-//		break;
-//		case MOV_OUT:
-////			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
-//		break;
-//	}
-//	return NULL;
-//}
-//void iniciarHiloClienteFS(int cod_op,int cliente_fd) {
-//	ClientFSArgs args;
-//	args.cod_op = cod_op;
-//	args.cliente_fd = cliente_fd;
-//
-//	int err = pthread_create( 	&client_FS,	// puntero al thread
-//								NULL,
-//								clientFS, // le paso la def de la función que quiero que ejecute mientras viva
-//								(void *)&args); // argumentos de la función
-//
-//	if (err != 0) {
-//	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
-//	exit(7);
-//	}
-//	//printf("El hilo cliente de la Memoria se creo correctamente.");
-//
-//}
-//
-//
-//void* clientFS(int op_code, int cliente_fd) {
-//	//	MENSAJE --> 0
-//	//	PAQUETE --> 1
-//	//	MOV_IN --> 11
-//	//	MOV_OUT-->12
-//
-//		switch(op_code){
-//			case MOV_IN:
-//	//			char* baseStr = string_from_format("%zu", base);
-//	//			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
-//			break;
-//			case MOV_OUT:
-//	//			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
-//			break;
-//		}
-//		return NULL;
-//}
 void enviar_respuesta(int socket_cliente, char* quien_es) {
 	char* handshake = quien_es;
 	char* respuesta = string_new();

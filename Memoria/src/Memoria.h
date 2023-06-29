@@ -35,10 +35,7 @@ void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
 void* clientKernel(void *arg);
-void iniciarHiloClienteCPU(int cod_op,int cliente_fd);
-void* clientCPU(int cod_op, int cliente_fd);
-void iniciarHiloClienteFS(int cod_op,int cliente_fd);
-void* clientFS(int cod_op, int cliente_fd);
+
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 char* recibir_buffer_mio(int socket_cliente);
