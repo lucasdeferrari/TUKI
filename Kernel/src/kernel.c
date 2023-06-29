@@ -343,6 +343,7 @@ void* clientMemoria(void *arg) {
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
         	liberar_conexion(conexion_Memoria);
+        	iniciarHiloClienteCPU();
         break;
         case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
@@ -443,17 +444,86 @@ void* clientFileSystem(void *arg) {
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
 
+    t_paquete* paquete = crear_paquete_cod_operacion(cod_fs);
     switch(cod_fs){
 		case 1: //F_OPEN
+        	agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+
+        	enviar_paquete(paquete, conexion_FileSystem);
+
+        	printf("F_OPEN enviado a FS.\n");
+        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+
+        	eliminar_paquete(paquete);
 
 		break;
 		case 2: //F_READ
+			// ORDEN PARÁMETROS: nombreArchivo - puntero - cantBytes - direcFisica
+    		char* punteroRead = string_new();
+    		char* cantBytesRead = string_new();
+    		char* direcFisicaRead = string_new();
+
+            string_append_with_format(&punteroRead, "%d", punteroArchivo);
+            string_append_with_format(&cantBytesRead, "%d", unProceso->cantBytesArchivo);
+            string_append_with_format(&direcFisicaRead, "%d", unProceso->direcFisicaArchivo);
+
+
+            agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+        	agregar_a_paquete(paquete, punteroRead, strlen(punteroRead)+1);
+        	agregar_a_paquete(paquete, cantBytesRead, strlen(cantBytesRead)+1);
+        	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
+
+        	enviar_paquete(paquete, conexion_FileSystem);
+
+        	printf("F_READ enviado a MEMORIA.\n");
+        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	printf("Puntero enviado a FS: %s\n", punteroRead);
+        	printf("CantBytes enviado a FS: %s\n", cantBytesRead);
+        	printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
+
+        	eliminar_paquete(paquete);
 
 		break;
 		case 3: //F_WRITE
+			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
+    		char* cantBytesRead = string_new();
+    		char* direcFisicaRead = string_new();
+
+            string_append_with_format(&cantBytesRead, "%d", unProceso->cantBytesArchivo);
+            string_append_with_format(&direcFisicaRead, "%d", unProceso->direcFisicaArchivo);
+
+
+            agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+        	agregar_a_paquete(paquete, cantBytesRead, strlen(cantBytesRead)+1);
+        	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
+
+        	enviar_paquete(paquete, conexion_FileSystem);
+
+        	printf("F_WRITE enviado a MEMORIA.\n");
+        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	printf("CantBytes enviado a FS: %s\n", cantBytesRead);
+        	printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
+
+        	eliminar_paquete(paquete);
 
 		break;
 		case 4: //F_TRUNCATE
+			// ORDEN PARÁMETROS: nombreArchivo - nuevoTamanio
+    		char* nuevoTamanio = string_new();
+
+            string_append_with_format(&nuevoTamanio, "%d", unProceso->tamanioArchivo);
+
+            agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+        	agregar_a_paquete(paquete, nuevoTamanio, strlen(nuevoTamanio)+1);
+
+
+        	enviar_paquete(paquete, conexion_FileSystem);
+
+        	printf("F_TRUNCATE enviado a MEMORIA.\n");
+        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	printf("Nuevo tamaño enviado a FS: %s\n", nuevoTamanio);
+
+        	eliminar_paquete(paquete);
 
 		break;
 		default:
@@ -466,15 +536,107 @@ void* clientFileSystem(void *arg) {
 	switch (cod_op) {
 		case 1: //F_OPEN
 
+			//Agrego el archivo a la tabla global
+			t_infoTablaGlobalArchivos* nuevoArchivoGlobal = malloc(sizeof(t_infoTablaGlobalArchivos));
+			strcpy(nuevoArchivoGlobal->nombreArchivo,unProceso->nombreArchivo);
+			nuevoArchivoGlobal->colaProcesosBloqueados = queue_create();
+			list_add(tablaGlobalArchivosAbiertos, nuevoArchivoGlobal);
+			printf("Archivo agregado a la tabla global de archivos.\n");
+
+			//Agrego el archivo a la tabla del proceso
+			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
+			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
+			nuevoArchivo->posicionPuntero = 0;
+			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
+			printf("Archivo agregado a la tabla del proceso.\n");
+
+			//Sigue ejecutando el mismo proceso
+			iniciarHiloClienteCPU();
+
 		break;
 		case 2: //F_READ
 
+			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
+			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
+
 		break;
 		case 3: //F_WRITE
+			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
+			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
 
 		break;
 		case 4: //F_TRUNCATE
+			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
+			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
+				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					desencolarReady();
+					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+				}
+				else{
+					encolar_ready_ejecucion(unProceso);
+					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+				}
+			}
 		break;
 
 		default:

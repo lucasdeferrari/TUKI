@@ -36387,3 +36387,108 @@
 [ERROR] 16:33:58:163 CPU/(48378:48379): el kernel se desconecto. Terminando servidor
 
 [INFO] 16:33:58:164 CPU/(48378:48419): CPU lista para recibir al cliente
+[INFO] 22:40:47:401 CPU/(2292:2292): CPU lista para escuchar al cliente
+
+[INFO] 22:40:47:401 CPU/(2292:2293): CPU lista para recibir al cliente
+[INFO] 22:45:42:786 CPU/(2292:2293): Se conecto un cliente
+[INFO] 22:45:42:787 CPU/(2292:2293): Instrucciones recibidas de Kernel:
+
+[INFO] 22:45:42:787 CPU/(2292:2293): SET AX HOLA
+
+[INFO] 22:45:42:787 CPU/(2292:2293): CREATE_SEGMENT 1 128
+
+[INFO] 22:45:42:787 CPU/(2292:2293): DELETE_SEGMENT 1
+
+[INFO] 22:45:42:787 CPU/(2292:2293): EXIT
+
+[INFO] 22:45:42:788 CPU/(2292:2293): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 22:45:43:790 CPU/(2292:2293): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:45:43:793 CPU/(2292:2619): CPU lista para recibir al cliente
+[INFO] 22:57:11:189 CPU/(2671:2671): CPU lista para escuchar al cliente
+
+[INFO] 22:57:11:190 CPU/(2671:2672): CPU lista para recibir al cliente
+[INFO] 22:57:17:559 CPU/(2671:2672): Se conecto un cliente
+[INFO] 22:57:17:560 CPU/(2671:2672): Instrucciones recibidas de Kernel:
+
+[INFO] 22:57:17:560 CPU/(2671:2672): SET AX HOLA
+
+[INFO] 22:57:17:560 CPU/(2671:2672): CREATE_SEGMENT 1 128
+
+[INFO] 22:57:17:560 CPU/(2671:2672): DELETE_SEGMENT 1
+
+[INFO] 22:57:17:560 CPU/(2671:2672): EXIT
+
+[INFO] 22:57:17:561 CPU/(2671:2672): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 22:57:18:562 CPU/(2671:2672): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:57:18:566 CPU/(2671:2688): CPU lista para recibir al cliente
+[INFO] 22:57:18:570 CPU/(2671:2688): Se conecto un cliente
+[INFO] 22:57:18:571 CPU/(2671:2688): Instrucciones recibidas de Kernel:
+
+[INFO] 22:57:18:571 CPU/(2671:2688): SET AX HOLA
+
+[INFO] 22:57:18:571 CPU/(2671:2688): CREATE_SEGMENT 1 128
+
+[INFO] 22:57:18:571 CPU/(2671:2688): DELETE_SEGMENT 1
+
+[INFO] 22:57:18:571 CPU/(2671:2688): EXIT
+
+[INFO] 22:57:18:577 CPU/(2671:2688): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 22:57:18:577 CPU/(2671:2688): el kernel se desconecto. Terminando servidor
+
+[INFO] 22:57:18:578 CPU/(2671:2692): CPU lista para recibir al cliente
+[INFO] 23:00:08:890 CPU/(2763:2763): CPU lista para escuchar al cliente
+
+[INFO] 23:00:08:890 CPU/(2763:2764): CPU lista para recibir al cliente
+[INFO] 23:00:16:726 CPU/(2763:2764): Se conecto un cliente
+[INFO] 23:00:16:727 CPU/(2763:2764): Instrucciones recibidas de Kernel:
+
+[INFO] 23:00:16:727 CPU/(2763:2764): SET AX HOLA
+
+[INFO] 23:00:16:727 CPU/(2763:2764): CREATE_SEGMENT 1 128
+
+[INFO] 23:00:16:727 CPU/(2763:2764): DELETE_SEGMENT 1
+
+[INFO] 23:00:16:727 CPU/(2763:2764): EXIT
+
+[INFO] 23:00:16:727 CPU/(2763:2764): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 23:00:17:730 CPU/(2763:2764): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:00:17:731 CPU/(2763:2797): CPU lista para recibir al cliente
+[INFO] 23:00:17:736 CPU/(2763:2797): Se conecto un cliente
+[INFO] 23:00:17:737 CPU/(2763:2797): Instrucciones recibidas de Kernel:
+
+[INFO] 23:00:17:737 CPU/(2763:2797): SET AX HOLA
+
+[INFO] 23:00:17:737 CPU/(2763:2797): CREATE_SEGMENT 1 128
+
+[INFO] 23:00:17:737 CPU/(2763:2797): DELETE_SEGMENT 1
+
+[INFO] 23:00:17:737 CPU/(2763:2797): EXIT
+
+[INFO] 23:00:17:740 CPU/(2763:2797): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 23:00:17:744 CPU/(2763:2797): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:00:17:744 CPU/(2763:2801): CPU lista para recibir al cliente
+[INFO] 23:00:17:747 CPU/(2763:2801): Se conecto un cliente
+[INFO] 23:00:17:747 CPU/(2763:2801): Instrucciones recibidas de Kernel:
+
+[INFO] 23:00:17:747 CPU/(2763:2801): SET AX HOLA
+
+[INFO] 23:00:17:747 CPU/(2763:2801): CREATE_SEGMENT 1 128
+
+[INFO] 23:00:17:747 CPU/(2763:2801): DELETE_SEGMENT 1
+
+[INFO] 23:00:17:747 CPU/(2763:2801): EXIT
+
+[INFO] 23:00:17:749 CPU/(2763:2801): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 23:00:17:750 CPU/(2763:2801): el kernel se desconecto. Terminando servidor
+
+[INFO] 23:00:17:751 CPU/(2763:2805): CPU lista para recibir al cliente
