@@ -162,7 +162,6 @@ void* clientMemoria(void *arg) {
             break;
     		default:
     			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
-    			 liberar_conexion(conexion_Memoria);
     		break;
         }
 

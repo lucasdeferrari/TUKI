@@ -38,6 +38,7 @@ int main(void) {
     int ningunEstado = -1;
     estadoEnEjecucion->pid = ningunEstado;
 
+    tablaGlobalArchivosAbiertos = list_create();
     listaReady = list_create();
     cantidadElementosSistema = 0;
     listaRecursos = list_create();
@@ -242,6 +243,10 @@ void* clientMemoria(void *arg) {
     		enviar_paquete(paquete, conexion_Memoria);
     		eliminar_paquete(paquete);
     	break;
+    	case 13: //Eliminar proceso
+    		enviar_paquete(paquete, conexion_Memoria);
+    		eliminar_paquete(paquete);
+    	break;
 		default:
 			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
 		break;
@@ -254,10 +259,24 @@ void* clientMemoria(void *arg) {
 		case 6:
 			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
 			procesoADesencolar->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-			queue(&frenteColaReady, &finColaReady,procesoADesencolar);
 			printf("PROCESO_NUEVO - Tabla inicial actualizada.\n");
-			sem_post(&semKernelClientMemoria);
+
+			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
+				//Log minimo y obligatorio
+				log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
+				sem_post(&semKernelClientMemoria);
+			}
+			if(strcmp(algoritmo_planificacion,"HHRN") == 0){
+				list_add(listaReady, procesoADesencolar);
+				procesoADesencolar->entraEnColaReady = tomarTiempo();
+				//Log minimo y obligatorio
+				log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
+				sem_post(&semKernelClientMemoria);
+			}
+
 			liberar_conexion(conexion_Memoria);
+
 		break;
         case 2:
         	char* mensajeMemoria = recibir_handshake(conexion_Memoria);
@@ -290,7 +309,10 @@ void* clientMemoria(void *arg) {
         case 8:
     		//Revisar si hay conexion entre FileSystem y Memoria
     		//Mandarle a memoria que compacte
+        	//Una vez terminada esta rutina, el Kernel repetirá la solicitud de creación del segmento.
+
         	procedimiento_compactar();
+
         break;
         case 3:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
@@ -300,6 +322,11 @@ void* clientMemoria(void *arg) {
         case 4:
         	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
+        break;
+        case 13:
+        	char* respuesta = recibir_handshake(conexion_Memoria);
+        	printf("Respuesta ELIMINAR_PROCESO: %s\n",respuesta);
+        	liberar_conexion(conexion_Memoria);
         break;
 		default:
 			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
@@ -358,6 +385,7 @@ void compactar(){
 	//t_clientMemoria* infoClientMemoria;
 	//infoClientMemoria->cod_memoria = 4;
 	iniciarHiloClienteMemoria(4,0);
+	//Una vez terminada esta rutina, el Kernel repetirá la solicitud de creación del segmento.
 	return;
 }
 
@@ -535,17 +563,16 @@ void manejar_recursos() {
 
 				if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
-						if(frenteColaReady != NULL){
-							desencolarReady();
-						}
+					if(frenteColaReady != NULL){
+						desencolarReady();
 					}
+				}
 
-					if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+				if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
-
-						if( !list_is_empty(listaReady) ){
-							desencolarReady();
-						}
+					if( !list_is_empty(listaReady) ){
+						desencolarReady();
+					}
 				}
 
 			}
@@ -625,11 +652,97 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_OPEN") == 0) {
 
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+		if ( elArchivoEstaAbierto(unProceso->nombreArchivo) ){
+			printf("El archivo ya se encuentra en la tabla global de archivos.\n");
+
+			//Agrego el archivo a la tabla del proceso
+			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
+			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
+			nuevoArchivo->posicionPuntero = 0;
+			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
+			printf("Archivo agregado a la tabla del proceso.\n");
+
+			//Bloqueo el proceso en la tabla global de archivos
+			t_list_iterator* iterador = list_iterator_create(tablaGlobalArchivosAbiertos);
+
+		    while (list_iterator_has_next(iterador)) {
+
+		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iterador);
+		    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
+		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
+		    		printf("Proceso bloqueado en la tabla global de archivos: %s\n",siguiente->nombreArchivo);
+		    	}
+//		    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
+//		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
+//		    	}
+		    }
+
+		    //Desencolo ready si es que hay algun proceso en la lista
+			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+				if(frenteColaReady != NULL){
+					desencolarReady();
+				}
+			}
+
+			if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+				if( !list_is_empty(listaReady) ){
+					desencolarReady();
+				}
+			}
+
+		}else{
+			printf("El archivo no se encuentra en la tabla global de archivos.\n");
+			//consultar al módulo File System si existe o no el archivo.
+			printf("FALTA CONSULTAR A FS SI EXISTE EL ARCHIVO\n");
+			//iniciarHiloClienteFileSystem();
+			//El procedimiento va dentro del hilo
+		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_CLOSE") == 0) {
 
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+		//Elimino el archivo de la tabla del proceso
+		t_list_iterator* iterador = list_iterator_create(unProceso->tablaArchivosAbiertos);
+	    while (list_iterator_has_next(iterador)) {
+
+	    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
+
+	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
+	    		queue_pop(siguiente);
+	    		printf("Archivo eliminado de la tabla del proceso.\n");
+	    	}
+//	    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
+//	    		queue_pop(siguiente);
+//	    	}
+	    }
+
+	    //Encolo el proceso en Ready
+	    encolar_ready_ejecucion(unProceso);
+
+		//Elimino el archivo de la tabla global de archivos o desbloqueo un proceso
+		t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
+
+	    while (list_iterator_has_next(iteradorGlobal)) {
+
+	    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iteradorGlobal);
+	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
+
+	    		if(queue_is_empty(siguiente->colaProcesosBloqueados)){
+	    			//Elimino el archivo de la tabla global de archivos
+	    			list_remove(tablaGlobalArchivosAbiertos, siguiente);
+	    			printf("Archivo eliminado de la tabla global de archivos.\n");
+	    		}
+	    		else{
+	    			//Desbloqueo y encolo en Ready el proceso desbloqueado
+	    			encolar_ready_ejecucion(queue_pop(siguiente->colaProcesosBloqueados));
+	    			printf("Archivo desbloqueado y encolado en Ready.\n");
+	    		}
+	    	}
+	    }
+
+	    desencolarReady();
+
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_SEEK") == 0) {
 		//Actualiza el puntero del archivo en la tabla de archivos abiertos hacia la ubicación pasada por parámetro
@@ -657,27 +770,15 @@ void manejar_recursos() {
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
 
-		//t_clientMemoria* infoClientMemoria;
-		//infoClientMemoria->cod_memoria = 2;
 		iniciarHiloClienteMemoria(2,0);
-
-
-		//enviarle a la Memoria el mensaje para crear un segmento con el tamaño definido
-		//podemos recibir resultados diferentes
-
-
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
 
-		//enviarle a la Memoria el Id del segmento a eliminar
-		//recibimos como respuesta de la Memoria la tabla de segmentos actualizada
-
-		//t_clientMemoria* infoClientMemoria;
-		//infoClientMemoria->cod_memoria = 3;
 		iniciarHiloClienteMemoria(3,0);
 
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
+
 	}else if (strcmp(unProceso->ultimaInstruccion, "SEG_FAULT") == 0) {
 
 		pasarAExit();
@@ -691,6 +792,8 @@ void pasarAExit() {
 
 //		Dar aviso al modulo de Memoria para que lo libere.
 //		Liberar recursos que tenga asignados.
+
+	iniciarHiloClienteMemoria(13,0);
 
 	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
@@ -753,6 +856,32 @@ void liberarRecursosAsignados(){
 	}
 }
 
+int elArchivoEstaAbierto(char* nombreArchivo){
+	int estaAbierto = 0;
+
+	t_list_iterator* iterador = list_iterator_create(tablaGlobalArchivosAbiertos);
+
+	while (list_iterator_has_next(iterador)) {
+
+		t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iterador);
+		if(string_contains(siguiente->nombreArchivo,nombreArchivo)){
+			estaAbierto = 1;
+		}
+	}
+
+	return estaAbierto;
+}
+
+//void agregarArchivoAlProceso(t_infopcb* unProceso, char* nombreArchivo){
+//
+//	t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
+//
+//	strcpy(nuevoArchivo->nombreArchivo,nombreArchivo);
+//	nuevoArchivo->posicionPuntero = 0;
+//	list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
+//
+//	return;
+//}
 
 void* clientFileSystem(void* ptr) {
 	//sem_wait(&semKernelClientFileSystem);
@@ -941,7 +1070,7 @@ void armarPCB(t_list* lista){
 	nuevoPCB->tamanioArchivo = 0;
 
 	nuevoPCB->recursosAsignados = list_create();
-	nuevoPCB->punterosArchivos = list_create();
+	nuevoPCB->tablaArchivosAbiertos = list_create();
 	nuevoPCB->tablaSegmentos = list_create();
 
 	//nuevoPCB->recursoSolicitado = string_new();
@@ -992,9 +1121,6 @@ void armarPCB(t_list* lista){
 	nuevoPCB->entraEnColaReady = 0;
 	nuevoPCB->terminaEjecutar = 0;
 
-
-
-
 	//Encolamos en NEW (FIFO)
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
 	printf("PCB encolado en NEW\n");
@@ -1030,14 +1156,14 @@ void encolarReady() {
 		if(lugaresDisponiblesReady > 0 ){
 
 			if(frenteColaNew != NULL){
+
 				//t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
-				iniciarHiloClienteMemoria(5,0);
 				//queue(&frenteColaReady, &finColaReady,procesoADesencolar);
+
+				iniciarHiloClienteMemoria(5,0);
 				sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
 
-				//Log minimo y obligatorio
-				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
@@ -1070,20 +1196,14 @@ void encolarReady() {
 		if(lugaresDisponiblesReady > 0 ){
 
 			if(frenteColaNew != NULL){
-				t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 
-				int pidProceso = procesoADesencolar->pid;
-				//iniciarHiloClienteMemoria(5,pidProceso);
+				//t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
+				//list_add(listaReady, procesoADesencolar);
+				//procesoADesencolar->entraEnColaReady = tomarTiempo();
 
-				//PASAR DENTRO DE CLIENT MEMORIA
-
-				list_add(listaReady, procesoADesencolar);
-
-
-
+				iniciarHiloClienteMemoria(5,0);
+				sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
-
-				procesoADesencolar->entraEnColaReady = tomarTiempo();
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);

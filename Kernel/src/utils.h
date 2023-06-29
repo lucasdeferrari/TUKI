@@ -44,20 +44,11 @@ typedef struct
 	int pidProceso;
 } ClientMemoriaArgs;
 
-
-
 typedef struct
 {
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
-
-
-//Listas PCB
-typedef struct nodoArchivos {
-    char* info_archivos;//ver tipo de direccion
-    struct nodoArchivos* sgte;
-} t_nodoArchivos;
 
 typedef struct infoTablaSegmentos {
     int id;
@@ -65,11 +56,15 @@ typedef struct infoTablaSegmentos {
     size_t tamanio;
 } t_infoTablaSegmentos;
 
-//typedef struct nodoTablaSegmentos {
-//	t_infoTablaSegmentos info_tablaSegmentos;
-//    struct nodoTablaSegmentos* sgte;
-//} t_nodoTablaSegmentos;
+typedef struct infoTablaGlobalArchivos {
+    char* nombreArchivo;
+    t_queue* colaProcesosBloqueados;
+} t_infoTablaGlobalArchivos;
 
+typedef struct infoTablaArchivos {
+    char* nombreArchivo;
+    int posicionPuntero;
+} t_infoTablaArchivos;
 
 //DEBEMOS ASUMIR QUE LOS REGISTROS SON DE 4,8,16 BYTES, O TENEMOS QUE LIMITAR CON char[4],char[8],char[16] ??
 typedef struct registrosCPU {
@@ -95,9 +90,7 @@ typedef struct infopcb {
     t_registrosCPU registrosCpu;
     t_list* recursosAsignados;
     t_list* tablaSegmentos;
-
-    //VERIFICAR TIPOS
-	t_nodoArchivos* punterosArchivos;
+	t_list* tablaArchivosAbiertos;
 
 	//HRRN
 	double rafaga;
@@ -139,8 +132,6 @@ typedef struct
 	int instancias;
 	char* recurso;
 	t_queue* colaBloqueados;
-//	t_nodoCola* frenteBloqueados;
-//	t_nodoCola* finBloqueados;
 } t_recursos;
 
 //Funciones servidor

@@ -28,11 +28,9 @@ int server_fd;
 int cantidadElementosSistema;
 int cantidadElementosBloqueados;
 
-//VERIFICAR TIPO
-//char ** recursos ;
-//char ** instancias_recursos ;
+//Manejo de FS
+t_list* tablaGlobalArchivosAbiertos;
 
-//Manejo de recursos;
 
 //Inicializar punteros colas
 t_nodoCola** frenteColaNew = NULL; // Puntero al frente de la cola
@@ -73,6 +71,7 @@ void encolar_ready_ejecucion(t_infopcb*);
 void pasarAExit();
 void inicializarRecursos();
 void liberarRecursosAsignados();
+void enviar_handshake_memoria();
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
