@@ -46,16 +46,6 @@ typedef struct
 
 typedef struct
 {
-	int cod_fs;
-    char* nombreArchivo;
-    int posicionPuntero;
-	int cantBytes;
-	size_t direcFisica;
-	size_t nuevoTamanioArchivo;
-} ClientFSArgs;
-
-typedef struct
-{
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;
@@ -129,6 +119,12 @@ typedef struct infopcb {
 	int direcFisicaArchivo;
 	int tamanioArchivo;
 } t_infopcb;
+
+typedef struct
+{
+	int cod_fs;
+	t_infopcb* unProceso;
+} ClientFSArgs;
 
 
 ///COLA

@@ -408,14 +408,11 @@ void compactar(){
 
 ///////////////////////////////////// CLIENT FILESYSTEM ////////////////////////////////////////////
 
-void iniciarHiloClienteFileSystem(int cod_fs, char* nombreArchivo,int posicionPuntero,int cantBytes, size_t direcFisica, size_t nuevoTamanioArchivo) {
+void iniciarHiloClienteFileSystem(int cod_fs, t_infopcb* unProceso) {
 	ClientFSArgs* args = malloc(sizeof(ClientFSArgs));
 	args->cod_fs = cod_fs;
-	args->nombreArchivo = nombreArchivo;
-	args->posicionPuntero = posicionPuntero;
-	args->cantBytes = cantBytes;
-	args->direcFisica = direcFisica;
-	args->nuevoTamanioArchivo = nuevoTamanioArchivo;
+	args->unProceso = unProceso;
+
 
 	int err = pthread_create( 	&client_FileSystem,	// puntero al thread
 								NULL,
@@ -439,11 +436,7 @@ void* clientFileSystem(void *arg) {
 
 	ClientFSArgs *args = (ClientFSArgs *)arg;
 	int cod_fs = args->cod_fs;
-	char* nombreArchivo = args->nombreArchivo;
-	int posicionPuntero = args->posicionPuntero;
-	int cantBytes = args->cantBytes;
-	size_t direcFisica = args->direcFisica;
-	size_t nuevoTamanioArchivo = args->nuevoTamanioArchivo;
+	t_infopcb* unProceso = args->unProceso;
 
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
@@ -1041,13 +1034,9 @@ void manejar_recursos() {
 		}else{
 			printf("El archivo no se encuentra en la tabla global de archivos.\n");
 			//int cod_fs
-			//char* nombreArchivo
-			//int posicionPuntero
-			//int cantBytes
-			//size_t direcFisica
-			//size_t nuevoTamanioArchivo
+			//t_infopcb* unProceso
 
-			iniciarHiloClienteFileSystem(1,unProceso->nombreArchivo,0,0,0,0);
+			iniciarHiloClienteFileSystem(1,unProceso);
 
 		}
 	}
@@ -1114,14 +1103,9 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
 		//int cod_fs
-		//char* nombreArchivo
-		//int posicionPuntero
-		//int cantBytes
-		//size_t direcFisica
-		//size_t nuevoTamanioArchivo
-		int punteroArchivo = puntero(unProceso, unProceso->nombreArchivo);
+		//t_infopcb* unProceso
 
-		iniciarHiloClienteFileSystem(2,unProceso->nombreArchivo,punteroArchivo,unProceso->cantBytesArchivo,unProceso->direcFisicaArchivo,0);
+		iniciarHiloClienteFileSystem(2,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1140,12 +1124,9 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
 		//int cod_fs
-		//char* nombreArchivo
-		//int posicionPuntero
-		//int cantBytes
-		//size_t direcFisica
-		//size_t nuevoTamanioArchivo
-		iniciarHiloClienteFileSystem(3,unProceso->nombreArchivo,0,unProceso->cantBytesArchivo,unProceso->direcFisicaArchivo,0);
+		//t_infopcb* unProceso
+
+		iniciarHiloClienteFileSystem(3,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1164,12 +1145,9 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//int cod_fs
-		//char* nombreArchivo
-		//int posicionPuntero
-		//int cantBytes
-		//size_t direcFisica
-		//size_t nuevoTamanioArchivo
-		iniciarHiloClienteFileSystem(3,unProceso->nombreArchivo,0,0,0,0);
+		//t_infopcb* unProceso
+
+		iniciarHiloClienteFileSystem(4,unProceso);
 
 		//Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){

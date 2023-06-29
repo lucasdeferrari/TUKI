@@ -50,18 +50,18 @@ int pidProcesoNuevo;
 
 
 //Semaforos e hilos
-sem_t semKernelClientCPU, semKernelClientMemoria, semKernelClientFileSystem, semKernelServer, semReady;
+sem_t  semKernelClientMemoria;
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 
 void* serverKernel(int);
-void* clientCPU(void *ptr);
-void* clientMemoria(void *arg);
-void* clientFileSystem(void *ptr);
-void* interrupcionIO(void *ptr);
+void* clientCPU(void *);
+void* clientMemoria(void *);
+void* clientFileSystem(void *);
+void* interrupcionIO(void *);
 void encolarReady();
 void iniciarHiloClienteCPU();
 void iniciarHiloClienteMemoria(int,int);
-void iniciarHiloClienteFileSystem();
+void iniciarHiloClienteFileSystem(int , t_infopcb* );
 int iniciarHiloServer(int);
 void iniciarHiloIO();
 void serializarContexto(int );
@@ -83,11 +83,11 @@ void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
 void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
 t_list* listaRecursos;
-t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida);
+t_list* tablaSegmentosActualizada(t_list*);
 void crearTablaSegmentos(int , t_list* );
 void finalizarEncolar();
 
-void iterator(char* value);
+void iterator(char*);
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
 void leer_consola(t_log*);
