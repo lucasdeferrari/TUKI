@@ -730,7 +730,7 @@ void manejar_recursos() {
 
 	    		if(queue_is_empty(siguiente->colaProcesosBloqueados)){
 	    			//Elimino el archivo de la tabla global de archivos
-	    			list_remove(tablaGlobalArchivosAbiertos, siguiente);
+	    			list_remove_element(tablaGlobalArchivosAbiertos, siguiente);
 	    			printf("Archivo eliminado de la tabla global de archivos.\n");
 	    		}
 	    		else{
