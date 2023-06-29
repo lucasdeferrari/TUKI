@@ -909,12 +909,17 @@ int MMU(int direcLogica, int cantBytes){
 //MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
 void mov_in_tp(char* registro, int direccionLogica){
 
-//	t_infoClienteMemoria* infoClienteMemoria;
-//	infoClienteMemoria->cod_memoria = 11;
-//	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
-//	strcpy(infoClienteMemoria->registro,registro);
+	int cantBytes = tamanioRegistro(registro); //TAMAÑO
+	int direcFisica = MMU(direccionLogica,cantBytes);
 
-//	iniciarHiloClienteMemoria(infoClienteMemoria);
+	//	int cod_memoria
+	//	int direcFisica
+	//	char* registro
+
+
+	printf("FUNCIÓN NO PROBADA - CONEXIÓN NO PROBADA - POSIBLE SEG_FAULT\n");
+	iniciarHiloClienteMemoria(11,direcFisica,registro);
+
 
 	contexto->instruccion = string_duplicate("MOV_IN");
     return;
@@ -923,12 +928,15 @@ void mov_in_tp(char* registro, int direccionLogica){
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
 void mov_out_tp(int direccionLogica, char* registro){
 
-//	t_infoClienteMemoria* infoClienteMemoria;
-//	infoClienteMemoria->cod_memoria = 12;
-//	infoClienteMemoria->direccionFisica = MMU(direccionLogica,0);
-//	strcpy(infoClienteMemoria->registro,registro);
-//
-//	iniciarHiloClienteMemoria(infoClienteMemoria);
+	int cantBytes = tamanioRegistro(registro); //TAMAÑO
+	int direcFisica = MMU(direccionLogica,cantBytes);
+
+	//	int cod_memoria
+	//	int direcFisica
+	//	char* registro
+
+	printf("FUNCIÓN NO PROBADA - CONEXIÓN NO PROBADA - POSIBLE SEG_FAULT\n");
+	iniciarHiloClienteMemoria(12,direcFisica,registro);
 
 	contexto->instruccion = string_duplicate("MOV_OUT");
     return;
