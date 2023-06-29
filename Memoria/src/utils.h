@@ -103,6 +103,6 @@ void enviar_paquete(t_paquete* paquete, int socket_cliente);
 void liberar_conexion(int socket_cliente);
 void eliminar_paquete(t_paquete* paquete);
 t_paquete* crear_paquete_cod_operacion(int cod_operacion);
-t_paquete* empaquetarTabla(int pid, t_list* cabeza, int cod_operacion);
+t_paquete* empaquetarTabla(int pid, t_list* cabeza, op_code cod_operacion);
 void enviar_cod_operacion(char* mensaje, int socket_cliente, op_code cod_operacion);
 #endif /* UTILS_H_ */

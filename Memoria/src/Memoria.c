@@ -179,11 +179,11 @@ size_t buscarSiguienteLugarOcupado(size_t base) {
 
 
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso) {
-	TablaDeSegmentos *tablaDeSegmentos = malloc(sizeof(tablaDeSegmentos));
+	TablaDeSegmentos *tablaDeSegmentos = malloc(sizeof(TablaDeSegmentos));
 	t_list* segmentos = list_create();
+	list_add(segmentos, segmento0);
 	tablaDeSegmentos->pid = idProceso;
 	tablaDeSegmentos->segmentos = segmentos;
-	list_add(tablaDeSegmentos->segmentos, segmento0);
 	list_add(tablasDeSegmento, tablaDeSegmentos);
 	return tablaDeSegmentos;
 }
@@ -195,7 +195,7 @@ void agregarSegmentoATabla(Segmento *segmento, int idProceso) {
 		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
 		if(idProceso == siguiente->pid) {
 			list_add(siguiente->segmentos, segmento);
-			memcpy(espacioUsuario + segmento->base, segmento, segmento->desplazamiento);
+			memcpy(espacioUsuario + segmento->base, segmento, sizeof(Segmento));
 		}
 	}
 	list_iterator_destroy(iterador);
@@ -205,19 +205,24 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
 
 		while(list_iterator_has_next(iterador)) {
-			TablaDeSegmentos *siguiente = list_iterator_next(iterador);
+			TablaDeSegmentos *siguiente = malloc(sizeof(TablaDeSegmentos));
+			siguiente->pid = 0;
+			siguiente->segmentos = list_create();
+			siguiente = list_iterator_next(iterador);
 			if(id_proceso == siguiente->pid) {
 				t_list_iterator* iterador2 = list_iterator_create(siguiente->segmentos);
 				while(list_iterator_has_next(iterador2)){
-					Segmento *segmento = list_iterator_next(iterador2);
-					if(segmento->idSegmentoKernel == id_segmento){
+					Segmento *segmentoSiguiente = malloc(sizeof(Segmento));
+					segmentoSiguiente->idSegmentoKernel = 0;
+					segmentoSiguiente = list_iterator_next(iterador2);
+					if(segmentoSiguiente->idSegmentoKernel == id_segmento){
 						HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
-						nuevoHueco->base = segmento->base;
-						nuevoHueco->desplazamiento = segmento ->desplazamiento;
+						nuevoHueco->base = segmentoSiguiente->base;
+						nuevoHueco->desplazamiento = segmentoSiguiente ->desplazamiento;
 						list_add(listaDeHuecosLibres,nuevoHueco);
-						list_remove_element(siguiente->segmentos, segmento);
+						list_remove_element(siguiente->segmentos, segmentoSiguiente);
 						juntarHuecosContiguos(listaDeHuecosLibres);
-						list_remove_element(segmentos,segmento);
+						list_remove_element(segmentos,segmentoSiguiente);
 						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu",id_proceso, id_segmento,nuevoHueco->base,nuevoHueco->desplazamiento);					}
 				}
 				list_iterator_destroy(iterador2);
@@ -226,9 +231,12 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 		list_iterator_destroy(iterador);
 }
 void juntarHuecosContiguos(t_list* listaDeHuecosLibres){
+	if(listaDeHuecosLibres!=NULL){
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+
 	while(list_iterator_has_next(iterador)) {
-		HuecoLibre *nuevoHueco = list_iterator_next(iterador);
+		HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
+		nuevoHueco = list_iterator_next(iterador);
 		t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
 		while(list_iterator_has_next(iterador2)){
 			HuecoLibre *nuevoHueco2 = list_iterator_next(iterador2);
@@ -241,6 +249,7 @@ void juntarHuecosContiguos(t_list* listaDeHuecosLibres){
 		list_iterator_destroy(iterador2);
 	}
 	list_iterator_destroy(iterador);
+	}
 }
 //typedef struct {
 //    void* memoria;
@@ -392,8 +401,7 @@ int main(void) {
 		exit(-1);
 	}
 
-	memcpy(espacioUsuario, segmento0, segmento0->desplazamiento);
-
+	memcpy(espacioUsuario, segmento0, sizeof(Segmento));
 	HuecoLibre *huecoBase = crearHuecoLibre(tamanioMemoria-tamanioSeg0, segmento0->desplazamiento);
 	if(huecoBase == NULL) {
 		log_error(logger, "No se pudo crear el hueco libre base.\n");
@@ -659,7 +667,7 @@ void* serverMemoria(void* ptr){
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador1 = list_iterator_create(lista);
 
-				int intPaquete[2] = {0};
+				int intPaquete[2] = {};
 
 				 for (int i = 0; i<2; i++) {
 						char* siguiente = list_iterator_next(iterador1);
@@ -671,22 +679,22 @@ void* serverMemoria(void* ptr){
 				int idProceso = intPaquete[0];
 				int id_Segmento = intPaquete[1];
     			eliminar_segmento(idProceso, id_Segmento);
-    			t_list_iterator* iterador2 = list_iterator_create(tablasDeSegmento);
+    			t_list_iterator* iteradorTablas = list_iterator_create(tablasDeSegmento);
 
-				while(list_iterator_has_next(iterador2)) {
+				while(list_iterator_has_next(iteradorTablas)) {
 					TablaDeSegmentos *siguiente = malloc(sizeof(TablaDeSegmentos));
 					siguiente->pid = 0;
 					siguiente->segmentos = list_create();
-					siguiente = list_iterator_next(iterador2);
+					siguiente = list_iterator_next(iteradorTablas);
 					if(idProceso == siguiente->pid) {
-
-						t_paquete* paquete = empaquetarTabla(siguiente->pid, siguiente->segmentos, DELETE_SEGMENT);
+						t_paquete* paquete = empaquetarTabla(idProceso, siguiente->segmentos, DELETE_SEGMENT);
 						enviar_paquete(paquete, cliente_fd);
 						eliminar_paquete(paquete);
 					}
+					free(siguiente);
 				}
 
-				list_iterator_destroy(iterador2);
+				list_iterator_destroy(iteradorTablas);
 
     		}
 

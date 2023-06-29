@@ -437,7 +437,7 @@ void* clientFileSystem(void *arg) {
 	ClientFSArgs *args = (ClientFSArgs *)arg;
 	int cod_fs = args->cod_fs;
 	t_infopcb* unProceso = args->unProceso;
-	int puntero = puntero(unProceso->tablaArchivosAbiertos, unProceso->nombreArchivo);
+	int punteroArchivo = puntero(unProceso->tablaArchivosAbiertos, unProceso->nombreArchivo);
 
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
