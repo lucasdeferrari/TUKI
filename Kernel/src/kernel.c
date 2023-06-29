@@ -429,7 +429,7 @@ void* clientCPU(void* ptr) {
 
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
 
-    //enviamos las intrucciones del contextos
+    //enviamos las intrucciones
     t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetar(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
@@ -745,10 +745,21 @@ void manejar_recursos() {
 
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_SEEK") == 0) {
-		//Actualiza el puntero del archivo en la tabla de archivos abiertos hacia la ubicación pasada por parámetro
-		//iniciarHiloClienteCPU() devolver el contexto de ejecución a la CPU para que continúe el mismo proceso
 
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
+		//Actualizo el puntero del archivo
+		t_list_iterator* iterador = list_iterator_create(unProceso->tablaArchivosAbiertos);
+	    while (list_iterator_has_next(iterador)) {
+
+	    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
+
+	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
+	    		siguiente->posicionPuntero = unProceso->posicionArchivo;
+	    		printf("Puntero del archivo: %s actualizado.\n", siguiente->nombreArchivo );
+	    	}
+	    }
+
+		iniciarHiloClienteCPU();
+
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
 		//iniciarHiloClienteFileSystem()
