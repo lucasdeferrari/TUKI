@@ -46,6 +46,15 @@ typedef struct
 
 typedef struct
 {
+    char* nombreArchivo;
+    int posicionPuntero;
+	int cantBytes;
+	size_t direcFisica;
+	size_t nuevoTamanioArchivo;
+} ClientFSArgs;
+
+typedef struct
+{
 	op_code codigo_operacion;
 	t_buffer* buffer;
 } t_paquete;

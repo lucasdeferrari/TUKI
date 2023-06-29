@@ -72,6 +72,7 @@ void pasarAExit();
 void inicializarRecursos();
 void liberarRecursosAsignados();
 void enviar_handshake_memoria();
+void procedimiento_compactar();
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
@@ -94,7 +95,7 @@ void paquete(int);
 void terminar_programa(int, t_log*, t_config*);
 void recibir_contexto(int );
 char* recibir_handshake(int );
-t_paquete* empaquetar(t_list*);
+t_paquete* empaquetarInstrucciones(t_list*);
 t_paquete* empaquetarTabla(t_list* );
 
 void liberarConexiones(int conexion, t_log* logger, t_config* config)
