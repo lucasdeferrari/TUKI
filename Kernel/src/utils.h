@@ -46,6 +46,7 @@ typedef struct
 
 typedef struct
 {
+	int cod_fs;
     char* nombreArchivo;
     int posicionPuntero;
 	int cantBytes;

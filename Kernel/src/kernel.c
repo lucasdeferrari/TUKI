@@ -408,8 +408,9 @@ void compactar(){
 
 ///////////////////////////////////// CLIENT FILESYSTEM ////////////////////////////////////////////
 
-void iniciarHiloClienteFileSystem(char* nombreArchivo,int posicionPuntero,int cantBytes, size_t direcFisica, size_t nuevoTamanioArchivo) {
+void iniciarHiloClienteFileSystem(int cod_fs, char* nombreArchivo,int posicionPuntero,int cantBytes, size_t direcFisica, size_t nuevoTamanioArchivo) {
 	ClientFSArgs* args = malloc(sizeof(ClientFSArgs));
+	args->cod_fs = cod_fs;
 	args->nombreArchivo = nombreArchivo;
 	args->posicionPuntero = posicionPuntero;
 	args->cantBytes = cantBytes;
@@ -431,25 +432,77 @@ void iniciarHiloClienteFileSystem(char* nombreArchivo,int posicionPuntero,int ca
 
 void* clientFileSystem(void *arg) {
 
+	// 1 -> F_OPEN
+	// 2 -> F_CLOSE
+	// 3 -> F_SEEK
+	// - -> F_TRUNCATE
+	// - -> F_READ
+	// - -> F_WRITE
+
 	ClientFSArgs *args = (ClientFSArgs *)arg;
+	int cod_fs = args->cod_fs;
 	char* nombreArchivo = args->nombreArchivo;
 	int posicionPuntero = args->posicionPuntero;
 	int cantBytes = args->cantBytes;
 	size_t direcFisica = args->direcFisica;
 	size_t nuevoTamanioArchivo = args->nuevoTamanioArchivo;
 
-
-	int config = 1;
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
-//    log_info(logger, "Ingrese sus mensajes para el FileSystem: ");
-//    paquete(conexion_FileSystem);
-    int cod_op = recibir_operacion(conexion_FileSystem);
-    printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_FileSystem);
-    liberar_conexion(conexion_FileSystem);
 
+    switch(cod_fs){
+		case 1: //F_OPEN
 
+		break;
+		case 2: //F_CLOSE
+
+		break;
+		case 3: //F_SEEK
+
+		break;
+		case 4:
+
+		break;
+		case 5:
+
+		break;
+		case 6:
+
+		break;
+		default:
+			log_warning(logger," Operacion desconocida. NO se envió nada a FileSystem.\n");
+		break;
+	}
+
+	int cod_op = recibir_operacion(conexion_FileSystem);
+
+	switch (cod_op) {
+		case 1: //F_OPEN
+
+		break;
+		case 2: //F_CLOSE
+
+		break;
+		case 3: //F_SEEK
+
+		break;
+		case 4:
+
+		break;
+		case 5:
+
+		break;
+		case 6:
+
+		break;
+		default:
+			log_warning(logger,"\nOperacion recibida de FileSystem desconocida.\n");
+			 liberar_conexion(conexion_FileSystem);
+		break;
+
+	}
+
+	free(args);
 	return NULL;
 }
 
@@ -1000,10 +1053,15 @@ void manejar_recursos() {
 
 		}else{
 			printf("El archivo no se encuentra en la tabla global de archivos.\n");
-			//consultar al módulo File System si existe o no el archivo.
-			printf("FALTA CONSULTAR A FS SI EXISTE EL ARCHIVO\n");
-			//iniciarHiloClienteFileSystem();
-			//El procedimiento va dentro del hilo
+			//int cod_fs
+			//char* nombreArchivo
+			//int posicionPuntero
+			//int cantBytes
+			//size_t direcFisica
+			//size_t nuevoTamanioArchivo
+
+			iniciarHiloClienteFileSystem(1,unProceso->nombreArchivo,0,0,0,0);
+
 		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_CLOSE") == 0) {
