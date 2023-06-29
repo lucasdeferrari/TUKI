@@ -267,6 +267,7 @@ void* clientMemoria(void *arg) {
     	case 9: //Eliminar proceso
     		char* pidNuevoEliminarProceso = string_new();
     		string_append_with_format(&pidNuevoEliminarProceso, "%d", pidProceso);
+    		printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
     		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
     		liberar_conexion(conexion_Memoria);
     		return NULL;

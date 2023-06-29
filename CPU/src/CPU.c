@@ -821,7 +821,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int createParam2 = atoi(arrayInstruccion[2]);
 
     	createSeg_tp(createParam1,createParam2);
-
+    	continuarLeyendo = 1;
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: CREATE_SEGMENT - [%s, %s]\n", contexto->pid, createParam1, createParam2);
 
@@ -829,7 +829,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int deleteParam1 = atoi(arrayInstruccion[1]);
 
     	deleteSeg_tp(deleteParam1);
-
+    	continuarLeyendo = 1;
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: DELETE_SEGMENT - [%s]\n", contexto->pid, deleteParam1);
     } else {

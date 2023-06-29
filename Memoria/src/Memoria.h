@@ -50,6 +50,7 @@ size_t buscarLugarParaElSegmento(size_t tamanio);
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
 void eliminar_segmento(int id_proceso, int id_segmento);
+void eliminar_proceso(int idProceso);
 bool hayLugarParaCrearSegmento(size_t tamanio);
 int asignarIdSegmento();
 bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
@@ -59,13 +60,15 @@ size_t buscarPorFirst (size_t tamanio);
 size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
 size_t buscarSiguienteLugarOcupado(size_t base);
-void juntarHuecosContiguos(t_list* listaDeHuecosLibres);
+void juntarHuecosContiguos();
 void enviarTodasLasTablas(int cliente_fd);
 void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
 
 int buscarIdMemoria(int idSegmentoMemoria);
 void enviarValorLectura(char* array[], int longitud, int cliente_fd);
 void enviarRespuestaEscritura(int cliente_fd);
+
+TablaDeSegmentos* tablaSegmentosDe(int idProceso);
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
