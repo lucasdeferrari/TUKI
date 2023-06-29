@@ -433,11 +433,9 @@ void iniciarHiloClienteFileSystem(int cod_fs, char* nombreArchivo,int posicionPu
 void* clientFileSystem(void *arg) {
 
 	// 1 -> F_OPEN
-	// 2 -> F_CLOSE
-	// 3 -> F_SEEK
-	// - -> F_TRUNCATE
-	// - -> F_READ
-	// - -> F_WRITE
+	// 2 -> F_READ
+	// 3 -> F_WRITE
+	// 4 -> F_TRUNCATE
 
 	ClientFSArgs *args = (ClientFSArgs *)arg;
 	int cod_fs = args->cod_fs;
@@ -454,19 +452,13 @@ void* clientFileSystem(void *arg) {
 		case 1: //F_OPEN
 
 		break;
-		case 2: //F_CLOSE
+		case 2: //F_READ
 
 		break;
-		case 3: //F_SEEK
+		case 3: //F_WRITE
 
 		break;
-		case 4:
-
-		break;
-		case 5:
-
-		break;
-		case 6:
+		case 4: //F_TRUNCATE
 
 		break;
 		default:
@@ -480,21 +472,16 @@ void* clientFileSystem(void *arg) {
 		case 1: //F_OPEN
 
 		break;
-		case 2: //F_CLOSE
+		case 2: //F_READ
 
 		break;
-		case 3: //F_SEEK
+		case 3: //F_WRITE
 
 		break;
-		case 4:
+		case 4: //F_TRUNCATE
 
 		break;
-		case 5:
 
-		break;
-		case 6:
-
-		break;
 		default:
 			log_warning(logger,"\nOperacion recibida de FileSystem desconocida.\n");
 			 liberar_conexion(conexion_FileSystem);
@@ -1126,11 +1113,15 @@ void manejar_recursos() {
 
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
-		//iniciarHiloClienteFileSystem()
+		//int cod_fs
+		//char* nombreArchivo
+		//int posicionPuntero
+		//int cantBytes
+		//size_t direcFisica
+		//size_t nuevoTamanioArchivo
+		int punteroArchivo = puntero(unProceso, unProceso->nombreArchivo);
 
-		//El proceso que llamó a F_READ deberá permanecer en estado bloqueado
-
-		printf("FALTA HACER EL PROCEDIMIENTO F_READ\n");
+		iniciarHiloClienteFileSystem(2,unProceso->nombreArchivo,punteroArchivo,unProceso->cantBytesArchivo,unProceso->direcFisicaArchivo,0);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1148,10 +1139,13 @@ void manejar_recursos() {
 		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
-		//iniciarHiloClienteFileSystem()
-
-		// El proceso que llamó a F_WRITE deberá permanecer en estado bloqueado
-		printf("FALTA HACER EL PROCEDIMIENTO: F_WRITE\n");
+		//int cod_fs
+		//char* nombreArchivo
+		//int posicionPuntero
+		//int cantBytes
+		//size_t direcFisica
+		//size_t nuevoTamanioArchivo
+		iniciarHiloClienteFileSystem(3,unProceso->nombreArchivo,0,unProceso->cantBytesArchivo,unProceso->direcFisicaArchivo,0);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1169,12 +1163,15 @@ void manejar_recursos() {
 		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
-		//iniciarHiloClienteFileSystem()
+		//int cod_fs
+		//char* nombreArchivo
+		//int posicionPuntero
+		//int cantBytes
+		//size_t direcFisica
+		//size_t nuevoTamanioArchivo
+		iniciarHiloClienteFileSystem(3,unProceso->nombreArchivo,0,0,0,0);
 
-		//El proceso que llamó a F_TRUNCATE deberá permanecer en estado bloqueado
-		printf("FALTA HACER EL PROCEDIMIENTO\n");
-
-	    //Desencolo ready si es que hay algun proceso en la lista
+		//Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
 			if(frenteColaReady != NULL){
