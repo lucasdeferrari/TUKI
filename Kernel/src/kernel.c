@@ -437,6 +437,7 @@ void* clientFileSystem(void *arg) {
 	ClientFSArgs *args = (ClientFSArgs *)arg;
 	int cod_fs = args->cod_fs;
 	t_infopcb* unProceso = args->unProceso;
+	int puntero = puntero(unProceso->tablaArchivosAbiertos, unProceso->nombreArchivo);
 
     int conexion_FileSystem;
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
@@ -484,6 +485,23 @@ void* clientFileSystem(void *arg) {
 
 	free(args);
 	return NULL;
+}
+
+int puntero(t_list* tablaArchivosAbiertos, char* nombreArchivo){
+
+	int puntero;
+	t_list_iterator* iterador = list_iterator_create(tablaArchivosAbiertos);
+
+    while (list_iterator_has_next(iterador)) {
+
+    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
+
+    	if(string_contains(siguiente->nombreArchivo,nombreArchivo)){
+    		puntero = siguiente->posicionPuntero;
+    	}
+    }
+
+	return puntero;
 }
 
 
