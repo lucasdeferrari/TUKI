@@ -446,10 +446,9 @@ void* clientFileSystem(void *arg) {
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_fs);
     switch(cod_fs){
-		case 1: //F_OPEN
-        	agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+		case 2: //F_OPEN
 
-        	enviar_paquete(paquete, conexion_FileSystem);
+			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
         	printf("F_OPEN enviado a FS.\n");
         	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
@@ -457,7 +456,7 @@ void* clientFileSystem(void *arg) {
         	eliminar_paquete(paquete);
 
 		break;
-		case 2: //F_READ
+		case 3: //F_READ
 			// ORDEN PARÁMETROS: nombreArchivo - puntero - cantBytes - direcFisica
     		char* punteroRead = string_new();
     		char* cantBytesRead = string_new();
@@ -484,7 +483,7 @@ void* clientFileSystem(void *arg) {
         	eliminar_paquete(paquete);
 
 		break;
-		case 3: //F_WRITE
+		case 4: //F_WRITE
 			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
     		char* cantBytesWrite = string_new();
     		char* direcFisicaWrite = string_new();
@@ -507,7 +506,7 @@ void* clientFileSystem(void *arg) {
         	eliminar_paquete(paquete);
 
 		break;
-		case 4: //F_TRUNCATE
+		case 5: //F_TRUNCATE
 			// ORDEN PARÁMETROS: nombreArchivo - nuevoTamanio
     		char* nuevoTamanio = string_new();
 

@@ -5,7 +5,6 @@ t_config* config;
 int block_size = 0;
 int block_count = 0;
 int server_fd;
-int cliente_fd;
 
 int main(void) {
 
@@ -17,8 +16,6 @@ int main(void) {
 	FILE* archivo_bitmap;
 	FILE* archivo_bloques;
 
-	sem_init(&semFileSystemServer,0,1);
-	sem_init(&semFileSystemClientMemoria,0,0);
 
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 
@@ -289,12 +286,12 @@ void iniciarHiloServer() {
 void* serverFileSystem(void* ptr){
 
     log_info(logger, "FileSystem listo para recibir a kernel");
-    cliente_fd = esperar_cliente(server_fd);
+    int cliente_fd = esperar_cliente(server_fd); //LO VUELVO A AGREGAR ACA
 
     t_list* lista;
     while (1) {
     	int cod_op = recibir_operacion(cliente_fd);
-    	char* nombreArchivo;
+    	char* nombreArchivo = string_new();
     	switch (cod_op) {
     		case MENSAJE:
     			recibir_mensaje(cliente_fd);
@@ -305,42 +302,99 @@ void* serverFileSystem(void* ptr){
     			list_iterate(lista, (void*) iterator);
     			enviar_respuesta(cliente_fd, "kernel");
     			break;
-    		case -1:
-    			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
-    			return EXIT_FAILURE;
-    			default:
-    			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
-    			break;
     		case F_OPEN:
-    			//En realidad habria que ver como nos va a mandar Kernel estos datos
+    			//PODRÍAMOS SIMPLEMENTE TENER EL CASE F_OPEN
+    			//SI EXISTE LO ABRIMOS Y DEVOLVEMOS OK
+    			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
+
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
     			abrir_archivo(nombreArchivo);
+    			enviar_mensaje_cod_operacion("Archivo abierto.",cliente_fd,F_OPEN);
+    			liberar_conexion(cliente_fd);
     			break;
-    		case CREAR_ARCHIVO:
-    			nombreArchivo = recibir_buffer_mio(cliente_fd);
-    			crearArchivo(nombreArchivo);
+//    		case CREAR_ARCHIVO:
+//    			nombreArchivo = recibir_buffer_mio(cliente_fd);
+//    			crearArchivo(nombreArchivo);
+//    			break;
+    		case F_READ:
+    			// ORDEN PARÁMETROS: nombreArchivo - puntero - cantBytes - direcFisica
+    			lista = recibir_paquete(cliente_fd);
+    			t_list_iterator* iteradorRead = list_iterator_create(lista);
+
+    			char* paqueteRead[4] = {};
+
+    			for (int i = 0; i<4; i++) {
+    				char* siguiente = list_iterator_next(iteradorRead);
+    				paqueteRead[i] = siguiente;
+    			}
+
+    			list_iterator_destroy(iteradorRead);
+
+    			nombreArchivo = paqueteRead[0];
+    			int punteroArchivo = atoi(paqueteRead[1]);
+    			int cantBytesRead = atoi(paqueteRead[2]);
+    			int direcFisicaRead = atoi(paqueteRead[3]);
+
+    			//FUNCIÓN F_READ
+
+    			enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
+    			liberar_conexion(cliente_fd);
+
+    			break;
+    		case F_WRITE:
+    			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
+    			lista = recibir_paquete(cliente_fd);
+    			t_list_iterator* iteradorWrite = list_iterator_create(lista);
+
+    			char* paqueteWrite[3] = {};
+
+    			for (int i = 0; i<3; i++) {
+    				char* siguiente = list_iterator_next(iteradorWrite);
+    				paqueteWrite[i] = siguiente;
+    			}
+
+    			list_iterator_destroy(iteradorWrite);
+
+    			nombreArchivo = paqueteWrite[0];
+    			int cantBytesWrite = atoi(paqueteWrite[1]);
+    			int direcFisicaWrite = atoi(paqueteWrite[2]);
+
+    			//FUNCIÓN F_WRITE
+
+    			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
+    			liberar_conexion(cliente_fd);
+
     			break;
     		case F_TRUNCATE:
     			lista = recibir_paquete(cliente_fd);
-    			t_list_iterator* iterador1 = list_iterator_create(lista);
+    			t_list_iterator* iteradorTruncate = list_iterator_create(lista);
 
-    			char* paquete[2] = {};
+    			char* paqueteTruncate[2] = {};
 
-    			for (int i = 0; i<3; i++) {
-    				char* siguiente = list_iterator_next(iterador1);
-    				paquete[i] = siguiente;
+    			for (int i = 0; i<2; i++) {
+    				char* siguiente = list_iterator_next(iteradorTruncate);
+    				paqueteTruncate[i] = siguiente;
     			}
 
-    			list_iterator_destroy(iterador1);
+    			list_iterator_destroy(iteradorTruncate);
 
-    			nombreArchivo = paquete[0];
-    			int tamanioArchivo = atoi(paquete[1]);
+    			nombreArchivo = paqueteTruncate[0];
+    			int tamanioArchivo = atoi(paqueteTruncate[1]);
 
     			truncar_archivo(nombreArchivo, tamanioArchivo);
-    	}
-    }
+    			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
+    			liberar_conexion(cliente_fd);
+    			break;
+    		case -1:
+    			log_error(logger, "\nel cliente se desconecto. Terminando servidor.\n");
+    			return EXIT_FAILURE;
+    		default:
+    			log_warning(logger,"\nOperacion recibida desconocida.\n");
+    		break;
 
-    sem_post(&semFileSystemServer);
+    	}
+
+    }
 
 	return NULL;
 }
@@ -370,12 +424,11 @@ void* clientMemoria(void* ptr) {
     recibir_mensaje(conexion_Memoria);
     liberar_conexion(conexion_Memoria);
 
-    sem_post(&semFileSystemClientMemoria);
 	return NULL;
 }
 
 
-///////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
+/////////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
 
 
 void crearArchivo(char* nombreArchivo) {
@@ -387,11 +440,10 @@ void crearArchivo(char* nombreArchivo) {
 
 	list_add(listaFCB, nuevoFCB);
 
-	printf("Archivo creado");
+	printf("Archivo creado.\n");
 
-	enviar_mensaje("Archivo creado", cliente_fd);
 	//Agregar una lista? Al archivo de bloques? La lista de FCBs tiene que persistir.
-
+	return;
 }
 
 void abrir_archivo(char* nombreArchivo){
@@ -400,23 +452,26 @@ void abrir_archivo(char* nombreArchivo){
 
 	while(list_iterator_has_next(iterador)) {
 		t_infofcb *siguiente = list_iterator_next(iterador);
-		if(nombreArchivo == siguiente->nombreArchivo) {
-			nombreArchivoSeleccionado = nombreArchivo;
+		if(   strcmp(nombreArchivo,siguiente->nombreArchivo) == 0   ) {
+			strcpy(nombreArchivoSeleccionado,nombreArchivo);
 		}
 	}
 
 	if (string_is_empty(nombreArchivoSeleccionado)) {
 		//Enviar mensaje Kernel "Archivo Inexistente"
-		enviar_mensaje("Archivo inexistente", cliente_fd);
-
-		printf("Archivo inexistente");
-	} else {
-		//Enviar mensaje Kernel OK
-		enviar_mensaje("Archivo abierto", cliente_fd);
+		//enviar_mensaje("Archivo inexistente", cliente_fd);
+		//SI NO EXISTE, LO CREAMOS
+		printf("Archivo inexistente.\n");
+		crearArchivo(nombreArchivoSeleccionado);
 	}
 
-	list_iterator_destroy(iterador);
+	//ACA NO TENDRÍAMOS QUE ABRIR EL ARCHIVO ?? NO SE HACE UN F_OPEN O ALGO????
 
+	//Enviar mensaje Kernel OK
+	//enviar_mensaje("Archivo abierto", cliente_fd);   ->  LO HACEMOS DIRECTO EN EL SERVER
+
+	list_iterator_destroy(iterador);
+	return;
 }
 
 void truncar_archivo(char* nombreArchivo, int tamanio){
