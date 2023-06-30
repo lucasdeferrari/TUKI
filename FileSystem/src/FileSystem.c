@@ -303,19 +303,14 @@ void* serverFileSystem(void* ptr){
     			enviar_respuesta(cliente_fd, "kernel");
     			break;
     		case F_OPEN:
-    			//PODRÍAMOS SIMPLEMENTE TENER EL CASE F_OPEN
     			//SI EXISTE LO ABRIMOS Y DEVOLVEMOS OK
     			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
-
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
     			abrir_archivo(nombreArchivo);
-    			enviar_mensaje_cod_operacion("Archivo abierto.",cliente_fd,F_OPEN);
+    			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
     			liberar_conexion(cliente_fd);
     			break;
-//    		case CREAR_ARCHIVO:
-//    			nombreArchivo = recibir_buffer_mio(cliente_fd);
-//    			crearArchivo(nombreArchivo);
-//    			break;
+
     		case F_READ:
     			// ORDEN PARÁMETROS: nombreArchivo - puntero - cantBytes - direcFisica
     			lista = recibir_paquete(cliente_fd);
@@ -448,7 +443,7 @@ void crearArchivo(char* nombreArchivo) {
 
 void abrir_archivo(char* nombreArchivo){
 	t_list_iterator* iterador = list_iterator_create(listaFCB);
-	char* nombreArchivoSeleccionado;
+	char* nombreArchivoSeleccionado = string_new();
 
 	while(list_iterator_has_next(iterador)) {
 		t_infofcb *siguiente = list_iterator_next(iterador);
@@ -458,17 +453,10 @@ void abrir_archivo(char* nombreArchivo){
 	}
 
 	if (string_is_empty(nombreArchivoSeleccionado)) {
-		//Enviar mensaje Kernel "Archivo Inexistente"
-		//enviar_mensaje("Archivo inexistente", cliente_fd);
 		//SI NO EXISTE, LO CREAMOS
 		printf("Archivo inexistente.\n");
 		crearArchivo(nombreArchivoSeleccionado);
 	}
-
-	//ACA NO TENDRÍAMOS QUE ABRIR EL ARCHIVO ?? NO SE HACE UN F_OPEN O ALGO????
-
-	//Enviar mensaje Kernel OK
-	//enviar_mensaje("Archivo abierto", cliente_fd);   ->  LO HACEMOS DIRECTO EN EL SERVER
 
 	list_iterator_destroy(iterador);
 	return;
