@@ -486,23 +486,23 @@ void* clientFileSystem(void *arg) {
 		break;
 		case 3: //F_WRITE
 			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
-    		char* cantBytesRead = string_new();
-    		char* direcFisicaRead = string_new();
+    		char* cantBytesWrite = string_new();
+    		char* direcFisicaWrite = string_new();
 
-            string_append_with_format(&cantBytesRead, "%d", unProceso->cantBytesArchivo);
-            string_append_with_format(&direcFisicaRead, "%d", unProceso->direcFisicaArchivo);
+            string_append_with_format(&cantBytesWrite, "%d", unProceso->cantBytesArchivo);
+            string_append_with_format(&direcFisicaWrite, "%d", unProceso->direcFisicaArchivo);
 
 
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
-        	agregar_a_paquete(paquete, cantBytesRead, strlen(cantBytesRead)+1);
-        	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
+        	agregar_a_paquete(paquete, cantBytesWrite, strlen(cantBytesWrite)+1);
+        	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
         	enviar_paquete(paquete, conexion_FileSystem);
 
         	printf("F_WRITE enviado a MEMORIA.\n");
         	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
-        	printf("CantBytes enviado a FS: %s\n", cantBytesRead);
-        	printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
+        	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
+        	printf("DirecFisica enviad a FS: %s\n", direcFisicaWrite);
 
         	eliminar_paquete(paquete);
 
