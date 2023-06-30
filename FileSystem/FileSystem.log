@@ -83,3 +83,15 @@ el cliente se desconecto. Terminando servidor
 [ERROR] 22:34:03:637 FileSystem/(13664:13670): 
 el cliente se desconecto. Terminando servidor
 [INFO] 22:34:03:643 FileSystem/(13664:13693): FileSystem listo para recibir a kernel
+[INFO] 03:49:54:515 FileSystem/(2558:2558): FileSystem listo para escuchar al cliente
+
+[INFO] 03:49:54:518 FileSystem/(2558:2564): FileSystem listo para recibir a kernel
+[INFO] 03:49:54:527 FileSystem/(2558:2563): Me llego el mensaje ‡K-&%
+[INFO] 04:17:53:512 FileSystem/(3461:3461): FileSystem listo para escuchar al cliente
+
+[INFO] 04:17:53:513 FileSystem/(3461:3468): FileSystem listo para recibir a kernel
+[INFO] 04:17:53:515 FileSystem/(3461:3467): Me llego el mensaje ‡Kì…ﬁ
+[INFO] 04:20:08:591 FileSystem/(3574:3574): FileSystem listo para escuchar al cliente
+
+[INFO] 04:20:08:592 FileSystem/(3574:3581): FileSystem listo para recibir a kernel
+[INFO] 04:20:08:594 FileSystem/(3574:3580): Me llego el mensaje ‡ã0ˆ‰

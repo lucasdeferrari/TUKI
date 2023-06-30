@@ -197,8 +197,10 @@ int main(void) {
 	int fd2 = fileno(archivo_bloques);
 	printf("File descriptor: %i\n" , fd2);
 
+	size_t tamanio_bloques = sizeof(struct Bloque) * block_count;
+
 	// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
-	off_t result2 = lseek(fd2, tamanio_total - 1, SEEK_SET);
+	off_t result2 = lseek(fd2, tamanio_bloques - 1, SEEK_SET);
 	if (result2 == -1) {
 		perror("Error al ajustar el tamaño del archivo");
 		exit(1);
@@ -211,28 +213,59 @@ int main(void) {
 		exit(1);
 	}
 
+	void* mapping2 = mmap(NULL, tamanio_bloques, PROT_READ | PROT_WRITE, MAP_SHARED, fd2, 0);
+	if (mapping2 == MAP_FAILED) {
+		log_error(logger, "Error en mmap");
+	    close(fd);
+	    exit(1);
+	 }
+
+
+	  for (int i = 0; i < block_count; i++) {
+	        char* block = (char*)mapping2 + (i * block_size);
+	        sprintf(block, "Bloque %d", i + 1);
+	    }
+
+	  // escribir en bloque x
+//	  char* bloqueX;
+//	  char* dataAEscribir;
+//
+//	  memcpy(bloqueX, dataAEscribir, block_size);
+
+	  // acceder a bloque x
+	  //char* bloqueX = (char*)mapping2 + (INDICE_DEL_BLOQUE * block_size);
+
+	// Sincronizar los cambios con el archivo en disco
+		if (msync(mapping2, tamanio_bloques, MS_SYNC) == -1) {
+			perror("Error en msync");
+			munmap(mapping2, block_count);
+			close(fd);
+			exit(1);
+		}
+
+
 
 	// Realizar el mapeo
-	void* mapping2 = mmap(NULL, tamanio_total, PROT_WRITE, MAP_SHARED, fd2, 0);
-	if (mapping2 == MAP_FAILED) {
-		perror("Error en mmap");
-		exit(1);
-	}
-
-	// CAMBIAR EL PRIMER VALOR DEL ARCHIVO BLOQUES
-//		char* mapped_data = (char*) mapping2;
-//		mapped_data[0] = 'A';
-
-   // Sincronizar los cambios con el archivo en disco
-   if (msync(mapping2, tamanio_total, MS_SYNC) == -1) {
-	   perror("Error en msync");
-	   exit(1);
-	   }
-
-   // Liberando recursos
-	munmap(mapping2, tamanio_total);
-	close(fd2);
-	fclose(archivo_bloques);
+//	void* mapping2 = mmap(NULL, tamanio_total, PROT_WRITE, MAP_SHARED, fd2, 0);
+//	if (mapping2 == MAP_FAILED) {
+//		perror("Error en mmap");
+//		exit(1);
+//	}
+//
+//	// CAMBIAR EL PRIMER VALOR DEL ARCHIVO BLOQUES
+////		char* mapped_data = (char*) mapping2;
+////		mapped_data[0] = 'A';
+//
+//   // Sincronizar los cambios con el archivo en disco
+//   if (msync(mapping2, tamanio_total, MS_SYNC) == -1) {
+//	   perror("Error en msync");
+//	   exit(1);
+//	   }
+//
+//   // Liberando recursos
+//	munmap(mapping2, tamanio_total);
+//	close(fd2);
+//	fclose(archivo_bloques);
 
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");

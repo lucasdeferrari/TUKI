@@ -40,6 +40,12 @@ typedef struct
 	t_buffer* buffer;
 } t_paquete;
 
+typedef struct Bloque
+{
+	size_t tamanio;
+	char* bytes;
+} bloque;
+
 
 // EL puntero indirecto es un bloque en realidad... pero todavía no entiendo que tiene un bloque... no se como tipearlo
 typedef struct infofcb {
