@@ -269,33 +269,9 @@ int main(void) {
     return EXIT_SUCCESS;
 }
 
-void iniciarHiloCliente() {
-	int err = pthread_create( &client_Memoria,	// puntero al thread
-	     	        NULL,
-	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-	     	    	NULL); // argumentos de la función
 
-	     	 if (err != 0) {
-	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del File System.");
-	     	  exit(7);
-	     	 }
-	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
-}
+////////////////////////////////////    SERVER FS     ////////////////////////////////////////
 
-void* clientMemoria(void* ptr) {
-    int conexion_Memoria;
-    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("filesystem",conexion_Memoria);
-//    log_info(logger, "Ingrese sus mensajes para la Memoria: ");
-//    paquete(conexion_Memoria);
-    int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_Memoria);
-    liberar_conexion(conexion_Memoria);
-
-    sem_post(&semFileSystemClientMemoria);
-	return NULL;
-}
 
 void iniciarHiloServer() {
     int err = pthread_create( &serverFileSystem_thread,	// puntero al thread
@@ -307,12 +283,10 @@ void iniciarHiloServer() {
     	      printf("\nNo se pudo crear el hilo de la conexión Kernel-Filesystem.\n");
     	      exit(7);
     	     }
-    	     printf("\nEl hilo de la conexión Kernel-FileSystem se creo correctamente.\n");
+    	     //printf("\nEl hilo de la conexión Kernel-FileSystem se creo correctamente.\n");
 }
 
 void* serverFileSystem(void* ptr){
-	//sem_wait(&semFileSystemClientMemoria);
-
 
     log_info(logger, "FileSystem listo para recibir a kernel");
     cliente_fd = esperar_cliente(server_fd);
@@ -371,47 +345,38 @@ void* serverFileSystem(void* ptr){
 	return NULL;
 }
 
-void iterator(char* value) {
-    log_info(logger, value);
+////////////////////////////////////    CLIENTE MEMORIA     ////////////////////////////////////////
+
+
+void iniciarHiloCliente() {
+	int err = pthread_create( &client_Memoria,	// puntero al thread
+	     	        NULL,
+	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
+	     	    	NULL); // argumentos de la función
+
+	     	 if (err != 0) {
+	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del File System.");
+	     	  exit(7);
+	     	 }
+	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 }
 
-//Funciones client
+void* clientMemoria(void* ptr) {
+    int conexion_Memoria;
+    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+    enviar_mensaje("filesystem",conexion_Memoria);
+    int cod_op = recibir_operacion(conexion_Memoria);
+    printf("codigo de operacion: %i\n", cod_op);
+    recibir_mensaje(conexion_Memoria);
+    liberar_conexion(conexion_Memoria);
 
-t_config* iniciar_config(void)
-{
-	t_config* nuevo_config;
-
-	return nuevo_config;
+    sem_post(&semFileSystemClientMemoria);
+	return NULL;
 }
 
-void paquete(int conexion)
-{
-	// Ahora toca lo divertido!
-	char* leido = string_new();
-	t_paquete* paquete = crear_paquete();
 
-	// Leemos y esta vez agregamos las lineas al paquete
-	leido = readline("> ");
+///////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
 
-	while(strcmp(leido, "") != 0){
-		agregar_a_paquete(paquete, leido, strlen(leido)+1);
-		leido = readline("> ");
-	}
-
-	enviar_paquete(paquete, conexion);
-
-	free(leido);
-	eliminar_paquete(paquete);
-
-}
-
-void enviar_respuesta(int socket_cliente, char* quien_es) {
-	//Para que esta el handshake?
-	char* handshake = quien_es;
-	char* respuesta = string_new();
-	respuesta = "Hola kernel, gracias por comunicarte con el fileSystem!";
-	enviar_mensaje(respuesta, socket_cliente);
-}
 
 void crearArchivo(char* nombreArchivo) {
 
@@ -478,6 +443,49 @@ char* recibir_buffer_mio(int socket_cliente) {
 	int size;
 	char* buffer = recibir_buffer(&size, socket_cliente);
 	return buffer;
+}
+
+
+//////////////////////////////////// FUNCIONES EXTRAS //////////////////////////////////////
+
+void enviar_respuesta(int socket_cliente, char* quien_es) {
+	//Para que esta el handshake?
+	char* handshake = quien_es;
+	char* respuesta = string_new();
+	respuesta = "Hola kernel, gracias por comunicarte con el fileSystem!";
+	enviar_mensaje(respuesta, socket_cliente);
+}
+
+void iterator(char* value) {
+    log_info(logger, value);
+}
+
+t_config* iniciar_config(void)
+{
+	t_config* nuevo_config;
+
+	return nuevo_config;
+}
+
+void paquete(int conexion)
+{
+	// Ahora toca lo divertido!
+	char* leido = string_new();
+	t_paquete* paquete = crear_paquete();
+
+	// Leemos y esta vez agregamos las lineas al paquete
+	leido = readline("> ");
+
+	while(strcmp(leido, "") != 0){
+		agregar_a_paquete(paquete, leido, strlen(leido)+1);
+		leido = readline("> ");
+	}
+
+	enviar_paquete(paquete, conexion);
+
+	free(leido);
+	eliminar_paquete(paquete);
+
 }
 
 
