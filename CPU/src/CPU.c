@@ -29,7 +29,7 @@ int main(void) {
 
     //Hilo Cliente
     //iniciarHiloClienteMemoria();
-    printf("FALTA EL HANDSHAKE CON MEMORIA\n");
+    enviar_handshake_memoria();
 
     //thread server
 
@@ -1127,4 +1127,14 @@ void set_tp(char* registro, char* valor){
 	contexto->instruccion = string_duplicate("SET");
 
 	return;
+}
+void enviar_handshake_memoria(){
+	int config = 1;
+	int conexion_Memoria;
+
+	conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+	enviar_mensaje("CPU",conexion_Memoria);
+	int cod_op = recibir_operacion(conexion_Memoria);
+	recibir_mensaje(conexion_Memoria);
+	liberar_conexion(conexion_Memoria);
 }

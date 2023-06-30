@@ -12,13 +12,11 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-
 pthread_t client_Kernel, client_CPU, client_FS;
 
 t_list * listaDeHuecosLibres;
 t_list* tablasDeSegmento;
 t_list * segmentos;
-
 
 size_t base;
 
@@ -28,45 +26,48 @@ pthread_t serverMemoria_thread;
 int tamanioSeg0, tamanioMemoria, retardoMemoria, retardoCompactacion;
 
 void* espacioUsuario;
-void iterator(char *value);
-bool comparador(void* elem1, void* elem2);
+int asignarIdSegmento();
+Segmento *crearSegmento0(size_t);
+HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base);
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
 void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
 void* clientKernel(void *arg);
 
-
 void enviar_respuesta(int socket_cliente, char* quien_es);
 char* recibir_buffer_mio(int socket_cliente);
 
-int crearSegmento(int );
-Segmento *crearSegmento0(size_t);
 void crearYDevolverProceso();
-size_t buscarLugarParaElSegmento(size_t tamanio);
+
+int crearSegmento(int );
+bool hayLugarParaCrearSegmento(size_t tamanio);
+bool hayLugarContiguoPara(size_t tamanio);
+bool hayTablaSegmentosDe(int idProceso);
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
-void eliminar_segmento(int id_proceso, int id_segmento);
-void eliminar_proceso(int idProceso);
-bool hayLugarParaCrearSegmento(size_t tamanio);
-int asignarIdSegmento();
-bool segmentoEsElUltimo(Segmento* segmento, t_list* segmentos);
+size_t buscarLugarParaElSegmento(size_t tamanio);
 
-bool hayLugarContiguoPara(size_t tamanio);
 size_t buscarPorFirst (size_t tamanio);
 size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
-size_t buscarSiguienteLugarOcupado(size_t base);
-void juntarHuecosContiguos();
-void enviarTodasLasTablas(int cliente_fd);
 void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
+size_t buscarSiguienteLugarOcupado(size_t base);
 
+void eliminar_segmento(int id_proceso, int id_segmento);
+void juntarHuecosContiguos();
+
+void compactar_memoria();
 int buscarIdMemoria(int idSegmentoMemoria);
-void enviarValorLectura(char* array[], int longitud, int cliente_fd);
-void enviarRespuestaEscritura(int cliente_fd);
+bool comparador(void* elem1, void* elem2);
 
-TablaDeSegmentos* tablaSegmentosDe(int idProceso);
+void eliminar_proceso(int idProceso);
 
+void enviarTodasLasTablas(int cliente_fd);
+
+char* crearValorLectura(char* array[], int longitud);
+
+void iterator(char *value);
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);
 void leer_consola(t_log*);
