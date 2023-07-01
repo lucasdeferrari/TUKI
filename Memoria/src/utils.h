@@ -31,7 +31,8 @@ typedef enum
 	ELIMINAR_PROCESO,
 	TABLA_GLOBAL,
 	MOV_IN,
-	MOV_OUT
+	MOV_OUT,
+	DESOCUPADO
 }op_code;
 
 
@@ -91,7 +92,6 @@ t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
 char* recibir_handshake(int socket_cliente);
-bool hayTablaSegmentosDe(int idProceso);
 
 //client
 int crear_conexion(char* ip, char* puerto);

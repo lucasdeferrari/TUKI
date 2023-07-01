@@ -41,9 +41,9 @@ char* recibir_buffer_mio(int socket_cliente);
 void crearYDevolverProceso();
 
 int crearSegmento(int );
-bool hayLugarParaCrearSegmento(size_t tamanio);
-bool hayLugarContiguoPara(size_t tamanio);
-bool hayTablaSegmentosDe(int idProceso);
+int hayLugarParaCrearSegmento(size_t tamanio);
+int hayLugarContiguoPara(size_t tamanio);
+int hayTablaSegmentosDe(int idProceso);
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso);
 void agregarSegmentoATabla(Segmento *segmento, int idProceso);
 size_t buscarLugarParaElSegmento(size_t tamanio);
@@ -51,7 +51,7 @@ size_t buscarLugarParaElSegmento(size_t tamanio);
 size_t buscarPorFirst (size_t tamanio);
 size_t buscarPorBest(size_t tamanio);
 size_t buscarPorWorst(size_t tamanio);
-void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio);
+void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio, int iteradorIndex);
 size_t buscarSiguienteLugarOcupado(size_t base);
 
 void eliminar_segmento(int id_proceso, int id_segmento);

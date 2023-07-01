@@ -30,6 +30,7 @@ int main(void) {
     //INICILIZACIÓN
 
 	sem_init(&semKernelClientMemoria,0,0);
+	sem_init(&semPasarAExit, 0, 0);
 
     estadoEnEjecucion = malloc(sizeof(t_infopcb));
     int ningunEstado = -1;
@@ -67,6 +68,7 @@ int main(void) {
     config_destroy(config);
 
     sem_destroy(&semKernelClientMemoria);
+    sem_destroy(&semPasarAExit);
 
     free(estadoEnEjecucion);
     return EXIT_SUCCESS;
@@ -180,10 +182,9 @@ void* serverKernel(int cliente_fd){
 
 ///////////////////////////////////// CLIENT MEMORIA ////////////////////////////////////////////
 
-void iniciarHiloClienteMemoria(int cod_memoria,int pidProceso) {
+void iniciarHiloClienteMemoria(int cod_memoria) {
 	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
 	args->cod_memoria = cod_memoria;
-	args->pidProceso= pidProceso;
 
 	int err = pthread_create( 	&client_Memoria,	// puntero al thread
 								NULL,
@@ -202,7 +203,6 @@ void* clientMemoria(void *arg) {
 
 	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
 	int cod_memoria = args->cod_memoria;
-	int pidProceso = args->pidProceso;
 	t_infopcb* procesoADesencolar = malloc(sizeof(t_infopcb));
 	int config = 1;
     int conexion_Memoria;
@@ -261,16 +261,21 @@ void* clientMemoria(void *arg) {
 
     	break;
     	case 4: //compactar memoria
-    		enviar_paquete(paquete, conexion_Memoria);
-    		eliminar_paquete(paquete);
+    		printf("solicito compactacion\n");
+    		enviar_mensaje_cod_operacion("",conexion_Memoria,4);
     	break;
     	case 9: //Eliminar proceso
     		char* pidNuevoEliminarProceso = string_new();
-    		string_append_with_format(&pidNuevoEliminarProceso, "%d", pidProceso);
+    		string_append_with_format(&pidNuevoEliminarProceso, "%d", estadoEnEjecucion->pid);
+    		sem_post(&semPasarAExit);
     		printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
     		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
     		liberar_conexion(conexion_Memoria);
     		return NULL;
+    	break;
+    	case 13:
+    		printf("PREGUNTO CONEXION MEMORIA\n");
+    		enviar_mensaje_cod_operacion("",conexion_Memoria,13);
     	break;
 		default:
 			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
@@ -292,7 +297,9 @@ void* clientMemoria(void *arg) {
 				log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
 				sem_post(&semKernelClientMemoria);
 			}
-			if(strcmp(algoritmo_planificacion,"HHRN") == 0){
+			else{
+			//if(string_contains(algoritmo_planificacion,"HHRN")){
+				printf("ENTRE POR HRRN");
 				list_add(listaReady, procesoADesencolar);
 				procesoADesencolar->entraEnColaReady = tomarTiempo();
 				//Log minimo y obligatorio
@@ -326,17 +333,14 @@ void* clientMemoria(void *arg) {
         	iniciarHiloClienteCPU();
         break;
         case 7:
-    		//Log minimo y obligaotrio
-    		//log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", unProceso->pid);
+    		log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", estadoEnEjecucion->pid);
         	liberar_conexion(conexion_Memoria);
         	pasarAExit();
         break;
         case 8:
-    		//Revisar si hay conexion entre FileSystem y Memoria
-    		//Mandarle a memoria que compacte
-        	//Una vez terminada esta rutina, el Kernel repetirá la solicitud de creación del segmento.
-
-        	procedimiento_compactar();
+        	printf("Me llego que envie la solicitud de compactacion");
+        	liberar_conexion(conexion_Memoria);
+        	iniciarHiloClienteMemoria(13);
 
         break;
         case 3:   //Después de delete_segment
@@ -345,9 +349,61 @@ void* clientMemoria(void *arg) {
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteCPU();
         break;
-        case 4:
-        	printf("FALTA RECIBIR LA COMPACTACIÓN\n");
+        case 10:
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
+        	printf("VOY A RECIBIR TABLAS\n");
+        	for(int i = 0; i<cantidadElementosSistema; i++){
+        		printf("VOY A RECIBIR TABLAS\n");
+        		t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
+
+        		t_list_iterator* iterador = list_iterator_create(tablaSegmentos);
+        		char* siguiente = list_iterator_next(iterador);
+        		char** arraySegmento = string_array_new();
+        		arraySegmento = string_split(siguiente, " ");
+        		int pid = atoi(arraySegmento[0]);
+        		printf("PID PID PID: %d\n", pid);
+        		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+				}
+        		else{
+				//if(strcmp(algoritmo_planificacion,"HHRN") == 0){
+					printf("VOY A RECIBIR TABLAS\n");
+					if(estadoEnEjecucion->pid == pid){
+						estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+						printf("ACTUALICE UNA TABLA");
+					}
+
+					t_list_iterator* iteradorListaReady = list_iterator_create(listaReady);
+					while(list_iterator_has_next(iteradorListaReady)){
+						t_infopcb* siguiente = list_iterator_next(iteradorListaReady);
+						if(siguiente->pid == pid){
+							siguiente->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+							printf("ACTUALICE UNA TABLA");
+						}
+					}
+					list_iterator_destroy(iteradorListaReady);
+				}
+
+        		//cod_op = recibir_operacion(conexion_Memoria);
+        	}
+        	printf("SALI DEL FOR\n");
+        	liberar_conexion(conexion_Memoria);
+        	iniciarHiloClienteMemoria(2);
+
+        break;
+        case 13:
+        	printf("RECIBI RESPUESTA EL 13\n");
+        	char* estaConectadoMemoriastr = recibir_handshake(conexion_Memoria);
+        	int estaConectadoMemoria = atoi(estaConectadoMemoriastr);
+        	liberar_conexion(conexion_Memoria);
+        	if(estaConectadoMemoria){
+        		iniciarHiloClienteMemoria(13);
+        		printf("MEMORIA OCUPADA\n");
+        	}
+        	else{
+        		iniciarHiloClienteMemoria(4);
+        		printf("MEMORIA LIBRE\n");
+        	}
         break;
 		default:
 			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
@@ -363,11 +419,11 @@ void* clientMemoria(void *arg) {
 t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
-	t_list* tablaSegmentosActualizada= list_create();
-	t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
+	t_list* tablaSegmentosActualizada = list_create();
+
 	printf("Tabla de segmentos: \n");
 	while (list_iterator_has_next(iterador)) {
-
+		t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
 		char* siguiente = list_iterator_next(iterador);
 
 		char** arraySegmento = string_array_new();
@@ -387,26 +443,12 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		nuevoSegmento->tamanio = tamanioSegmento;
 
 		list_add(tablaSegmentosActualizada,nuevoSegmento);
+		printf("agregue segmento id : %d", nuevoSegmento->id);
 	 }
 
 	return tablaSegmentosActualizada;
 }
 
-void procedimiento_compactar(){
-	printf("FALTA HACER PROCEDIMIENTO COMPACTAR\n");
-	//Revisar si hay conexion entre FileSystem y Memoria
-	//Mandarle a memoria que compacte
-	//compactar();
-	return;
-}
-
-void compactar(){
-	//t_clientMemoria* infoClientMemoria;
-	//infoClientMemoria->cod_memoria = 4;
-	iniciarHiloClienteMemoria(4,0);
-	//Una vez terminada esta rutina, el Kernel repetirá la solicitud de creación del segmento.
-	return;
-}
 
 ///////////////////////////////////// CLIENT FILESYSTEM ////////////////////////////////////////////
 
@@ -693,7 +735,7 @@ void* clientCPU(void* ptr) {
     serializarContexto(conexion_CPU); //enviamos el contexto sin las instrucciones
 
     //enviamos las intrucciones
-    t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
+  //  t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->listaInstrucciones);
     t_paquete* paquete = empaquetarInstrucciones(estadoEnEjecucion->listaInstrucciones);
     enviar_paquete(paquete, conexion_CPU);
     eliminar_paquete(paquete);
@@ -864,7 +906,6 @@ t_paquete* empaquetarTabla(t_list* cabezaTabla) {
 
     t_list_iterator* iterador = list_iterator_create(cabezaTabla);
     t_paquete* paquete = crear_paquete_cod_operacion(6);
-
 
     while (list_iterator_has_next(iterador)) {
     	char* idSegmento = string_new();
@@ -1349,11 +1390,11 @@ void manejar_recursos() {
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
 
-		iniciarHiloClienteMemoria(2,0);
+		iniciarHiloClienteMemoria(2);
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "DELETE_SEGMENT") == 0) {
 
-		iniciarHiloClienteMemoria(3,0);
+		iniciarHiloClienteMemoria(3);
 
 		//log minimo y obligatorio
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
@@ -1372,11 +1413,11 @@ void pasarAExit() {
 //		Dar aviso al modulo de Memoria para que lo libere.
 //		Liberar recursos que tenga asignados.
 
-	iniciarHiloClienteMemoria(9,estadoEnEjecucion->pid);
+	iniciarHiloClienteMemoria(9);
 
 	liberarRecursosAsignados();
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
-
+	sem_wait(&semPasarAExit);
 	//Log minimo y obligatorio
 	//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Exit\n", estadoEnEjecucion->pid);
 
@@ -1652,7 +1693,7 @@ void encolarReady() {
 				//t_infopcb* procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
 				//queue(&frenteColaReady, &finColaReady,procesoADesencolar);
 
-				iniciarHiloClienteMemoria(5,0);
+				iniciarHiloClienteMemoria(5);
 				sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
 
@@ -1693,7 +1734,7 @@ void encolarReady() {
 				//list_add(listaReady, procesoADesencolar);
 				//procesoADesencolar->entraEnColaReady = tomarTiempo();
 
-				iniciarHiloClienteMemoria(5,0);
+				iniciarHiloClienteMemoria(5);
 				sem_wait(&semKernelClientMemoria);
 				cantidadElementosSistema++;
 

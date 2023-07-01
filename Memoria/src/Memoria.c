@@ -6,6 +6,8 @@ char* puerto_memoria;
 int server_fd;
 int contadorSegmentos = 0, cantidadSegmentos;
 
+int estaConectadoFS = 0;
+
 t_config* config;
 
 bool seConectoKernel = 0;
@@ -154,6 +156,7 @@ HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base) {
 	if(hueco != NULL) {
 		hueco->desplazamiento = tamanio;
 		hueco->base = base;
+		printf("HUECO BASE DESPLAZAMIENTO: %zu\n", hueco->desplazamiento);
 	}
 	return hueco;
 }
@@ -286,6 +289,7 @@ void* serverMemoria(void* ptr){
     			compactar_memoria();
     			sleep_ms(retardoCompactacion);
     			enviarTodasLasTablas(cliente_fd);
+    			liberar_conexion(cliente_fd);
     		}
 
     		else if(cod_op == ELIMINAR_PROCESO) {
@@ -297,6 +301,7 @@ void* serverMemoria(void* ptr){
     		}
 
     		else if(cod_op == MOV_IN) {
+    			estaConectadoFS = 1;
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador_mov_in = list_iterator_create(lista);
 
@@ -327,11 +332,13 @@ void* serverMemoria(void* ptr){
 
     			sleep_ms(retardoMemoria);
     			enviar_cod_operacion(destinoArray, cliente_fd, MOV_IN);
+    			estaConectadoFS = 0;
     		}
 
 
     		// ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
     		else if(cod_op == MOV_OUT) {
+    			estaConectadoFS = 1;
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador_mov_out = list_iterator_create(lista);
 
@@ -355,9 +362,16 @@ void* serverMemoria(void* ptr){
 				     }
 				sleep_ms(retardoMemoria);
 				enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
+				estaConectadoFS = 0;
     		}
-
+    		else if(cod_op == DESOCUPADO){
+    			printf("ENTRE A DESOCUPADO\n");
+    			char* estaConectadoFSstr = string_itoa(estaConectadoFS);
+    			enviar_cod_operacion(estaConectadoFSstr, cliente_fd, DESOCUPADO);
+    			liberar_conexion(cliente_fd);
+    		}
     		else if(cod_op == -1) {
+    			liberar_conexion(cliente_fd);
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
     		}
@@ -405,7 +419,7 @@ void enviar_respuesta(int socket_cliente, char* handshake) {
 
 ///////////////////////////////////////////////CREAR PROCESO NUEVO////////////////////////////////////////////////
 void crearYDevolverProceso(int pid, int cliente_fd) {
-	if(!hayTablaSegmentosDe(pid)){
+	if(hayTablaSegmentosDe(pid) == 0){
 		TablaDeSegmentos *tablaDeSegmentos;
 		tablaDeSegmentos = crearTablaSegmentosDe(pid);
 
@@ -425,18 +439,18 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 // HAYA ESPACIO CREARA EL SEGMENTO Y DEVOLVERA SU DIRECCION BASE
 int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
-	if(!hayLugarParaCrearSegmento(tamanio)) {
+	if(hayLugarParaCrearSegmento(tamanio) == 0) {
 		printf("SIN_ESPACIO.\n");
 		return SIN_ESPACIO;
 	}
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
-	else if(!hayLugarContiguoPara(tamanio)) {
+	else if(hayLugarContiguoPara(tamanio) == 0) {
 		printf("PEDIR_COMPACTACION.\n");
 		return PEDIR_COMPACTACION;
 	}
 
-	if(!hayTablaSegmentosDe(idProceso)) {
+	if(hayTablaSegmentosDe(idProceso) == 0) {
 		crearTablaSegmentosDe(idProceso);
 	}
 
@@ -456,7 +470,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 }
 
 /////////////////////////////////////////FUNCIONES QUE USA CREAR SEGMENTO/////////////////////////////////////////
-bool hayLugarParaCrearSegmento(size_t tamanio) {
+int hayLugarParaCrearSegmento(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
 	int tamanioLibre = 0;
 
@@ -466,36 +480,48 @@ bool hayLugarParaCrearSegmento(size_t tamanio) {
 		tamanioLibre += desplazamientoSiguiente;
 	}
 	list_iterator_destroy(iterador);
-	return tamanio <= tamanioLibre;
+	int booleano = 0;
+	if(tamanio <= tamanioLibre){
+		booleano = 1;
+	}
+	return booleano;
 }
 
-bool hayLugarContiguoPara(size_t tamanio) {
+int hayLugarContiguoPara(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
-	int max = 0;
+	size_t max = 0;
 
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
-		int desplazamientoSiguiente = siguiente->desplazamiento;
-
+		size_t desplazamientoSiguiente = siguiente->desplazamiento;
+		printf("base: %zu\n",siguiente->base );
+		printf("desplazamiento: %zu\n",desplazamientoSiguiente );
 		if(desplazamientoSiguiente > max) {
+			printf("desplazamiento: %zu\n", max);
 			max = desplazamientoSiguiente;
 		}
 	}
 	list_iterator_destroy(iterador);
-	return tamanio <= max;
+	int booleano = 0;
+		if(tamanio <= max){
+			booleano = 1;
+		}
+	return booleano;
 }
 
-bool hayTablaSegmentosDe(int idProceso) {
+int hayTablaSegmentosDe(int idProceso) {
 	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
 
 	while(list_iterator_has_next(iterador)) {
 		TablaDeSegmentos *siguiente = list_iterator_next(iterador);
 		if(idProceso == siguiente->pid) {
-			return true;
+			int booleano = 1;
+			return booleano;
 		}
 	}
 	list_iterator_destroy(iterador);
-	return false;
+	int booleano2 = 0;
+	return booleano2;
 }
 
 TablaDeSegmentos* crearTablaSegmentosDe(int idProceso) {
@@ -539,11 +565,13 @@ size_t buscarLugarParaElSegmento(size_t tamanio) {
 ///////////////////////////////////////////////////ALGORITMOS///////////////////////////////////////////////////
 size_t buscarPorFirst (size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	int iteradorIndex = 0;
 
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio) {
-			actualizarHuecosLibres(siguiente, tamanio);
+			iteradorIndex = list_iterator_index(iterador);
+			actualizarHuecosLibres(siguiente, tamanio,iteradorIndex);
 			list_iterator_destroy(iterador);
 			return siguiente->base;
 		}
@@ -554,15 +582,17 @@ size_t buscarPorBest(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
 	HuecoLibre *elegido = malloc(sizeof(HuecoLibre));
 	elegido->desplazamiento = tamanioMemoria;
+	int iteradorIndex = 0;
 
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento <= elegido->desplazamiento) {
 				elegido->base = siguiente->base;
 				elegido->desplazamiento = siguiente->desplazamiento;
+				iteradorIndex = list_iterator_index(iterador);
 		}
 	}
-	actualizarHuecosLibres(elegido, tamanio);
+	actualizarHuecosLibres(elegido, tamanio, iteradorIndex);
 	list_iterator_destroy(iterador);
 	return elegido->base;
 }
@@ -571,30 +601,30 @@ size_t buscarPorWorst(size_t tamanio) {
 	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
 		HuecoLibre *elegido = malloc(sizeof(HuecoLibre));
 		elegido->desplazamiento = 0;
+		int iteradorIndex = 0;
 
 		while(list_iterator_has_next(iterador)) {
 			HuecoLibre *siguiente = list_iterator_next(iterador);
 			if(siguiente->desplazamiento >= tamanio && siguiente->desplazamiento >= elegido->desplazamiento) {
 				elegido->base = siguiente->base;
 				elegido->desplazamiento = siguiente->desplazamiento;
+				iteradorIndex = list_iterator_index(iterador);
 			}
 		}
-		actualizarHuecosLibres(elegido, tamanio);
+		actualizarHuecosLibres(elegido, tamanio, iteradorIndex);
 		list_iterator_destroy(iterador);
 		return elegido->base;
 }
 
 ////////////////////////////////////////FUNCIONES QUE USAN LOS ALGORITMOS/////////////////////////////////////////
-void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio) {
-	bool resultado = list_remove_element(listaDeHuecosLibres, siguiente);
-	if(!resultado) {
-		log_error(logger, "Error al eliminar hueco libre. ");
-	}
+void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio, int iteradorIndex) {
+	list_remove(listaDeHuecosLibres, iteradorIndex);
 
 	HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
 	nuevoHueco->base = siguiente->base + tamanio;
 	size_t base = buscarSiguienteLugarOcupado(nuevoHueco->base);
 	nuevoHueco->desplazamiento = base - nuevoHueco->base;
+	printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
 	list_add(listaDeHuecosLibres,nuevoHueco);
 }
 
@@ -671,6 +701,7 @@ void compactar_memoria() {
 	//un while donde se fija si hay un segmento con base == tamaño+base del hueco libre, si hay,
 	// se pasa el segmento a esa base y se borra el hueco libre
 	t_list* listaOrdenada = list_sorted(segmentos, comparador);
+	//t_list* copialistaOrdenada = list_duplicate(listaOrdenada);
 	t_list_iterator* iterador = list_iterator_create(listaOrdenada);
 
 	t_list* copiaHuecosLibres = list_duplicate(listaDeHuecosLibres);
@@ -679,12 +710,13 @@ void compactar_memoria() {
 		t_list_iterator* iterador2 = list_iterator_create(copiaHuecosLibres);
 		while(list_iterator_has_next(iterador2)){
 			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
-			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada));
+			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada)-1);
 			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
 				Segmento *proximoSegmento = list_get(listaOrdenada, list_iterator_index(iterador)+1);
 				proximoSegmento->base = segmento->base + segmento->desplazamiento;
 				int pid = buscarIdMemoria(proximoSegmento->idSegmentoMemoria);
-				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento);
+				int iteradorIndex = list_iterator_index(iterador2);
+				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento, iteradorIndex);
 				log_info(logger,"PID: %d - Segmento: %d - Base: %zu - Tamaño %zu", pid, proximoSegmento->idSegmentoKernel, proximoSegmento->base, proximoSegmento->desplazamiento);
 
 			}
@@ -721,14 +753,25 @@ bool comparador(void* elem1, void* elem2) {
 
 ////////////////////////////////////////ENVIAR TODAS LAS TABLAS////////////////////////////////////////
 void enviarTodasLasTablas(int cliente_fd){
-	t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
-	while(list_iterator_has_next(iterador)){
-		TablaDeSegmentos *tablaDeSegmentos = list_iterator_next(iterador);
+	int tamanioLista = list_size(tablasDeSegmento);
+	//t_list_iterator* iterador = list_iterator_create(tablasDeSegmento);
+	for(int i =0; i<tamanioLista; i++){
+		TablaDeSegmentos *tablaDeSegmentos = list_get(tablasDeSegmento, i);
 		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_GLOBAL);
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
 	}
-	list_iterator_destroy(iterador);
+
+
+
+//	while(list_iterator_has_next(iterador)){
+//		TablaDeSegmentos *tablaDeSegmentos = list_iterator_next(iterador);
+//		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_GLOBAL);
+//		enviar_paquete(paquete, cliente_fd);
+//		eliminar_paquete(paquete);
+//	}
+//
+//	list_iterator_destroy(iterador);
 }
 
 //////////////////////////////////////////////////ELIMINAR PROCESO/////////////////////////////////////////////////

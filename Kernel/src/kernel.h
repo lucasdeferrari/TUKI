@@ -50,7 +50,7 @@ int pidProcesoNuevo;
 
 
 //Semaforos e hilos
-sem_t  semKernelClientMemoria;
+sem_t  semKernelClientMemoria, semPasarAExit;
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 
 void* serverKernel(int);
@@ -60,7 +60,7 @@ void* clientFileSystem(void *);
 void* interrupcionIO(void *);
 void encolarReady();
 void iniciarHiloClienteCPU();
-void iniciarHiloClienteMemoria(int,int);
+void iniciarHiloClienteMemoria(int);
 void iniciarHiloClienteFileSystem(int , t_infopcb* );
 int iniciarHiloServer(int);
 void iniciarHiloIO();
