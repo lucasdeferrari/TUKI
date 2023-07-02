@@ -48,12 +48,12 @@ typedef struct Bloque
 
 
 // EL puntero indirecto es un bloque en realidad... pero todavía no entiendo que tiene un bloque... no se como tipearlo
-typedef struct infofcb {
-	char* nombreArchivo;
-    int tamanioArchivo;
-    uint32_t punteroDirecto;
-    uint32_t punteroIndirecto;
-} t_infofcb;
+typedef struct{
+	int cod_memoria;
+	char* registro;
+	int direccionFisica;
+	int tamanio;
+} ClientMemoriaArgs;
 
 extern t_log* logger;
 

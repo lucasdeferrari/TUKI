@@ -527,14 +527,17 @@ void* clientFileSystem(void *arg) {
 		break;
 		case 4: //F_WRITE
 			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
+			//char* punteroWrite = string_new();
     		char* cantBytesWrite = string_new();
     		char* direcFisicaWrite = string_new();
 
+    		//string_append_with_format(&punteroWrite, "%d", punteroArchivo);
             string_append_with_format(&cantBytesWrite, "%d", unProceso->cantBytesArchivo);
             string_append_with_format(&direcFisicaWrite, "%d", unProceso->direcFisicaArchivo);
 
 
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
+            //agregar_a_paquete(paquete, punteroWrite, strlen(punteroWrite)+1);
         	agregar_a_paquete(paquete, cantBytesWrite, strlen(cantBytesWrite)+1);
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
@@ -542,6 +545,7 @@ void* clientFileSystem(void *arg) {
 
         	printf("F_WRITE enviado a MEMORIA.\n");
         	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	//printf("Puntero enviado a FS: %s\n", punteroWrite);
         	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
         	printf("DirecFisica enviad a FS: %s\n", direcFisicaWrite);
 

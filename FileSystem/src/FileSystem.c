@@ -2,6 +2,7 @@
 
 t_config* config;
 t_config* configFCB;
+int cliente_fd;
 
 int block_size = 0;
 int block_count = 0;
@@ -10,8 +11,11 @@ t_bitarray* bitarray_mapeado;
 char* p_fcb = string_new();
 FILE* archivo_fcb;
 void* mapping2;
+char* textoLeidoMemoria = "";
 
 int main(void) {
+
+	//sem_init(&semFileSystemClientMemoria(),0,0);
 
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
@@ -322,7 +326,7 @@ void iniciarHiloServer() {
 void* serverFileSystem(void* ptr){
 
     log_info(logger, "FileSystem listo para recibir a kernel");
-    int cliente_fd = esperar_cliente(server_fd); //LO VUELVO A AGREGAR ACA
+    cliente_fd = esperar_cliente(server_fd); //LO VUELVO A AGREGAR ACA
 
     t_list* lista;
     while (1) {
@@ -378,21 +382,28 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorWrite = list_iterator_create(lista);
 
-    			char* paqueteWrite[3] = {};
+    			char* paqueteWrite[4] = {};
 
-    			for (int i = 0; i<3; i++) {
+    			for (int i = 0; i<4; i++) {
     				char* siguiente = list_iterator_next(iteradorWrite);
     				paqueteWrite[i] = siguiente;
     			}
 
     			list_iterator_destroy(iteradorWrite);
 
-    			nombreArchivo = paqueteWrite[0];
-    			int cantBytesWrite = atoi(paqueteWrite[1]);
-    			int direcFisicaWrite = atoi(paqueteWrite[2]);
+    			nombreArchivo= paqueteWrite[0];
+    			int punteroArchivo = atoi(paqueteWrite[1]);
+    			int cantBytesWrite = atoi(paqueteWrite[2]);
+    			int direcFisicaWrite = atoi(paqueteWrite[3]);
+
+    			//Le pido a memoria lo que le tengo que escribir
+    			iniciarHiloCliente(11, "", direcFisicaWrite, cantBytesWrite);
+
+    			//Habría que poner semaforos para esperar la respuesta de Memoria?
+    			//sem_wait(&semFileSystemClientMemoria);
 
     			//FUNCIÓN F_WRITE
-    			escribirArchivo(nombreArchivo, cantBytesWrite, direcFisicaWrite);
+    			escribirArchivo(nombreArchivo, punteroArchivo, cantBytesWrite, direcFisicaWrite);
 
     			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
     			liberar_conexion(cliente_fd);
@@ -435,11 +446,17 @@ void* serverFileSystem(void* ptr){
 ////////////////////////////////////    CLIENTE MEMORIA     ////////////////////////////////////////
 
 
-void iniciarHiloCliente() {
+void iniciarHiloCliente(int cod_memoria, char* registro, int direcFisica, int tamanio){
+	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
+	args->cod_memoria = cod_memoria;
+	strcpy(args->registro,registro);
+	args->direccionFisica = direcFisica;
+	args->tamanio = tamanio;
+
 	int err = pthread_create( &client_Memoria,	// puntero al thread
 	     	        NULL,
 	     	    	clientMemoria, // le paso la def de la función que quiero que ejecute mientras viva
-	     	    	NULL); // argumentos de la función
+					(void *)args); // argumentos de la función
 
 	     	 if (err != 0) {
 	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del File System.");
@@ -448,13 +465,107 @@ void iniciarHiloCliente() {
 	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 }
 
-void* clientMemoria(void* ptr) {
+void* clientMemoria(void* arg) {
+//    int conexion_Memoria;
+//    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+//    enviar_mensaje("filesystem",conexion_Memoria);
+//    int cod_op = recibir_operacion(conexion_Memoria);
+//    printf("codigo de operacion: %i\n", cod_op);
+//    recibir_mensaje(conexion_Memoria);
+//    liberar_conexion(conexion_Memoria);
+
+	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
+	int cod_memoria = args->cod_memoria;
+	int direcFisica = args->direccionFisica;
+	char* registro = args->registro;
+	int tamanio = args->tamanio;
+
+	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-    enviar_mensaje("filesystem",conexion_Memoria);
+
+    t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
+        switch(cod_memoria){
+        	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
+        		char* pidMI = string_new();
+        		char* FSMI = string_new();
+        		char* direcFisicaMI = string_new();
+        		char* tamanioMI = string_new();
+
+                string_append_with_format(&pidMI, "%d", 99);
+                string_append_with_format(&FSMI, "%s", "FS");
+                string_append_with_format(&direcFisicaMI, "%d", direcFisica);
+                string_append_with_format(&tamanioMI, "%d", tamanio);
+
+            	agregar_a_paquete(paquete, pidMI, strlen(pidMI)+1);
+            	agregar_a_paquete(paquete, FSMI, strlen(FSMI)+1);
+            	agregar_a_paquete(paquete, direcFisicaMI, strlen(direcFisicaMI)+1);
+            	agregar_a_paquete(paquete, tamanioMI, strlen(tamanioMI)+1);
+
+            	enviar_paquete(paquete, conexion_Memoria);
+
+            	printf("MOV_IN enviado a MEMORIA.\n");
+            	printf("pid enviado a Memoria: %s\n", pidMI);
+            	printf("quienSoy enviado a Memoria: %s\n", FSMI);
+            	printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
+            	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
+
+            	eliminar_paquete(paquete);
+            break;
+        	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
+           		char* pidMO = string_new();
+				char* FSMO = string_new();
+				char* valorRegistroMO = string_new();
+				char* tamanioMO = string_new();
+				char* direcFisicaMO = string_new();
+
+
+				string_append_with_format(&pidMO, "%d", 99);
+				string_append_with_format(&FSMO, "%s", "FS");
+				string_append_with_format(&valorRegistroMO, "%s", registro);
+				string_append_with_format(&tamanioMO, "%d", tamanio);
+				string_append_with_format(&direcFisicaMO, "%d", direcFisica);
+
+
+				agregar_a_paquete(paquete, pidMO, strlen(pidMO)+1);
+				agregar_a_paquete(paquete, FSMO, strlen(FSMO)+1);
+				agregar_a_paquete(paquete, valorRegistroMO, strlen(valorRegistroMO)+1);
+				agregar_a_paquete(paquete, tamanioMO, strlen(tamanioMO)+1);
+				agregar_a_paquete(paquete, direcFisicaMO, strlen(direcFisicaMO)+1);
+
+
+				enviar_paquete(paquete, conexion_Memoria);
+
+				printf("MOV_IN enviado a MEMORIA.\n");
+				printf("pid enviado a Memoria: %s\n", pidMO);
+				printf("quienSoy enviado a Memoria: %s\n", FSMO);
+				printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
+				printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
+				printf("tamanio enviado a Memoria: %s\n", tamanioMO);
+
+                eliminar_paquete(paquete);
+        	break;
+    		default:
+    			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
+    		break;
+        }
+
+
     int cod_op = recibir_operacion(conexion_Memoria);
-    printf("codigo de operacion: %i\n", cod_op);
-    recibir_mensaje(conexion_Memoria);
+    switch (cod_op) {
+    		case 11:
+    			textoLeidoMemoria = recibir_handshake(cliente_fd);
+    			//sem_post(&semFileSystemClientMemoria);
+    		break;
+            case 12:  //RECIBO UN OK
+            	char* respuesta = recibir_handshake(cliente_fd);
+            	printf("Respuesta MOV_OUT: %s\n",respuesta);
+            break;
+    		default:
+    			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+    		break;
+        }
+
     liberar_conexion(conexion_Memoria);
 
 	return NULL;
@@ -580,10 +691,9 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 	configFCB = config_create(p_fcb);
 
 	if (configFCB != NULL) {
-	uint32_t bloqueALeer = floor(punteroArchivo / block_size);
-	uint32_t cantidadBloquesALeer = ceil(cantBytesRead / block_size);
-	uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
-	char porcionLeida[cantBytesRead] = "";
+		uint32_t bloqueALeer = floor(punteroArchivo / block_size);
+		uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
+		char porcionLeida[cantBytesRead] = "";
 
 		if (bloqueALeer == 0){
 			int bytesALeer = cantBytesRead;
@@ -638,6 +748,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				bloqueALeer++;
 			}
 		}
+		iniciarHiloCliente(12, porcionLeida, direcFisicaRead, cantBytesRead);
 	}
 }
 
@@ -647,6 +758,75 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 //	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
 //	por parámetro desde el Kernel. MOVE_IN
 
+	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(p_fcb, nombreArchivo);
+	string_append(p_fcb, ".config");
+
+	configFCB = config_create(p_fcb);
+
+	if (configFCB != NULL) {
+
+		//SOLICITAR A MEMORIA, suponemos que escribe en una variable global llamada textoLeido
+
+		uint32_t bloqueAEscribir = floor(punteroArchivo / block_size);
+		uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
+
+
+		if (bloqueAEscribir == 0){
+			int bytesAEscribir = cantBytesWrite;
+			uint32_t punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
+
+			int	tamanio = min(bytesAEscribir, block_size-punteroArchivo);
+
+			char* porcionAEscribir = string_new();
+			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanio);
+
+			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
+
+			bytesAEscribir -= tamanio;
+			int ultimoIndiceEscrito = tamanio;
+
+			while (bytesAEscribir != 0){
+				int bloque = 1;
+				int tamanio2 = min(bytesAEscribir, block_size);
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloque*4);
+
+				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanio2);
+
+				(char*)mapping2 + block = porcionAEscribir;
+
+				ultimoIndiceEscrito += tamanio2;
+				bytesAEscribir -= tamanio2;
+				bloque++;
+			}
+		}else {
+			int bytesAEscribir = cantBytesWrite;
+			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloqueAEscribir*4);
+
+			int	tamanio = min(bytesAEscribir, block_size-punteroArchivo);
+
+			char* porcionAEscribir = string_new();
+			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanio);
+
+			(char*)mapping2 + block + (punteroArchivo*4) = porcionAEscribir;
+
+			bloqueAEscribir++;
+			bytesAEscribir -= tamanio;
+			int ultimoIndiceEscrito = tamanio;
+
+			while (bytesAEscribir != 0){
+				int tamanio2 = min(bytesAEscribir, block_size);
+
+				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanio2);
+
+				(char*)mapping2 + block = porcionAEscribir;
+
+				ultimoIndiceEscrito += tamanio2;
+				bytesAEscribir -= tamanio2;
+				bloqueAEscribir++;
+			}
+		}
+	}
 }
 
 
