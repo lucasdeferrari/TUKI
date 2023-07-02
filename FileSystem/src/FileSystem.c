@@ -15,7 +15,7 @@ char* textoLeidoMemoria = "";
 
 int main(void) {
 
-	//sem_init(&semFileSystemClientMemoria(),0,0);
+	sem_init(&semFileSystemClientMemoria(),0,0);
 
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
@@ -303,6 +303,8 @@ int main(void) {
     log_destroy(logger);
     config_destroy(config);
 
+    sem_destroy(&semFileSystemClientMemoria);
+
     return EXIT_SUCCESS;
 }
 
@@ -399,8 +401,8 @@ void* serverFileSystem(void* ptr){
     			//Le pido a memoria lo que le tengo que escribir
     			iniciarHiloCliente(11, "", direcFisicaWrite, cantBytesWrite);
 
-    			//Habría que poner semaforos para esperar la respuesta de Memoria?
-    			//sem_wait(&semFileSystemClientMemoria);
+    			//Semaforos para esperar la respuesta de Memoria
+    			sem_wait(&semFileSystemClientMemoria);
 
     			//FUNCIÓN F_WRITE
     			escribirArchivo(nombreArchivo, punteroArchivo, cantBytesWrite, direcFisicaWrite);
