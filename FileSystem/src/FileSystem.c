@@ -614,29 +614,40 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 
 	int tamanioArchivo = atoi(config_get_string_value(configFCB, "TAMANIO_ARCHIVO"));
 	int punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
+	int punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
 	config_set_value(configFCB, "TAMANIO_ARCHIVO", tamanio);
-	int cantidadBloquesNecesarios = ceil(tamanio / block_size);
+
 
 	if (configFCB != NULL) {
+		int cantidadBloquesNecesarios = ceil(tamanio / block_size);
+
+		int cantidadBloquesActual = 0;
+		int contador = 0;
+
+		if (punteroDirecto != NULL){
+			cantidadBloquesActual++;
+		} else if (punteroIndirecto != NULL){
+			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
+
+			//Puede que no sea NULL, ver contra que hay que comparar
+			while (block != NULL) {
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
+				contador++;
+			}
+		}
+
+		cantidadBloquesActual += contador;
+
 		if (tamanio < tamanioArchivo){
 //				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
 //				se deberán marcar como libres todos los bloques que ya no sean necesarios para direccionar
 //				el tamaño del archivo (descartando desde el final del archivo hacia el principio).
 
-			int cantidadBloquesActual = 0;
-			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
-
-			//Puede que no sea NULL, ver contra que hay que comparar
-			while (block != NULL) {
-				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
-				cantidadBloquesActual++;
-			}
-
-			if(cantidadBloquesNecesarios < (cantidadBloquesActual+1)){
+			if(cantidadBloquesNecesarios < (cantidadBloquesActual)){
 
 				//liberar bloques del bitmap.
 				int i = 0;
-				int diferencia = cantidadBloquesActual+1 - cantidadBloquesNecesarios;
+				int diferencia = cantidadBloquesActual - cantidadBloquesNecesarios;
 				int bloquesALiberar = cantidadBloquesNecesarios-1;
 				while (i < diferencia){
 					uint32_t blockALiberar = (uint32_t)mapping2 + punteroIndirecto + (bloquesALiberar*4);
@@ -649,19 +660,10 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 //				el tamaño del archivo en el FCB y se le deberán asignar tantos bloques como sea necesario para
 //				poder direccionar el nuevo tamaño.
 
-			int cantidadBloquesActual = 0;
-			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
+			if(cantidadBloquesNecesarios > cantidadBloquesActual){
 
-			//Puede que no sea NULL, ver contra que hay que comparar
-			while (block != NULL) {
-				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
-				cantidadBloquesActual++;
-			}
-
-			if(cantidadBloquesNecesarios > cantidadBloquesActual+1){
-
-				//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
-				int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual+1;
+			//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
+				int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual;
 
 				int i = 0;
 				while (i < diferencia){
@@ -669,9 +671,20 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 						bloqueNuevo++;
 					}
+
 					bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
-					(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual+1)*4) = bloqueNuevo;
-					i++;
+
+					if(punteroDirecto == NULL){
+						punteroDirecto = bloqueNuevo;
+						config_set_value(configFCB, "PUNTERO_DIRECTO", punteroDirecto);
+						i++;
+					}else if (punteroIndirecto == NULL){
+						punteroIndirecto = bloqueNuevo;
+						config_set_value(configFCB, "PUNTERO_INDIRECTO", punteroIndirecto);
+					}else{
+						(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
+						i++;
+					}
 				}
 			}
 		}
