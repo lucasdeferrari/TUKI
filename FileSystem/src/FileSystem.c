@@ -485,86 +485,87 @@ void* clientMemoria(void* arg) {
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
-        switch(cod_memoria){
-        	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
-        		char* pidMI = string_new();
-        		char* FSMI = string_new();
-        		char* direcFisicaMI = string_new();
-        		char* tamanioMI = string_new();
 
-                string_append_with_format(&pidMI, "%d", 99);
-                string_append_with_format(&FSMI, "%s", "FS");
-                string_append_with_format(&direcFisicaMI, "%d", direcFisica);
-                string_append_with_format(&tamanioMI, "%d", tamanio);
+    switch(cod_memoria){
+    	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
+        	char* pidMI = string_new();
+        	char* fsMI = string_new();
+        	char* direcFisicaMI = string_new();
+        	char* tamanioMI = string_new();
 
-            	agregar_a_paquete(paquete, pidMI, strlen(pidMI)+1);
-            	agregar_a_paquete(paquete, FSMI, strlen(FSMI)+1);
-            	agregar_a_paquete(paquete, direcFisicaMI, strlen(direcFisicaMI)+1);
-            	agregar_a_paquete(paquete, tamanioMI, strlen(tamanioMI)+1);
+            string_append_with_format(&pidMI, "%d", 99);
+            string_append_with_format(&fsMI, "%s", "FS");
+            string_append_with_format(&direcFisicaMI, "%d", direcFisica);
+            string_append_with_format(&tamanioMI, "%d", tamanio);
 
-            	enviar_paquete(paquete, conexion_Memoria);
+            agregar_a_paquete(paquete, pidMI, strlen(pidMI)+1);
+            agregar_a_paquete(paquete, fsMI, strlen(fsMI)+1);
+            agregar_a_paquete(paquete, direcFisicaMI, strlen(direcFisicaMI)+1);
+            agregar_a_paquete(paquete, tamanioMI, strlen(tamanioMI)+1);
 
-            	printf("MOV_IN enviado a MEMORIA.\n");
-            	printf("pid enviado a Memoria: %s\n", pidMI);
-            	printf("quienSoy enviado a Memoria: %s\n", FSMI);
-            	printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
-            	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
+            enviar_paquete(paquete, conexion_Memoria);
 
-            	eliminar_paquete(paquete);
-            break;
-        	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
-           		char* pidMO = string_new();
-				char* FSMO = string_new();
-				char* valorRegistroMO = string_new();
-				char* tamanioMO = string_new();
-				char* direcFisicaMO = string_new();
+            printf("MOV_IN enviado a MEMORIA.\n");
+            printf("pid enviado a Memoria: %s\n", pidMI);
+            printf("quienSoy enviado a Memoria: %s\n", fsMI);
+            printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
+            printf("tamanio enviado a Memoria: %s\n", tamanioMI);
 
-
-				string_append_with_format(&pidMO, "%d", 99);
-				string_append_with_format(&FSMO, "%s", "FS");
-				string_append_with_format(&valorRegistroMO, "%s", registro);
-				string_append_with_format(&tamanioMO, "%d", tamanio);
-				string_append_with_format(&direcFisicaMO, "%d", direcFisica);
+            eliminar_paquete(paquete);
+        break;
+        case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
+        	char* pidMO = string_new();
+			char* fsMO = string_new();
+			char* valorRegistroMO = string_new();
+			char* tamanioMO = string_new();
+			char* direcFisicaMO = string_new();
 
 
-				agregar_a_paquete(paquete, pidMO, strlen(pidMO)+1);
-				agregar_a_paquete(paquete, FSMO, strlen(FSMO)+1);
-				agregar_a_paquete(paquete, valorRegistroMO, strlen(valorRegistroMO)+1);
-				agregar_a_paquete(paquete, tamanioMO, strlen(tamanioMO)+1);
-				agregar_a_paquete(paquete, direcFisicaMO, strlen(direcFisicaMO)+1);
+			string_append_with_format(&pidMO, "%d", 99);
+			string_append_with_format(&fsMO, "%s", "FS");
+			string_append_with_format(&valorRegistroMO, "%s", registro);
+			string_append_with_format(&tamanioMO, "%d", tamanio);
+			string_append_with_format(&direcFisicaMO, "%d", direcFisica);
 
 
-				enviar_paquete(paquete, conexion_Memoria);
+			agregar_a_paquete(paquete, pidMO, strlen(pidMO)+1);
+			agregar_a_paquete(paquete, fsMO, strlen(fsMO)+1);
+			agregar_a_paquete(paquete, valorRegistroMO, strlen(valorRegistroMO)+1);
+			agregar_a_paquete(paquete, tamanioMO, strlen(tamanioMO)+1);
+			agregar_a_paquete(paquete, direcFisicaMO, strlen(direcFisicaMO)+1);
 
-				printf("MOV_IN enviado a MEMORIA.\n");
-				printf("pid enviado a Memoria: %s\n", pidMO);
-				printf("quienSoy enviado a Memoria: %s\n", FSMO);
-				printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
-				printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
-				printf("tamanio enviado a Memoria: %s\n", tamanioMO);
 
-                eliminar_paquete(paquete);
-        	break;
-    		default:
-    			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
-    		break;
-        }
+			enviar_paquete(paquete, conexion_Memoria);
+
+			printf("MOV_IN enviado a MEMORIA.\n");
+			printf("pid enviado a Memoria: %s\n", pidMO);
+			printf("quienSoy enviado a Memoria: %s\n", fsMO);
+			printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
+			printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
+			printf("tamanio enviado a Memoria: %s\n", tamanioMO);
+
+            eliminar_paquete(paquete);
+        break;
+    	default:
+    		log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
+    	break;
+    }
 
 
     int cod_op = recibir_operacion(conexion_Memoria);
     switch (cod_op) {
-    		case 11:
-    			textoLeidoMemoria = recibir_handshake(cliente_fd);
-    			//sem_post(&semFileSystemClientMemoria);
-    		break;
-            case 12:  //RECIBO UN OK
-            	char* respuesta = recibir_handshake(cliente_fd);
-            	printf("Respuesta MOV_OUT: %s\n",respuesta);
-            break;
-    		default:
-    			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
-    		break;
-        }
+    	case 11:
+    		textoLeidoMemoria = recibir_handshake(cliente_fd);
+    		//sem_post(&semFileSystemClientMemoria);
+    	break;
+        case 12:  //RECIBO UN OK
+            char* respuesta = recibir_handshake(cliente_fd);
+            printf("Respuesta MOV_OUT: %s\n",respuesta);
+        break;
+        default:
+        	log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+    	break;
+    }
 
     liberar_conexion(conexion_Memoria);
 
