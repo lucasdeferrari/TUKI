@@ -26,13 +26,13 @@ char* recibir_buffer_mio(int socket_cliente);
 void abrir_archivo(char* nombreArchivo);
 void crearArchivo(char* nombreArchivo);
 void truncar_archivo(char* nombreArchivo, int tamanio);
-void* leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead);
-void* escribirArchivo(char* nombreArchivo, int cantBytesWrite, int direcFisicaWrite);
+void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead);
+void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite);
 //t_infofcb* buscarFCB (char* nombreArchivo);
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 
-void *serverFileSystem(void *ptr);
+void* serverFileSystem(void *ptr);
 void* clientMemoria(void *ptr);
 void iniciarHiloCliente();
 void iniciarHiloServer();

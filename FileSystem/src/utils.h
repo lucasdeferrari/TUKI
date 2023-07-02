@@ -52,7 +52,7 @@ typedef struct infofcb {
 	char* nombreArchivo;
     int tamanioArchivo;
     uint32_t punteroDirecto;
-    t_list* punteroIndirecto;
+    uint32_t punteroIndirecto;
 } t_infofcb;
 
 extern t_log* logger;

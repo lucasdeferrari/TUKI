@@ -7,18 +7,19 @@ int block_size = 0;
 int block_count = 0;
 int server_fd;
 t_bitarray* bitarray_mapeado;
+char* p_fcb = string_new();
+FILE* archivo_fcb;
+void* mapping2;
 
 int main(void) {
 
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
 	char* p_bloques = string_new();
-	char* p_fcb = string_new();
 
 	FILE* archivo_superbloque;
 	FILE* archivo_bitmap;
 	FILE* archivo_bloques;
-	FILE* archivo_fcb;
 
 
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
@@ -218,7 +219,7 @@ int main(void) {
 		exit(1);
 	}
 
-	void* mapping2 = mmap(NULL, tamanio_bloques, PROT_READ | PROT_WRITE, MAP_SHARED, fd2, 0);
+	mapping2 = mmap(NULL, tamanio_bloques, PROT_READ | PROT_WRITE, MAP_SHARED, fd2, 0);
 	if (mapping2 == MAP_FAILED) {
 		log_error(logger, "Error en mmap");
 	    close(fd);
@@ -272,32 +273,8 @@ int main(void) {
 //	close(fd2);
 //	fclose(archivo_bloques);
 
-//	//Creo archivo FCB para crear config FCB
-//	if (config_has_property(config, "PATH_FCB")) {
-//		printf("Existe el path al bitmap.\n");
-//	    p_fcb = config_get_string_value(config, "PATH_FCB");
-//	} else {
-//	    printf("No existe el path al bitmap.\n");
-//	    exit(5);
-//	}
-//
-//	//CHEQUEO SI EL ARCHIVO YA EXISTE
-//	if (access(p_fcb, F_OK) == -1) {
-//		printf("El archivo bitmap no existe.\n");
-//	    archivo_fcb = fopen(p_fcb, "w");
-//	    if (archivo_fcb) {
-//	    	printf("El archivo bitmap se ha creado exitosamente.\n");
-//	        fclose(archivo_fcb;
-//	    } else {
-//	        printf("No se pudo crear el archivo bitmap.\n");
-//	    }
-//	}
-
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
-
-    //Inicializo la lista de FCBs
-    listaFCB = list_create();
 
     //THREADS CONEXIÓN
 
@@ -486,143 +463,185 @@ void* clientMemoria(void* ptr) {
 
 /////////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
 
-//ESTA BIEN, PERO HAY QUE CREAR EL CONFIG DE FCB, ES 1 CONFIG POR FCB... LE PODEMOS PONER EL NOMBRE DEL ARCHIVO?
-//Lo habia pensado mal al principio
+void abrir_archivo(char* nombreArchivo){
+	//Creo archivo FCB para crear config FCB
 
-//void crearArchivo(char* nombreArchivo) {
-//
-//	t_infofcb* nuevoFCB = malloc(sizeof(t_infofcb));
-//	int numeroFCB = 0;
-//	char* NOMBRE_ARCHIVO;
-//	char* TAMANIO_ARCHIVO;
-//	char* PUNTERO_DIRECTO;
-//	char* PUNTERO_INDIRECTO;
-//
-//	char* path = concatenar("/home/utnso/tp-2023-1c-Los-operadores/FileSystem/", nombreArchivo, ".config");
-//
-//	configFCB = config_create(path);
-//
-//	numeroFCB++;
-//
-//	config_set_value(configFCB, NOMBRE_ARCHIVO, nombreArchivo);
-//	config_set_value(configFCB, TAMANIO_ARCHIVO, "0");
-//	config_set_value(configFCB, PUNTERO_DIRECTO, "NULL");
-//	config_set_value(configFCB, PUNTERO_INDIRECTO, "NULL");
-//
-//	if (config == NULL) {
-//	     printf("No se pudo crear el config.\n");
-//	     exit(5);
-//	}
-//
-//	printf("Archivo creado.\n");
-//
-//	//1FCB 1CONFIG
-//	return;
-//}
+	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(p_fcb, nombreArchivo);
+	string_append(p_fcb, ".config");
 
-//HAY QUE CAMBIARLA PARA QUE SE ADAPTE A LA LOGICA DEL CONFIG
-//void abrir_archivo(char* nombreArchivo){
-//	t_list_iterator* iterador = list_iterator_create(listaFCB);
-//	char* nombreArchivoSeleccionado = string_new();
-//
-//	while(list_iterator_has_next(iterador)) {
-//		t_infofcb *siguiente = list_iterator_next(iterador);
-//		if(   strcmp(nombreArchivo,siguiente->nombreArchivo) == 0   ) {
-//			strcpy(nombreArchivoSeleccionado,nombreArchivo);
-//		}
-//	}
-//
-//	if (string_is_empty(nombreArchivoSeleccionado)) {
-//		//SI NO EXISTE, LO CREAMOS
-//		printf("Archivo inexistente.\n");
-//		crearArchivo(nombreArchivoSeleccionado);
-//	}
-//
-//	list_iterator_destroy(iterador);
-//	return;
-//}
+	configFCB = config_create(p_fcb);
 
-//LA CREE POR SI SE NECESITA
-//t_infofcb* buscarFCB (char* nombreArchivo){
-//	t_list_iterator* iterador = list_iterator_create(listaFCB);
-//	char* nombreArchivoSeleccionado = string_new();
-//	t_infofcb* fcbBuscado;
-//
-//	while(list_iterator_has_next(iterador)) {
-//		t_infofcb *siguiente = list_iterator_next(iterador);
-//		if(   strcmp(nombreArchivo,siguiente->nombreArchivo) == 0   ) {
-//			fcbBuscado = siguiente;
-//			return fcbBuscado;
-//		}
-//	}
-//}
+	if (configFCB == NULL) {
+		printf("No exise el archivo.\n");
+		archivo_fcb = fopen(p_fcb, "w");
+		if (archivo_fcb) {
+			printf("El archivo FCB se ha creado exitosamente.\n");
+			configFCB = config_create(p_fcb);
 
-//HAY QUE CAMBIARLA PARA QUE SE ADAPTE A LA LOGICA DEL CONFIG
-//void truncar_archivo(char* nombreArchivo, int tamanio){
-//	t_list_iterator* iterador = list_iterator_create(listaFCB);
-////	t_infofcb* fcbBuscado = buscarFCB (nombreArchivo);
-//
-//	while(list_iterator_has_next(iterador)) {
-//		t_infofcb *siguiente = list_iterator_next(iterador);
-//		if(nombreArchivo == siguiente->nombreArchivo) {
-//			if (tamanio < siguiente->tamanioArchivo){
-////				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
-////				se deberán marcar como libres todos los bloques que ya no sean necesarios para direccionar
-////				el tamaño del archivo (descartando desde el final del archivo hacia el principio).
-//				siguiente->tamanioArchivo = tamanio;
-//				int cantidadBloquesNecesarios = ceil(tamanio / block_size);
-//				int cantidadBloquesActual = 1 + list_size(siguiente->punteroIndirecto);
-//				if(cantidadBloquesNecesarios < cantidadBloquesActual){
-//					int diferencia = cantidadBloquesActual - cantidadBloquesNecesarios;
-//					t_list* bloquesALiberar = list_slice(siguiente->punteroIndirecto, cantidadBloquesNecesarios, diferencia);
-//					t_list* nuevosPunterosIndirectos = list_take_and_remove(siguiente->punteroIndirecto, cantidadBloquesNecesarios);
-//					siguiente->punteroIndirecto = nuevosPunterosIndirectos;
-//
-//					//liberar bloques del bitmap.
-//					int i = 0;
-//					while (i < diferencia){
-//						int bloqueALiberar = bloquesALiberar[i];
-//						bitarray_clean_bit(bitarray_mapeado, bloqueALiberar);
-//						i++;
-//					}
-//				}
-//			} else if (tamanio > siguiente->tamanioArchivo){
-////				Ampliar el tamaño del archivo: Al momento de ampliar el tamaño del archivo deberá actualizar
-////				el tamaño del archivo en el FCB y se le deberán asignar tantos bloques como sea necesario para
-////				poder direccionar el nuevo tamaño.
-//				siguiente->tamanioArchivo = tamanio;
-//				int cantidadBloquesNecesarios = ceil(tamanio / block_size);
-//				int cantidadBloquesActual = 1 + list_size(siguiente->punteroIndirecto);
-//				if(cantidadBloquesNecesarios > cantidadBloquesActual){
-//					int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual;
-//
-//					//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
-//					t_list* nuevosPunterosIndirectos;
-//
-//					int i = 0;
-//					while (i < diferencia){
-//						if(bitarray_test_bit(bitarray_mapeado, i) == 0){
-//							nuevosPunterosIndirectos = list_add(siguiente->punteroIndirecto, i);
-//							bitarray_set_bit(bitarray_mapeado, i);
-//						}
-//						i++;
-//					}
-//					siguiente->punteroIndirecto = nuevosPunterosIndirectos;
-//				}
-//			}
-//		}
-//	}
-//}
+			config_set_value(configFCB, "NOMBRE_ARCHIVO", nombreArchivo);
+			config_set_value(configFCB, "TAMANIO_ARCHIVO", "0");
+			config_set_value(configFCB, "PUNTERO_DIRECTO", "NULL");
+			config_set_value(configFCB, "PUNTERO_INDIRECTO", "NULL");
 
-void* leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
+		    fclose(archivo_fcb);
+		} else {
+			printf("No se pudo crear el archivo FCB.\n");
+		}
+	}
+}
+
+void truncar_archivo(char* nombreArchivo, int tamanio){
+	t_list_iterator* iterador = list_iterator_create(listaFCB);
+
+	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(p_fcb, nombreArchivo);
+	string_append(p_fcb, ".config");
+
+	configFCB = config_create(p_fcb);
+
+	int tamanioArchivo = atoi(config_get_string_value(configFCB, "TAMANIO_ARCHIVO"));
+	int punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
+	config_set_value(configFCB, "TAMANIO_ARCHIVO", tamanio);
+	int cantidadBloquesNecesarios = ceil(tamanio / block_size);
+
+	if (configFCB != NULL) {
+		if (tamanio < tamanioArchivo){
+//				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
+//				se deberán marcar como libres todos los bloques que ya no sean necesarios para direccionar
+//				el tamaño del archivo (descartando desde el final del archivo hacia el principio).
+
+			int cantidadBloquesActual = 0;
+			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
+
+			//Puede que no sea NULL, ver contra que hay que comparar
+			while (block != NULL) {
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
+				cantidadBloquesActual++;
+			}
+
+			if(cantidadBloquesNecesarios < (cantidadBloquesActual+1)){
+
+				//liberar bloques del bitmap.
+				int i = 0;
+				int diferencia = cantidadBloquesActual+1 - cantidadBloquesNecesarios;
+				int bloquesALiberar = cantidadBloquesNecesarios-1;
+				while (i < diferencia){
+					uint32_t blockALiberar = (uint32_t)mapping2 + punteroIndirecto + (bloquesALiberar*4);
+					bitarray_clean_bit(bitarray_mapeado, blockALiberar);
+					i++;
+				}
+			}
+		} else if (tamanio > tamanioArchivo){
+//				Ampliar el tamaño del archivo: Al momento de ampliar el tamaño del archivo deberá actualizar
+//				el tamaño del archivo en el FCB y se le deberán asignar tantos bloques como sea necesario para
+//				poder direccionar el nuevo tamaño.
+
+			int cantidadBloquesActual = 0;
+			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
+
+			//Puede que no sea NULL, ver contra que hay que comparar
+			while (block != NULL) {
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (cantidadBloquesActual*4);
+				cantidadBloquesActual++;
+			}
+
+			if(cantidadBloquesNecesarios > cantidadBloquesActual+1){
+
+				//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
+				int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual+1;
+
+				int i = 0;
+				while (i < diferencia){
+					uint32_t bloqueNuevo = 0;
+					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+						bloqueNuevo++;
+					}
+					bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+					(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual+1)*4) = bloqueNuevo;
+					i++;
+				}
+			}
+		}
+	}
+}
+
+//FALTA MANDAR A MEMORIA
+void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
 //	Esta operación deberá leer la información correspondiente de los bloques a partir del puntero y el
 //	tamaño recibidos. Esta información se deberá enviar a la Memoria para ser escrita a partir de la
 //	dirección física recibida por parámetro y esperar su finalización para poder confirmar el éxito de
 //	la operación al Kernel. MOVE_OUT
 
+	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(p_fcb, nombreArchivo);
+	string_append(p_fcb, ".config");
+
+	configFCB = config_create(p_fcb);
+
+	if (configFCB != NULL) {
+	uint32_t bloqueALeer = floor(punteroArchivo / block_size);
+	uint32_t cantidadBloquesALeer = ceil(cantBytesRead / block_size);
+	uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
+	char porcionLeida[cantBytesRead] = "";
+
+		if (bloqueALeer == 0){
+			int bytesALeer = cantBytesRead;
+			uint32_t punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
+			int indice = 0;
+
+			for (int i = 0; i < cantBytesRead; i++){
+				char bloqueLectura = (char)mapping2 + punteroDirecto + (punteroArchivo*4) + (i*4);
+				porcionLeida[i] = bloqueLectura;
+				indice++;
+				bytesALeer--;
+			}
+
+			while (bytesALeer != 0){
+				int bloque = 1;
+				int	tamanio = min(bytesALeer, block_size);
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloque*4);
+
+				for (int x = 0; x < tamanio; x++){
+					char bloqueLectura = (char)mapping2 + block + (x*4);
+					porcionLeida[indice] = bloqueLectura;
+					indice++;
+					bytesALeer--;
+				}
+
+				bloque++;
+			}
+		}else {
+			int bytesALeer = cantBytesRead;
+			int indice = 0;
+			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloqueALeer*4);
+
+			for (int i = 0; i < cantBytesRead; i++){
+				char bloqueLectura = (char)mapping2 + block + (punteroArchivo*4) + (i*4);
+				porcionLeida[i] = bloqueLectura;
+				indice++;
+				bloqueALeer++;
+				bytesALeer--;
+			}
+
+			while (bytesALeer != 0){
+
+				int	tamanio = min(bytesALeer, block_size);
+
+				for (int x = 0; x < tamanio; x++){
+					char bloqueLectura = (char)mapping2 + block + (x*4);
+					porcionLeida[indice] = bloqueLectura;
+					indice++;
+					bytesALeer--;
+				}
+
+				bloqueALeer++;
+			}
+		}
+	}
 }
 
-void* escribirArchivo(char* nombreArchivo, int cantBytesWrite, int direcFisicaWrite){
+void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
 //	Se deberá solicitar a la Memoria la información que se encuentra a partir de la dirección física y
 //	escribirlo en los bloques correspondientes del archivo a partir del puntero recibido.
 //	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
