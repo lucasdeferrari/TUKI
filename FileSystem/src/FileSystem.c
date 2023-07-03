@@ -676,14 +676,22 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 
 					bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 
-					if(punteroDirecto == NULL){
+					if(cantidadBloquesActual == 0){
 						punteroDirecto = bloqueNuevo;
 						config_set_value(configFCB, "PUNTERO_DIRECTO", punteroDirecto);
 						i++;
-					}else if (punteroIndirecto == NULL){
+					}
+
+					if (punteroIndirecto == NULL && cantidadBloquesNecesarios > 1){
 						punteroIndirecto = bloqueNuevo;
 						config_set_value(configFCB, "PUNTERO_INDIRECTO", punteroIndirecto);
-					}else{
+						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+							bloqueNuevo++;
+						}
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+					}
+
+					if (diferencia > i){
 						(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
 						i++;
 					}
