@@ -11,6 +11,7 @@
 #include<commons/collections/list.h>
 #include<string.h>
 #include<assert.h>
+#include <math.h>
 
 //FS
 #define IP "127.0.0.1"
@@ -64,6 +65,7 @@ int esperar_cliente(int);
 t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
+t_paquete* crear_paquete_cod_operacion(int);
 
 //client
 int crear_conexion(char* ip, char* puerto);

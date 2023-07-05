@@ -29,6 +29,8 @@ void truncar_archivo(char* nombreArchivo, int tamanio);
 void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead);
 void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite);
 //t_infofcb* buscarFCB (char* nombreArchivo);
+char* recibir_handshake(int);
+int minimo(int, int);
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 

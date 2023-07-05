@@ -243,3 +243,11 @@ void liberar_conexion(int socket_cliente)
 {
 	close(socket_cliente);
 }
+
+t_paquete* crear_paquete_cod_operacion(int cod_operacion)
+{
+	t_paquete* paquete = malloc(sizeof(t_paquete));
+	paquete->codigo_operacion = cod_operacion;
+	crear_buffer(paquete);
+	return paquete;
+}

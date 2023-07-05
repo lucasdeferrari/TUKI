@@ -8,18 +8,19 @@ int block_size = 0;
 int block_count = 0;
 int server_fd;
 t_bitarray* bitarray_mapeado;
-char* p_fcb = string_new();
+char* p_fcb;
 FILE* archivo_fcb;
 void* mapping2;
 char* textoLeidoMemoria = "";
 
 int main(void) {
 
-	sem_init(&semFileSystemClientMemoria(),0,0);
+	sem_init(&semFileSystemClientMemoria,0,0);
 
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
 	char* p_bloques = string_new();
+	p_fcb = string_new();
 
 	FILE* archivo_superbloque;
 	FILE* archivo_bitmap;
@@ -368,12 +369,12 @@ void* serverFileSystem(void* ptr){
     			list_iterator_destroy(iteradorRead);
 
     			nombreArchivo = paqueteRead[0];
-    			int punteroArchivo = atoi(paqueteRead[1]);
+    			int punteroArchivoRead = atoi(paqueteRead[1]);
     			int cantBytesRead = atoi(paqueteRead[2]);
     			int direcFisicaRead = atoi(paqueteRead[3]);
 
     			//FUNCIÓN F_READ
-    			leerArchivo(nombreArchivo, punteroArchivo, cantBytesRead, direcFisicaRead);
+    			leerArchivo(nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
 
     			enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
     			liberar_conexion(cliente_fd);
@@ -394,7 +395,7 @@ void* serverFileSystem(void* ptr){
     			list_iterator_destroy(iteradorWrite);
 
     			nombreArchivo= paqueteWrite[0];
-    			int punteroArchivo = atoi(paqueteWrite[1]);
+    			int punteroArchivoWrite = atoi(paqueteWrite[1]);
     			int cantBytesWrite = atoi(paqueteWrite[2]);
     			int direcFisicaWrite = atoi(paqueteWrite[3]);
 
@@ -405,7 +406,7 @@ void* serverFileSystem(void* ptr){
     			sem_wait(&semFileSystemClientMemoria);
 
     			//FUNCIÓN F_WRITE
-    			escribirArchivo(nombreArchivo, punteroArchivo, cantBytesWrite, direcFisicaWrite);
+    			escribirArchivo(nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
 
     			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
     			liberar_conexion(cliente_fd);
@@ -558,7 +559,7 @@ void* clientMemoria(void* arg) {
     switch (cod_op) {
     	case 11:
     		textoLeidoMemoria = recibir_handshake(cliente_fd);
-    		//sem_post(&semFileSystemClientMemoria);
+    		sem_post(&semFileSystemClientMemoria);
     	break;
         case 12:  //RECIBO UN OK
             char* respuesta = recibir_handshake(cliente_fd);
@@ -606,18 +607,18 @@ void abrir_archivo(char* nombreArchivo){
 }
 
 void truncar_archivo(char* nombreArchivo, int tamanio){
-	t_list_iterator* iterador = list_iterator_create(listaFCB);
 
-	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(p_fcb, nombreArchivo);
-	string_append(p_fcb, ".config");
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(&p_fcb, nombreArchivo);
+	string_append(&p_fcb, ".config");
 
 	configFCB = config_create(p_fcb);
 
 	int tamanioArchivo = atoi(config_get_string_value(configFCB, "TAMANIO_ARCHIVO"));
 	int punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
 	int punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
-	config_set_value(configFCB, "TAMANIO_ARCHIVO", tamanio);
+	char tam = tamanio+'0';
+	config_set_value(configFCB, "TAMANIO_ARCHIVO", &tam);
 
 
 	if (configFCB != NULL) {
@@ -678,13 +679,15 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 
 					if(cantidadBloquesActual == 0){
 						punteroDirecto = bloqueNuevo;
-						config_set_value(configFCB, "PUNTERO_DIRECTO", punteroDirecto);
+						char pd = punteroDirecto+'0';
+						config_set_value(configFCB, "PUNTERO_DIRECTO", &pd);
 						i++;
 					}
 
 					if (punteroIndirecto == NULL && cantidadBloquesNecesarios > 1){
 						punteroIndirecto = bloqueNuevo;
-						config_set_value(configFCB, "PUNTERO_INDIRECTO", punteroIndirecto);
+						char pi = punteroIndirecto+'0';
+						config_set_value(configFCB, "PUNTERO_INDIRECTO", &pi);
 						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
 						}
@@ -692,7 +695,8 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 					}
 
 					if (diferencia > i){
-						(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
+						//(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
+						memcpy(cantidadBloquesActual, bloqueNuevo, sizeof(uint32_t));
 						i++;
 					}
 				}
@@ -708,16 +712,17 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 //	dirección física recibida por parámetro y esperar su finalización para poder confirmar el éxito de
 //	la operación al Kernel. MOVE_OUT
 
-	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(p_fcb, nombreArchivo);
-	string_append(p_fcb, ".config");
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(&p_fcb, nombreArchivo);
+	string_append(&p_fcb, ".config");
 
 	configFCB = config_create(p_fcb);
 
 	if (configFCB != NULL) {
 		uint32_t bloqueALeer = floor(punteroArchivo / block_size);
 		uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
-		char porcionLeida[cantBytesRead] = "";
+		char porcionLeida[cantBytesRead];
+		int	tamanioMenorLeer ;
 
 		if (bloqueALeer == 0){
 			int bytesALeer = cantBytesRead;
@@ -733,10 +738,11 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 
 			while (bytesALeer != 0){
 				int bloque = 1;
-				int	tamanio = min(bytesALeer, block_size);
+				tamanioMenorLeer = minimo(bytesALeer, block_size);
+
 				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloque*4);
 
-				for (int x = 0; x < tamanio; x++){
+				for (int x = 0; x < tamanioMenorLeer ; x++){
 					char bloqueLectura = (char)mapping2 + block + (x*4);
 					porcionLeida[indice] = bloqueLectura;
 					indice++;
@@ -760,9 +766,9 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 
 			while (bytesALeer != 0){
 
-				int	tamanio = min(bytesALeer, block_size);
+				tamanioMenorLeer = minimo(bytesALeer, block_size);
 
-				for (int x = 0; x < tamanio; x++){
+				for (int x = 0; x < tamanioMenorLeer ; x++){
 					char bloqueLectura = (char)mapping2 + block + (x*4);
 					porcionLeida[indice] = bloqueLectura;
 					indice++;
@@ -782,9 +788,9 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 //	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
 //	por parámetro desde el Kernel. MOVE_IN
 
-	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(p_fcb, nombreArchivo);
-	string_append(p_fcb, ".config");
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(&p_fcb, nombreArchivo);
+	string_append(&p_fcb, ".config");
 
 	configFCB = config_create(p_fcb);
 
@@ -795,58 +801,63 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 		uint32_t bloqueAEscribir = floor(punteroArchivo / block_size);
 		uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
 
+		int	tamanioMenorEscribir;
 
 		if (bloqueAEscribir == 0){
 			int bytesAEscribir = cantBytesWrite;
 			uint32_t punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
 
-			int	tamanio = min(bytesAEscribir, block_size-punteroArchivo);
+			tamanioMenorEscribir = minimo(bytesAEscribir, (block_size-punteroArchivo));
 
 			char* porcionAEscribir = string_new();
-			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanio);
+			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
-			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
+//			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
+			memcpy(punteroDirecto, porcionAEscribir, sizeof(porcionAEscribir));
 
-			bytesAEscribir -= tamanio;
-			int ultimoIndiceEscrito = tamanio;
+			bytesAEscribir -= tamanioMenorEscribir;
+			int ultimoIndiceEscrito = tamanioMenorEscribir;
 
 			while (bytesAEscribir != 0){
 				int bloque = 1;
-				int tamanio2 = min(bytesAEscribir, block_size);
+				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloque*4);
 
-				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanio2);
+				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
-				(char*)mapping2 + block = porcionAEscribir;
+//				(char*)mapping2 + block = porcionAEscribir;
+				memcpy(block, porcionAEscribir, sizeof(porcionAEscribir));
 
-				ultimoIndiceEscrito += tamanio2;
-				bytesAEscribir -= tamanio2;
+				ultimoIndiceEscrito += tamanioMenorEscribir2;
+				bytesAEscribir -= tamanioMenorEscribir2;
 				bloque++;
 			}
 		}else {
 			int bytesAEscribir = cantBytesWrite;
 			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloqueAEscribir*4);
 
-			int	tamanio = min(bytesAEscribir, block_size-punteroArchivo);
+			tamanioMenorEscribir = minimo(bytesAEscribir, block_size-punteroArchivo);
 
 			char* porcionAEscribir = string_new();
-			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanio);
+			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
-			(char*)mapping2 + block + (punteroArchivo*4) = porcionAEscribir;
+//			(char*)mapping2 + block + (punteroArchivo*4) = porcionAEscribir;
+			memcpy(block, porcionAEscribir, sizeof(porcionAEscribir));
 
 			bloqueAEscribir++;
-			bytesAEscribir -= tamanio;
-			int ultimoIndiceEscrito = tamanio;
+			bytesAEscribir -= tamanioMenorEscribir;
+			int ultimoIndiceEscrito = tamanioMenorEscribir;
 
 			while (bytesAEscribir != 0){
-				int tamanio2 = min(bytesAEscribir, block_size);
+				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 
-				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanio2);
+				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
-				(char*)mapping2 + block = porcionAEscribir;
+//				(char*)mapping2 + block = porcionAEscribir;
+				memcpy(block, porcionAEscribir, sizeof(porcionAEscribir));
 
-				ultimoIndiceEscrito += tamanio2;
-				bytesAEscribir -= tamanio2;
+				ultimoIndiceEscrito += tamanioMenorEscribir2;
+				bytesAEscribir -= tamanioMenorEscribir2;
 				bloqueAEscribir++;
 			}
 		}
@@ -904,4 +915,18 @@ void paquete(int conexion)
 
 }
 
+char* recibir_handshake(int socket_cliente)  //MENSAJE
+{
+	int size;
+	char* buffer = recibir_buffer(&size, socket_cliente);
+	//log_info(logger, "Me llego el mensaje %s", buffer);
+	return buffer;
+}
 
+int minimo(int a, int b){
+	if (a < b) {
+		return a;
+	}else {
+		return b;
+	}
+}
