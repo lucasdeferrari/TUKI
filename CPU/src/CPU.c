@@ -725,9 +725,12 @@ int ejecutarFuncion(char* proximaInstruccion){
 
     	int mov_in_param2 = atoi(arrayInstruccion[2]);
 
-    	mov_in_tp(mov_in_param1,mov_in_param2);
+    	int direcFisica= mov_in_tp(mov_in_param1,mov_in_param2);
     	free(mov_in_param1);
-    	continuarLeyendo = 1;
+
+    	if(direcFisica>0){
+    		continuarLeyendo = 1;
+    	}
 
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: MOV_IN\n", contexto->pid);
@@ -907,11 +910,14 @@ int mov_in_tp(char* registro, int direccionLogica){
 	int cantBytes = tamanioRegistro(registro); //TAMAÑO
 	int direcFisica = MMU(direccionLogica,cantBytes);
 
-	iniciarHiloClienteMemoria(11,registro,direcFisica);
+	if(direcFisica == -1){
+		contexto->instruccion = string_duplicate("SEG_FAULT");
+	}else{
+		iniciarHiloClienteMemoria(11,registro,direcFisica);
+		sem_wait(&semCPUClientMemoria);
+		contexto->instruccion = string_duplicate("MOV_IN");
+	}
 
-
-
-	contexto->instruccion = string_duplicate("MOV_IN");
     return direcFisica;
 }
 
