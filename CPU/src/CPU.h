@@ -16,7 +16,6 @@
 
 char* ip_memoria;
 char* puerto_memoria;
-sem_t semCPUServer;
 sem_t semCPUClientMemoria;
 t_contextoEjecucion* contexto;
 int server_fd;
@@ -25,9 +24,11 @@ int tam_max_segmento;
 
 void *serverCPU(void *ptr);
 void* clientMemoria(void *arg);
+//void* clientMemoria(void *);
+void encolarReady();
+//void iniciarHiloClienteMemoria();
 void iniciarHiloClienteMemoria(int,char*,int);
-//void* clientMemoria(t_infoClienteMemoria*);
-//void iniciarHiloClienteMemoria(t_infoClienteMemoria*);
+
 void iniciarHiloServer();
 pthread_t serverCPU_thread, client_Memoria, client_Kernel;
 void iniciarHiloClienteKernel();
@@ -46,8 +47,8 @@ int tamanioRegistro(char* );
 char* contenidoRegistro(char* );
 
 int MMU(int ,int);
-void mov_in_tp(char* , int );
-void mov_out_tp(int, char*);
+int mov_in_tp(char* , int );
+int mov_out_tp(int, char*);
 void createSeg_tp(int , int);
 void deleteSeg_tp(int);
 void fopen_tp(char*);

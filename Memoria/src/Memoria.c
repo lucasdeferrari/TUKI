@@ -87,7 +87,11 @@ int main(void) {
 				 exit(-1);
 			 }
 
-	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
+//	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
+//				iniciarHiloServer();
+//				pthread_join(serverMemoria_thread, NULL);
+//			}
+	while(!( seConectoCPU && seConectoKernel)){
 				iniciarHiloServer();
 				pthread_join(serverMemoria_thread, NULL);
 			}

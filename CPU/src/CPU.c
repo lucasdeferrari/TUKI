@@ -5,7 +5,6 @@ int cliente_fd;
 
 int main(void) {
 
-	sem_init(&semCPUServer,0,1);
 	sem_init(&semCPUClientMemoria,0,0);
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
@@ -56,6 +55,7 @@ int main(void) {
 void iniciarHiloClienteMemoria(int cod_memoria, char* registro, int direcFisica) {
 	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
 	args->cod_memoria = cod_memoria;
+	args->registro = malloc(strlen(registro)+1);
 	strcpy(args->registro,registro);
 	args->direccionFisica = direcFisica;
 
@@ -71,21 +71,21 @@ void iniciarHiloClienteMemoria(int cod_memoria, char* registro, int direcFisica)
 }
 
 void* clientMemoria(void *arg) {
-
 	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
 	int cod_memoria = args->cod_memoria;
 	int direcFisica = args->direccionFisica;
 	char* registro = args->registro;
+
 	int tamanio = tamanioRegistro(registro);
 	char* valorRegistro = contenidoRegistro(registro);
 
-	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
         switch(cod_memoria){
         	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
+        		printf("Dentro de MOV_IN\n");
         		char* pidMI = string_new();
         		char* CPUMI = string_new();
         		char* direcFisicaMI = string_new();
@@ -112,12 +112,12 @@ void* clientMemoria(void *arg) {
             	eliminar_paquete(paquete);
             break;
         	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
-           		char* pidMO = string_new();
+        		printf("Dentro de MOV_OUT\n");
+        		char* pidMO = string_new();
 				char* CPUMO = string_new();
 				char* valorRegistroMO = string_new();
 				char* tamanioMO = string_new();
 				char* direcFisicaMO = string_new();
-
 
 				string_append_with_format(&pidMO, "%d", contexto->pid);
 				string_append_with_format(&CPUMO, "%s", "CPU");
@@ -125,24 +125,22 @@ void* clientMemoria(void *arg) {
 				string_append_with_format(&tamanioMO, "%d", tamanio);
 				string_append_with_format(&direcFisicaMO, "%d", direcFisica);
 
-
 				agregar_a_paquete(paquete, pidMO, strlen(pidMO)+1);
 				agregar_a_paquete(paquete, CPUMO, strlen(CPUMO)+1);
 				agregar_a_paquete(paquete, valorRegistroMO, strlen(valorRegistroMO)+1);
 				agregar_a_paquete(paquete, tamanioMO, strlen(tamanioMO)+1);
 				agregar_a_paquete(paquete, direcFisicaMO, strlen(direcFisicaMO)+1);
 
-
 				enviar_paquete(paquete, conexion_Memoria);
 
-				printf("MOV_IN enviado a MEMORIA.\n");
-				printf("pid enviado a Memoria: %s\n", pidMO);
-				printf("quienSoy enviado a Memoria: %s\n", CPUMO);
-				printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
-				printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
-				printf("tamanio enviado a Memoria: %s\n", tamanioMO);
+				printf("MOV_OUT enviado a MEMORIA.\n");
+				printf("pid: %s\n", pidMO);
+				printf("quienSoy: %s\n", CPUMO);
+				printf("valorRegistro: %s\n", valorRegistroMO);
+				printf("direcFisica: %s\n", direcFisicaMO);
+				printf("tamanio: %s\n", tamanioMO);
 
-                	eliminar_paquete(paquete);
+                eliminar_paquete(paquete);
         	break;
     		default:
     			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
@@ -166,36 +164,38 @@ void* clientMemoria(void *arg) {
         }
 
     liberar_conexion(conexion_Memoria);
-
+    sem_post(&semCPUClientMemoria);
 	return NULL;
 }
 
-char* contenidoRegistro(char* nombreRegistro){
-	char* valorRegistro = NULL;
 
-	if (strcmp(nombreRegistro, "AX") == 0) {
+
+char* contenidoRegistro(char* nombreRegistro){
+	char* valorRegistro = string_new();
+
+	if (strncmp(nombreRegistro, "AX",2) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.AX);
-	} else if (strcmp(nombreRegistro, "BX") == 0) {
+	} else if (strncmp(nombreRegistro, "BX",2) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.BX);
-	} else if (strcmp(nombreRegistro, "CX") == 0) {
+	} else if (strncmp(nombreRegistro, "CX",2) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.CX);
-	} else if (strcmp(nombreRegistro, "DX") == 0) {
+	} else if (strncmp(nombreRegistro, "DX",2) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.DX);
-	} else if (strcmp(nombreRegistro, "EAX") == 0) {
+	} else if (strncmp(nombreRegistro, "EAX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.EAX);
-	} else if (strcmp(nombreRegistro, "EBX") == 0) {
+	} else if (strncmp(nombreRegistro, "EBX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.EBX);
-	} else if (strcmp(nombreRegistro, "ECX") == 0) {
+	} else if (strncmp(nombreRegistro, "ECX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.ECX);
-	} else if (strcmp(nombreRegistro, "EDX") == 0) {
+	} else if (strncmp(nombreRegistro, "EDX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.EDX);
-	} else if (strcmp(nombreRegistro, "RAX") == 0) {
+	} else if (strncmp(nombreRegistro, "RAX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.RAX);
-	} else if (strcmp(nombreRegistro, "RBX") == 0) {
+	} else if (strncmp(nombreRegistro, "RBX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.RBX);
-	} else if (strcmp(nombreRegistro, "RCX") == 0) {
+	} else if (strncmp(nombreRegistro, "RCX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.RCX);
-	} else if (strcmp(nombreRegistro, "RDX") == 0) {
+	} else if (strncmp(nombreRegistro, "RDX",3) == 0) {
 		strcpy(valorRegistro, contexto->registrosCpu.RDX);
 	} else {
 		printf("Registro no válido.\n");
@@ -206,29 +206,29 @@ char* contenidoRegistro(char* nombreRegistro){
 
 int tamanioRegistro(char* registro){
 	int tamanio = -1;
-	if (strcmp(registro, "AX") == 0) {
+	if (strncmp(registro, "AX",2) == 0) {
 		tamanio = 4;
-	} else if (strcmp(registro, "BX") == 0) {
+	} else if (strncmp(registro, "BX",2) == 0) {
 		tamanio = 4;
-	} else if (strcmp(registro, "CX") == 0) {
+	} else if (strncmp(registro, "CX",2) == 0) {
 		tamanio = 4;
-	} else if (strcmp(registro, "DX") == 0) {
+	} else if (strncmp(registro, "DX",2) == 0) {
 		tamanio = 4;
-	} else if (strcmp(registro, "EAX") == 0) {
+	} else if (strncmp(registro, "EAX",3) == 0) {
 		tamanio = 8;
-	} else if (strcmp(registro, "EBX") == 0) {
+	} else if (strncmp(registro, "EBX",3) == 0) {
 		tamanio = 8;
-	} else if (strcmp(registro, "ECX") == 0) {
+	} else if (strncmp(registro, "ECX",3) == 0) {
 		tamanio = 8;
-	} else if (strcmp(registro, "EDX") == 0) {
+	} else if (strncmp(registro, "EDX",3) == 0) {
 		tamanio = 8;
-	} else if (strcmp(registro, "RAX") == 0) {
+	} else if (strncmp(registro, "RAX",3) == 0) {
 		tamanio = 16;
-	} else if (strcmp(registro, "RBX") == 0) {
+	} else if (strncmp(registro, "RBX",3) == 0) {
 		tamanio = 16;
-	} else if (strcmp(registro, "RCX") == 0) {
+	} else if (strncmp(registro, "RCX",3) == 0) {
 		tamanio = 16;
-	} else if (strcmp(registro, "RDX") == 0) {
+	} else if (strncmp(registro, "RDX",3) == 0) {
 		tamanio = 16;
 	} else {
 		printf("Registro no válido.\n");
@@ -274,11 +274,10 @@ void iniciarHiloServer() {
 
 void* serverCPU(void* ptr){
 
-	//sem_wait(&semCPUClientMemoria);
 
     //int server_fd = iniciar_servidor();
 	log_info(logger, "CPU lista para recibir al cliente");
-    cliente_fd = esperar_cliente(server_fd);
+	cliente_fd = esperar_cliente(server_fd);
     int contadorContexto = 0;
     t_list* lista;
     while (1) {
@@ -357,8 +356,6 @@ void* serverCPU(void* ptr){
 				break;
     	}
     }
-
-    sem_post(&semCPUServer);
 
 	return NULL;
 }
@@ -729,9 +726,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int mov_in_param2 = atoi(arrayInstruccion[2]);
 
     	mov_in_tp(mov_in_param1,mov_in_param2);
-
     	free(mov_in_param1);
-
     	continuarLeyendo = 1;
 
     	//log minimo y obligatorio
@@ -743,12 +738,13 @@ int ejecutarFuncion(char* proximaInstruccion){
     	char* mov_out_param2 = string_new();
     	mov_out_param2 = string_duplicate(arrayInstruccion[2]);
 
-    	mov_out_tp(mov_out_param1,mov_out_param2);
+    	int direcFisica = mov_out_tp(mov_out_param1,mov_out_param2);
 
-    	free(mov_out_param1);
     	free(mov_out_param2);
 
-    	continuarLeyendo = 1;
+    	if(direcFisica>0){
+    		continuarLeyendo = 1;
+    	}
 
     	//log minimo y obligatorio
     	//log_info(logger, "PID: %d - Ejecutando: MOV_OUT\n", contexto->pid);
@@ -835,7 +831,6 @@ int ejecutarFuncion(char* proximaInstruccion){
     } else {
         printf("Instruccion no reconocida.\n");
     }
-
 	return continuarLeyendo;
 }
 
@@ -907,39 +902,33 @@ int MMU(int direcLogica, int cantBytes){
 // FUNCIONES INSTRUCCIONES
 
 //MOV_IN (Registro, Dirección Lógica): Lee el valor de memoria correspondiente a la Dirección Lógica y lo almacena en el Registro.
-void mov_in_tp(char* registro, int direccionLogica){
+int mov_in_tp(char* registro, int direccionLogica){
 
 	int cantBytes = tamanioRegistro(registro); //TAMAÑO
 	int direcFisica = MMU(direccionLogica,cantBytes);
 
-	//	int cod_memoria
-	//	int direcFisica
-	//	char* registro
+	iniciarHiloClienteMemoria(11,registro,direcFisica);
 
-
-	printf("FUNCIÓN NO PROBADA - CONEXIÓN NO PROBADA - POSIBLE SEG_FAULT\n");
-	iniciarHiloClienteMemoria(11,direcFisica,registro);
 
 
 	contexto->instruccion = string_duplicate("MOV_IN");
-    return;
+    return direcFisica;
 }
 
 //MOV_OUT (Dirección Lógica, Registro): Lee el valor del Registro y lo escribe en la dirección física de memoria obtenida a partir de la Dirección Lógica.
-void mov_out_tp(int direccionLogica, char* registro){
+int mov_out_tp(int direccionLogica, char* registro){
 
 	int cantBytes = tamanioRegistro(registro); //TAMAÑO
 	int direcFisica = MMU(direccionLogica,cantBytes);
+	if(direcFisica == -1){
+		contexto->instruccion = string_duplicate("SEG_FAULT");
+	}else{
+		iniciarHiloClienteMemoria(12,registro,direcFisica);
+		sem_wait(&semCPUClientMemoria);
+		contexto->instruccion = string_duplicate("MOV_OUT");
+	}
 
-	//	int cod_memoria
-	//	int direcFisica
-	//	char* registro
-
-	printf("FUNCIÓN NO PROBADA - CONEXIÓN NO PROBADA - POSIBLE SEG_FAULT\n");
-	iniciarHiloClienteMemoria(12,direcFisica,registro);
-
-	contexto->instruccion = string_duplicate("MOV_OUT");
-    return;
+    return direcFisica;
 }
 
 
