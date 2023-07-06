@@ -110,6 +110,7 @@ void* clientMemoria(void *arg) {
             	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
 
             	eliminar_paquete(paquete);
+            	liberar_conexion(conexion_Memoria);
             break;
         	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
         		printf("Dentro de MOV_OUT\n");
@@ -141,25 +142,30 @@ void* clientMemoria(void *arg) {
 				printf("tamanio: %s\n", tamanioMO);
 
                 eliminar_paquete(paquete);
+                liberar_conexion(conexion_Memoria);
         	break;
     		default:
     			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
+    			liberar_conexion(conexion_Memoria);
     		break;
         }
-
-
+    printf("RECIBO CONEXION MEMORIA: %d", conexion_Memoria);
     int cod_op = recibir_operacion(conexion_Memoria);
+    printf("RECIBO OPERACION MEMORIA: %d", cod_op);
     switch (cod_op) {
     		case 11:
     			char* valorLeido = recibir_handshake(cliente_fd);
     			set_tp(registro,valorLeido);
+    			liberar_conexion(conexion_Memoria);
     		break;
             case 12:  //RECIBO UN OK
             	char* respuesta = recibir_handshake(cliente_fd);
             	printf("Respuesta MOV_OUT: %s\n",respuesta);
+            	liberar_conexion(conexion_Memoria);
             break;
     		default:
     			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
+    			liberar_conexion(conexion_Memoria);
     		break;
         }
 

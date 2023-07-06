@@ -327,15 +327,19 @@ void* serverMemoria(void* ptr){
     			int direccionFisica = atoi(direccionFisicaStr);
 
     			char* destinoArray [tamanio];
+    			char* stringAEnviar = string_new();
 
-    			for(int i =0; i<= tamanio; i++) {
-    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, 1);
+    			for(int i =0; i< tamanio; i++) {
+    				 destinoArray[i] = (char*)malloc(sizeof(destinoArray[i]));
+    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, sizeof(destinoArray[i]));
+    				string_append(&stringAEnviar,destinoArray[i]);
     			}
-
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
 
     			sleep_ms(retardoMemoria);
-    			enviar_cod_operacion(destinoArray, cliente_fd, MOV_IN);
+
+    			printf("destino array:%s ", stringAEnviar );
+    			enviar_cod_operacion(stringAEnviar, cliente_fd, MOV_IN);
     			estaConectadoFS = 0;
     		}
 
@@ -362,9 +366,10 @@ void* serverMemoria(void* ptr){
 				 int direccionFisicaRecibida = atoi(paqueteDireccion[4]);
 
 				 for(int i =0; i<= tamanio; i++) {
-					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  valorRegistro[i], 1);
+					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  &valorRegistro[i], sizeof(valorRegistro[0]));
 				     }
 				sleep_ms(retardoMemoria);
+				printf("ENVIO MOV OUT");
 				enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
 				estaConectadoFS = 0;
     		}

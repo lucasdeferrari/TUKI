@@ -41181,3 +41181,1680 @@ Operacion recibida de MEMORIA desconocida.
 [WARNING] 03:17:57:020 CPU/(51059:51076): 
 Operacion recibida de MEMORIA desconocida.
 
+[INFO] 15:59:50:549 CPU/(112207:112207): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 15:59:50:550 CPU/(112207:112207): CPU lista para escuchar al cliente
+
+[INFO] 15:59:50:550 CPU/(112207:112209): CPU lista para recibir al cliente
+[INFO] 16:00:32:319 CPU/(112207:112209): Se conecto un cliente
+[INFO] 16:00:32:323 CPU/(112207:112209): Instrucciones recibidas de Kernel:
+
+[INFO] 16:00:32:323 CPU/(112207:112209): CREATE_SEGMENT 1 128
+
+[INFO] 16:00:32:323 CPU/(112207:112209): SET AX HOLA
+
+[INFO] 16:00:32:323 CPU/(112207:112209): MOV_OUT 250 AX
+
+[INFO] 16:00:32:323 CPU/(112207:112209): MOV_IN BX 250
+
+[INFO] 16:00:32:323 CPU/(112207:112209): EXIT
+[INFO] 16:00:32:324 CPU/(112207:112209): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:00:32:325 CPU/(112207:112209): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:00:32:328 CPU/(112207:112411): CPU lista para recibir al cliente
+[INFO] 16:00:32:331 CPU/(112207:112411): Se conecto un cliente
+[INFO] 16:00:32:331 CPU/(112207:112411): Instrucciones recibidas de Kernel:
+
+[INFO] 16:00:32:331 CPU/(112207:112411): CREATE_SEGMENT 1 128
+
+[INFO] 16:00:32:331 CPU/(112207:112411): SET AX HOLA
+
+[INFO] 16:00:32:331 CPU/(112207:112411): MOV_OUT 250 AX
+
+[INFO] 16:00:32:331 CPU/(112207:112411): MOV_IN BX 250
+
+[INFO] 16:00:32:331 CPU/(112207:112411): EXIT
+[INFO] 16:00:32:333 CPU/(112207:112411): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:00:33:626 CPU/(112207:112416): 
+Operacion recibida de MEMORIA desconocida.
+
+[INFO] 16:08:03:329 CPU/(112513:112513): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:08:03:331 CPU/(112513:112513): CPU lista para escuchar al cliente
+
+[INFO] 16:08:03:333 CPU/(112513:112515): CPU lista para recibir al cliente
+[INFO] 16:08:08:086 CPU/(112513:112515): Se conecto un cliente
+[INFO] 16:08:08:086 CPU/(112513:112515): Instrucciones recibidas de Kernel:
+
+[INFO] 16:08:08:086 CPU/(112513:112515): CREATE_SEGMENT 1 128
+
+[INFO] 16:08:08:086 CPU/(112513:112515): SET AX HOLA
+
+[INFO] 16:08:08:086 CPU/(112513:112515): MOV_OUT 250 AX
+
+[INFO] 16:08:08:086 CPU/(112513:112515): MOV_IN BX 250
+
+[INFO] 16:08:08:086 CPU/(112513:112515): EXIT
+[INFO] 16:08:08:087 CPU/(112513:112515): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:08:08:087 CPU/(112513:112515): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:08:08:088 CPU/(112513:112525): CPU lista para recibir al cliente
+[INFO] 16:08:08:167 CPU/(112513:112525): Se conecto un cliente
+[INFO] 16:08:08:167 CPU/(112513:112525): Instrucciones recibidas de Kernel:
+
+[INFO] 16:08:08:167 CPU/(112513:112525): CREATE_SEGMENT 1 128
+
+[INFO] 16:08:08:168 CPU/(112513:112525): SET AX HOLA
+
+[INFO] 16:08:08:168 CPU/(112513:112525): MOV_OUT 250 AX
+
+[INFO] 16:08:08:168 CPU/(112513:112525): MOV_IN BX 250
+
+[INFO] 16:08:08:168 CPU/(112513:112525): EXIT
+[INFO] 16:08:08:168 CPU/(112513:112525): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:08:09:552 CPU/(112513:112530): 
+Operacion recibida de MEMORIA desconocida.
+
+[INFO] 16:09:57:316 CPU/(112797:112797): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:09:57:319 CPU/(112797:112797): CPU lista para escuchar al cliente
+
+[INFO] 16:09:57:320 CPU/(112797:112799): CPU lista para recibir al cliente
+[INFO] 16:10:01:423 CPU/(112797:112799): Se conecto un cliente
+[INFO] 16:10:01:423 CPU/(112797:112799): Instrucciones recibidas de Kernel:
+
+[INFO] 16:10:01:423 CPU/(112797:112799): CREATE_SEGMENT 1 128
+
+[INFO] 16:10:01:423 CPU/(112797:112799): SET AX HOLA
+
+[INFO] 16:10:01:424 CPU/(112797:112799): MOV_OUT 250 AX
+
+[INFO] 16:10:01:424 CPU/(112797:112799): MOV_IN BX 250
+
+[INFO] 16:10:01:424 CPU/(112797:112799): EXIT
+[INFO] 16:10:01:424 CPU/(112797:112799): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:10:01:424 CPU/(112797:112799): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:10:01:428 CPU/(112797:112808): CPU lista para recibir al cliente
+[INFO] 16:10:01:505 CPU/(112797:112808): Se conecto un cliente
+[INFO] 16:10:01:505 CPU/(112797:112808): Instrucciones recibidas de Kernel:
+
+[INFO] 16:10:01:505 CPU/(112797:112808): CREATE_SEGMENT 1 128
+
+[INFO] 16:10:01:505 CPU/(112797:112808): SET AX HOLA
+
+[INFO] 16:10:01:505 CPU/(112797:112808): MOV_OUT 250 AX
+
+[INFO] 16:10:01:505 CPU/(112797:112808): MOV_IN BX 250
+
+[INFO] 16:10:01:505 CPU/(112797:112808): EXIT
+[INFO] 16:10:01:506 CPU/(112797:112808): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:10:02:817 CPU/(112797:112814): 
+Operacion recibida de MEMORIA desconocida.
+
+[INFO] 16:11:59:529 CPU/(113052:113052): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:11:59:532 CPU/(113052:113052): CPU lista para escuchar al cliente
+
+[INFO] 16:11:59:532 CPU/(113052:113054): CPU lista para recibir al cliente
+[INFO] 16:12:03:395 CPU/(113052:113054): Se conecto un cliente
+[INFO] 16:12:03:395 CPU/(113052:113054): Instrucciones recibidas de Kernel:
+
+[INFO] 16:12:03:395 CPU/(113052:113054): CREATE_SEGMENT 1 128
+
+[INFO] 16:12:03:395 CPU/(113052:113054): SET AX HOLA
+
+[INFO] 16:12:03:395 CPU/(113052:113054): MOV_OUT 250 AX
+
+[INFO] 16:12:03:395 CPU/(113052:113054): MOV_IN BX 250
+
+[INFO] 16:12:03:395 CPU/(113052:113054): EXIT
+[INFO] 16:12:03:396 CPU/(113052:113054): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:12:03:396 CPU/(113052:113054): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:12:03:397 CPU/(113052:113064): CPU lista para recibir al cliente
+[INFO] 16:12:03:495 CPU/(113052:113064): Se conecto un cliente
+[INFO] 16:12:03:495 CPU/(113052:113064): Instrucciones recibidas de Kernel:
+
+[INFO] 16:12:03:495 CPU/(113052:113064): CREATE_SEGMENT 1 128
+
+[INFO] 16:12:03:495 CPU/(113052:113064): SET AX HOLA
+
+[INFO] 16:12:03:495 CPU/(113052:113064): MOV_OUT 250 AX
+
+[INFO] 16:12:03:495 CPU/(113052:113064): MOV_IN BX 250
+
+[INFO] 16:12:03:495 CPU/(113052:113064): EXIT
+[INFO] 16:12:03:496 CPU/(113052:113064): Tabla de Segmentos recibida de Kernel: 
+
+[INFO] 16:12:57:279 CPU/(113104:113104): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:12:57:281 CPU/(113104:113104): CPU lista para escuchar al cliente
+
+[INFO] 16:12:57:281 CPU/(113104:113106): CPU lista para recibir al cliente
+[INFO] 16:14:52:631 CPU/(113420:113420): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:14:52:632 CPU/(113420:113420): CPU lista para escuchar al cliente
+
+[INFO] 16:14:52:632 CPU/(113420:113422): CPU lista para recibir al cliente
+[INFO] 16:14:59:556 CPU/(113420:113422): Se conecto un cliente
+[INFO] 16:14:59:557 CPU/(113420:113422): Instrucciones recibidas de Kernel:
+
+[INFO] 16:14:59:557 CPU/(113420:113422): CREATE_SEGMENT 1 128
+
+[INFO] 16:14:59:557 CPU/(113420:113422): SET AX HOLA
+
+[INFO] 16:14:59:557 CPU/(113420:113422): MOV_OUT 250 AX
+
+[INFO] 16:14:59:557 CPU/(113420:113422): MOV_IN BX 250
+
+[INFO] 16:14:59:557 CPU/(113420:113422): EXIT
+[INFO] 16:14:59:561 CPU/(113420:113422): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:14:59:561 CPU/(113420:113422): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:14:59:564 CPU/(113420:113432): CPU lista para recibir al cliente
+[INFO] 16:14:59:565 CPU/(113420:113432): Se conecto un cliente
+[INFO] 16:14:59:565 CPU/(113420:113432): Instrucciones recibidas de Kernel:
+
+[INFO] 16:14:59:565 CPU/(113420:113432): CREATE_SEGMENT 1 128
+
+[INFO] 16:14:59:565 CPU/(113420:113432): SET AX HOLA
+
+[INFO] 16:14:59:565 CPU/(113420:113432): MOV_OUT 250 AX
+
+[INFO] 16:14:59:565 CPU/(113420:113432): MOV_IN BX 250
+
+[INFO] 16:14:59:565 CPU/(113420:113432): EXIT
+[INFO] 16:14:59:566 CPU/(113420:113432): Tabla de Segmentos recibida de Kernel: 
+
+[INFO] 16:18:53:154 CPU/(113585:113585): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:18:53:155 CPU/(113585:113585): CPU lista para escuchar al cliente
+
+[INFO] 16:18:53:155 CPU/(113585:113587): CPU lista para recibir al cliente
+[INFO] 16:19:34:176 CPU/(113672:113672): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:19:34:177 CPU/(113672:113672): CPU lista para escuchar al cliente
+
+[INFO] 16:19:34:177 CPU/(113672:113674): CPU lista para recibir al cliente
+[INFO] 16:19:40:954 CPU/(113672:113674): Se conecto un cliente
+[INFO] 16:19:40:954 CPU/(113672:113674): Instrucciones recibidas de Kernel:
+
+[INFO] 16:19:40:954 CPU/(113672:113674): CREATE_SEGMENT 1 128
+
+[INFO] 16:19:40:954 CPU/(113672:113674): SET AX HOLA
+
+[INFO] 16:19:40:954 CPU/(113672:113674): MOV_OUT 250 AX
+
+[INFO] 16:19:40:954 CPU/(113672:113674): MOV_IN BX 250
+
+[INFO] 16:19:40:954 CPU/(113672:113674): EXIT
+[INFO] 16:19:40:955 CPU/(113672:113674): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:19:40:955 CPU/(113672:113674): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:19:40:956 CPU/(113672:113713): CPU lista para recibir al cliente
+[INFO] 16:19:40:958 CPU/(113672:113713): Se conecto un cliente
+[INFO] 16:19:40:958 CPU/(113672:113713): Instrucciones recibidas de Kernel:
+
+[INFO] 16:19:40:958 CPU/(113672:113713): CREATE_SEGMENT 1 128
+
+[INFO] 16:19:40:959 CPU/(113672:113713): SET AX HOLA
+
+[INFO] 16:19:40:959 CPU/(113672:113713): MOV_OUT 250 AX
+
+[INFO] 16:19:40:959 CPU/(113672:113713): MOV_IN BX 250
+
+[INFO] 16:19:40:959 CPU/(113672:113713): EXIT
+[INFO] 16:19:40:959 CPU/(113672:113713): Tabla de Segmentos recibida de Kernel: 
+
+[INFO] 16:21:54:738 CPU/(113889:113889): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:21:54:739 CPU/(113889:113889): CPU lista para escuchar al cliente
+
+[INFO] 16:21:54:739 CPU/(113889:113891): CPU lista para recibir al cliente
+[INFO] 16:22:20:673 CPU/(114027:114027): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:22:20:673 CPU/(114027:114027): CPU lista para escuchar al cliente
+
+[INFO] 16:22:20:674 CPU/(114027:114029): CPU lista para recibir al cliente
+[INFO] 16:23:01:976 CPU/(114250:114250): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:23:01:977 CPU/(114250:114250): CPU lista para escuchar al cliente
+
+[INFO] 16:23:01:977 CPU/(114250:114252): CPU lista para recibir al cliente
+[INFO] 16:23:07:635 CPU/(114250:114252): Se conecto un cliente
+[INFO] 16:23:07:636 CPU/(114250:114252): Instrucciones recibidas de Kernel:
+
+[INFO] 16:23:07:636 CPU/(114250:114252): CREATE_SEGMENT 1 128
+
+[INFO] 16:23:07:636 CPU/(114250:114252): SET AX HOLA
+
+[INFO] 16:23:07:636 CPU/(114250:114252): MOV_OUT 250 AX
+
+[INFO] 16:23:07:636 CPU/(114250:114252): MOV_IN BX 250
+
+[INFO] 16:23:07:636 CPU/(114250:114252): EXIT
+[INFO] 16:23:07:636 CPU/(114250:114252): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:23:07:637 CPU/(114250:114252): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:23:07:638 CPU/(114250:114262): CPU lista para recibir al cliente
+[INFO] 16:23:07:640 CPU/(114250:114262): Se conecto un cliente
+[INFO] 16:23:07:640 CPU/(114250:114262): Instrucciones recibidas de Kernel:
+
+[INFO] 16:23:07:640 CPU/(114250:114262): CREATE_SEGMENT 1 128
+
+[INFO] 16:23:07:640 CPU/(114250:114262): SET AX HOLA
+
+[INFO] 16:23:07:640 CPU/(114250:114262): MOV_OUT 250 AX
+
+[INFO] 16:23:07:640 CPU/(114250:114262): MOV_IN BX 250
+
+[INFO] 16:23:07:640 CPU/(114250:114262): EXIT
+[INFO] 16:23:07:642 CPU/(114250:114262): Tabla de Segmentos recibida de Kernel: 
+
+[INFO] 16:25:48:779 CPU/(114459:114459): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:25:48:781 CPU/(114459:114459): CPU lista para escuchar al cliente
+
+[INFO] 16:25:48:781 CPU/(114459:114461): CPU lista para recibir al cliente
+[INFO] 16:26:23:441 CPU/(114595:114595): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:26:23:441 CPU/(114595:114595): CPU lista para escuchar al cliente
+
+[INFO] 16:26:23:441 CPU/(114595:114597): CPU lista para recibir al cliente
+[INFO] 16:26:58:385 CPU/(114760:114760): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:26:58:386 CPU/(114760:114760): CPU lista para escuchar al cliente
+
+[INFO] 16:26:58:386 CPU/(114760:114762): CPU lista para recibir al cliente
+[INFO] 16:27:03:107 CPU/(114760:114762): Se conecto un cliente
+[INFO] 16:27:03:107 CPU/(114760:114762): Instrucciones recibidas de Kernel:
+
+[INFO] 16:27:03:107 CPU/(114760:114762): CREATE_SEGMENT 1 128
+
+[INFO] 16:27:03:107 CPU/(114760:114762): SET AX HOLA
+
+[INFO] 16:27:03:107 CPU/(114760:114762): MOV_OUT 250 AX
+
+[INFO] 16:27:03:107 CPU/(114760:114762): MOV_IN BX 250
+
+[INFO] 16:27:03:107 CPU/(114760:114762): EXIT
+[INFO] 16:27:03:108 CPU/(114760:114762): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:27:03:108 CPU/(114760:114762): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:27:03:109 CPU/(114760:114772): CPU lista para recibir al cliente
+[INFO] 16:27:03:111 CPU/(114760:114772): Se conecto un cliente
+[INFO] 16:27:03:112 CPU/(114760:114772): Instrucciones recibidas de Kernel:
+
+[INFO] 16:27:03:112 CPU/(114760:114772): CREATE_SEGMENT 1 128
+
+[INFO] 16:27:03:112 CPU/(114760:114772): SET AX HOLA
+
+[INFO] 16:27:03:112 CPU/(114760:114772): MOV_OUT 250 AX
+
+[INFO] 16:27:03:112 CPU/(114760:114772): MOV_IN BX 250
+
+[INFO] 16:27:03:112 CPU/(114760:114772): EXIT
+[INFO] 16:27:03:112 CPU/(114760:114772): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:27:04:114 CPU/(114760:114777): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:27:05:402 CPU/(114760:114778): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:27:05:403 CPU/(114760:114772): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:27:05:404 CPU/(114760:114782): CPU lista para recibir al cliente
+[INFO] 16:31:40:278 CPU/(114838:114838): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:31:40:283 CPU/(114838:114838): CPU lista para escuchar al cliente
+
+[INFO] 16:31:40:286 CPU/(114838:114840): CPU lista para recibir al cliente
+[INFO] 16:31:45:239 CPU/(114838:114840): Se conecto un cliente
+[INFO] 16:31:45:241 CPU/(114838:114840): Instrucciones recibidas de Kernel:
+
+[INFO] 16:31:45:241 CPU/(114838:114840): CREATE_SEGMENT 1 128
+
+[INFO] 16:31:45:241 CPU/(114838:114840): SET AX HOLA
+
+[INFO] 16:31:45:241 CPU/(114838:114840): MOV_OUT 250 AX
+
+[INFO] 16:31:45:241 CPU/(114838:114840): MOV_IN BX 250
+
+[INFO] 16:31:45:241 CPU/(114838:114840): EXIT
+[INFO] 16:31:45:244 CPU/(114838:114840): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:31:45:244 CPU/(114838:114840): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:31:45:246 CPU/(114838:114853): CPU lista para recibir al cliente
+[INFO] 16:31:45:313 CPU/(114838:114853): Se conecto un cliente
+[INFO] 16:31:45:313 CPU/(114838:114853): Instrucciones recibidas de Kernel:
+
+[INFO] 16:31:45:314 CPU/(114838:114853): CREATE_SEGMENT 1 128
+
+[INFO] 16:31:45:314 CPU/(114838:114853): SET AX HOLA
+
+[INFO] 16:31:45:314 CPU/(114838:114853): MOV_OUT 250 AX
+
+[INFO] 16:31:45:314 CPU/(114838:114853): MOV_IN BX 250
+
+[INFO] 16:31:45:314 CPU/(114838:114853): EXIT
+[INFO] 16:31:45:314 CPU/(114838:114853): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:31:46:326 CPU/(114838:114858): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:31:47:539 CPU/(114838:114859): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:31:47:539 CPU/(114838:114853): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:31:47:540 CPU/(114838:114864): CPU lista para recibir al cliente
+[INFO] 16:35:51:533 CPU/(115312:115312): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:35:51:536 CPU/(115312:115312): CPU lista para escuchar al cliente
+
+[INFO] 16:35:51:541 CPU/(115312:115314): CPU lista para recibir al cliente
+[INFO] 16:35:55:548 CPU/(115312:115314): Se conecto un cliente
+[INFO] 16:35:55:550 CPU/(115312:115314): Instrucciones recibidas de Kernel:
+
+[INFO] 16:35:55:550 CPU/(115312:115314): CREATE_SEGMENT 1 128
+
+[INFO] 16:35:55:550 CPU/(115312:115314): SET AX HOLA
+
+[INFO] 16:35:55:550 CPU/(115312:115314): MOV_OUT 250 AX
+
+[INFO] 16:35:55:550 CPU/(115312:115314): MOV_IN BX 250
+
+[INFO] 16:35:55:550 CPU/(115312:115314): EXIT
+[INFO] 16:35:55:551 CPU/(115312:115314): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:35:55:552 CPU/(115312:115314): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:35:55:553 CPU/(115312:115324): CPU lista para recibir al cliente
+[INFO] 16:35:55:650 CPU/(115312:115324): Se conecto un cliente
+[INFO] 16:35:55:653 CPU/(115312:115324): Instrucciones recibidas de Kernel:
+
+[INFO] 16:35:55:653 CPU/(115312:115324): CREATE_SEGMENT 1 128
+
+[INFO] 16:35:55:653 CPU/(115312:115324): SET AX HOLA
+
+[INFO] 16:35:55:653 CPU/(115312:115324): MOV_OUT 250 AX
+
+[INFO] 16:35:55:653 CPU/(115312:115324): MOV_IN BX 250
+
+[INFO] 16:35:55:653 CPU/(115312:115324): EXIT
+[INFO] 16:35:55:654 CPU/(115312:115324): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:35:56:660 CPU/(115312:115329): 
+Operacion recibida de MEMORIA desconocida.
+
+[INFO] 16:38:18:203 CPU/(115687:115687): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:38:18:204 CPU/(115687:115687): CPU lista para escuchar al cliente
+
+[INFO] 16:38:18:205 CPU/(115687:115689): CPU lista para recibir al cliente
+[INFO] 16:39:03:027 CPU/(115881:115881): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:39:03:027 CPU/(115881:115881): CPU lista para escuchar al cliente
+
+[INFO] 16:39:03:027 CPU/(115881:115883): CPU lista para recibir al cliente
+[INFO] 16:39:08:284 CPU/(115881:115883): Se conecto un cliente
+[INFO] 16:39:08:285 CPU/(115881:115883): Instrucciones recibidas de Kernel:
+
+[INFO] 16:39:08:285 CPU/(115881:115883): CREATE_SEGMENT 1 128
+
+[INFO] 16:39:08:285 CPU/(115881:115883): SET AX HOLA
+
+[INFO] 16:39:08:285 CPU/(115881:115883): MOV_OUT 250 AX
+
+[INFO] 16:39:08:285 CPU/(115881:115883): MOV_IN BX 250
+
+[INFO] 16:39:08:285 CPU/(115881:115883): EXIT
+[INFO] 16:39:08:285 CPU/(115881:115883): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:39:08:286 CPU/(115881:115883): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:39:08:287 CPU/(115881:115893): CPU lista para recibir al cliente
+[INFO] 16:39:08:288 CPU/(115881:115893): Se conecto un cliente
+[INFO] 16:39:08:289 CPU/(115881:115893): Instrucciones recibidas de Kernel:
+
+[INFO] 16:39:08:289 CPU/(115881:115893): CREATE_SEGMENT 1 128
+
+[INFO] 16:39:08:289 CPU/(115881:115893): SET AX HOLA
+
+[INFO] 16:39:08:289 CPU/(115881:115893): MOV_OUT 250 AX
+
+[INFO] 16:39:08:289 CPU/(115881:115893): MOV_IN BX 250
+
+[INFO] 16:39:08:289 CPU/(115881:115893): EXIT
+[INFO] 16:39:08:289 CPU/(115881:115893): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:39:09:290 CPU/(115881:115898): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:39:09:291 CPU/(115881:115899): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:39:09:291 CPU/(115881:115893): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:39:09:291 CPU/(115881:115901): CPU lista para recibir al cliente
+[INFO] 16:46:03:716 CPU/(116320:116320): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:46:03:717 CPU/(116320:116320): CPU lista para escuchar al cliente
+
+[INFO] 16:46:03:717 CPU/(116320:116322): CPU lista para recibir al cliente
+[INFO] 16:46:09:834 CPU/(116320:116322): Se conecto un cliente
+[INFO] 16:46:09:835 CPU/(116320:116322): Instrucciones recibidas de Kernel:
+
+[INFO] 16:46:09:835 CPU/(116320:116322): CREATE_SEGMENT 1 128
+
+[INFO] 16:46:09:835 CPU/(116320:116322): SET AX HOLA
+
+[INFO] 16:46:09:835 CPU/(116320:116322): MOV_OUT 250 AX
+
+[INFO] 16:46:09:835 CPU/(116320:116322): MOV_IN BX 250
+
+[INFO] 16:46:09:835 CPU/(116320:116322): EXIT
+[INFO] 16:46:09:835 CPU/(116320:116322): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:46:09:835 CPU/(116320:116322): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:46:09:837 CPU/(116320:116332): CPU lista para recibir al cliente
+[INFO] 16:46:09:838 CPU/(116320:116332): Se conecto un cliente
+[INFO] 16:46:09:839 CPU/(116320:116332): Instrucciones recibidas de Kernel:
+
+[INFO] 16:46:09:839 CPU/(116320:116332): CREATE_SEGMENT 1 128
+
+[INFO] 16:46:09:839 CPU/(116320:116332): SET AX HOLA
+
+[INFO] 16:46:09:839 CPU/(116320:116332): MOV_OUT 250 AX
+
+[INFO] 16:46:09:839 CPU/(116320:116332): MOV_IN BX 250
+
+[INFO] 16:46:09:839 CPU/(116320:116332): EXIT
+[INFO] 16:46:09:839 CPU/(116320:116332): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:46:10:840 CPU/(116320:116337): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:46:10:841 CPU/(116320:116338): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:46:10:841 CPU/(116320:116332): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:46:10:841 CPU/(116320:116340): CPU lista para recibir al cliente
+[INFO] 16:50:15:860 CPU/(117108:117108): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:50:15:861 CPU/(117108:117108): CPU lista para escuchar al cliente
+
+[INFO] 16:50:15:861 CPU/(117108:117110): CPU lista para recibir al cliente
+[INFO] 16:50:20:936 CPU/(117108:117110): Se conecto un cliente
+[INFO] 16:50:20:936 CPU/(117108:117110): Instrucciones recibidas de Kernel:
+
+[INFO] 16:50:20:936 CPU/(117108:117110): CREATE_SEGMENT 1 128
+
+[INFO] 16:50:20:936 CPU/(117108:117110): SET AX HOLA
+
+[INFO] 16:50:20:936 CPU/(117108:117110): MOV_OUT 250 AX
+
+[INFO] 16:50:20:937 CPU/(117108:117110): MOV_IN BX 250
+
+[INFO] 16:50:20:937 CPU/(117108:117110): EXIT
+[INFO] 16:50:20:937 CPU/(117108:117110): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:50:20:937 CPU/(117108:117110): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:50:20:938 CPU/(117108:117120): CPU lista para recibir al cliente
+[INFO] 16:50:20:940 CPU/(117108:117120): Se conecto un cliente
+[INFO] 16:50:20:940 CPU/(117108:117120): Instrucciones recibidas de Kernel:
+
+[INFO] 16:50:20:940 CPU/(117108:117120): CREATE_SEGMENT 1 128
+
+[INFO] 16:50:20:940 CPU/(117108:117120): SET AX HOLA
+
+[INFO] 16:50:20:940 CPU/(117108:117120): MOV_OUT 250 AX
+
+[INFO] 16:50:20:940 CPU/(117108:117120): MOV_IN BX 250
+
+[INFO] 16:50:20:940 CPU/(117108:117120): EXIT
+[INFO] 16:50:20:941 CPU/(117108:117120): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:50:21:942 CPU/(117108:117125): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:50:21:943 CPU/(117108:117126): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:50:21:943 CPU/(117108:117120): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:50:21:944 CPU/(117108:117128): CPU lista para recibir al cliente
+[INFO] 16:51:16:157 CPU/(117297:117297): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:51:16:158 CPU/(117297:117297): CPU lista para escuchar al cliente
+
+[INFO] 16:51:16:158 CPU/(117297:117299): CPU lista para recibir al cliente
+[INFO] 16:51:21:849 CPU/(117297:117299): Se conecto un cliente
+[INFO] 16:51:21:850 CPU/(117297:117299): Instrucciones recibidas de Kernel:
+
+[INFO] 16:51:21:850 CPU/(117297:117299): CREATE_SEGMENT 1 128
+
+[INFO] 16:51:21:850 CPU/(117297:117299): SET AX HOLA
+
+[INFO] 16:51:21:850 CPU/(117297:117299): MOV_OUT 250 AX
+
+[INFO] 16:51:21:850 CPU/(117297:117299): MOV_IN BX 250
+
+[INFO] 16:51:21:850 CPU/(117297:117299): EXIT
+[INFO] 16:51:21:850 CPU/(117297:117299): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:51:21:851 CPU/(117297:117299): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:51:21:852 CPU/(117297:117309): CPU lista para recibir al cliente
+[INFO] 16:51:21:853 CPU/(117297:117309): Se conecto un cliente
+[INFO] 16:51:21:854 CPU/(117297:117309): Instrucciones recibidas de Kernel:
+
+[INFO] 16:51:21:854 CPU/(117297:117309): CREATE_SEGMENT 1 128
+
+[INFO] 16:51:21:854 CPU/(117297:117309): SET AX HOLA
+
+[INFO] 16:51:21:854 CPU/(117297:117309): MOV_OUT 250 AX
+
+[INFO] 16:51:21:854 CPU/(117297:117309): MOV_IN BX 250
+
+[INFO] 16:51:21:854 CPU/(117297:117309): EXIT
+[INFO] 16:51:21:854 CPU/(117297:117309): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:51:22:855 CPU/(117297:117314): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:51:22:856 CPU/(117297:117315): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:51:22:857 CPU/(117297:117309): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:51:22:857 CPU/(117297:117317): CPU lista para recibir al cliente
+[INFO] 16:51:47:758 CPU/(117469:117469): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:51:47:759 CPU/(117469:117469): CPU lista para escuchar al cliente
+
+[INFO] 16:51:47:759 CPU/(117469:117471): CPU lista para recibir al cliente
+[INFO] 16:51:51:303 CPU/(117469:117471): Se conecto un cliente
+[INFO] 16:51:51:303 CPU/(117469:117471): Instrucciones recibidas de Kernel:
+
+[INFO] 16:51:51:303 CPU/(117469:117471): CREATE_SEGMENT 1 128
+
+[INFO] 16:51:51:303 CPU/(117469:117471): SET AX HOLA
+
+[INFO] 16:51:51:303 CPU/(117469:117471): MOV_OUT 250 AX
+
+[INFO] 16:51:51:303 CPU/(117469:117471): MOV_IN BX 250
+
+[INFO] 16:51:51:303 CPU/(117469:117471): EXIT
+[INFO] 16:51:51:303 CPU/(117469:117471): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:51:51:304 CPU/(117469:117471): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:51:51:305 CPU/(117469:117481): CPU lista para recibir al cliente
+[INFO] 16:51:51:307 CPU/(117469:117481): Se conecto un cliente
+[INFO] 16:51:51:308 CPU/(117469:117481): Instrucciones recibidas de Kernel:
+
+[INFO] 16:51:51:308 CPU/(117469:117481): CREATE_SEGMENT 1 128
+
+[INFO] 16:51:51:308 CPU/(117469:117481): SET AX HOLA
+
+[INFO] 16:51:51:308 CPU/(117469:117481): MOV_OUT 250 AX
+
+[INFO] 16:51:51:308 CPU/(117469:117481): MOV_IN BX 250
+
+[INFO] 16:51:51:308 CPU/(117469:117481): EXIT
+[INFO] 16:51:51:309 CPU/(117469:117481): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:51:52:309 CPU/(117469:117486): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:51:52:310 CPU/(117469:117487): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:51:52:311 CPU/(117469:117481): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:51:52:311 CPU/(117469:117489): CPU lista para recibir al cliente
+[INFO] 16:52:56:206 CPU/(117575:117575): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:52:56:209 CPU/(117575:117575): CPU lista para escuchar al cliente
+
+[INFO] 16:52:56:211 CPU/(117575:117577): CPU lista para recibir al cliente
+[INFO] 16:52:59:910 CPU/(117575:117577): Se conecto un cliente
+[INFO] 16:52:59:910 CPU/(117575:117577): Instrucciones recibidas de Kernel:
+
+[INFO] 16:52:59:910 CPU/(117575:117577): CREATE_SEGMENT 1 128
+
+[INFO] 16:52:59:910 CPU/(117575:117577): SET AX HOLA
+
+[INFO] 16:52:59:910 CPU/(117575:117577): MOV_OUT 250 AX
+
+[INFO] 16:52:59:910 CPU/(117575:117577): MOV_IN BX 250
+
+[INFO] 16:52:59:910 CPU/(117575:117577): EXIT
+[INFO] 16:52:59:910 CPU/(117575:117577): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:52:59:911 CPU/(117575:117577): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:52:59:912 CPU/(117575:117587): CPU lista para recibir al cliente
+[INFO] 16:52:59:988 CPU/(117575:117587): Se conecto un cliente
+[INFO] 16:52:59:990 CPU/(117575:117587): Instrucciones recibidas de Kernel:
+
+[INFO] 16:52:59:990 CPU/(117575:117587): CREATE_SEGMENT 1 128
+
+[INFO] 16:52:59:990 CPU/(117575:117587): SET AX HOLA
+
+[INFO] 16:52:59:990 CPU/(117575:117587): MOV_OUT 250 AX
+
+[INFO] 16:52:59:990 CPU/(117575:117587): MOV_IN BX 250
+
+[INFO] 16:52:59:990 CPU/(117575:117587): EXIT
+[INFO] 16:52:59:997 CPU/(117575:117587): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:53:01:010 CPU/(117575:117592): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:53:01:014 CPU/(117575:117593): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:53:01:015 CPU/(117575:117587): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:53:01:017 CPU/(117575:117595): CPU lista para recibir al cliente
+[INFO] 16:59:17:526 CPU/(117982:117982): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 16:59:17:527 CPU/(117982:117982): CPU lista para escuchar al cliente
+
+[INFO] 16:59:17:527 CPU/(117982:117984): CPU lista para recibir al cliente
+[INFO] 16:59:23:411 CPU/(117982:117984): Se conecto un cliente
+[INFO] 16:59:23:411 CPU/(117982:117984): Instrucciones recibidas de Kernel:
+
+[INFO] 16:59:23:411 CPU/(117982:117984): CREATE_SEGMENT 1 128
+
+[INFO] 16:59:23:411 CPU/(117982:117984): SET AX HOLA
+
+[INFO] 16:59:23:411 CPU/(117982:117984): MOV_OUT 250 AX
+
+[INFO] 16:59:23:411 CPU/(117982:117984): MOV_IN BX 250
+
+[INFO] 16:59:23:412 CPU/(117982:117984): EXIT
+[INFO] 16:59:23:412 CPU/(117982:117984): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 16:59:23:412 CPU/(117982:117984): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:59:23:413 CPU/(117982:117994): CPU lista para recibir al cliente
+[INFO] 16:59:23:415 CPU/(117982:117994): Se conecto un cliente
+[INFO] 16:59:23:415 CPU/(117982:117994): Instrucciones recibidas de Kernel:
+
+[INFO] 16:59:23:415 CPU/(117982:117994): CREATE_SEGMENT 1 128
+
+[INFO] 16:59:23:415 CPU/(117982:117994): SET AX HOLA
+
+[INFO] 16:59:23:415 CPU/(117982:117994): MOV_OUT 250 AX
+
+[INFO] 16:59:23:415 CPU/(117982:117994): MOV_IN BX 250
+
+[INFO] 16:59:23:415 CPU/(117982:117994): EXIT
+[INFO] 16:59:23:416 CPU/(117982:117994): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 16:59:24:417 CPU/(117982:117999): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 16:59:24:418 CPU/(117982:118000): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 16:59:24:418 CPU/(117982:117994): el kernel se desconecto. Terminando servidor
+
+[INFO] 16:59:24:418 CPU/(117982:118002): CPU lista para recibir al cliente
+[INFO] 17:00:00:029 CPU/(118049:118049): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:00:00:030 CPU/(118049:118049): CPU lista para escuchar al cliente
+
+[INFO] 17:00:00:033 CPU/(118049:118050): CPU lista para recibir al cliente
+[INFO] 17:00:03:650 CPU/(118049:118050): Se conecto un cliente
+[INFO] 17:00:03:650 CPU/(118049:118050): Instrucciones recibidas de Kernel:
+
+[INFO] 17:00:03:650 CPU/(118049:118050): CREATE_SEGMENT 1 128
+
+[INFO] 17:00:03:650 CPU/(118049:118050): SET AX HOLA
+
+[INFO] 17:00:03:650 CPU/(118049:118050): MOV_OUT 250 AX
+
+[INFO] 17:00:03:650 CPU/(118049:118050): MOV_IN BX 250
+
+[INFO] 17:00:03:650 CPU/(118049:118050): EXIT
+[INFO] 17:00:03:651 CPU/(118049:118050): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:00:03:651 CPU/(118049:118050): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:00:03:651 CPU/(118049:118061): CPU lista para recibir al cliente
+[INFO] 17:00:03:718 CPU/(118049:118061): Se conecto un cliente
+[INFO] 17:00:03:719 CPU/(118049:118061): Instrucciones recibidas de Kernel:
+
+[INFO] 17:00:03:719 CPU/(118049:118061): CREATE_SEGMENT 1 128
+
+[INFO] 17:00:03:719 CPU/(118049:118061): SET AX HOLA
+
+[INFO] 17:00:03:719 CPU/(118049:118061): MOV_OUT 250 AX
+
+[INFO] 17:00:03:719 CPU/(118049:118061): MOV_IN BX 250
+
+[INFO] 17:00:03:719 CPU/(118049:118061): EXIT
+[INFO] 17:00:03:720 CPU/(118049:118061): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:00:04:726 CPU/(118049:118066): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:00:04:726 CPU/(118049:118067): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:00:04:727 CPU/(118049:118061): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:00:04:727 CPU/(118049:118069): CPU lista para recibir al cliente
+[INFO] 17:01:41:014 CPU/(118285:118285): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:01:41:014 CPU/(118285:118285): CPU lista para escuchar al cliente
+
+[INFO] 17:01:41:015 CPU/(118285:118287): CPU lista para recibir al cliente
+[INFO] 17:01:44:545 CPU/(118285:118287): Se conecto un cliente
+[INFO] 17:01:44:545 CPU/(118285:118287): Instrucciones recibidas de Kernel:
+
+[INFO] 17:01:44:545 CPU/(118285:118287): CREATE_SEGMENT 1 128
+
+[INFO] 17:01:44:545 CPU/(118285:118287): SET AX HOLA
+
+[INFO] 17:01:44:545 CPU/(118285:118287): MOV_OUT 250 AX
+
+[INFO] 17:01:44:545 CPU/(118285:118287): MOV_IN BX 250
+
+[INFO] 17:01:44:545 CPU/(118285:118287): EXIT
+[INFO] 17:01:44:546 CPU/(118285:118287): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:01:44:546 CPU/(118285:118287): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:01:44:547 CPU/(118285:118297): CPU lista para recibir al cliente
+[INFO] 17:01:44:549 CPU/(118285:118297): Se conecto un cliente
+[INFO] 17:01:44:549 CPU/(118285:118297): Instrucciones recibidas de Kernel:
+
+[INFO] 17:01:44:549 CPU/(118285:118297): CREATE_SEGMENT 1 128
+
+[INFO] 17:01:44:549 CPU/(118285:118297): SET AX HOLA
+
+[INFO] 17:01:44:549 CPU/(118285:118297): MOV_OUT 250 AX
+
+[INFO] 17:01:44:549 CPU/(118285:118297): MOV_IN BX 250
+
+[INFO] 17:01:44:549 CPU/(118285:118297): EXIT
+[INFO] 17:01:44:550 CPU/(118285:118297): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:01:45:550 CPU/(118285:118302): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:01:45:551 CPU/(118285:118303): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:01:45:551 CPU/(118285:118297): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:01:45:552 CPU/(118285:118305): CPU lista para recibir al cliente
+[INFO] 17:02:24:944 CPU/(118354:118354): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:02:24:946 CPU/(118354:118354): CPU lista para escuchar al cliente
+
+[INFO] 17:02:24:946 CPU/(118354:118356): CPU lista para recibir al cliente
+[INFO] 17:02:28:568 CPU/(118354:118356): Se conecto un cliente
+[INFO] 17:02:28:569 CPU/(118354:118356): Instrucciones recibidas de Kernel:
+
+[INFO] 17:02:28:569 CPU/(118354:118356): CREATE_SEGMENT 1 128
+
+[INFO] 17:02:28:569 CPU/(118354:118356): SET AX HOLA
+
+[INFO] 17:02:28:569 CPU/(118354:118356): MOV_OUT 250 AX
+
+[INFO] 17:02:28:569 CPU/(118354:118356): MOV_IN BX 250
+
+[INFO] 17:02:28:569 CPU/(118354:118356): EXIT
+[INFO] 17:02:28:569 CPU/(118354:118356): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:02:28:570 CPU/(118354:118356): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:02:28:571 CPU/(118354:118366): CPU lista para recibir al cliente
+[INFO] 17:02:28:625 CPU/(118354:118366): Se conecto un cliente
+[INFO] 17:02:28:629 CPU/(118354:118366): Instrucciones recibidas de Kernel:
+
+[INFO] 17:02:28:629 CPU/(118354:118366): CREATE_SEGMENT 1 128
+
+[INFO] 17:02:28:629 CPU/(118354:118366): SET AX HOLA
+
+[INFO] 17:02:28:629 CPU/(118354:118366): MOV_OUT 250 AX
+
+[INFO] 17:02:28:629 CPU/(118354:118366): MOV_IN BX 250
+
+[INFO] 17:02:28:629 CPU/(118354:118366): EXIT
+[INFO] 17:02:28:630 CPU/(118354:118366): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:02:29:637 CPU/(118354:118371): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:02:29:637 CPU/(118354:118372): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:02:29:638 CPU/(118354:118366): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:02:29:638 CPU/(118354:118374): CPU lista para recibir al cliente
+[INFO] 17:04:36:055 CPU/(118804:118804): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:04:36:056 CPU/(118804:118804): CPU lista para escuchar al cliente
+
+[INFO] 17:04:36:058 CPU/(118804:118806): CPU lista para recibir al cliente
+[INFO] 17:04:40:112 CPU/(118804:118806): Se conecto un cliente
+[INFO] 17:04:40:112 CPU/(118804:118806): Instrucciones recibidas de Kernel:
+
+[INFO] 17:04:40:112 CPU/(118804:118806): CREATE_SEGMENT 1 128
+
+[INFO] 17:04:40:112 CPU/(118804:118806): SET AX HOLA
+
+[INFO] 17:04:40:112 CPU/(118804:118806): MOV_OUT 250 AX
+
+[INFO] 17:04:40:112 CPU/(118804:118806): MOV_IN BX 250
+
+[INFO] 17:04:40:112 CPU/(118804:118806): EXIT
+[INFO] 17:04:40:113 CPU/(118804:118806): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:04:40:113 CPU/(118804:118806): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:04:40:115 CPU/(118804:118816): CPU lista para recibir al cliente
+[INFO] 17:04:40:167 CPU/(118804:118816): Se conecto un cliente
+[INFO] 17:04:40:168 CPU/(118804:118816): Instrucciones recibidas de Kernel:
+
+[INFO] 17:04:40:168 CPU/(118804:118816): CREATE_SEGMENT 1 128
+
+[INFO] 17:04:40:168 CPU/(118804:118816): SET AX HOLA
+
+[INFO] 17:04:40:168 CPU/(118804:118816): MOV_OUT 250 AX
+
+[INFO] 17:04:40:168 CPU/(118804:118816): MOV_IN BX 250
+
+[INFO] 17:04:40:168 CPU/(118804:118816): EXIT
+[INFO] 17:04:40:168 CPU/(118804:118816): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:04:41:174 CPU/(118804:118821): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:04:41:175 CPU/(118804:118822): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:04:41:175 CPU/(118804:118816): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:04:41:176 CPU/(118804:118824): CPU lista para recibir al cliente
+[INFO] 17:06:53:702 CPU/(118961:118961): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:06:53:706 CPU/(118961:118961): CPU lista para escuchar al cliente
+
+[INFO] 17:06:53:707 CPU/(118961:118963): CPU lista para recibir al cliente
+[INFO] 17:06:57:464 CPU/(118961:118963): Se conecto un cliente
+[INFO] 17:06:57:465 CPU/(118961:118963): Instrucciones recibidas de Kernel:
+
+[INFO] 17:06:57:465 CPU/(118961:118963): CREATE_SEGMENT 1 128
+
+[INFO] 17:06:57:465 CPU/(118961:118963): SET AX HOLA
+
+[INFO] 17:06:57:465 CPU/(118961:118963): MOV_OUT 250 AX
+
+[INFO] 17:06:57:465 CPU/(118961:118963): MOV_IN BX 250
+
+[INFO] 17:06:57:465 CPU/(118961:118963): EXIT
+[INFO] 17:06:57:466 CPU/(118961:118963): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:06:57:466 CPU/(118961:118963): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:06:57:468 CPU/(118961:118973): CPU lista para recibir al cliente
+[INFO] 17:06:57:497 CPU/(118961:118973): Se conecto un cliente
+[INFO] 17:06:57:498 CPU/(118961:118973): Instrucciones recibidas de Kernel:
+
+[INFO] 17:06:57:498 CPU/(118961:118973): CREATE_SEGMENT 1 128
+
+[INFO] 17:06:57:498 CPU/(118961:118973): SET AX HOLA
+
+[INFO] 17:06:57:498 CPU/(118961:118973): MOV_OUT 250 AX
+
+[INFO] 17:06:57:498 CPU/(118961:118973): MOV_IN BX 250
+
+[INFO] 17:06:57:498 CPU/(118961:118973): EXIT
+[INFO] 17:06:57:499 CPU/(118961:118973): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:06:58:502 CPU/(118961:118978): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:06:58:504 CPU/(118961:118979): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:06:58:505 CPU/(118961:118973): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:06:58:505 CPU/(118961:118981): CPU lista para recibir al cliente
+[INFO] 17:08:09:265 CPU/(119189:119189): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:08:09:266 CPU/(119189:119189): CPU lista para escuchar al cliente
+
+[INFO] 17:08:09:266 CPU/(119189:119191): CPU lista para recibir al cliente
+[INFO] 17:08:16:307 CPU/(119189:119191): Se conecto un cliente
+[INFO] 17:08:16:307 CPU/(119189:119191): Instrucciones recibidas de Kernel:
+
+[INFO] 17:08:16:307 CPU/(119189:119191): CREATE_SEGMENT 1 128
+
+[INFO] 17:08:16:307 CPU/(119189:119191): SET AX HOLA
+
+[INFO] 17:08:16:307 CPU/(119189:119191): MOV_OUT 250 AX
+
+[INFO] 17:08:16:307 CPU/(119189:119191): MOV_IN BX 250
+
+[INFO] 17:08:16:307 CPU/(119189:119191): EXIT
+[INFO] 17:08:16:307 CPU/(119189:119191): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:08:16:308 CPU/(119189:119191): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:08:16:309 CPU/(119189:119205): CPU lista para recibir al cliente
+[INFO] 17:08:16:310 CPU/(119189:119205): Se conecto un cliente
+[INFO] 17:08:16:311 CPU/(119189:119205): Instrucciones recibidas de Kernel:
+
+[INFO] 17:08:16:311 CPU/(119189:119205): CREATE_SEGMENT 1 128
+
+[INFO] 17:08:16:311 CPU/(119189:119205): SET AX HOLA
+
+[INFO] 17:08:16:311 CPU/(119189:119205): MOV_OUT 250 AX
+
+[INFO] 17:08:16:311 CPU/(119189:119205): MOV_IN BX 250
+
+[INFO] 17:08:16:311 CPU/(119189:119205): EXIT
+[INFO] 17:08:16:311 CPU/(119189:119205): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:08:17:312 CPU/(119189:119210): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:08:17:312 CPU/(119189:119211): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:08:17:313 CPU/(119189:119205): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:08:17:313 CPU/(119189:119213): CPU lista para recibir al cliente
+[INFO] 17:08:55:112 CPU/(119263:119263): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:08:55:115 CPU/(119263:119263): CPU lista para escuchar al cliente
+
+[INFO] 17:08:55:116 CPU/(119263:119265): CPU lista para recibir al cliente
+[INFO] 17:08:58:876 CPU/(119263:119265): Se conecto un cliente
+[INFO] 17:08:58:877 CPU/(119263:119265): Instrucciones recibidas de Kernel:
+
+[INFO] 17:08:58:877 CPU/(119263:119265): CREATE_SEGMENT 1 128
+
+[INFO] 17:08:58:877 CPU/(119263:119265): SET AX HOLA
+
+[INFO] 17:08:58:877 CPU/(119263:119265): MOV_OUT 250 AX
+
+[INFO] 17:08:58:877 CPU/(119263:119265): MOV_IN BX 250
+
+[INFO] 17:08:58:877 CPU/(119263:119265): EXIT
+[INFO] 17:08:58:877 CPU/(119263:119265): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:08:58:878 CPU/(119263:119265): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:08:58:879 CPU/(119263:119275): CPU lista para recibir al cliente
+[INFO] 17:08:58:929 CPU/(119263:119275): Se conecto un cliente
+[INFO] 17:08:58:930 CPU/(119263:119275): Instrucciones recibidas de Kernel:
+
+[INFO] 17:08:58:930 CPU/(119263:119275): CREATE_SEGMENT 1 128
+
+[INFO] 17:08:58:930 CPU/(119263:119275): SET AX HOLA
+
+[INFO] 17:08:58:930 CPU/(119263:119275): MOV_OUT 250 AX
+
+[INFO] 17:08:58:930 CPU/(119263:119275): MOV_IN BX 250
+
+[INFO] 17:08:58:930 CPU/(119263:119275): EXIT
+[INFO] 17:08:58:930 CPU/(119263:119275): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:08:59:937 CPU/(119263:119280): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:08:59:937 CPU/(119263:119281): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:08:59:938 CPU/(119263:119275): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:08:59:938 CPU/(119263:119283): CPU lista para recibir al cliente
+[INFO] 17:09:37:913 CPU/(119496:119496): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:09:37:915 CPU/(119496:119496): CPU lista para escuchar al cliente
+
+[INFO] 17:09:37:916 CPU/(119496:119498): CPU lista para recibir al cliente
+[INFO] 17:09:41:501 CPU/(119496:119498): Se conecto un cliente
+[INFO] 17:09:41:502 CPU/(119496:119498): Instrucciones recibidas de Kernel:
+
+[INFO] 17:09:41:502 CPU/(119496:119498): CREATE_SEGMENT 1 128
+
+[INFO] 17:09:41:502 CPU/(119496:119498): SET AX HOLA
+
+[INFO] 17:09:41:502 CPU/(119496:119498): MOV_OUT 250 AX
+
+[INFO] 17:09:41:502 CPU/(119496:119498): MOV_IN BX 250
+
+[INFO] 17:09:41:502 CPU/(119496:119498): EXIT
+[INFO] 17:09:41:502 CPU/(119496:119498): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:09:41:503 CPU/(119496:119498): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:09:41:508 CPU/(119496:119508): CPU lista para recibir al cliente
+[INFO] 17:09:41:562 CPU/(119496:119508): Se conecto un cliente
+[INFO] 17:09:41:562 CPU/(119496:119508): Instrucciones recibidas de Kernel:
+
+[INFO] 17:09:41:562 CPU/(119496:119508): CREATE_SEGMENT 1 128
+
+[INFO] 17:09:41:562 CPU/(119496:119508): SET AX HOLA
+
+[INFO] 17:09:41:562 CPU/(119496:119508): MOV_OUT 250 AX
+
+[INFO] 17:09:41:562 CPU/(119496:119508): MOV_IN BX 250
+
+[INFO] 17:09:41:563 CPU/(119496:119508): EXIT
+[INFO] 17:09:41:563 CPU/(119496:119508): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:09:42:568 CPU/(119496:119513): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:09:42:569 CPU/(119496:119514): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:09:42:569 CPU/(119496:119508): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:09:42:570 CPU/(119496:119516): CPU lista para recibir al cliente
+[INFO] 17:11:21:074 CPU/(119910:119910): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:11:21:076 CPU/(119910:119910): CPU lista para escuchar al cliente
+
+[INFO] 17:11:21:079 CPU/(119910:119912): CPU lista para recibir al cliente
+[INFO] 17:11:24:907 CPU/(119910:119912): Se conecto un cliente
+[INFO] 17:11:24:907 CPU/(119910:119912): Instrucciones recibidas de Kernel:
+
+[INFO] 17:11:24:907 CPU/(119910:119912): CREATE_SEGMENT 1 128
+
+[INFO] 17:11:24:907 CPU/(119910:119912): SET AX HOLA
+
+[INFO] 17:11:24:907 CPU/(119910:119912): MOV_OUT 250 AX
+
+[INFO] 17:11:24:907 CPU/(119910:119912): MOV_IN BX 250
+
+[INFO] 17:11:24:907 CPU/(119910:119912): EXIT
+[INFO] 17:11:24:908 CPU/(119910:119912): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:11:24:908 CPU/(119910:119912): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:11:24:909 CPU/(119910:119922): CPU lista para recibir al cliente
+[INFO] 17:11:24:960 CPU/(119910:119922): Se conecto un cliente
+[INFO] 17:11:24:961 CPU/(119910:119922): Instrucciones recibidas de Kernel:
+
+[INFO] 17:11:24:961 CPU/(119910:119922): CREATE_SEGMENT 1 128
+
+[INFO] 17:11:24:961 CPU/(119910:119922): SET AX HOLA
+
+[INFO] 17:11:24:961 CPU/(119910:119922): MOV_OUT 250 AX
+
+[INFO] 17:11:24:961 CPU/(119910:119922): MOV_IN BX 250
+
+[INFO] 17:11:24:961 CPU/(119910:119922): EXIT
+[INFO] 17:11:24:961 CPU/(119910:119922): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:11:25:967 CPU/(119910:119927): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:11:25:968 CPU/(119910:119928): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:11:25:969 CPU/(119910:119922): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:11:25:969 CPU/(119910:119930): CPU lista para recibir al cliente
+[INFO] 17:14:05:784 CPU/(120287:120287): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:14:05:785 CPU/(120287:120287): CPU lista para escuchar al cliente
+
+[INFO] 17:14:05:785 CPU/(120287:120289): CPU lista para recibir al cliente
+[INFO] 17:14:09:418 CPU/(120287:120289): Se conecto un cliente
+[INFO] 17:14:09:419 CPU/(120287:120289): Instrucciones recibidas de Kernel:
+
+[INFO] 17:14:09:419 CPU/(120287:120289): CREATE_SEGMENT 1 128
+
+[INFO] 17:14:09:419 CPU/(120287:120289): SET AX HOLA
+
+[INFO] 17:14:09:419 CPU/(120287:120289): MOV_OUT 250 AX
+
+[INFO] 17:14:09:419 CPU/(120287:120289): MOV_IN BX 250
+
+[INFO] 17:14:09:419 CPU/(120287:120289): EXIT
+[INFO] 17:14:09:419 CPU/(120287:120289): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:14:09:419 CPU/(120287:120289): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:14:09:421 CPU/(120287:120299): CPU lista para recibir al cliente
+[INFO] 17:14:09:422 CPU/(120287:120299): Se conecto un cliente
+[INFO] 17:14:09:425 CPU/(120287:120299): Instrucciones recibidas de Kernel:
+
+[INFO] 17:14:09:425 CPU/(120287:120299): CREATE_SEGMENT 1 128
+
+[INFO] 17:14:09:425 CPU/(120287:120299): SET AX HOLA
+
+[INFO] 17:14:09:425 CPU/(120287:120299): MOV_OUT 250 AX
+
+[INFO] 17:14:09:426 CPU/(120287:120299): MOV_IN BX 250
+
+[INFO] 17:14:09:426 CPU/(120287:120299): EXIT
+[INFO] 17:14:09:426 CPU/(120287:120299): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:14:10:427 CPU/(120287:120304): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:14:10:428 CPU/(120287:120305): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:14:10:429 CPU/(120287:120299): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:14:10:429 CPU/(120287:120307): CPU lista para recibir al cliente
+[INFO] 17:17:04:601 CPU/(120467:120467): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:17:04:601 CPU/(120467:120467): CPU lista para escuchar al cliente
+
+[INFO] 17:17:04:602 CPU/(120467:120469): CPU lista para recibir al cliente
+[INFO] 17:17:08:549 CPU/(120467:120469): Se conecto un cliente
+[INFO] 17:17:08:549 CPU/(120467:120469): Instrucciones recibidas de Kernel:
+
+[INFO] 17:17:08:549 CPU/(120467:120469): CREATE_SEGMENT 1 128
+
+[INFO] 17:17:08:549 CPU/(120467:120469): SET AX HOLA
+
+[INFO] 17:17:08:549 CPU/(120467:120469): MOV_OUT 250 AX
+
+[INFO] 17:17:08:549 CPU/(120467:120469): MOV_IN BX 250
+
+[INFO] 17:17:08:550 CPU/(120467:120469): EXIT
+[INFO] 17:17:08:550 CPU/(120467:120469): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:17:08:550 CPU/(120467:120469): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:17:08:551 CPU/(120467:120479): CPU lista para recibir al cliente
+[INFO] 17:17:08:553 CPU/(120467:120479): Se conecto un cliente
+[INFO] 17:17:08:553 CPU/(120467:120479): Instrucciones recibidas de Kernel:
+
+[INFO] 17:17:08:553 CPU/(120467:120479): CREATE_SEGMENT 1 128
+
+[INFO] 17:17:08:553 CPU/(120467:120479): SET AX HOLA
+
+[INFO] 17:17:08:553 CPU/(120467:120479): MOV_OUT 250 AX
+
+[INFO] 17:17:08:553 CPU/(120467:120479): MOV_IN BX 250
+
+[INFO] 17:17:08:553 CPU/(120467:120479): EXIT
+[INFO] 17:17:08:554 CPU/(120467:120479): Tabla de Segmentos recibida de Kernel: 
+
+[INFO] 17:20:40:706 CPU/(120690:120690): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:20:40:707 CPU/(120690:120690): CPU lista para escuchar al cliente
+
+[INFO] 17:20:40:707 CPU/(120690:120692): CPU lista para recibir al cliente
+[INFO] 17:21:13:089 CPU/(120855:120855): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:21:13:089 CPU/(120855:120855): CPU lista para escuchar al cliente
+
+[INFO] 17:21:13:089 CPU/(120855:120857): CPU lista para recibir al cliente
+[INFO] 17:21:48:313 CPU/(121020:121020): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:21:48:314 CPU/(121020:121020): CPU lista para escuchar al cliente
+
+[INFO] 17:21:48:314 CPU/(121020:121022): CPU lista para recibir al cliente
+[INFO] 17:21:53:843 CPU/(121020:121022): Se conecto un cliente
+[INFO] 17:21:53:843 CPU/(121020:121022): Instrucciones recibidas de Kernel:
+
+[INFO] 17:21:53:843 CPU/(121020:121022): CREATE_SEGMENT 1 128
+
+[INFO] 17:21:53:843 CPU/(121020:121022): SET AX HOLA
+
+[INFO] 17:21:53:843 CPU/(121020:121022): MOV_OUT 250 AX
+
+[INFO] 17:21:53:843 CPU/(121020:121022): MOV_IN BX 250
+
+[INFO] 17:21:53:843 CPU/(121020:121022): EXIT
+[INFO] 17:21:53:844 CPU/(121020:121022): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:21:53:844 CPU/(121020:121022): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:21:53:845 CPU/(121020:121032): CPU lista para recibir al cliente
+[INFO] 17:21:53:847 CPU/(121020:121032): Se conecto un cliente
+[INFO] 17:21:53:847 CPU/(121020:121032): Instrucciones recibidas de Kernel:
+
+[INFO] 17:21:53:847 CPU/(121020:121032): CREATE_SEGMENT 1 128
+
+[INFO] 17:21:53:847 CPU/(121020:121032): SET AX HOLA
+
+[INFO] 17:21:53:847 CPU/(121020:121032): MOV_OUT 250 AX
+
+[INFO] 17:21:53:847 CPU/(121020:121032): MOV_IN BX 250
+
+[INFO] 17:21:53:847 CPU/(121020:121032): EXIT
+[INFO] 17:21:53:848 CPU/(121020:121032): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:22:44:213 CPU/(121020:121037): 
+Operacion recibida de MEMORIA desconocida.
+
+[INFO] 17:24:39:210 CPU/(121607:121607): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:24:39:211 CPU/(121607:121607): CPU lista para escuchar al cliente
+
+[INFO] 17:24:39:211 CPU/(121607:121609): CPU lista para recibir al cliente
+[INFO] 17:24:49:021 CPU/(121607:121609): Se conecto un cliente
+[INFO] 17:24:49:021 CPU/(121607:121609): Instrucciones recibidas de Kernel:
+
+[INFO] 17:24:49:021 CPU/(121607:121609): CREATE_SEGMENT 1 128
+
+[INFO] 17:24:49:021 CPU/(121607:121609): SET AX HOLA
+
+[INFO] 17:24:49:021 CPU/(121607:121609): MOV_OUT 250 AX
+
+[INFO] 17:24:49:021 CPU/(121607:121609): MOV_IN BX 250
+
+[INFO] 17:24:49:022 CPU/(121607:121609): EXIT
+[INFO] 17:24:49:022 CPU/(121607:121609): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:24:49:022 CPU/(121607:121609): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:24:49:023 CPU/(121607:121619): CPU lista para recibir al cliente
+[INFO] 17:24:49:025 CPU/(121607:121619): Se conecto un cliente
+[INFO] 17:24:49:025 CPU/(121607:121619): Instrucciones recibidas de Kernel:
+
+[INFO] 17:24:49:026 CPU/(121607:121619): CREATE_SEGMENT 1 128
+
+[INFO] 17:24:49:026 CPU/(121607:121619): SET AX HOLA
+
+[INFO] 17:24:49:026 CPU/(121607:121619): MOV_OUT 250 AX
+
+[INFO] 17:24:49:026 CPU/(121607:121619): MOV_IN BX 250
+
+[INFO] 17:24:49:026 CPU/(121607:121619): EXIT
+[INFO] 17:24:49:027 CPU/(121607:121619): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:24:50:029 CPU/(121607:121624): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:24:50:030 CPU/(121607:121625): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:24:50:031 CPU/(121607:121619): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:24:50:032 CPU/(121607:121627): CPU lista para recibir al cliente
+[INFO] 17:31:23:380 CPU/(121944:121944): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:31:23:380 CPU/(121944:121944): CPU lista para escuchar al cliente
+
+[INFO] 17:31:23:381 CPU/(121944:121946): CPU lista para recibir al cliente
+[INFO] 17:31:27:723 CPU/(121944:121946): Se conecto un cliente
+[INFO] 17:31:27:723 CPU/(121944:121946): Instrucciones recibidas de Kernel:
+
+[INFO] 17:31:27:723 CPU/(121944:121946): CREATE_SEGMENT 1 128
+
+[INFO] 17:31:27:724 CPU/(121944:121946): SET AX HOLA
+
+[INFO] 17:31:27:724 CPU/(121944:121946): MOV_OUT 250 AX
+
+[INFO] 17:31:27:724 CPU/(121944:121946): MOV_IN BX 250
+
+[INFO] 17:31:27:724 CPU/(121944:121946): EXIT
+[INFO] 17:31:27:724 CPU/(121944:121946): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:31:27:724 CPU/(121944:121946): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:31:27:726 CPU/(121944:121956): CPU lista para recibir al cliente
+[INFO] 17:31:27:727 CPU/(121944:121956): Se conecto un cliente
+[INFO] 17:31:27:727 CPU/(121944:121956): Instrucciones recibidas de Kernel:
+
+[INFO] 17:31:27:727 CPU/(121944:121956): CREATE_SEGMENT 1 128
+
+[INFO] 17:31:27:727 CPU/(121944:121956): SET AX HOLA
+
+[INFO] 17:31:27:727 CPU/(121944:121956): MOV_OUT 250 AX
+
+[INFO] 17:31:27:727 CPU/(121944:121956): MOV_IN BX 250
+
+[INFO] 17:31:27:727 CPU/(121944:121956): EXIT
+[INFO] 17:31:27:728 CPU/(121944:121956): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:31:28:729 CPU/(121944:121961): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:31:28:729 CPU/(121944:121962): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:31:28:730 CPU/(121944:121956): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:31:28:730 CPU/(121944:121964): CPU lista para recibir al cliente
+[INFO] 17:38:45:442 CPU/(122174:122174): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:38:45:445 CPU/(122174:122174): CPU lista para escuchar al cliente
+
+[INFO] 17:38:45:446 CPU/(122174:122176): CPU lista para recibir al cliente
+[INFO] 17:38:49:587 CPU/(122174:122176): Se conecto un cliente
+[INFO] 17:38:49:587 CPU/(122174:122176): Instrucciones recibidas de Kernel:
+
+[INFO] 17:38:49:587 CPU/(122174:122176): CREATE_SEGMENT 1 128
+
+[INFO] 17:38:49:587 CPU/(122174:122176): SET AX HOLA
+
+[INFO] 17:38:49:588 CPU/(122174:122176): MOV_OUT 250 AX
+
+[INFO] 17:38:49:588 CPU/(122174:122176): MOV_IN BX 250
+
+[INFO] 17:38:49:588 CPU/(122174:122176): EXIT
+[INFO] 17:38:49:588 CPU/(122174:122176): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:38:49:588 CPU/(122174:122176): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:38:49:589 CPU/(122174:122186): CPU lista para recibir al cliente
+[INFO] 17:38:49:643 CPU/(122174:122186): Se conecto un cliente
+[INFO] 17:38:49:644 CPU/(122174:122186): Instrucciones recibidas de Kernel:
+
+[INFO] 17:38:49:644 CPU/(122174:122186): CREATE_SEGMENT 1 128
+
+[INFO] 17:38:49:644 CPU/(122174:122186): SET AX HOLA
+
+[INFO] 17:38:49:644 CPU/(122174:122186): MOV_OUT 250 AX
+
+[INFO] 17:38:49:644 CPU/(122174:122186): MOV_IN BX 250
+
+[INFO] 17:38:49:644 CPU/(122174:122186): EXIT
+[INFO] 17:38:49:644 CPU/(122174:122186): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:38:50:650 CPU/(122174:122191): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:38:50:650 CPU/(122174:122192): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:38:50:651 CPU/(122174:122186): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:38:50:651 CPU/(122174:122194): CPU lista para recibir al cliente
+[INFO] 17:42:14:387 CPU/(122593:122593): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:42:14:392 CPU/(122593:122593): CPU lista para escuchar al cliente
+
+[INFO] 17:42:14:396 CPU/(122593:122595): CPU lista para recibir al cliente
+[INFO] 17:42:18:008 CPU/(122593:122595): Se conecto un cliente
+[INFO] 17:42:18:009 CPU/(122593:122595): Instrucciones recibidas de Kernel:
+
+[INFO] 17:42:18:009 CPU/(122593:122595): CREATE_SEGMENT 1 128
+
+[INFO] 17:42:18:009 CPU/(122593:122595): SET AX HOLA
+
+[INFO] 17:42:18:009 CPU/(122593:122595): MOV_OUT 250 AX
+
+[INFO] 17:42:18:009 CPU/(122593:122595): MOV_IN BX 250
+
+[INFO] 17:42:18:009 CPU/(122593:122595): EXIT
+[INFO] 17:42:18:009 CPU/(122593:122595): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:42:18:010 CPU/(122593:122595): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:42:18:012 CPU/(122593:122604): CPU lista para recibir al cliente
+[INFO] 17:42:18:072 CPU/(122593:122604): Se conecto un cliente
+[INFO] 17:42:18:073 CPU/(122593:122604): Instrucciones recibidas de Kernel:
+
+[INFO] 17:42:18:073 CPU/(122593:122604): CREATE_SEGMENT 1 128
+
+[INFO] 17:42:18:073 CPU/(122593:122604): SET AX HOLA
+
+[INFO] 17:42:18:073 CPU/(122593:122604): MOV_OUT 250 AX
+
+[INFO] 17:42:18:073 CPU/(122593:122604): MOV_IN BX 250
+
+[INFO] 17:42:18:073 CPU/(122593:122604): EXIT
+[INFO] 17:42:18:073 CPU/(122593:122604): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:42:19:079 CPU/(122593:122610): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:42:19:080 CPU/(122593:122611): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:42:19:080 CPU/(122593:122604): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:42:19:081 CPU/(122593:122613): CPU lista para recibir al cliente
+[INFO] 17:45:48:813 CPU/(122911:122911): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:45:48:813 CPU/(122911:122911): CPU lista para escuchar al cliente
+
+[INFO] 17:45:48:813 CPU/(122911:122913): CPU lista para recibir al cliente
+[INFO] 17:45:52:199 CPU/(122911:122913): Se conecto un cliente
+[INFO] 17:45:52:199 CPU/(122911:122913): Instrucciones recibidas de Kernel:
+
+[INFO] 17:45:52:199 CPU/(122911:122913): CREATE_SEGMENT 1 128
+
+[INFO] 17:45:52:199 CPU/(122911:122913): SET AX HOLA
+
+[INFO] 17:45:52:199 CPU/(122911:122913): MOV_OUT 250 AX
+
+[INFO] 17:45:52:199 CPU/(122911:122913): MOV_IN BX 250
+
+[INFO] 17:45:52:199 CPU/(122911:122913): EXIT
+[INFO] 17:45:52:199 CPU/(122911:122913): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:45:52:200 CPU/(122911:122913): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:45:52:201 CPU/(122911:122923): CPU lista para recibir al cliente
+[INFO] 17:45:52:203 CPU/(122911:122923): Se conecto un cliente
+[INFO] 17:45:52:203 CPU/(122911:122923): Instrucciones recibidas de Kernel:
+
+[INFO] 17:45:52:203 CPU/(122911:122923): CREATE_SEGMENT 1 128
+
+[INFO] 17:45:52:203 CPU/(122911:122923): SET AX HOLA
+
+[INFO] 17:45:52:203 CPU/(122911:122923): MOV_OUT 250 AX
+
+[INFO] 17:45:52:203 CPU/(122911:122923): MOV_IN BX 250
+
+[INFO] 17:45:52:203 CPU/(122911:122923): EXIT
+[INFO] 17:45:52:204 CPU/(122911:122923): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:45:53:205 CPU/(122911:122928): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:45:53:206 CPU/(122911:122929): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:45:53:206 CPU/(122911:122923): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:45:53:206 CPU/(122911:122931): CPU lista para recibir al cliente
+[INFO] 17:47:47:789 CPU/(123160:123160): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:47:47:790 CPU/(123160:123160): CPU lista para escuchar al cliente
+
+[INFO] 17:47:47:790 CPU/(123160:123162): CPU lista para recibir al cliente
+[INFO] 17:47:51:360 CPU/(123160:123162): Se conecto un cliente
+[INFO] 17:47:51:360 CPU/(123160:123162): Instrucciones recibidas de Kernel:
+
+[INFO] 17:47:51:360 CPU/(123160:123162): CREATE_SEGMENT 1 128
+
+[INFO] 17:47:51:360 CPU/(123160:123162): SET AX HOLA
+
+[INFO] 17:47:51:360 CPU/(123160:123162): MOV_OUT 250 AX
+
+[INFO] 17:47:51:360 CPU/(123160:123162): MOV_IN BX 250
+
+[INFO] 17:47:51:360 CPU/(123160:123162): EXIT
+[INFO] 17:47:51:360 CPU/(123160:123162): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:47:51:361 CPU/(123160:123162): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:47:51:362 CPU/(123160:123172): CPU lista para recibir al cliente
+[INFO] 17:47:51:364 CPU/(123160:123172): Se conecto un cliente
+[INFO] 17:47:51:364 CPU/(123160:123172): Instrucciones recibidas de Kernel:
+
+[INFO] 17:47:51:364 CPU/(123160:123172): CREATE_SEGMENT 1 128
+
+[INFO] 17:47:51:364 CPU/(123160:123172): SET AX HOLA
+
+[INFO] 17:47:51:364 CPU/(123160:123172): MOV_OUT 250 AX
+
+[INFO] 17:47:51:364 CPU/(123160:123172): MOV_IN BX 250
+
+[INFO] 17:47:51:364 CPU/(123160:123172): EXIT
+[INFO] 17:47:51:365 CPU/(123160:123172): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:47:52:367 CPU/(123160:123177): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:47:52:368 CPU/(123160:123178): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:47:52:369 CPU/(123160:123172): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:47:52:370 CPU/(123160:123180): CPU lista para recibir al cliente
+[INFO] 17:49:57:165 CPU/(123352:123352): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:49:57:166 CPU/(123352:123352): CPU lista para escuchar al cliente
+
+[INFO] 17:49:57:166 CPU/(123352:123354): CPU lista para recibir al cliente
+[INFO] 17:50:02:031 CPU/(123352:123354): Se conecto un cliente
+[INFO] 17:50:02:032 CPU/(123352:123354): Instrucciones recibidas de Kernel:
+
+[INFO] 17:50:02:032 CPU/(123352:123354): CREATE_SEGMENT 1 128
+
+[INFO] 17:50:02:032 CPU/(123352:123354): SET AX HOLA
+
+[INFO] 17:50:02:032 CPU/(123352:123354): MOV_OUT 250 AX
+
+[INFO] 17:50:02:032 CPU/(123352:123354): MOV_IN BX 250
+
+[INFO] 17:50:02:032 CPU/(123352:123354): EXIT
+[INFO] 17:50:02:032 CPU/(123352:123354): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:50:02:032 CPU/(123352:123354): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:50:02:034 CPU/(123352:123364): CPU lista para recibir al cliente
+[INFO] 17:50:02:036 CPU/(123352:123364): Se conecto un cliente
+[INFO] 17:50:02:036 CPU/(123352:123364): Instrucciones recibidas de Kernel:
+
+[INFO] 17:50:02:036 CPU/(123352:123364): CREATE_SEGMENT 1 128
+
+[INFO] 17:50:02:036 CPU/(123352:123364): SET AX HOLA
+
+[INFO] 17:50:02:036 CPU/(123352:123364): MOV_OUT 250 AX
+
+[INFO] 17:50:02:036 CPU/(123352:123364): MOV_IN BX 250
+
+[INFO] 17:50:02:036 CPU/(123352:123364): EXIT
+[INFO] 17:50:02:036 CPU/(123352:123364): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:50:03:037 CPU/(123352:123369): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:50:03:038 CPU/(123352:123370): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:50:03:038 CPU/(123352:123364): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:50:03:039 CPU/(123352:123372): CPU lista para recibir al cliente
+[INFO] 17:51:12:341 CPU/(123671:123671): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:51:12:342 CPU/(123671:123671): CPU lista para escuchar al cliente
+
+[INFO] 17:51:12:342 CPU/(123671:123673): CPU lista para recibir al cliente
+[INFO] 17:51:15:968 CPU/(123671:123673): Se conecto un cliente
+[INFO] 17:51:15:969 CPU/(123671:123673): Instrucciones recibidas de Kernel:
+
+[INFO] 17:51:15:969 CPU/(123671:123673): CREATE_SEGMENT 1 128
+
+[INFO] 17:51:15:969 CPU/(123671:123673): SET AX HOLA
+
+[INFO] 17:51:15:969 CPU/(123671:123673): MOV_OUT 250 AX
+
+[INFO] 17:51:15:969 CPU/(123671:123673): MOV_IN BX 250
+
+[INFO] 17:51:15:969 CPU/(123671:123673): EXIT
+[INFO] 17:51:15:969 CPU/(123671:123673): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:51:15:969 CPU/(123671:123673): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:51:15:971 CPU/(123671:123683): CPU lista para recibir al cliente
+[INFO] 17:51:15:972 CPU/(123671:123683): Se conecto un cliente
+[INFO] 17:51:15:973 CPU/(123671:123683): Instrucciones recibidas de Kernel:
+
+[INFO] 17:51:15:973 CPU/(123671:123683): CREATE_SEGMENT 1 128
+
+[INFO] 17:51:15:973 CPU/(123671:123683): SET AX HOLA
+
+[INFO] 17:51:15:973 CPU/(123671:123683): MOV_OUT 250 AX
+
+[INFO] 17:51:15:973 CPU/(123671:123683): MOV_IN BX 250
+
+[INFO] 17:51:15:973 CPU/(123671:123683): EXIT
+[INFO] 17:51:15:973 CPU/(123671:123683): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:51:16:974 CPU/(123671:123688): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:51:16:975 CPU/(123671:123689): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:51:16:975 CPU/(123671:123683): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:51:16:975 CPU/(123671:123691): CPU lista para recibir al cliente
+[INFO] 17:55:25:087 CPU/(123842:123842): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:55:25:088 CPU/(123842:123842): CPU lista para escuchar al cliente
+
+[INFO] 17:55:25:088 CPU/(123842:123844): CPU lista para recibir al cliente
+[INFO] 17:55:28:810 CPU/(123842:123844): Se conecto un cliente
+[INFO] 17:55:28:811 CPU/(123842:123844): Instrucciones recibidas de Kernel:
+
+[INFO] 17:55:28:811 CPU/(123842:123844): CREATE_SEGMENT 1 128
+
+[INFO] 17:55:28:811 CPU/(123842:123844): SET AX HOLA
+
+[INFO] 17:55:28:811 CPU/(123842:123844): MOV_OUT 250 AX
+
+[INFO] 17:55:28:811 CPU/(123842:123844): MOV_IN BX 250
+
+[INFO] 17:55:28:811 CPU/(123842:123844): EXIT
+[INFO] 17:55:28:811 CPU/(123842:123844): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:55:28:812 CPU/(123842:123844): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:55:28:813 CPU/(123842:123854): CPU lista para recibir al cliente
+[INFO] 17:55:28:813 CPU/(123842:123854): Se conecto un cliente
+[INFO] 17:55:28:814 CPU/(123842:123854): Instrucciones recibidas de Kernel:
+
+[INFO] 17:55:28:814 CPU/(123842:123854): CREATE_SEGMENT 1 128
+
+[INFO] 17:55:28:814 CPU/(123842:123854): SET AX HOLA
+
+[INFO] 17:55:28:814 CPU/(123842:123854): MOV_OUT 250 AX
+
+[INFO] 17:55:28:814 CPU/(123842:123854): MOV_IN BX 250
+
+[INFO] 17:55:28:814 CPU/(123842:123854): EXIT
+[INFO] 17:55:28:814 CPU/(123842:123854): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:55:29:815 CPU/(123842:123859): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:55:29:816 CPU/(123842:123860): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:55:29:816 CPU/(123842:123854): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:55:29:817 CPU/(123842:123862): CPU lista para recibir al cliente
+[INFO] 17:59:48:119 CPU/(124070:124070): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 17:59:48:120 CPU/(124070:124070): CPU lista para escuchar al cliente
+
+[INFO] 17:59:48:120 CPU/(124070:124072): CPU lista para recibir al cliente
+[INFO] 17:59:51:808 CPU/(124070:124072): Se conecto un cliente
+[INFO] 17:59:51:809 CPU/(124070:124072): Instrucciones recibidas de Kernel:
+
+[INFO] 17:59:51:809 CPU/(124070:124072): CREATE_SEGMENT 1 128
+
+[INFO] 17:59:51:809 CPU/(124070:124072): SET AX HOLA
+
+[INFO] 17:59:51:809 CPU/(124070:124072): MOV_OUT 250 AX
+
+[INFO] 17:59:51:809 CPU/(124070:124072): MOV_IN BX 250
+
+[INFO] 17:59:51:809 CPU/(124070:124072): EXIT
+[INFO] 17:59:51:809 CPU/(124070:124072): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 17:59:51:810 CPU/(124070:124072): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:59:51:811 CPU/(124070:124082): CPU lista para recibir al cliente
+[INFO] 17:59:51:812 CPU/(124070:124082): Se conecto un cliente
+[INFO] 17:59:51:813 CPU/(124070:124082): Instrucciones recibidas de Kernel:
+
+[INFO] 17:59:51:813 CPU/(124070:124082): CREATE_SEGMENT 1 128
+
+[INFO] 17:59:51:813 CPU/(124070:124082): SET AX HOLA
+
+[INFO] 17:59:51:813 CPU/(124070:124082): MOV_OUT 250 AX
+
+[INFO] 17:59:51:813 CPU/(124070:124082): MOV_IN BX 250
+
+[INFO] 17:59:51:813 CPU/(124070:124082): EXIT
+[INFO] 17:59:51:813 CPU/(124070:124082): Tabla de Segmentos recibida de Kernel: 
+
+[WARNING] 17:59:52:814 CPU/(124070:124087): 
+Operacion recibida de MEMORIA desconocida.
+
+[WARNING] 17:59:52:815 CPU/(124070:124088): 
+Operacion recibida de MEMORIA desconocida.
+
+[ERROR] 17:59:52:815 CPU/(124070:124082): el kernel se desconecto. Terminando servidor
+
+[INFO] 17:59:52:815 CPU/(124070:124090): CPU lista para recibir al cliente
