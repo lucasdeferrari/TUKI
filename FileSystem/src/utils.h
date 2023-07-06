@@ -66,6 +66,8 @@ t_list* recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
 t_paquete* crear_paquete_cod_operacion(int);
+char* recibir_handshake(int);
+
 
 //client
 int crear_conexion(char* ip, char* puerto);

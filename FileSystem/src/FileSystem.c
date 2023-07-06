@@ -284,13 +284,14 @@ int main(void) {
     //THREADS CONEXIÓN
 
     //thread cliente Memoria
-    iniciarHiloCliente();
+    //iniciarHiloCliente();
+    enviar_handshake_memoria();
 
-
+    //thread server
 	server_fd = iniciar_servidor();
 	log_info(logger, "FileSystem listo para escuchar al cliente\n");
 
-    //thread server
+
     while(1){
     	iniciarHiloServer();
     	pthread_join(serverFileSystem_thread, NULL);
@@ -304,7 +305,7 @@ int main(void) {
     log_destroy(logger);
     config_destroy(config);
 
-    sem_destroy(&semFileSystemClientMemoria);
+    //sem_destroy(&semFileSystemClientMemoria);
 
     return EXIT_SUCCESS;
 }
@@ -452,6 +453,7 @@ void* serverFileSystem(void* ptr){
 void iniciarHiloCliente(int cod_memoria, char* registro, int direcFisica, int tamanio){
 	ClientMemoriaArgs *args = malloc(sizeof(ClientMemoriaArgs));
 	args->cod_memoria = cod_memoria;
+	args->registro = malloc(strlen(registro)+1);
 	strcpy(args->registro,registro);
 	args->direccionFisica = direcFisica;
 	args->tamanio = tamanio;
@@ -469,13 +471,6 @@ void iniciarHiloCliente(int cod_memoria, char* registro, int direcFisica, int ta
 }
 
 void* clientMemoria(void* arg) {
-//    int conexion_Memoria;
-//    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-//    enviar_mensaje("filesystem",conexion_Memoria);
-//    int cod_op = recibir_operacion(conexion_Memoria);
-//    printf("codigo de operacion: %i\n", cod_op);
-//    recibir_mensaje(conexion_Memoria);
-//    liberar_conexion(conexion_Memoria);
 
 	ClientMemoriaArgs *args = (ClientMemoriaArgs *)arg;
 	int cod_memoria = args->cod_memoria;
@@ -540,12 +535,12 @@ void* clientMemoria(void* arg) {
 
 			enviar_paquete(paquete, conexion_Memoria);
 
-			printf("MOV_IN enviado a MEMORIA.\n");
-			printf("pid enviado a Memoria: %s\n", pidMO);
-			printf("quienSoy enviado a Memoria: %s\n", fsMO);
-			printf("valorRegistro enviado a Memoria: %s\n", valorRegistroMO);
-			printf("direcFisica enviado a Memoria: %s\n", direcFisicaMO);
-			printf("tamanio enviado a Memoria: %s\n", tamanioMO);
+			printf("MOV_OUT enviado a MEMORIA.\n");
+			printf("pid: %s\n", pidMO);
+			printf("quienSoy: %s\n", fsMO);
+			printf("valorRegistro: %s\n", valorRegistroMO);
+			printf("direcFisica: %s\n", direcFisicaMO);
+			printf("tamanio: %s\n", tamanioMO);
 
             eliminar_paquete(paquete);
         break;
@@ -915,12 +910,23 @@ void paquete(int conexion)
 
 }
 
-char* recibir_handshake(int socket_cliente)  //MENSAJE
-{
-	int size;
-	char* buffer = recibir_buffer(&size, socket_cliente);
-	//log_info(logger, "Me llego el mensaje %s", buffer);
-	return buffer;
+void enviar_handshake_memoria(){
+	//    int conexion_Memoria;
+	//    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+	//    enviar_mensaje("filesystem",conexion_Memoria);
+	//    int cod_op = recibir_operacion(conexion_Memoria);
+	//    printf("codigo de operacion: %i\n", cod_op);
+	//    recibir_mensaje(conexion_Memoria);
+	//    liberar_conexion(conexion_Memoria);
+
+	int config = 1;
+	int conexion_Memoria;
+
+	conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
+	enviar_mensaje("filesystem",conexion_Memoria);
+	int cod_op = recibir_operacion(conexion_Memoria);
+	recibir_mensaje(conexion_Memoria);
+	liberar_conexion(conexion_Memoria);
 }
 
 int minimo(int a, int b){

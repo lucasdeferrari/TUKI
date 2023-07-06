@@ -76,6 +76,14 @@ void recibir_mensaje(int socket_cliente)
 	free(buffer);
 }
 
+char* recibir_handshake(int socket_cliente)  //MENSAJE
+{
+	int size;
+	char* buffer = recibir_buffer(&size, socket_cliente);
+	//log_info(logger, "Me llego el mensaje %s", buffer);
+	return buffer;
+}
+
 t_list* recibir_paquete(int socket_cliente)
 {
 	int size;
