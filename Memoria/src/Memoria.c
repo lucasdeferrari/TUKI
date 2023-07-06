@@ -324,22 +324,17 @@ void* serverMemoria(void* ptr){
 				char* tamanioStr = paquete[3];
 
 				int tamanio = atoi(tamanioStr);
+				printf("tamanio: %d\n", tamanio);
     			int direccionFisica = atoi(direccionFisicaStr);
 
     			char* destinoArray [tamanio];
-    			char* stringAEnviar = string_new();
-
-    			for(int i =0; i< tamanio; i++) {
-    				 destinoArray[i] = (char*)malloc(sizeof(destinoArray[i]));
-    				memcpy(destinoArray[i], espacioUsuario + direccionFisica + i, sizeof(destinoArray[i]));
-    				string_append(&stringAEnviar,destinoArray[i]);
-    			}
+    			memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
+    			printf("destino array:%s\n ", destinoArray[0]);
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
 
     			sleep_ms(retardoMemoria);
 
-    			printf("destino array:%s ", stringAEnviar );
-    			enviar_cod_operacion(stringAEnviar, cliente_fd, MOV_IN);
+    			enviar_cod_operacion(destinoArray[0], cliente_fd, MOV_IN);
     			estaConectadoFS = 0;
     		}
 

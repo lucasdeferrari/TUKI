@@ -149,7 +149,7 @@ void* clientMemoria(void *arg) {
     			liberar_conexion(conexion_Memoria);
     		break;
         }
-    printf("RECIBO CONEXION MEMORIA: %d", conexion_Memoria);
+    printf("CONEXION MEMORIA: %d", conexion_Memoria);
     int cod_op = recibir_operacion(conexion_Memoria);
     printf("RECIBO OPERACION MEMORIA: %d", cod_op);
     switch (cod_op) {

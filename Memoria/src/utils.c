@@ -106,6 +106,7 @@ t_list* recibir_paquete(int socket_cliente)
 void* serializar_paquete(t_paquete* paquete, int bytes)
 {
 	void * magic = malloc(bytes);
+	memset(magic, 0, bytes);
 	int desplazamiento = 0;
 
 	memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
