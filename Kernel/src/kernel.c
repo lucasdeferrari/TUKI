@@ -1345,8 +1345,10 @@ void manejar_recursos() {
 	    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
 
 	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
+	    		printf("Puntero del archivo %s antes de actualizar: %d\n",siguiente->nombreArchivo, siguiente->posicionPuntero );
 	    		siguiente->posicionPuntero = unProceso->posicionArchivo;
-	    		printf("Puntero del archivo: %s actualizado.\n", siguiente->nombreArchivo );
+	    		printf("Puntero del archivo actualizado: %d \n", siguiente->posicionPuntero );
+
 	    	}
 	    }
 	    //Devuelvo el contexto de ejecución a la CPU para que continúe el mismo proceso.

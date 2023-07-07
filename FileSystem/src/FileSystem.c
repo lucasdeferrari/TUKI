@@ -349,7 +349,9 @@ void* serverFileSystem(void* ptr){
     		case F_OPEN:
     			//SI EXISTE LO ABRIMOS Y DEVOLVEMOS OK
     			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
+    			printf("DENTRO DE F_OPEN\n");
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
+    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
     			//abrir_archivo(nombreArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
     			printf("F_OPEN ENVIADO A KERNEL\n");
