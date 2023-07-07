@@ -417,6 +417,7 @@ void* serverFileSystem(void* ptr){
 
     			break;
     		case F_TRUNCATE:
+    			printf("DENTRO DE F_TRUNCATE\n");
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorTruncate = list_iterator_create(lista);
 
@@ -431,9 +432,11 @@ void* serverFileSystem(void* ptr){
 
     			nombreArchivo = paqueteTruncate[0];
     			int tamanioArchivo = atoi(paqueteTruncate[1]);
-
-    			truncar_archivo(nombreArchivo, tamanioArchivo);
+    			printf("Nombre del archivo: %s\n",nombreArchivo);
+    			printf("Nuevo tamaño del archivo: %d \n",tamanioArchivo);
+    			//truncar_archivo(nombreArchivo, tamanioArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
+    			printf("F_TRUNCATE ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
     			break;
     		case -1:

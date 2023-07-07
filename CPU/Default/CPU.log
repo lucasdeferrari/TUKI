@@ -46165,3 +46165,355 @@ Operacion recibida de MEMORIA desconocida.
 [ERROR] 08:25:58:447 CPU/(66659:66724): el kernel se desconecto. Terminando servidor
 
 [INFO] 08:25:58:451 CPU/(66659:66726): CPU lista para recibir al cliente
+[INFO] 08:32:58:860 CPU/(67400:67400): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 08:32:58:860 CPU/(67400:67400): CPU lista para escuchar al cliente
+
+[INFO] 08:32:58:861 CPU/(67400:67402): CPU lista para recibir al cliente
+[INFO] 08:33:13:539 CPU/(67400:67402): Se conecto un cliente
+[INFO] 08:33:13:543 CPU/(67400:67402): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:13:543 CPU/(67400:67402): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:33:13:543 CPU/(67400:67402): F_OPEN ARCHIVO
+
+[INFO] 08:33:13:543 CPU/(67400:67402): YIELD
+
+[INFO] 08:33:13:543 CPU/(67400:67402): F_CLOSE ARCHIVO
+
+[INFO] 08:33:13:543 CPU/(67400:67402): EXIT
+[INFO] 08:33:13:544 CPU/(67400:67402): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:14:545 CPU/(67400:67402): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:14:546 CPU/(67400:67480): CPU lista para recibir al cliente
+[INFO] 08:33:14:547 CPU/(67400:67480): Se conecto un cliente
+[INFO] 08:33:14:548 CPU/(67400:67480): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:14:548 CPU/(67400:67480): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:33:14:549 CPU/(67400:67480): F_OPEN ARCHIVO
+
+[INFO] 08:33:14:549 CPU/(67400:67480): YIELD
+
+[INFO] 08:33:14:549 CPU/(67400:67480): F_CLOSE ARCHIVO
+
+[INFO] 08:33:14:549 CPU/(67400:67480): EXIT
+[INFO] 08:33:14:549 CPU/(67400:67480): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:14:550 CPU/(67400:67480): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:14:551 CPU/(67400:67483): CPU lista para recibir al cliente
+[INFO] 08:33:14:551 CPU/(67400:67483): Se conecto un cliente
+[INFO] 08:33:14:552 CPU/(67400:67483): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:14:553 CPU/(67400:67483): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:33:14:553 CPU/(67400:67483): F_OPEN ARCHIVO
+
+[INFO] 08:33:14:553 CPU/(67400:67483): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:33:14:553 CPU/(67400:67483): F_CLOSE ARCHIVO
+
+[INFO] 08:33:14:553 CPU/(67400:67483): EXIT
+[INFO] 08:33:14:554 CPU/(67400:67483): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:15:557 CPU/(67400:67483): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:15:559 CPU/(67400:67485): CPU lista para recibir al cliente
+[INFO] 08:33:15:560 CPU/(67400:67485): Se conecto un cliente
+[INFO] 08:33:15:562 CPU/(67400:67485): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:15:562 CPU/(67400:67485): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:33:15:563 CPU/(67400:67485): F_OPEN ARCHIVO
+
+[INFO] 08:33:15:563 CPU/(67400:67485): YIELD
+
+[INFO] 08:33:15:563 CPU/(67400:67485): F_CLOSE ARCHIVO
+
+[INFO] 08:33:15:563 CPU/(67400:67485): EXIT
+[INFO] 08:33:15:564 CPU/(67400:67485): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:15:568 CPU/(67400:67485): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:15:571 CPU/(67400:67488): CPU lista para recibir al cliente
+[INFO] 08:33:15:571 CPU/(67400:67488): Se conecto un cliente
+[INFO] 08:33:15:572 CPU/(67400:67488): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:15:572 CPU/(67400:67488): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:33:15:572 CPU/(67400:67488): F_OPEN ARCHIVO
+
+[INFO] 08:33:15:572 CPU/(67400:67488): YIELD
+
+[INFO] 08:33:15:572 CPU/(67400:67488): F_CLOSE ARCHIVO
+
+[INFO] 08:33:15:572 CPU/(67400:67488): EXIT
+[INFO] 08:33:15:572 CPU/(67400:67488): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:15:574 CPU/(67400:67488): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:15:574 CPU/(67400:67490): CPU lista para recibir al cliente
+[INFO] 08:33:15:576 CPU/(67400:67490): Se conecto un cliente
+[INFO] 08:33:15:577 CPU/(67400:67490): Instrucciones recibidas de Kernel:
+
+[INFO] 08:33:15:577 CPU/(67400:67490): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:33:15:577 CPU/(67400:67490): F_OPEN ARCHIVO
+
+[INFO] 08:33:15:577 CPU/(67400:67490): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:33:15:577 CPU/(67400:67490): F_CLOSE ARCHIVO
+
+[INFO] 08:33:15:577 CPU/(67400:67490): EXIT
+[INFO] 08:33:15:578 CPU/(67400:67490): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:33:15:579 CPU/(67400:67490): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:33:15:581 CPU/(67400:67493): CPU lista para recibir al cliente
+[INFO] 08:34:36:247 CPU/(67520:67520): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 08:34:36:247 CPU/(67520:67520): CPU lista para escuchar al cliente
+
+[INFO] 08:34:36:248 CPU/(67520:67522): CPU lista para recibir al cliente
+[INFO] 08:34:44:411 CPU/(67520:67522): Se conecto un cliente
+[INFO] 08:34:44:415 CPU/(67520:67522): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:44:415 CPU/(67520:67522): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:34:44:415 CPU/(67520:67522): F_OPEN ARCHIVO
+
+[INFO] 08:34:44:415 CPU/(67520:67522): YIELD
+
+[INFO] 08:34:44:415 CPU/(67520:67522): F_CLOSE ARCHIVO
+
+[INFO] 08:34:44:415 CPU/(67520:67522): EXIT
+[INFO] 08:34:44:415 CPU/(67520:67522): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:45:416 CPU/(67520:67522): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:45:417 CPU/(67520:67570): CPU lista para recibir al cliente
+[INFO] 08:34:45:419 CPU/(67520:67570): Se conecto un cliente
+[INFO] 08:34:45:420 CPU/(67520:67570): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:45:420 CPU/(67520:67570): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:34:45:420 CPU/(67520:67570): F_OPEN ARCHIVO
+
+[INFO] 08:34:45:420 CPU/(67520:67570): YIELD
+
+[INFO] 08:34:45:420 CPU/(67520:67570): F_CLOSE ARCHIVO
+
+[INFO] 08:34:45:420 CPU/(67520:67570): EXIT
+[INFO] 08:34:45:421 CPU/(67520:67570): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:45:421 CPU/(67520:67570): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:45:424 CPU/(67520:67573): CPU lista para recibir al cliente
+[INFO] 08:34:45:424 CPU/(67520:67573): Se conecto un cliente
+[INFO] 08:34:45:426 CPU/(67520:67573): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:45:426 CPU/(67520:67573): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:34:45:426 CPU/(67520:67573): F_OPEN ARCHIVO
+
+[INFO] 08:34:45:426 CPU/(67520:67573): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:34:45:426 CPU/(67520:67573): F_CLOSE ARCHIVO
+
+[INFO] 08:34:45:426 CPU/(67520:67573): EXIT
+[INFO] 08:34:45:426 CPU/(67520:67573): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:46:430 CPU/(67520:67573): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:46:431 CPU/(67520:67576): CPU lista para recibir al cliente
+[INFO] 08:34:46:433 CPU/(67520:67576): Se conecto un cliente
+[INFO] 08:34:46:435 CPU/(67520:67576): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:46:435 CPU/(67520:67576): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:34:46:435 CPU/(67520:67576): F_OPEN ARCHIVO
+
+[INFO] 08:34:46:436 CPU/(67520:67576): YIELD
+
+[INFO] 08:34:46:436 CPU/(67520:67576): F_CLOSE ARCHIVO
+
+[INFO] 08:34:46:436 CPU/(67520:67576): EXIT
+[INFO] 08:34:46:436 CPU/(67520:67576): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:46:439 CPU/(67520:67576): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:46:441 CPU/(67520:67578): CPU lista para recibir al cliente
+[INFO] 08:34:46:444 CPU/(67520:67578): Se conecto un cliente
+[INFO] 08:34:46:444 CPU/(67520:67578): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:46:444 CPU/(67520:67578): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:34:46:444 CPU/(67520:67578): F_OPEN ARCHIVO
+
+[INFO] 08:34:46:444 CPU/(67520:67578): YIELD
+
+[INFO] 08:34:46:445 CPU/(67520:67578): F_CLOSE ARCHIVO
+
+[INFO] 08:34:46:445 CPU/(67520:67578): EXIT
+[INFO] 08:34:46:445 CPU/(67520:67578): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:46:446 CPU/(67520:67578): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:46:447 CPU/(67520:67580): CPU lista para recibir al cliente
+[INFO] 08:34:46:448 CPU/(67520:67580): Se conecto un cliente
+[INFO] 08:34:46:450 CPU/(67520:67580): Instrucciones recibidas de Kernel:
+
+[INFO] 08:34:46:450 CPU/(67520:67580): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:34:46:450 CPU/(67520:67580): F_OPEN ARCHIVO
+
+[INFO] 08:34:46:450 CPU/(67520:67580): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:34:46:450 CPU/(67520:67580): F_CLOSE ARCHIVO
+
+[INFO] 08:34:46:450 CPU/(67520:67580): EXIT
+[INFO] 08:34:46:451 CPU/(67520:67580): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:34:46:452 CPU/(67520:67580): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:34:46:453 CPU/(67520:67583): CPU lista para recibir al cliente
+[INFO] 08:41:40:768 CPU/(67887:67887): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 08:41:40:768 CPU/(67887:67887): CPU lista para escuchar al cliente
+
+[INFO] 08:41:40:769 CPU/(67887:67889): CPU lista para recibir al cliente
+[INFO] 08:41:50:210 CPU/(67887:67889): Se conecto un cliente
+[INFO] 08:41:50:210 CPU/(67887:67889): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:50:210 CPU/(67887:67889): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:41:50:210 CPU/(67887:67889): F_OPEN ARCHIVO
+
+[INFO] 08:41:50:210 CPU/(67887:67889): YIELD
+
+[INFO] 08:41:50:210 CPU/(67887:67889): F_CLOSE ARCHIVO
+
+[INFO] 08:41:50:210 CPU/(67887:67889): EXIT
+[INFO] 08:41:50:211 CPU/(67887:67889): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:51:212 CPU/(67887:67889): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:51:212 CPU/(67887:67937): CPU lista para recibir al cliente
+[INFO] 08:41:51:215 CPU/(67887:67937): Se conecto un cliente
+[INFO] 08:41:51:215 CPU/(67887:67937): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:51:215 CPU/(67887:67937): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:41:51:215 CPU/(67887:67937): F_OPEN ARCHIVO
+
+[INFO] 08:41:51:215 CPU/(67887:67937): YIELD
+
+[INFO] 08:41:51:215 CPU/(67887:67937): F_CLOSE ARCHIVO
+
+[INFO] 08:41:51:215 CPU/(67887:67937): EXIT
+[INFO] 08:41:51:216 CPU/(67887:67937): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:51:216 CPU/(67887:67937): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:51:218 CPU/(67887:67940): CPU lista para recibir al cliente
+[INFO] 08:41:51:227 CPU/(67887:67940): Se conecto un cliente
+[INFO] 08:41:51:227 CPU/(67887:67940): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:51:227 CPU/(67887:67940): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:41:51:227 CPU/(67887:67940): F_OPEN ARCHIVO
+
+[INFO] 08:41:51:227 CPU/(67887:67940): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:41:51:227 CPU/(67887:67940): F_CLOSE ARCHIVO
+
+[INFO] 08:41:51:227 CPU/(67887:67940): EXIT
+[INFO] 08:41:51:228 CPU/(67887:67940): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:229 CPU/(67887:67940): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:231 CPU/(67887:67942): CPU lista para recibir al cliente
+[INFO] 08:41:52:231 CPU/(67887:67942): Se conecto un cliente
+[INFO] 08:41:52:234 CPU/(67887:67942): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:52:234 CPU/(67887:67942): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:41:52:234 CPU/(67887:67942): F_OPEN ARCHIVO
+
+[INFO] 08:41:52:234 CPU/(67887:67942): YIELD
+
+[INFO] 08:41:52:235 CPU/(67887:67942): F_CLOSE ARCHIVO
+
+[INFO] 08:41:52:235 CPU/(67887:67942): EXIT
+[INFO] 08:41:52:235 CPU/(67887:67942): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:237 CPU/(67887:67942): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:237 CPU/(67887:67945): CPU lista para recibir al cliente
+[INFO] 08:41:52:238 CPU/(67887:67945): Se conecto un cliente
+[INFO] 08:41:52:239 CPU/(67887:67945): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:52:240 CPU/(67887:67945): SET RAX ABRIR-ARCHIVO
+
+[INFO] 08:41:52:240 CPU/(67887:67945): F_OPEN ARCHIVO
+
+[INFO] 08:41:52:240 CPU/(67887:67945): YIELD
+
+[INFO] 08:41:52:240 CPU/(67887:67945): F_CLOSE ARCHIVO
+
+[INFO] 08:41:52:240 CPU/(67887:67945): EXIT
+[INFO] 08:41:52:240 CPU/(67887:67945): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:241 CPU/(67887:67945): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:244 CPU/(67887:67947): CPU lista para recibir al cliente
+[INFO] 08:41:52:245 CPU/(67887:67947): Se conecto un cliente
+[INFO] 08:41:52:245 CPU/(67887:67947): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:52:246 CPU/(67887:67947): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:41:52:246 CPU/(67887:67947): F_OPEN ARCHIVO
+
+[INFO] 08:41:52:246 CPU/(67887:67947): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:41:52:246 CPU/(67887:67947): F_CLOSE ARCHIVO
+
+[INFO] 08:41:52:246 CPU/(67887:67947): EXIT
+[INFO] 08:41:52:246 CPU/(67887:67947): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:247 CPU/(67887:67947): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:247 CPU/(67887:67950): CPU lista para recibir al cliente
+[INFO] 08:41:52:249 CPU/(67887:67950): Se conecto un cliente
+[INFO] 08:41:52:249 CPU/(67887:67950): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:52:249 CPU/(67887:67950): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:41:52:250 CPU/(67887:67950): F_OPEN ARCHIVO
+
+[INFO] 08:41:52:250 CPU/(67887:67950): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:41:52:250 CPU/(67887:67950): F_CLOSE ARCHIVO
+
+[INFO] 08:41:52:250 CPU/(67887:67950): EXIT
+[INFO] 08:41:52:250 CPU/(67887:67950): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:251 CPU/(67887:67950): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:253 CPU/(67887:67954): CPU lista para recibir al cliente
+[INFO] 08:41:52:253 CPU/(67887:67954): Se conecto un cliente
+[INFO] 08:41:52:254 CPU/(67887:67954): Instrucciones recibidas de Kernel:
+
+[INFO] 08:41:52:255 CPU/(67887:67954): SET RAX ABRIR-ARCHIVO2
+
+[INFO] 08:41:52:255 CPU/(67887:67954): F_OPEN ARCHIVO
+
+[INFO] 08:41:52:255 CPU/(67887:67954): F_TRUNCATE ARCHIVO 64
+
+[INFO] 08:41:52:255 CPU/(67887:67954): F_CLOSE ARCHIVO
+
+[INFO] 08:41:52:255 CPU/(67887:67954): EXIT
+[INFO] 08:41:52:261 CPU/(67887:67954): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 08:41:52:262 CPU/(67887:67954): el kernel se desconecto. Terminando servidor
+
+[INFO] 08:41:52:262 CPU/(67887:67956): CPU lista para recibir al cliente

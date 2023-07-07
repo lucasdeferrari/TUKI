@@ -1260,6 +1260,7 @@ void manejar_recursos() {
 		    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
 		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
 		    		printf("Proceso %d bloqueado en la tabla global de archivos: %s\n",unProceso->pid,siguiente->nombreArchivo);
+
 		    	}
 //		    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
 //		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
@@ -1285,7 +1286,6 @@ void manejar_recursos() {
 			printf("El archivo no se encuentra en la tabla global de archivos.\n");
 			//int cod_fs
 			//t_infopcb* unProceso
-
 			iniciarHiloClienteFileSystem(2,unProceso);
 
 		}
@@ -1358,7 +1358,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "F_READ") == 0) {
 		//int cod_fs
 		//t_infopcb* unProceso
-
+		estadoEnEjecucion->pid = -1;
 		iniciarHiloClienteFileSystem(3,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
@@ -1379,7 +1379,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
 		//int cod_fs
 		//t_infopcb* unProceso
-
+		estadoEnEjecucion->pid = -1;
 		iniciarHiloClienteFileSystem(4,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
@@ -1400,7 +1400,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//int cod_fs
 		//t_infopcb* unProceso
-
+		estadoEnEjecucion->pid = -1;
 		iniciarHiloClienteFileSystem(5,unProceso);
 
 		//Desencolo ready si es que hay algun proceso en la lista
