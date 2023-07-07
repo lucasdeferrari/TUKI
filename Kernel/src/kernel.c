@@ -1294,45 +1294,47 @@ void manejar_recursos() {
 
 		//Elimino el archivo de la tabla del proceso
 		t_list_iterator* iterador = list_iterator_create(unProceso->tablaArchivosAbiertos);
+		int indiceListaArchivos;
 	    while (list_iterator_has_next(iterador)) {
 
 	    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
-
 	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
-	    		queue_pop(siguiente);
-	    		printf("Archivo eliminado de la tabla del proceso.\n");
+	    		indiceListaArchivos = list_iterator_index(iterador);
 	    	}
-//	    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
-//	    		queue_pop(siguiente);
-//	    	}
 	    }
+	    t_infoTablaArchivos* archivoEliminado = list_remove(unProceso->tablaArchivosAbiertos,indiceListaArchivos);
+	    printf("Archivo eliminado de la tabla del proceso: %s\n",archivoEliminado->nombreArchivo);
 
 	    //Encolo el proceso en Ready
 	    encolar_ready_ejecucion(unProceso);
+	    printf("Proceso encolado en Ready.\n");
 
 		//Elimino el archivo de la tabla global de archivos o desbloqueo un proceso
 		t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
-
+		int indiceListaArchivosGlobal;
 	    while (list_iterator_has_next(iteradorGlobal)) {
 
 	    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iteradorGlobal);
 	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
-
-	    		if(queue_is_empty(siguiente->colaProcesosBloqueados)){
-	    			//Elimino el archivo de la tabla global de archivos
-	    			list_remove_element(tablaGlobalArchivosAbiertos, siguiente);
-	    			printf("Archivo eliminado de la tabla global de archivos.\n");
-	    		}
-	    		else{
-	    			//Desbloqueo y encolo en Ready el proceso desbloqueado
-	    			encolar_ready_ejecucion(queue_pop(siguiente->colaProcesosBloqueados));
-	    			printf("Archivo desbloqueado y encolado en Ready.\n");
-	    		}
+	    		indiceListaArchivosGlobal = list_iterator_index(iteradorGlobal);
 	    	}
 	    }
 
-	    desencolarReady();
+	    	t_infoTablaGlobalArchivos* archivoGlobalEncontrado = list_get(tablaGlobalArchivosAbiertos,indiceListaArchivosGlobal);
 
+	    	if(queue_is_empty(archivoGlobalEncontrado->colaProcesosBloqueados)){
+				//Elimino el archivo de la tabla global de archivos
+				t_infoTablaGlobalArchivos* archivoGlobalEliminado = list_remove(tablaGlobalArchivosAbiertos,indiceListaArchivosGlobal);
+				printf("Archivo eliminado de la tabla global de archivos: %s\n",archivoGlobalEliminado->nombreArchivo);
+			}
+			else{
+				//Desbloqueo y encolo en Ready el proceso desbloqueado
+				t_infopcb* procesoDesbloqueado = queue_pop(archivoGlobalEncontrado->colaProcesosBloqueados);
+				encolar_ready_ejecucion(procesoDesbloqueado);
+				printf("Archivo desbloqueado %s y proceso %d encolado en Ready.\n",archivoGlobalEncontrado->nombreArchivo,procesoDesbloqueado->pid);
+			}
+
+	    desencolarReady();
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_SEEK") == 0) {
 
