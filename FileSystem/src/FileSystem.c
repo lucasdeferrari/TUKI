@@ -350,8 +350,9 @@ void* serverFileSystem(void* ptr){
     			//SI EXISTE LO ABRIMOS Y DEVOLVEMOS OK
     			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
-    			abrir_archivo(nombreArchivo);
+    			//abrir_archivo(nombreArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
+    			printf("F_OPEN ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
     			break;
 

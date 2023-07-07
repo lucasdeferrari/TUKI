@@ -487,6 +487,7 @@ void* clientFileSystem(void *arg) {
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_fs);
+    printf("Cod_fs: %d\n", cod_fs);
     switch(cod_fs){
 		case 2: //F_OPEN
 
@@ -579,10 +580,10 @@ void* clientFileSystem(void *arg) {
 	int cod_op = recibir_operacion(conexion_FileSystem);
 
 	switch (cod_op) {
-		case 1: //F_OPEN
-
+		case 2: //F_OPEN
 			//Agrego el archivo a la tabla global
 			t_infoTablaGlobalArchivos* nuevoArchivoGlobal = malloc(sizeof(t_infoTablaGlobalArchivos));
+			nuevoArchivoGlobal->nombreArchivo = string_new();
 			strcpy(nuevoArchivoGlobal->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivoGlobal->colaProcesosBloqueados = queue_create();
 			list_add(tablaGlobalArchivosAbiertos, nuevoArchivoGlobal);
@@ -590,16 +591,39 @@ void* clientFileSystem(void *arg) {
 
 			//Agrego el archivo a la tabla del proceso
 			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
+			nuevoArchivo->nombreArchivo = string_new();
 			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivo->posicionPuntero = 0;
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
 			printf("Archivo agregado a la tabla del proceso.\n");
 
+			printf("TABLA GLOBAL DE ARCHIVOS:\n");
+			t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
+
+		    while (list_iterator_has_next(iteradorGlobal)) {
+
+		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iteradorGlobal);
+
+		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
+		    	printf("Cantidad de procesos bloqueados: %d\n",queue_size(siguiente->colaProcesosBloqueados));
+		    }
+		    printf("TABLA DE ARCHIVOS DEL PROCESO %d:\n",unProceso->pid);
+			t_list_iterator* iteradorArchivos = list_iterator_create(unProceso->tablaArchivosAbiertos);
+
+		    while (list_iterator_has_next(iteradorArchivos)) {
+
+		    	t_infoTablaArchivos* siguiente = list_iterator_next(iteradorArchivos);
+
+		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
+		    	printf("Posicion del puntero: %d\n",siguiente->posicionPuntero);
+		    }
+
+
 			//Sigue ejecutando el mismo proceso
 			iniciarHiloClienteCPU();
 
 		break;
-		case 2: //F_READ
+		case 3: //F_READ
 
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
@@ -628,7 +652,7 @@ void* clientFileSystem(void *arg) {
 			}
 
 		break;
-		case 3: //F_WRITE
+		case 4: //F_WRITE
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
@@ -656,7 +680,7 @@ void* clientFileSystem(void *arg) {
 			}
 
 		break;
-		case 4: //F_TRUNCATE
+		case 5: //F_TRUNCATE
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
@@ -1221,6 +1245,7 @@ void manejar_recursos() {
 
 			//Agrego el archivo a la tabla del proceso
 			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
+			nuevoArchivo->nombreArchivo = string_new();
 			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivo->posicionPuntero = 0;
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
@@ -1234,7 +1259,7 @@ void manejar_recursos() {
 		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iterador);
 		    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
 		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
-		    		printf("Proceso bloqueado en la tabla global de archivos: %s\n",siguiente->nombreArchivo);
+		    		printf("Proceso %d bloqueado en la tabla global de archivos: %s\n",unProceso->pid,siguiente->nombreArchivo);
 		    	}
 //		    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
 //		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
@@ -1261,7 +1286,7 @@ void manejar_recursos() {
 			//int cod_fs
 			//t_infopcb* unProceso
 
-			iniciarHiloClienteFileSystem(1,unProceso);
+			iniciarHiloClienteFileSystem(2,unProceso);
 
 		}
 	}
@@ -1330,7 +1355,7 @@ void manejar_recursos() {
 		//int cod_fs
 		//t_infopcb* unProceso
 
-		iniciarHiloClienteFileSystem(2,unProceso);
+		iniciarHiloClienteFileSystem(3,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1351,7 +1376,7 @@ void manejar_recursos() {
 		//int cod_fs
 		//t_infopcb* unProceso
 
-		iniciarHiloClienteFileSystem(3,unProceso);
+		iniciarHiloClienteFileSystem(4,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1372,7 +1397,7 @@ void manejar_recursos() {
 		//int cod_fs
 		//t_infopcb* unProceso
 
-		iniciarHiloClienteFileSystem(4,unProceso);
+		iniciarHiloClienteFileSystem(5,unProceso);
 
 		//Desencolo ready si es que hay algun proceso en la lista
 		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
