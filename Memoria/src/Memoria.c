@@ -333,8 +333,7 @@ void* serverMemoria(void* ptr){
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
 
     			sleep_ms(retardoMemoria);
-
-    			enviar_cod_operacion(destinoArray[0], cliente_fd, MOV_IN);
+    			enviar_mensaje_cod_operacion(destinoArray[0],cliente_fd,MOV_IN);
     			estaConectadoFS = 0;
     		}
 
@@ -365,8 +364,9 @@ void* serverMemoria(void* ptr){
 				     }
 				sleep_ms(retardoMemoria);
 				printf("ENVIO MOV OUT");
-				enviar_cod_operacion("OK", cliente_fd, MOV_OUT);
+				enviar_mensaje_cod_operacion("OK",cliente_fd,MOV_OUT);
 				estaConectadoFS = 0;
+
     		}
     		else if(cod_op == DESOCUPADO){
     			printf("ENTRE A DESOCUPADO\n");

@@ -85,7 +85,6 @@ void* clientMemoria(void *arg) {
     t_paquete* paquete = crear_paquete_cod_operacion(cod_memoria);
         switch(cod_memoria){
         	case 11: //MOV_IN - ORDEN PARAMETROS: (PID, CPU/FS, DIRECCION, TAMAÑO)
-        		printf("Dentro de MOV_IN\n");
         		char* pidMI = string_new();
         		char* CPUMI = string_new();
         		char* direcFisicaMI = string_new();
@@ -110,10 +109,9 @@ void* clientMemoria(void *arg) {
             	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
 
             	eliminar_paquete(paquete);
-            	liberar_conexion(conexion_Memoria);
+
             break;
         	case 12: //MOV_OUT - ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
-        		printf("Dentro de MOV_OUT\n");
         		char* pidMO = string_new();
 				char* CPUMO = string_new();
 				char* valorRegistroMO = string_new();
@@ -135,31 +133,31 @@ void* clientMemoria(void *arg) {
 				enviar_paquete(paquete, conexion_Memoria);
 
 				printf("MOV_OUT enviado a MEMORIA.\n");
-				printf("pid: %s\n", pidMO);
-				printf("quienSoy: %s\n", CPUMO);
-				printf("valorRegistro: %s\n", valorRegistroMO);
-				printf("direcFisica: %s\n", direcFisicaMO);
-				printf("tamanio: %s\n", tamanioMO);
+				printf("pid enviado a MEMORIA: %s\n", pidMO);
+				printf("quienSoy enviado a MEMORIA: %s\n", CPUMO);
+				printf("valorRegistro enviado a MEMORIA: %s\n", valorRegistroMO);
+				printf("direcFisica enviado a MEMORIA: %s\n", direcFisicaMO);
+				printf("tamanio enviado a MEMORIA: %s\n", tamanioMO);
 
                 eliminar_paquete(paquete);
-                liberar_conexion(conexion_Memoria);
+
         	break;
     		default:
     			log_warning(logger," Operacion desconocida. NO se envió nada a Memoria.\n");
     			liberar_conexion(conexion_Memoria);
     		break;
         }
-    printf("CONEXION MEMORIA: %d", conexion_Memoria);
     int cod_op = recibir_operacion(conexion_Memoria);
-    printf("RECIBO OPERACION MEMORIA: %d", cod_op);
+    printf("RECIBO OPERACION MEMORIA: %d\n", cod_op);
     switch (cod_op) {
-    		case 11:
-    			char* valorLeido = recibir_handshake(cliente_fd);
+    		case 11: //MOV_IN, RECIBO EL CONTENIDO DE LA DIRECFISICA Y LO SETTEO EN EL REGISTRO
+    			char* valorLeido = recibir_handshake(conexion_Memoria);
     			set_tp(registro,valorLeido);
+    			printf("VALOR DEL REGISTRO %s: %s\n",registro,contexto->registrosCpu.BX);
     			liberar_conexion(conexion_Memoria);
     		break;
             case 12:  //RECIBO UN OK
-            	char* respuesta = recibir_handshake(cliente_fd);
+            	char* respuesta = recibir_handshake(conexion_Memoria);
             	printf("Respuesta MOV_OUT: %s\n",respuesta);
             	liberar_conexion(conexion_Memoria);
             break;
