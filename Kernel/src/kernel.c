@@ -527,18 +527,18 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 4: //F_WRITE
-			// ORDEN PARÁMETROS: nombreArchivo - cantBytes - direcFisica
-			//char* punteroWrite = string_new();
+			// ORDEN PARÁMETROS: nombreArchivo - puntero - cantBytes - direcFisica
+			char* punteroWrite = string_new();
     		char* cantBytesWrite = string_new();
     		char* direcFisicaWrite = string_new();
 
-    		//string_append_with_format(&punteroWrite, "%d", punteroArchivo);
+    		string_append_with_format(&punteroWrite, "%d", punteroArchivo);
             string_append_with_format(&cantBytesWrite, "%d", unProceso->cantBytesArchivo);
             string_append_with_format(&direcFisicaWrite, "%d", unProceso->direcFisicaArchivo);
 
 
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
-            //agregar_a_paquete(paquete, punteroWrite, strlen(punteroWrite)+1);
+            agregar_a_paquete(paquete, punteroWrite, strlen(punteroWrite)+1);
         	agregar_a_paquete(paquete, cantBytesWrite, strlen(cantBytesWrite)+1);
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
@@ -546,9 +546,9 @@ void* clientFileSystem(void *arg) {
 
         	printf("F_WRITE enviado a MEMORIA.\n");
         	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
-        	//printf("Puntero enviado a FS: %s\n", punteroWrite);
+        	printf("Puntero enviado a FS: %s\n", punteroWrite);
         	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
-        	printf("DirecFisica enviad a FS: %s\n", direcFisicaWrite);
+        	printf("DirecFisica enviada a FS: %s\n", direcFisicaWrite);
 
         	eliminar_paquete(paquete);
 
@@ -581,6 +581,7 @@ void* clientFileSystem(void *arg) {
 
 	switch (cod_op) {
 		case 2: //F_OPEN
+			liberar_conexion(conexion_FileSystem);
 			//Agrego el archivo a la tabla global
 			t_infoTablaGlobalArchivos* nuevoArchivoGlobal = malloc(sizeof(t_infoTablaGlobalArchivos));
 			nuevoArchivoGlobal->nombreArchivo = string_new();
@@ -624,7 +625,7 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 3: //F_READ
-
+			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
@@ -653,6 +654,7 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 4: //F_WRITE
+			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
@@ -681,6 +683,7 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 5: //F_TRUNCATE
+			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);

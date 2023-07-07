@@ -352,7 +352,7 @@ void* serverFileSystem(void* ptr){
     			printf("DENTRO DE F_OPEN\n");
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
     			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
-    			//abrir_archivo(nombreArchivo);
+    			abrir_archivo(nombreArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
     			printf("F_OPEN ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
@@ -377,10 +377,16 @@ void* serverFileSystem(void* ptr){
     			int cantBytesRead = atoi(paqueteRead[2]);
     			int direcFisicaRead = atoi(paqueteRead[3]);
 
+    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
+    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoRead);
+    			printf("CantBytes recibida de Kernel: %d\n",cantBytesRead);
+    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaRead);
+
     			//FUNCIÓN F_READ
     			leerArchivo(nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
 
     			enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
+    			printf("F_READ ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
 
     			break;
@@ -403,6 +409,11 @@ void* serverFileSystem(void* ptr){
     			int cantBytesWrite = atoi(paqueteWrite[2]);
     			int direcFisicaWrite = atoi(paqueteWrite[3]);
 
+    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
+    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoWrite);
+    			printf("CantBytes recibida de Kernel: %d\n",cantBytesWrite);
+    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaWrite);
+
     			//Le pido a memoria lo que le tengo que escribir
     			iniciarHiloCliente(11, "", direcFisicaWrite, cantBytesWrite);
 
@@ -413,6 +424,7 @@ void* serverFileSystem(void* ptr){
     			escribirArchivo(nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
 
     			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
+    			printf("F_WRITE ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
 
     			break;
@@ -434,7 +446,7 @@ void* serverFileSystem(void* ptr){
     			int tamanioArchivo = atoi(paqueteTruncate[1]);
     			printf("Nombre del archivo: %s\n",nombreArchivo);
     			printf("Nuevo tamaño del archivo: %d \n",tamanioArchivo);
-    			//truncar_archivo(nombreArchivo, tamanioArchivo);
+    			truncar_archivo(nombreArchivo, tamanioArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
     			printf("F_TRUNCATE ENVIADO A KERNEL\n");
     			liberar_conexion(cliente_fd);
