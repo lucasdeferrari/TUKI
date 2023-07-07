@@ -590,13 +590,30 @@ void* clientMemoria(void* arg) {
 
 
 /////////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
+char* crearPathArchivo(char* nombreArchivoOriginal){
+	int largo = string_length(nombreArchivoOriginal) - 1;
+	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
 
-void abrir_archivo(char* nombreArchivo){
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	string_append(&p_fcb, nombreArchivo);
+	string_append(&p_fcb, ".config");
+
+	return nombreArchivo;
+}
+
+void abrir_archivo(char* nombreArchivoOriginal){
 	//Creo archivo FCB para crear config FCB
 
-	string_append(p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(p_fcb, nombreArchivo);
-	string_append(p_fcb, ".config");
+//	int largo = string_length(nombreArchivoOriginal) - 1;
+//	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
+//
+//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+//	string_append(&p_fcb, nombreArchivo);
+//	string_append(&p_fcb, ".config");
+
+	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
+
+	printf("El path es: %s\n", p_fcb);
 
 	configFCB = config_create(p_fcb);
 
@@ -604,7 +621,7 @@ void abrir_archivo(char* nombreArchivo){
 		printf("No exise el archivo.\n");
 		archivo_fcb = fopen(p_fcb, "w");
 		if (archivo_fcb) {
-			printf("El archivo FCB se ha creado exitosamente.\n");
+
 			configFCB = config_create(p_fcb);
 
 			config_set_value(configFCB, "NOMBRE_ARCHIVO", nombreArchivo);
@@ -612,18 +629,35 @@ void abrir_archivo(char* nombreArchivo){
 			config_set_value(configFCB, "PUNTERO_DIRECTO", "NULL");
 			config_set_value(configFCB, "PUNTERO_INDIRECTO", "NULL");
 
+			config_save(configFCB);
+
+			char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
+
+			printf("El nombre del archivo es: %s\n", nomArch);
+
+			printf("El archivo FCB se ha creado exitosamente.\n");
+
 		    fclose(archivo_fcb);
 		} else {
 			printf("No se pudo crear el archivo FCB.\n");
 		}
+	}else {
+		char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
+		printf("El nombre del archivo es: %s\n", nomArch);
 	}
+
 }
 
-void truncar_archivo(char* nombreArchivo, int tamanio){
+void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 
-	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(&p_fcb, nombreArchivo);
-	string_append(&p_fcb, ".config");
+//	int largo = string_length(nombreArchivoOriginal) - 1;
+//	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
+//
+//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+//	string_append(&p_fcb, nombreArchivo);
+//	string_append(&p_fcb, ".config");
+
+	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
 
 	configFCB = config_create(p_fcb);
 
@@ -719,15 +753,17 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 }
 
 //FALTA MANDAR A MEMORIA
-void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
+void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
 //	Esta operación deberá leer la información correspondiente de los bloques a partir del puntero y el
 //	tamaño recibidos. Esta información se deberá enviar a la Memoria para ser escrita a partir de la
 //	dirección física recibida por parámetro y esperar su finalización para poder confirmar el éxito de
 //	la operación al Kernel. MOVE_OUT
 
-	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(&p_fcb, nombreArchivo);
-	string_append(&p_fcb, ".config");
+//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+//	string_append(&p_fcb, nombreArchivo);
+//	string_append(&p_fcb, ".config");
+//
+	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
 
 	configFCB = config_create(p_fcb);
 
@@ -795,15 +831,17 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 	}
 }
 
-void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
+void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
 //	Se deberá solicitar a la Memoria la información que se encuentra a partir de la dirección física y
 //	escribirlo en los bloques correspondientes del archivo a partir del puntero recibido.
 //	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
 //	por parámetro desde el Kernel. MOVE_IN
 
-	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-	string_append(&p_fcb, nombreArchivo);
-	string_append(&p_fcb, ".config");
+//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+//	string_append(&p_fcb, nombreArchivo);
+//	string_append(&p_fcb, ".config");
+
+	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
 
 	configFCB = config_create(p_fcb);
 
