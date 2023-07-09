@@ -3498,3 +3498,31 @@ el cliente se desconecto. Terminando servidor.
 el cliente se desconecto. Terminando servidor.
 
 [INFO] 12:34:32:653 FileSystem/(4786:4800): FileSystem listo para recibir a kernel
+[INFO] 03:19:50:323 FileSystem/(2456:2456): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:19:50:324 FileSystem/(2456:2456): FileSystem listo para escuchar al cliente
+
+[INFO] 03:19:50:324 FileSystem/(2456:2458): FileSystem listo para recibir a kernel
+[INFO] 03:33:15:254 FileSystem/(3479:3479): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:33:15:255 FileSystem/(3479:3479): FileSystem listo para escuchar al cliente
+
+[INFO] 03:33:15:255 FileSystem/(3479:3481): FileSystem listo para recibir a kernel
+[INFO] 03:33:33:350 FileSystem/(3484:3484): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:33:33:351 FileSystem/(3484:3484): FileSystem listo para escuchar al cliente
+
+[INFO] 03:33:33:351 FileSystem/(3484:3486): FileSystem listo para recibir a kernel
+[INFO] 03:51:44:254 FileSystem/(3741:3741): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:51:44:254 FileSystem/(3741:3741): FileSystem listo para escuchar al cliente
+
+[INFO] 03:51:44:254 FileSystem/(3741:3743): FileSystem listo para recibir a kernel
+[INFO] 03:51:55:818 FileSystem/(3749:3749): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:51:55:819 FileSystem/(3749:3749): FileSystem listo para escuchar al cliente
+
+[INFO] 03:51:55:819 FileSystem/(3749:3751): FileSystem listo para recibir a kernel
+[INFO] 03:58:15:841 FileSystem/(3788:3788): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:58:15:841 FileSystem/(3788:3788): FileSystem listo para escuchar al cliente
+
+[INFO] 03:58:15:842 FileSystem/(3788:3790): FileSystem listo para recibir a kernel
+[INFO] 04:06:09:689 FileSystem/(4368:4368): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:06:09:690 FileSystem/(4368:4368): FileSystem listo para escuchar al cliente
+
+[INFO] 04:06:09:691 FileSystem/(4368:4370): FileSystem listo para recibir a kernel
