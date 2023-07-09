@@ -2,6 +2,9 @@
 
 t_config* config;
 t_config* configFCB;
+t_config* configFCBT;
+t_config* configFCBL;
+t_config* configFCBE;
 int cliente_fd;
 
 int block_size = 0;
@@ -20,7 +23,6 @@ int main(void) {
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
 	char* p_bloques = string_new();
-	p_fcb = string_new();
 
 	FILE* archivo_superbloque;
 	FILE* archivo_bitmap;
@@ -444,7 +446,7 @@ void* serverFileSystem(void* ptr){
 
     			nombreArchivo = paqueteTruncate[0];
     			int tamanioArchivo = atoi(paqueteTruncate[1]);
-    			printf("Nombre del archivo: %s\n",nombreArchivo);
+    			printf("Nombre del archivo: %s.\n",nombreArchivo);
     			printf("Nuevo tamaño del archivo: %d \n",tamanioArchivo);
     			truncar_archivo(nombreArchivo, tamanioArchivo);
     			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
@@ -590,15 +592,28 @@ void* clientMemoria(void* arg) {
 
 
 /////////////////////////////////////  FUNCIONES ARCHIVOS ////////////////////////////////////////////
-char* crearPathArchivo(char* nombreArchivoOriginal){
+char* crearPathArchivoFOpen(char* nombreArchivoOriginal){
 	int largo = string_length(nombreArchivoOriginal) - 1;
 	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
+	p_fcb = string_new();
 
-	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
+	printf("El nombre es: %s\n", nombreArchivo);
+
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/fcb/");
 	string_append(&p_fcb, nombreArchivo);
 	string_append(&p_fcb, ".config");
 
 	return nombreArchivo;
+}
+
+void crearPathArchivo(char* nombreArchivo){
+	p_fcb = string_new();
+
+	printf("El nombre es: %s\n", nombreArchivo);
+
+	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/fcb/");
+	string_append(&p_fcb, nombreArchivo);
+	string_append(&p_fcb, ".config");
 }
 
 void abrir_archivo(char* nombreArchivoOriginal){
@@ -611,7 +626,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 
-	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
+	char* nombreArchivo = crearPathArchivoFOpen(nombreArchivoOriginal);
 
 	printf("El path es: %s\n", p_fcb);
 
@@ -626,8 +641,8 @@ void abrir_archivo(char* nombreArchivoOriginal){
 
 			config_set_value(configFCB, "NOMBRE_ARCHIVO", nombreArchivo);
 			config_set_value(configFCB, "TAMANIO_ARCHIVO", "0");
-			config_set_value(configFCB, "PUNTERO_DIRECTO", "NULL");
-			config_set_value(configFCB, "PUNTERO_INDIRECTO", "NULL");
+			config_set_value(configFCB, "PUNTERO_DIRECTO", "");
+			config_set_value(configFCB, "PUNTERO_INDIRECTO", "");
 
 			config_save(configFCB);
 
@@ -645,7 +660,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 		char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
 		printf("El nombre del archivo es: %s\n", nomArch);
 	}
-
+	config_destroy(configFCB);
 }
 
 void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
@@ -657,18 +672,39 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 
-	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
+	crearPathArchivo(nombreArchivoOriginal);
 
-	configFCB = config_create(p_fcb);
+	printf("El path es: %s\n", p_fcb);
 
-	int tamanioArchivo = atoi(config_get_string_value(configFCB, "TAMANIO_ARCHIVO"));
-	int punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
-	int punteroDirecto = atoi(config_get_string_value(configFCB, "PUNTERO_DIRECTO"));
-	char tam = tamanio+'0';
-	config_set_value(configFCB, "TAMANIO_ARCHIVO", &tam);
+	configFCBT = config_create(p_fcb);
+	printf("Hola\n");
+
+	if (configFCBT == NULL) {
+	        printf("No se pudo crear el config.\n");
+	        exit(5);
+	 }else{
+
+	    if (config_has_property(configFCBT, "TAMANIO_ARCHIVO")) {
+	    	printf("Existe el tamanio archivo.\n");
+	    	int tamanioArchivo =  config_get_int_value(configFCB, "TAMANIO_ARCHIVO");
+	    	printf("Tamanio %d", tamanioArchivo);
+	    }else {
+	    	printf("No existe el path al superbloque.\n");
+	    	exit(5);
+	    }
+
+	//if (configFCBT != NULL) {
+		printf("El config se creo bien");
+		int tamanioArchivo =  config_get_int_value(configFCB, "TAMANIO_ARCHIVO");
+		printf("Tamanio %d", tamanioArchivo);
+		int punteroIndirecto =  config_get_int_value(configFCB, "PUNTERO_INDIRECTO");
+		printf("PunteroIndirecto %d", punteroIndirecto);
+		int punteroDirecto =  config_get_int_value(configFCB, "PUNTERO_DIRECTO");
+		printf("PunteroDirecto %d", punteroDirecto);
+		char tam = tamanio+'0';
+		config_set_value(configFCB, "TAMANIO_ARCHIVO", &tam);
 
 
-	if (configFCB != NULL) {
 		int cantidadBloquesNecesarios = ceil(tamanio / block_size);
 
 		int cantidadBloquesActual = 0;
@@ -749,7 +785,10 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 				}
 			}
 		}
+		printf("Config no creado");
 	}
+	config_save(configFCB);
+	//config_destroy(configFCB);
 }
 
 //FALTA MANDAR A MEMORIA
@@ -763,11 +802,11 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 //
-	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
+	crearPathArchivo(nombreArchivoOriginal);
 
-	configFCB = config_create(p_fcb);
+	configFCBL = config_create(p_fcb);
 
-	if (configFCB != NULL) {
+	if (configFCBL != NULL) {
 		uint32_t bloqueALeer = floor(punteroArchivo / block_size);
 		uint32_t punteroIndirecto = atoi(config_get_string_value(configFCB, "PUNTERO_INDIRECTO"));
 		char porcionLeida[cantBytesRead];
@@ -829,6 +868,7 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 		}
 		iniciarHiloCliente(12, porcionLeida, direcFisicaRead, cantBytesRead);
 	}
+	//config_destroy(configFCB);
 }
 
 void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
@@ -841,11 +881,11 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 
-	char* nombreArchivo = crearPathArchivo(nombreArchivoOriginal);
+	crearPathArchivo(nombreArchivoOriginal);
 
-	configFCB = config_create(p_fcb);
+	configFCBE = config_create(p_fcb);
 
-	if (configFCB != NULL) {
+	if (configFCBE != NULL) {
 
 		//SOLICITAR A MEMORIA, suponemos que escribe en una variable global llamada textoLeido
 
@@ -913,6 +953,7 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 			}
 		}
 	}
+	//config_destroy(configFCB);
 }
 
 

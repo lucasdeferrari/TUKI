@@ -31,7 +31,8 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 //t_infofcb* buscarFCB (char* nombreArchivo);
 void enviar_handshake_memoria();
 int minimo(int, int);
-char* crearPathArchivo(char* nombreArchivoOriginal);
+char* crearPathArchivoFOpen(char* nombreArchivoOriginal);
+void crearPathArchivo(char* nombreArchivo);
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 
