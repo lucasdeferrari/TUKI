@@ -13,6 +13,7 @@ int server_fd;
 t_bitarray* bitarray_mapeado;
 char* p_fcb;
 FILE* archivo_fcb;
+void* mapping;
 void* mapping2;
 char* textoLeidoMemoria = "";
 
@@ -135,7 +136,7 @@ int main(void) {
 
 
     // Realizar el mapeo
-    void* mapping = mmap(NULL, block_count, PROT_WRITE, MAP_SHARED, fd, 0);
+    mapping = mmap(NULL, block_count, PROT_WRITE, MAP_SHARED, fd, 0);
     if (mapping == MAP_FAILED) {
         perror("Error en mmap");
         exit(1);
@@ -170,6 +171,8 @@ int main(void) {
 	   perror("Error en msync");
 	   exit(1);
    }
+
+   //No se debería liberar al final?
     // Liberar recursos después de su uso
     munmap(mapping, block_count);
     close(fd);
@@ -246,7 +249,10 @@ int main(void) {
 //	  memcpy(bloqueX, dataAEscribir, block_size);
 
 	  // acceder a bloque x
-	  //char* bloqueX = (char*)mapping2 + (INDICE_DEL_BLOQUE * block_size);
+	  //char* bloqueX = (char*)mapping2 + (INDICE_DEL_BLOQUE * block_size) + desplazamietno;
+	  //mapping_archivo_bloques+num_bloque*BLOCK_SIZE+offset
+	  //Por ejemplo, con un BLOCK_SIZE=64 si quisiera acceder a la posición (al byte) 200 del archivo,
+	  //éste se encontraría en su bloque número 3, offset 8, ya que 3*64 + 8 = 200.
 
 	// Sincronizar los cambios con el archivo en disco
 		if (msync(mapping2, tamanio_bloques, MS_SYNC) == -1) {
@@ -660,7 +666,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 		char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
 		printf("El nombre del archivo es: %s\n", nomArch);
 	}
-	config_destroy(configFCB);
+	//config_destroy(configFCB);
 }
 
 void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
@@ -679,50 +685,74 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 	configFCBT = config_create(p_fcb);
 	printf("Hola\n");
 
+	int tamanioArchivo = 0;
+	int punteroIndirecto = 0;
+	int punteroDirecto = 0;
+	char tam[20];
+
 	if (configFCBT == NULL) {
 	        printf("No se pudo crear el config.\n");
 	        exit(5);
 	 }else{
 
 	    if (config_has_property(configFCBT, "TAMANIO_ARCHIVO")) {
-	    	printf("Existe el tamanio archivo.\n");
-	    	int tamanioArchivo =  config_get_int_value(configFCB, "TAMANIO_ARCHIVO");
-	    	printf("Tamanio %d", tamanioArchivo);
+	    	printf("El config se creo bien\n");
+	    	tamanioArchivo =  config_get_int_value(configFCB, "TAMANIO_ARCHIVO");
+	    	printf("TamanioArchivo %d\n", tamanioArchivo);
+	    	printf("Tamanio %d\n", tamanio);
+	    	punteroIndirecto =  config_get_int_value(configFCB, "PUNTERO_INDIRECTO");
+	    	printf("PunteroIndirecto %d\n", punteroIndirecto);
+	    	punteroDirecto =  config_get_int_value(configFCB, "PUNTERO_DIRECTO");
+	    	printf("PunteroDirecto %d\n", punteroDirecto);
 	    }else {
 	    	printf("No existe el path al superbloque.\n");
 	    	exit(5);
 	    }
 
 	//if (configFCBT != NULL) {
-		printf("El config se creo bien");
-		int tamanioArchivo =  config_get_int_value(configFCB, "TAMANIO_ARCHIVO");
-		printf("Tamanio %d", tamanioArchivo);
-		int punteroIndirecto =  config_get_int_value(configFCB, "PUNTERO_INDIRECTO");
-		printf("PunteroIndirecto %d", punteroIndirecto);
-		int punteroDirecto =  config_get_int_value(configFCB, "PUNTERO_DIRECTO");
-		printf("PunteroDirecto %d", punteroDirecto);
-		char tam = tamanio+'0';
-		config_set_value(configFCB, "TAMANIO_ARCHIVO", &tam);
 
+    	snprintf(tam, sizeof(tam), "%d", tamanio);
+		config_set_value(configFCB, "TAMANIO_ARCHIVO", tam);
 
-		int cantidadBloquesNecesarios = ceil(tamanio / block_size);
+		printf("tamanio %d\n", tamanio);
+		printf("block_size %d\n", block_size);
+
+		int cantidadBloquesNecesarios = ceil(tamanio / block_size)+1;
 
 		int cantidadBloquesActual = 0;
 		int contador = 0;
 
-		if (punteroDirecto != NULL){
+		printf("cantidadBloquesActual1 %d\n", cantidadBloquesActual);
+		printf("cantidadBloquesNecesarios %d\n", cantidadBloquesNecesarios);
+
+		if (punteroDirecto != 0){
 			cantidadBloquesActual++;
-		} else if (punteroIndirecto != NULL){
-			uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
+		}
+
+		if (punteroIndirecto != 0){
+			uint32_t block = punteroIndirecto;
+
+			//mapping_archivo_bloques+num_bloque*BLOCK_SIZE+offset
+
+			printf("block %u\n", block);
+
+			bool valor = bitarray_test_bit(bitarray_mapeado, block);
+			printf("El valor del bit %u es %i\n", block, valor);
 
 			//Puede que no sea NULL, ver contra que hay que comparar
-			while (block != NULL) {
+			//while (bitarray_test_bit(bitarray_mapeado, block) != 0)
+			//lo modifique para probar pero el que debería ir es el de arriba
+			while (contador <= 7){
 				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
 				contador++;
+
+				printf("block %u\n", block);
 			}
 		}
 
 		cantidadBloquesActual += contador;
+
+		printf("cantidadBloquesActual3 %d\n", cantidadBloquesActual);
 
 		if (tamanio < tamanioArchivo){
 //				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
@@ -751,43 +781,61 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 			//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
 				int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual;
 
+				printf("diferencia %d\n", diferencia);
+
 				int i = 0;
 				while (i < diferencia){
-					uint32_t bloqueNuevo = 0;
+					uint32_t bloqueNuevo = 1;
 					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 						bloqueNuevo++;
 					}
 
-					bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+					printf("BloqueNuevo %u\n", bloqueNuevo);
 
-					if(cantidadBloquesActual == 0){
+					if(punteroDirecto == 0){
 						punteroDirecto = bloqueNuevo;
-						char pd = punteroDirecto+'0';
-						config_set_value(configFCB, "PUNTERO_DIRECTO", &pd);
-						i++;
-					}
-
-					if (punteroIndirecto == NULL && cantidadBloquesNecesarios > 1){
-						punteroIndirecto = bloqueNuevo;
-						char pi = punteroIndirecto+'0';
-						config_set_value(configFCB, "PUNTERO_INDIRECTO", &pi);
+						char pd[20];
+				    	snprintf(pd, sizeof(pd), "%d", punteroDirecto);
+						config_set_value(configFCB, "PUNTERO_DIRECTO", pd);
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						printf("BloqueNuevoPD %u\n", bloqueNuevo);
 						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
 						}
+						i++;
+					}
+
+					if (punteroIndirecto == 0 && cantidadBloquesNecesarios > 1){
+						punteroIndirecto = bloqueNuevo;
+						char pi[20];
+						snprintf(pi, sizeof(pi), "%d", punteroIndirecto);
+						config_set_value(configFCB, "PUNTERO_INDIRECTO", pi);
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						printf("BloqueNuevoPI %u\n", bloqueNuevo);
+						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+							bloqueNuevo++;
+						}
 					}
 
 					if (diferencia > i){
 						//(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
-						memcpy(cantidadBloquesActual, bloqueNuevo, sizeof(uint32_t));
+						//memcpy(bloqueX, dataAEscribir, block_size);
+						printf("Escribiendo en bloque de archivos\n");
+						printf("BloqueNuevoPII %u\n", bloqueNuevo);
+						memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						i++;
 					}
 				}
 			}
 		}
-		printf("Config no creado");
 	}
+//	if (msync(mapping, block_count, MS_SYNC) == -1) {
+//		perror("Error en msync");
+//		exit(1);
+//	}
 	config_save(configFCB);
+	printf("Config guardado\n");
 	//config_destroy(configFCB);
 }
 

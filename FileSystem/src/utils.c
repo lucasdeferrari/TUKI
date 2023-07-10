@@ -259,3 +259,4 @@ t_paquete* crear_paquete_cod_operacion(int cod_operacion)
 	crear_buffer(paquete);
 	return paquete;
 }
+
