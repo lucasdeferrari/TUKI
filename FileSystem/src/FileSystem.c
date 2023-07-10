@@ -15,6 +15,7 @@ char* p_fcb;
 FILE* archivo_fcb;
 void* mapping;
 void* mapping2;
+size_t tamanio_bloques;
 char* textoLeidoMemoria = "";
 
 int main(void) {
@@ -213,7 +214,7 @@ int main(void) {
 	int fd2 = fileno(archivo_bloques);
 	printf("File descriptor: %i\n" , fd2);
 
-	size_t tamanio_bloques = sizeof(struct Bloque) * block_count;
+	tamanio_bloques = sizeof(struct Bloque) * block_count;
 
 	// Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
 	off_t result2 = lseek(fd2, tamanio_bloques - 1, SEEK_SET);
@@ -743,7 +744,10 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 			//while (bitarray_test_bit(bitarray_mapeado, block) != 0)
 			//lo modifique para probar pero el que debería ir es el de arriba
 			while (contador <= 7){
-				uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
+				//MAL
+				//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
+				//BIEN
+				uint32_t block = (uint32_t)mapping2 + punteroIndirecto*block_size + (contador*2);
 				contador++;
 
 				printf("block %u\n", block);
@@ -818,19 +822,26 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 					}
 
 					if (diferencia > i){
-						//(uint32_t)mapping2 + punteroIndirecto + ((cantidadBloquesActual)*4) = bloqueNuevo;
+						//ASI SE ESCRIBE
+						char* block = (char*)mapping2 + punteroIndirecto*block_size + ((cantidadBloquesActual)*2);
 						//memcpy(bloqueX, dataAEscribir, block_size);
 						printf("Escribiendo en bloque de archivos\n");
 						printf("BloqueNuevoPII %u\n", bloqueNuevo);
-						memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
+						//memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
+						sprintf(block, "%d", bloqueNuevo);
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						i++;
+						cantidadBloquesActual++;
 					}
 				}
 			}
 		}
 	}
 //	if (msync(mapping, block_count, MS_SYNC) == -1) {
+//		perror("Error en msync");
+//		exit(1);
+//	}
+//	if (msync(mapping2, tamanio_bloques, MS_SYNC) == -1) {
 //		perror("Error en msync");
 //		exit(1);
 //	}

@@ -3931,3 +3931,45 @@ el cliente se desconecto. Terminando servidor.
 el cliente se desconecto. Terminando servidor.
 
 [INFO] 16:48:36:565 FileSystem/(14383:14405): FileSystem listo para recibir a kernel
+[INFO] 16:59:56:695 FileSystem/(14811:14811): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 16:59:56:698 FileSystem/(14811:14811): FileSystem listo para escuchar al cliente
+
+[INFO] 16:59:56:698 FileSystem/(14811:14813): FileSystem listo para recibir a kernel
+[INFO] 17:00:14:843 FileSystem/(14811:14813): Se conecto un cliente!
+[ERROR] 17:00:14:844 FileSystem/(14811:14813): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:00:14:846 FileSystem/(14811:14829): FileSystem listo para recibir a kernel
+[INFO] 17:00:14:851 FileSystem/(14811:14829): Se conecto un cliente!
+[ERROR] 17:00:14:856 FileSystem/(14811:14829): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:00:14:857 FileSystem/(14811:14833): FileSystem listo para recibir a kernel
+[INFO] 17:05:14:170 FileSystem/(15032:15032): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:05:14:175 FileSystem/(15032:15032): FileSystem listo para escuchar al cliente
+
+[INFO] 17:05:14:177 FileSystem/(15032:15034): FileSystem listo para recibir a kernel
+[INFO] 17:05:21:977 FileSystem/(15032:15034): Se conecto un cliente!
+[ERROR] 17:05:21:979 FileSystem/(15032:15034): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:05:21:982 FileSystem/(15032:15050): FileSystem listo para recibir a kernel
+[INFO] 17:05:21:992 FileSystem/(15032:15050): Se conecto un cliente!
+[ERROR] 17:05:21:996 FileSystem/(15032:15050): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:05:21:998 FileSystem/(15032:15055): FileSystem listo para recibir a kernel
+[INFO] 17:08:48:291 FileSystem/(15136:15136): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:08:48:297 FileSystem/(15136:15136): FileSystem listo para escuchar al cliente
+
+[INFO] 17:08:48:298 FileSystem/(15136:15138): FileSystem listo para recibir a kernel
+[INFO] 17:08:55:405 FileSystem/(15136:15138): Se conecto un cliente!
+[ERROR] 17:08:55:414 FileSystem/(15136:15138): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:08:55:419 FileSystem/(15136:15154): FileSystem listo para recibir a kernel
+[INFO] 17:08:55:423 FileSystem/(15136:15154): Se conecto un cliente!
+[ERROR] 17:08:55:427 FileSystem/(15136:15154): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:08:55:428 FileSystem/(15136:15159): FileSystem listo para recibir a kernel
