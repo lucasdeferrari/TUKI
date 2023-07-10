@@ -71807,3 +71807,385 @@ el cliente se desconecto. Terminando servidor
 [INFO] 21:53:53:023 Memoria/(12913:13127): PID: 2 - Acción: LEER - Dirección física: 256 - Tamaño: 8 - Origen: CPU
 [ERROR] 21:53:55:026 Memoria/(12913:13127): 
 el cliente se desconecto. Terminando servidor
+[INFO] 22:07:50:440 Memoria/(16651:16651): Listo para escuchar al cliente
+[INFO] 22:07:50:449 Memoria/(16651:16651): Memoria lista para recibir al cliente
+
+[INFO] 22:07:53:418 Memoria/(16651:16652): Se conecto un cliente!
+[INFO] 22:07:53:419 Memoria/(16651:16652): se conecto el filesystem
+[ERROR] 22:07:53:421 Memoria/(16651:16652): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:07:57:585 Memoria/(16651:16655): Se conecto un cliente!
+[INFO] 22:07:57:586 Memoria/(16651:16655): se conecto la cpu
+[ERROR] 22:07:57:587 Memoria/(16651:16655): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:08:00:632 Memoria/(16651:16659): Se conecto un cliente!
+[INFO] 22:08:00:634 Memoria/(16651:16659): se conecto el kernel
+[ERROR] 22:08:00:635 Memoria/(16651:16659): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:08:00:636 Memoria/(16651:16651): Se conectaron todos los modulos.
+
+[INFO] 22:08:00:636 Memoria/(16651:16651): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:08:10:001 Memoria/(16651:16663): Se conecto un cliente!
+[INFO] 22:08:10:003 Memoria/(16651:16663): Creación de Proceso PID: 1
+[ERROR] 22:08:10:005 Memoria/(16651:16663): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:08:11:014 Memoria/(16651:16669): Se conecto un cliente!
+[INFO] 22:08:11:014 Memoria/(16651:16669): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:08:11:014 Memoria/(16651:16669): Eliminación de Proceso PID: 1
+[ERROR] 22:08:11:014 Memoria/(16651:16669): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:34:382 Memoria/(16797:16797): Listo para escuchar al cliente
+[INFO] 22:10:34:383 Memoria/(16797:16797): Memoria lista para recibir al cliente
+
+[INFO] 22:10:41:339 Memoria/(16797:16798): Se conecto un cliente!
+[INFO] 22:10:41:339 Memoria/(16797:16798): se conecto el filesystem
+[ERROR] 22:10:41:341 Memoria/(16797:16798): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:45:665 Memoria/(16797:16803): Se conecto un cliente!
+[INFO] 22:10:45:667 Memoria/(16797:16803): se conecto la cpu
+[ERROR] 22:10:45:670 Memoria/(16797:16803): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:48:533 Memoria/(16797:16815): Se conecto un cliente!
+[INFO] 22:10:48:537 Memoria/(16797:16815): se conecto el kernel
+[ERROR] 22:10:48:554 Memoria/(16797:16815): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:48:573 Memoria/(16797:16797): Se conectaron todos los modulos.
+
+[INFO] 22:10:48:573 Memoria/(16797:16797): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:10:50:743 Memoria/(16797:16859): Se conecto un cliente!
+[INFO] 22:10:50:744 Memoria/(16797:16859): Creación de Proceso PID: 1
+[ERROR] 22:10:50:746 Memoria/(16797:16859): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:10:51:779 Memoria/(16797:16914): Se conecto un cliente!
+[INFO] 22:10:51:782 Memoria/(16797:16914): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:10:51:782 Memoria/(16797:16914): Eliminación de Proceso PID: 1
+[ERROR] 22:10:51:782 Memoria/(16797:16914): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:13:42:702 Memoria/(16969:16969): Listo para escuchar al cliente
+[INFO] 22:13:42:705 Memoria/(16969:16969): Memoria lista para recibir al cliente
+
+[INFO] 22:13:45:739 Memoria/(16969:16970): Se conecto un cliente!
+[INFO] 22:13:45:740 Memoria/(16969:16970): se conecto el filesystem
+[ERROR] 22:13:45:741 Memoria/(16969:16970): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:13:48:553 Memoria/(16969:16973): Se conecto un cliente!
+[INFO] 22:13:48:554 Memoria/(16969:16973): se conecto la cpu
+[ERROR] 22:13:48:556 Memoria/(16969:16973): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:13:50:724 Memoria/(16969:16977): Se conecto un cliente!
+[INFO] 22:13:50:726 Memoria/(16969:16977): se conecto el kernel
+[ERROR] 22:13:50:732 Memoria/(16969:16977): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:13:50:733 Memoria/(16969:16969): Se conectaron todos los modulos.
+
+[INFO] 22:13:50:733 Memoria/(16969:16969): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:13:53:488 Memoria/(16969:16981): Se conecto un cliente!
+[INFO] 22:13:53:488 Memoria/(16969:16981): Creación de Proceso PID: 1
+[ERROR] 22:13:53:489 Memoria/(16969:16981): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:13:54:525 Memoria/(16969:16987): Se conecto un cliente!
+[INFO] 22:13:54:526 Memoria/(16969:16987): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:13:54:526 Memoria/(16969:16987): Eliminación de Proceso PID: 1
+[ERROR] 22:13:54:526 Memoria/(16969:16987): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:15:39:581 Memoria/(17018:17018): Listo para escuchar al cliente
+[INFO] 22:15:39:587 Memoria/(17018:17018): Memoria lista para recibir al cliente
+
+[INFO] 22:15:45:233 Memoria/(17018:17019): Se conecto un cliente!
+[INFO] 22:15:45:234 Memoria/(17018:17019): se conecto el filesystem
+[ERROR] 22:15:45:235 Memoria/(17018:17019): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:15:48:588 Memoria/(17018:17039): Se conecto un cliente!
+[INFO] 22:15:48:589 Memoria/(17018:17039): se conecto la cpu
+[ERROR] 22:15:48:591 Memoria/(17018:17039): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:15:50:769 Memoria/(17018:17043): Se conecto un cliente!
+[INFO] 22:15:50:770 Memoria/(17018:17043): se conecto el kernel
+[ERROR] 22:15:50:771 Memoria/(17018:17043): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:15:50:771 Memoria/(17018:17018): Se conectaron todos los modulos.
+
+[INFO] 22:15:50:771 Memoria/(17018:17018): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:15:52:873 Memoria/(17018:17047): Se conecto un cliente!
+[INFO] 22:15:52:874 Memoria/(17018:17047): Creación de Proceso PID: 1
+[ERROR] 22:15:52:875 Memoria/(17018:17047): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:15:53:890 Memoria/(17018:17053): Se conecto un cliente!
+[INFO] 22:15:53:892 Memoria/(17018:17053): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:15:53:892 Memoria/(17018:17053): Eliminación de Proceso PID: 1
+[ERROR] 22:15:53:892 Memoria/(17018:17053): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:21:26:877 Memoria/(17101:17101): Listo para escuchar al cliente
+[INFO] 22:21:26:878 Memoria/(17101:17101): Memoria lista para recibir al cliente
+
+[INFO] 22:21:34:706 Memoria/(17101:17102): Se conecto un cliente!
+[INFO] 22:21:34:706 Memoria/(17101:17102): se conecto el filesystem
+[ERROR] 22:21:34:714 Memoria/(17101:17102): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:21:37:260 Memoria/(17101:17134): Se conecto un cliente!
+[INFO] 22:21:37:260 Memoria/(17101:17134): se conecto la cpu
+[ERROR] 22:21:37:261 Memoria/(17101:17134): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:21:39:582 Memoria/(17101:17138): Se conecto un cliente!
+[INFO] 22:21:39:582 Memoria/(17101:17138): se conecto el kernel
+[ERROR] 22:21:39:584 Memoria/(17101:17138): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:21:39:584 Memoria/(17101:17101): Se conectaron todos los modulos.
+
+[INFO] 22:21:39:584 Memoria/(17101:17101): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:21:41:976 Memoria/(17101:17142): Se conecto un cliente!
+[INFO] 22:21:41:977 Memoria/(17101:17142): Creación de Proceso PID: 1
+[ERROR] 22:21:41:978 Memoria/(17101:17142): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:21:42:999 Memoria/(17101:17148): Se conecto un cliente!
+[INFO] 22:21:42:999 Memoria/(17101:17148): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:21:42:999 Memoria/(17101:17148): Eliminación de Proceso PID: 1
+[ERROR] 22:21:42:999 Memoria/(17101:17148): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:23:25:167 Memoria/(17174:17174): Listo para escuchar al cliente
+[INFO] 22:23:25:169 Memoria/(17174:17174): Memoria lista para recibir al cliente
+
+[INFO] 22:23:30:787 Memoria/(17174:17175): Se conecto un cliente!
+[INFO] 22:23:30:787 Memoria/(17174:17175): se conecto el filesystem
+[ERROR] 22:23:30:788 Memoria/(17174:17175): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:23:33:525 Memoria/(17174:17195): Se conecto un cliente!
+[INFO] 22:23:33:525 Memoria/(17174:17195): se conecto la cpu
+[ERROR] 22:23:33:526 Memoria/(17174:17195): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:23:35:900 Memoria/(17174:17199): Se conecto un cliente!
+[INFO] 22:23:35:900 Memoria/(17174:17199): se conecto el kernel
+[ERROR] 22:23:35:901 Memoria/(17174:17199): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:23:35:901 Memoria/(17174:17174): Se conectaron todos los modulos.
+
+[INFO] 22:23:35:901 Memoria/(17174:17174): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:23:37:912 Memoria/(17174:17203): Se conecto un cliente!
+[INFO] 22:23:37:913 Memoria/(17174:17203): Creación de Proceso PID: 1
+[ERROR] 22:23:37:914 Memoria/(17174:17203): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:23:38:929 Memoria/(17174:17209): Se conecto un cliente!
+[INFO] 22:23:38:929 Memoria/(17174:17209): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:23:38:929 Memoria/(17174:17209): Eliminación de Proceso PID: 1
+[ERROR] 22:23:38:929 Memoria/(17174:17209): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:24:14:728 Memoria/(17250:17250): Listo para escuchar al cliente
+[INFO] 22:24:14:728 Memoria/(17250:17250): Memoria lista para recibir al cliente
+
+[INFO] 22:24:18:879 Memoria/(17250:17251): Se conecto un cliente!
+[INFO] 22:24:18:879 Memoria/(17250:17251): se conecto el filesystem
+[ERROR] 22:24:18:879 Memoria/(17250:17251): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:24:21:034 Memoria/(17250:17254): Se conecto un cliente!
+[INFO] 22:24:21:034 Memoria/(17250:17254): se conecto la cpu
+[ERROR] 22:24:21:035 Memoria/(17250:17254): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:24:23:568 Memoria/(17250:17258): Se conecto un cliente!
+[INFO] 22:24:23:568 Memoria/(17250:17258): se conecto el kernel
+[ERROR] 22:24:23:570 Memoria/(17250:17258): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:24:23:570 Memoria/(17250:17250): Se conectaron todos los modulos.
+
+[INFO] 22:24:23:570 Memoria/(17250:17250): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:24:26:204 Memoria/(17250:17262): Se conecto un cliente!
+[INFO] 22:24:26:204 Memoria/(17250:17262): Creación de Proceso PID: 1
+[ERROR] 22:24:26:205 Memoria/(17250:17262): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:26:09:867 Memoria/(17321:17321): Listo para escuchar al cliente
+[INFO] 22:26:09:869 Memoria/(17321:17321): Memoria lista para recibir al cliente
+
+[INFO] 22:26:13:411 Memoria/(17321:17322): Se conecto un cliente!
+[INFO] 22:26:13:411 Memoria/(17321:17322): se conecto el filesystem
+[ERROR] 22:26:13:413 Memoria/(17321:17322): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:26:15:958 Memoria/(17321:17325): Se conecto un cliente!
+[INFO] 22:26:15:960 Memoria/(17321:17325): se conecto la cpu
+[ERROR] 22:26:15:965 Memoria/(17321:17325): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:26:18:207 Memoria/(17321:17329): Se conecto un cliente!
+[INFO] 22:26:18:208 Memoria/(17321:17329): se conecto el kernel
+[ERROR] 22:26:18:209 Memoria/(17321:17329): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:26:18:209 Memoria/(17321:17321): Se conectaron todos los modulos.
+
+[INFO] 22:26:18:209 Memoria/(17321:17321): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:26:22:053 Memoria/(17321:17333): Se conecto un cliente!
+[INFO] 22:26:22:053 Memoria/(17321:17333): Creación de Proceso PID: 1
+[ERROR] 22:26:22:054 Memoria/(17321:17333): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:27:22:280 Memoria/(17405:17405): Listo para escuchar al cliente
+[INFO] 22:27:22:280 Memoria/(17405:17405): Memoria lista para recibir al cliente
+
+[INFO] 22:27:25:451 Memoria/(17405:17406): Se conecto un cliente!
+[INFO] 22:27:25:451 Memoria/(17405:17406): se conecto el filesystem
+[ERROR] 22:27:25:452 Memoria/(17405:17406): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:27:28:040 Memoria/(17405:17409): Se conecto un cliente!
+[INFO] 22:27:28:040 Memoria/(17405:17409): se conecto la cpu
+[ERROR] 22:27:28:041 Memoria/(17405:17409): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:27:30:020 Memoria/(17405:17413): Se conecto un cliente!
+[INFO] 22:27:30:020 Memoria/(17405:17413): se conecto el kernel
+[ERROR] 22:27:30:021 Memoria/(17405:17413): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:27:30:021 Memoria/(17405:17405): Se conectaron todos los modulos.
+
+[INFO] 22:27:30:021 Memoria/(17405:17405): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:27:32:046 Memoria/(17405:17417): Se conecto un cliente!
+[INFO] 22:27:32:046 Memoria/(17405:17417): Creación de Proceso PID: 1
+[ERROR] 22:27:32:047 Memoria/(17405:17417): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:27:33:070 Memoria/(17405:17423): Se conecto un cliente!
+[INFO] 22:27:33:071 Memoria/(17405:17423): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:27:33:071 Memoria/(17405:17423): Eliminación de Proceso PID: 1
+[ERROR] 22:27:33:071 Memoria/(17405:17423): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:42:799 Memoria/(17485:17485): Listo para escuchar al cliente
+[INFO] 22:28:42:799 Memoria/(17485:17485): Memoria lista para recibir al cliente
+
+[INFO] 22:28:46:158 Memoria/(17485:17486): Se conecto un cliente!
+[INFO] 22:28:46:158 Memoria/(17485:17486): se conecto el filesystem
+[ERROR] 22:28:46:159 Memoria/(17485:17486): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:51:711 Memoria/(17485:17489): Se conecto un cliente!
+[INFO] 22:28:51:712 Memoria/(17485:17489): se conecto la cpu
+[ERROR] 22:28:51:713 Memoria/(17485:17489): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:54:564 Memoria/(17485:17493): Se conecto un cliente!
+[INFO] 22:28:54:564 Memoria/(17485:17493): se conecto el kernel
+[ERROR] 22:28:54:565 Memoria/(17485:17493): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:54:565 Memoria/(17485:17485): Se conectaron todos los modulos.
+
+[INFO] 22:28:54:565 Memoria/(17485:17485): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:28:56:726 Memoria/(17485:17497): Se conecto un cliente!
+[INFO] 22:28:56:727 Memoria/(17485:17497): Creación de Proceso PID: 1
+[ERROR] 22:28:56:728 Memoria/(17485:17497): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:28:57:749 Memoria/(17485:17503): Se conecto un cliente!
+[INFO] 22:28:57:750 Memoria/(17485:17503): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:28:57:750 Memoria/(17485:17503): Eliminación de Proceso PID: 1
+[ERROR] 22:28:57:750 Memoria/(17485:17503): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:09:795 Memoria/(17763:17763): Listo para escuchar al cliente
+[INFO] 22:31:09:796 Memoria/(17763:17763): Memoria lista para recibir al cliente
+
+[INFO] 22:31:12:433 Memoria/(17763:17764): Se conecto un cliente!
+[INFO] 22:31:12:434 Memoria/(17763:17764): se conecto el filesystem
+[ERROR] 22:31:12:436 Memoria/(17763:17764): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:14:630 Memoria/(17763:17767): Se conecto un cliente!
+[INFO] 22:31:14:630 Memoria/(17763:17767): se conecto la cpu
+[ERROR] 22:31:14:631 Memoria/(17763:17767): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:16:869 Memoria/(17763:17771): Se conecto un cliente!
+[INFO] 22:31:16:869 Memoria/(17763:17771): se conecto el kernel
+[ERROR] 22:31:16:870 Memoria/(17763:17771): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:16:870 Memoria/(17763:17763): Se conectaron todos los modulos.
+
+[INFO] 22:31:16:870 Memoria/(17763:17763): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:31:18:921 Memoria/(17763:17775): Se conecto un cliente!
+[INFO] 22:31:18:921 Memoria/(17763:17775): Creación de Proceso PID: 1
+[ERROR] 22:31:18:923 Memoria/(17763:17775): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:19:951 Memoria/(17763:17781): Se conecto un cliente!
+[INFO] 22:31:19:951 Memoria/(17763:17781): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:31:19:951 Memoria/(17763:17781): Eliminación de Proceso PID: 1
+[ERROR] 22:31:19:951 Memoria/(17763:17781): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:31:54:084 Memoria/(17816:17816): Listo para escuchar al cliente
+[INFO] 22:31:54:084 Memoria/(17816:17816): Memoria lista para recibir al cliente
+
+[INFO] 22:32:00:286 Memoria/(17816:17817): Se conecto un cliente!
+[INFO] 22:32:00:286 Memoria/(17816:17817): se conecto el filesystem
+[ERROR] 22:32:00:287 Memoria/(17816:17817): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:32:02:495 Memoria/(17816:17849): Se conecto un cliente!
+[INFO] 22:32:02:495 Memoria/(17816:17849): se conecto la cpu
+[ERROR] 22:32:02:496 Memoria/(17816:17849): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:32:04:804 Memoria/(17816:17853): Se conecto un cliente!
+[INFO] 22:32:04:804 Memoria/(17816:17853): se conecto el kernel
+[ERROR] 22:32:04:804 Memoria/(17816:17853): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:32:04:804 Memoria/(17816:17816): Se conectaron todos los modulos.
+
+[INFO] 22:32:04:804 Memoria/(17816:17816): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:32:07:934 Memoria/(17816:17857): Se conecto un cliente!
+[INFO] 22:32:07:934 Memoria/(17816:17857): Creación de Proceso PID: 1
+[ERROR] 22:32:07:935 Memoria/(17816:17857): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:32:08:979 Memoria/(17816:17863): Se conecto un cliente!
+[INFO] 22:32:08:979 Memoria/(17816:17863): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:32:08:980 Memoria/(17816:17863): Eliminación de Proceso PID: 1
+[ERROR] 22:32:08:980 Memoria/(17816:17863): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:01:459 Memoria/(17993:17993): Listo para escuchar al cliente
+[INFO] 22:37:01:460 Memoria/(17993:17993): Memoria lista para recibir al cliente
+
+[INFO] 22:37:04:113 Memoria/(17993:17994): Se conecto un cliente!
+[INFO] 22:37:04:113 Memoria/(17993:17994): se conecto el filesystem
+[ERROR] 22:37:04:115 Memoria/(17993:17994): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:06:438 Memoria/(17993:17997): Se conecto un cliente!
+[INFO] 22:37:06:438 Memoria/(17993:17997): se conecto la cpu
+[ERROR] 22:37:06:440 Memoria/(17993:17997): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:08:959 Memoria/(17993:18001): Se conecto un cliente!
+[INFO] 22:37:08:959 Memoria/(17993:18001): se conecto el kernel
+[ERROR] 22:37:08:960 Memoria/(17993:18001): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:08:960 Memoria/(17993:17993): Se conectaron todos los modulos.
+
+[INFO] 22:37:08:960 Memoria/(17993:17993): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:37:11:036 Memoria/(17993:18005): Se conecto un cliente!
+[INFO] 22:37:11:036 Memoria/(17993:18005): Creación de Proceso PID: 1
+[ERROR] 22:37:11:037 Memoria/(17993:18005): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:37:12:064 Memoria/(17993:18011): Se conecto un cliente!
+[INFO] 22:37:12:065 Memoria/(17993:18011): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:37:12:065 Memoria/(17993:18011): Eliminación de Proceso PID: 1
+[ERROR] 22:37:12:065 Memoria/(17993:18011): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:39:38:910 Memoria/(18104:18104): Listo para escuchar al cliente
+[INFO] 22:39:38:910 Memoria/(18104:18104): Memoria lista para recibir al cliente
+
+[INFO] 22:39:42:367 Memoria/(18104:18105): Se conecto un cliente!
+[INFO] 22:39:42:367 Memoria/(18104:18105): se conecto el filesystem
+[ERROR] 22:39:42:368 Memoria/(18104:18105): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:39:44:438 Memoria/(18104:18108): Se conecto un cliente!
+[INFO] 22:39:44:438 Memoria/(18104:18108): se conecto la cpu
+[ERROR] 22:39:44:445 Memoria/(18104:18108): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:39:46:859 Memoria/(18104:18112): Se conecto un cliente!
+[INFO] 22:39:46:859 Memoria/(18104:18112): se conecto el kernel
+[ERROR] 22:39:46:859 Memoria/(18104:18112): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:39:46:860 Memoria/(18104:18104): Se conectaron todos los modulos.
+
+[INFO] 22:39:46:860 Memoria/(18104:18104): Se crearon todas las estructuras correctamente.
+
+[INFO] 22:39:48:861 Memoria/(18104:18116): Se conecto un cliente!
+[INFO] 22:39:48:861 Memoria/(18104:18116): Creación de Proceso PID: 1
+[ERROR] 22:39:48:862 Memoria/(18104:18116): 
+el cliente se desconecto. Terminando servidor
+[INFO] 22:39:49:888 Memoria/(18104:18122): Se conecto un cliente!
+[INFO] 22:39:49:888 Memoria/(18104:18122): PID: 1 - Eliminar Segmento: 0 - Base: 0 - TAMAÑO: 128
+[INFO] 22:39:49:888 Memoria/(18104:18122): Eliminación de Proceso PID: 1
+[ERROR] 22:39:49:888 Memoria/(18104:18122): 
+el cliente se desconecto. Terminando servidor

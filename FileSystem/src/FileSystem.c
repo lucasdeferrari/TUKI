@@ -179,7 +179,6 @@ int main(void) {
     close(fd);
     fclose(archivo_bitmap);
 
-	//config_set_value()
 
     if (config_has_property(config, "PATH_BLOQUES")) {
 		 printf("Existe el path a los bloques.\n");
@@ -238,10 +237,10 @@ int main(void) {
 	 }
 
 
-	  for (int i = 0; i < block_count; i++) {
-	        char* block = (char*)mapping2 + (i * block_size);
-	        sprintf(block, "Bloque %d", i + 1);
-	    }
+//	  for (int i = 0; i < block_count; i++) {
+//	        char* block = (char*)mapping2 + (i * block_size);
+//	        sprintf(block, "Bloque %d", i + 1);
+//	    }
 
 	  // escribir en bloque x
 //	  char* bloqueX;
@@ -731,7 +730,8 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 		}
 
 		if (punteroIndirecto != 0){
-			uint32_t block = punteroIndirecto;
+			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (contador*4);
+			uint32_t block = atoi(blockChar);
 
 			//mapping_archivo_bloques+num_bloque*BLOCK_SIZE+offset
 
@@ -741,16 +741,21 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 			printf("El valor del bit %u es %i\n", block, valor);
 
 			//Puede que no sea NULL, ver contra que hay que comparar
-			//while (bitarray_test_bit(bitarray_mapeado, block) != 0)
+			while (bitarray_test_bit(bitarray_mapeado, block) != 0){
+			//while (block != 0){
 			//lo modifique para probar pero el que debería ir es el de arriba
-			while (contador <= 7){
+			//while (contador <= 7){
+				contador++;
 				//MAL
 				//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
 				//BIEN
-				uint32_t block = (uint32_t)mapping2 + punteroIndirecto*block_size + (contador*2);
-				contador++;
+				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (contador*4);
+
+				block = atoi(blockChar);
 
 				printf("block %u\n", block);
+				bool valor = bitarray_test_bit(bitarray_mapeado, block);
+				printf("El valor del bit %u es %i\n", block, valor);
 			}
 		}
 
@@ -770,7 +775,8 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 				int diferencia = cantidadBloquesActual - cantidadBloquesNecesarios;
 				int bloquesALiberar = cantidadBloquesNecesarios-1;
 				while (i < diferencia){
-					uint32_t blockALiberar = (uint32_t)mapping2 + punteroIndirecto + (bloquesALiberar*4);
+					char* blockALiberarChar = (char*)mapping2 + punteroIndirecto*block_size + (bloquesALiberar*4);
+					int blockALiberar = atoi(blockALiberarChar);
 					bitarray_clean_bit(bitarray_mapeado, blockALiberar);
 					i++;
 				}
@@ -823,13 +829,15 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 
 					if (diferencia > i){
 						//ASI SE ESCRIBE
-						char* block = (char*)mapping2 + punteroIndirecto*block_size + ((cantidadBloquesActual)*2);
+						char* block = (char*)mapping2 + punteroIndirecto*block_size + ((cantidadBloquesActual)*4);
 						//memcpy(bloqueX, dataAEscribir, block_size);
 						printf("Escribiendo en bloque de archivos\n");
 						printf("BloqueNuevoPII %u\n", bloqueNuevo);
 						//memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
 						sprintf(block, "%d", bloqueNuevo);
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
+						printf("El valor del bit %u es %i\n", bloqueNuevo, valor);
 						i++;
 						cantidadBloquesActual++;
 					}
