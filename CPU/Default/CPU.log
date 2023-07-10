@@ -53084,3 +53084,1831 @@ Operacion recibida de MEMORIA desconocida.
 [ERROR] 17:08:55:446 CPU/(15140:15163): el kernel se desconecto. Terminando servidor
 
 [INFO] 17:08:55:447 CPU/(15140:15165): CPU lista para recibir al cliente
+[INFO] 20:13:50:980 CPU/(2305:2305): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:13:50:981 CPU/(2305:2305): CPU lista para escuchar al cliente
+
+[INFO] 20:13:50:982 CPU/(2305:2307): CPU lista para recibir al cliente
+[INFO] 20:14:04:228 CPU/(2305:2307): Se conecto un cliente
+[INFO] 20:14:04:229 CPU/(2305:2307): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:04:229 CPU/(2305:2307): WAIT RA
+
+[INFO] 20:14:04:229 CPU/(2305:2307): SET AX h014
+
+[INFO] 20:14:04:229 CPU/(2305:2307): MOV_OUT 12 AX
+
+[INFO] 20:14:04:229 CPU/(2305:2307): CREATE_SEGMENT 1 128
+
+[INFO] 20:14:04:229 CPU/(2305:2307): SIGNAL RB
+
+[INFO] 20:14:04:229 CPU/(2305:2307): WAIT RA
+
+[INFO] 20:14:04:229 CPU/(2305:2307): DELETE_SEGMENT 1
+
+[INFO] 20:14:04:229 CPU/(2305:2307): MOV_IN DX 12
+
+[INFO] 20:14:04:229 CPU/(2305:2307): SIGNAL RB
+
+[INFO] 20:14:04:229 CPU/(2305:2307): WAIT RA
+
+[INFO] 20:14:04:229 CPU/(2305:2307): EXIT
+[INFO] 20:14:04:229 CPU/(2305:2307): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:04:232 CPU/(2305:2307): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:04:233 CPU/(2305:2326): CPU lista para recibir al cliente
+[INFO] 20:14:04:233 CPU/(2305:2326): Se conecto un cliente
+[INFO] 20:14:04:235 CPU/(2305:2326): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:04:235 CPU/(2305:2326): WAIT RA
+
+[INFO] 20:14:04:236 CPU/(2305:2326): SET AX h014
+
+[INFO] 20:14:04:236 CPU/(2305:2326): MOV_OUT 12 AX
+
+[INFO] 20:14:04:236 CPU/(2305:2326): CREATE_SEGMENT 1 128
+
+[INFO] 20:14:04:236 CPU/(2305:2326): SIGNAL RB
+
+[INFO] 20:14:04:236 CPU/(2305:2326): WAIT RA
+
+[INFO] 20:14:04:237 CPU/(2305:2326): DELETE_SEGMENT 1
+
+[INFO] 20:14:04:237 CPU/(2305:2326): MOV_IN DX 12
+
+[INFO] 20:14:04:237 CPU/(2305:2326): SIGNAL RB
+
+[INFO] 20:14:04:237 CPU/(2305:2326): WAIT RA
+
+[INFO] 20:14:04:237 CPU/(2305:2326): EXIT
+[INFO] 20:14:04:237 CPU/(2305:2326): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:06:239 CPU/(2305:2326): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:06:240 CPU/(2305:2336): CPU lista para recibir al cliente
+[INFO] 20:14:06:242 CPU/(2305:2336): Se conecto un cliente
+[INFO] 20:14:06:242 CPU/(2305:2336): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:06:242 CPU/(2305:2336): WAIT RA
+
+[INFO] 20:14:06:242 CPU/(2305:2336): SET AX h014
+
+[INFO] 20:14:06:242 CPU/(2305:2336): MOV_OUT 12 AX
+
+[INFO] 20:14:06:242 CPU/(2305:2336): CREATE_SEGMENT 1 128
+
+[INFO] 20:14:06:242 CPU/(2305:2336): SIGNAL RB
+
+[INFO] 20:14:06:242 CPU/(2305:2336): WAIT RA
+
+[INFO] 20:14:06:242 CPU/(2305:2336): DELETE_SEGMENT 1
+
+[INFO] 20:14:06:242 CPU/(2305:2336): MOV_IN DX 12
+
+[INFO] 20:14:06:242 CPU/(2305:2336): SIGNAL RB
+
+[INFO] 20:14:06:242 CPU/(2305:2336): WAIT RA
+
+[INFO] 20:14:06:242 CPU/(2305:2336): EXIT
+[INFO] 20:14:06:243 CPU/(2305:2336): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:06:243 CPU/(2305:2336): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:06:245 CPU/(2305:2340): CPU lista para recibir al cliente
+[INFO] 20:14:06:245 CPU/(2305:2340): Se conecto un cliente
+[INFO] 20:14:06:246 CPU/(2305:2340): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:06:246 CPU/(2305:2340): WAIT RA
+
+[INFO] 20:14:06:246 CPU/(2305:2340): SET AX h014
+
+[INFO] 20:14:06:246 CPU/(2305:2340): MOV_OUT 12 AX
+
+[INFO] 20:14:06:246 CPU/(2305:2340): CREATE_SEGMENT 1 128
+
+[INFO] 20:14:06:246 CPU/(2305:2340): SIGNAL RB
+
+[INFO] 20:14:06:247 CPU/(2305:2340): WAIT RA
+
+[INFO] 20:14:06:247 CPU/(2305:2340): DELETE_SEGMENT 1
+
+[INFO] 20:14:06:247 CPU/(2305:2340): MOV_IN DX 12
+
+[INFO] 20:14:06:247 CPU/(2305:2340): SIGNAL RB
+
+[INFO] 20:14:06:247 CPU/(2305:2340): WAIT RA
+
+[INFO] 20:14:06:247 CPU/(2305:2340): EXIT
+[INFO] 20:14:06:248 CPU/(2305:2340): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:06:249 CPU/(2305:2340): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CPU lista para recibir al cliente
+[INFO] 20:14:06:252 CPU/(2305:2342): Se conecto un cliente
+[INFO] 20:14:06:252 CPU/(2305:2342): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:06:252 CPU/(2305:2342): WAIT RB
+
+[INFO] 20:14:06:252 CPU/(2305:2342): MOV_IN CX 12
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:06:252 CPU/(2305:2342): SET BX Ch4u
+
+[INFO] 20:14:06:253 CPU/(2305:2342): MOV_OUT 12 BX
+
+[INFO] 20:14:06:253 CPU/(2305:2342): SIGNAL RA
+
+[INFO] 20:14:06:253 CPU/(2305:2342): WAIT RB
+
+[INFO] 20:14:06:253 CPU/(2305:2342): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:06:253 CPU/(2305:2342): SET_EAX CoscuWin
+
+[INFO] 20:14:06:253 CPU/(2305:2342): MOV_OUT 256 EAX
+
+[INFO] 20:14:06:253 CPU/(2305:2342): SET_EBX GermanNo
+
+[INFO] 20:14:06:253 CPU/(2305:2342): MOV_OUT 2048 EBX
+
+[INFO] 20:14:06:253 CPU/(2305:2342): SIGNAL RC
+
+[INFO] 20:14:06:253 CPU/(2305:2342): WAIT RB
+
+[INFO] 20:14:06:253 CPU/(2305:2342): MOV_IN ECX 256
+
+[INFO] 20:14:06:253 CPU/(2305:2342): DELETE_SEGMENT 1
+
+[INFO] 20:14:06:253 CPU/(2305:2342): MOV_IN EDX 2048
+
+[INFO] 20:14:06:253 CPU/(2305:2342): DELETE_SEGMENT 2
+
+[INFO] 20:14:06:253 CPU/(2305:2342): DELETE_SEGMENT 4
+
+[INFO] 20:14:06:253 CPU/(2305:2342): DELETE_SEGMENT 5
+
+[INFO] 20:14:06:253 CPU/(2305:2342): SIGNAL RC
+
+[INFO] 20:14:06:253 CPU/(2305:2342): WAIT RB
+
+[INFO] 20:14:06:253 CPU/(2305:2342): EXIT
+[INFO] 20:14:06:253 CPU/(2305:2342): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:06:254 CPU/(2305:2342): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:06:254 CPU/(2305:2345): CPU lista para recibir al cliente
+[INFO] 20:14:06:254 CPU/(2305:2345): Se conecto un cliente
+[INFO] 20:14:06:255 CPU/(2305:2345): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:06:255 CPU/(2305:2345): WAIT RC
+
+[INFO] 20:14:06:255 CPU/(2305:2345): CREATE_SEGMENT 1 256
+
+[INFO] 20:14:06:255 CPU/(2305:2345): MOV_IN AX 12
+
+[INFO] 20:14:06:255 CPU/(2305:2345): SIGNAL RB
+
+[INFO] 20:14:06:255 CPU/(2305:2345): WAIT RC
+
+[INFO] 20:14:06:255 CPU/(2305:2345): CREATE_SEGMENT 2 128
+
+[INFO] 20:14:06:255 CPU/(2305:2345): SIGNAL RA
+
+[INFO] 20:14:06:256 CPU/(2305:2345): SIGNAL RB
+
+[INFO] 20:14:06:256 CPU/(2305:2345): EXIT
+[INFO] 20:14:06:256 CPU/(2305:2345): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:06:256 CPU/(2305:2345): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:06:257 CPU/(2305:2346): CPU lista para recibir al cliente
+[INFO] 20:14:06:257 CPU/(2305:2346): Se conecto un cliente
+[INFO] 20:14:06:258 CPU/(2305:2346): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:06:258 CPU/(2305:2346): WAIT RB
+
+[INFO] 20:14:06:258 CPU/(2305:2346): MOV_IN CX 12
+
+[INFO] 20:14:06:258 CPU/(2305:2346): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:06:258 CPU/(2305:2346): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:06:258 CPU/(2305:2346): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SET BX Ch4u
+
+[INFO] 20:14:06:259 CPU/(2305:2346): MOV_OUT 12 BX
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SIGNAL RA
+
+[INFO] 20:14:06:259 CPU/(2305:2346): WAIT RB
+
+[INFO] 20:14:06:259 CPU/(2305:2346): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SET_EAX CoscuWin
+
+[INFO] 20:14:06:259 CPU/(2305:2346): MOV_OUT 256 EAX
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SET_EBX GermanNo
+
+[INFO] 20:14:06:259 CPU/(2305:2346): MOV_OUT 2048 EBX
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SIGNAL RC
+
+[INFO] 20:14:06:259 CPU/(2305:2346): WAIT RB
+
+[INFO] 20:14:06:259 CPU/(2305:2346): MOV_IN ECX 256
+
+[INFO] 20:14:06:259 CPU/(2305:2346): DELETE_SEGMENT 1
+
+[INFO] 20:14:06:259 CPU/(2305:2346): MOV_IN EDX 2048
+
+[INFO] 20:14:06:259 CPU/(2305:2346): DELETE_SEGMENT 2
+
+[INFO] 20:14:06:259 CPU/(2305:2346): DELETE_SEGMENT 4
+
+[INFO] 20:14:06:259 CPU/(2305:2346): DELETE_SEGMENT 5
+
+[INFO] 20:14:06:259 CPU/(2305:2346): SIGNAL RC
+
+[INFO] 20:14:06:259 CPU/(2305:2346): WAIT RB
+
+[INFO] 20:14:06:260 CPU/(2305:2346): EXIT
+[INFO] 20:14:06:260 CPU/(2305:2346): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:262 CPU/(2305:2346): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:262 CPU/(2305:2351): CPU lista para recibir al cliente
+[INFO] 20:14:08:266 CPU/(2305:2351): Se conecto un cliente
+[INFO] 20:14:08:267 CPU/(2305:2351): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:267 CPU/(2305:2351): WAIT RB
+
+[INFO] 20:14:08:267 CPU/(2305:2351): MOV_IN CX 12
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:267 CPU/(2305:2351): SET BX Ch4u
+
+[INFO] 20:14:08:268 CPU/(2305:2351): MOV_OUT 12 BX
+
+[INFO] 20:14:08:268 CPU/(2305:2351): SIGNAL RA
+
+[INFO] 20:14:08:268 CPU/(2305:2351): WAIT RB
+
+[INFO] 20:14:08:268 CPU/(2305:2351): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:268 CPU/(2305:2351): SET_EAX CoscuWin
+
+[INFO] 20:14:08:268 CPU/(2305:2351): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:268 CPU/(2305:2351): SET_EBX GermanNo
+
+[INFO] 20:14:08:268 CPU/(2305:2351): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:268 CPU/(2305:2351): SIGNAL RC
+
+[INFO] 20:14:08:268 CPU/(2305:2351): WAIT RB
+
+[INFO] 20:14:08:268 CPU/(2305:2351): MOV_IN ECX 256
+
+[INFO] 20:14:08:268 CPU/(2305:2351): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:269 CPU/(2305:2351): MOV_IN EDX 2048
+
+[INFO] 20:14:08:269 CPU/(2305:2351): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:269 CPU/(2305:2351): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:269 CPU/(2305:2351): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:269 CPU/(2305:2351): SIGNAL RC
+
+[INFO] 20:14:08:269 CPU/(2305:2351): WAIT RB
+
+[INFO] 20:14:08:269 CPU/(2305:2351): EXIT
+[INFO] 20:14:08:271 CPU/(2305:2351): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:272 CPU/(2305:2351): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:275 CPU/(2305:2355): CPU lista para recibir al cliente
+[INFO] 20:14:08:277 CPU/(2305:2355): Se conecto un cliente
+[INFO] 20:14:08:277 CPU/(2305:2355): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:277 CPU/(2305:2355): WAIT RB
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_IN CX 12
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SET BX Ch4u
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_OUT 12 BX
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SIGNAL RA
+
+[INFO] 20:14:08:278 CPU/(2305:2355): WAIT RB
+
+[INFO] 20:14:08:278 CPU/(2305:2355): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SET_EAX CoscuWin
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SET_EBX GermanNo
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SIGNAL RC
+
+[INFO] 20:14:08:278 CPU/(2305:2355): WAIT RB
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_IN ECX 256
+
+[INFO] 20:14:08:278 CPU/(2305:2355): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:278 CPU/(2305:2355): MOV_IN EDX 2048
+
+[INFO] 20:14:08:278 CPU/(2305:2355): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:278 CPU/(2305:2355): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:278 CPU/(2305:2355): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:278 CPU/(2305:2355): SIGNAL RC
+
+[INFO] 20:14:08:278 CPU/(2305:2355): WAIT RB
+
+[INFO] 20:14:08:278 CPU/(2305:2355): EXIT
+[INFO] 20:14:08:280 CPU/(2305:2355): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:280 CPU/(2305:2355): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:282 CPU/(2305:2360): CPU lista para recibir al cliente
+[INFO] 20:14:08:284 CPU/(2305:2360): Se conecto un cliente
+[INFO] 20:14:08:285 CPU/(2305:2360): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:285 CPU/(2305:2360): WAIT RB
+
+[INFO] 20:14:08:285 CPU/(2305:2360): MOV_IN CX 12
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:285 CPU/(2305:2360): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:286 CPU/(2305:2360): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SET BX Ch4u
+
+[INFO] 20:14:08:286 CPU/(2305:2360): MOV_OUT 12 BX
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SIGNAL RA
+
+[INFO] 20:14:08:286 CPU/(2305:2360): WAIT RB
+
+[INFO] 20:14:08:286 CPU/(2305:2360): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SET_EAX CoscuWin
+
+[INFO] 20:14:08:286 CPU/(2305:2360): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SET_EBX GermanNo
+
+[INFO] 20:14:08:286 CPU/(2305:2360): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SIGNAL RC
+
+[INFO] 20:14:08:286 CPU/(2305:2360): WAIT RB
+
+[INFO] 20:14:08:286 CPU/(2305:2360): MOV_IN ECX 256
+
+[INFO] 20:14:08:286 CPU/(2305:2360): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:286 CPU/(2305:2360): MOV_IN EDX 2048
+
+[INFO] 20:14:08:286 CPU/(2305:2360): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:286 CPU/(2305:2360): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:286 CPU/(2305:2360): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:286 CPU/(2305:2360): SIGNAL RC
+
+[INFO] 20:14:08:286 CPU/(2305:2360): WAIT RB
+
+[INFO] 20:14:08:286 CPU/(2305:2360): EXIT
+[INFO] 20:14:08:293 CPU/(2305:2360): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:293 CPU/(2305:2360): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:293 CPU/(2305:2365): CPU lista para recibir al cliente
+[INFO] 20:14:08:296 CPU/(2305:2365): Se conecto un cliente
+[INFO] 20:14:08:297 CPU/(2305:2365): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:297 CPU/(2305:2365): WAIT RB
+
+[INFO] 20:14:08:297 CPU/(2305:2365): MOV_IN CX 12
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): SET BX Ch4u
+
+[INFO] 20:14:08:297 CPU/(2305:2365): MOV_OUT 12 BX
+
+[INFO] 20:14:08:297 CPU/(2305:2365): SIGNAL RA
+
+[INFO] 20:14:08:297 CPU/(2305:2365): WAIT RB
+
+[INFO] 20:14:08:297 CPU/(2305:2365): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:297 CPU/(2305:2365): SET_EAX CoscuWin
+
+[INFO] 20:14:08:297 CPU/(2305:2365): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:297 CPU/(2305:2365): SET_EBX GermanNo
+
+[INFO] 20:14:08:297 CPU/(2305:2365): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:297 CPU/(2305:2365): SIGNAL RC
+
+[INFO] 20:14:08:297 CPU/(2305:2365): WAIT RB
+
+[INFO] 20:14:08:297 CPU/(2305:2365): MOV_IN ECX 256
+
+[INFO] 20:14:08:298 CPU/(2305:2365): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:298 CPU/(2305:2365): MOV_IN EDX 2048
+
+[INFO] 20:14:08:298 CPU/(2305:2365): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:298 CPU/(2305:2365): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:298 CPU/(2305:2365): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:298 CPU/(2305:2365): SIGNAL RC
+
+[INFO] 20:14:08:298 CPU/(2305:2365): WAIT RB
+
+[INFO] 20:14:08:298 CPU/(2305:2365): EXIT
+[INFO] 20:14:08:299 CPU/(2305:2365): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:300 CPU/(2305:2365): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:301 CPU/(2305:2370): CPU lista para recibir al cliente
+[INFO] 20:14:08:303 CPU/(2305:2370): Se conecto un cliente
+[INFO] 20:14:08:304 CPU/(2305:2370): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:304 CPU/(2305:2370): WAIT RB
+
+[INFO] 20:14:08:304 CPU/(2305:2370): MOV_IN CX 12
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): SET BX Ch4u
+
+[INFO] 20:14:08:304 CPU/(2305:2370): MOV_OUT 12 BX
+
+[INFO] 20:14:08:304 CPU/(2305:2370): SIGNAL RA
+
+[INFO] 20:14:08:304 CPU/(2305:2370): WAIT RB
+
+[INFO] 20:14:08:304 CPU/(2305:2370): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:304 CPU/(2305:2370): SET_EAX CoscuWin
+
+[INFO] 20:14:08:304 CPU/(2305:2370): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:305 CPU/(2305:2370): SET_EBX GermanNo
+
+[INFO] 20:14:08:305 CPU/(2305:2370): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:305 CPU/(2305:2370): SIGNAL RC
+
+[INFO] 20:14:08:305 CPU/(2305:2370): WAIT RB
+
+[INFO] 20:14:08:305 CPU/(2305:2370): MOV_IN ECX 256
+
+[INFO] 20:14:08:305 CPU/(2305:2370): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:306 CPU/(2305:2370): MOV_IN EDX 2048
+
+[INFO] 20:14:08:306 CPU/(2305:2370): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:306 CPU/(2305:2370): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:306 CPU/(2305:2370): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:306 CPU/(2305:2370): SIGNAL RC
+
+[INFO] 20:14:08:306 CPU/(2305:2370): WAIT RB
+
+[INFO] 20:14:08:306 CPU/(2305:2370): EXIT
+[INFO] 20:14:08:308 CPU/(2305:2370): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:308 CPU/(2305:2370): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:310 CPU/(2305:2375): CPU lista para recibir al cliente
+[INFO] 20:14:08:312 CPU/(2305:2375): Se conecto un cliente
+[INFO] 20:14:08:313 CPU/(2305:2375): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:313 CPU/(2305:2375): WAIT RB
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_IN CX 12
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): SET BX Ch4u
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_OUT 12 BX
+
+[INFO] 20:14:08:313 CPU/(2305:2375): SIGNAL RA
+
+[INFO] 20:14:08:313 CPU/(2305:2375): WAIT RB
+
+[INFO] 20:14:08:313 CPU/(2305:2375): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:313 CPU/(2305:2375): SET_EAX CoscuWin
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:313 CPU/(2305:2375): SET_EBX GermanNo
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:313 CPU/(2305:2375): SIGNAL RC
+
+[INFO] 20:14:08:313 CPU/(2305:2375): WAIT RB
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_IN ECX 256
+
+[INFO] 20:14:08:313 CPU/(2305:2375): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:313 CPU/(2305:2375): MOV_IN EDX 2048
+
+[INFO] 20:14:08:314 CPU/(2305:2375): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:314 CPU/(2305:2375): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:314 CPU/(2305:2375): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:314 CPU/(2305:2375): SIGNAL RC
+
+[INFO] 20:14:08:314 CPU/(2305:2375): WAIT RB
+
+[INFO] 20:14:08:314 CPU/(2305:2375): EXIT
+[INFO] 20:14:08:316 CPU/(2305:2375): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:316 CPU/(2305:2375): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:318 CPU/(2305:2380): CPU lista para recibir al cliente
+[INFO] 20:14:08:326 CPU/(2305:2380): Se conecto un cliente
+[INFO] 20:14:08:328 CPU/(2305:2380): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:328 CPU/(2305:2380): WAIT RB
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_IN CX 12
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SET BX Ch4u
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_OUT 12 BX
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SIGNAL RA
+
+[INFO] 20:14:08:328 CPU/(2305:2380): WAIT RB
+
+[INFO] 20:14:08:328 CPU/(2305:2380): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SET_EAX CoscuWin
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SET_EBX GermanNo
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SIGNAL RC
+
+[INFO] 20:14:08:328 CPU/(2305:2380): WAIT RB
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_IN ECX 256
+
+[INFO] 20:14:08:328 CPU/(2305:2380): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:328 CPU/(2305:2380): MOV_IN EDX 2048
+
+[INFO] 20:14:08:328 CPU/(2305:2380): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:328 CPU/(2305:2380): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:328 CPU/(2305:2380): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:328 CPU/(2305:2380): SIGNAL RC
+
+[INFO] 20:14:08:328 CPU/(2305:2380): WAIT RB
+
+[INFO] 20:14:08:328 CPU/(2305:2380): EXIT
+[INFO] 20:14:08:330 CPU/(2305:2380): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:08:331 CPU/(2305:2380): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:08:331 CPU/(2305:2385): CPU lista para recibir al cliente
+[INFO] 20:14:08:334 CPU/(2305:2385): Se conecto un cliente
+[INFO] 20:14:08:334 CPU/(2305:2385): Instrucciones recibidas de Kernel:
+
+[INFO] 20:14:08:334 CPU/(2305:2385): WAIT RB
+
+[INFO] 20:14:08:334 CPU/(2305:2385): MOV_IN CX 12
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 1 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 2 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 3 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 4 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 5 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 6 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 7 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): CREATE_SEGMENT 8 64
+
+[INFO] 20:14:08:334 CPU/(2305:2385): SET BX Ch4u
+
+[INFO] 20:14:08:334 CPU/(2305:2385): MOV_OUT 12 BX
+
+[INFO] 20:14:08:334 CPU/(2305:2385): SIGNAL RA
+
+[INFO] 20:14:08:335 CPU/(2305:2385): WAIT RB
+
+[INFO] 20:14:08:335 CPU/(2305:2385): CREATE_SEGMENT 9 64
+
+[INFO] 20:14:08:335 CPU/(2305:2385): SET_EAX CoscuWin
+
+[INFO] 20:14:08:335 CPU/(2305:2385): MOV_OUT 256 EAX
+
+[INFO] 20:14:08:335 CPU/(2305:2385): SET_EBX GermanNo
+
+[INFO] 20:14:08:335 CPU/(2305:2385): MOV_OUT 2048 EBX
+
+[INFO] 20:14:08:335 CPU/(2305:2385): SIGNAL RC
+
+[INFO] 20:14:08:335 CPU/(2305:2385): WAIT RB
+
+[INFO] 20:14:08:335 CPU/(2305:2385): MOV_IN ECX 256
+
+[INFO] 20:14:08:335 CPU/(2305:2385): DELETE_SEGMENT 1
+
+[INFO] 20:14:08:335 CPU/(2305:2385): MOV_IN EDX 2048
+
+[INFO] 20:14:08:335 CPU/(2305:2385): DELETE_SEGMENT 2
+
+[INFO] 20:14:08:335 CPU/(2305:2385): DELETE_SEGMENT 4
+
+[INFO] 20:14:08:335 CPU/(2305:2385): DELETE_SEGMENT 5
+
+[INFO] 20:14:08:335 CPU/(2305:2385): SIGNAL RC
+
+[INFO] 20:14:08:335 CPU/(2305:2385): WAIT RB
+
+[INFO] 20:14:08:335 CPU/(2305:2385): EXIT
+[INFO] 20:14:08:339 CPU/(2305:2385): Tabla de Segmentos recibida de Kernel: 
+
+[ERROR] 20:14:10:340 CPU/(2305:2385): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:14:10:341 CPU/(2305:2393): CPU lista para recibir al cliente
+[INFO] 20:34:04:626 CPU/(3853:3853): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:34:04:630 CPU/(3853:3853): CPU lista para escuchar al cliente
+
+[INFO] 20:34:04:630 CPU/(3853:3855): CPU lista para recibir al cliente
+[INFO] 20:34:15:364 CPU/(3853:3855): Se conecto un cliente
+[ERROR] 20:34:15:365 CPU/(3853:3855): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:15:367 CPU/(3853:3900): CPU lista para recibir al cliente
+[INFO] 20:34:15:370 CPU/(3853:3900): Se conecto un cliente
+[ERROR] 20:34:17:375 CPU/(3853:3900): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:17:376 CPU/(3853:3910): CPU lista para recibir al cliente
+[INFO] 20:34:17:382 CPU/(3853:3910): Se conecto un cliente
+[ERROR] 20:34:17:383 CPU/(3853:3910): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:17:384 CPU/(3853:3915): CPU lista para recibir al cliente
+[INFO] 20:34:17:385 CPU/(3853:3915): Se conecto un cliente
+[ERROR] 20:34:17:389 CPU/(3853:3915): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:17:391 CPU/(3853:3917): CPU lista para recibir al cliente
+[INFO] 20:34:17:392 CPU/(3853:3917): Se conecto un cliente
+[ERROR] 20:34:17:393 CPU/(3853:3917): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:17:394 CPU/(3853:3919): CPU lista para recibir al cliente
+[INFO] 20:34:17:395 CPU/(3853:3919): Se conecto un cliente
+[ERROR] 20:34:17:396 CPU/(3853:3919): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:17:397 CPU/(3853:3921): CPU lista para recibir al cliente
+[INFO] 20:34:17:397 CPU/(3853:3921): Se conecto un cliente
+[ERROR] 20:34:19:400 CPU/(3853:3921): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:401 CPU/(3853:3926): CPU lista para recibir al cliente
+[INFO] 20:34:19:403 CPU/(3853:3926): Se conecto un cliente
+[ERROR] 20:34:19:403 CPU/(3853:3926): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:404 CPU/(3853:3930): CPU lista para recibir al cliente
+[INFO] 20:34:19:405 CPU/(3853:3930): Se conecto un cliente
+[ERROR] 20:34:19:406 CPU/(3853:3930): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:406 CPU/(3853:3935): CPU lista para recibir al cliente
+[INFO] 20:34:19:407 CPU/(3853:3935): Se conecto un cliente
+[ERROR] 20:34:19:408 CPU/(3853:3935): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:408 CPU/(3853:3940): CPU lista para recibir al cliente
+[INFO] 20:34:19:409 CPU/(3853:3940): Se conecto un cliente
+[ERROR] 20:34:19:410 CPU/(3853:3940): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:410 CPU/(3853:3945): CPU lista para recibir al cliente
+[INFO] 20:34:19:413 CPU/(3853:3945): Se conecto un cliente
+[ERROR] 20:34:19:414 CPU/(3853:3945): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:415 CPU/(3853:3950): CPU lista para recibir al cliente
+[INFO] 20:34:19:416 CPU/(3853:3950): Se conecto un cliente
+[ERROR] 20:34:19:416 CPU/(3853:3950): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:416 CPU/(3853:3955): CPU lista para recibir al cliente
+[INFO] 20:34:19:417 CPU/(3853:3955): Se conecto un cliente
+[ERROR] 20:34:19:418 CPU/(3853:3955): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:19:418 CPU/(3853:3960): CPU lista para recibir al cliente
+[INFO] 20:34:19:419 CPU/(3853:3960): Se conecto un cliente
+[ERROR] 20:34:21:422 CPU/(3853:3960): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:34:21:422 CPU/(3853:3967): CPU lista para recibir al cliente
+[INFO] 20:42:55:509 CPU/(4253:4253): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:42:55:510 CPU/(4253:4253): CPU lista para escuchar al cliente
+
+[INFO] 20:42:55:510 CPU/(4253:4255): CPU lista para recibir al cliente
+[INFO] 20:43:10:879 CPU/(4253:4255): Se conecto un cliente
+[ERROR] 20:43:10:879 CPU/(4253:4255): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:10:881 CPU/(4253:4302): CPU lista para recibir al cliente
+[INFO] 20:43:10:881 CPU/(4253:4302): Se conecto un cliente
+[ERROR] 20:43:12:888 CPU/(4253:4302): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:12:889 CPU/(4253:4310): CPU lista para recibir al cliente
+[INFO] 20:43:12:892 CPU/(4253:4310): Se conecto un cliente
+[ERROR] 20:43:12:892 CPU/(4253:4310): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:12:893 CPU/(4253:4315): CPU lista para recibir al cliente
+[INFO] 20:43:12:893 CPU/(4253:4315): Se conecto un cliente
+[ERROR] 20:43:12:894 CPU/(4253:4315): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:12:895 CPU/(4253:4317): CPU lista para recibir al cliente
+[INFO] 20:43:12:896 CPU/(4253:4317): Se conecto un cliente
+[ERROR] 20:43:12:896 CPU/(4253:4317): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:12:897 CPU/(4253:4319): CPU lista para recibir al cliente
+[INFO] 20:43:12:898 CPU/(4253:4319): Se conecto un cliente
+[ERROR] 20:43:12:901 CPU/(4253:4319): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:12:902 CPU/(4253:4321): CPU lista para recibir al cliente
+[INFO] 20:43:12:903 CPU/(4253:4321): Se conecto un cliente
+[ERROR] 20:43:14:907 CPU/(4253:4321): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:908 CPU/(4253:4326): CPU lista para recibir al cliente
+[INFO] 20:43:14:913 CPU/(4253:4326): Se conecto un cliente
+[ERROR] 20:43:14:915 CPU/(4253:4326): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:916 CPU/(4253:4330): CPU lista para recibir al cliente
+[INFO] 20:43:14:922 CPU/(4253:4330): Se conecto un cliente
+[ERROR] 20:43:14:923 CPU/(4253:4330): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:923 CPU/(4253:4335): CPU lista para recibir al cliente
+[INFO] 20:43:14:925 CPU/(4253:4335): Se conecto un cliente
+[ERROR] 20:43:14:926 CPU/(4253:4335): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:926 CPU/(4253:4340): CPU lista para recibir al cliente
+[INFO] 20:43:14:928 CPU/(4253:4340): Se conecto un cliente
+[ERROR] 20:43:14:929 CPU/(4253:4340): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:929 CPU/(4253:4345): CPU lista para recibir al cliente
+[INFO] 20:43:14:931 CPU/(4253:4345): Se conecto un cliente
+[ERROR] 20:43:14:932 CPU/(4253:4345): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:932 CPU/(4253:4350): CPU lista para recibir al cliente
+[INFO] 20:43:14:940 CPU/(4253:4350): Se conecto un cliente
+[ERROR] 20:43:14:941 CPU/(4253:4350): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:942 CPU/(4253:4355): CPU lista para recibir al cliente
+[INFO] 20:43:14:943 CPU/(4253:4355): Se conecto un cliente
+[ERROR] 20:43:14:943 CPU/(4253:4355): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:14:943 CPU/(4253:4360): CPU lista para recibir al cliente
+[INFO] 20:43:14:944 CPU/(4253:4360): Se conecto un cliente
+[ERROR] 20:43:16:947 CPU/(4253:4360): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:43:16:949 CPU/(4253:4368): CPU lista para recibir al cliente
+[INFO] 20:45:02:488 CPU/(4483:4483): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:45:02:489 CPU/(4483:4483): CPU lista para escuchar al cliente
+
+[INFO] 20:45:02:489 CPU/(4483:4485): CPU lista para recibir al cliente
+[INFO] 20:45:09:719 CPU/(4483:4485): Se conecto un cliente
+[ERROR] 20:45:09:720 CPU/(4483:4485): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:09:721 CPU/(4483:4532): CPU lista para recibir al cliente
+[INFO] 20:45:09:722 CPU/(4483:4532): Se conecto un cliente
+[ERROR] 20:45:11:726 CPU/(4483:4532): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:11:727 CPU/(4483:4540): CPU lista para recibir al cliente
+[INFO] 20:45:11:729 CPU/(4483:4540): Se conecto un cliente
+[ERROR] 20:45:11:729 CPU/(4483:4540): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:11:729 CPU/(4483:4545): CPU lista para recibir al cliente
+[INFO] 20:45:11:730 CPU/(4483:4545): Se conecto un cliente
+[ERROR] 20:45:11:730 CPU/(4483:4545): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:11:731 CPU/(4483:4547): CPU lista para recibir al cliente
+[INFO] 20:45:11:731 CPU/(4483:4547): Se conecto un cliente
+[ERROR] 20:45:11:732 CPU/(4483:4547): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:11:732 CPU/(4483:4549): CPU lista para recibir al cliente
+[INFO] 20:45:11:732 CPU/(4483:4549): Se conecto un cliente
+[ERROR] 20:45:11:733 CPU/(4483:4549): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:11:734 CPU/(4483:4551): CPU lista para recibir al cliente
+[INFO] 20:45:11:734 CPU/(4483:4551): Se conecto un cliente
+[ERROR] 20:45:13:736 CPU/(4483:4551): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:737 CPU/(4483:4556): CPU lista para recibir al cliente
+[INFO] 20:45:13:739 CPU/(4483:4556): Se conecto un cliente
+[ERROR] 20:45:13:740 CPU/(4483:4556): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:740 CPU/(4483:4560): CPU lista para recibir al cliente
+[INFO] 20:45:13:742 CPU/(4483:4560): Se conecto un cliente
+[ERROR] 20:45:13:743 CPU/(4483:4560): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:743 CPU/(4483:4565): CPU lista para recibir al cliente
+[INFO] 20:45:13:745 CPU/(4483:4565): Se conecto un cliente
+[ERROR] 20:45:13:745 CPU/(4483:4565): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:745 CPU/(4483:4570): CPU lista para recibir al cliente
+[INFO] 20:45:13:748 CPU/(4483:4570): Se conecto un cliente
+[ERROR] 20:45:13:749 CPU/(4483:4570): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:749 CPU/(4483:4575): CPU lista para recibir al cliente
+[INFO] 20:45:13:750 CPU/(4483:4575): Se conecto un cliente
+[ERROR] 20:45:13:750 CPU/(4483:4575): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:751 CPU/(4483:4580): CPU lista para recibir al cliente
+[INFO] 20:45:13:752 CPU/(4483:4580): Se conecto un cliente
+[ERROR] 20:45:13:752 CPU/(4483:4580): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:752 CPU/(4483:4585): CPU lista para recibir al cliente
+[INFO] 20:45:13:753 CPU/(4483:4585): Se conecto un cliente
+[ERROR] 20:45:13:754 CPU/(4483:4585): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:13:754 CPU/(4483:4590): CPU lista para recibir al cliente
+[INFO] 20:45:13:755 CPU/(4483:4590): Se conecto un cliente
+[ERROR] 20:45:15:757 CPU/(4483:4590): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:45:15:757 CPU/(4483:4598): CPU lista para recibir al cliente
+[INFO] 20:47:22:181 CPU/(4808:4808): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:47:22:181 CPU/(4808:4808): CPU lista para escuchar al cliente
+
+[INFO] 20:47:22:181 CPU/(4808:4810): CPU lista para recibir al cliente
+[INFO] 20:47:29:954 CPU/(4808:4810): Se conecto un cliente
+[ERROR] 20:47:29:955 CPU/(4808:4810): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:29:956 CPU/(4808:4856): CPU lista para recibir al cliente
+[INFO] 20:47:29:957 CPU/(4808:4856): Se conecto un cliente
+[ERROR] 20:47:31:962 CPU/(4808:4856): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:31:963 CPU/(4808:4866): CPU lista para recibir al cliente
+[INFO] 20:47:31:969 CPU/(4808:4866): Se conecto un cliente
+[ERROR] 20:47:31:971 CPU/(4808:4866): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:31:972 CPU/(4808:4870): CPU lista para recibir al cliente
+[INFO] 20:47:31:976 CPU/(4808:4870): Se conecto un cliente
+[ERROR] 20:47:31:977 CPU/(4808:4870): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:31:978 CPU/(4808:4872): CPU lista para recibir al cliente
+[INFO] 20:47:31:979 CPU/(4808:4872): Se conecto un cliente
+[ERROR] 20:47:31:980 CPU/(4808:4872): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:31:981 CPU/(4808:4874): CPU lista para recibir al cliente
+[INFO] 20:47:31:981 CPU/(4808:4874): Se conecto un cliente
+[ERROR] 20:47:31:982 CPU/(4808:4874): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:31:983 CPU/(4808:4876): CPU lista para recibir al cliente
+[INFO] 20:47:31:984 CPU/(4808:4876): Se conecto un cliente
+[ERROR] 20:47:33:988 CPU/(4808:4876): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:33:989 CPU/(4808:4881): CPU lista para recibir al cliente
+[INFO] 20:47:33:995 CPU/(4808:4881): Se conecto un cliente
+[ERROR] 20:47:33:997 CPU/(4808:4881): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:33:998 CPU/(4808:4885): CPU lista para recibir al cliente
+[INFO] 20:47:34:004 CPU/(4808:4885): Se conecto un cliente
+[ERROR] 20:47:34:005 CPU/(4808:4885): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:006 CPU/(4808:4890): CPU lista para recibir al cliente
+[INFO] 20:47:34:008 CPU/(4808:4890): Se conecto un cliente
+[ERROR] 20:47:34:009 CPU/(4808:4890): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:009 CPU/(4808:4895): CPU lista para recibir al cliente
+[INFO] 20:47:34:011 CPU/(4808:4895): Se conecto un cliente
+[ERROR] 20:47:34:012 CPU/(4808:4895): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:012 CPU/(4808:4900): CPU lista para recibir al cliente
+[INFO] 20:47:34:014 CPU/(4808:4900): Se conecto un cliente
+[ERROR] 20:47:34:021 CPU/(4808:4900): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:022 CPU/(4808:4905): CPU lista para recibir al cliente
+[INFO] 20:47:34:024 CPU/(4808:4905): Se conecto un cliente
+[ERROR] 20:47:34:024 CPU/(4808:4905): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:025 CPU/(4808:4910): CPU lista para recibir al cliente
+[INFO] 20:47:34:026 CPU/(4808:4910): Se conecto un cliente
+[ERROR] 20:47:34:026 CPU/(4808:4910): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:34:026 CPU/(4808:4915): CPU lista para recibir al cliente
+[INFO] 20:47:34:028 CPU/(4808:4915): Se conecto un cliente
+[ERROR] 20:47:36:032 CPU/(4808:4915): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:36:035 CPU/(4808:4922): CPU lista para recibir al cliente
+[INFO] 20:47:36:037 CPU/(4808:4922): Se conecto un cliente
+[ERROR] 20:47:36:039 CPU/(4808:4922): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:36:040 CPU/(4808:4925): CPU lista para recibir al cliente
+[INFO] 20:47:36:041 CPU/(4808:4925): Se conecto un cliente
+[ERROR] 20:47:36:043 CPU/(4808:4925): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:36:044 CPU/(4808:4927): CPU lista para recibir al cliente
+[INFO] 20:47:36:049 CPU/(4808:4927): Se conecto un cliente
+[ERROR] 20:47:38:053 CPU/(4808:4927): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:38:054 CPU/(4808:4933): CPU lista para recibir al cliente
+[INFO] 20:47:38:055 CPU/(4808:4933): Se conecto un cliente
+[ERROR] 20:47:38:057 CPU/(4808:4933): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:38:059 CPU/(4808:4935): CPU lista para recibir al cliente
+[INFO] 20:47:38:060 CPU/(4808:4935): Se conecto un cliente
+[ERROR] 20:47:38:063 CPU/(4808:4935): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:38:063 CPU/(4808:4937): CPU lista para recibir al cliente
+[INFO] 20:47:38:069 CPU/(4808:4937): Se conecto un cliente
+[ERROR] 20:47:38:071 CPU/(4808:4937): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:47:38:072 CPU/(4808:4942): CPU lista para recibir al cliente
+[INFO] 20:48:31:642 CPU/(5048:5048): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:48:31:642 CPU/(5048:5048): CPU lista para escuchar al cliente
+
+[INFO] 20:48:31:642 CPU/(5048:5050): CPU lista para recibir al cliente
+[INFO] 20:48:40:512 CPU/(5048:5050): Se conecto un cliente
+[ERROR] 20:48:40:512 CPU/(5048:5050): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:40:513 CPU/(5048:5097): CPU lista para recibir al cliente
+[INFO] 20:48:40:516 CPU/(5048:5097): Se conecto un cliente
+[ERROR] 20:48:42:520 CPU/(5048:5097): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:42:521 CPU/(5048:5105): CPU lista para recibir al cliente
+[INFO] 20:48:42:527 CPU/(5048:5105): Se conecto un cliente
+[ERROR] 20:48:42:529 CPU/(5048:5105): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:42:530 CPU/(5048:5110): CPU lista para recibir al cliente
+[INFO] 20:48:42:530 CPU/(5048:5110): Se conecto un cliente
+[ERROR] 20:48:42:534 CPU/(5048:5110): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:42:535 CPU/(5048:5112): CPU lista para recibir al cliente
+[INFO] 20:48:42:535 CPU/(5048:5112): Se conecto un cliente
+[ERROR] 20:48:42:536 CPU/(5048:5112): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:42:537 CPU/(5048:5114): CPU lista para recibir al cliente
+[INFO] 20:48:42:538 CPU/(5048:5114): Se conecto un cliente
+[ERROR] 20:48:42:539 CPU/(5048:5114): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:42:540 CPU/(5048:5116): CPU lista para recibir al cliente
+[INFO] 20:48:42:541 CPU/(5048:5116): Se conecto un cliente
+[ERROR] 20:48:44:544 CPU/(5048:5116): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:545 CPU/(5048:5121): CPU lista para recibir al cliente
+[INFO] 20:48:44:547 CPU/(5048:5121): Se conecto un cliente
+[ERROR] 20:48:44:548 CPU/(5048:5121): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:549 CPU/(5048:5125): CPU lista para recibir al cliente
+[INFO] 20:48:44:551 CPU/(5048:5125): Se conecto un cliente
+[ERROR] 20:48:44:552 CPU/(5048:5125): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:552 CPU/(5048:5130): CPU lista para recibir al cliente
+[INFO] 20:48:44:554 CPU/(5048:5130): Se conecto un cliente
+[ERROR] 20:48:44:556 CPU/(5048:5130): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:556 CPU/(5048:5135): CPU lista para recibir al cliente
+[INFO] 20:48:44:561 CPU/(5048:5135): Se conecto un cliente
+[ERROR] 20:48:44:562 CPU/(5048:5135): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:562 CPU/(5048:5140): CPU lista para recibir al cliente
+[INFO] 20:48:44:564 CPU/(5048:5140): Se conecto un cliente
+[ERROR] 20:48:44:565 CPU/(5048:5140): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:565 CPU/(5048:5145): CPU lista para recibir al cliente
+[INFO] 20:48:44:585 CPU/(5048:5145): Se conecto un cliente
+[ERROR] 20:48:44:585 CPU/(5048:5145): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:586 CPU/(5048:5150): CPU lista para recibir al cliente
+[INFO] 20:48:44:593 CPU/(5048:5150): Se conecto un cliente
+[ERROR] 20:48:44:594 CPU/(5048:5150): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:44:601 CPU/(5048:5155): CPU lista para recibir al cliente
+[INFO] 20:48:44:602 CPU/(5048:5155): Se conecto un cliente
+[INFO] 20:48:49:244 CPU/(5165:5165): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:48:49:245 CPU/(5165:5165): CPU lista para escuchar al cliente
+
+[INFO] 20:48:49:245 CPU/(5165:5167): CPU lista para recibir al cliente
+[INFO] 20:48:52:363 CPU/(5165:5167): Se conecto un cliente
+[ERROR] 20:48:52:364 CPU/(5165:5167): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:52:365 CPU/(5165:5185): CPU lista para recibir al cliente
+[INFO] 20:48:52:365 CPU/(5165:5185): Se conecto un cliente
+[ERROR] 20:48:54:368 CPU/(5165:5185): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:54:369 CPU/(5165:5193): CPU lista para recibir al cliente
+[INFO] 20:48:54:371 CPU/(5165:5193): Se conecto un cliente
+[ERROR] 20:48:54:371 CPU/(5165:5193): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:54:371 CPU/(5165:5198): CPU lista para recibir al cliente
+[INFO] 20:48:54:372 CPU/(5165:5198): Se conecto un cliente
+[ERROR] 20:48:54:372 CPU/(5165:5198): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:54:373 CPU/(5165:5200): CPU lista para recibir al cliente
+[INFO] 20:48:54:373 CPU/(5165:5200): Se conecto un cliente
+[ERROR] 20:48:54:374 CPU/(5165:5200): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:54:374 CPU/(5165:5202): CPU lista para recibir al cliente
+[INFO] 20:48:54:374 CPU/(5165:5202): Se conecto un cliente
+[ERROR] 20:48:54:375 CPU/(5165:5202): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:54:376 CPU/(5165:5204): CPU lista para recibir al cliente
+[INFO] 20:48:54:376 CPU/(5165:5204): Se conecto un cliente
+[ERROR] 20:48:56:378 CPU/(5165:5204): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:380 CPU/(5165:5209): CPU lista para recibir al cliente
+[INFO] 20:48:56:384 CPU/(5165:5209): Se conecto un cliente
+[ERROR] 20:48:56:385 CPU/(5165:5209): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:386 CPU/(5165:5213): CPU lista para recibir al cliente
+[INFO] 20:48:56:393 CPU/(5165:5213): Se conecto un cliente
+[ERROR] 20:48:56:394 CPU/(5165:5213): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:394 CPU/(5165:5218): CPU lista para recibir al cliente
+[INFO] 20:48:56:397 CPU/(5165:5218): Se conecto un cliente
+[ERROR] 20:48:56:398 CPU/(5165:5218): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:398 CPU/(5165:5223): CPU lista para recibir al cliente
+[INFO] 20:48:56:400 CPU/(5165:5223): Se conecto un cliente
+[ERROR] 20:48:56:401 CPU/(5165:5223): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:401 CPU/(5165:5228): CPU lista para recibir al cliente
+[INFO] 20:48:56:403 CPU/(5165:5228): Se conecto un cliente
+[ERROR] 20:48:56:404 CPU/(5165:5228): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:404 CPU/(5165:5233): CPU lista para recibir al cliente
+[INFO] 20:48:56:412 CPU/(5165:5233): Se conecto un cliente
+[ERROR] 20:48:56:413 CPU/(5165:5233): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:414 CPU/(5165:5238): CPU lista para recibir al cliente
+[INFO] 20:48:56:415 CPU/(5165:5238): Se conecto un cliente
+[ERROR] 20:48:56:415 CPU/(5165:5238): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:56:416 CPU/(5165:5243): CPU lista para recibir al cliente
+[INFO] 20:48:56:417 CPU/(5165:5243): Se conecto un cliente
+[ERROR] 20:48:58:421 CPU/(5165:5243): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:58:422 CPU/(5165:5250): CPU lista para recibir al cliente
+[INFO] 20:48:58:422 CPU/(5165:5250): Se conecto un cliente
+[ERROR] 20:48:58:424 CPU/(5165:5250): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:58:425 CPU/(5165:5253): CPU lista para recibir al cliente
+[INFO] 20:48:58:426 CPU/(5165:5253): Se conecto un cliente
+[ERROR] 20:48:58:427 CPU/(5165:5253): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:48:58:428 CPU/(5165:5255): CPU lista para recibir al cliente
+[INFO] 20:48:58:430 CPU/(5165:5255): Se conecto un cliente
+[ERROR] 20:49:00:437 CPU/(5165:5255): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:00:438 CPU/(5165:5260): CPU lista para recibir al cliente
+[INFO] 20:49:00:439 CPU/(5165:5260): Se conecto un cliente
+[ERROR] 20:49:00:442 CPU/(5165:5260): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:00:443 CPU/(5165:5262): CPU lista para recibir al cliente
+[INFO] 20:49:00:444 CPU/(5165:5262): Se conecto un cliente
+[ERROR] 20:49:00:448 CPU/(5165:5262): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:00:452 CPU/(5165:5265): CPU lista para recibir al cliente
+[INFO] 20:49:00:456 CPU/(5165:5265): Se conecto un cliente
+[ERROR] 20:49:04:464 CPU/(5165:5265): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:04:467 CPU/(5165:5274): CPU lista para recibir al cliente
+[INFO] 20:49:04:467 CPU/(5165:5274): Se conecto un cliente
+[ERROR] 20:49:04:471 CPU/(5165:5274): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:04:472 CPU/(5165:5276): CPU lista para recibir al cliente
+[INFO] 20:49:04:473 CPU/(5165:5276): Se conecto un cliente
+[ERROR] 20:49:04:475 CPU/(5165:5276): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:49:04:477 CPU/(5165:5278): CPU lista para recibir al cliente
+[INFO] 20:53:15:032 CPU/(5412:5412): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:53:15:032 CPU/(5412:5412): CPU lista para escuchar al cliente
+
+[INFO] 20:53:15:032 CPU/(5412:5414): CPU lista para recibir al cliente
+[INFO] 20:53:25:699 CPU/(5412:5414): Se conecto un cliente
+[ERROR] 20:53:25:699 CPU/(5412:5414): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:25:701 CPU/(5412:5460): CPU lista para recibir al cliente
+[INFO] 20:53:25:703 CPU/(5412:5460): Se conecto un cliente
+[ERROR] 20:53:27:706 CPU/(5412:5460): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:27:707 CPU/(5412:5469): CPU lista para recibir al cliente
+[INFO] 20:53:27:709 CPU/(5412:5469): Se conecto un cliente
+[ERROR] 20:53:27:710 CPU/(5412:5469): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:27:710 CPU/(5412:5474): CPU lista para recibir al cliente
+[INFO] 20:53:27:710 CPU/(5412:5474): Se conecto un cliente
+[ERROR] 20:53:27:711 CPU/(5412:5474): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:27:711 CPU/(5412:5476): CPU lista para recibir al cliente
+[INFO] 20:53:27:712 CPU/(5412:5476): Se conecto un cliente
+[ERROR] 20:53:27:712 CPU/(5412:5476): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:27:714 CPU/(5412:5478): CPU lista para recibir al cliente
+[INFO] 20:53:27:714 CPU/(5412:5478): Se conecto un cliente
+[ERROR] 20:53:27:715 CPU/(5412:5478): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:27:716 CPU/(5412:5480): CPU lista para recibir al cliente
+[INFO] 20:53:27:716 CPU/(5412:5480): Se conecto un cliente
+[ERROR] 20:53:29:719 CPU/(5412:5480): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:720 CPU/(5412:5485): CPU lista para recibir al cliente
+[INFO] 20:53:29:726 CPU/(5412:5485): Se conecto un cliente
+[ERROR] 20:53:29:728 CPU/(5412:5485): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:729 CPU/(5412:5489): CPU lista para recibir al cliente
+[INFO] 20:53:29:736 CPU/(5412:5489): Se conecto un cliente
+[ERROR] 20:53:29:738 CPU/(5412:5489): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:738 CPU/(5412:5494): CPU lista para recibir al cliente
+[INFO] 20:53:29:741 CPU/(5412:5494): Se conecto un cliente
+[ERROR] 20:53:29:742 CPU/(5412:5494): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:742 CPU/(5412:5499): CPU lista para recibir al cliente
+[INFO] 20:53:29:744 CPU/(5412:5499): Se conecto un cliente
+[ERROR] 20:53:29:745 CPU/(5412:5499): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:745 CPU/(5412:5504): CPU lista para recibir al cliente
+[INFO] 20:53:29:755 CPU/(5412:5504): Se conecto un cliente
+[ERROR] 20:53:29:755 CPU/(5412:5504): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:756 CPU/(5412:5509): CPU lista para recibir al cliente
+[INFO] 20:53:29:757 CPU/(5412:5509): Se conecto un cliente
+[ERROR] 20:53:29:758 CPU/(5412:5509): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:758 CPU/(5412:5514): CPU lista para recibir al cliente
+[INFO] 20:53:29:759 CPU/(5412:5514): Se conecto un cliente
+[ERROR] 20:53:29:760 CPU/(5412:5514): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:29:760 CPU/(5412:5519): CPU lista para recibir al cliente
+[INFO] 20:53:29:761 CPU/(5412:5519): Se conecto un cliente
+[ERROR] 20:53:31:764 CPU/(5412:5519): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:31:764 CPU/(5412:5526): CPU lista para recibir al cliente
+[INFO] 20:53:31:764 CPU/(5412:5526): Se conecto un cliente
+[ERROR] 20:53:31:765 CPU/(5412:5526): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:31:766 CPU/(5412:5529): CPU lista para recibir al cliente
+[INFO] 20:53:31:766 CPU/(5412:5529): Se conecto un cliente
+[ERROR] 20:53:31:766 CPU/(5412:5529): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:31:767 CPU/(5412:5531): CPU lista para recibir al cliente
+[INFO] 20:53:31:768 CPU/(5412:5531): Se conecto un cliente
+[ERROR] 20:53:33:771 CPU/(5412:5531): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:33:772 CPU/(5412:5537): CPU lista para recibir al cliente
+[INFO] 20:53:33:773 CPU/(5412:5537): Se conecto un cliente
+[ERROR] 20:53:33:777 CPU/(5412:5537): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:33:778 CPU/(5412:5539): CPU lista para recibir al cliente
+[INFO] 20:53:33:779 CPU/(5412:5539): Se conecto un cliente
+[ERROR] 20:53:33:782 CPU/(5412:5539): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:33:784 CPU/(5412:5541): CPU lista para recibir al cliente
+[INFO] 20:53:33:787 CPU/(5412:5541): Se conecto un cliente
+[ERROR] 20:53:37:794 CPU/(5412:5541): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:37:796 CPU/(5412:5551): CPU lista para recibir al cliente
+[INFO] 20:53:37:797 CPU/(5412:5551): Se conecto un cliente
+[ERROR] 20:53:37:802 CPU/(5412:5551): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:37:803 CPU/(5412:5553): CPU lista para recibir al cliente
+[INFO] 20:53:37:804 CPU/(5412:5553): Se conecto un cliente
+[ERROR] 20:53:37:805 CPU/(5412:5553): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:53:37:807 CPU/(5412:5555): CPU lista para recibir al cliente
+[INFO] 20:54:53:227 CPU/(5638:5638): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:54:53:228 CPU/(5638:5638): CPU lista para escuchar al cliente
+
+[INFO] 20:54:53:228 CPU/(5638:5640): CPU lista para recibir al cliente
+[INFO] 20:55:02:204 CPU/(5638:5640): Se conecto un cliente
+[ERROR] 20:55:02:204 CPU/(5638:5640): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:02:205 CPU/(5638:5686): CPU lista para recibir al cliente
+[INFO] 20:55:02:206 CPU/(5638:5686): Se conecto un cliente
+[ERROR] 20:55:04:210 CPU/(5638:5686): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:04:212 CPU/(5638:5696): CPU lista para recibir al cliente
+[INFO] 20:55:04:218 CPU/(5638:5696): Se conecto un cliente
+[ERROR] 20:55:04:224 CPU/(5638:5696): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:04:225 CPU/(5638:5700): CPU lista para recibir al cliente
+[INFO] 20:55:04:226 CPU/(5638:5700): Se conecto un cliente
+[ERROR] 20:55:04:227 CPU/(5638:5700): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:04:228 CPU/(5638:5703): CPU lista para recibir al cliente
+[INFO] 20:55:04:229 CPU/(5638:5703): Se conecto un cliente
+[ERROR] 20:55:04:230 CPU/(5638:5703): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:04:231 CPU/(5638:5704): CPU lista para recibir al cliente
+[INFO] 20:55:04:232 CPU/(5638:5704): Se conecto un cliente
+[ERROR] 20:55:04:233 CPU/(5638:5704): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:04:234 CPU/(5638:5706): CPU lista para recibir al cliente
+[INFO] 20:55:04:235 CPU/(5638:5706): Se conecto un cliente
+[ERROR] 20:55:06:238 CPU/(5638:5706): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:239 CPU/(5638:5710): CPU lista para recibir al cliente
+[INFO] 20:55:06:246 CPU/(5638:5710): Se conecto un cliente
+[ERROR] 20:55:06:248 CPU/(5638:5710): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:248 CPU/(5638:5715): CPU lista para recibir al cliente
+[INFO] 20:55:06:254 CPU/(5638:5715): Se conecto un cliente
+[ERROR] 20:55:06:255 CPU/(5638:5715): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:256 CPU/(5638:5720): CPU lista para recibir al cliente
+[INFO] 20:55:06:258 CPU/(5638:5720): Se conecto un cliente
+[ERROR] 20:55:06:259 CPU/(5638:5720): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:259 CPU/(5638:5725): CPU lista para recibir al cliente
+[INFO] 20:55:06:263 CPU/(5638:5725): Se conecto un cliente
+[ERROR] 20:55:06:263 CPU/(5638:5725): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:264 CPU/(5638:5730): CPU lista para recibir al cliente
+[INFO] 20:55:06:272 CPU/(5638:5730): Se conecto un cliente
+[ERROR] 20:55:06:274 CPU/(5638:5730): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:274 CPU/(5638:5735): CPU lista para recibir al cliente
+[INFO] 20:55:06:276 CPU/(5638:5735): Se conecto un cliente
+[ERROR] 20:55:06:276 CPU/(5638:5735): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:276 CPU/(5638:5740): CPU lista para recibir al cliente
+[INFO] 20:55:06:277 CPU/(5638:5740): Se conecto un cliente
+[ERROR] 20:55:06:278 CPU/(5638:5740): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:06:278 CPU/(5638:5745): CPU lista para recibir al cliente
+[INFO] 20:55:06:280 CPU/(5638:5745): Se conecto un cliente
+[ERROR] 20:55:08:283 CPU/(5638:5745): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:08:284 CPU/(5638:5752): CPU lista para recibir al cliente
+[INFO] 20:55:08:284 CPU/(5638:5752): Se conecto un cliente
+[ERROR] 20:55:08:284 CPU/(5638:5752): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:08:285 CPU/(5638:5754): CPU lista para recibir al cliente
+[INFO] 20:55:08:285 CPU/(5638:5754): Se conecto un cliente
+[ERROR] 20:55:08:286 CPU/(5638:5754): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:08:286 CPU/(5638:5757): CPU lista para recibir al cliente
+[INFO] 20:55:08:287 CPU/(5638:5757): Se conecto un cliente
+[ERROR] 20:55:10:290 CPU/(5638:5757): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:10:291 CPU/(5638:5763): CPU lista para recibir al cliente
+[INFO] 20:55:10:292 CPU/(5638:5763): Se conecto un cliente
+[ERROR] 20:55:10:293 CPU/(5638:5763): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:10:295 CPU/(5638:5765): CPU lista para recibir al cliente
+[INFO] 20:55:10:295 CPU/(5638:5765): Se conecto un cliente
+[ERROR] 20:55:10:296 CPU/(5638:5765): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:10:297 CPU/(5638:5767): CPU lista para recibir al cliente
+[INFO] 20:55:10:299 CPU/(5638:5767): Se conecto un cliente
+[ERROR] 20:55:14:303 CPU/(5638:5767): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:14:304 CPU/(5638:5775): CPU lista para recibir al cliente
+[INFO] 20:55:14:304 CPU/(5638:5775): Se conecto un cliente
+[ERROR] 20:55:14:304 CPU/(5638:5775): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:14:305 CPU/(5638:5777): CPU lista para recibir al cliente
+[INFO] 20:55:14:305 CPU/(5638:5777): Se conecto un cliente
+[ERROR] 20:55:14:306 CPU/(5638:5777): el kernel se desconecto. Terminando servidor
+
+[INFO] 20:55:14:306 CPU/(5638:5780): CPU lista para recibir al cliente
+[INFO] 21:04:19:960 CPU/(6477:6477): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:04:19:960 CPU/(6477:6477): CPU lista para escuchar al cliente
+
+[INFO] 21:04:19:961 CPU/(6477:6479): CPU lista para recibir al cliente
+[INFO] 21:04:28:866 CPU/(6477:6479): Se conecto un cliente
+[ERROR] 21:04:28:866 CPU/(6477:6479): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:28:868 CPU/(6477:6526): CPU lista para recibir al cliente
+[INFO] 21:04:28:869 CPU/(6477:6526): Se conecto un cliente
+[ERROR] 21:04:30:873 CPU/(6477:6526): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:30:873 CPU/(6477:6534): CPU lista para recibir al cliente
+[INFO] 21:04:30:876 CPU/(6477:6534): Se conecto un cliente
+[ERROR] 21:04:30:877 CPU/(6477:6534): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:30:877 CPU/(6477:6539): CPU lista para recibir al cliente
+[INFO] 21:04:30:878 CPU/(6477:6539): Se conecto un cliente
+[ERROR] 21:04:30:878 CPU/(6477:6539): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:30:879 CPU/(6477:6541): CPU lista para recibir al cliente
+[INFO] 21:04:30:880 CPU/(6477:6541): Se conecto un cliente
+[ERROR] 21:04:30:881 CPU/(6477:6541): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:30:882 CPU/(6477:6543): CPU lista para recibir al cliente
+[INFO] 21:04:30:882 CPU/(6477:6543): Se conecto un cliente
+[ERROR] 21:04:30:883 CPU/(6477:6543): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:30:885 CPU/(6477:6545): CPU lista para recibir al cliente
+[INFO] 21:04:30:886 CPU/(6477:6545): Se conecto un cliente
+[ERROR] 21:04:32:890 CPU/(6477:6545): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:891 CPU/(6477:6550): CPU lista para recibir al cliente
+[INFO] 21:04:32:896 CPU/(6477:6550): Se conecto un cliente
+[ERROR] 21:04:32:898 CPU/(6477:6550): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:899 CPU/(6477:6554): CPU lista para recibir al cliente
+[INFO] 21:04:32:905 CPU/(6477:6554): Se conecto un cliente
+[ERROR] 21:04:32:907 CPU/(6477:6554): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:907 CPU/(6477:6559): CPU lista para recibir al cliente
+[INFO] 21:04:32:909 CPU/(6477:6559): Se conecto un cliente
+[ERROR] 21:04:32:910 CPU/(6477:6559): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:911 CPU/(6477:6564): CPU lista para recibir al cliente
+[INFO] 21:04:32:913 CPU/(6477:6564): Se conecto un cliente
+[ERROR] 21:04:32:913 CPU/(6477:6564): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:914 CPU/(6477:6569): CPU lista para recibir al cliente
+[INFO] 21:04:32:922 CPU/(6477:6569): Se conecto un cliente
+[ERROR] 21:04:32:923 CPU/(6477:6569): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:923 CPU/(6477:6574): CPU lista para recibir al cliente
+[INFO] 21:04:32:925 CPU/(6477:6574): Se conecto un cliente
+[ERROR] 21:04:32:926 CPU/(6477:6574): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:926 CPU/(6477:6579): CPU lista para recibir al cliente
+[INFO] 21:04:32:927 CPU/(6477:6579): Se conecto un cliente
+[ERROR] 21:04:32:928 CPU/(6477:6579): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:32:928 CPU/(6477:6584): CPU lista para recibir al cliente
+[INFO] 21:04:32:929 CPU/(6477:6584): Se conecto un cliente
+[ERROR] 21:04:34:933 CPU/(6477:6584): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:34:935 CPU/(6477:6592): CPU lista para recibir al cliente
+[INFO] 21:04:34:936 CPU/(6477:6592): Se conecto un cliente
+[ERROR] 21:04:34:939 CPU/(6477:6592): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:34:941 CPU/(6477:6594): CPU lista para recibir al cliente
+[INFO] 21:04:34:942 CPU/(6477:6594): Se conecto un cliente
+[ERROR] 21:04:34:944 CPU/(6477:6594): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:34:947 CPU/(6477:6596): CPU lista para recibir al cliente
+[INFO] 21:04:34:948 CPU/(6477:6596): Se conecto un cliente
+[ERROR] 21:04:36:952 CPU/(6477:6596): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:36:954 CPU/(6477:6603): CPU lista para recibir al cliente
+[INFO] 21:04:36:955 CPU/(6477:6603): Se conecto un cliente
+[ERROR] 21:04:36:956 CPU/(6477:6603): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:36:957 CPU/(6477:6605): CPU lista para recibir al cliente
+[INFO] 21:04:36:958 CPU/(6477:6605): Se conecto un cliente
+[ERROR] 21:04:36:961 CPU/(6477:6605): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:36:965 CPU/(6477:6607): CPU lista para recibir al cliente
+[INFO] 21:04:36:967 CPU/(6477:6607): Se conecto un cliente
+[ERROR] 21:04:40:975 CPU/(6477:6607): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:40:977 CPU/(6477:6615): CPU lista para recibir al cliente
+[INFO] 21:04:40:978 CPU/(6477:6615): Se conecto un cliente
+[ERROR] 21:04:40:981 CPU/(6477:6615): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:40:982 CPU/(6477:6618): CPU lista para recibir al cliente
+[INFO] 21:04:40:983 CPU/(6477:6618): Se conecto un cliente
+[ERROR] 21:04:40:985 CPU/(6477:6618): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:04:40:986 CPU/(6477:6620): CPU lista para recibir al cliente
+[INFO] 21:05:43:734 CPU/(6746:6746): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:05:43:735 CPU/(6746:6746): CPU lista para escuchar al cliente
+
+[INFO] 21:05:43:735 CPU/(6746:6748): CPU lista para recibir al cliente
+[INFO] 21:05:50:697 CPU/(6746:6748): Se conecto un cliente
+[ERROR] 21:05:50:698 CPU/(6746:6748): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:50:703 CPU/(6746:6795): CPU lista para recibir al cliente
+[INFO] 21:05:50:705 CPU/(6746:6795): Se conecto un cliente
+[ERROR] 21:05:52:710 CPU/(6746:6795): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:52:711 CPU/(6746:6804): CPU lista para recibir al cliente
+[INFO] 21:05:52:716 CPU/(6746:6804): Se conecto un cliente
+[ERROR] 21:05:52:719 CPU/(6746:6804): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:52:720 CPU/(6746:6808): CPU lista para recibir al cliente
+[INFO] 21:05:52:723 CPU/(6746:6808): Se conecto un cliente
+[ERROR] 21:05:52:724 CPU/(6746:6808): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:52:726 CPU/(6746:6810): CPU lista para recibir al cliente
+[INFO] 21:05:52:726 CPU/(6746:6810): Se conecto un cliente
+[ERROR] 21:05:52:727 CPU/(6746:6810): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:52:728 CPU/(6746:6812): CPU lista para recibir al cliente
+[INFO] 21:05:52:729 CPU/(6746:6812): Se conecto un cliente
+[ERROR] 21:05:52:730 CPU/(6746:6812): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:52:731 CPU/(6746:6814): CPU lista para recibir al cliente
+[INFO] 21:05:52:731 CPU/(6746:6814): Se conecto un cliente
+[ERROR] 21:05:54:735 CPU/(6746:6814): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:737 CPU/(6746:6819): CPU lista para recibir al cliente
+[INFO] 21:05:54:743 CPU/(6746:6819): Se conecto un cliente
+[ERROR] 21:05:54:745 CPU/(6746:6819): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:746 CPU/(6746:6823): CPU lista para recibir al cliente
+[INFO] 21:05:54:751 CPU/(6746:6823): Se conecto un cliente
+[ERROR] 21:05:54:752 CPU/(6746:6823): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:752 CPU/(6746:6828): CPU lista para recibir al cliente
+[INFO] 21:05:54:755 CPU/(6746:6828): Se conecto un cliente
+[ERROR] 21:05:54:756 CPU/(6746:6828): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:756 CPU/(6746:6833): CPU lista para recibir al cliente
+[INFO] 21:05:54:758 CPU/(6746:6833): Se conecto un cliente
+[ERROR] 21:05:54:759 CPU/(6746:6833): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:759 CPU/(6746:6838): CPU lista para recibir al cliente
+[INFO] 21:05:54:761 CPU/(6746:6838): Se conecto un cliente
+[ERROR] 21:05:54:768 CPU/(6746:6838): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:769 CPU/(6746:6843): CPU lista para recibir al cliente
+[INFO] 21:05:54:771 CPU/(6746:6843): Se conecto un cliente
+[ERROR] 21:05:54:772 CPU/(6746:6843): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:772 CPU/(6746:6848): CPU lista para recibir al cliente
+[INFO] 21:05:54:773 CPU/(6746:6848): Se conecto un cliente
+[ERROR] 21:05:54:774 CPU/(6746:6848): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:54:774 CPU/(6746:6853): CPU lista para recibir al cliente
+[INFO] 21:05:54:775 CPU/(6746:6853): Se conecto un cliente
+[ERROR] 21:05:56:778 CPU/(6746:6853): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:56:780 CPU/(6746:6861): CPU lista para recibir al cliente
+[INFO] 21:05:56:781 CPU/(6746:6861): Se conecto un cliente
+[ERROR] 21:05:56:784 CPU/(6746:6861): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:56:785 CPU/(6746:6863): CPU lista para recibir al cliente
+[INFO] 21:05:56:786 CPU/(6746:6863): Se conecto un cliente
+[ERROR] 21:05:56:789 CPU/(6746:6863): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:56:791 CPU/(6746:6865): CPU lista para recibir al cliente
+[INFO] 21:05:56:792 CPU/(6746:6865): Se conecto un cliente
+[ERROR] 21:05:58:796 CPU/(6746:6865): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:58:798 CPU/(6746:6871): CPU lista para recibir al cliente
+[INFO] 21:05:58:798 CPU/(6746:6871): Se conecto un cliente
+[ERROR] 21:05:58:800 CPU/(6746:6871): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:58:801 CPU/(6746:6873): CPU lista para recibir al cliente
+[INFO] 21:05:58:802 CPU/(6746:6873): Se conecto un cliente
+[ERROR] 21:05:58:805 CPU/(6746:6873): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:05:58:806 CPU/(6746:6875): CPU lista para recibir al cliente
+[INFO] 21:05:58:812 CPU/(6746:6875): Se conecto un cliente
+[ERROR] 21:06:02:819 CPU/(6746:6875): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:06:02:820 CPU/(6746:6883): CPU lista para recibir al cliente
+[INFO] 21:06:02:821 CPU/(6746:6883): Se conecto un cliente
+[ERROR] 21:06:02:824 CPU/(6746:6883): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:06:02:825 CPU/(6746:6886): CPU lista para recibir al cliente
+[INFO] 21:06:02:826 CPU/(6746:6886): Se conecto un cliente
+[ERROR] 21:06:02:828 CPU/(6746:6886): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:06:02:829 CPU/(6746:6888): CPU lista para recibir al cliente
+[INFO] 21:06:58:260 CPU/(7089:7089): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:06:58:260 CPU/(7089:7089): CPU lista para escuchar al cliente
+
+[INFO] 21:06:58:261 CPU/(7089:7091): CPU lista para recibir al cliente
+[INFO] 21:07:07:679 CPU/(7089:7091): Se conecto un cliente
+[ERROR] 21:07:07:679 CPU/(7089:7091): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:07:681 CPU/(7089:7138): CPU lista para recibir al cliente
+[INFO] 21:07:07:681 CPU/(7089:7138): Se conecto un cliente
+[ERROR] 21:07:09:686 CPU/(7089:7138): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:09:686 CPU/(7089:7147): CPU lista para recibir al cliente
+[INFO] 21:07:09:688 CPU/(7089:7147): Se conecto un cliente
+[ERROR] 21:07:09:689 CPU/(7089:7147): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:09:689 CPU/(7089:7151): CPU lista para recibir al cliente
+[INFO] 21:07:09:689 CPU/(7089:7151): Se conecto un cliente
+[ERROR] 21:07:09:690 CPU/(7089:7151): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:09:691 CPU/(7089:7153): CPU lista para recibir al cliente
+[INFO] 21:07:09:691 CPU/(7089:7153): Se conecto un cliente
+[ERROR] 21:07:09:691 CPU/(7089:7153): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:09:692 CPU/(7089:7155): CPU lista para recibir al cliente
+[INFO] 21:07:09:692 CPU/(7089:7155): Se conecto un cliente
+[ERROR] 21:07:09:693 CPU/(7089:7155): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:09:694 CPU/(7089:7157): CPU lista para recibir al cliente
+[INFO] 21:07:09:694 CPU/(7089:7157): Se conecto un cliente
+[ERROR] 21:07:11:697 CPU/(7089:7157): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:699 CPU/(7089:7162): CPU lista para recibir al cliente
+[INFO] 21:07:11:704 CPU/(7089:7162): Se conecto un cliente
+[ERROR] 21:07:11:706 CPU/(7089:7162): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:707 CPU/(7089:7166): CPU lista para recibir al cliente
+[INFO] 21:07:11:712 CPU/(7089:7166): Se conecto un cliente
+[ERROR] 21:07:11:713 CPU/(7089:7166): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:714 CPU/(7089:7171): CPU lista para recibir al cliente
+[INFO] 21:07:11:717 CPU/(7089:7171): Se conecto un cliente
+[ERROR] 21:07:11:718 CPU/(7089:7171): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:718 CPU/(7089:7176): CPU lista para recibir al cliente
+[INFO] 21:07:11:720 CPU/(7089:7176): Se conecto un cliente
+[ERROR] 21:07:11:721 CPU/(7089:7176): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:721 CPU/(7089:7181): CPU lista para recibir al cliente
+[INFO] 21:07:11:723 CPU/(7089:7181): Se conecto un cliente
+[ERROR] 21:07:11:730 CPU/(7089:7181): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:730 CPU/(7089:7186): CPU lista para recibir al cliente
+[INFO] 21:07:11:733 CPU/(7089:7186): Se conecto un cliente
+[ERROR] 21:07:11:733 CPU/(7089:7186): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:733 CPU/(7089:7191): CPU lista para recibir al cliente
+[INFO] 21:07:11:735 CPU/(7089:7191): Se conecto un cliente
+[ERROR] 21:07:11:735 CPU/(7089:7191): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:11:735 CPU/(7089:7196): CPU lista para recibir al cliente
+[INFO] 21:07:11:736 CPU/(7089:7196): Se conecto un cliente
+[ERROR] 21:07:13:739 CPU/(7089:7196): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:13:740 CPU/(7089:7203): CPU lista para recibir al cliente
+[INFO] 21:07:13:740 CPU/(7089:7203): Se conecto un cliente
+[ERROR] 21:07:13:741 CPU/(7089:7203): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:13:742 CPU/(7089:7205): CPU lista para recibir al cliente
+[INFO] 21:07:13:742 CPU/(7089:7205): Se conecto un cliente
+[ERROR] 21:07:13:743 CPU/(7089:7205): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:13:743 CPU/(7089:7208): CPU lista para recibir al cliente
+[INFO] 21:07:13:744 CPU/(7089:7208): Se conecto un cliente
+[ERROR] 21:07:15:747 CPU/(7089:7208): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:15:749 CPU/(7089:7213): CPU lista para recibir al cliente
+[INFO] 21:07:15:750 CPU/(7089:7213): Se conecto un cliente
+[ERROR] 21:07:15:752 CPU/(7089:7213): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:15:753 CPU/(7089:7216): CPU lista para recibir al cliente
+[INFO] 21:07:15:755 CPU/(7089:7216): Se conecto un cliente
+[ERROR] 21:07:15:757 CPU/(7089:7216): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:15:761 CPU/(7089:7218): CPU lista para recibir al cliente
+[INFO] 21:07:15:763 CPU/(7089:7218): Se conecto un cliente
+[ERROR] 21:07:19:769 CPU/(7089:7218): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:19:769 CPU/(7089:7227): CPU lista para recibir al cliente
+[INFO] 21:07:19:770 CPU/(7089:7227): Se conecto un cliente
+[ERROR] 21:07:19:771 CPU/(7089:7227): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:19:772 CPU/(7089:7228): CPU lista para recibir al cliente
+[INFO] 21:07:19:773 CPU/(7089:7228): Se conecto un cliente
+[ERROR] 21:07:19:774 CPU/(7089:7228): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:07:19:774 CPU/(7089:7231): CPU lista para recibir al cliente
+[INFO] 21:10:29:776 CPU/(7389:7389): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 21:10:29:776 CPU/(7389:7389): CPU lista para escuchar al cliente
+
+[INFO] 21:10:29:777 CPU/(7389:7391): CPU lista para recibir al cliente
+[INFO] 21:11:04:971 CPU/(7389:7391): Se conecto un cliente
+[ERROR] 21:11:04:971 CPU/(7389:7391): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:04:973 CPU/(7389:7521): CPU lista para recibir al cliente
+[INFO] 21:11:04:974 CPU/(7389:7521): Se conecto un cliente
+[ERROR] 21:11:06:979 CPU/(7389:7521): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:06:980 CPU/(7389:7529): CPU lista para recibir al cliente
+[INFO] 21:11:06:982 CPU/(7389:7529): Se conecto un cliente
+[ERROR] 21:11:06:983 CPU/(7389:7529): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:06:984 CPU/(7389:7534): CPU lista para recibir al cliente
+[INFO] 21:11:06:984 CPU/(7389:7534): Se conecto un cliente
+[ERROR] 21:11:06:985 CPU/(7389:7534): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:06:986 CPU/(7389:7536): CPU lista para recibir al cliente
+[INFO] 21:11:06:987 CPU/(7389:7536): Se conecto un cliente
+[ERROR] 21:11:06:988 CPU/(7389:7536): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:06:989 CPU/(7389:7538): CPU lista para recibir al cliente
+[INFO] 21:11:06:991 CPU/(7389:7538): Se conecto un cliente
+[ERROR] 21:11:06:992 CPU/(7389:7538): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:06:993 CPU/(7389:7540): CPU lista para recibir al cliente
+[INFO] 21:11:06:994 CPU/(7389:7540): Se conecto un cliente
+[ERROR] 21:11:08:998 CPU/(7389:7540): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:08:999 CPU/(7389:7545): CPU lista para recibir al cliente
+[INFO] 21:11:09:004 CPU/(7389:7545): Se conecto un cliente
+[ERROR] 21:11:09:007 CPU/(7389:7545): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:008 CPU/(7389:7549): CPU lista para recibir al cliente
+[INFO] 21:11:09:014 CPU/(7389:7549): Se conecto un cliente
+[ERROR] 21:11:09:015 CPU/(7389:7549): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:015 CPU/(7389:7554): CPU lista para recibir al cliente
+[INFO] 21:11:09:018 CPU/(7389:7554): Se conecto un cliente
+[ERROR] 21:11:09:019 CPU/(7389:7554): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:019 CPU/(7389:7559): CPU lista para recibir al cliente
+[INFO] 21:11:09:021 CPU/(7389:7559): Se conecto un cliente
+[ERROR] 21:11:09:022 CPU/(7389:7559): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:022 CPU/(7389:7564): CPU lista para recibir al cliente
+[INFO] 21:11:09:031 CPU/(7389:7564): Se conecto un cliente
+[ERROR] 21:11:09:031 CPU/(7389:7564): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:033 CPU/(7389:7569): CPU lista para recibir al cliente
+[INFO] 21:11:09:034 CPU/(7389:7569): Se conecto un cliente
+[ERROR] 21:11:09:035 CPU/(7389:7569): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:035 CPU/(7389:7574): CPU lista para recibir al cliente
+[INFO] 21:11:09:036 CPU/(7389:7574): Se conecto un cliente
+[ERROR] 21:11:09:037 CPU/(7389:7574): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:09:038 CPU/(7389:7579): CPU lista para recibir al cliente
+[INFO] 21:11:09:039 CPU/(7389:7579): Se conecto un cliente
+[ERROR] 21:11:11:043 CPU/(7389:7579): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:11:044 CPU/(7389:7586): CPU lista para recibir al cliente
+[INFO] 21:11:11:044 CPU/(7389:7586): Se conecto un cliente
+[ERROR] 21:11:11:045 CPU/(7389:7586): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:11:046 CPU/(7389:7589): CPU lista para recibir al cliente
+[INFO] 21:11:11:046 CPU/(7389:7589): Se conecto un cliente
+[ERROR] 21:11:11:047 CPU/(7389:7589): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:11:048 CPU/(7389:7591): CPU lista para recibir al cliente
+[INFO] 21:11:11:049 CPU/(7389:7591): Se conecto un cliente
+[ERROR] 21:11:13:053 CPU/(7389:7591): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:13:055 CPU/(7389:7597): CPU lista para recibir al cliente
+[INFO] 21:11:13:056 CPU/(7389:7597): Se conecto un cliente
+[ERROR] 21:11:13:060 CPU/(7389:7597): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:13:061 CPU/(7389:7599): CPU lista para recibir al cliente
+[INFO] 21:11:13:062 CPU/(7389:7599): Se conecto un cliente
+[ERROR] 21:11:13:064 CPU/(7389:7599): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:13:068 CPU/(7389:7601): CPU lista para recibir al cliente
+[INFO] 21:11:13:070 CPU/(7389:7601): Se conecto un cliente
+[ERROR] 21:11:17:076 CPU/(7389:7601): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:17:077 CPU/(7389:7609): CPU lista para recibir al cliente
+[INFO] 21:11:17:077 CPU/(7389:7609): Se conecto un cliente
+[ERROR] 21:11:17:078 CPU/(7389:7609): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:17:079 CPU/(7389:7611): CPU lista para recibir al cliente
+[INFO] 21:11:17:079 CPU/(7389:7611): Se conecto un cliente
+[ERROR] 21:11:17:080 CPU/(7389:7611): el kernel se desconecto. Terminando servidor
+
+[INFO] 21:11:17:080 CPU/(7389:7614): CPU lista para recibir al cliente

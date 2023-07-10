@@ -148,7 +148,7 @@ void* serverKernel(int cliente_fd){
     		case PAQUETE:
     			lista = recibir_paquete(cliente_fd); //Recibe paquete de instrucciones
     			if (strcmp(handshake, "consola") == 0) {
-    			log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
+    			//log_info(logger, "Iniciando procedimiento al recibir un paquete de CONSOLA");
         		armarPCB(lista);  //arma el PCB y lo encola en NEW
 
     			//cosas de consola
@@ -225,10 +225,10 @@ void* clientMemoria(void *arg) {
 
         	enviar_paquete(paquete, conexion_Memoria);
 
-        	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
-        	printf("pid enviado a Memoria: %s\n", pid);
-        	printf("idSegmento enviado a Memoria: %s\n", idSegmento);
-        	printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
+        	//printf("CREATE_SEGMENT enviado a MEMORIA.\n");
+        	//printf("pid enviado a Memoria: %s\n", pid);
+        	//printf("idSegmento enviado a Memoria: %s\n", idSegmento);
+        	//printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
 
         	eliminar_paquete(paquete);
         break;
@@ -240,8 +240,8 @@ void* clientMemoria(void *arg) {
     		string_append_with_format(&pidDelete, "%d", estadoEnEjecucion->pid);
     		string_append_with_format(&idSegmentoDelete, "%d", estadoEnEjecucion->idSegmento);
 
-    		printf("pid enviado a Memoria: %s\n", pidDelete);
-    		printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
+    		//printf("pid enviado a Memoria: %s\n", pidDelete);
+    		//printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
 
         	agregar_a_paquete(paquete, pidDelete, strlen(pidDelete)+1);
         	agregar_a_paquete(paquete, idSegmentoDelete, strlen(idSegmentoDelete)+1);
@@ -256,7 +256,7 @@ void* clientMemoria(void *arg) {
     		procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
     		string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
 
-    		printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
+    		//printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
     		enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
 
     	break;
@@ -268,13 +268,13 @@ void* clientMemoria(void *arg) {
     		char* pidNuevoEliminarProceso = string_new();
     		string_append_with_format(&pidNuevoEliminarProceso, "%d", estadoEnEjecucion->pid);
     		sem_post(&semPasarAExit);
-    		printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
+    		//printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
     		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
     		liberar_conexion(conexion_Memoria);
     		return NULL;
     	break;
     	case 13:
-    		printf("PREGUNTO CONEXION MEMORIA\n");
+    		//printf("PREGUNTO CONEXION MEMORIA\n");
     		enviar_mensaje_cod_operacion("",conexion_Memoria,13);
     	break;
 		default:
@@ -320,15 +320,15 @@ void* clientMemoria(void *arg) {
         	nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
 
         	list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
-
-        	printf("Tabla de segmentos: \n");
-        	t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->tablaSegmentos);
-        	while (list_iterator_has_next(iterador)) {
-        		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-        		printf("IdSegmento: %d\n",siguiente->id);
-        		printf("Base: %zu\n",siguiente->direccionBase);
-        		printf("Tamaño: %zu\n",siguiente->tamanio);
-        	}
+        	printf("Nuevo SEGMENTO creado. ID: %d BASE: %zu TAMANIO: %zu\n",nuevoSegmento->id,nuevoSegmento->direccionBase,nuevoSegmento->tamanio);
+//        	printf("Tabla de segmentos: \n");
+//        	t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->tablaSegmentos);
+//        	while (list_iterator_has_next(iterador)) {
+//        		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+//        		printf("IdSegmento: %d\n",siguiente->id);
+//        		printf("Base: %zu\n",siguiente->direccionBase);
+//        		printf("Tamaño: %zu\n",siguiente->tamanio);
+//        	}
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteCPU();
         break;
@@ -338,7 +338,7 @@ void* clientMemoria(void *arg) {
         	pasarAExit();
         break;
         case 8:
-        	printf("Me llego que envie la solicitud de compactacion");
+        	printf("Me llego que envie la solicitud de compactacion\n");
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteMemoria(13);
 
@@ -346,14 +346,15 @@ void* clientMemoria(void *arg) {
         case 3:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
+        	printf("SEGMENTO ELIMINADO. PID: %d, ID: %d\n",estadoEnEjecucion->pid ,estadoEnEjecucion->idSegmento );
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteCPU();
         break;
         case 10:
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
-        	printf("VOY A RECIBIR TABLAS\n");
+        	printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
         	for(int i = 0; i<cantidadElementosSistema; i++){
-        		printf("VOY A RECIBIR TABLAS\n");
+        		//printf("VOY A RECIBIR TABLAS\n");
         		t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
 
         		t_list_iterator* iterador = list_iterator_create(tablaSegmentos);
@@ -361,13 +362,35 @@ void* clientMemoria(void *arg) {
         		char** arraySegmento = string_array_new();
         		arraySegmento = string_split(siguiente, " ");
         		int pid = atoi(arraySegmento[0]);
-        		printf("PID PID PID: %d\n", pid);
+        		printf("PID: %d\n", pid);
+
         		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+        			if(estadoEnEjecucion->pid == pid){
+        				estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+        				printf("ACTUALICE UNA TABLA");
+        			}
+        			printf("Después de controlar el estado en ejecución\n");
+
+//        			t_nodoCola* elementoActual = frenteColaReady;
+//
+//        			printf("AAA\n");
+//					while(elementoActual != NULL){
+//						printf("BBB\n");
+//						if(elementoActual->info_pcb->pid == pid){
+//							printf("CCC\n");
+//							elementoActual->info_pcb->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+//							printf("ACTUALICE UNA TABLA");
+//						}
+//						printf("DDD\n");
+//						elementoActual = elementoActual->sgte;
+//						printf("EEE\n");
+//					}
 
 				}
         		else{
 				//if(strcmp(algoritmo_planificacion,"HHRN") == 0){
-					printf("VOY A RECIBIR TABLAS\n");
+					//printf("VOY A RECIBIR TABLAS\n");
 					if(estadoEnEjecucion->pid == pid){
 						estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
 						printf("ACTUALICE UNA TABLA");
@@ -386,13 +409,13 @@ void* clientMemoria(void *arg) {
 
         		//cod_op = recibir_operacion(conexion_Memoria);
         	}
-        	printf("SALI DEL FOR\n");
+        	printf("COMPATACIÓN REBICIDA CORRECTAMENTE.\n");
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteMemoria(2);
 
         break;
         case 13:
-        	printf("RECIBI RESPUESTA EL 13\n");
+        	//printf("RECIBI RESPUESTA EL 13\n");
         	char* estaConectadoMemoriastr = recibir_handshake(conexion_Memoria);
         	int estaConectadoMemoria = atoi(estaConectadoMemoriastr);
         	liberar_conexion(conexion_Memoria);
@@ -421,7 +444,7 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 	t_list_iterator* iterador = list_iterator_create(tablaSegmentosRecibida);
 	t_list* tablaSegmentosActualizada = list_create();
 
-	printf("Tabla de segmentos: \n");
+	//printf("Tabla de segmentos: \n");
 	while (list_iterator_has_next(iterador)) {
 		t_infoTablaSegmentos* nuevoSegmento = malloc(sizeof(t_infoTablaSegmentos));
 		char* siguiente = list_iterator_next(iterador);
@@ -434,16 +457,16 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		int baseSegmento = atoi(arraySegmento[2]);
 		int tamanioSegmento = atoi(arraySegmento[3]);
 
-		printf("idSegmento: %d\n",idSegmento);
-		printf("baseSegmento: %d\n",baseSegmento);
-		printf("tamanioSegmento: %d\n",tamanioSegmento);
+		//printf("idSegmento: %d\n",idSegmento);
+		//printf("baseSegmento: %d\n",baseSegmento);
+		//printf("tamanioSegmento: %d\n",tamanioSegmento);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;
 		nuevoSegmento->tamanio = tamanioSegmento;
 
 		list_add(tablaSegmentosActualizada,nuevoSegmento);
-		printf("agregue segmento id : %d", nuevoSegmento->id);
+		//printf("agregue segmento id : %d", nuevoSegmento->id);
 	 }
 
 	return tablaSegmentosActualizada;
@@ -494,7 +517,7 @@ void* clientFileSystem(void *arg) {
 			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
         	printf("F_OPEN enviado a FS.\n");
-        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 
         	eliminar_paquete(paquete);
 
@@ -517,11 +540,11 @@ void* clientFileSystem(void *arg) {
 
         	enviar_paquete(paquete, conexion_FileSystem);
 
-        	printf("F_READ enviado a MEMORIA.\n");
-        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
-        	printf("Puntero enviado a FS: %s\n", punteroRead);
-        	printf("CantBytes enviado a FS: %s\n", cantBytesRead);
-        	printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
+        	//printf("F_READ enviado a MEMORIA.\n");
+        	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+        	//printf("Puntero enviado a FS: %s\n", punteroRead);
+        	//printf("CantBytes enviado a FS: %s\n", cantBytesRead);
+        	//printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
 
         	eliminar_paquete(paquete);
 
@@ -544,11 +567,11 @@ void* clientFileSystem(void *arg) {
 
         	enviar_paquete(paquete, conexion_FileSystem);
 
-        	printf("F_WRITE enviado a MEMORIA.\n");
-        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
-        	printf("Puntero enviado a FS: %s\n", punteroWrite);
-        	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
-        	printf("DirecFisica enviada a FS: %s\n", direcFisicaWrite);
+        	//printf("F_WRITE enviado a MEMORIA.\n");
+//        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+//        	printf("Puntero enviado a FS: %s\n", punteroWrite);
+//        	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
+//        	printf("DirecFisica enviada a FS: %s\n", direcFisicaWrite);
 
         	eliminar_paquete(paquete);
 
@@ -565,9 +588,9 @@ void* clientFileSystem(void *arg) {
 
         	enviar_paquete(paquete, conexion_FileSystem);
 
-        	printf("F_TRUNCATE enviado a MEMORIA.\n");
-        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
-        	printf("Nuevo tamaño enviado a FS: %s\n", nuevoTamanio);
+        	//printf("F_TRUNCATE enviado a MEMORIA.\n");
+//        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
+//        	printf("Nuevo tamaño enviado a FS: %s\n", nuevoTamanio);
 
         	eliminar_paquete(paquete);
 
@@ -598,26 +621,26 @@ void* clientFileSystem(void *arg) {
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
 			printf("Archivo agregado a la tabla del proceso.\n");
 
-			printf("TABLA GLOBAL DE ARCHIVOS:\n");
-			t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
+			//printf("TABLA GLOBAL DE ARCHIVOS:\n");
+//			t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
+//
+//		    while (list_iterator_has_next(iteradorGlobal)) {
+//
+//		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iteradorGlobal);
+//
+//		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
+//		    	printf("Cantidad de procesos bloqueados: %d\n",queue_size(siguiente->colaProcesosBloqueados));
+//		    }
+//		    printf("TABLA DE ARCHIVOS DEL PROCESO %d:\n",unProceso->pid);
+//			t_list_iterator* iteradorArchivos = list_iterator_create(unProceso->tablaArchivosAbiertos);
 
-		    while (list_iterator_has_next(iteradorGlobal)) {
-
-		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iteradorGlobal);
-
-		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
-		    	printf("Cantidad de procesos bloqueados: %d\n",queue_size(siguiente->colaProcesosBloqueados));
-		    }
-		    printf("TABLA DE ARCHIVOS DEL PROCESO %d:\n",unProceso->pid);
-			t_list_iterator* iteradorArchivos = list_iterator_create(unProceso->tablaArchivosAbiertos);
-
-		    while (list_iterator_has_next(iteradorArchivos)) {
-
-		    	t_infoTablaArchivos* siguiente = list_iterator_next(iteradorArchivos);
-
-		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
-		    	printf("Posicion del puntero: %d\n",siguiente->posicionPuntero);
-		    }
+//		    while (list_iterator_has_next(iteradorArchivos)) {
+//
+//		    	t_infoTablaArchivos* siguiente = list_iterator_next(iteradorArchivos);
+//
+//		    	printf("Nombre del archivo: %s \n",siguiente->nombreArchivo);
+//		    	printf("Posicion del puntero: %d\n",siguiente->posicionPuntero);
+//		    }
 
 
 			//Sigue ejecutando el mismo proceso
@@ -776,7 +799,7 @@ void* clientCPU(void* ptr) {
     t_paquete* tabla = empaquetarTabla(estadoEnEjecucion->tablaSegmentos);
     enviar_paquete(tabla, conexion_CPU);
     eliminar_paquete(tabla);
-    printf("Tabla de Segmentos enviada a CPU. \n");
+    //printf("Tabla de Segmentos enviada a CPU. \n");
 
     //RESPUESTA DE CPU
     int cod_op = recibir_operacion(conexion_CPU);
@@ -785,37 +808,37 @@ void* clientCPU(void* ptr) {
     recibir_contexto(conexion_CPU);
     liberar_conexion(conexion_CPU);
 
-    printf("Después de recibir el contexto\n");
+   // printf("Después de recibir el contexto\n");
 
-    printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
-    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
-    printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
-    printf("Id del segmento = %d\n",estadoEnEjecucion->idSegmento);
-    printf("Tamaño del segmento = %d\n",estadoEnEjecucion->tamanioSegmento);
-    printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
-    printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
-    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
-    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
-
-    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
-    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
-    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
-    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
-
-    printf("RAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RAX);
-    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
-    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
-    printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
-
-    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
-
-    printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
-
-    printf("Nombre del archivo = %s\n",estadoEnEjecucion->nombreArchivo);
-    printf("Posicion del archivo = %d\n",estadoEnEjecucion->posicionArchivo);
-    printf("Cant bytes del archivo = %d\n",estadoEnEjecucion->cantBytesArchivo);
-    printf("Direccion física del archivo = %d\n",estadoEnEjecucion->direcFisicaArchivo);
-    printf("Tamaño del archivo = %d\n",estadoEnEjecucion->tamanioArchivo);
+//    printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
+//    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
+//    printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
+//    printf("Id del segmento = %d\n",estadoEnEjecucion->idSegmento);
+//    printf("Tamaño del segmento = %d\n",estadoEnEjecucion->tamanioSegmento);
+//    printf("AX recibido = %s\n",estadoEnEjecucion->registrosCpu.AX);
+//    printf("BX recibido = %s\n",estadoEnEjecucion->registrosCpu.BX);
+//    printf("CX recibido = %s\n",estadoEnEjecucion->registrosCpu.CX);
+//    printf("DX recibido = %s\n",estadoEnEjecucion->registrosCpu.DX);
+//
+//    printf("EAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EAX);
+//    printf("EBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EBX);
+//    printf("ECX recibido  = %s\n",estadoEnEjecucion->registrosCpu.ECX);
+//    printf("EDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.EDX);
+//
+//    printf("RAX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RAX);
+//    printf("RBX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RBX);
+//    printf("RCX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RCX);
+//    printf("RDX recibido  = %s\n",estadoEnEjecucion->registrosCpu.RDX);
+//
+//    printf("Recurso solicitado = %s\n",estadoEnEjecucion->recursoSolicitado);
+//
+//    printf("Recurso a liberar = %s\n",estadoEnEjecucion->recursoALiberar);
+//
+//    printf("Nombre del archivo = %s\n",estadoEnEjecucion->nombreArchivo);
+//    printf("Posicion del archivo = %d\n",estadoEnEjecucion->posicionArchivo);
+//    printf("Cant bytes del archivo = %d\n",estadoEnEjecucion->cantBytesArchivo);
+//    printf("Direccion física del archivo = %d\n",estadoEnEjecucion->direcFisicaArchivo);
+//    printf("Tamaño del archivo = %d\n",estadoEnEjecucion->tamanioArchivo);
 
     manejar_recursos();
 
@@ -904,7 +927,7 @@ void serializarContexto(int unSocket){
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
 //	printf("instruccion enviado a CPU = %s\n", contextoPRUEBA.listaInstrucciones->head->data);
-	printf("Contexto sin instrucciones enviado a CPU. \n");
+	//printf("Contexto sin instrucciones enviado a CPU. \n");
 
 	//free memoria dinámica
 
@@ -944,10 +967,10 @@ t_paquete* empaquetarTabla(t_list* cabezaTabla) {
     	char* baseSegmento = string_new();
     	char* segmento = string_new();
     	t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-    	printf("Datos del segmento: \n");
-    	printf("idSegmento: %d\n",siguiente->id);
-    	printf("tamanioSegmento: %zu\n",siguiente->tamanio);
-    	printf("baseSegmento: %zu\n",siguiente->direccionBase);
+//    	printf("Datos del segmento: \n");
+//    	printf("idSegmento: %d\n",siguiente->id);
+//    	printf("tamanioSegmento: %zu\n",siguiente->tamanio);
+//    	printf("baseSegmento: %zu\n",siguiente->direccionBase);
 
         string_append_with_format(&idSegmento, "%d", siguiente->id);
         string_append_with_format(&tamanioSegmento, "%zu", siguiente->tamanio);
@@ -960,7 +983,7 @@ t_paquete* empaquetarTabla(t_list* cabezaTabla) {
         string_append(&segmento, " ");
 
         string_append(&segmento, baseSegmento);
-        printf("Segmento: %s\n",segmento);
+        //printf("Segmento: %s\n",segmento);
 
         agregar_a_paquete(paquete, segmento, strlen(segmento)+1);
     }
@@ -1198,24 +1221,30 @@ void manejar_recursos() {
 			iniciarHiloClienteCPU();
 			if(!queue_is_empty(recurso->colaBloqueados)) {
 				printf("proceso desbloqueado %s\n", recurso->recurso);
-				encolar_ready_ejecucion(queue_pop(recurso->colaBloqueados));
 
+
+				encolar_ready_ejecucion(queue_pop(recurso->colaBloqueados));
+				printf("Después de encolar el proceso desbloqueado\n");
 				//log minimo y obligatorio
 				//log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
 
 				recurso->instancias--;
 
-				t_recursos* unRecurso;
-				unRecurso = malloc(sizeof(t_recursos));
+				t_recursos* unRecurso = malloc(sizeof(t_recursos));
+				unRecurso->recurso = string_new();
+				unRecurso->colaBloqueados = queue_create();
+				unRecurso->instancias = 1;
 				strcpy(unRecurso->recurso,recurso->recurso);
 				list_add(unProceso->recursosAsignados, unRecurso);
+				printf("Después de agregarle el recurso asignado al proceso\n");
 
 				cantidadElementosBloqueados--;
 				}
 			}
 		}
 		if (recursoEncontrado == 0) {
-			int pid = unProceso->pid;
+			printf("No se encontró el recurso\n");
+			//int pid = unProceso->pid;
 			pasarAExit();
 
 			//Log minimo y obligaotrio
@@ -1348,7 +1377,7 @@ void manejar_recursos() {
 	    	t_infoTablaArchivos* siguiente = list_iterator_next(iterador);
 
 	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
-	    		printf("Puntero del archivo %s antes de actualizar: %d\n",siguiente->nombreArchivo, siguiente->posicionPuntero );
+	    		//printf("Puntero del archivo %s antes de actualizar: %d\n",siguiente->nombreArchivo, siguiente->posicionPuntero );
 	    		siguiente->posicionPuntero = unProceso->posicionArchivo;
 	    		printf("Puntero del archivo actualizado: %d \n", siguiente->posicionPuntero );
 
@@ -1540,7 +1569,7 @@ void* interrupcionIO(void* ptr) {
 
 
 	estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
-	printf("Soy el proceso: %d , pase a -1 el pid\n",unProceso->pid);
+	//printf("Soy el proceso: %d , pase a -1 el pid\n",unProceso->pid);
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
@@ -1567,7 +1596,7 @@ void* interrupcionIO(void* ptr) {
 	printf("Proceso desbloqueado: %d\n",unProceso->pid);
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-		printf("PID DEL ESTADO EJ EJECUCION: %d\n",estadoEnEjecucion->pid);
+		//printf("PID DEL ESTADO EJ EJECUCION: %d\n",estadoEnEjecucion->pid);
 		if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 			encolar_ready_ejecucion(unProceso);
 			printf("Después del tiempo bloqueado, proceso encolado en Ready: %d\n",unProceso->pid);
@@ -1695,8 +1724,8 @@ void armarPCB(t_list* lista){
 	//Log minimo y obligatorio
 	//log_info(logger, "Se crea el proceso %d en NEW\n", nuevoPCB->pid);
 
-	printf("Cola NEW:\n");
-	mostrarCola(frenteColaNew);
+	//printf("Cola NEW:\n");
+	//mostrarCola(frenteColaNew);
 
 	pid++;
 
@@ -1719,7 +1748,7 @@ void encolarReady() {
 
 		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 
-		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+		//printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
 
 		if(lugaresDisponiblesReady > 0 ){
@@ -1741,8 +1770,8 @@ void encolarReady() {
 			printf("Grado máximo de multiprogramación alcanzado. \n");
 		}
 
-		printf("Cola NEW:\n");
-		mostrarCola(frenteColaNew);
+		//printf("Cola NEW:\n");
+		//mostrarCola(frenteColaNew);
 		//printf("Cola READY:\n");
 		//mostrarCola(frenteColaReady);
 
@@ -1755,11 +1784,11 @@ void encolarReady() {
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
-		printf("Cantidad de elementos en READY: %d \n",cantidadElementosSistema);
+		//printf("Cantidad de elementos en READY: %d \n",cantidadElementosSistema);
 
 
 		int lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
-		printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+		//printf("Lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
 
 		if(lugaresDisponiblesReady > 0 ){
@@ -1780,17 +1809,17 @@ void encolarReady() {
 				//log minimo y obligatorio
 				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
 
-				printf("Cola READY:\n");
-				t_infopcb* proceso = list_get(listaReady,0); //que queriamos hacer con esto? porque mostraria el primero?
-				printf("PID: %d\n", proceso->pid);
+				//printf("Cola READY:\n");
+				//t_infopcb* proceso = list_get(listaReady,0); //que queriamos hacer con esto? porque mostraria el primero?
+				//printf("PID: %d\n", proceso->pid);
 			}
 
 		}else{
 			printf("Grado máximo de multiprogramación alcanzado. \n");
 		}
 
-		printf("Cola NEW:\n");
-		mostrarCola(frenteColaNew);
+		//printf("Cola NEW:\n");
+		//mostrarCola(frenteColaNew);
 		//printf("Cola READY:\n");
 		//mostrarListaReady(listaReady);
 
@@ -1991,6 +2020,7 @@ free(temp); // Liberamos la memoria del frente anterior
     return pcb_puntero; // Devolvemos el valor del frente
 }
 
+
 void mostrarCola(t_nodoCola* frenteColaNew) {
     printf("Contenido de la cola:\n");
     while (frenteColaNew != NULL) {
@@ -2027,6 +2057,7 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
         frenteColaNew = frenteColaNew->sgte;
     }
 }
+
 
 int cantidadElementosCola(t_nodoCola* frenteCola) {
     int contador = 0;

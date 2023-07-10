@@ -302,16 +302,16 @@ void* serverCPU(void* ptr){
     		case 6: //TABLA_SEGMENTOS
     			t_list* tablaSegmentosRecibida = recibir_paquete(cliente_fd);
     			contexto->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
-    			log_info(logger, "Tabla de Segmentos recibida de Kernel: \n");
+//    			log_info(logger, "Tabla de Segmentos recibida de Kernel. \n");
 
-            	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
-            	while (list_iterator_has_next(iterador)) {
-            		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
-            		printf("IdSegmento: %d\n",siguiente->id);
-            		printf("Tamaño: %zu\n",siguiente->tamanio);
-            		printf("Base: %zu\n",siguiente->direccionBase);
-
-            	}
+//            	t_list_iterator* iterador = list_iterator_create(contexto->tablaSegmentos);
+//            	while (list_iterator_has_next(iterador)) {
+//            		t_infoTablaSegmentos* siguiente = list_iterator_next(iterador);
+//            		printf("IdSegmento: %d\n",siguiente->id);
+//            		printf("Tamaño: %zu\n",siguiente->tamanio);
+//            		printf("Base: %zu\n",siguiente->direccionBase);
+//
+//            	}
     			contadorContexto++;
     			if(contadorContexto == 3){
     				iniciar_ejecucion();
@@ -320,32 +320,32 @@ void* serverCPU(void* ptr){
     		case INSTRUCCIONES:
     			contexto->listaInstrucciones = recibir_paquete(cliente_fd);
     			contadorContexto++;
-    			log_info(logger, "Instrucciones recibidas de Kernel:\n");
-    			list_iterate(contexto->listaInstrucciones, (void*) iterator);
-    			if(contadorContexto == 3){
-    				iniciar_ejecucion();
-    			}
+//    			log_info(logger, "Instrucciones recibidas de Kernel:\n");
+//    			list_iterate(contexto->listaInstrucciones, (void*) iterator);
+//    			if(contadorContexto == 3){
+//    				iniciar_ejecucion();
+//    			}
     			break;
     		case CONTEXTO:
     			printf("CONTEXTO RECIBIDO\n");
     			contexto = recibir_contexto(cliente_fd);
     			contadorContexto++;
-    			printf("pid recibido de Kernel = %d\n",contexto->pid);
-    			printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
-    			printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
-    			printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
-    			printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
-    			printf("DX recibido de Kernel = %s\n",contexto->registrosCpu.DX);
-
-    			printf("EAX recibido de Kernel = %s\n",contexto->registrosCpu.EAX);
-    			printf("EBX recibido de Kernel = %s\n",contexto->registrosCpu.EBX);
-    			printf("ECX recibido de Kernel = %s\n",contexto->registrosCpu.ECX);
-    			printf("EDX recibido de Kernel = %s\n",contexto->registrosCpu.EDX);
-
-    			printf("RAX recibido de Kernel = %s\n",contexto->registrosCpu.RAX);
-    			printf("RBX recibido de Kernel = %s\n",contexto->registrosCpu.RBX);
-    			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
-    			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
+//    			printf("pid recibido de Kernel = %d\n",contexto->pid);
+//    			printf("programCounter recibido de Kernel = %d\n",contexto->programCounter);
+//    			printf("AX recibido de Kernel = %s\n",contexto->registrosCpu.AX);
+//    			printf("CX recibido de Kernel = %s\n",contexto->registrosCpu.BX);
+//    			printf("BX recibido de Kernel = %s\n",contexto->registrosCpu.CX);
+//    			printf("DX recibido de Kernel = %s\n",contexto->registrosCpu.DX);
+//
+//    			printf("EAX recibido de Kernel = %s\n",contexto->registrosCpu.EAX);
+//    			printf("EBX recibido de Kernel = %s\n",contexto->registrosCpu.EBX);
+//    			printf("ECX recibido de Kernel = %s\n",contexto->registrosCpu.ECX);
+//    			printf("EDX recibido de Kernel = %s\n",contexto->registrosCpu.EDX);
+//
+//    			printf("RAX recibido de Kernel = %s\n",contexto->registrosCpu.RAX);
+//    			printf("RBX recibido de Kernel = %s\n",contexto->registrosCpu.RBX);
+//    			printf("RCX recibido de Kernel = %s\n",contexto->registrosCpu.RCX);
+//    			printf("RDX recibido de Kernel = %s\n",contexto->registrosCpu.RDX);
 
     			if(contadorContexto == 3){
     				iniciar_ejecucion();
@@ -474,34 +474,34 @@ void iniciar_ejecucion(){
 	}
 
 	//Una vez que no se deba seguir ejecutando va a serializar el contexto actualizado y lo va a enviar
-	printf("FIN DE INSTRUCCIONES \n");
-	printf("ULTIMA INTRUCCION EJECUTADA: %s\n",contexto->instruccion);
-	printf("PROGRAM COUNTER: %i\n",contexto->programCounter);
-	printf("TIEMPO BLOQUEADO: %i\n",contexto->tiempoBloqueado);
-	printf("RECURSO SOLICITADO: %s\n",contexto->recursoSolicitado);
-	printf("RECURSO A LIBERAR: %s\n",contexto->recursoALiberar);
-	printf("ID SEGMENTO: %i\n",contexto->idSegmento);
-	printf("TAMANIO SEGMENTO: %i\n",contexto->tamanioSegmento);
-	printf("AX = %s\n",contexto->registrosCpu.AX);
-	printf("BX = %s\n",contexto->registrosCpu.BX);
-	printf("CX = %s\n",contexto->registrosCpu.CX);
-	printf("DX = %s\n",contexto->registrosCpu.DX);
-
-	printf("EAX = %s\n",contexto->registrosCpu.EAX);
-	printf("EBX = %s\n",contexto->registrosCpu.EBX);
-	printf("ECX = %s\n",contexto->registrosCpu.ECX);
-	printf("EDX = %s\n",contexto->registrosCpu.EDX);
-
-	printf("RAX = %s\n",contexto->registrosCpu.RAX);
-	printf("RBX = %s\n",contexto->registrosCpu.RBX);
-	printf("RCX = %s\n",contexto->registrosCpu.RCX);
-	printf("RDX = %s\n",contexto->registrosCpu.RDX);
-
-	printf("ARCHIVO = %s\n",contexto->nombreArchivo);
-	printf("POSICION = %d\n",contexto->posicionArchivo);
-	printf("CANTIDAD BYTES = %d\n",contexto->cantBytesArchivo);
-	printf("DIRECCIÓN FÍSICA = %d\n",contexto->direcFisicaArchivo);
-	printf("TAMAÑO  = %d\n",contexto->tamanioArchivo);
+//	printf("FIN DE INSTRUCCIONES \n");
+//	printf("ULTIMA INTRUCCION EJECUTADA: %s\n",contexto->instruccion);
+//	printf("PROGRAM COUNTER: %i\n",contexto->programCounter);
+//	printf("TIEMPO BLOQUEADO: %i\n",contexto->tiempoBloqueado);
+//	printf("RECURSO SOLICITADO: %s\n",contexto->recursoSolicitado);
+//	printf("RECURSO A LIBERAR: %s\n",contexto->recursoALiberar);
+//	printf("ID SEGMENTO: %i\n",contexto->idSegmento);
+//	printf("TAMANIO SEGMENTO: %i\n",contexto->tamanioSegmento);
+//	printf("AX = %s\n",contexto->registrosCpu.AX);
+//	printf("BX = %s\n",contexto->registrosCpu.BX);
+//	printf("CX = %s\n",contexto->registrosCpu.CX);
+//	printf("DX = %s\n",contexto->registrosCpu.DX);
+//
+//	printf("EAX = %s\n",contexto->registrosCpu.EAX);
+//	printf("EBX = %s\n",contexto->registrosCpu.EBX);
+//	printf("ECX = %s\n",contexto->registrosCpu.ECX);
+//	printf("EDX = %s\n",contexto->registrosCpu.EDX);
+//
+//	printf("RAX = %s\n",contexto->registrosCpu.RAX);
+//	printf("RBX = %s\n",contexto->registrosCpu.RBX);
+//	printf("RCX = %s\n",contexto->registrosCpu.RCX);
+//	printf("RDX = %s\n",contexto->registrosCpu.RDX);
+//
+//	printf("ARCHIVO = %s\n",contexto->nombreArchivo);
+//	printf("POSICION = %d\n",contexto->posicionArchivo);
+//	printf("CANTIDAD BYTES = %d\n",contexto->cantBytesArchivo);
+//	printf("DIRECCIÓN FÍSICA = %d\n",contexto->direcFisicaArchivo);
+//	printf("TAMAÑO  = %d\n",contexto->tamanioArchivo);
 
 	serializarContexto(cliente_fd);
 
@@ -863,10 +863,10 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		int tamanioSegmento = atoi(arraySegmento[1]);
 		int baseSegmento = atoi(arraySegmento[2]);
 
-    	printf("Datos del segmento DENTRO DE LA FUNCION: \n");
-    	printf("idSegmento: %d\n",idSegmento);
-    	printf("tamanioSegmento: %d\n",tamanioSegmento);
-    	printf("baseSegmento: %d\n",baseSegmento);
+//    	printf("Datos del segmento DENTRO DE LA FUNCION: \n");
+//    	printf("idSegmento: %d\n",idSegmento);
+//    	printf("tamanioSegmento: %d\n",tamanioSegmento);
+//    	printf("baseSegmento: %d\n",baseSegmento);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;

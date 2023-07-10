@@ -776,6 +776,7 @@ void enviarTodasLasTablas(int cliente_fd){
 //	}
 //
 //	list_iterator_destroy(iterador);
+	printf("TABLAS ENVIADAS\n");
 }
 
 //////////////////////////////////////////////////ELIMINAR PROCESO/////////////////////////////////////////////////
