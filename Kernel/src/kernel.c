@@ -353,7 +353,8 @@ void* clientMemoria(void *arg) {
         case 10:
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
         	printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
-        	for(int i = 0; i<cantidadElementosSistema; i++){
+
+        	for(int i = 0; i<cantidadElementosSistema-1; i++){
         		//printf("VOY A RECIBIR TABLAS\n");
         		t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
 
@@ -362,38 +363,26 @@ void* clientMemoria(void *arg) {
         		char** arraySegmento = string_array_new();
         		arraySegmento = string_split(siguiente, " ");
         		int pid = atoi(arraySegmento[0]);
-        		printf("PID: %d\n", pid);
 
         		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+        			printf("PID BUSCADO: %d\n",pid);
+        			printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
 
         			if(estadoEnEjecucion->pid == pid){
         				estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-        				printf("ACTUALICE UNA TABLA");
+        				printf("ACTUALICE UNA TABLA\n");
         			}
-        			printf("Después de controlar el estado en ejecución\n");
 
-//        			t_nodoCola* elementoActual = frenteColaReady;
-//
-//        			printf("AAA\n");
-//					while(elementoActual != NULL){
-//						printf("BBB\n");
-//						if(elementoActual->info_pcb->pid == pid){
-//							printf("CCC\n");
-//							elementoActual->info_pcb->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-//							printf("ACTUALICE UNA TABLA");
-//						}
-//						printf("DDD\n");
-//						elementoActual = elementoActual->sgte;
-//						printf("EEE\n");
-//					}
+        			actualizarColaReady(frenteColaReady,tablaSegmentos, pid);
 
+        			printf("YA VOLVI DE LA FUNCIÓN\n");
 				}
         		else{
 				//if(strcmp(algoritmo_planificacion,"HHRN") == 0){
 					//printf("VOY A RECIBIR TABLAS\n");
 					if(estadoEnEjecucion->pid == pid){
 						estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-						printf("ACTUALICE UNA TABLA");
+						printf("ACTUALICE UNA TABLA\n");
 					}
 
 					t_list_iterator* iteradorListaReady = list_iterator_create(listaReady);
@@ -401,7 +390,7 @@ void* clientMemoria(void *arg) {
 						t_infopcb* siguiente = list_iterator_next(iteradorListaReady);
 						if(siguiente->pid == pid){
 							siguiente->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-							printf("ACTUALICE UNA TABLA");
+							printf("ACTUALICE UNA TABLA\n");
 						}
 					}
 					list_iterator_destroy(iteradorListaReady);
@@ -409,7 +398,7 @@ void* clientMemoria(void *arg) {
 
         		//cod_op = recibir_operacion(conexion_Memoria);
         	}
-        	printf("COMPATACIÓN REBICIDA CORRECTAMENTE.\n");
+        	printf("COMPATACIÓN REBICIDA.\n");
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteMemoria(2);
 
@@ -2058,6 +2047,21 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
     }
 }
 
+void actualizarColaReady(t_nodoCola* frenteColaReady,t_list* tablaSegmentos, int pid){
+	//printf("Dentro de la función actualizarColaReady\n");
+	printf("PID BUSCADO: %d\n", pid);
+	while (frenteColaReady != NULL) {
+		printf("PID: %d\n", frenteColaReady->info_pcb->pid);
+		if(frenteColaReady->info_pcb->pid == pid){
+			printf("ENCONTRE EL PID\n");
+			frenteColaReady->info_pcb->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			printf("ACTUALICE UNA TABLA\n");
+		}
+
+		frenteColaReady = frenteColaReady->sgte;
+	}
+	//printf("SALGO DE LA FUNCION \n");
+}
 
 int cantidadElementosCola(t_nodoCola* frenteCola) {
     int contador = 0;
