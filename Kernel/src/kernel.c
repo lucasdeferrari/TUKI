@@ -102,13 +102,13 @@ void inicializarRecursos(){
 //////////////////////////////////////   SERVER KERNEL  ////////////////////////////////////////
 
 int iniciarHiloServer(int server_fd) {
-	log_info(logger, "Entre a hilo server");
+	//log_info(logger, "Entre a hilo server");
 	int cliente_fd = esperar_cliente(server_fd); // se conecta el cliente
-	log_info(logger, "espere cliente");
+	//log_info(logger, "espere cliente");
 			if(cliente_fd != -1) {
 				pthread_t hilo_cliente;
 				pthread_create(&hilo_cliente, NULL, (void*) serverKernel, (void *)cliente_fd); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
-				log_info(logger, "Kernel creo el hilo");
+				//log_info(logger, "Kernel creo el hilo");
 				pthread_detach(hilo_cliente);
 				return 1;
 			} else {

@@ -731,7 +731,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int direcFisica= mov_in_tp(mov_in_param1,mov_in_param2);
     	free(mov_in_param1);
 
-    	if(direcFisica>0){
+    	if(direcFisica>=0){
     		continuarLeyendo = 1;
     	}
 
@@ -748,7 +748,7 @@ int ejecutarFuncion(char* proximaInstruccion){
 
     	free(mov_out_param2);
 
-    	if(direcFisica>0){
+    	if(direcFisica>=0){
     		continuarLeyendo = 1;
     	}
 
