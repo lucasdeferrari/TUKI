@@ -556,13 +556,13 @@ void* clientFileSystem(void *arg) {
     conexion_FileSystem = crear_conexion(ip_filesystem, puerto_filesystem);
 
     t_paquete* paquete = crear_paquete_cod_operacion(cod_fs);
-    printf("Cod_fs: %d\n", cod_fs);
+    //printf("Cod_fs: %d\n", cod_fs);
     switch(cod_fs){
 		case 2: //F_OPEN
 
 			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
-        	printf("F_OPEN enviado a FS.\n");
+        	printf("F_OPEN enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 
         	eliminar_paquete(paquete);
@@ -585,7 +585,7 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
 
         	enviar_paquete(paquete, conexion_FileSystem);
-
+        	printf("F_READ enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_READ enviado a MEMORIA.\n");
         	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
         	//printf("Puntero enviado a FS: %s\n", punteroRead);
@@ -593,6 +593,21 @@ void* clientFileSystem(void *arg) {
         	//printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
 
         	eliminar_paquete(paquete);
+
+    		//Desencolo ready si es que hay algun proceso en la lista
+    		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+    			if(frenteColaReady != NULL){
+    				desencolarReady();
+    			}
+    		}
+
+    		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+    			if( !list_is_empty(listaReady) ){
+    				desencolarReady();
+    			}
+    		}
 
 		break;
 		case 4: //F_WRITE
@@ -612,7 +627,7 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
         	enviar_paquete(paquete, conexion_FileSystem);
-
+        	printf("F_WRITE enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_WRITE enviado a MEMORIA.\n");
 //        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 //        	printf("Puntero enviado a FS: %s\n", punteroWrite);
@@ -620,6 +635,21 @@ void* clientFileSystem(void *arg) {
 //        	printf("DirecFisica enviada a FS: %s\n", direcFisicaWrite);
 
         	eliminar_paquete(paquete);
+
+    		//Desencolo ready si es que hay algun proceso en la lista
+    		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+    			if(frenteColaReady != NULL){
+    				desencolarReady();
+    			}
+    		}
+
+    		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+    			if( !list_is_empty(listaReady) ){
+    				desencolarReady();
+    			}
+    		}
 
 		break;
 		case 5: //F_TRUNCATE
@@ -633,12 +663,28 @@ void* clientFileSystem(void *arg) {
 
 
         	enviar_paquete(paquete, conexion_FileSystem);
+        	printf("F_TRUNCATE enviado a FS del proceso %d.\n", unProceso->pid);
 
-        	//printf("F_TRUNCATE enviado a MEMORIA.\n");
+
 //        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 //        	printf("Nuevo tamaño enviado a FS: %s\n", nuevoTamanio);
 
         	eliminar_paquete(paquete);
+
+    		//Desencolo ready si es que hay algun proceso en la lista
+    		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+
+    			if(frenteColaReady != NULL){
+    				desencolarReady();
+    			}
+    		}
+
+    		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+
+    			if( !list_is_empty(listaReady) ){
+    				desencolarReady();
+    			}
+    		}
 
 		break;
 		default:
@@ -1463,19 +1509,19 @@ void manejar_recursos() {
 		iniciarHiloClienteFileSystem(3,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
-		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-			if(frenteColaReady != NULL){
-				desencolarReady();
-			}
-		}
-
-		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-
-			if( !list_is_empty(listaReady) ){
-				desencolarReady();
-			}
-		}
+//		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//
+//			if(frenteColaReady != NULL){
+//				desencolarReady();
+//			}
+//		}
+//
+//		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+//
+//			if( !list_is_empty(listaReady) ){
+//				desencolarReady();
+//			}
+//		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_WRITE") == 0) {
 		//int cod_fs
@@ -1484,40 +1530,40 @@ void manejar_recursos() {
 		iniciarHiloClienteFileSystem(4,unProceso);
 
 	    //Desencolo ready si es que hay algun proceso en la lista
-		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-			if(frenteColaReady != NULL){
-				desencolarReady();
-			}
-		}
-
-		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-
-			if( !list_is_empty(listaReady) ){
-				desencolarReady();
-			}
-		}
+//		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//
+//			if(frenteColaReady != NULL){
+//				desencolarReady();
+//			}
+//		}
+//
+//		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+//
+//			if( !list_is_empty(listaReady) ){
+//				desencolarReady();
+//			}
+//		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
 		//int cod_fs
 		//t_infopcb* unProceso
 		estadoEnEjecucion->pid = -1;
 		iniciarHiloClienteFileSystem(5,unProceso);
+	    //Desencolo ready si es que hay algun proceso en la lista
+//		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+//
+//			if(frenteColaReady != NULL){
+//				desencolarReady();
+//			}
+//		}
+//
+//		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
+//
+//			if( !list_is_empty(listaReady) ){
+//				desencolarReady();
+//			}
+//		}
 
-		//Desencolo ready si es que hay algun proceso en la lista
-		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-
-			if(frenteColaReady != NULL){
-				desencolarReady();
-			}
-		}
-
-		if(strcmp(algoritmo_planificacion,"HRRN") == 0){
-
-			if( !list_is_empty(listaReady) ){
-				desencolarReady();
-			}
-		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
 

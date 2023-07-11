@@ -77150,3 +77150,48 @@ el cliente se desconecto. Terminando servidor
 [INFO] 06:59:00:373 Memoria/(39569:39632): Se conecto un cliente!
 [ERROR] 06:59:01:374 Memoria/(39569:39632): 
 el cliente se desconecto. Terminando servidor
+[INFO] 07:31:17:502 Memoria/(40274:40274): Listo para escuchar al cliente
+[INFO] 07:31:17:502 Memoria/(40274:40274): Memoria lista para recibir al cliente
+
+[INFO] 07:31:17:963 Memoria/(40274:40275): Se conecto un cliente!
+[INFO] 07:31:17:963 Memoria/(40274:40275): se conecto la cpu
+[ERROR] 07:31:17:963 Memoria/(40274:40275): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:18:535 Memoria/(40274:40278): Se conecto un cliente!
+[INFO] 07:31:18:536 Memoria/(40274:40278): se conecto el filesystem
+[ERROR] 07:31:18:536 Memoria/(40274:40278): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:22:871 Memoria/(40274:40282): Se conecto un cliente!
+[INFO] 07:31:22:871 Memoria/(40274:40282): se conecto el kernel
+[ERROR] 07:31:22:871 Memoria/(40274:40282): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:22:872 Memoria/(40274:40274): Se conectaron todos los modulos.
+
+[INFO] 07:31:22:872 Memoria/(40274:40274): Se crearon todas las estructuras correctamente.
+
+[INFO] 07:31:24:713 Memoria/(40274:40315): Se conecto un cliente!
+[INFO] 07:31:24:713 Memoria/(40274:40315): Creación de Proceso PID: 1
+[ERROR] 07:31:24:715 Memoria/(40274:40315): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:24:719 Memoria/(40274:40323): Se conecto un cliente!
+[INFO] 07:31:24:719 Memoria/(40274:40323): Creación de Proceso PID: 2
+[ERROR] 07:31:24:720 Memoria/(40274:40323): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:25:721 Memoria/(40274:40327): Se conecto un cliente!
+[ERROR] 07:31:26:723 Memoria/(40274:40327): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:27:724 Memoria/(40274:40329): Se conecto un cliente!
+[ERROR] 07:31:28:727 Memoria/(40274:40329): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:29:728 Memoria/(40274:40331): Se conecto un cliente!
+[ERROR] 07:31:30:729 Memoria/(40274:40331): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:31:731 Memoria/(40274:40333): Se conecto un cliente!
+[ERROR] 07:31:32:734 Memoria/(40274:40333): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:33:738 Memoria/(40274:40335): Se conecto un cliente!
+[ERROR] 07:31:34:740 Memoria/(40274:40335): 
+el cliente se desconecto. Terminando servidor
+[INFO] 07:31:35:742 Memoria/(40274:40337): Se conecto un cliente!
+[ERROR] 07:31:36:744 Memoria/(40274:40337): 
+el cliente se desconecto. Terminando servidor

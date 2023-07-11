@@ -59107,3 +59107,23 @@ Operacion recibida de MEMORIA desconocida.
 [ERROR] 06:59:01:382 CPU/(39601:39639): el kernel se desconecto. Terminando servidor
 
 [INFO] 06:59:01:383 CPU/(39601:39642): CPU lista para recibir al cliente
+[INFO] 07:31:17:963 CPU/(40277:40277): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 07:31:17:963 CPU/(40277:40277): CPU lista para escuchar al cliente
+
+[INFO] 07:31:17:964 CPU/(40277:40279): CPU lista para recibir al cliente
+[INFO] 07:31:24:716 CPU/(40277:40279): Se conecto un cliente
+[ERROR] 07:31:24:716 CPU/(40277:40279): el kernel se desconecto. Terminando servidor
+
+[INFO] 07:31:24:718 CPU/(40277:40324): CPU lista para recibir al cliente
+[INFO] 07:31:24:718 CPU/(40277:40324): Se conecto un cliente
+[ERROR] 07:31:36:745 CPU/(40277:40324): el kernel se desconecto. Terminando servidor
+
+[INFO] 07:31:36:754 CPU/(40277:40341): CPU lista para recibir al cliente
+[INFO] 07:31:36:761 CPU/(40277:40341): Se conecto un cliente
+[ERROR] 07:31:36:762 CPU/(40277:40341): el kernel se desconecto. Terminando servidor
+
+[INFO] 07:31:36:765 CPU/(40277:40344): CPU lista para recibir al cliente
+[INFO] 07:31:36:767 CPU/(40277:40344): Se conecto un cliente
+[ERROR] 07:31:36:767 CPU/(40277:40344): el kernel se desconecto. Terminando servidor
+
+[INFO] 07:31:36:768 CPU/(40277:40348): CPU lista para recibir al cliente
