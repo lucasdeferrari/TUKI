@@ -913,13 +913,23 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 				//El de abajo lo use de prueba porque se que en ese bloque a esa altura hay algo escrito con seguridad
 				//char* bloqueLecturaString = (char*)mapping2 + 6*block_size + 0 + i;
 
-				printf("String: %s\n", bloqueLecturaString);
-				char bloqueLectura = bloqueLecturaString[0];
-				porcionLeida[i] = bloqueLectura;
-				printf("Char: %c\n", bloqueLectura);
-				printf("PorcionLeida: %c.\n", porcionLeida[i]);
-				indice++;
-				bytesALeer--;
+//				printf("String: %s\n", bloqueLecturaString);
+//				char bloqueLectura = bloqueLecturaString[0];
+//				porcionLeida[i] = bloqueLectura;
+//				printf("Char: %c\n", bloqueLectura);
+//				printf("PorcionLeida: %c.\n", porcionLeida[i]);
+//				indice++;
+//				bytesALeer--;
+				if(!string_is_empty(bloqueLecturaString)){
+						char bloqueLectura = bloqueLecturaString[0];
+						porcionLeida[i] = bloqueLectura;
+						printf("Char: %c\n", bloqueLectura);
+						printf("PorcionLeida: %c.\n", porcionLeida[i]);
+						indice++;
+						bytesALeer--;
+					}else{
+						porcionLeida[i] = ' ';
+					}
 			}
 
 			printf("PorcionLeida: %c.\n", porcionLeida[1]);

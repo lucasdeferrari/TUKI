@@ -32,7 +32,7 @@ HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base);
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();
-void iniciarHiloClienteKernel(int cod_kernel,int cliente_fd);
+void iniciarHiloClienteKernel(int codigo_kernel,int cliente_fd);
 void* clientKernel(void *arg);
 
 void enviar_respuesta(int socket_cliente, char* quien_es);

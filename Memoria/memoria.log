@@ -3824,3 +3824,378 @@ el cliente se desconecto. Terminando servidor
 [INFO] 18:32:35:525 Memoria/(127586:127619): Eliminación de Proceso PID: 1
 [ERROR] 18:32:35:526 Memoria/(127586:127619): 
 el cliente se desconecto. Terminando servidor
+[INFO] 04:50:24:809 Memoria/(146068:146068): Listo para escuchar al cliente
+[INFO] 04:50:24:992 Memoria/(146068:146068): Memoria lista para recibir al cliente
+
+[INFO] 04:50:28:723 Memoria/(146068:146073): Se conecto un cliente!
+[INFO] 04:50:28:733 Memoria/(146068:146073): se conecto el filesystem
+[ERROR] 04:50:28:746 Memoria/(146068:146073): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:31:082 Memoria/(146068:146077): Se conecto un cliente!
+[INFO] 04:50:31:090 Memoria/(146068:146077): se conecto la cpu
+[ERROR] 04:50:31:094 Memoria/(146068:146077): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:33:330 Memoria/(146068:146080): Se conecto un cliente!
+[INFO] 04:50:33:336 Memoria/(146068:146080): se conecto el kernel
+[ERROR] 04:50:33:339 Memoria/(146068:146080): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:33:340 Memoria/(146068:146068): Se conectaron todos los modulos.
+
+[INFO] 04:50:33:343 Memoria/(146068:146068): Se crearon todas las estructuras correctamente.
+
+[INFO] 04:50:35:505 Memoria/(146068:146084): Se conecto un cliente!
+[INFO] 04:50:35:514 Memoria/(146068:146084): Creación de Proceso PID: 1
+[ERROR] 04:50:35:535 Memoria/(146068:146084): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:35:543 Memoria/(146068:146098): Se conecto un cliente!
+[INFO] 04:50:35:545 Memoria/(146068:146098): Creación de Proceso PID: 2
+[ERROR] 04:50:35:554 Memoria/(146068:146098): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:35:558 Memoria/(146068:146099): Se conecto un cliente!
+[INFO] 04:50:35:558 Memoria/(146068:146099): Creación de Proceso PID: 3
+[ERROR] 04:50:35:563 Memoria/(146068:146099): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:36:535 Memoria/(146068:146100): Se conecto un cliente!
+[ERROR] 04:50:37:550 Memoria/(146068:146100): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:37:553 Memoria/(146068:146104): Se conecto un cliente!
+[INFO] 04:50:37:575 Memoria/(146068:146104): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 04:50:37:610 Memoria/(146068:146104): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:37:618 Memoria/(146068:146107): Se conecto un cliente!
+[INFO] 04:50:37:627 Memoria/(146068:146107): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 04:50:39:630 Memoria/(146068:146107): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:633 Memoria/(146068:146119): Se conecto un cliente!
+[INFO] 04:50:39:639 Memoria/(146068:146119): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+[ERROR] 04:50:39:670 Memoria/(146068:146119): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:676 Memoria/(146068:146122): Se conecto un cliente!
+[INFO] 04:50:39:680 Memoria/(146068:146122): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+[ERROR] 04:50:39:726 Memoria/(146068:146122): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:731 Memoria/(146068:146127): Se conecto un cliente!
+[INFO] 04:50:39:733 Memoria/(146068:146127): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+[ERROR] 04:50:39:760 Memoria/(146068:146127): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:765 Memoria/(146068:146132): Se conecto un cliente!
+[INFO] 04:50:39:779 Memoria/(146068:146132): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+[ERROR] 04:50:39:823 Memoria/(146068:146132): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:838 Memoria/(146068:146137): Se conecto un cliente!
+[INFO] 04:50:39:841 Memoria/(146068:146137): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+[ERROR] 04:50:39:899 Memoria/(146068:146137): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:906 Memoria/(146068:146142): Se conecto un cliente!
+[INFO] 04:50:39:910 Memoria/(146068:146142): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+[ERROR] 04:50:39:942 Memoria/(146068:146142): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:946 Memoria/(146068:146147): Se conecto un cliente!
+[INFO] 04:50:39:953 Memoria/(146068:146147): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+[ERROR] 04:50:39:981 Memoria/(146068:146147): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:39:990 Memoria/(146068:146152): Se conecto un cliente!
+[INFO] 04:50:39:994 Memoria/(146068:146152): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+[ERROR] 04:50:40:023 Memoria/(146068:146152): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:41:030 Memoria/(146068:146157): Se conecto un cliente!
+[ERROR] 04:50:42:031 Memoria/(146068:146157): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:42:036 Memoria/(146068:146161): Se conecto un cliente!
+[INFO] 04:50:42:039 Memoria/(146068:146161): No se pudo eliminar el segmento: PID: 1 - Segmento: 1
+[INFO] 04:50:42:044 Memoria/(146068:146161): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 04:50:42:051 Memoria/(146068:146161): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:42:054 Memoria/(146068:146167): Se conecto un cliente!
+[INFO] 04:50:42:057 Memoria/(146068:146167): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 04:50:44:063 Memoria/(146068:146167): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:44:069 Memoria/(146068:146171): Se conecto un cliente!
+[INFO] 04:50:44:071 Memoria/(146068:146171): PID: 2 - Crear Segmento: 9 - Base: 128 - TAMAÑO: 64
+[ERROR] 04:50:44:097 Memoria/(146068:146171): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:45:103 Memoria/(146068:146178): Se conecto un cliente!
+[ERROR] 04:50:46:106 Memoria/(146068:146178): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:47:107 Memoria/(146068:146180): Se conecto un cliente!
+[ERROR] 04:50:48:113 Memoria/(146068:146180): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:48:119 Memoria/(146068:146184): Se conecto un cliente!
+[INFO] 04:50:48:122 Memoria/(146068:146184): PID: 3 - Crear Segmento: 1 - Base: 768 - TAMAÑO: 256
+[ERROR] 04:50:48:164 Memoria/(146068:146184): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:48:173 Memoria/(146068:146191): Se conecto un cliente!
+[INFO] 04:50:48:181 Memoria/(146068:146191): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 04:50:50:182 Memoria/(146068:146191): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:50:50:187 Memoria/(146068:146195): Se conecto un cliente!
+[INFO] 04:50:50:188 Memoria/(146068:146195): PID: 2 - Acción: LEER - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+[ERROR] 04:50:52:191 Memoria/(146068:146195): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:40:256 Memoria/(146812:146812): Listo para escuchar al cliente
+[INFO] 04:59:40:370 Memoria/(146812:146812): Memoria lista para recibir al cliente
+
+[INFO] 04:59:43:401 Memoria/(146812:146817): Se conecto un cliente!
+[INFO] 04:59:43:408 Memoria/(146812:146817): se conecto el filesystem
+[ERROR] 04:59:43:418 Memoria/(146812:146817): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:45:594 Memoria/(146812:146821): Se conecto un cliente!
+[INFO] 04:59:45:595 Memoria/(146812:146821): se conecto la cpu
+[ERROR] 04:59:45:600 Memoria/(146812:146821): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:47:555 Memoria/(146812:146824): Se conecto un cliente!
+[INFO] 04:59:47:557 Memoria/(146812:146824): se conecto el kernel
+[ERROR] 04:59:47:563 Memoria/(146812:146824): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:47:563 Memoria/(146812:146812): Se conectaron todos los modulos.
+
+[INFO] 04:59:47:569 Memoria/(146812:146812): Se crearon todas las estructuras correctamente.
+
+[INFO] 04:59:50:300 Memoria/(146812:146828): Se conecto un cliente!
+[INFO] 04:59:50:308 Memoria/(146812:146828): Creación de Proceso PID: 1
+[ERROR] 04:59:50:321 Memoria/(146812:146828): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:50:335 Memoria/(146812:146842): Se conecto un cliente!
+[INFO] 04:59:50:345 Memoria/(146812:146842): Creación de Proceso PID: 2
+[ERROR] 04:59:50:351 Memoria/(146812:146842): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:50:354 Memoria/(146812:146843): Se conecto un cliente!
+[INFO] 04:59:50:356 Memoria/(146812:146843): Creación de Proceso PID: 3
+[ERROR] 04:59:50:357 Memoria/(146812:146843): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:51:324 Memoria/(146812:146844): Se conecto un cliente!
+[ERROR] 04:59:52:340 Memoria/(146812:146844): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:52:344 Memoria/(146812:146848): Se conecto un cliente!
+[INFO] 04:59:52:368 Memoria/(146812:146848): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 04:59:52:408 Memoria/(146812:146848): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:52:416 Memoria/(146812:146851): Se conecto un cliente!
+[INFO] 04:59:52:425 Memoria/(146812:146851): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 04:59:54:432 Memoria/(146812:146851): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:437 Memoria/(146812:146863): Se conecto un cliente!
+[INFO] 04:59:54:444 Memoria/(146812:146863): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+[ERROR] 04:59:54:500 Memoria/(146812:146863): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:503 Memoria/(146812:146866): Se conecto un cliente!
+[INFO] 04:59:54:505 Memoria/(146812:146866): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+[ERROR] 04:59:54:559 Memoria/(146812:146866): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:560 Memoria/(146812:146871): Se conecto un cliente!
+[INFO] 04:59:54:560 Memoria/(146812:146871): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+[ERROR] 04:59:54:586 Memoria/(146812:146871): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:588 Memoria/(146812:146876): Se conecto un cliente!
+[INFO] 04:59:54:588 Memoria/(146812:146876): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+[ERROR] 04:59:54:643 Memoria/(146812:146876): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:648 Memoria/(146812:146881): Se conecto un cliente!
+[INFO] 04:59:54:649 Memoria/(146812:146881): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+[ERROR] 04:59:54:683 Memoria/(146812:146881): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:687 Memoria/(146812:146886): Se conecto un cliente!
+[INFO] 04:59:54:689 Memoria/(146812:146886): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+[ERROR] 04:59:54:716 Memoria/(146812:146886): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:723 Memoria/(146812:146891): Se conecto un cliente!
+[INFO] 04:59:54:725 Memoria/(146812:146891): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+[ERROR] 04:59:54:759 Memoria/(146812:146891): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:54:762 Memoria/(146812:146896): Se conecto un cliente!
+[INFO] 04:59:54:763 Memoria/(146812:146896): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+[ERROR] 04:59:54:835 Memoria/(146812:146896): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:55:839 Memoria/(146812:146901): Se conecto un cliente!
+[ERROR] 04:59:56:841 Memoria/(146812:146901): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:56:847 Memoria/(146812:146905): Se conecto un cliente!
+[INFO] 04:59:56:849 Memoria/(146812:146905): No se pudo eliminar el segmento: PID: 1 - Segmento: 1
+[INFO] 04:59:56:855 Memoria/(146812:146905): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 04:59:56:859 Memoria/(146812:146905): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:56:864 Memoria/(146812:146911): Se conecto un cliente!
+[INFO] 04:59:56:868 Memoria/(146812:146911): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 04:59:58:870 Memoria/(146812:146911): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:58:877 Memoria/(146812:146915): Se conecto un cliente!
+[INFO] 04:59:58:879 Memoria/(146812:146915): PID: 2 - Crear Segmento: 9 - Base: 128 - TAMAÑO: 64
+[ERROR] 04:59:58:904 Memoria/(146812:146915): 
+el cliente se desconecto. Terminando servidor
+[INFO] 04:59:59:906 Memoria/(146812:146922): Se conecto un cliente!
+[ERROR] 05:00:00:914 Memoria/(146812:146922): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:00:01:915 Memoria/(146812:146924): Se conecto un cliente!
+[ERROR] 05:00:02:917 Memoria/(146812:146924): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:00:02:922 Memoria/(146812:146928): Se conecto un cliente!
+[INFO] 05:00:02:925 Memoria/(146812:146928): PID: 3 - Crear Segmento: 1 - Base: 768 - TAMAÑO: 256
+[ERROR] 05:00:02:953 Memoria/(146812:146928): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:00:02:956 Memoria/(146812:146935): Se conecto un cliente!
+[INFO] 05:00:02:957 Memoria/(146812:146935): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+[ERROR] 05:00:04:963 Memoria/(146812:146935): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:00:04:972 Memoria/(146812:146939): Se conecto un cliente!
+[INFO] 05:00:04:975 Memoria/(146812:146939): PID: 2 - Acción: LEER - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+[ERROR] 05:00:06:979 Memoria/(146812:146939): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:24:869 Memoria/(147882:147882): Listo para escuchar al cliente
+[INFO] 05:05:24:981 Memoria/(147882:147882): Memoria lista para recibir al cliente
+
+[INFO] 05:05:31:708 Memoria/(147882:147887): Se conecto un cliente!
+[INFO] 05:05:31:718 Memoria/(147882:147887): se conecto el filesystem
+[ERROR] 05:05:31:755 Memoria/(147882:147887): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:33:908 Memoria/(147882:147892): Se conecto un cliente!
+[INFO] 05:05:33:912 Memoria/(147882:147892): se conecto la cpu
+[ERROR] 05:05:33:915 Memoria/(147882:147892): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:36:142 Memoria/(147882:147895): Se conecto un cliente!
+[INFO] 05:05:36:146 Memoria/(147882:147895): se conecto el kernel
+[ERROR] 05:05:36:150 Memoria/(147882:147895): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:36:150 Memoria/(147882:147882): Se conectaron todos los modulos.
+
+[INFO] 05:05:36:156 Memoria/(147882:147882): Se crearon todas las estructuras correctamente.
+
+[INFO] 05:05:38:666 Memoria/(147882:147899): Se conecto un cliente!
+[INFO] 05:05:38:670 Memoria/(147882:147899): Creación de Proceso PID: 1
+[ERROR] 05:05:38:679 Memoria/(147882:147899): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:38:686 Memoria/(147882:147910): Se conecto un cliente!
+[INFO] 05:05:38:691 Memoria/(147882:147910): Creación de Proceso PID: 2
+[ERROR] 05:05:38:705 Memoria/(147882:147910): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:38:708 Memoria/(147882:147914): Se conecto un cliente!
+[INFO] 05:05:38:710 Memoria/(147882:147914): Creación de Proceso PID: 3
+[ERROR] 05:05:38:721 Memoria/(147882:147914): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:39:691 Memoria/(147882:147915): Se conecto un cliente!
+[ERROR] 05:05:40:702 Memoria/(147882:147915): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:40:707 Memoria/(147882:147919): Se conecto un cliente!
+[INFO] 05:05:40:721 Memoria/(147882:147919): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 05:05:40:753 Memoria/(147882:147919): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:05:40:771 Memoria/(147882:147922): Se conecto un cliente!
+[INFO] 05:08:47:969 Memoria/(148224:148224): Listo para escuchar al cliente
+[INFO] 05:08:48:040 Memoria/(148224:148224): Memoria lista para recibir al cliente
+
+[INFO] 05:08:52:678 Memoria/(148224:148229): Se conecto un cliente!
+[INFO] 05:08:52:685 Memoria/(148224:148229): se conecto el filesystem
+[ERROR] 05:08:52:695 Memoria/(148224:148229): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:08:55:193 Memoria/(148224:148233): Se conecto un cliente!
+[INFO] 05:08:55:195 Memoria/(148224:148233): se conecto la cpu
+[ERROR] 05:08:55:199 Memoria/(148224:148233): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:02:785 Memoria/(148224:148236): Se conecto un cliente!
+[INFO] 05:09:02:789 Memoria/(148224:148236): se conecto el kernel
+[ERROR] 05:09:02:793 Memoria/(148224:148236): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:02:794 Memoria/(148224:148224): Se conectaron todos los modulos.
+
+[INFO] 05:09:02:797 Memoria/(148224:148224): Se crearon todas las estructuras correctamente.
+
+[INFO] 05:09:04:946 Memoria/(148224:148269): Se conecto un cliente!
+[INFO] 05:09:04:950 Memoria/(148224:148269): Creación de Proceso PID: 1
+[ERROR] 05:09:04:975 Memoria/(148224:148269): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:04:981 Memoria/(148224:148281): Se conecto un cliente!
+[INFO] 05:09:04:988 Memoria/(148224:148281): Creación de Proceso PID: 2
+[ERROR] 05:09:04:992 Memoria/(148224:148281): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:04:994 Memoria/(148224:148284): Se conecto un cliente!
+[INFO] 05:09:04:995 Memoria/(148224:148284): Creación de Proceso PID: 3
+[ERROR] 05:09:05:001 Memoria/(148224:148284): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:05:989 Memoria/(148224:148285): Se conecto un cliente!
+[ERROR] 05:09:07:000 Memoria/(148224:148285): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:07:004 Memoria/(148224:148289): Se conecto un cliente!
+[INFO] 05:09:07:018 Memoria/(148224:148289): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 05:09:07:044 Memoria/(148224:148289): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:09:07:051 Memoria/(148224:148292): Se conecto un cliente!
+[INFO] 05:11:16:220 Memoria/(148604:148604): Listo para escuchar al cliente
+[INFO] 05:11:16:291 Memoria/(148604:148604): Memoria lista para recibir al cliente
+
+[INFO] 05:11:19:846 Memoria/(148604:148610): Se conecto un cliente!
+[INFO] 05:11:19:852 Memoria/(148604:148610): se conecto el filesystem
+[ERROR] 05:11:19:861 Memoria/(148604:148610): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:22:493 Memoria/(148604:148614): Se conecto un cliente!
+[INFO] 05:11:22:495 Memoria/(148604:148614): se conecto la cpu
+[ERROR] 05:11:22:499 Memoria/(148604:148614): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:25:070 Memoria/(148604:148617): Se conecto un cliente!
+[INFO] 05:11:25:074 Memoria/(148604:148617): se conecto el kernel
+[ERROR] 05:11:25:078 Memoria/(148604:148617): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:25:079 Memoria/(148604:148604): Se conectaron todos los modulos.
+
+[INFO] 05:11:25:082 Memoria/(148604:148604): Se crearon todas las estructuras correctamente.
+
+[INFO] 05:11:28:308 Memoria/(148604:148621): Se conecto un cliente!
+[INFO] 05:11:28:312 Memoria/(148604:148621): Creación de Proceso PID: 1
+[ERROR] 05:11:28:325 Memoria/(148604:148621): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:28:332 Memoria/(148604:148634): Se conecto un cliente!
+[INFO] 05:11:28:334 Memoria/(148604:148634): Creación de Proceso PID: 2
+[ERROR] 05:11:28:338 Memoria/(148604:148634): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:28:339 Memoria/(148604:148636): Se conecto un cliente!
+[INFO] 05:11:28:339 Memoria/(148604:148636): Creación de Proceso PID: 3
+[ERROR] 05:11:28:341 Memoria/(148604:148636): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:29:333 Memoria/(148604:148637): Se conecto un cliente!
+[ERROR] 05:11:30:345 Memoria/(148604:148637): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:30:349 Memoria/(148604:148641): Se conecto un cliente!
+[INFO] 05:11:30:362 Memoria/(148604:148641): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 05:11:30:390 Memoria/(148604:148641): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:11:30:397 Memoria/(148604:148644): Se conecto un cliente!
+[INFO] 05:14:29:063 Memoria/(149041:149041): Listo para escuchar al cliente
+[INFO] 05:14:29:124 Memoria/(149041:149041): Memoria lista para recibir al cliente
+
+[INFO] 05:14:36:295 Memoria/(149041:149046): Se conecto un cliente!
+[INFO] 05:14:36:303 Memoria/(149041:149046): se conecto el filesystem
+[ERROR] 05:14:36:313 Memoria/(149041:149046): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:38:213 Memoria/(149041:149050): Se conecto un cliente!
+[INFO] 05:14:38:216 Memoria/(149041:149050): se conecto la cpu
+[ERROR] 05:14:38:219 Memoria/(149041:149050): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:40:310 Memoria/(149041:149053): Se conecto un cliente!
+[INFO] 05:14:40:314 Memoria/(149041:149053): se conecto el kernel
+[ERROR] 05:14:40:317 Memoria/(149041:149053): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:40:317 Memoria/(149041:149041): Se conectaron todos los modulos.
+
+[INFO] 05:14:40:320 Memoria/(149041:149041): Se crearon todas las estructuras correctamente.
+
+[INFO] 05:14:42:518 Memoria/(149041:149057): Se conecto un cliente!
+[INFO] 05:14:42:524 Memoria/(149041:149057): Creación de Proceso PID: 1
+[ERROR] 05:14:42:532 Memoria/(149041:149057): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:42:540 Memoria/(149041:149067): Se conecto un cliente!
+[INFO] 05:14:42:543 Memoria/(149041:149067): Creación de Proceso PID: 2
+[ERROR] 05:14:42:552 Memoria/(149041:149067): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:42:558 Memoria/(149041:149072): Se conecto un cliente!
+[INFO] 05:14:42:559 Memoria/(149041:149072): Creación de Proceso PID: 3
+[ERROR] 05:14:42:578 Memoria/(149041:149072): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:43:546 Memoria/(149041:149073): Se conecto un cliente!
+[ERROR] 05:14:44:556 Memoria/(149041:149073): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:44:561 Memoria/(149041:149077): Se conecto un cliente!
+[INFO] 05:14:44:574 Memoria/(149041:149077): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+[ERROR] 05:14:44:604 Memoria/(149041:149077): 
+el cliente se desconecto. Terminando servidor
+[INFO] 05:14:44:629 Memoria/(149041:149080): Se conecto un cliente!
+[INFO] 05:16:45:316 Memoria/(149296:149296): Listo para escuchar al cliente
+[INFO] 05:16:45:372 Memoria/(149296:149296): Memoria lista para recibir al cliente
+

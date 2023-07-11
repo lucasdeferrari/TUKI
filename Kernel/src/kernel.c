@@ -856,8 +856,8 @@ void* clientCPU(void* ptr) {
 
    // printf("Después de recibir el contexto\n");
 
-//    printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
-//    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
+    printf("programCounter recibido de CPU = %d\n",estadoEnEjecucion->programCounter);
+    printf("Última instruccion ejecutada = %s\n",estadoEnEjecucion->ultimaInstruccion);
 //    printf("Tiempo bloqueado recibido de CPU = %d\n",estadoEnEjecucion->tiempoBloqueado);
 //    printf("Id del segmento = %d\n",estadoEnEjecucion->idSegmento);
 //    printf("Tamaño del segmento = %d\n",estadoEnEjecucion->tamanioSegmento);
@@ -1998,7 +1998,7 @@ void calcularHRRN(t_infopcb* unProceso){
 
 	//tiempo transcurrido en la cola de Ready
 	int tiempoEsperaReady = unProceso->empiezaAEjecutar - unProceso->entraEnColaReady;
-	printf("el proceso %d tarda %d: ", unProceso->pid, tiempoEsperaReady);
+	//printf("el proceso %d tarda %d: ", unProceso->pid, tiempoEsperaReady);
 	unProceso->rafaga = (tiempoEsperaReady + unProceso->estimadoProxRafaga) / unProceso->estimadoProxRafaga;
 
 	unProceso->estimadoAnterior = unProceso->estimadoProxRafaga;

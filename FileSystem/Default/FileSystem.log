@@ -4615,3 +4615,167 @@ el cliente se desconecto. Terminando servidor.
 [INFO] 03:32:04:048 FileSystem/(36365:36365): FileSystem listo para escuchar al cliente
 
 [INFO] 03:32:04:048 FileSystem/(36365:36367): FileSystem listo para recibir a kernel
+[INFO] 03:50:09:337 FileSystem/(143193:143193): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:50:09:337 FileSystem/(143193:143193): FileSystem listo para escuchar al cliente
+
+[INFO] 03:50:09:338 FileSystem/(143193:143195): FileSystem listo para recibir a kernel
+[INFO] 03:50:48:705 FileSystem/(143206:143206): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:50:48:705 FileSystem/(143206:143206): FileSystem listo para escuchar al cliente
+
+[INFO] 03:50:48:705 FileSystem/(143206:143208): FileSystem listo para recibir a kernel
+[INFO] 03:50:58:465 FileSystem/(143206:143208): Se conecto un cliente!
+[ERROR] 03:50:58:466 FileSystem/(143206:143208): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 03:50:58:466 FileSystem/(143206:143220): FileSystem listo para recibir a kernel
+[INFO] 03:50:58:467 FileSystem/(143206:143220): Se conecto un cliente!
+[ERROR] 03:50:59:468 FileSystem/(143206:143220): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 03:50:59:468 FileSystem/(143206:143225): FileSystem listo para recibir a kernel
+[INFO] 03:56:58:220 FileSystem/(143346:143346): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 03:56:58:222 FileSystem/(143346:143346): FileSystem listo para escuchar al cliente
+
+[INFO] 03:56:58:222 FileSystem/(143346:143348): FileSystem listo para recibir a kernel
+[INFO] 03:57:05:735 FileSystem/(143346:143348): Se conecto un cliente!
+[ERROR] 03:57:05:736 FileSystem/(143346:143348): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 03:57:05:736 FileSystem/(143346:143364): FileSystem listo para recibir a kernel
+[INFO] 03:57:05:737 FileSystem/(143346:143364): Se conecto un cliente!
+[ERROR] 03:57:06:739 FileSystem/(143346:143364): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 03:57:06:739 FileSystem/(143346:143370): FileSystem listo para recibir a kernel
+[INFO] 04:15:41:902 FileSystem/(143920:143920): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:15:41:903 FileSystem/(143920:143920): FileSystem listo para escuchar al cliente
+
+[INFO] 04:15:41:904 FileSystem/(143920:143922): FileSystem listo para recibir a kernel
+[INFO] 04:18:56:863 FileSystem/(144161:144161): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:18:56:866 FileSystem/(144161:144161): FileSystem listo para escuchar al cliente
+
+[INFO] 04:18:56:866 FileSystem/(144161:144163): FileSystem listo para recibir a kernel
+[INFO] 04:19:27:870 FileSystem/(144279:144279): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:19:27:871 FileSystem/(144279:144279): FileSystem listo para escuchar al cliente
+
+[INFO] 04:19:27:871 FileSystem/(144279:144281): FileSystem listo para recibir a kernel
+[INFO] 04:20:14:747 FileSystem/(144480:144480): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:20:14:748 FileSystem/(144480:144480): FileSystem listo para escuchar al cliente
+
+[INFO] 04:20:14:748 FileSystem/(144480:144482): FileSystem listo para recibir a kernel
+[INFO] 04:20:36:988 FileSystem/(144508:144508): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:20:36:989 FileSystem/(144508:144508): FileSystem listo para escuchar al cliente
+
+[INFO] 04:20:36:989 FileSystem/(144508:144510): FileSystem listo para recibir a kernel
+[INFO] 04:28:51:016 FileSystem/(144740:144740): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:28:51:017 FileSystem/(144740:144740): FileSystem listo para escuchar al cliente
+
+[INFO] 04:28:51:017 FileSystem/(144740:144742): FileSystem listo para recibir a kernel
+[INFO] 04:33:22:885 FileSystem/(145019:145019): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:33:22:886 FileSystem/(145019:145019): FileSystem listo para escuchar al cliente
+
+[INFO] 04:33:22:886 FileSystem/(145019:145021): FileSystem listo para recibir a kernel
+[INFO] 04:36:50:655 FileSystem/(145139:145139): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:36:50:655 FileSystem/(145139:145139): FileSystem listo para escuchar al cliente
+
+[INFO] 04:36:50:656 FileSystem/(145139:145141): FileSystem listo para recibir a kernel
+[INFO] 04:39:54:957 FileSystem/(145366:145366): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:39:54:958 FileSystem/(145366:145366): FileSystem listo para escuchar al cliente
+
+[INFO] 04:39:54:959 FileSystem/(145366:145368): FileSystem listo para recibir a kernel
+[INFO] 04:44:50:838 FileSystem/(145592:145592): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:44:50:839 FileSystem/(145592:145592): FileSystem listo para escuchar al cliente
+
+[INFO] 04:44:50:840 FileSystem/(145592:145594): FileSystem listo para recibir a kernel
+[INFO] 04:47:49:781 FileSystem/(145876:145876): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:47:49:782 FileSystem/(145876:145876): FileSystem listo para escuchar al cliente
+
+[INFO] 04:47:49:782 FileSystem/(145876:145878): FileSystem listo para recibir a kernel
+[INFO] 04:50:28:738 FileSystem/(146075:146075): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:50:28:739 FileSystem/(146075:146075): FileSystem listo para escuchar al cliente
+
+[INFO] 04:50:28:742 FileSystem/(146075:146076): FileSystem listo para recibir a kernel
+[INFO] 04:59:43:413 FileSystem/(146819:146819): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:59:43:413 FileSystem/(146819:146819): FileSystem listo para escuchar al cliente
+
+[INFO] 04:59:43:418 FileSystem/(146819:146820): FileSystem listo para recibir a kernel
+[INFO] 05:05:31:746 FileSystem/(147890:147890): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:05:31:750 FileSystem/(147890:147890): FileSystem listo para escuchar al cliente
+
+[INFO] 05:05:31:754 FileSystem/(147890:147891): FileSystem listo para recibir a kernel
+[INFO] 05:08:52:690 FileSystem/(148231:148231): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:08:52:691 FileSystem/(148231:148231): FileSystem listo para escuchar al cliente
+
+[INFO] 05:08:52:694 FileSystem/(148231:148232): FileSystem listo para recibir a kernel
+[INFO] 05:11:19:858 FileSystem/(148612:148612): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:11:19:859 FileSystem/(148612:148612): FileSystem listo para escuchar al cliente
+
+[INFO] 05:11:19:862 FileSystem/(148612:148613): FileSystem listo para recibir a kernel
+[INFO] 05:12:47:884 FileSystem/(148952:148952): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:12:47:885 FileSystem/(148952:148952): FileSystem listo para escuchar al cliente
+
+[INFO] 05:12:47:885 FileSystem/(148952:148954): FileSystem listo para recibir a kernel
+[INFO] 05:14:36:309 FileSystem/(149048:149048): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:14:36:310 FileSystem/(149048:149048): FileSystem listo para escuchar al cliente
+
+[INFO] 05:14:36:311 FileSystem/(149048:149049): FileSystem listo para recibir a kernel
+[INFO] 05:17:26:885 FileSystem/(149466:149466): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:17:26:886 FileSystem/(149466:149466): FileSystem listo para escuchar al cliente
+
+[INFO] 05:17:26:886 FileSystem/(149466:149468): FileSystem listo para recibir a kernel
+[INFO] 05:19:02:461 FileSystem/(149591:149591): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:19:02:462 FileSystem/(149591:149591): FileSystem listo para escuchar al cliente
+
+[INFO] 05:19:02:462 FileSystem/(149591:149593): FileSystem listo para recibir a kernel
+[INFO] 05:20:13:214 FileSystem/(149823:149823): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:20:13:214 FileSystem/(149823:149823): FileSystem listo para escuchar al cliente
+
+[INFO] 05:20:13:214 FileSystem/(149823:149825): FileSystem listo para recibir a kernel
+[INFO] 05:21:39:175 FileSystem/(150091:150091): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:21:39:176 FileSystem/(150091:150091): FileSystem listo para escuchar al cliente
+
+[INFO] 05:21:39:176 FileSystem/(150091:150093): FileSystem listo para recibir a kernel
+[INFO] 05:27:17:214 FileSystem/(150620:150620): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:27:17:216 FileSystem/(150620:150620): FileSystem listo para escuchar al cliente
+
+[INFO] 05:27:17:216 FileSystem/(150620:150622): FileSystem listo para recibir a kernel
+[INFO] 05:30:54:881 FileSystem/(150732:150732): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:30:54:882 FileSystem/(150732:150732): FileSystem listo para escuchar al cliente
+
+[INFO] 05:30:54:882 FileSystem/(150732:150734): FileSystem listo para recibir a kernel
+[INFO] 05:35:56:404 FileSystem/(150874:150874): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:35:56:406 FileSystem/(150874:150874): FileSystem listo para escuchar al cliente
+
+[INFO] 05:35:56:406 FileSystem/(150874:150876): FileSystem listo para recibir a kernel
+[INFO] 05:38:58:728 FileSystem/(151138:151138): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:38:58:730 FileSystem/(151138:151138): FileSystem listo para escuchar al cliente
+
+[INFO] 05:38:58:730 FileSystem/(151138:151140): FileSystem listo para recibir a kernel
+[INFO] 05:41:07:593 FileSystem/(151274:151274): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:41:07:593 FileSystem/(151274:151274): FileSystem listo para escuchar al cliente
+
+[INFO] 05:41:07:594 FileSystem/(151274:151276): FileSystem listo para recibir a kernel
+[INFO] 05:42:51:210 FileSystem/(151402:151402): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:42:51:211 FileSystem/(151402:151402): FileSystem listo para escuchar al cliente
+
+[INFO] 05:42:51:211 FileSystem/(151402:151404): FileSystem listo para recibir a kernel
+[INFO] 05:45:24:836 FileSystem/(151613:151613): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:45:24:838 FileSystem/(151613:151613): FileSystem listo para escuchar al cliente
+
+[INFO] 05:45:24:838 FileSystem/(151613:151615): FileSystem listo para recibir a kernel
+[INFO] 05:52:59:951 FileSystem/(151938:151938): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:52:59:952 FileSystem/(151938:151938): FileSystem listo para escuchar al cliente
+
+[INFO] 05:52:59:952 FileSystem/(151938:151940): FileSystem listo para recibir a kernel
+[INFO] 05:56:31:853 FileSystem/(152135:152135): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 05:56:31:853 FileSystem/(152135:152135): FileSystem listo para escuchar al cliente
+
+[INFO] 05:56:31:854 FileSystem/(152135:152137): FileSystem listo para recibir a kernel
+[INFO] 06:06:46:322 FileSystem/(152274:152274): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 06:06:46:323 FileSystem/(152274:152274): FileSystem listo para escuchar al cliente
+
+[INFO] 06:06:46:323 FileSystem/(152274:152276): FileSystem listo para recibir a kernel
+[INFO] 06:07:28:409 FileSystem/(152387:152387): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 06:07:28:410 FileSystem/(152387:152387): FileSystem listo para escuchar al cliente
+
+[INFO] 06:07:28:410 FileSystem/(152387:152389): FileSystem listo para recibir a kernel

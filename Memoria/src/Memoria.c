@@ -327,13 +327,17 @@ void* serverMemoria(void* ptr){
 				printf("tamanio: %d\n", tamanio);
     			int direccionFisica = atoi(direccionFisicaStr);
 
-    			char* destinoArray [tamanio];
-    			memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
-    			printf("destino array:%s\n ", destinoArray[0]);
+    			char destinoArray[tamanio];
+    			strcpy(destinoArray, "");
+    			for(int i =0; i < tamanio; i++) {
+    				memcpy(&destinoArray[i],  espacioUsuario + direccionFisica + i, sizeof(char));
+				}
+    			//memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
+    			//printf("destino array:%s\n ", destinoArray[0]);
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
 
     			sleep_ms(retardoMemoria);
-    			enviar_mensaje_cod_operacion(destinoArray[0],cliente_fd,MOV_IN);
+    			enviar_mensaje_cod_operacion(&destinoArray,cliente_fd,MOV_IN);
     			estaConectadoFS = 0;
     		}
 
@@ -500,10 +504,7 @@ int hayLugarContiguoPara(size_t tamanio) {
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		size_t desplazamientoSiguiente = siguiente->desplazamiento;
-		printf("base: %zu\n",siguiente->base );
-		printf("desplazamiento: %zu\n",desplazamientoSiguiente );
 		if(desplazamientoSiguiente > max) {
-			printf("desplazamiento: %zu\n", max);
 			max = desplazamientoSiguiente;
 		}
 	}
@@ -668,10 +669,7 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 						juntarHuecosContiguos();
 						list_iterator_remove(iterador2);
 						list_remove_element(segmentos,segmentoSiguiente);
-						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu",id_proceso, id_segmento,nuevoHueco->base,nuevoHueco->desplazamiento);
-					}
-					else{
-						log_info(logger, "No se pudo eliminar el segmento: PID: %d - Segmento: %d",id_proceso, id_segmento);
+						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu",id_proceso, id_segmento,segmentoSiguiente->base,segmentoSiguiente ->desplazamiento);
 					}
 
 				}
@@ -793,7 +791,9 @@ void eliminar_proceso(int idProceso) {
 
             while (list_iterator_has_next(iteradorSegmentos)) {
                 Segmento *segmento = list_iterator_next(iteradorSegmentos);
+                if(segmento->idSegmentoKernel !=0){
                 eliminar_segmento(idProceso, segmento->idSegmentoKernel);
+                }
             }
 
             list_iterator_destroy(iteradorSegmentos);
