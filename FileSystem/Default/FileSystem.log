@@ -4942,3 +4942,75 @@ el cliente se desconecto. Terminando servidor.
 el cliente se desconecto. Terminando servidor.
 
 [INFO] 16:02:11:416 FileSystem/(52722:52747): FileSystem listo para recibir a kernel
+[INFO] 17:31:35:487 FileSystem/(2493:2493): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:31:35:488 FileSystem/(2493:2493): FileSystem listo para escuchar al cliente
+
+[INFO] 17:31:35:488 FileSystem/(2493:2495): FileSystem listo para recibir a kernel
+[INFO] 17:31:40:710 FileSystem/(2493:2495): Se conecto un cliente!
+[ERROR] 17:31:40:710 FileSystem/(2493:2495): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:31:40:711 FileSystem/(2493:2507): FileSystem listo para recibir a kernel
+[INFO] 17:31:40:712 FileSystem/(2493:2507): Se conecto un cliente!
+[ERROR] 17:31:41:714 FileSystem/(2493:2507): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:31:41:717 FileSystem/(2493:2513): FileSystem listo para recibir a kernel
+[INFO] 17:35:44:022 FileSystem/(2850:2850): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:35:44:025 FileSystem/(2850:2850): FileSystem listo para escuchar al cliente
+
+[INFO] 17:35:44:025 FileSystem/(2850:2852): FileSystem listo para recibir a kernel
+[INFO] 17:35:48:769 FileSystem/(2850:2852): Se conecto un cliente!
+[ERROR] 17:35:48:773 FileSystem/(2850:2852): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:35:48:775 FileSystem/(2850:2864): FileSystem listo para recibir a kernel
+[INFO] 17:35:48:778 FileSystem/(2850:2864): Se conecto un cliente!
+[ERROR] 17:35:49:787 FileSystem/(2850:2864): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:35:49:788 FileSystem/(2850:2870): FileSystem listo para recibir a kernel
+[INFO] 17:37:29:925 FileSystem/(2889:2889): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:37:29:926 FileSystem/(2889:2889): FileSystem listo para escuchar al cliente
+
+[INFO] 17:37:29:926 FileSystem/(2889:2891): FileSystem listo para recibir a kernel
+[INFO] 17:37:55:601 FileSystem/(2907:2907): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:37:55:601 FileSystem/(2907:2907): FileSystem listo para escuchar al cliente
+
+[INFO] 17:37:55:601 FileSystem/(2907:2909): FileSystem listo para recibir a kernel
+[INFO] 17:39:03:943 FileSystem/(2907:2909): Se conecto un cliente!
+[ERROR] 17:39:03:946 FileSystem/(2907:2909): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:39:03:948 FileSystem/(2907:3014): FileSystem listo para recibir a kernel
+[INFO] 17:39:03:952 FileSystem/(2907:3014): Se conecto un cliente!
+[INFO] 17:42:04:189 FileSystem/(3328:3328): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:42:04:190 FileSystem/(3328:3328): FileSystem listo para escuchar al cliente
+
+[INFO] 17:42:04:190 FileSystem/(3328:3330): FileSystem listo para recibir a kernel
+[INFO] 17:42:23:952 FileSystem/(3328:3330): Se conecto un cliente!
+[ERROR] 17:42:23:953 FileSystem/(3328:3330): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:42:23:953 FileSystem/(3328:3389): FileSystem listo para recibir a kernel
+[INFO] 17:42:23:954 FileSystem/(3328:3389): Se conecto un cliente!
+[INFO] 17:45:15:638 FileSystem/(3681:3681): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:45:15:638 FileSystem/(3681:3681): FileSystem listo para escuchar al cliente
+
+[INFO] 17:45:15:639 FileSystem/(3681:3683): FileSystem listo para recibir a kernel
+[INFO] 17:45:33:330 FileSystem/(3681:3683): Se conecto un cliente!
+[ERROR] 17:45:33:332 FileSystem/(3681:3683): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:45:33:335 FileSystem/(3681:3742): FileSystem listo para recibir a kernel
+[INFO] 17:45:33:344 FileSystem/(3681:3742): Se conecto un cliente!
+[INFO] 17:49:10:790 FileSystem/(4137:4137): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 17:49:10:791 FileSystem/(4137:4137): FileSystem listo para escuchar al cliente
+
+[INFO] 17:49:10:791 FileSystem/(4137:4139): FileSystem listo para recibir a kernel
+[INFO] 17:49:28:602 FileSystem/(4137:4139): Se conecto un cliente!
+[ERROR] 17:49:28:603 FileSystem/(4137:4139): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 17:49:28:603 FileSystem/(4137:4198): FileSystem listo para recibir a kernel
+[INFO] 17:49:28:605 FileSystem/(4137:4198): Se conecto un cliente!

@@ -31,6 +31,7 @@ int main(void) {
 
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semPasarAExit, 0, 0);
+	pthread_mutex_init(&mutex_fd, NULL);
 
     estadoEnEjecucion = malloc(sizeof(t_infopcb));
     int ningunEstado = -1;
@@ -69,6 +70,7 @@ int main(void) {
 
     sem_destroy(&semKernelClientMemoria);
     sem_destroy(&semPasarAExit);
+    pthread_mutex_destroy(&mutex_fd);
 
     free(estadoEnEjecucion);
     return EXIT_SUCCESS;
@@ -559,7 +561,7 @@ void* clientFileSystem(void *arg) {
     //printf("Cod_fs: %d\n", cod_fs);
     switch(cod_fs){
 		case 2: //F_OPEN
-
+			pthread_mutex_lock(&mutex_fd);
 			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
         	printf("F_OPEN enviado a FS del proceso %d.\n", unProceso->pid);
@@ -584,6 +586,7 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, cantBytesRead, strlen(cantBytesRead)+1);
         	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
 
+        	pthread_mutex_lock(&mutex_fd);
         	enviar_paquete(paquete, conexion_FileSystem);
         	printf("F_READ enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_READ enviado a MEMORIA.\n");
@@ -592,13 +595,12 @@ void* clientFileSystem(void *arg) {
         	//printf("CantBytes enviado a FS: %s\n", cantBytesRead);
         	//printf("DirecFisica enviad a FS: %s\n", direcFisicaRead);
 
-        	eliminar_paquete(paquete);
-
     		//Desencolo ready si es que hay algun proceso en la lista
     		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
     			if(frenteColaReady != NULL){
     				desencolarReady();
+
     			}
     		}
 
@@ -608,6 +610,9 @@ void* clientFileSystem(void *arg) {
     				desencolarReady();
     			}
     		}
+
+
+    		eliminar_paquete(paquete);
 
 		break;
 		case 4: //F_WRITE
@@ -626,6 +631,7 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, cantBytesWrite, strlen(cantBytesWrite)+1);
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
+        	pthread_mutex_lock(&mutex_fd);
         	enviar_paquete(paquete, conexion_FileSystem);
         	printf("F_WRITE enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_WRITE enviado a MEMORIA.\n");
@@ -634,7 +640,7 @@ void* clientFileSystem(void *arg) {
 //        	printf("CantBytes enviado a FS: %s\n", cantBytesWrite);
 //        	printf("DirecFisica enviada a FS: %s\n", direcFisicaWrite);
 
-        	eliminar_paquete(paquete);
+
 
     		//Desencolo ready si es que hay algun proceso en la lista
     		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -650,6 +656,8 @@ void* clientFileSystem(void *arg) {
     				desencolarReady();
     			}
     		}
+
+    		eliminar_paquete(paquete);
 
 		break;
 		case 5: //F_TRUNCATE
@@ -661,7 +669,7 @@ void* clientFileSystem(void *arg) {
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
         	agregar_a_paquete(paquete, nuevoTamanio, strlen(nuevoTamanio)+1);
 
-
+        	pthread_mutex_lock(&mutex_fd);
         	enviar_paquete(paquete, conexion_FileSystem);
         	printf("F_TRUNCATE enviado a FS del proceso %d.\n", unProceso->pid);
 
@@ -669,7 +677,7 @@ void* clientFileSystem(void *arg) {
 //        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 //        	printf("Nuevo tamaño enviado a FS: %s\n", nuevoTamanio);
 
-        	eliminar_paquete(paquete);
+
 
     		//Desencolo ready si es que hay algun proceso en la lista
     		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -686,6 +694,8 @@ void* clientFileSystem(void *arg) {
     			}
     		}
 
+    		eliminar_paquete(paquete);
+
 		break;
 		default:
 			log_warning(logger," Operacion desconocida. NO se envió nada a FileSystem.\n");
@@ -696,6 +706,8 @@ void* clientFileSystem(void *arg) {
 
 	switch (cod_op) {
 		case 2: //F_OPEN
+			printf("F_OPEN recibido del proceso %d.\n", unProceso->pid);
+			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			//Agrego el archivo a la tabla global
 			t_infoTablaGlobalArchivos* nuevoArchivoGlobal = malloc(sizeof(t_infoTablaGlobalArchivos));
@@ -740,6 +752,8 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 3: //F_READ
+			printf("F_READ recibido del proceso %d.\n", unProceso->pid);
+			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
@@ -769,6 +783,8 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 4: //F_WRITE
+			printf("F_WRITE recibido del proceso %d.\n", unProceso->pid);
+			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
@@ -798,6 +814,8 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 5: //F_TRUNCATE
+			printf("F_TRUNCATE recibido del proceso %d.\n", unProceso->pid);
+			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
