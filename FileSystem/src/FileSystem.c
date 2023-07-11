@@ -566,7 +566,7 @@ void* clientMemoria(void* arg) {
 			printf("MOV_OUT enviado a MEMORIA.\n");
 			printf("pid: %s\n", pidMO);
 			printf("quienSoy: %s\n", fsMO);
-			printf("valorRegistro: %s\n", valorRegistroMO);
+			printf("valorRegistro: %s.\n", valorRegistroMO);
 			printf("direcFisica: %s\n", direcFisicaMO);
 			printf("tamanio: %s\n", tamanioMO);
 
@@ -583,6 +583,7 @@ void* clientMemoria(void* arg) {
     switch (cod_op) {
     	case 11:
     		textoLeidoMemoria = recibir_handshake(conexion_Memoria);
+    		printf("Respuesta MOV_IN: %s\n",textoLeidoMemoria);
     		sem_post(&semFileSystemClientMemoriaMoveIn);
     	break;
         case 12:  //RECIBO UN OK
@@ -898,6 +899,7 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 		}
 
 		uint32_t bloqueALeer = floor(punteroArchivo / block_size);
+		int resto = punteroArchivo%block_size;
 
 
 		char porcionLeida[cantBytesRead];
@@ -907,7 +909,9 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 			int bytesALeer = cantBytesRead;
 			int indice = 0;
 
-			for (int i = 0; i < cantBytesRead; i++){
+			tamanioMenorLeer = minimo(bytesALeer, block_size-punteroArchivo);
+
+			for (int i = 0; i < tamanioMenorLeer; i++){
 				char* bloqueLecturaString = (char*)mapping2 + punteroDirecto*block_size + punteroArchivo + i;
 				//char bloqueLectura = (char)mapping2 + 6*block_size + 0 + i;
 				//El de abajo lo use de prueba porque se que en ese bloque a esa altura hay algo escrito con seguridad
@@ -921,18 +925,18 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 //				indice++;
 //				bytesALeer--;
 				if(!string_is_empty(bloqueLecturaString)){
-						char bloqueLectura = bloqueLecturaString[0];
-						porcionLeida[i] = bloqueLectura;
-						printf("Char: %c\n", bloqueLectura);
-						printf("PorcionLeida: %c.\n", porcionLeida[i]);
-						indice++;
-						bytesALeer--;
-					}else{
-						porcionLeida[i] = ' ';
-					}
+					char bloqueLectura = bloqueLecturaString[0];
+					porcionLeida[i] = bloqueLectura;
+					printf("Char: %c\n", bloqueLectura);
+					printf("PorcionLeida: %c.\n", porcionLeida[i]);
+				}else{
+					porcionLeida[i] = ' ';
+				}
+				indice++;
+				bytesALeer--;
 			}
 
-			printf("PorcionLeida: %c.\n", porcionLeida[1]);
+			printf("PorcionLeida: %s.\n", porcionLeida);
 
 			while (bytesALeer != 0){
 				int bloque = 0;
@@ -945,29 +949,49 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 				for (int x = 0; x < tamanioMenorLeer ; x++){
 					//char bloqueLectura = (char)mapping2 + block*block_size + x;
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
-					char bloqueLectura = bloqueLecturaString[0];
-					porcionLeida[indice] = bloqueLectura;
-					indice++;
-					bytesALeer--;
+					if(!string_is_empty(bloqueLecturaString)){
+						char bloqueLectura = bloqueLecturaString[0];
+						porcionLeida[indice] = bloqueLectura;
+						printf("Char: %c\n", bloqueLectura);
+						printf("PorcionLeida: %c.\n", porcionLeida[x]);
+						indice++;
+						bytesALeer--;
+					}else{
+						porcionLeida[indice] = ' ';
+						indice++;
+						bytesALeer--;
+					}
 				}
-
 				bloque++;
 			}
 		}else {
 			int bytesALeer = cantBytesRead;
 			int indice = 0;
+			bloqueALeer--;
+
+			tamanioMenorLeer = minimo(bytesALeer, block_size-resto);
+
 			//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloqueALeer*4);
 			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueALeer*4);
 			uint32_t block = atoi(blockChar);
 
-			for (int i = 0; i < cantBytesRead; i++){
+			for (int i = 0; i < tamanioMenorLeer; i++){
+
 				char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + i;
-				char bloqueLectura = bloqueLecturaString[0];
-				porcionLeida[indice] = bloqueLectura;
+
+				if(!string_is_empty(bloqueLecturaString)){
+					char bloqueLectura = bloqueLecturaString[0];
+					porcionLeida[indice] = bloqueLectura;
+					printf("Char: %c\n", bloqueLectura);
+					printf("PorcionLeida: %c.\n", porcionLeida[i]);
+				}else{
+					porcionLeida[indice] = ' ';
+				}
 				indice++;
-				bloqueALeer++;
 				bytesALeer--;
 			}
+
+			bloqueALeer++;
 
 			while (bytesALeer != 0){
 
@@ -978,16 +1002,23 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 
 				for (int x = 0; x < tamanioMenorLeer ; x++){
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
-					char bloqueLectura = bloqueLecturaString[0];
-					porcionLeida[indice] = bloqueLectura;
+
+					if(!string_is_empty(bloqueLecturaString)){
+						char bloqueLectura = bloqueLecturaString[0];
+						porcionLeida[indice] = bloqueLectura;
+						printf("Char: %c\n", bloqueLectura);
+						printf("PorcionLeida: %c.\n", porcionLeida[x]);
+					}else{
+						porcionLeida[indice] = ' ';
+					}
 					indice++;
 					bytesALeer--;
 				}
-
 				bloqueALeer++;
 			}
 		}
-		iniciarHiloCliente(12, porcionLeida, direcFisicaRead, cantBytesRead);
+		char* registro = porcionLeida;
+		iniciarHiloCliente(12, registro, direcFisicaRead, cantBytesRead);
 	}
 	//config_destroy(configFCB);
 }
@@ -1001,6 +1032,8 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 //	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
+
+	//textoLeidoMemoria = "HOLA";
 
 	crearPathArchivo(nombreArchivoOriginal);
 
@@ -1028,6 +1061,7 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 		//SOLICITAR A MEMORIA, suponemos que escribe en una variable global llamada textoLeido
 
 		uint32_t bloqueAEscribir = floor(punteroArchivo / block_size);
+		int resto = punteroArchivo%block_size;
 
 		int	tamanioMenorEscribir;
 
@@ -1039,6 +1073,7 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 			char* porcionAEscribir = string_new();
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
+			printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
 //			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
 			//memcpy(punteroDirecto, porcionAEscribir, sizeof(porcionAEscribir));
 			char* block = (char*)mapping2 + punteroIndirecto*block_size;
@@ -1065,10 +1100,11 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 			}
 		}else {
 			int bytesAEscribir = cantBytesWrite;
+			bloqueAEscribir--;
 			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 			//uint32_t block = atoi(blockChar);
 
-			tamanioMenorEscribir = minimo(bytesAEscribir, block_size-punteroArchivo);
+			tamanioMenorEscribir = minimo(bytesAEscribir, block_size-resto);
 
 			char* porcionAEscribir = string_new();
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
@@ -1082,6 +1118,8 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 
 			while (bytesAEscribir != 0){
 				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
+
+				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
