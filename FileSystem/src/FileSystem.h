@@ -33,6 +33,8 @@ void enviar_handshake_memoria();
 int minimo(int, int);
 char* crearPathArchivoFOpen(char* nombreArchivoOriginal);
 void crearPathArchivo(char* nombreArchivo);
+void encolarInstruccion(int clientefd, char* instruccion, char* nombreArchivo, int punteroArchivo, int cantBytes, int direcFisica);
+void desencolarInstruccion();
 
 void enviar_respuesta(int socket_cliente, char* quien_es);
 

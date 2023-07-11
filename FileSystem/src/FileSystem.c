@@ -6,6 +6,7 @@ t_config* configFCBT;
 t_config* configFCBL;
 t_config* configFCBE;
 int cliente_fd;
+t_queue* colaInstrucciones;
 
 int block_size = 0;
 int block_count = 0;
@@ -17,6 +18,7 @@ void* mapping;
 void* mapping2;
 size_t tamanio_bloques;
 char* textoLeidoMemoria = "";
+int instruccionEjecutando;
 
 int main(void) {
 
@@ -26,6 +28,8 @@ int main(void) {
 	char* p_superbloque = string_new();
 	char* p_bitmap = string_new();
 	char* p_bloques = string_new();
+	colaInstrucciones = queue_create();
+	instruccionEjecutando = -1;
 
 	FILE* archivo_superbloque;
 	FILE* archivo_bitmap;
@@ -360,11 +364,21 @@ void* serverFileSystem(void* ptr){
     			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
     			printf("DENTRO DE F_OPEN\n");
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
+
     			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
-    			abrir_archivo(nombreArchivo);
-    			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
-    			printf("F_OPEN ENVIADO A KERNEL\n");
-    			liberar_conexion(cliente_fd);
+
+				encolarInstruccion(cliente_fd, "F_OPEN", nombreArchivo, 0, 0, 0);
+				printf("6\n");
+
+    			if((!queue_is_empty(colaInstrucciones) && instruccionEjecutando == -1)){
+    				desencolarInstruccion();
+    			}
+    			printf("7\n");
+//    			abrir_archivo(nombreArchivo);
+//    			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
+//
+//    			printf("F_OPEN ENVIADO A KERNEL\n");
+//    			liberar_conexion(cliente_fd);
     			break;
 
     		case F_READ:
@@ -391,14 +405,20 @@ void* serverFileSystem(void* ptr){
     			printf("CantBytes recibida de Kernel: %d\n",cantBytesRead);
     			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaRead);
 
+    			encolarInstruccion(cliente_fd, "F_READ", nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
+
+    			if((!queue_is_empty(colaInstrucciones) && instruccionEjecutando == -1)){
+    				desencolarInstruccion();
+    			}
+
     			//FUNCIÓN F_READ
-    			leerArchivo(nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
-
-    			sem_wait(&semFileSystemClientMemoriaMoveOut);
-
-    			enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
-    			printf("F_READ ENVIADO A KERNEL\n");
-    			liberar_conexion(cliente_fd);
+//    			leerArchivo(nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
+//
+//    			sem_wait(&semFileSystemClientMemoriaMoveOut);
+//
+//    			enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
+//    			printf("F_READ ENVIADO A KERNEL\n");
+//    			liberar_conexion(cliente_fd);
 
     			break;
     		case F_WRITE:
@@ -425,18 +445,24 @@ void* serverFileSystem(void* ptr){
     			printf("CantBytes recibida de Kernel: %d\n",cantBytesWrite);
     			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaWrite);
 
-    			//Le pido a memoria lo que le tengo que escribir
-    			iniciarHiloCliente(11, "", direcFisicaWrite, cantBytesWrite);
+    			encolarInstruccion(cliente_fd, "F_WRITE", nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
 
-    			//Semaforos para esperar la respuesta de Memoria
-    			sem_wait(&semFileSystemClientMemoriaMoveIn);
+    			if(!queue_is_empty(colaInstrucciones) && instruccionEjecutando == -1){
+    				desencolarInstruccion();
+    			}
 
-    			//FUNCIÓN F_WRITE
-    			escribirArchivo(nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
-
-    			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
-    			printf("F_WRITE ENVIADO A KERNEL\n");
-    			liberar_conexion(cliente_fd);
+//    			//Le pido a memoria lo que le tengo que escribir
+//    			iniciarHiloCliente(11, "", direcFisicaWrite, cantBytesWrite);
+//
+//    			//Semaforos para esperar la respuesta de Memoria
+//    			sem_wait(&semFileSystemClientMemoriaMoveIn);
+//
+//    			//FUNCIÓN F_WRITE
+//    			escribirArchivo(nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
+//
+//    			enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
+//    			printf("F_WRITE ENVIADO A KERNEL\n");
+//    			liberar_conexion(cliente_fd);
 
     			break;
     		case F_TRUNCATE:
@@ -455,12 +481,17 @@ void* serverFileSystem(void* ptr){
 
     			nombreArchivo = paqueteTruncate[0];
     			int tamanioArchivo = atoi(paqueteTruncate[1]);
-    			printf("Nombre del archivo: %s.\n",nombreArchivo);
-    			printf("Nuevo tamaño del archivo: %d \n",tamanioArchivo);
-    			truncar_archivo(nombreArchivo, tamanioArchivo);
-    			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
-    			printf("F_TRUNCATE ENVIADO A KERNEL\n");
-    			liberar_conexion(cliente_fd);
+
+    			encolarInstruccion(cliente_fd, "F_TRUNCATE", nombreArchivo, 0, tamanioArchivo, 0);
+
+    			if(!queue_is_empty(colaInstrucciones) && instruccionEjecutando == -1){
+    				desencolarInstruccion();
+    			}
+
+//    			truncar_archivo(nombreArchivo, tamanioArchivo);
+//    			enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
+//    			printf("F_TRUNCATE ENVIADO A KERNEL\n");
+//    			liberar_conexion(cliente_fd);
     			break;
     		case -1:
     			log_error(logger, "\nel cliente se desconecto. Terminando servidor.\n");
@@ -1212,3 +1243,100 @@ int minimo(int a, int b){
 		return b;
 	}
 }
+
+void encolarInstruccion(int clientefd, char* instruccion, char* nombreArchivo, int punteroArchivo, int cantBytes, int direcFisica){
+	t_instruccion* nuevaInstruccion = malloc(sizeof(t_instruccion));
+
+	printf("5\n");
+	nuevaInstruccion->clientefd = clientefd;
+	nuevaInstruccion->instruccion = instruccion;
+	nuevaInstruccion->nombreArchivo = nombreArchivo;
+	nuevaInstruccion->punteroArchivo = punteroArchivo;
+	nuevaInstruccion->cantBytes = cantBytes;
+	nuevaInstruccion->direccionFisica = direcFisica;
+
+	queue_push(colaInstrucciones, nuevaInstruccion);
+	printf("4\n");
+}
+
+void desencolarInstruccion(){
+
+	t_instruccion* siguienteInstruccion = malloc(sizeof(t_instruccion));
+	printf("3\n");
+	siguienteInstruccion = queue_pop(colaInstrucciones);
+	instruccionEjecutando = 1;
+	printf("2\n");
+	int clientefd = siguienteInstruccion->clientefd;
+	char* instruccion = siguienteInstruccion->instruccion;
+	char* nombreArchivo = siguienteInstruccion->nombreArchivo;
+	int punteroArchivo = siguienteInstruccion->punteroArchivo;
+	int cantBytes = siguienteInstruccion->cantBytes;
+	int direcFisica = siguienteInstruccion->direccionFisica;
+
+	printf("1\n");
+	if(string_contains(instruccion, "F_OPEN")){
+
+		abrir_archivo(nombreArchivo);
+
+		enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
+
+		instruccionEjecutando = -1;
+		if(!queue_is_empty(colaInstrucciones)){
+			desencolarInstruccion();
+		}
+
+		printf("F_OPEN ENVIADO A KERNEL\n");
+		liberar_conexion(clientefd);
+
+	}else if (string_contains(instruccion, "F_TRUNCATE")){
+
+		truncar_archivo(nombreArchivo, cantBytes);
+		enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
+
+		instruccionEjecutando = -1;
+		if(!queue_is_empty(colaInstrucciones)){
+			desencolarInstruccion();
+		}
+
+		printf("F_TRUNCATE ENVIADO A KERNEL\n");
+		liberar_conexion(cliente_fd);
+
+	}else if(string_contains(instruccion, "F_READ")){
+		leerArchivo(nombreArchivo, punteroArchivo, cantBytes, direcFisica);
+
+		sem_wait(&semFileSystemClientMemoriaMoveOut);
+
+		enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
+
+		instruccionEjecutando = -1;
+		if(!queue_is_empty(colaInstrucciones)){
+			desencolarInstruccion();
+		}
+
+		printf("F_READ ENVIADO A KERNEL\n");
+		liberar_conexion(cliente_fd);
+
+	}else if(string_contains(instruccion, "F_WRITE")){
+		iniciarHiloCliente(11, "", direcFisica, cantBytes);
+
+		//Semaforos para esperar la respuesta de Memoria
+		sem_wait(&semFileSystemClientMemoriaMoveIn);
+
+		//FUNCIÓN F_WRITE
+		escribirArchivo(nombreArchivo, punteroArchivo, cantBytes, direcFisica);
+
+		enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
+
+		instruccionEjecutando = -1;
+		if(!queue_is_empty(colaInstrucciones)){
+			desencolarInstruccion();
+		}
+
+		printf("F_WRITE ENVIADO A KERNEL\n");
+		liberar_conexion(cliente_fd);
+
+	}
+
+
+}
+

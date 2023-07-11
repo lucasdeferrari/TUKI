@@ -9,6 +9,7 @@
 #include<netdb.h>
 #include<commons/log.h>
 #include<commons/collections/list.h>
+#include <commons/collections/queue.h>
 #include<string.h>
 #include<assert.h>
 #include <math.h>
@@ -55,6 +56,15 @@ typedef struct{
 	int direccionFisica;
 	int tamanio;
 } ClientMemoriaArgs;
+
+typedef struct{
+	int clientefd;
+	char* instruccion;
+	char* nombreArchivo;
+	int direccionFisica;
+	int cantBytes;
+	int punteroArchivo;
+} t_instruccion;
 
 extern t_log* logger;
 
