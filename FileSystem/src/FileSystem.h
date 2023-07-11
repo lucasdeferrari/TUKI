@@ -19,7 +19,7 @@
 char* ip_memoria;
 char* puerto_memoria;
 sem_t semFileSystemServer;
-sem_t semFileSystemClientMemoria;
+sem_t semFileSystemClientMemoriaMoveIn, semFileSystemClientMemoriaMoveOut;
 
 t_list* listaFCB;
 char* recibir_buffer_mio(int socket_cliente);
