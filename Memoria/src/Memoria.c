@@ -340,6 +340,7 @@ void* serverMemoria(void* ptr){
 
     		// ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
     		else if(cod_op == MOV_OUT) {
+    			printf("Dentro de mov_out\n");
     			estaConectadoFS = 1;
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador_mov_out = list_iterator_create(lista);
@@ -365,6 +366,7 @@ void* serverMemoria(void* ptr){
 				sleep_ms(retardoMemoria);
 				printf("ENVIO MOV OUT");
 				enviar_mensaje_cod_operacion("OK",cliente_fd,MOV_OUT);
+
 				estaConectadoFS = 0;
 
     		}

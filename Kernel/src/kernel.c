@@ -225,10 +225,10 @@ void* clientMemoria(void *arg) {
 
         	enviar_paquete(paquete, conexion_Memoria);
 
-        	//printf("CREATE_SEGMENT enviado a MEMORIA.\n");
-        	//printf("pid enviado a Memoria: %s\n", pid);
-        	//printf("idSegmento enviado a Memoria: %s\n", idSegmento);
-        	//printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
+        	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
+        	printf("pid enviado a Memoria: %s\n", pid);
+        	printf("idSegmento enviado a Memoria: %s\n", idSegmento);
+        	printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
 
         	eliminar_paquete(paquete);
         break;
@@ -240,8 +240,8 @@ void* clientMemoria(void *arg) {
     		string_append_with_format(&pidDelete, "%d", estadoEnEjecucion->pid);
     		string_append_with_format(&idSegmentoDelete, "%d", estadoEnEjecucion->idSegmento);
 
-    		//printf("pid enviado a Memoria: %s\n", pidDelete);
-    		//printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
+    		printf("pid enviado a Memoria: %s\n", pidDelete);
+    		printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
 
         	agregar_a_paquete(paquete, pidDelete, strlen(pidDelete)+1);
         	agregar_a_paquete(paquete, idSegmentoDelete, strlen(idSegmentoDelete)+1);
@@ -256,7 +256,7 @@ void* clientMemoria(void *arg) {
     		procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
     		string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
 
-    		//printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
+    		printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
     		enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
 
     	break;
@@ -268,7 +268,7 @@ void* clientMemoria(void *arg) {
     		char* pidNuevoEliminarProceso = string_new();
     		string_append_with_format(&pidNuevoEliminarProceso, "%d", estadoEnEjecucion->pid);
     		sem_post(&semPasarAExit);
-    		//printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
+    		printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
     		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
     		liberar_conexion(conexion_Memoria);
     		return NULL;
@@ -351,35 +351,60 @@ void* clientMemoria(void *arg) {
         	iniciarHiloClienteCPU();
         break;
         case 10:
+
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
         	printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
+        	printf("cantidadElementosSistema: %d\n",cantidadElementosSistema);
+        	t_list* tablaSegmentosCompactacion;
 
-        	for(int i = 0; i<cantidadElementosSistema-1; i++){
-        		//printf("VOY A RECIBIR TABLAS\n");
-        		t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
+        	for(int i = 0; i<cantidadElementosSistema; i++){
 
-        		t_list_iterator* iterador = list_iterator_create(tablaSegmentos);
-        		char* siguiente = list_iterator_next(iterador);
+        		tablaSegmentosCompactacion = recibir_paquete(conexion_Memoria);
+        		printf("PAQUETE RECIBIDO N°%d \n",i+1);
+
+        		char* primerSegmento = list_get(tablaSegmentosCompactacion,0);
+        		//printf("Primer segmento recibido: %s\n",primerSegmento);
+
         		char** arraySegmento = string_array_new();
-        		arraySegmento = string_split(siguiente, " ");
-        		int pid = atoi(arraySegmento[0]);
+        		arraySegmento = string_split(primerSegmento, " ");
+        		int pidCompactacion = atoi(arraySegmento[0]);
+        		printf("PID BUSCADO: %d\n",pidCompactacion);
+        		int cod_op_compactacion = recibir_operacion(conexion_Memoria);
+        		//printf("cod_op: %d\n", cod_op_compactacion);
+
 
         		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-        			printf("PID BUSCADO: %d\n",pid);
-        			printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
 
-        			if(estadoEnEjecucion->pid == pid){
-        				estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+        			printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
+        			if(estadoEnEjecucion->pid == pidCompactacion){
+        				estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosCompactacion);
         				printf("ACTUALICE UNA TABLA\n");
         			}
 
-        			actualizarColaReady(frenteColaReady,tablaSegmentos, pid);
+        			actualizarColaReady(frenteColaReady,tablaSegmentosCompactacion, pidCompactacion);
 
-        			printf("YA VOLVI DE LA FUNCIÓN\n");
+        			if(cantidadElementosBloqueados>0){
+
+    					t_list_iterator* iteradorListaRecursos = list_iterator_create(listaRecursos);
+    					while(list_iterator_has_next(iteradorListaRecursos)){
+
+    						t_recursos* siguiente = list_iterator_next(iteradorListaRecursos);
+
+    						if(!queue_is_empty(siguiente->colaBloqueados)){
+    							actualizarColaBloqueados(siguiente->colaBloqueados->elements,tablaSegmentosCompactacion, pidCompactacion);
+    						}
+
+    					}
+    					list_iterator_destroy(iteradorListaRecursos);
+        			}
+
+
+
+
+
 				}
         		else{
-				//if(strcmp(algoritmo_planificacion,"HHRN") == 0){
-					//printf("VOY A RECIBIR TABLAS\n");
+        			//printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
 					if(estadoEnEjecucion->pid == pid){
 						estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
 						printf("ACTUALICE UNA TABLA\n");
@@ -388,6 +413,7 @@ void* clientMemoria(void *arg) {
 					t_list_iterator* iteradorListaReady = list_iterator_create(listaReady);
 					while(list_iterator_has_next(iteradorListaReady)){
 						t_infopcb* siguiente = list_iterator_next(iteradorListaReady);
+						printf("PID: %d\n",siguiente->pid);
 						if(siguiente->pid == pid){
 							siguiente->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
 							printf("ACTUALICE UNA TABLA\n");
@@ -396,7 +422,7 @@ void* clientMemoria(void *arg) {
 					list_iterator_destroy(iteradorListaReady);
 				}
 
-        		//cod_op = recibir_operacion(conexion_Memoria);
+
         	}
         	printf("COMPATACIÓN REBICIDA.\n");
         	liberar_conexion(conexion_Memoria);
@@ -446,9 +472,10 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 		int baseSegmento = atoi(arraySegmento[2]);
 		int tamanioSegmento = atoi(arraySegmento[3]);
 
-		//printf("idSegmento: %d\n",idSegmento);
-		//printf("baseSegmento: %d\n",baseSegmento);
-		//printf("tamanioSegmento: %d\n",tamanioSegmento);
+//		printf("PID: %d\n",pid);
+//		printf("idSegmento: %d\n",idSegmento);
+//		printf("baseSegmento: %d\n",baseSegmento);
+//		printf("tamanioSegmento: %d\n",tamanioSegmento);
 
 		nuevoSegmento->id = idSegmento;
 		nuevoSegmento->direccionBase = baseSegmento;
@@ -461,7 +488,37 @@ t_list* tablaSegmentosActualizada(t_list* tablaSegmentosRecibida){
 	return tablaSegmentosActualizada;
 }
 
+void actualizarColaReady(t_nodoCola* frenteColaReady,t_list* tablaSegmentos, int pid){
+	//printf("Dentro de la función actualizarColaReady\n");
 
+	while (frenteColaReady != NULL) {
+		printf("PID: %d\n", frenteColaReady->info_pcb->pid);
+		if(frenteColaReady->info_pcb->pid == pid){
+			frenteColaReady->info_pcb->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			printf("ACTUALICE UNA TABLA\n");
+		}
+
+		frenteColaReady = frenteColaReady->sgte;
+	}
+	//printf("SALGO DE LA FUNCION \n");
+}
+
+void actualizarColaBloqueados(t_list* listaProcesos,t_list* tablaSegmentos, int pid){
+	t_list_iterator* iteradorListaProcesos = list_iterator_create(listaProcesos);
+	while(list_iterator_has_next(iteradorListaProcesos)){
+		t_infopcb* siguiente = list_iterator_next(iteradorListaProcesos);
+
+		if(siguiente->pid == pid){
+
+			siguiente->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
+			printf("ACTUALICE UNA TABLA\n");
+		}
+
+	}
+	list_iterator_destroy(iteradorListaProcesos);
+
+
+}
 ///////////////////////////////////// CLIENT FILESYSTEM ////////////////////////////////////////////
 
 void iniciarHiloClienteFileSystem(int cod_fs, t_infopcb* unProceso) {
@@ -1113,7 +1170,7 @@ void manejar_recursos() {
 	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
 
 	if (strcmp(unProceso->ultimaInstruccion, "WAIT") == 0) {
-		printf("Estoy dentro de wait.\n");
+		printf("Estoy dentro de WAIT.\n");
 
 		//log minimo y obligatorio
 		//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, );
@@ -1127,21 +1184,25 @@ void manejar_recursos() {
 				recursoEncontrado++;
 
 				if (recurso->instancias > 0) {
-					printf("recurso asignado %s\n", recurso->recurso);
-					recurso->instancias--;
 
 					//log minimo y obligatorio
 					//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
 
+					//SI HAY INSTANCIAS DEL RECURSO SOLICITADO, SE LO ASIGNO
 					t_recursos* unRecurso;
 					unRecurso = malloc(sizeof(t_recursos));
 					unRecurso->recurso = string_duplicate(recurso->recurso);
 					list_add(unProceso->recursosAsignados, unRecurso);
 
+					printf("recurso asignado %s al proceso %d\n", unRecurso->recurso,unProceso->pid);
+
+					recurso->instancias--;
+
 					encolar_ready_ejecucion(unProceso);
 				}
 				else {
-					printf("proceso bloqueado %s\n", recurso->recurso);
+					//SI HAY INSTANCIAS DEL RECURSO SOLICITADO, BLOQUEO EL PROCESO
+					printf("proceso bloqueado %d por %s\n", unProceso->pid, recurso->recurso);
 					estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
 					//queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
 					queue_push(recurso->colaBloqueados,unProceso);
@@ -1153,7 +1214,7 @@ void manejar_recursos() {
 
 					cantidadElementosBloqueados++;
 
-					printf("Cantidad de elementos bloqueados: %d\n",cantidadElementosBloqueados);
+					//printf("Cantidad de elementos bloqueados: %d\n",cantidadElementosBloqueados);
 
 					if( cantidadElementosBloqueados  == grado_max_multiprogramación){
 						printf("HAY DEADLOCK\n");
@@ -1182,7 +1243,7 @@ void manejar_recursos() {
 		}
 
 		if (recursoEncontrado == 0) {
-			int pid = unProceso->pid;
+			//int pid = unProceso->pid;
 			pasarAExit();
 
 			//Log minimo y obligaotrio
@@ -1198,37 +1259,55 @@ void manejar_recursos() {
 
 		if (string_contains(unProceso->recursoALiberar,recurso->recurso )){
 			recursoEncontrado++;
-			printf("recurso liberado %s\n", recurso->recurso);
-			recurso->instancias++;
+
 
 			//log minimo y obligatorio
 			//log_info(logger, "PID: %d - Signal: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
 
-			list_remove_element(unProceso->recursosAsignados,recurso->recurso);
+			//ME FIJO SI ESTA EN LA LISTA DE RECURSOS DEL PROCESO, Y LO ELIMINO
+			t_list_iterator* iteradorRecursosProceso = list_iterator_create(unProceso->recursosAsignados);
+			while(list_iterator_has_next(iteradorRecursosProceso)){
+				t_recursos* siguiente = list_iterator_next(iteradorRecursosProceso);
 
+				if(siguiente->recurso == recurso->recurso){
 
-			iniciarHiloClienteCPU();
+					int indexRecursoProceso = list_iterator_index(iteradorRecursosProceso);
+					list_remove(unProceso->recursosAsignados,indexRecursoProceso);
+					printf("Recurso eliminado de la lista del proceso\n");
+				}
+
+			}
+			list_iterator_destroy(iteradorRecursosProceso);
+
+			printf("recurso liberado %s\n", recurso->recurso);
+			recurso->instancias++;
+
 			if(!queue_is_empty(recurso->colaBloqueados)) {
-				printf("proceso desbloqueado %s\n", recurso->recurso);
 
 
-				encolar_ready_ejecucion(queue_pop(recurso->colaBloqueados));
-				printf("Después de encolar el proceso desbloqueado\n");
-				//log minimo y obligatorio
-				//log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
+				t_infopcb* procesoALiberar = queue_pop(recurso->colaBloqueados);
 
-				recurso->instancias--;
-
+				//LE ASIGNO EL RECURSO AL PROCESO DESBLOQUEADO
 				t_recursos* unRecurso = malloc(sizeof(t_recursos));
 				unRecurso->recurso = string_new();
 				unRecurso->colaBloqueados = queue_create();
 				unRecurso->instancias = 1;
 				strcpy(unRecurso->recurso,recurso->recurso);
-				list_add(unProceso->recursosAsignados, unRecurso);
-				printf("Después de agregarle el recurso asignado al proceso\n");
+				list_add(procesoALiberar->recursosAsignados, unRecurso);
+
+				encolar_ready_ejecucion(procesoALiberar);
+				printf("Proceso %d desbloqueado por %s\n", procesoALiberar->pid, recurso->recurso);
+
+				//log minimo y obligatorio
+				//log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
+
+				recurso->instancias--;
+
 
 				cantidadElementosBloqueados--;
 				}
+
+				iniciarHiloClienteCPU();
 			}
 		}
 		if (recursoEncontrado == 0) {
@@ -1247,7 +1326,8 @@ void manejar_recursos() {
 	}
 
 	else if (strcmp(unProceso->ultimaInstruccion, "EXIT") == 0) {
-		int pid = unProceso->pid;
+		//int pid = unProceso->pid;
+		printf("PASAR A EXIT PROCESO: %d\n",estadoEnEjecucion->pid);
 		pasarAExit();
 
 		//Log minimo y obligaotrio
@@ -1508,25 +1588,32 @@ void pasarAExit() {
 }
 
 void liberarRecursosAsignados(){
-	int cantidadRecursos = list_size(estadoEnEjecucion->recursosAsignados);
-	int i,j;
 	int tamanio_listaRecursos = list_size(listaRecursos);
 
-	for(i=0; i<cantidadRecursos; i++){
-		t_recursos* structALiberar = list_get(estadoEnEjecucion->recursosAsignados, i);
-		char* recursoALiberar = structALiberar->recurso;
 
-		for(j=0;j<tamanio_listaRecursos;j++){
-			t_recursos* recurso = list_get(listaRecursos, i);
+	t_list_iterator* iteradorRecursosProceso = list_iterator_create(estadoEnEjecucion->recursosAsignados);
 
-			if(string_contains(recurso->recurso,recursoALiberar)){
-				recurso->instancias++;
-				printf("Recurso liberado: %s\n",recursoALiberar);
+
+	while(list_iterator_has_next(iteradorRecursosProceso)){
+		t_recursos* recursoProceso = list_iterator_next(iteradorRecursosProceso);
+		//printf("Recurso a liberar: %s\n",recursoProceso->recurso);
+
+		t_list_iterator* iteradorRecursos = list_iterator_create(listaRecursos);
+		while(list_iterator_has_next(iteradorRecursos)){
+			t_recursos* recursoLista= list_iterator_next(iteradorRecursos);
+
+			if(string_contains(recursoLista->recurso,recursoProceso->recurso) ){
+				recursoLista->instancias++;
+				printf("Recurso liberado: %s\n",recursoLista->recurso);
 			}
-
 		}
+		list_iterator_destroy(iteradorRecursos);
 
 	}
+
+
+	list_iterator_destroy(iteradorRecursosProceso);
+
 }
 
 
@@ -2047,21 +2134,6 @@ void mostrarCola(t_nodoCola* frenteColaNew) {
     }
 }
 
-void actualizarColaReady(t_nodoCola* frenteColaReady,t_list* tablaSegmentos, int pid){
-	//printf("Dentro de la función actualizarColaReady\n");
-	printf("PID BUSCADO: %d\n", pid);
-	while (frenteColaReady != NULL) {
-		printf("PID: %d\n", frenteColaReady->info_pcb->pid);
-		if(frenteColaReady->info_pcb->pid == pid){
-			printf("ENCONTRE EL PID\n");
-			frenteColaReady->info_pcb->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-			printf("ACTUALICE UNA TABLA\n");
-		}
-
-		frenteColaReady = frenteColaReady->sgte;
-	}
-	//printf("SALGO DE LA FUNCION \n");
-}
 
 int cantidadElementosCola(t_nodoCola* frenteCola) {
     int contador = 0;

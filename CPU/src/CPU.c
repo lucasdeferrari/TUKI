@@ -159,7 +159,6 @@ void* clientMemoria(void *arg) {
             case 12:  //RECIBO UN OK
             	char* respuesta = recibir_handshake(conexion_Memoria);
             	printf("Respuesta MOV_OUT: %s\n",respuesta);
-            	liberar_conexion(conexion_Memoria);
             break;
     		default:
     			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");

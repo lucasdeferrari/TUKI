@@ -507,7 +507,6 @@ void* clientMemoria(void* arg) {
 	char* registro = args->registro;
 	int tamanio = args->tamanio;
 
-	int config = 1;
     int conexion_Memoria;
     conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
 
@@ -580,15 +579,16 @@ void* clientMemoria(void* arg) {
 
 
     int cod_op = recibir_operacion(conexion_Memoria);
+
     switch (cod_op) {
     	case 11:
-    		textoLeidoMemoria = recibir_handshake(cliente_fd);
+    		textoLeidoMemoria = recibir_handshake(conexion_Memoria);
     		sem_post(&semFileSystemClientMemoriaMoveIn);
     	break;
         case 12:  //RECIBO UN OK
-            char* respuesta = recibir_handshake(cliente_fd);
-            printf("Respuesta MOV_OUT: %s\n",respuesta);
-            sem_post(&semFileSystemClientMemoriaMoveOut);
+        	char* respuesta = recibir_handshake(conexion_Memoria);
+        	printf("Respuesta MOV_OUT: %s\n",respuesta);
+        	sem_post(&semFileSystemClientMemoriaMoveOut);
         break;
         default:
         	log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
