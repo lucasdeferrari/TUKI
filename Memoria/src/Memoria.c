@@ -289,7 +289,7 @@ void* serverMemoria(void* ptr){
     		}
 
     		else if(cod_op == COMPACTAR_MEMORIA) {
-    			log_info(logger, "Solicitud de Compactación");
+    			log_info(logger, "Solicitud de Compactación\n");
     			compactar_memoria();
     			sleep_ms(retardoCompactacion);
     			enviarTodasLasTablas(cliente_fd);
@@ -301,7 +301,7 @@ void* serverMemoria(void* ptr){
     			int pid2Int = atoi(pid2);
 
     			eliminar_proceso(pid2Int);
-    			log_info(logger, "Eliminación de Proceso PID: %d", pid2Int);
+    			log_info(logger, "Eliminación de Proceso PID: %d\n", pid2Int);
     		}
 
     		else if(cod_op == MOV_IN) {
@@ -334,7 +334,7 @@ void* serverMemoria(void* ptr){
 				}
     			//memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
     			//printf("destino array:%s\n ", destinoArray[0]);
-    			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisica, tamanio, quienMeHabla);
+    			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisica, tamanio, quienMeHabla);
 
     			sleep_ms(retardoMemoria);
     			enviar_mensaje_cod_operacion(&destinoArray,cliente_fd,MOV_IN);
@@ -368,7 +368,7 @@ void* serverMemoria(void* ptr){
 					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  &valorRegistro[i], sizeof(valorRegistro[0]));
 				     }
 
-				log_info(logger, "PID: %s - Acción: ESCRIBIR - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisicaRecibida, tamanio, quienMeHabla);
+				log_info(logger, "PID: %s - Acción: ESCRIBIR - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisicaRecibida, tamanio, quienMeHabla);
 				sleep_ms(retardoMemoria);
 				//printf("ENVIO MOV OUT");
 				enviar_mensaje_cod_operacion("OK",cliente_fd,MOV_OUT);
@@ -389,7 +389,7 @@ void* serverMemoria(void* ptr){
     		}
 
     		else {
-    			log_warning(logger,"\nOperacion desconocida");
+    			log_warning(logger,"\nOperacion desconocida\n");
     		}
 
     }
@@ -435,7 +435,7 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 		tablaDeSegmentos = crearTablaSegmentosDe(pid);
 
 		//EMPAQUETAR LA TABLA Y ENVIAR A KERNEL
-		log_info(logger, "Creación de Proceso PID: %d", pid);
+		log_info(logger, "Creación de Proceso PID: %d\n", pid);
 		t_paquete* paquete = empaquetarTabla(tablaDeSegmentos->pid, tablaDeSegmentos->segmentos, TABLA_SEGMENTOS);
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
@@ -472,7 +472,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 			list_add(segmentos,segmento);
 		}
 	base = segmento->base;
-	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, segmento->base, tamanio);
+	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu\n", idProceso, idSegmento, segmento->base, tamanio);
 	//printf("CREATE_SEGMENT.\n");
 	return CREATE_SEGMENT;
 }
@@ -667,7 +667,7 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 						juntarHuecosContiguos();
 						list_iterator_remove(iterador2);
 						list_remove_element(segmentos,segmentoSiguiente);
-						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu",id_proceso, id_segmento,segmentoSiguiente->base,segmentoSiguiente ->desplazamiento);
+						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu\n",id_proceso, id_segmento,segmentoSiguiente->base,segmentoSiguiente ->desplazamiento);
 					}
 
 				}
@@ -719,7 +719,7 @@ void compactar_memoria() {
 				int pid = buscarIdMemoria(proximoSegmento->idSegmentoMemoria);
 				int iteradorIndex = list_iterator_index(iterador2);
 				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento, iteradorIndex);
-				log_info(logger,"PID: %d - Segmento: %d - Base: %zu - Tamaño %zu", pid, proximoSegmento->idSegmentoKernel, proximoSegmento->base, proximoSegmento->desplazamiento);
+				log_info(logger,"PID: %d - Segmento: %d - Base: %zu - Tamaño %zu\n", pid, proximoSegmento->idSegmentoKernel, proximoSegmento->base, proximoSegmento->desplazamiento);
 
 			}
 		}

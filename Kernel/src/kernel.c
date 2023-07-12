@@ -51,7 +51,7 @@ int main(void) {
 
     //THREAD SERVER
     server_fd = iniciar_servidor();
-    log_info(logger, "Kernel listo para escuchar al cliente\n");
+    //log_info(logger, "Kernel listo para escuchar al cliente\n");
 
     while(1){
     	iniciarHiloServer(server_fd);
@@ -122,7 +122,7 @@ int iniciarHiloServer(int server_fd) {
 
 void* serverKernel(int cliente_fd){
 
-    log_info(logger, "Kernel listo para recibir al cliente");
+    //log_info(logger, "Kernel listo para recibir al cliente");
 
     t_list* lista;
    while (1) {
@@ -131,19 +131,19 @@ void* serverKernel(int cliente_fd){
     		case MENSAJE:
     			char* handshake = recibir_handshake(cliente_fd);
     			if (strcmp(handshake, "consola") == 0) {
-    				log_info(logger, "Se conecto una consola");
+    				//log_info(logger, "Se conecto una consola");
     				//cosas de consola
     			}
     			if (strcmp(handshake, "kernel") == 0) {
-    				log_info(logger, "Se conecto el kernel");
+    				//log_info(logger, "Se conecto el kernel");
     				//cosas de kernel
     			}
     			if (strcmp(handshake, "CPU") == 0) {
-    				log_info(logger, "Se conecto la cpu");
+    				//log_info(logger, "Se conecto la cpu");
     				//cosas de cpu
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
-    				log_info(logger, "Se conecto el filesystem");
+    				//log_info(logger, "Se conecto el filesystem");
     				//cosas de fs
     			}
     			break;
@@ -156,15 +156,15 @@ void* serverKernel(int cliente_fd){
     			//cosas de consola
     			}
     			if (strcmp(handshake, "memoria") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
+    				//log_info(logger, "Iniciando procedimiento al recibir un paquete de KERNEL");
     				//cosas de kernel
     			}
     			if (strcmp(handshake, "CPU") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
+    				//log_info(logger, "Iniciando procedimiento al recibir un paquete de CPU");
     				//cosas de cpu
     			}
     			if (strcmp(handshake, "filesystem") == 0) {
-    				log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
+    				//log_info(logger, "Iniciando procedimiento al recibir un paquete de FILESYSTEM");
     				//cosas de fs
     			}
     			break;
@@ -263,7 +263,8 @@ void* clientMemoria(void *arg) {
 
     	break;
     	case 4: //compactar memoria
-    		printf("solicito compactacion\n");
+    		//printf("solicito compactacion\n");
+    		log_info(logger, "Compactación: Se solicitó compactación");
     		enviar_mensaje_cod_operacion("",conexion_Memoria,4);
     	break;
     	case 9: //Eliminar proceso
@@ -335,6 +336,7 @@ void* clientMemoria(void *arg) {
         	iniciarHiloClienteCPU();
         break;
         case 7:
+        	//Log minimo y obligaotrio
     		log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", estadoEnEjecucion->pid);
         	liberar_conexion(conexion_Memoria);
         	pasarAExit();
@@ -353,7 +355,7 @@ void* clientMemoria(void *arg) {
         	iniciarHiloClienteCPU();
         break;
         case 10:
-
+        	log_info(logger, "Se finalizó el proceso de compactación");
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
         	printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
         	printf("cantidadElementosSistema: %d\n",cantidadElementosSistema);
@@ -399,10 +401,6 @@ void* clientMemoria(void *arg) {
     					}
     					list_iterator_destroy(iteradorListaRecursos);
         			}
-
-
-
-
 
 				}
         		else{
@@ -1234,10 +1232,8 @@ void manejar_recursos() {
 	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
 
 	if (strcmp(unProceso->ultimaInstruccion, "WAIT") == 0) {
-		printf("Estoy dentro de WAIT.\n");
+		//printf("Estoy dentro de WAIT.\n");
 
-		//log minimo y obligatorio
-		//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, );
 
 		int i,tamanio_lista = list_size(listaRecursos);
 		int recursoEncontrado = 0;
@@ -1249,8 +1245,7 @@ void manejar_recursos() {
 
 				if (recurso->instancias > 0) {
 
-					//log minimo y obligatorio
-					//log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
+
 
 					//SI HAY INSTANCIAS DEL RECURSO SOLICITADO, SE LO ASIGNO
 					t_recursos* unRecurso;
@@ -1258,23 +1253,24 @@ void manejar_recursos() {
 					unRecurso->recurso = string_duplicate(recurso->recurso);
 					list_add(unProceso->recursosAsignados, unRecurso);
 
-					printf("recurso asignado %s al proceso %d\n", unRecurso->recurso,unProceso->pid);
+					//printf("recurso asignado %s al proceso %d\n", unRecurso->recurso,unProceso->pid);
 
 					recurso->instancias--;
-
+					//log minimo y obligatorio
+					log_info(logger, "PID: %d - Wait: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
 					encolar_ready_ejecucion(unProceso);
 				}
 				else {
 					//SI HAY INSTANCIAS DEL RECURSO SOLICITADO, BLOQUEO EL PROCESO
-					printf("proceso bloqueado %d por %s\n", unProceso->pid, recurso->recurso);
+					//printf("proceso bloqueado %d por %s\n", unProceso->pid, recurso->recurso);
 					estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
 					//queue(&recurso->frenteBloqueados, &recurso->finBloqueados, unProceso);
 					queue_push(recurso->colaBloqueados,unProceso);
 
 					//log minimo y obligatorio
-					//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
 					//log minimo y obligatorio
-					//log_info(logger, "PID: %d - Bloqueado por: %s>\n", unProceso->pid, unProceso->recursoSolicitado);
+					log_info(logger, "PID: %d - Bloqueado por: %s>\n", unProceso->pid, unProceso->recursoSolicitado);
 
 					cantidadElementosBloqueados++;
 
@@ -1308,10 +1304,10 @@ void manejar_recursos() {
 
 		if (recursoEncontrado == 0) {
 			//int pid = unProceso->pid;
+			//Log minimo y obligaotrio
+			log_info(logger, "Finaliza el proceso %d - Motivo: Recurso no encontrado\n", unProceso->pid);
 			pasarAExit();
 
-			//Log minimo y obligaotrio
-			//log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
 		}
 	}
 
@@ -1326,7 +1322,7 @@ void manejar_recursos() {
 
 
 			//log minimo y obligatorio
-			//log_info(logger, "PID: %d - Signal: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
+			log_info(logger, "PID: %d - Signal: %s - Instancias: %d\n", unProceso->pid, unProceso->recursoSolicitado, recurso->instancias);
 
 			//ME FIJO SI ESTA EN LA LISTA DE RECURSOS DEL PROCESO, Y LO ELIMINO
 			t_list_iterator* iteradorRecursosProceso = list_iterator_create(unProceso->recursosAsignados);
@@ -1337,14 +1333,16 @@ void manejar_recursos() {
 
 					int indexRecursoProceso = list_iterator_index(iteradorRecursosProceso);
 					list_remove(unProceso->recursosAsignados,indexRecursoProceso);
-					printf("Recurso eliminado de la lista del proceso\n");
+					//printf("Recurso eliminado de la lista del proceso\n");
+
 				}
 
 			}
 			list_iterator_destroy(iteradorRecursosProceso);
 
-			printf("recurso liberado %s\n", recurso->recurso);
+			//printf("recurso liberado %s\n", recurso->recurso);
 			recurso->instancias++;
+			log_info(logger, "PID: %d - Signal: %s - Instancias: %d",unProceso->pid, recurso->recurso, recurso->instancias);
 
 			if(!queue_is_empty(recurso->colaBloqueados)) {
 
@@ -1360,10 +1358,10 @@ void manejar_recursos() {
 				list_add(procesoALiberar->recursosAsignados, unRecurso);
 
 				encolar_ready_ejecucion(procesoALiberar);
-				printf("Proceso %d desbloqueado por %s\n", procesoALiberar->pid, recurso->recurso);
+				//printf("Proceso %d desbloqueado por %s\n", procesoALiberar->pid, recurso->recurso);
 
 				//log minimo y obligatorio
-				//log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
+				log_info(logger, "PID: %d - Estado Anterior: Bloqueado - Estado Actual: Ready\n", unProceso->pid);
 
 				recurso->instancias--;
 
@@ -1375,12 +1373,12 @@ void manejar_recursos() {
 			}
 		}
 		if (recursoEncontrado == 0) {
-			printf("No se encontró el recurso\n");
+			//printf("No se encontró el recurso\n");
 			//int pid = unProceso->pid;
+			//Log minimo y obligaotrio
+			log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
 			pasarAExit();
 
-			//Log minimo y obligaotrio
-			//log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
 		}
 	}
 
@@ -1391,16 +1389,18 @@ void manejar_recursos() {
 
 	else if (strcmp(unProceso->ultimaInstruccion, "EXIT") == 0) {
 		//int pid = unProceso->pid;
-		printf("PASAR A EXIT PROCESO: %d\n",estadoEnEjecucion->pid);
+		//printf("PASAR A EXIT PROCESO: %d\n",estadoEnEjecucion->pid);
+		//Log minimo y obligaotrio
+		log_info(logger, "Finaliza el proceso &d - Motivo: SUCCESS\n", unProceso->pid);
 		pasarAExit();
 
-		//Log minimo y obligaotrio
-		//log_info(logger, "Finaliza el proceso &d - Motivo: SUCCESS\n", unProceso->pid);
+
+
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
 		//log minimo y obligatorio
-		//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
-		//log_info(logger, "PID: %d - Bloqueado por: I/O>\n", unProceso->pid);
+		log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+		log_info(logger, "PID: %d - Bloqueado por: I/O>\n", unProceso->pid);
 		iniciarHiloIO();
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_OPEN") == 0) {
@@ -1424,8 +1424,8 @@ void manejar_recursos() {
 		    	t_infoTablaGlobalArchivos* siguiente = list_iterator_next(iterador);
 		    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
 		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
-		    		printf("Proceso %d bloqueado en la tabla global de archivos: %s\n",unProceso->pid,siguiente->nombreArchivo);
-
+		    		//printf("Proceso %d bloqueado en la tabla global de archivos: %s\n",unProceso->pid,siguiente->nombreArchivo);
+		    		log_info(logger, "PID: %d - Bloqueado por: %s", unProceso->pid, unProceso->nombreArchivo);
 		    	}
 //		    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
 //		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
@@ -1496,7 +1496,8 @@ void manejar_recursos() {
 				//Desbloqueo y encolo en Ready el proceso desbloqueado
 				t_infopcb* procesoDesbloqueado = queue_pop(archivoGlobalEncontrado->colaProcesosBloqueados);
 				encolar_ready_ejecucion(procesoDesbloqueado);
-				printf("Archivo desbloqueado %s y proceso %d encolado en Ready.\n",archivoGlobalEncontrado->nombreArchivo,procesoDesbloqueado->pid);
+				log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY", procesoDesbloqueado->pid);
+				//printf("Archivo desbloqueado %s y proceso %d encolado en Ready.\n",archivoGlobalEncontrado->nombreArchivo,procesoDesbloqueado->pid);
 			}
 
 	    desencolarReady();
@@ -1586,7 +1587,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
 
 		//log minimo y obligatorio
-		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> );
+		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> in);
 
 		iniciarHiloClienteMemoria(2);
 	}
@@ -1598,7 +1599,8 @@ void manejar_recursos() {
 		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
 
 	}else if (strcmp(unProceso->ultimaInstruccion, "SEG_FAULT") == 0) {
-
+		//Log minimo y obligaotrio
+		log_info(logger, "Finaliza el proceso %d - Motivo: SEG_FAULT", unProceso->pid);
 		pasarAExit();
 	}
 	else{
@@ -1617,7 +1619,7 @@ void pasarAExit() {
 	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
 	sem_wait(&semPasarAExit);
 	//Log minimo y obligatorio
-	//log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Exit\n", estadoEnEjecucion->pid);
+	log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Exit\n", estadoEnEjecucion->pid);
 
 	//Si la cola de ready tiene elementos desencolar, si esta vacia pasar pid de estadoEnEjecucion a -1
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
@@ -1723,29 +1725,31 @@ void* interrupcionIO(void* ptr) {
 
 		if( !list_is_empty(listaReady) ){
 			desencolarReady();
-			printf("Lista no vacia, proceso desencolado de ready \n");
+			//printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
 
 	sleep_ms(unProceso->tiempoBloqueado);
 
 	//Log minimo y obligatorio
-	//log_info(logger, "“PID: %d - Ejecuta IO: %d\n", unProceso->pid, unProceso->tiempoBloqueado);
+	log_info(logger, "“PID: %d - Ejecuta IO: %d\n", unProceso->pid, unProceso->tiempoBloqueado);
 
 
-	printf("Proceso desbloqueado: %d\n",unProceso->pid);
+	//printf("Proceso desbloqueado: %d\n",unProceso->pid);
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		//printf("PID DEL ESTADO EJ EJECUCION: %d\n",estadoEnEjecucion->pid);
 		if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 			encolar_ready_ejecucion(unProceso);
-			printf("Después del tiempo bloqueado, proceso encolado en Ready: %d\n",unProceso->pid);
+			log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY",unProceso->pid );
+			//printf("Después del tiempo bloqueado, proceso encolado en Ready: %d\n",unProceso->pid);
 			desencolarReady();
-			printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+			//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 		}
 		else{
 			encolar_ready_ejecucion(unProceso);
-			printf("ENCOLE EN READY DESDE IO\n");
+			log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY",unProceso->pid );
+			//printf("ENCOLE EN READY DESDE IO\n");
 		}
 	}
 	else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
@@ -1753,18 +1757,20 @@ void* interrupcionIO(void* ptr) {
 
 		if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 			encolar_ready_ejecucion(unProceso);
-			printf("Después del tiempo bloqueado, proceso encolado en Ready\n");
+			log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY",unProceso->pid );
+			//printf("Después del tiempo bloqueado, proceso encolado en Ready\n");
 			desencolarReady();
-			printf("Lista vacia, proceso desencolado de ready \n");
+			//printf("Lista vacia, proceso desencolado de ready \n");
 		}
 		else{
 			encolar_ready_ejecucion(unProceso);
-			printf("ENCOLE EN READY DESDE IO\n");
+			log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY",unProceso->pid );
+			//printf("ENCOLE EN READY DESDE IO\n");
 		}
 	}
 
 	//Log minimo y obligaotrio
-	//log_info(logger, "PID: %d - Estado Anterior: I/O - Estado Actual: Ready\n", unProceso->pid);
+	log_info(logger, "PID: %d - Estado Anterior: I/O - Estado Actual: Ready\n", unProceso->pid);
 
 	return NULL;
 }
@@ -1862,7 +1868,7 @@ void armarPCB(t_list* lista){
 	printf("PCB encolado en NEW\n");
 
 	//Log minimo y obligatorio
-	//log_info(logger, "Se crea el proceso %d en NEW\n", nuevoPCB->pid);
+	log_info(logger, "Se crea el proceso %d en NEW\n", nuevoPCB->pid);
 
 	//printf("Cola NEW:\n");
 	//mostrarCola(frenteColaNew);
@@ -1980,6 +1986,7 @@ void encolar_ready_ejecucion(t_infopcb* proceso) {
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 		list_add(listaReady, unProceso);
+		//log_info("Cola Ready HRRN: %d %d %d %d", lisaready)
 		unProceso->entraEnColaReady = tomarTiempo();
 	}
 	return;
@@ -1998,10 +2005,10 @@ void desencolarReady (){
 		//printf("Cola READY:\n");
 		//mostrarCola(frenteColaReady);
 
-		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
+		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		//log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
 	}
 
 
@@ -2039,11 +2046,11 @@ void desencolarReady (){
 		iniciarHiloClienteCPU();
 		list_remove(listaReady,pidMaxRafaga);
 
-		printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
-		printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
+		//printf("Proceso pasado a estadoEnEjecucion por HRRN. \n");
+		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		//log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
 
 		//CALCULA CUANDO SE VA DE KERNEL
 		estadoEnEjecucion->empiezaAEjecutar = tomarTiempo();

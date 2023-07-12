@@ -33,7 +33,7 @@ int main(void) {
     //thread server
 
 	server_fd = iniciar_servidor();
-	log_info(logger, "CPU lista para escuchar al cliente\n");
+	//log_info(logger, "CPU lista para escuchar al cliente\n");
 
 	while(1){
 		iniciarHiloServer();
@@ -102,11 +102,12 @@ void* clientMemoria(void *arg) {
 
             	enviar_paquete(paquete, conexion_Memoria);
 
-            	printf("MOV_IN enviado a MEMORIA.\n");
-            	printf("pid enviado a Memoria: %s\n", pidMI);
-            	printf("quienSoy enviado a Memoria: %s\n", CPUMI);
-            	printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
-            	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
+            	direcFisicaLog = direcFisica;
+//            	printf("MOV_IN enviado a MEMORIA.\n");
+//            	printf("pid enviado a Memoria: %s\n", pidMI);
+//            	printf("quienSoy enviado a Memoria: %s\n", CPUMI);
+//            	printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
+//            	printf("tamanio enviado a Memoria: %s\n", tamanioMI);
 
             	eliminar_paquete(paquete);
 
@@ -132,12 +133,15 @@ void* clientMemoria(void *arg) {
 
 				enviar_paquete(paquete, conexion_Memoria);
 
-				printf("MOV_OUT enviado a MEMORIA.\n");
-				printf("pid enviado a MEMORIA: %s\n", pidMO);
-				printf("quienSoy enviado a MEMORIA: %s\n", CPUMO);
-				printf("valorRegistro enviado a MEMORIA: %s\n", valorRegistroMO);
-				printf("direcFisica enviado a MEMORIA: %s\n", direcFisicaMO);
-				printf("tamanio enviado a MEMORIA: %s\n", tamanioMO);
+				direcFisicaLog = direcFisica;
+				valorAEscribirLog = valorRegistroMO;
+
+//				printf("MOV_OUT enviado a MEMORIA.\n");
+//				printf("pid enviado a MEMORIA: %s\n", pidMO);
+//				printf("quienSoy enviado a MEMORIA: %s\n", CPUMO);
+//				printf("valorRegistro enviado a MEMORIA: %s\n", valorRegistroMO);
+//				printf("direcFisica enviado a MEMORIA: %s\n", direcFisicaMO);
+//				printf("tamanio enviado a MEMORIA: %s\n", tamanioMO);
 
                 eliminar_paquete(paquete);
 
@@ -148,17 +152,17 @@ void* clientMemoria(void *arg) {
     		break;
         }
     int cod_op = recibir_operacion(conexion_Memoria);
-    printf("RECIBO OPERACION MEMORIA: %d\n", cod_op);
+    //printf("RECIBO OPERACION MEMORIA: %d\n", cod_op);
     switch (cod_op) {
     		case 11: //MOV_IN, RECIBO EL CONTENIDO DE LA DIRECFISICA Y LO SETTEO EN EL REGISTRO
     			char* valorLeido = recibir_handshake(conexion_Memoria);
     			set_tp(registro,valorLeido);
-    			printf("VALOR DEL REGISTRO %s: %s\n",registro,contexto->registrosCpu.BX);
+    			log_info(logger, "PID: %d - Acción: <LEER> - Segmento: %d - Dirección Física: %d - Valor leido: %s", contexto->pid, numSegmentoLog, direcFisica, valorLeido);
     			liberar_conexion(conexion_Memoria);
     		break;
             case 12:  //RECIBO UN OK
             	char* respuesta = recibir_handshake(conexion_Memoria);
-            	printf("Respuesta MOV_OUT: %s\n",respuesta);
+            	log_info(logger, "PID: %d - Acción: <ESCRIBIR> - Segmento: %d - Dirección Física: %d - Valor escrito: %s", contexto->pid, numSegmentoLog, direcFisica, valorAEscribirLog);
             break;
     		default:
     			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");
@@ -272,14 +276,14 @@ void iniciarHiloServer() {
 	  printf("No se pudo crear el hilo de la conexión kernel-CPU \n");
 	  exit(7);
 	 }
-	 printf("El hilo de la conexión kernel-CPU se creo correctamente.\n");
+	 //printf("El hilo de la conexión kernel-CPU se creo correctamente.\n");
 }
 
 void* serverCPU(void* ptr){
 
 
     //int server_fd = iniciar_servidor();
-	log_info(logger, "CPU lista para recibir al cliente");
+	//log_info(logger, "CPU lista para recibir al cliente");
 	cliente_fd = esperar_cliente(server_fd);
     int contadorContexto = 0;
     t_list* lista;
@@ -293,7 +297,7 @@ void* serverCPU(void* ptr){
     			break;
     		case PAQUETE:
     			lista = recibir_paquete(cliente_fd);
-    			log_info(logger, "Me llegaron los siguientes valores:\n");
+    			//log_info(logger, "Me llegaron los siguientes valores:\n");
     			list_iterate(lista, (void*) iterator);
     			list_destroy(lista);
     			break;
@@ -352,7 +356,7 @@ void* serverCPU(void* ptr){
 
     			break;
     		case -1:
-    			log_error(logger, "el kernel se desconecto. Terminando servidor\n");
+    			//log_error(logger, "el kernel se desconecto. Terminando servidor\n");
     			return EXIT_FAILURE;
 			default:
 				log_warning(logger,"Operacion desconocida. No quieras meter la pata\n");
@@ -465,7 +469,7 @@ void iniciar_ejecucion(){
 		char* proximaInstruccion = string_new();
 		proximaInstruccion = list_get(contexto->listaInstrucciones, contexto->programCounter);
 
-		printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
+		//printf("INSTRUCCION A EJECUTAR: %s\n", proximaInstruccion );
 
 		//ejecutarFuncion: ejecuta la función que corresponde y retorna un int para saber si debe seguir ejecutando
 		continuarLeyendo = ejecutarFuncion(proximaInstruccion);
@@ -642,7 +646,7 @@ void serializarContexto(int unSocket){
 	send(unSocket, a_enviar, buffer->size + sizeof(int) +sizeof(op_code), 0);
 
 
-	printf("Contexto actualizado enviado a KERNEL. \n");
+	//printf("Contexto actualizado enviado a KERNEL. \n");
 
 	//free memoria dinámica
 	free(contexto->instruccion);
@@ -681,46 +685,44 @@ int ejecutarFuncion(char* proximaInstruccion){
 
 		set_tp(setParam1, setParam2);
 
-		//TENEMOS QUE HACER QUE EL CONTECTO TENGA PID Y VER TIPO DEL DATO DEL PARAMETRO
 		//log minimo y obligatorio
-		//log_info(logger, "PID: %d - Ejecutando: SET - [%s, %s]\n", contexto->pid, setParam1, setParam2);
+		log_info(logger, "PID: %d - Ejecutando: SET - [%s, %s]\n", contexto->pid, setParam1, setParam2);
 
 		free(setParam1);
 		free(setParam2);
 		continuarLeyendo = 1;
 
 
-
     } else if (  string_contains(nombreInstruccion,"YIELD")  ) {
     	yield_tp();
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: YIELD\n", contexto->pid;
+    	log_info(logger, "PID: %d - Ejecutando: YIELD\n", contexto->pid);
     } else if (string_contains(nombreInstruccion,"EXIT")) {
     	exit_tp();
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: EXIT\n", contexto->pid);
+    	log_info(logger, "PID: %d - Ejecutando: EXIT\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "I/O") == 0) {
     	int ioParam = atoi(arrayInstruccion[1]);
     	i_o_tp(ioParam);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: I/O - [%s]\n", contexto->pid, ioParam);
+    	log_info(logger, "PID: %d - Ejecutando: I/O - [%d]\n", contexto->pid, ioParam);
     } else if (strcmp(nombreInstruccion, "WAIT") == 0) {
     	char* recursoWait = string_new();
     	recursoWait = string_duplicate(arrayInstruccion[1]);
     	wait_tp(recursoWait);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: WAIT - [%s]\n", contexto->pid, recursoWait);
+    	log_info(logger, "PID: %d - Ejecutando: WAIT - [%s]\n", contexto->pid, recursoWait);
     } else if (strcmp(nombreInstruccion, "SIGNAL") == 0) {
     	char* recursoSignal = string_new();
     	recursoSignal = string_duplicate(arrayInstruccion[1]);
     	signal_tp(recursoSignal);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: SIGNAL - [%s]\n", contexto->pid, recursoSignal);
+    	log_info(logger, "PID: %d - Ejecutando: SIGNAL - [%s]\n", contexto->pid, recursoSignal);
     } else if (strcmp(nombreInstruccion, "MOV_IN") == 0) {
 
     	char* mov_in_param1 = string_new();
@@ -729,14 +731,14 @@ int ejecutarFuncion(char* proximaInstruccion){
     	int mov_in_param2 = atoi(arrayInstruccion[2]);
 
     	int direcFisica= mov_in_tp(mov_in_param1,mov_in_param2);
+    	//log minimo y obligatorio
+    	log_info(logger, "PID: %d - Ejecutando: MOV_IN - [%s, %d]\n", contexto->pid, mov_in_param1, mov_in_param2);
     	free(mov_in_param1);
 
     	if(direcFisica>=0){
     		continuarLeyendo = 1;
     	}
 
-    	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: MOV_IN\n", contexto->pid);
     } else if (strcmp(nombreInstruccion, "MOV_OUT") == 0) {
 
     	int mov_out_param1 = atoi(arrayInstruccion[1]);
@@ -753,23 +755,23 @@ int ejecutarFuncion(char* proximaInstruccion){
     	}
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: MOV_OUT\n", contexto->pid);
+    	log_info(logger, "PID: %d - Ejecutando: MOV_OUT - [%d, %s]\n", contexto->pid, mov_out_param1, mov_out_param2);
+
     } else if (strcmp(nombreInstruccion, "F_OPEN") == 0) {
     	char* fopenParam1 = string_new();
     	fopenParam1 = string_duplicate(arrayInstruccion[1]);
-    	fopen_tp(fopenParam1);
-
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_OPEN - [%s]\n", contexto->pid, fopenParam1);
-
+    	 log_info(logger, "PID: %d - Ejecutando: F_OPEN - [%s]\n", contexto->pid, fopenParam1);
+    	fopen_tp(fopenParam1);
     	free(fopenParam1);
+
     } else if (strcmp(nombreInstruccion, "F_CLOSE") == 0) {
     	char* fcloseParam1 = string_new();
     	fcloseParam1 = string_duplicate(arrayInstruccion[1]);
     	fclose_tp(fcloseParam1);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_CLOSE - [%s]\n", contexto->pid, fcloseParam1);
+    	log_info(logger, "PID: %d - Ejecutando: F_CLOSE - [%s]\n", contexto->pid, fcloseParam1);
 
     	free(fcloseParam1);
     } else if (strcmp(nombreInstruccion, "F_SEEK") == 0) {
@@ -779,7 +781,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	fseek_tp(fseekParam1,fseekParam2);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_SEEK - [%s, %s]\n", contexto->pid, fseekParam1, fseekParam2);
+    	log_info(logger, "PID: %d - Ejecutando: F_SEEK - [%s, %d]\n", contexto->pid, fseekParam1, fseekParam2);
 
     	free(fseekParam1);
     } else if (strcmp(nombreInstruccion, "F_READ") == 0) {
@@ -792,7 +794,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	fread_tp(freadParam1,freadParam2,freadParam3);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_READ - [%s, %s, %s]\n", contexto->pid, freadParam1, freadParam2, freadParam3);
+    	log_info(logger, "PID: %d - Ejecutando: F_READ - [%s, %d, %d]\n", contexto->pid, freadParam1, freadParam2, freadParam3);
 
     	free(freadParam1);
     } else if (strcmp(nombreInstruccion, "F_WRITE") == 0) {
@@ -805,7 +807,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	fwrite_tp(fwriteParam1,fwriteParam2,fwriteParam3);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_WRITE - [%s, %s, %s]\n", contexto->pid, fwriteParam1, fwriteParam2, fwriteParam3);
+    	log_info(logger, "PID: %d - Ejecutando: F_WRITE - [%s, %d, %d]\n", contexto->pid, fwriteParam1, fwriteParam2, fwriteParam3);
 
     	free(fwriteParam1);
     } else if (strcmp(nombreInstruccion, "F_TRUNCATE") == 0) {
@@ -815,7 +817,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	ftruncate_tp(ftruncateParam1,ftruncateParam2);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: F_TRUNCATE - [%s, %s]\n", contexto->pid, ftruncateParam1, ftruncateParam2);
+    	log_info(logger, "PID: %d - Ejecutando: F_TRUNCATE - [%s, %d]\n", contexto->pid, ftruncateParam1, ftruncateParam2);
 
     	free(ftruncateParam1);
     } else if (strcmp(nombreInstruccion, "CREATE_SEGMENT") == 0) {
@@ -825,7 +827,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	createSeg_tp(createParam1,createParam2);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: CREATE_SEGMENT - [%s, %s]\n", contexto->pid, createParam1, createParam2);
+    	log_info(logger, "PID: %d - Ejecutando: CREATE_SEGMENT - [%d, %d]\n", contexto->pid, createParam1, createParam2);
 
     } else if (strcmp(nombreInstruccion, "DELETE_SEGMENT") == 0) {
     	int deleteParam1 = atoi(arrayInstruccion[1]);
@@ -833,7 +835,7 @@ int ejecutarFuncion(char* proximaInstruccion){
     	deleteSeg_tp(deleteParam1);
 
     	//log minimo y obligatorio
-    	//log_info(logger, "PID: %d - Ejecutando: DELETE_SEGMENT - [%s]\n", contexto->pid, deleteParam1);
+    	log_info(logger, "PID: %d - Ejecutando: DELETE_SEGMENT - [%d]\n", contexto->pid, deleteParam1);
     } else {
         printf("Instruccion no reconocida.\n");
     }
@@ -884,8 +886,9 @@ int MMU(int direcLogica, int cantBytes){
 	int num_segmento = floor(direcLogica / tam_max_segmento);
 	int desplazamiento_segmento = direcLogica % tam_max_segmento;
 
-	printf("num_segmento: %d\n",num_segmento); // = al id del segmento
-	printf("desplazamiento_segmento: %d\n",desplazamiento_segmento);
+	numSegmentoLog = num_segmento;
+//	printf("num_segmento: %d\n",num_segmento); // = al id del segmento
+//	printf("desplazamiento_segmento: %d\n",desplazamiento_segmento);
 
 	if(  (desplazamiento_segmento + cantBytes) > tam_max_segmento  ){
 		log_info(logger, "PID: %d - Error SEG_FAULT- Segmento: %d - Offset: %d - Tamaño: %d\n", contexto->pid, num_segmento, desplazamiento_segmento, cantBytes);
@@ -1010,7 +1013,7 @@ void fwrite_tp(char* archivo, int direcLogica, int cantBytes){
 	if (direcFisica == -1){
 		contexto->instruccion = string_duplicate("SEG_FAULT");
 	}else if(direcFisica == -2){
-		printf("ERROR AL CALCULAR LA DIRECCION FÍSICA");
+		//printf("ERROR AL CALCULAR LA DIRECCION FÍSICA");
 	}
 	else{
 		contexto->direcFisicaArchivo = direcFisica;
@@ -1068,56 +1071,56 @@ void signal_tp(char* recurso) {
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
 void set_tp(char* registro, char* valor){
 	sleep_ms(retardo_instruccion);
-	printf("REGISTRO A SETEAR: %s\n", registro);
-	printf("VALOR A SETEAR: %s\n", valor);
+//	printf("REGISTRO A SETEAR: %s\n", registro);
+//	printf("VALOR A SETEAR: %s\n", valor);
 
 	if (strcmp(registro, "AX") == 0) {
 		strcpy(contexto->registrosCpu.AX,valor);
-		printf("AX MODIFICADO\n");
+//		printf("AX MODIFICADO\n");
 
 	} else if (strcmp(registro, "BX") == 0) {
 		strcpy(contexto->registrosCpu.BX,valor);
-		printf("BX MODIFICADO\n");
+//		printf("BX MODIFICADO\n");
 
 	} else if (strcmp(registro, "CX") == 0) {
 		strcpy(contexto->registrosCpu.CX,valor);
-		printf("CX MODIFICADO\n");
+//		printf("CX MODIFICADO\n");
 
 	} else if (strcmp(registro, "DX") == 0) {
 		strcpy(contexto->registrosCpu.DX,valor);
-		printf("DX MODIFICADO\n");
+//		printf("DX MODIFICADO\n");
 
 	} else if (strcmp(registro, "EAX") == 0) {
 		strcpy(contexto->registrosCpu.EAX,valor);
-		printf("EAX MODIFICADO\n");
+//		printf("EAX MODIFICADO\n");
 
 	} else if (strcmp(registro, "EBX") == 0) {
 		strcpy(contexto->registrosCpu.EBX,valor);
-		printf("EBX MODIFICADO\n");
+//		printf("EBX MODIFICADO\n");
 
 	} else if (strcmp(registro, "ECX") == 0) {
 		strcpy(contexto->registrosCpu.ECX,valor);
-		printf("ECX MODIFICADO\n");
+//		printf("ECX MODIFICADO\n");
 
 	} else if (strcmp(registro, "EDX") == 0) {
 		strcpy(contexto->registrosCpu.EDX,valor);
-		printf("EDX MODIFICADO\n");
+//		printf("EDX MODIFICADO\n");
 
 	} else if (strcmp(registro, "RAX") == 0) {
 		strcpy(contexto->registrosCpu.RAX,valor);
-		printf("RAX MODIFICADO\n");
+//		printf("RAX MODIFICADO\n");
 
 	} else if (strcmp(registro, "RBX") == 0) {
 		strcpy(contexto->registrosCpu.RBX,valor);
-		printf("RBX MODIFICADO\n");
+//		printf("RBX MODIFICADO\n");
 
 	} else if (strcmp(registro, "RCX") == 0) {
 		strcpy(contexto->registrosCpu.RCX,valor);
-		printf("RCX MODIFICADO\n");
+//		printf("RCX MODIFICADO\n");
 
 	} else if (strcmp(registro, "RDX") == 0) {
 		strcpy(contexto->registrosCpu.RDX,valor);
-		printf("RDX MODIFICADO\n");
+//		printf("RDX MODIFICADO\n");
 	} else {
 		printf("Registro no válido.\n");
 	}
