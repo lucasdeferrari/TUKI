@@ -127,10 +127,18 @@ int main(void) {
     printf("File descriptor: %i\n" , fd);
 
     // Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
-	off_t result = lseek(fd, block_count - 1, SEEK_SET);
+//	off_t result = lseek(fd, block_count - 1, SEEK_SET);
+//	if (result == -1) {
+//		perror("Error al ajustar el tamaño del archivo");
+//		exit(1);
+//	}
+
+	int result = ftruncate(fd, block_count/8);
 	if (result == -1) {
 		perror("Error al ajustar el tamaño del archivo");
 		exit(1);
+	}else if (result == 0 ){
+		printf("El tamanio del archivo se modifico correctamente");
 	}
 
 	// Escribir un byte nulo al final del archivo para que ocupe espacio
@@ -692,7 +700,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 
 			printf("El nombre del archivo es: %s\n", nomArch);
 
-			printf("El archivo FCB se ha creado exitosamente.\n");
+			log_info(logger, "Crear Archivo: <%s>\n", nombreArchivo);
 
 		    fclose(archivo_fcb);
 		} else {
@@ -705,7 +713,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 	//config_destroy(configFCB);
 }
 
-void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
+void truncar_archivo(char* nombreArchivo, int tamanio){
 
 //	int largo = string_length(nombreArchivoOriginal) - 1;
 //	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
@@ -714,7 +722,17 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 
-	crearPathArchivo(nombreArchivoOriginal);
+	char listaBits[block_count];
+	listaBits[0] = '1';
+	int y = 1;
+
+	while(y < block_count){
+		listaBits[y] = '0';
+		y++;
+	}
+
+
+	crearPathArchivo(nombreArchivo);
 
 	printf("El path es: %s\n", p_fcb);
 
@@ -748,7 +766,7 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 	//if (configFCBT != NULL) {
 
     	snprintf(tam, sizeof(tam), "%d", tamanio);
-		config_set_value(configFCB, "TAMANIO_ARCHIVO", tam);
+		config_set_value(configFCBT, "TAMANIO_ARCHIVO", tam);
 
 		printf("tamanio %d\n", tamanio);
 		printf("block_size %d\n", block_size);
@@ -813,16 +831,19 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 
 				if (cantidadBloquesNecesarios == 0){
 					bitarray_clean_bit(bitarray_mapeado, punteroDirecto);
+					log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", punteroDirecto, 0);
 				}
 
 				if(cantidadBloquesNecesarios <= 1){
 					bitarray_clean_bit(bitarray_mapeado, punteroIndirecto);
+					log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", punteroIndirecto, 0);
 				}
 
 				while (i < diferencia){
 					char* blockALiberarChar = (char*)mapping2 + punteroIndirecto*block_size + (bloquesALiberar*4);
 					int blockALiberar = atoi(blockALiberarChar);
 					bitarray_clean_bit(bitarray_mapeado, blockALiberar);
+					log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", blockALiberar, 0);
 					i++;
 					bloquesALiberar--;
 				}
@@ -842,9 +863,14 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 				int i = 0;
 				while (i < diferencia){
 					uint32_t bloqueNuevo = 1;
-					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+
+					while(listaBits[bloqueNuevo] != '0'){
 						bloqueNuevo++;
 					}
+
+//					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+//						bloqueNuevo++;
+//					}
 
 					printf("BloqueNuevo %u\n", bloqueNuevo);
 
@@ -852,12 +878,21 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 						punteroDirecto = bloqueNuevo;
 						char pd[20];
 				    	snprintf(pd, sizeof(pd), "%d", punteroDirecto);
-						config_set_value(configFCB, "PUNTERO_DIRECTO", pd);
-						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						config_set_value(configFCBT, "PUNTERO_DIRECTO", pd);
+						//bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
+
 						printf("BloqueNuevoPD %u\n", bloqueNuevo);
-						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+
+						//AGREGADO SOLO PARA LAS PRUEBAS
+						listaBits[bloqueNuevo] = '1';
+						while(listaBits[bloqueNuevo] != '0'){
 							bloqueNuevo++;
 						}
+
+//						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+//							bloqueNuevo++;
+//						}
 						i++;
 					}
 
@@ -865,12 +900,19 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 						punteroIndirecto = bloqueNuevo;
 						char pi[20];
 						snprintf(pi, sizeof(pi), "%d", punteroIndirecto);
-						config_set_value(configFCB, "PUNTERO_INDIRECTO", pi);
-						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						config_set_value(configFCBT, "PUNTERO_INDIRECTO", pi);
+						//bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
 						printf("BloqueNuevoPI %u\n", bloqueNuevo);
-						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+
+						listaBits[bloqueNuevo] = '1';
+						while(listaBits[bloqueNuevo] != '0'){
 							bloqueNuevo++;
 						}
+
+//						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
+//							bloqueNuevo++;
+//						}
 					}
 
 					if (diferencia > i){
@@ -881,9 +923,13 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 						printf("BloqueNuevoPII %u\n", bloqueNuevo);
 						//memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
 						sprintf(block, "%d", bloqueNuevo);
-						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
-						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
-						printf("El valor del bit %u es %i\n", bloqueNuevo, valor);
+//						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
+
+						listaBits[bloqueNuevo] = '1';
+
+//						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
+//						printf("El valor del bit %u es %i\n", bloqueNuevo, valor);
 						i++;
 						cantidadBloquesActual++;
 					}
@@ -896,7 +942,7 @@ void truncar_archivo(char* nombreArchivoOriginal, int tamanio){
 }
 
 //FALTA MANDAR A MEMORIA
-void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
+void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
 //	Esta operación deberá leer la información correspondiente de los bloques a partir del puntero y el
 //	tamaño recibidos. Esta información se deberá enviar a la Memoria para ser escrita a partir de la
 //	dirección física recibida por parámetro y esperar su finalización para poder confirmar el éxito de
@@ -906,12 +952,13 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 //	string_append(&p_fcb, nombreArchivo);
 //	string_append(&p_fcb, ".config");
 //
-	crearPathArchivo(nombreArchivoOriginal);
+	crearPathArchivo(nombreArchivo);
 
 	configFCBL = config_create(p_fcb);
 
 	int punteroIndirecto = 0;
 	int punteroDirecto = 0;
+
 
 	if (configFCBL == NULL) {
 		printf("No se pudo crear el config.\n");
@@ -944,6 +991,9 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 
 			for (int i = 0; i < tamanioMenorLeer; i++){
 				char* bloqueLecturaString = (char*)mapping2 + punteroDirecto*block_size + punteroArchivo + i;
+
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
+
 				//char bloqueLectura = (char)mapping2 + 6*block_size + 0 + i;
 				//El de abajo lo use de prueba porque se que en ese bloque a esa altura hay algo escrito con seguridad
 				//char* bloqueLecturaString = (char*)mapping2 + 6*block_size + 0 + i;
@@ -980,6 +1030,7 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 				for (int x = 0; x < tamanioMenorLeer ; x++){
 					//char bloqueLectura = (char)mapping2 + block*block_size + x;
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
+					log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%u>\n", nombreArchivo, bloque, block);
 					if(!string_is_empty(bloqueLecturaString)){
 						char bloqueLectura = bloqueLecturaString[0];
 						porcionLeida[indice] = bloqueLectura;
@@ -1009,6 +1060,7 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 			for (int i = 0; i < tamanioMenorLeer; i++){
 
 				char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + i;
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
 
 				if(!string_is_empty(bloqueLecturaString)){
 					char bloqueLectura = bloqueLecturaString[0];
@@ -1034,6 +1086,8 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 				for (int x = 0; x < tamanioMenorLeer ; x++){
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
 
+					log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
+
 					if(!string_is_empty(bloqueLecturaString)){
 						char bloqueLectura = bloqueLecturaString[0];
 						porcionLeida[indice] = bloqueLectura;
@@ -1054,7 +1108,7 @@ void leerArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesR
 	//config_destroy(configFCB);
 }
 
-void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
+void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
 //	Se deberá solicitar a la Memoria la información que se encuentra a partir de la dirección física y
 //	escribirlo en los bloques correspondientes del archivo a partir del puntero recibido.
 //	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
@@ -1066,7 +1120,7 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 
 	//textoLeidoMemoria = "HOLA";
 
-	crearPathArchivo(nombreArchivoOriginal);
+	crearPathArchivo(nombreArchivo);
 
 	configFCBE = config_create(p_fcb);
 
@@ -1107,7 +1161,10 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 			printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
 //			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
 			//memcpy(punteroDirecto, porcionAEscribir, sizeof(porcionAEscribir));
-			char* block = (char*)mapping2 + punteroIndirecto*block_size;
+			char* block = (char*)mapping2 + punteroDirecto*block_size;
+
+			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
+
 			sprintf(block, "%s", porcionAEscribir);
 
 			bytesAEscribir -= tamanioMenorEscribir;
@@ -1117,7 +1174,11 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 				int bloque = 0;
 				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 
-				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloque*4);
+				char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloque*4);
+				uint32_t bloqueAE = atoi(bloqueAEs);
+				char* blockChar = (char*)mapping2 + bloqueAE*block_size;
+
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%s>\n", nombreArchivo, bloque+2, bloqueAEs);
 				//uint32_t block = atoi(blockChar);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
@@ -1132,7 +1193,13 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 		}else {
 			int bytesAEscribir = cantBytesWrite;
 			bloqueAEscribir--;
-			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+
+			///char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+			char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+			uint32_t bloqueAE = atoi(bloqueAEs);
+			char* blockChar = (char*)mapping2 + bloqueAE*block_size + punteroArchivo;
+
+			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir+2, bloqueAEs);
 			//uint32_t block = atoi(blockChar);
 
 			tamanioMenorEscribir = minimo(bytesAEscribir, block_size-resto);
@@ -1150,7 +1217,12 @@ void escribirArchivo(char* nombreArchivoOriginal, int punteroArchivo, int cantBy
 			while (bytesAEscribir != 0){
 				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 
-				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+				//char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+				char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+				uint32_t bloqueAE = atoi(bloqueAEs);
+				char* blockChar = (char*)mapping2 + bloqueAE*block_size;
+
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir, bloqueAEs);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
@@ -1259,6 +1331,7 @@ void encolarInstruccion(int clientefd, char* instruccion, char* nombreArchivo, i
 	printf("4\n");
 }
 
+
 void desencolarInstruccion(){
 
 	t_instruccion* siguienteInstruccion = malloc(sizeof(t_instruccion));
@@ -1278,6 +1351,8 @@ void desencolarInstruccion(){
 
 		abrir_archivo(nombreArchivo);
 
+		log_info(logger, "Abrir Archivo: <%s>\n", nombreArchivo);
+
 		enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
 
 		instruccionEjecutando = -1;
@@ -1291,6 +1366,9 @@ void desencolarInstruccion(){
 	}else if (string_contains(instruccion, "F_TRUNCATE")){
 
 		truncar_archivo(nombreArchivo, cantBytes);
+
+		log_info(logger, "Truncar Archivo: <%s> - Tamaño: <%d>\n", nombreArchivo, cantBytes);
+
 		enviar_mensaje_cod_operacion("",cliente_fd,F_TRUNCATE);
 
 		instruccionEjecutando = -1;
@@ -1305,6 +1383,8 @@ void desencolarInstruccion(){
 		leerArchivo(nombreArchivo, punteroArchivo, cantBytes, direcFisica);
 
 		sem_wait(&semFileSystemClientMemoriaMoveOut);
+
+		log_info(logger, "Leer Archivo: <%s> - Puntero: <%d> - Memoria: <%d> - Tamaño: <%d>\n", nombreArchivo, punteroArchivo, direcFisica, cantBytes);
 
 		enviar_mensaje_cod_operacion("",cliente_fd,F_READ);
 
@@ -1324,6 +1404,8 @@ void desencolarInstruccion(){
 
 		//FUNCIÓN F_WRITE
 		escribirArchivo(nombreArchivo, punteroArchivo, cantBytes, direcFisica);
+
+		log_info(logger, "Escribir Archivo: <%s> - Puntero: <%d> - Memoria: <%d> - Tamaño: <%d>\n", nombreArchivo, punteroArchivo, direcFisica, cantBytes);
 
 		enviar_mensaje_cod_operacion("",cliente_fd,F_WRITE);
 
