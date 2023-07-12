@@ -754,6 +754,7 @@ void* clientFileSystem(void *arg) {
 			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+				printf("PID DEL ESTADO EN EJECUCION: %d\n",estadoEnEjecucion->pid);
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
 					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
@@ -762,6 +763,7 @@ void* clientFileSystem(void *arg) {
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
+					printf("Hay algun proceso ejecutandose\n");
 					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
 				}
 			}
@@ -1431,6 +1433,7 @@ void manejar_recursos() {
 //		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
 //		    	}
 		    }
+		    estadoEnEjecucion->pid = -1;
 
 		    //Desencolo ready si es que hay algun proceso en la lista
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
