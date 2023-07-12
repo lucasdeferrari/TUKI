@@ -77950,3 +77950,238 @@ el cliente se desconecto. Terminando servidor
 [INFO] 14:39:16:043 Memoria/(61722:61812): Eliminación de Proceso PID: 1
 [ERROR] 14:39:16:043 Memoria/(61722:61812): 
 el cliente se desconecto. Terminando servidor
+[INFO] 20:05:07:215 Memoria/(70386:70386): Listo para escuchar al cliente
+[INFO] 20:05:09:651 Memoria/(70386:70387): Se conecto un cliente!
+[INFO] 20:05:12:513 Memoria/(70386:70390): Se conecto un cliente!
+[INFO] 20:05:15:416 Memoria/(70386:70394): Se conecto un cliente!
+[INFO] 20:05:15:416 Memoria/(70386:70386): Se conectaron todos los modulos.
+
+[INFO] 20:05:15:416 Memoria/(70386:70386): Se crearon todas las estructuras correctamente.
+
+[INFO] 20:05:23:643 Memoria/(70386:70398): Se conecto un cliente!
+[INFO] 20:05:23:644 Memoria/(70386:70398): Creación de Proceso PID: 1
+
+[INFO] 20:05:23:655 Memoria/(70386:70407): Se conecto un cliente!
+[INFO] 20:05:23:655 Memoria/(70386:70407): Creación de Proceso PID: 2
+
+[INFO] 20:05:24:656 Memoria/(70386:70411): Se conecto un cliente!
+[INFO] 20:05:24:656 Memoria/(70386:70411): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:26:658 Memoria/(70386:70413): Se conecto un cliente!
+[INFO] 20:05:26:658 Memoria/(70386:70413): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:28:661 Memoria/(70386:70415): Se conecto un cliente!
+[INFO] 20:05:28:661 Memoria/(70386:70415): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:30:663 Memoria/(70386:70417): Se conecto un cliente!
+[INFO] 20:05:30:664 Memoria/(70386:70417): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:32:665 Memoria/(70386:70419): Se conecto un cliente!
+[INFO] 20:05:32:665 Memoria/(70386:70419): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:34:668 Memoria/(70386:70421): Se conecto un cliente!
+[INFO] 20:05:34:668 Memoria/(70386:70421): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:35:693 Memoria/(70386:70423): Se conecto un cliente!
+[INFO] 20:05:35:693 Memoria/(70386:70423): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:05:36:701 Memoria/(70386:70449): Se conecto un cliente!
+[INFO] 20:05:36:702 Memoria/(70386:70449): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:05:38:708 Memoria/(70386:70453): Se conecto un cliente!
+[INFO] 20:05:38:711 Memoria/(70386:70453): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 20:05:39:714 Memoria/(70386:70458): Se conecto un cliente!
+[INFO] 20:05:39:715 Memoria/(70386:70458): Eliminación de Proceso PID: 2
+
+[INFO] 20:05:39:753 Memoria/(70386:70462): Se conecto un cliente!
+[INFO] 20:05:39:753 Memoria/(70386:70462): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:05:40:771 Memoria/(70386:70477): Se conecto un cliente!
+[INFO] 20:05:40:772 Memoria/(70386:70477): Eliminación de Proceso PID: 1
+
+[INFO] 20:06:14:940 Memoria/(70386:70484): Se conecto un cliente!
+[INFO] 20:06:14:941 Memoria/(70386:70484): Creación de Proceso PID: 3
+
+[INFO] 20:06:14:950 Memoria/(70386:70492): Se conecto un cliente!
+[INFO] 20:06:14:950 Memoria/(70386:70492): Creación de Proceso PID: 4
+
+[INFO] 20:06:14:955 Memoria/(70386:70499): Se conecto un cliente!
+[INFO] 20:06:14:955 Memoria/(70386:70499): Creación de Proceso PID: 5
+
+[INFO] 20:06:14:965 Memoria/(70386:70509): Se conecto un cliente!
+[INFO] 20:06:14:965 Memoria/(70386:70509): Creación de Proceso PID: 6
+
+[INFO] 20:06:14:966 Memoria/(70386:70514): Se conecto un cliente!
+[INFO] 20:06:14:966 Memoria/(70386:70514): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:06:15:972 Memoria/(70386:70520): Se conecto un cliente!
+[INFO] 20:06:15:972 Memoria/(70386:70520): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:06:16:973 Memoria/(70386:70526): Se conecto un cliente!
+[INFO] 20:06:16:974 Memoria/(70386:70526): PID: 3 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:06:18:977 Memoria/(70386:70528): Se conecto un cliente!
+[INFO] 20:06:18:978 Memoria/(70386:70528): PID: 5 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:06:20:985 Memoria/(70386:70532): Se conecto un cliente!
+[INFO] 20:06:20:986 Memoria/(70386:70532): Eliminación de Proceso PID: 3
+
+[INFO] 20:06:20:999 Memoria/(70386:70538): Se conecto un cliente!
+[INFO] 20:06:20:999 Memoria/(70386:70538): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:06:22:004 Memoria/(70386:70552): Se conecto un cliente!
+[INFO] 20:06:22:005 Memoria/(70386:70552): Eliminación de Proceso PID: 5
+
+[INFO] 20:06:22:009 Memoria/(70386:70556): Se conecto un cliente!
+[INFO] 20:06:22:010 Memoria/(70386:70556): PID: 5 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:06:24:011 Memoria/(70386:70558): Se conecto un cliente!
+[INFO] 20:06:24:011 Memoria/(70386:70558): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:08:09:455 Memoria/(70589:70589): Listo para escuchar al cliente
+[INFO] 20:08:11:977 Memoria/(70589:70590): Se conecto un cliente!
+[INFO] 20:08:16:478 Memoria/(70589:70593): Se conecto un cliente!
+[INFO] 20:08:19:796 Memoria/(70589:70614): Se conecto un cliente!
+[INFO] 20:08:19:796 Memoria/(70589:70589): Se conectaron todos los modulos.
+
+[INFO] 20:08:19:797 Memoria/(70589:70589): Se crearon todas las estructuras correctamente.
+
+[INFO] 20:08:22:314 Memoria/(70589:70618): Se conecto un cliente!
+[INFO] 20:08:22:315 Memoria/(70589:70618): Creación de Proceso PID: 1
+
+[INFO] 20:08:22:326 Memoria/(70589:70626): Se conecto un cliente!
+[INFO] 20:08:22:326 Memoria/(70589:70626): Creación de Proceso PID: 2
+
+[INFO] 20:08:23:326 Memoria/(70589:70630): Se conecto un cliente!
+[INFO] 20:08:23:327 Memoria/(70589:70630): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:25:328 Memoria/(70589:70632): Se conecto un cliente!
+[INFO] 20:08:25:328 Memoria/(70589:70632): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:27:331 Memoria/(70589:70634): Se conecto un cliente!
+[INFO] 20:08:27:332 Memoria/(70589:70634): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:29:335 Memoria/(70589:70636): Se conecto un cliente!
+[INFO] 20:08:29:335 Memoria/(70589:70636): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:31:337 Memoria/(70589:70638): Se conecto un cliente!
+[INFO] 20:08:31:337 Memoria/(70589:70638): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:33:340 Memoria/(70589:70640): Se conecto un cliente!
+[INFO] 20:08:33:341 Memoria/(70589:70640): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:34:382 Memoria/(70589:70643): Se conecto un cliente!
+[INFO] 20:08:34:383 Memoria/(70589:70643): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:08:35:387 Memoria/(70589:70668): Se conecto un cliente!
+[INFO] 20:08:35:387 Memoria/(70589:70668): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:08:37:389 Memoria/(70589:70672): Se conecto un cliente!
+[INFO] 20:08:37:389 Memoria/(70589:70672): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 20:08:38:393 Memoria/(70589:70678): Se conecto un cliente!
+[INFO] 20:08:38:394 Memoria/(70589:70678): Eliminación de Proceso PID: 2
+
+[INFO] 20:08:38:430 Memoria/(70589:70680): Se conecto un cliente!
+[INFO] 20:08:38:430 Memoria/(70589:70680): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:08:39:437 Memoria/(70589:70697): Se conecto un cliente!
+[INFO] 20:08:39:437 Memoria/(70589:70697): Eliminación de Proceso PID: 1
+
+[INFO] 20:08:57:515 Memoria/(70706:70706): Listo para escuchar al cliente
+[INFO] 20:08:58:840 Memoria/(70706:70707): Se conecto un cliente!
+[INFO] 20:09:00:257 Memoria/(70706:70710): Se conecto un cliente!
+[INFO] 20:09:01:535 Memoria/(70706:70714): Se conecto un cliente!
+[INFO] 20:09:01:535 Memoria/(70706:70706): Se conectaron todos los modulos.
+
+[INFO] 20:09:01:535 Memoria/(70706:70706): Se crearon todas las estructuras correctamente.
+
+[INFO] 20:09:03:660 Memoria/(70706:70718): Se conecto un cliente!
+[INFO] 20:09:03:660 Memoria/(70706:70718): Creación de Proceso PID: 1
+
+[INFO] 20:09:03:664 Memoria/(70706:70726): Se conecto un cliente!
+[INFO] 20:09:03:667 Memoria/(70706:70726): Creación de Proceso PID: 2
+
+[INFO] 20:09:03:673 Memoria/(70706:70732): Se conecto un cliente!
+[INFO] 20:09:03:673 Memoria/(70706:70732): Creación de Proceso PID: 3
+
+[INFO] 20:09:03:678 Memoria/(70706:70740): Se conecto un cliente!
+[INFO] 20:09:03:679 Memoria/(70706:70740): Creación de Proceso PID: 4
+
+[INFO] 20:09:03:684 Memoria/(70706:70746): Se conecto un cliente!
+[INFO] 20:09:03:684 Memoria/(70706:70746): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:11:42:635 Memoria/(70775:70775): Listo para escuchar al cliente
+[INFO] 20:11:43:744 Memoria/(70775:70776): Se conecto un cliente!
+[INFO] 20:11:45:565 Memoria/(70775:70779): Se conecto un cliente!
+[INFO] 20:11:46:598 Memoria/(70775:70783): Se conecto un cliente!
+[INFO] 20:11:46:599 Memoria/(70775:70775): Se conectaron todos los modulos.
+
+[INFO] 20:11:46:599 Memoria/(70775:70775): Se crearon todas las estructuras correctamente.
+
+[INFO] 20:11:48:893 Memoria/(70775:70787): Se conecto un cliente!
+[INFO] 20:11:48:893 Memoria/(70775:70787): Creación de Proceso PID: 1
+
+[INFO] 20:11:48:901 Memoria/(70775:70795): Se conecto un cliente!
+[INFO] 20:11:48:901 Memoria/(70775:70795): Creación de Proceso PID: 2
+
+[INFO] 20:11:49:903 Memoria/(70775:70799): Se conecto un cliente!
+[INFO] 20:11:49:903 Memoria/(70775:70799): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:11:51:905 Memoria/(70775:70801): Se conecto un cliente!
+[INFO] 20:11:51:905 Memoria/(70775:70801): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:11:53:908 Memoria/(70775:70803): Se conecto un cliente!
+[INFO] 20:11:53:908 Memoria/(70775:70803): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:11:55:911 Memoria/(70775:70805): Se conecto un cliente!
+[INFO] 20:11:55:911 Memoria/(70775:70805): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:11:57:913 Memoria/(70775:70807): Se conecto un cliente!
+[INFO] 20:11:57:913 Memoria/(70775:70807): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:11:59:915 Memoria/(70775:70809): Se conecto un cliente!
+[INFO] 20:11:59:915 Memoria/(70775:70809): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:12:00:953 Memoria/(70775:70811): Se conecto un cliente!
+[INFO] 20:12:00:954 Memoria/(70775:70811): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:12:01:960 Memoria/(70775:70836): Se conecto un cliente!
+[INFO] 20:12:01:961 Memoria/(70775:70836): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 20:12:03:967 Memoria/(70775:70841): Se conecto un cliente!
+[INFO] 20:12:03:968 Memoria/(70775:70841): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 20:12:04:973 Memoria/(70775:70846): Se conecto un cliente!
+[INFO] 20:12:04:974 Memoria/(70775:70846): Eliminación de Proceso PID: 2
+
+[INFO] 20:12:04:983 Memoria/(70775:70851): Se conecto un cliente!
+[INFO] 20:12:04:984 Memoria/(70775:70851): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 20:12:06:002 Memoria/(70775:70867): Se conecto un cliente!
+[INFO] 20:12:06:003 Memoria/(70775:70867): Eliminación de Proceso PID: 1
+
+[INFO] 20:12:30:135 Memoria/(70874:70874): Listo para escuchar al cliente
+[INFO] 20:12:31:239 Memoria/(70874:70875): Se conecto un cliente!
+[INFO] 20:12:32:648 Memoria/(70874:70878): Se conecto un cliente!
+[INFO] 20:12:33:812 Memoria/(70874:70882): Se conecto un cliente!
+[INFO] 20:12:33:813 Memoria/(70874:70874): Se conectaron todos los modulos.
+
+[INFO] 20:12:33:813 Memoria/(70874:70874): Se crearon todas las estructuras correctamente.
+
+[INFO] 20:12:35:553 Memoria/(70874:70886): Se conecto un cliente!
+[INFO] 20:12:35:553 Memoria/(70874:70886): Creación de Proceso PID: 1
+
+[INFO] 20:12:35:558 Memoria/(70874:70895): Se conecto un cliente!
+[INFO] 20:12:35:559 Memoria/(70874:70895): Creación de Proceso PID: 2
+
+[INFO] 20:12:35:567 Memoria/(70874:70899): Se conecto un cliente!
+[INFO] 20:12:35:568 Memoria/(70874:70899): Creación de Proceso PID: 3
+
+[INFO] 20:12:35:575 Memoria/(70874:70912): Se conecto un cliente!
+[INFO] 20:12:35:576 Memoria/(70874:70912): Creación de Proceso PID: 4
+
+[INFO] 20:12:35:578 Memoria/(70874:70916): Se conecto un cliente!
+[INFO] 20:12:35:578 Memoria/(70874:70916): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+

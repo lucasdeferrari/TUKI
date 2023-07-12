@@ -59599,3 +59599,400 @@ Operacion recibida de MEMORIA desconocida.
 [ERROR] 14:39:16:040 CPU/(61729:61815): el kernel se desconecto. Terminando servidor
 
 [INFO] 14:39:16:043 CPU/(61729:61817): CPU lista para recibir al cliente
+[INFO] 20:05:09:651 CPU/(70389:70389): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:05:23:646 CPU/(70389:70391): Se conecto un cliente
+[INFO] 20:05:23:647 CPU/(70389:70391): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 20:05:23:655 CPU/(70389:70408): Se conecto un cliente
+[INFO] 20:05:24:655 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 20:05:25:656 CPU/(70389:70412): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 20:05:25:657 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+
+[INFO] 20:05:26:657 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation1]
+
+[INFO] 20:05:27:658 CPU/(70389:70414): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+[INFO] 20:05:27:659 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [32, ]
+
+[INFO] 20:05:28:659 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation2]
+
+[INFO] 20:05:29:662 CPU/(70389:70416): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+[INFO] 20:05:29:662 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [48, ]
+
+[INFO] 20:05:30:663 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation3]
+
+[INFO] 20:05:31:664 CPU/(70389:70418): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+[INFO] 20:05:31:664 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [64, ]
+
+[INFO] 20:05:32:665 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation4]
+
+[INFO] 20:05:33:666 CPU/(70389:70420): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+[INFO] 20:05:33:666 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [80, ]
+
+[INFO] 20:05:34:667 CPU/(70389:70408): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation5]
+
+[INFO] 20:05:35:669 CPU/(70389:70422): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+[INFO] 20:05:35:669 CPU/(70389:70408): PID: 1 - Ejecutando: MOV_OUT - [96, ]
+
+[INFO] 20:05:35:669 CPU/(70389:70408): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 20:05:35:673 CPU/(70389:70425): Se conecto un cliente
+[INFO] 20:05:35:674 CPU/(70389:70425): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 20:05:35:679 CPU/(70389:70428): Se conecto un cliente
+[INFO] 20:05:35:680 CPU/(70389:70428): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:05:35:688 CPU/(70389:70432): Se conecto un cliente
+[INFO] 20:05:35:688 CPU/(70389:70432): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:05:35:689 CPU/(70389:70436): Se conecto un cliente
+[INFO] 20:05:35:690 CPU/(70389:70436): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:05:35:693 CPU/(70389:70438): Se conecto un cliente
+[INFO] 20:05:35:694 CPU/(70389:70438): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 20:05:35:695 CPU/(70389:70442): Se conecto un cliente
+[INFO] 20:05:35:695 CPU/(70389:70442): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 20:05:35:703 CPU/(70389:70444): Se conecto un cliente
+[INFO] 20:05:35:703 CPU/(70389:70444): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 20:05:36:697 CPU/(70389:70446): Se conecto un cliente
+[INFO] 20:05:38:702 CPU/(70389:70451): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido: SonicTheHedgehog
+[INFO] 20:05:38:704 CPU/(70389:70446): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:05:38:704 CPU/(70389:70446): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:05:38:707 CPU/(70389:70455): Se conecto un cliente
+[INFO] 20:05:38:708 CPU/(70389:70455): PID: 2 - Ejecutando: EXIT
+
+[INFO] 20:05:39:713 CPU/(70389:70456): Se conecto un cliente
+[INFO] 20:05:39:715 CPU/(70389:70456): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 20:05:39:718 CPU/(70389:70461): Se conecto un cliente
+[INFO] 20:05:39:719 CPU/(70389:70461): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:05:39:723 CPU/(70389:70464): Se conecto un cliente
+[INFO] 20:05:39:727 CPU/(70389:70464): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 20:05:39:735 CPU/(70389:70468): Se conecto un cliente
+[INFO] 20:05:39:736 CPU/(70389:70468): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:05:39:738 CPU/(70389:70472): Se conecto un cliente
+[INFO] 20:05:39:743 CPU/(70389:70472): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 20:05:40:758 CPU/(70389:70474): Se conecto un cliente
+[INFO] 20:05:40:761 CPU/(70389:70474): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:05:40:764 CPU/(70389:70480): Se conecto un cliente
+[INFO] 20:05:40:766 CPU/(70389:70480): PID: 1 - Ejecutando: EXIT
+
+[INFO] 20:06:14:943 CPU/(70389:70482): Se conecto un cliente
+[INFO] 20:06:14:943 CPU/(70389:70482): PID: 3 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:06:14:952 CPU/(70389:70495): Se conecto un cliente
+[INFO] 20:06:14:952 CPU/(70389:70495): PID: 3 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:06:14:954 CPU/(70389:70502): Se conecto un cliente
+[INFO] 20:06:14:954 CPU/(70389:70502): PID: 3 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:06:14:964 CPU/(70389:70506): Se conecto un cliente
+[INFO] 20:06:14:964 CPU/(70389:70506): PID: 5 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:06:14:965 CPU/(70389:70513): Se conecto un cliente
+[INFO] 20:06:14:966 CPU/(70389:70513): PID: 5 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:06:14:971 CPU/(70389:70515): Se conecto un cliente
+[INFO] 20:06:14:971 CPU/(70389:70515): PID: 5 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:06:15:967 CPU/(70389:70517): Se conecto un cliente
+[INFO] 20:06:15:969 CPU/(70389:70517): PID: 6 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:06:15:972 CPU/(70389:70522): Se conecto un cliente
+[INFO] 20:06:18:975 CPU/(70389:70525): PID: 3 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido: SonicTheHedgehog
+[INFO] 20:06:18:975 CPU/(70389:70522): PID: 3 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:06:18:975 CPU/(70389:70522): PID: 3 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:06:18:976 CPU/(70389:70529): Se conecto un cliente
+[INFO] 20:06:20:979 CPU/(70389:70531): PID: 5 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido: SonicTheHedgehog
+[INFO] 20:06:20:980 CPU/(70389:70529): PID: 5 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:06:20:980 CPU/(70389:70529): PID: 5 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:06:20:982 CPU/(70389:70534): Se conecto un cliente
+[INFO] 20:06:20:982 CPU/(70389:70534): PID: 3 - Ejecutando: EXIT
+
+[INFO] 20:06:20:986 CPU/(70389:70535): Se conecto un cliente
+[INFO] 20:06:20:988 CPU/(70389:70535): PID: 5 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:06:20:989 CPU/(70389:70539): Se conecto un cliente
+[INFO] 20:06:20:989 CPU/(70389:70539): PID: 5 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:06:20:999 CPU/(70389:70541): Se conecto un cliente
+[INFO] 20:06:21:000 CPU/(70389:70541): PID: 5 - Ejecutando: EXIT
+
+[INFO] 20:06:21:004 CPU/(70389:70545): Se conecto un cliente
+[INFO] 20:06:21:005 CPU/(70389:70545): PID: 6 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:06:21:007 CPU/(70389:70548): Se conecto un cliente
+[INFO] 20:06:21:011 CPU/(70389:70548): PID: 6 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:06:22:002 CPU/(70389:70550): Se conecto un cliente
+[INFO] 20:06:24:011 CPU/(70389:70555): PID: 5 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido: SonicTheHedgehog
+[INFO] 20:06:24:011 CPU/(70389:70550): PID: 5 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:06:24:011 CPU/(70389:70550): PID: 5 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:08:11:977 CPU/(70592:70592): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:08:22:316 CPU/(70592:70594): Se conecto un cliente
+[INFO] 20:08:22:325 CPU/(70592:70594): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 20:08:22:326 CPU/(70592:70628): Se conecto un cliente
+[INFO] 20:08:23:326 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 20:08:24:327 CPU/(70592:70631): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 20:08:24:327 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+
+[INFO] 20:08:25:327 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation1]
+
+[INFO] 20:08:26:329 CPU/(70592:70633): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+[INFO] 20:08:26:329 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [32, ]
+
+[INFO] 20:08:27:330 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation2]
+
+[INFO] 20:08:28:333 CPU/(70592:70635): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+[INFO] 20:08:28:333 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [48, ]
+
+[INFO] 20:08:29:334 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation3]
+
+[INFO] 20:08:30:336 CPU/(70592:70637): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+[INFO] 20:08:30:336 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [64, ]
+
+[INFO] 20:08:31:336 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation4]
+
+[INFO] 20:08:32:338 CPU/(70592:70639): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+[INFO] 20:08:32:339 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [80, ]
+
+[INFO] 20:08:33:339 CPU/(70592:70628): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation5]
+
+[INFO] 20:08:34:342 CPU/(70592:70641): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+[INFO] 20:08:34:342 CPU/(70592:70628): PID: 1 - Ejecutando: MOV_OUT - [96, ]
+
+[INFO] 20:08:34:342 CPU/(70592:70628): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 20:08:34:347 CPU/(70592:70644): Se conecto un cliente
+[INFO] 20:08:34:347 CPU/(70592:70644): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 20:08:34:360 CPU/(70592:70647): Se conecto un cliente
+[INFO] 20:08:34:360 CPU/(70592:70647): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:08:34:365 CPU/(70592:70651): Se conecto un cliente
+[INFO] 20:08:34:367 CPU/(70592:70651): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:08:34:368 CPU/(70592:70655): Se conecto un cliente
+[INFO] 20:08:34:371 CPU/(70592:70655): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:08:34:382 CPU/(70592:70657): Se conecto un cliente
+[INFO] 20:08:34:383 CPU/(70592:70657): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 20:08:34:387 CPU/(70592:70661): Se conecto un cliente
+[INFO] 20:08:34:389 CPU/(70592:70661): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 20:08:34:395 CPU/(70592:70663): Se conecto un cliente
+[INFO] 20:08:34:396 CPU/(70592:70663): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 20:08:35:384 CPU/(70592:70666): Se conecto un cliente
+[INFO] 20:08:37:387 CPU/(70592:70670): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido:                 �(
+[INFO] 20:08:37:388 CPU/(70592:70666): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:08:37:388 CPU/(70592:70666): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:08:37:388 CPU/(70592:70674): Se conecto un cliente
+[INFO] 20:08:37:388 CPU/(70592:70674): PID: 2 - Ejecutando: EXIT
+
+[INFO] 20:08:38:393 CPU/(70592:70675): Se conecto un cliente
+[INFO] 20:08:38:396 CPU/(70592:70675): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 20:08:38:398 CPU/(70592:70681): Se conecto un cliente
+[INFO] 20:08:38:399 CPU/(70592:70681): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:08:38:407 CPU/(70592:70683): Se conecto un cliente
+[INFO] 20:08:38:408 CPU/(70592:70683): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 20:08:38:419 CPU/(70592:70687): Se conecto un cliente
+[INFO] 20:08:38:423 CPU/(70592:70687): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:08:38:424 CPU/(70592:70691): Se conecto un cliente
+[INFO] 20:08:38:425 CPU/(70592:70691): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 20:08:39:433 CPU/(70592:70693): Se conecto un cliente
+[INFO] 20:08:39:433 CPU/(70592:70693): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:08:39:435 CPU/(70592:70700): Se conecto un cliente
+[INFO] 20:08:39:436 CPU/(70592:70700): PID: 1 - Ejecutando: EXIT
+
+[INFO] 20:08:58:840 CPU/(70709:70709): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:09:03:662 CPU/(70709:70711): Se conecto un cliente
+[INFO] 20:09:03:662 CPU/(70709:70711): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:09:03:671 CPU/(70709:70728): Se conecto un cliente
+[INFO] 20:09:03:671 CPU/(70709:70728): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:09:03:675 CPU/(70709:70737): Se conecto un cliente
+[INFO] 20:09:03:675 CPU/(70709:70737): PID: 1 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:09:03:683 CPU/(70709:70741): Se conecto un cliente
+[INFO] 20:09:03:683 CPU/(70709:70741): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:09:03:686 CPU/(70709:70747): Se conecto un cliente
+[INFO] 20:09:03:686 CPU/(70709:70747): PID: 3 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:09:03:699 CPU/(70709:70750): Se conecto un cliente
+[INFO] 20:09:03:699 CPU/(70709:70750): PID: 4 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:11:43:744 CPU/(70778:70778): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:11:48:895 CPU/(70778:70780): Se conecto un cliente
+[INFO] 20:11:48:896 CPU/(70778:70780): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 20:11:48:901 CPU/(70778:70796): Se conecto un cliente
+[INFO] 20:11:49:902 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 20:11:50:904 CPU/(70778:70800): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 20:11:50:904 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+
+[INFO] 20:11:51:905 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation1]
+
+[INFO] 20:11:52:907 CPU/(70778:70802): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+[INFO] 20:11:52:907 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [32, ]
+
+[INFO] 20:11:53:907 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation2]
+
+[INFO] 20:11:54:909 CPU/(70778:70804): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+[INFO] 20:11:54:909 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [48, ]
+
+[INFO] 20:11:55:910 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation3]
+
+[INFO] 20:11:56:912 CPU/(70778:70806): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+[INFO] 20:11:56:912 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [64, ]
+
+[INFO] 20:11:57:912 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation4]
+
+[INFO] 20:11:58:913 CPU/(70778:70808): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+[INFO] 20:11:58:914 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [80, ]
+
+[INFO] 20:11:59:914 CPU/(70778:70796): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation5]
+
+[INFO] 20:12:00:915 CPU/(70778:70810): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+[INFO] 20:12:00:915 CPU/(70778:70796): PID: 1 - Ejecutando: MOV_OUT - [96, ]
+
+[INFO] 20:12:00:915 CPU/(70778:70796): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 20:12:00:920 CPU/(70778:70813): Se conecto un cliente
+[INFO] 20:12:00:921 CPU/(70778:70813): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 20:12:00:926 CPU/(70778:70816): Se conecto un cliente
+[INFO] 20:12:00:931 CPU/(70778:70816): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:12:00:935 CPU/(70778:70820): Se conecto un cliente
+[INFO] 20:12:00:935 CPU/(70778:70820): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:12:00:937 CPU/(70778:70824): Se conecto un cliente
+[INFO] 20:12:00:937 CPU/(70778:70824): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:12:00:952 CPU/(70778:70826): Se conecto un cliente
+[INFO] 20:12:00:953 CPU/(70778:70826): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 20:12:00:959 CPU/(70778:70830): Se conecto un cliente
+[INFO] 20:12:00:959 CPU/(70778:70830): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 20:12:00:960 CPU/(70778:70832): Se conecto un cliente
+[INFO] 20:12:00:960 CPU/(70778:70832): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 20:12:01:957 CPU/(70778:70834): Se conecto un cliente
+[INFO] 20:12:03:963 CPU/(70778:70839): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido: SonicTheHedgehog
+[INFO] 20:12:03:964 CPU/(70778:70834): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 20:12:03:964 CPU/(70778:70834): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:12:03:966 CPU/(70778:70843): Se conecto un cliente
+[INFO] 20:12:03:968 CPU/(70778:70843): PID: 2 - Ejecutando: EXIT
+
+[INFO] 20:12:04:971 CPU/(70778:70844): Se conecto un cliente
+[INFO] 20:12:04:972 CPU/(70778:70844): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 20:12:04:975 CPU/(70778:70849): Se conecto un cliente
+[INFO] 20:12:04:975 CPU/(70778:70849): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:12:04:977 CPU/(70778:70852): Se conecto un cliente
+[INFO] 20:12:04:977 CPU/(70778:70852): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 20:12:04:980 CPU/(70778:70856): Se conecto un cliente
+[INFO] 20:12:04:980 CPU/(70778:70856): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:12:04:981 CPU/(70778:70860): Se conecto un cliente
+[INFO] 20:12:04:982 CPU/(70778:70860): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 20:12:05:988 CPU/(70778:70862): Se conecto un cliente
+[INFO] 20:12:05:990 CPU/(70778:70862): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:12:05:993 CPU/(70778:70868): Se conecto un cliente
+[INFO] 20:12:05:995 CPU/(70778:70868): PID: 1 - Ejecutando: EXIT
+
+[INFO] 20:12:31:239 CPU/(70877:70877): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:12:35:554 CPU/(70877:70879): Se conecto un cliente
+[INFO] 20:12:35:555 CPU/(70877:70879): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:12:35:563 CPU/(70877:70897): Se conecto un cliente
+[INFO] 20:12:35:565 CPU/(70877:70897): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:12:35:566 CPU/(70877:70906): Se conecto un cliente
+[INFO] 20:12:35:567 CPU/(70877:70906): PID: 1 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 20:12:35:569 CPU/(70877:70908): Se conecto un cliente
+[INFO] 20:12:35:570 CPU/(70877:70908): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:12:35:577 CPU/(70877:70913): Se conecto un cliente
+[INFO] 20:12:35:577 CPU/(70877:70913): PID: 3 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:12:35:578 CPU/(70877:70917): Se conecto un cliente
+[INFO] 20:12:35:579 CPU/(70877:70917): PID: 4 - Ejecutando: F_OPEN - [Videogames
+]
+

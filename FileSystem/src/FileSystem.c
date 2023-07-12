@@ -116,7 +116,7 @@ int main(void) {
           }
     }
 
-    archivo_bitmap = fopen(p_bitmap, "r+");
+    archivo_bitmap = fopen(p_bitmap, "rw+");
     if (archivo_bitmap == NULL) {
         fprintf(stderr, "Error al abrir el archivo de bitmap.\n");
         exit(1);
@@ -150,7 +150,7 @@ int main(void) {
 
 
     // Realizar el mapeo
-    mapping = mmap(NULL, block_count, PROT_WRITE, MAP_SHARED, fd, 0);
+    mapping = mmap(NULL, block_count, PROT_WRITE | PROT_READ, MAP_SHARED, fd, 0);
     if (mapping == MAP_FAILED) {
         perror("Error en mmap");
         exit(1);
@@ -164,9 +164,9 @@ int main(void) {
    printf("%lu\n", cantMaxBits);
 
    // Escribir en la memoria mapeada
-   bitarray_set_bit(bitarray_mapeado, 0);
-   bitarray_set_bit(bitarray_mapeado, 1);
-   bitarray_set_bit(bitarray_mapeado, 2);
+   //bitarray_set_bit(bitarray_mapeado, 0);
+   //bitarray_set_bit(bitarray_mapeado, 1);
+   //bitarray_set_bit(bitarray_mapeado, 2);
 
    // Ver el valor que acabo de modificar
    bool valor = bitarray_test_bit(bitarray_mapeado, 0);
@@ -186,11 +186,7 @@ int main(void) {
 	   exit(1);
    }
 
-   //No se debería liberar al final?
-    // Liberar recursos después de su uso
-    munmap(mapping, block_count);
-    close(fd);
-    fclose(archivo_bitmap);
+
 
 
     if (config_has_property(config, "PATH_BLOQUES")) {
@@ -327,6 +323,13 @@ int main(void) {
     config_destroy(config);
 
     //sem_destroy(&semFileSystemClientMemoria);
+
+    //No se debería liberar al final?
+        // Liberar recursos después de su uso
+        munmap(mapping, block_count);
+        close(fd);
+        fclose(archivo_bitmap);
+
 
     return EXIT_SUCCESS;
 }
