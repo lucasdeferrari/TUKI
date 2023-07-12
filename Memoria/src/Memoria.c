@@ -30,7 +30,7 @@ int main(void) {
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
 	server_fd = iniciar_servidor();
-	log_info(logger, "Memoria lista para recibir al cliente\n");
+	//log_info(logger, "Memoria lista para recibir al cliente\n");
 
 	config = config_create("/home/utnso/tp-2023-1c-Los-operadores/Memoria/memoria.config");
 
@@ -160,7 +160,7 @@ HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base) {
 	if(hueco != NULL) {
 		hueco->desplazamiento = tamanio;
 		hueco->base = base;
-		printf("HUECO BASE DESPLAZAMIENTO: %zu\n", hueco->desplazamiento);
+		//printf("HUECO BASE DESPLAZAMIENTO: %zu\n", hueco->desplazamiento);
 	}
 	return hueco;
 }
@@ -173,7 +173,7 @@ void iniciarHiloServer() {
     	        	&serverMemoria, // le paso la def de la función que quiero que ejecute mientras viva
     				NULL); // argumentos de la función
     	     if (err != 0) {
-    	      printf("\nNo se pudo crear el hilo de la conexión.\n");
+    	      //printf("\nNo se pudo crear el hilo de la conexión.\n");
     	      exit(7);
     	     }
 }
@@ -192,19 +192,19 @@ void* serverMemoria(void* ptr){
     			char* handshake = recibir_buffer_mio(cliente_fd);
 
     			if (strcmp(handshake, "kernel") == 0) {
-    				log_info(logger, "se conecto el kernel");
+    				//log_info(logger, "se conecto el kernel");
     				seConectoKernel = 1;
     				enviar_respuesta(cliente_fd, handshake);
     			}
 
     			if (strcmp(handshake, "CPU") == 0) {
-    				log_info(logger, "se conecto la cpu");
+    				//log_info(logger, "se conecto la cpu");
     				seConectoCPU = 1;
     				enviar_respuesta(cliente_fd, handshake);
     			}
 
     			if (strcmp(handshake, "filesystem") == 0) {
-    				log_info(logger, "se conecto el filesystem");
+    				//log_info(logger, "se conecto el filesystem");
     				seConectoFS = 1;
     				enviar_respuesta(cliente_fd, handshake);
     			}
@@ -213,7 +213,7 @@ void* serverMemoria(void* ptr){
     			char* handshake = recibir_buffer_mio(cliente_fd);
 
     			lista = recibir_paquete(cliente_fd);
-    			log_info(logger, "Me llegaron los siguientes valores:");
+    			//log_info(logger, "Me llegaron los siguientes valores:");
     			list_iterate(lista, (void*) iterator);
     			enviar_respuesta(cliente_fd, handshake);
     		}
@@ -229,7 +229,7 @@ void* serverMemoria(void* ptr){
     		// SEA UN PARAMETRO DE ESA FUNCION. ES DECIR, MANDARIA UN PAQUETE CON 3 ELEMENTOS:
     		// PID, ID Y TAMANIO.
     		else if(cod_op == CREATE_SEGMENT) {
-    			printf("Instruccion recibida de Kernel: CREATE_SEGMENT.\n");
+    			//printf("Instruccion recibida de Kernel: CREATE_SEGMENT.\n");
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iterador = list_iterator_create(lista);
 
@@ -245,11 +245,11 @@ void* serverMemoria(void* ptr){
     			 list_iterator_destroy(iterador);
 
     			 int pidInt = arrayPaquete[0];
-    			 printf("PID recibido de Kernel: %d\n",pidInt);
+    			 //printf("PID recibido de Kernel: %d\n",pidInt);
     			 int idSegmento = arrayPaquete[1];
-    			 printf("IdSegmento recibido de Kernel: %d\n",idSegmento);
+    			// printf("IdSegmento recibido de Kernel: %d\n",idSegmento);
     			 int tamanio = arrayPaquete[2];
-    			 printf("Tamaño recibido de Kernel: %d\n",tamanio);
+    			// printf("Tamaño recibido de Kernel: %d\n",tamanio);
 
     			 //CALCULAMOS NUESTRO IdSEGMENTO
 
@@ -324,7 +324,7 @@ void* serverMemoria(void* ptr){
 				char* tamanioStr = paquete[3];
 
 				int tamanio = atoi(tamanioStr);
-				printf("tamanio: %d\n", tamanio);
+				//printf("tamanio: %d\n", tamanio);
     			int direccionFisica = atoi(direccionFisicaStr);
 
     			char destinoArray[tamanio];
@@ -344,7 +344,7 @@ void* serverMemoria(void* ptr){
 
     		// ORDEN PARAMETROS: (PID, CPU/FS, VALOR_REGISTRO, TAMAÑO, DIRECCION)
     		else if(cod_op == MOV_OUT) {
-    			printf("Dentro de mov_out\n");
+    			//printf("Dentro de mov_out\n");
     			estaConectadoFS = 1;
     			lista = recibir_paquete(cliente_fd);
 				t_list_iterator* iterador_mov_out = list_iterator_create(lista);
@@ -367,27 +367,29 @@ void* serverMemoria(void* ptr){
 				 for(int i =0; i<= tamanio; i++) {
 					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  &valorRegistro[i], sizeof(valorRegistro[0]));
 				     }
+
+				log_info(logger, "PID: %s - Acción: ESCRIBIR - Dirección física: %i - Tamaño: %i - Origen: %s", pid, direccionFisicaRecibida, tamanio, quienMeHabla);
 				sleep_ms(retardoMemoria);
-				printf("ENVIO MOV OUT");
+				//printf("ENVIO MOV OUT");
 				enviar_mensaje_cod_operacion("OK",cliente_fd,MOV_OUT);
 
 				estaConectadoFS = 0;
 
     		}
     		else if(cod_op == DESOCUPADO){
-    			printf("ENTRE A DESOCUPADO\n");
+    			//printf("ENTRE A DESOCUPADO\n");
     			char* estaConectadoFSstr = string_itoa(estaConectadoFS);
     			enviar_cod_operacion(estaConectadoFSstr, cliente_fd, DESOCUPADO);
     			liberar_conexion(cliente_fd);
     		}
     		else if(cod_op == -1) {
     			liberar_conexion(cliente_fd);
-    			log_error(logger, "\nel cliente se desconecto. Terminando servidor");
+    			//log_error(logger, "\nel cliente se desconecto. Terminando servidor");
     			return EXIT_FAILURE;
     		}
 
     		else {
-    			log_warning(logger,"\nOperacion desconocida. No quieras meter la pata");
+    			log_warning(logger,"\nOperacion desconocida");
     		}
 
     }
@@ -406,8 +408,8 @@ char* recibir_buffer_mio(int socket_cliente)
 /////////////////////////////////////////////////ENVIAR REPUESTA//////////////////////////////////////////////////
 void enviar_respuesta(int socket_cliente, char* handshake) {
 	char* respuesta = string_new();
-	printf("Socket: %i\n", socket_cliente);
-	printf("Me conecte con: %s\n", handshake);
+	//printf("Socket: %i\n", socket_cliente);
+	//printf("Me conecte con: %s\n", handshake);
 
 		if (strcmp(handshake, "kernel") == 0) {
 			respuesta = "Hola kernel, gracias por comunicarte con la memoria!";
@@ -415,7 +417,6 @@ void enviar_respuesta(int socket_cliente, char* handshake) {
 		}
 
 		if (strcmp(handshake, "CPU") == 0) {
-			printf("matchee con cpu");
 			respuesta = "Hola cpu, gracias por comunicarte con la memoria!";
 			enviar_mensaje(respuesta, socket_cliente);
 		}
@@ -439,9 +440,6 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 		enviar_paquete(paquete, cliente_fd);
 		eliminar_paquete(paquete);
 	}
-	else {
-		log_info(logger, "Este proceso ya esta creado.");
-	}
 }
 
 /////////////////////////////////////////////////CREAR SEGMENTO//////////////////////////////////////////////////
@@ -450,13 +448,13 @@ void crearYDevolverProceso(int pid, int cliente_fd) {
 int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 	// ME FIJO QUE NO HAYA LUGAR PARA CREAR EL SEGMENTO
 	if(hayLugarParaCrearSegmento(tamanio) == 0) {
-		printf("SIN_ESPACIO.\n");
+		//printf("SIN_ESPACIO.\n");
 		return SIN_ESPACIO;
 	}
 
 	// ME FIJO QUE HAYA LUGAR, PERO QUE NO ESTE CONTIGUO
 	else if(hayLugarContiguoPara(tamanio) == 0) {
-		printf("PEDIR_COMPACTACION.\n");
+		//printf("PEDIR_COMPACTACION.\n");
 		return PEDIR_COMPACTACION;
 	}
 
@@ -475,7 +473,7 @@ int crear_segmento(int idProceso, int idSegmento, size_t tamanio) {
 		}
 	base = segmento->base;
 	log_info(logger, "PID: %d - Crear Segmento: %d - Base: %zu - TAMAÑO: %zu", idProceso, idSegmento, segmento->base, tamanio);
-	printf("CREATE_SEGMENT.\n");
+	//printf("CREATE_SEGMENT.\n");
 	return CREATE_SEGMENT;
 }
 
@@ -631,7 +629,7 @@ void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio, int iteradorI
 	nuevoHueco->base = siguiente->base + tamanio;
 	size_t base = buscarSiguienteLugarOcupado(nuevoHueco->base);
 	nuevoHueco->desplazamiento = base - nuevoHueco->base;
-	printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
+	//printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
 	list_add(listaDeHuecosLibres,nuevoHueco);
 }
 
@@ -776,7 +774,7 @@ void enviarTodasLasTablas(int cliente_fd){
 //	}
 //
 //	list_iterator_destroy(iterador);
-	printf("TABLAS ENVIADAS\n");
+	//printf("TABLAS ENVIADAS\n");
 }
 
 //////////////////////////////////////////////////ELIMINAR PROCESO/////////////////////////////////////////////////
@@ -817,7 +815,7 @@ void iniciarHiloClienteKernel(int codigo_kernel,int cliente_fd) {
 								(void *)&args); // argumentos de la función
 
 	if (err != 0) {
-	printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
+	//printf("\nNo se pudo crear el hilo del cliente Kernel de memoria.");
 	exit(7);
 	}
 	//printf("El hilo cliente de la Memoria se creo correctamente.");
@@ -847,17 +845,17 @@ void* clientKernel(void *arg) {
 	switch(codigo_kernel){
 		case CREATE_SEGMENT:
 			char* baseStr = string_from_format("%zu", base);
-			printf("Base enviada a Kernel: %s\n", baseStr);
+			//printf("Base enviada a Kernel: %s\n", baseStr);
 			enviar_cod_operacion(baseStr ,cliente_fd, CREATE_SEGMENT);
-			printf("CREATE_SEGMENT ENVIADO\n");
+			//printf("CREATE_SEGMENT ENVIADO\n");
 		break;
 		case SIN_ESPACIO:
 			enviar_cod_operacion("",cliente_fd, SIN_ESPACIO);
-			printf("SIN_ESPACIO ENVIADO\n");
+			//printf("SIN_ESPACIO ENVIADO\n");
 		break;
 		case PEDIR_COMPACTACION:
 			enviar_cod_operacion("",cliente_fd, PEDIR_COMPACTACION);
-			printf("PEDIR_COMPACTACION ENVIADO\n");
+			//printf("PEDIR_COMPACTACION ENVIADO\n");
 		break;
 	}
 	return NULL;
