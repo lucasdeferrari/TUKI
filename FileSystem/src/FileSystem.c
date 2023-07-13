@@ -739,7 +739,11 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
     	snprintf(tam, sizeof(tam), "%d", tamanio);
 		config_set_value(configFCBT, "TAMANIO_ARCHIVO", tam);
 
-		int cantidadBloquesNecesarios = ceil(tamanio / block_size)+1;
+		int cantidadBloquesNecesarios = ceil(tamanio / block_size);
+
+		if (tamanio%block_size != 0 ){
+			cantidadBloquesNecesarios++;
+		}
 
 		int cantidadBloquesActual = 0;
 		int contador = 0;
@@ -758,8 +762,6 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (contador*4);
 
 				block = atoi(blockChar);
-
-				bool valor = bitarray_test_bit(bitarray_mapeado, block);
 			}
 		}
 
@@ -1033,14 +1035,14 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 		if (bloqueAEscribir == 0){
 			int bytesAEscribir = cantBytesWrite;
 
-			tamanioMenorEscribir = minimo(bytesAEscribir, (block_size-punteroArchivo));
+			tamanioMenorEscribir = minimo(bytesAEscribir, (block_size-resto));
 
 			char* porcionAEscribir = string_new();
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
 			printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
 
-			char* block = (char*)mapping2 + punteroDirecto*block_size;
+			char* block = (char*)mapping2 + punteroDirecto*block_size + resto;
 
 			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
 			sleep_ms(retardoAccesoBloques);
@@ -1075,7 +1077,8 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 
 			char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 			uint32_t bloqueAE = atoi(bloqueAEs);
-			char* blockChar = (char*)mapping2 + bloqueAE*block_size + punteroArchivo;
+			//char* blockChar = (char*)mapping2 + bloqueAE*block_size + punteroArchivo;
+			char* blockChar = (char*)mapping2 + bloqueAE*block_size + resto;
 
 			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir+2, bloqueAEs);
 			sleep_ms(retardoAccesoBloques);
@@ -1094,11 +1097,11 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 			while (bytesAEscribir != 0){
 				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 
-				char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
-				uint32_t bloqueAE = atoi(bloqueAEs);
-				char* blockChar = (char*)mapping2 + bloqueAE*block_size;
+				bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
+				bloqueAE = atoi(bloqueAEs);
+				blockChar = (char*)mapping2 + bloqueAE*block_size;
 
-				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir, bloqueAEs);
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir+2, bloqueAEs);
 				sleep_ms(retardoAccesoBloques);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
