@@ -53,7 +53,7 @@ int pidProcesoNuevo;
 
 
 //Semaforos e hilos
-sem_t  semKernelClientMemoria, semPasarAExit;
+sem_t  semKernelClientMemoria, semPasarAExit, semCompactacion;
 pthread_t serverKernel_thread, client_CPU, client_FileSystem, client_Memoria, encolar_ready, interrupcion_IO;
 pthread_mutex_t mutex_fd;
 

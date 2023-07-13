@@ -64616,3 +64616,654 @@ Operacion recibida de MEMORIA desconocida.
 
 [INFO] 18:50:41:644 CPU/(68204:68321): PID: 1 - Ejecutando: EXIT
 
+[INFO] 20:16:12:300 CPU/(183516:183516): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:16:36:796 CPU/(183516:183518): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:16:36:798 CPU/(183516:183588): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:16:37:798 CPU/(183516:183588): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:16:38:799 CPU/(183516:183596): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:16:38:799 CPU/(183516:183588): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:16:38:800 CPU/(183516:183598): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:16:38:801 CPU/(183516:183603): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:16:38:801 CPU/(183516:183605): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:16:38:802 CPU/(183516:183607): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:16:38:803 CPU/(183516:183609): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:16:40:805 CPU/(183516:183613): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:16:40:805 CPU/(183516:183609): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:16:40:806 CPU/(183516:183616): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:16:40:807 CPU/(183516:183620): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:16:40:807 CPU/(183516:183625): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:16:40:808 CPU/(183516:183630): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:20:15:324 CPU/(183778:183778): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:20:23:705 CPU/(183778:183780): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:20:23:707 CPU/(183778:183821): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:20:24:707 CPU/(183778:183821): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:20:25:707 CPU/(183778:183829): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:20:25:708 CPU/(183778:183821): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:20:25:708 CPU/(183778:183831): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:20:25:709 CPU/(183778:183836): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:20:25:710 CPU/(183778:183838): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:20:25:711 CPU/(183778:183840): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:20:25:712 CPU/(183778:183842): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:20:27:713 CPU/(183778:183844): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:20:27:713 CPU/(183778:183842): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:20:27:714 CPU/(183778:183847): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:20:27:715 CPU/(183778:183851): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:20:27:715 CPU/(183778:183856): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:20:27:716 CPU/(183778:183861): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:20:27:717 CPU/(183778:183866): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 20:20:27:718 CPU/(183778:183871): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 20:20:27:719 CPU/(183778:183876): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 20:20:27:720 CPU/(183778:183881): PID: 2 - Ejecutando: SET - BX, Ch4u
+
+[INFO] 20:20:28:720 CPU/(183778:183881): PID: 2 - Ejecutando: MOV_OUT - 12, BX
+
+
+[INFO] 20:20:29:721 CPU/(183778:183886): PID: 2 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+
+[INFO] 20:20:29:721 CPU/(183778:183881): PID: 2 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:20:29:722 CPU/(183778:183887): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:20:29:723 CPU/(183778:183890): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:20:29:724 CPU/(183778:183892): PID: 1 - Ejecutando: MOV_IN - DX, 12
+
+[INFO] 20:20:31:725 CPU/(183778:183896): PID: 1 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:20:31:725 CPU/(183778:183892): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:20:31:725 CPU/(183778:183898): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:20:31:726 CPU/(183778:183900): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 20:20:31:727 CPU/(183778:183902): PID: 2 - Ejecutando: SET - EAX, CoscuWin
+
+[INFO] 20:20:32:728 CPU/(183778:183902): PID: 2 - Ejecutando: MOV_OUT - 256, EAX
+
+
+[INFO] 20:20:33:728 CPU/(183778:183907): PID: 2 - Acción: ESCRIBIR - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+
+[INFO] 20:20:33:728 CPU/(183778:183902): PID: 2 - Ejecutando: SET - EBX, GermanNo
+
+[INFO] 20:20:34:728 CPU/(183778:183902): PID: 2 - Ejecutando: MOV_OUT - 2048, EBX
+
+
+[INFO] 20:20:35:729 CPU/(183778:183909): PID: 2 - Acción: ESCRIBIR - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+
+[INFO] 20:20:35:730 CPU/(183778:183902): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:20:35:730 CPU/(183778:183910): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:20:35:731 CPU/(183778:183913): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 20:21:32:871 CPU/(184006:184006): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:21:36:941 CPU/(184006:184008): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:21:36:950 CPU/(184006:184021): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:21:37:951 CPU/(184006:184021): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:21:38:968 CPU/(184006:184028): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:21:38:968 CPU/(184006:184021): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:21:39:005 CPU/(184006:184030): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:21:39:006 CPU/(184006:184035): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:21:39:007 CPU/(184006:184037): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:21:39:008 CPU/(184006:184039): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:21:39:008 CPU/(184006:184041): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:21:41:020 CPU/(184006:184043): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:21:41:020 CPU/(184006:184041): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:21:41:121 CPU/(184006:184046): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:21:41:216 CPU/(184006:184050): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:21:41:319 CPU/(184006:184055): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:21:41:408 CPU/(184006:184060): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:21:41:535 CPU/(184006:184065): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 20:21:41:635 CPU/(184006:184070): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 20:21:41:732 CPU/(184006:184075): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 20:21:41:815 CPU/(184006:184080): PID: 2 - Ejecutando: SET - BX, Ch4u
+
+[INFO] 20:21:42:816 CPU/(184006:184080): PID: 2 - Ejecutando: MOV_OUT - 12, BX
+
+
+[INFO] 20:21:43:818 CPU/(184006:184085): PID: 2 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+
+[INFO] 20:21:43:818 CPU/(184006:184080): PID: 2 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:21:43:819 CPU/(184006:184086): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:21:43:820 CPU/(184006:184089): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:21:43:842 CPU/(184006:184091): PID: 1 - Ejecutando: MOV_IN - DX, 12
+
+[INFO] 20:21:45:845 CPU/(184006:184095): PID: 1 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:21:45:845 CPU/(184006:184091): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:21:45:845 CPU/(184006:184097): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:21:45:846 CPU/(184006:184099): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 20:21:45:888 CPU/(184006:184101): PID: 2 - Ejecutando: SET - EAX, CoscuWin
+
+[INFO] 20:21:46:888 CPU/(184006:184101): PID: 2 - Ejecutando: MOV_OUT - 256, EAX
+
+
+[INFO] 20:21:47:889 CPU/(184006:184106): PID: 2 - Acción: ESCRIBIR - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+
+[INFO] 20:21:47:890 CPU/(184006:184101): PID: 2 - Ejecutando: SET - EBX, GermanNo
+
+[INFO] 20:21:48:890 CPU/(184006:184101): PID: 2 - Ejecutando: MOV_OUT - 2048, EBX
+
+
+[INFO] 20:21:49:891 CPU/(184006:184108): PID: 2 - Acción: ESCRIBIR - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+
+[INFO] 20:21:49:892 CPU/(184006:184101): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:21:49:892 CPU/(184006:184109): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:21:49:893 CPU/(184006:184112): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 20:24:24:874 CPU/(184350:184350): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:24:29:129 CPU/(184350:184351): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:24:29:135 CPU/(184350:184366): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:24:30:135 CPU/(184350:184366): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:24:31:154 CPU/(184350:184372): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:24:31:154 CPU/(184350:184366): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:24:31:196 CPU/(184350:184374): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:24:31:197 CPU/(184350:184379): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:24:31:198 CPU/(184350:184381): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:24:31:199 CPU/(184350:184383): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:24:31:199 CPU/(184350:184385): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:24:33:208 CPU/(184350:184387): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:24:33:208 CPU/(184350:184385): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:24:33:234 CPU/(184350:184390): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:24:33:265 CPU/(184350:184394): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:24:33:296 CPU/(184350:184399): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:24:33:328 CPU/(184350:184404): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:24:33:363 CPU/(184350:184409): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 20:24:33:399 CPU/(184350:184414): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 20:24:33:462 CPU/(184350:184419): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 20:24:33:501 CPU/(184350:184424): PID: 2 - Ejecutando: SET - BX, Ch4u
+
+[INFO] 20:24:34:501 CPU/(184350:184424): PID: 2 - Ejecutando: MOV_OUT - 12, BX
+
+
+[INFO] 20:24:35:502 CPU/(184350:184429): PID: 2 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+
+[INFO] 20:24:35:503 CPU/(184350:184424): PID: 2 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:24:35:504 CPU/(184350:184430): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:24:35:505 CPU/(184350:184433): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:24:35:519 CPU/(184350:184435): PID: 1 - Ejecutando: MOV_IN - DX, 12
+
+[INFO] 20:24:37:528 CPU/(184350:184439): PID: 1 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:24:37:528 CPU/(184350:184435): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:24:37:529 CPU/(184350:184441): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:24:37:530 CPU/(184350:184443): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 20:24:37:553 CPU/(184350:184445): PID: 2 - Ejecutando: SET - EAX, CoscuWin
+
+[INFO] 20:24:38:553 CPU/(184350:184445): PID: 2 - Ejecutando: MOV_OUT - 256, EAX
+
+
+[INFO] 20:24:39:556 CPU/(184350:184450): PID: 2 - Acción: ESCRIBIR - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+
+[INFO] 20:24:39:556 CPU/(184350:184445): PID: 2 - Ejecutando: SET - EBX, GermanNo
+
+[INFO] 20:24:40:557 CPU/(184350:184445): PID: 2 - Ejecutando: MOV_OUT - 2048, EBX
+
+
+[INFO] 20:24:41:560 CPU/(184350:184452): PID: 2 - Acción: ESCRIBIR - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+
+[INFO] 20:24:41:560 CPU/(184350:184445): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:24:41:561 CPU/(184350:184453): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:24:41:563 CPU/(184350:184456): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 20:30:04:285 CPU/(185083:185083): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:30:08:329 CPU/(185083:185085): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:30:08:331 CPU/(185083:185097): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:30:09:331 CPU/(185083:185097): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:30:10:338 CPU/(185083:185105): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:30:10:338 CPU/(185083:185097): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:30:10:388 CPU/(185083:185107): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:30:10:392 CPU/(185083:185112): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:30:10:394 CPU/(185083:185114): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:30:10:396 CPU/(185083:185116): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:30:10:398 CPU/(185083:185118): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:30:12:408 CPU/(185083:185120): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:30:12:408 CPU/(185083:185118): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:30:12:437 CPU/(185083:185123): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:30:12:464 CPU/(185083:185127): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:30:12:527 CPU/(185083:185132): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:30:12:592 CPU/(185083:185137): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:30:12:665 CPU/(185083:185142): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 20:30:12:718 CPU/(185083:185147): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 20:30:12:775 CPU/(185083:185152): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 20:30:12:822 CPU/(185083:185157): PID: 2 - Ejecutando: SET - BX, Ch4u
+
+[INFO] 20:30:13:823 CPU/(185083:185157): PID: 2 - Ejecutando: MOV_OUT - 12, BX
+
+
+[INFO] 20:30:14:825 CPU/(185083:185162): PID: 2 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+
+[INFO] 20:30:14:825 CPU/(185083:185157): PID: 2 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:30:14:826 CPU/(185083:185163): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:30:14:827 CPU/(185083:185166): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:30:14:836 CPU/(185083:185168): PID: 1 - Ejecutando: MOV_IN - DX, 12
+
+[INFO] 20:30:16:838 CPU/(185083:185172): PID: 1 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:30:16:839 CPU/(185083:185168): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:30:16:839 CPU/(185083:185174): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:30:16:840 CPU/(185083:185176): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 20:30:16:863 CPU/(185083:185178): PID: 2 - Ejecutando: SET - EAX, CoscuWin
+
+[INFO] 20:30:17:864 CPU/(185083:185178): PID: 2 - Ejecutando: MOV_OUT - 256, EAX
+
+
+[INFO] 20:30:18:865 CPU/(185083:185183): PID: 2 - Acción: ESCRIBIR - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+
+[INFO] 20:30:18:865 CPU/(185083:185178): PID: 2 - Ejecutando: SET - EBX, GermanNo
+
+[INFO] 20:30:19:865 CPU/(185083:185178): PID: 2 - Ejecutando: MOV_OUT - 2048, EBX
+
+
+[INFO] 20:30:20:867 CPU/(185083:185185): PID: 2 - Acción: ESCRIBIR - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+
+[INFO] 20:30:20:867 CPU/(185083:185178): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:30:20:868 CPU/(185083:185187): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:30:20:869 CPU/(185083:185190): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 20:30:26:571 CPU/(185083:185192): PID: 3 - Ejecutando: MOV_IN - AX, 12
+
+[INFO] 20:30:28:580 CPU/(185083:185260): PID: 3 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:30:28:580 CPU/(185083:185192): PID: 3 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:30:28:581 CPU/(185083:185262): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:30:28:582 CPU/(185083:185264): PID: 2 - Ejecutando: MOV_IN - ECX, 256
+
+[INFO] 20:30:30:585 CPU/(185083:185266): PID: 2 - Acción: LEER - Segmento: 1 - Dirección Física: 128 - Valor leido: CoscuWin
+
+[INFO] 20:30:30:585 CPU/(185083:185264): PID: 2 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:30:30:591 CPU/(185083:185269): PID: 2 - Ejecutando: MOV_IN - EDX, 2048
+
+[INFO] 20:30:32:594 CPU/(185083:185272): PID: 2 - Acción: LEER - Segmento: 8 - Dirección Física: 576 - Valor leido: GermanNo
+
+[INFO] 20:30:32:594 CPU/(185083:185269): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 20:30:32:601 CPU/(185083:185276): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 20:30:32:610 CPU/(185083:185279): PID: 2 - Ejecutando: DELETE_SEGMENT - [5]
+
+[INFO] 20:30:32:614 CPU/(185083:185283): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:30:32:615 CPU/(185083:185287): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:30:32:616 CPU/(185083:185289): PID: 3 - Ejecutando: CREATE_SEGMENT - [2, 128]
+
+[INFO] 20:30:32:644 CPU/(185083:185291): PID: 3 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:30:32:645 CPU/(185083:185296): PID: 3 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:30:32:646 CPU/(185083:185298): PID: 3 - Ejecutando: EXIT
+
+[INFO] 20:30:32:663 CPU/(185083:185300): PID: 1 - Ejecutando: EXIT
+
+[INFO] 20:30:32:665 CPU/(185083:185304): PID: 2 - Ejecutando: EXIT
+
+[INFO] 20:31:59:904 CPU/(185579:185579): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:32:04:353 CPU/(185579:185581): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:32:04:355 CPU/(185579:185593): PID: 1 - Ejecutando: SET - AX, h014
+
+[INFO] 20:32:05:355 CPU/(185579:185593): PID: 1 - Ejecutando: MOV_OUT - 12, AX
+
+
+[INFO] 20:32:06:356 CPU/(185579:185601): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+
+[INFO] 20:32:06:357 CPU/(185579:185593): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 20:32:06:357 CPU/(185579:185603): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:32:06:358 CPU/(185579:185608): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:32:06:359 CPU/(185579:185610): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:32:06:360 CPU/(185579:185612): PID: 3 - Ejecutando: WAIT - RC
+
+
+[INFO] 20:32:06:360 CPU/(185579:185614): PID: 2 - Ejecutando: MOV_IN - CX, 12
+
+[INFO] 20:32:08:361 CPU/(185579:185616): PID: 2 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: h014
+
+[INFO] 20:32:08:361 CPU/(185579:185614): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:32:08:362 CPU/(185579:185619): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:32:08:363 CPU/(185579:185623): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:32:08:364 CPU/(185579:185628): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:32:08:365 CPU/(185579:185633): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 20:32:08:366 CPU/(185579:185638): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 20:32:08:367 CPU/(185579:185643): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 20:32:08:368 CPU/(185579:185648): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 20:32:08:369 CPU/(185579:185653): PID: 2 - Ejecutando: SET - BX, Ch4u
+
+[INFO] 20:32:09:369 CPU/(185579:185653): PID: 2 - Ejecutando: MOV_OUT - 12, BX
+
+
+[INFO] 20:32:10:370 CPU/(185579:185658): PID: 2 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+
+[INFO] 20:32:10:370 CPU/(185579:185653): PID: 2 - Ejecutando: SIGNAL - RA
+
+
+[INFO] 20:32:10:371 CPU/(185579:185659): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:32:10:372 CPU/(185579:185662): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 20:32:10:372 CPU/(185579:185664): PID: 1 - Ejecutando: MOV_IN - DX, 12
+
+[INFO] 20:32:12:373 CPU/(185579:185668): PID: 1 - Acción: LEER - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u
+
+[INFO] 20:32:12:373 CPU/(185579:185664): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:32:12:375 CPU/(185579:185670): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:32:12:377 CPU/(185579:185672): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 20:32:12:379 CPU/(185579:185674): PID: 2 - Ejecutando: SET - EAX, CoscuWin
+
+[INFO] 20:32:13:379 CPU/(185579:185674): PID: 2 - Ejecutando: MOV_OUT - 256, EAX
+
+
+[INFO] 20:32:14:380 CPU/(185579:185679): PID: 2 - Acción: ESCRIBIR - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+
+[INFO] 20:32:14:381 CPU/(185579:185674): PID: 2 - Ejecutando: SET - EBX, GermanNo
+
+[INFO] 20:32:15:381 CPU/(185579:185674): PID: 2 - Ejecutando: MOV_OUT - 2048, EBX
+
+
+[INFO] 20:32:16:382 CPU/(185579:185681): PID: 2 - Acción: ESCRIBIR - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+
+[INFO] 20:32:16:382 CPU/(185579:185674): PID: 2 - Ejecutando: SIGNAL - RC
+
+
+[INFO] 20:32:16:384 CPU/(185579:185683): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:32:16:386 CPU/(185579:185685): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 20:42:11:968 CPU/(186125:186125): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 20:42:24:926 CPU/(186125:186127): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 20:42:24:929 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RAX, SonicTheHedgehog
+
+[INFO] 20:42:25:929 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 0, RAX
+
+
+[INFO] 20:42:26:930 CPU/(186125:186172): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+
+[INFO] 20:42:26:930 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation1
+
+[INFO] 20:42:27:930 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 32, RBX
+
+
+[INFO] 20:42:28:931 CPU/(186125:186174): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+
+[INFO] 20:42:28:931 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation2
+
+[INFO] 20:42:29:931 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 48, RBX
+
+
+[INFO] 20:42:30:932 CPU/(186125:186176): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+
+[INFO] 20:42:30:932 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation3
+
+[INFO] 20:42:31:933 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 64, RBX
+
+
+[INFO] 20:42:32:934 CPU/(186125:186178): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+
+[INFO] 20:42:32:934 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation4
+
+[INFO] 20:42:33:934 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 80, RBX
+
+
+[INFO] 20:42:34:936 CPU/(186125:186180): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+
+[INFO] 20:42:34:936 CPU/(186125:186168): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation5
+
+[INFO] 20:42:35:936 CPU/(186125:186168): PID: 1 - Ejecutando: MOV_OUT - 96, RBX
+
+
+[INFO] 20:42:36:937 CPU/(186125:186182): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+
+[INFO] 20:42:36:938 CPU/(186125:186168): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 20:42:36:945 CPU/(186125:186185): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 20:42:36:948 CPU/(186125:186188): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 20:42:36:950 CPU/(186125:186192): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 20:42:36:951 CPU/(186125:186194): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 20:42:36:952 CPU/(186125:186196): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 20:42:36:954 CPU/(186125:186198): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 20:42:37:955 CPU/(186125:186202): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 20:42:37:956 CPU/(186125:186208): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 20:42:37:957 CPU/(186125:186213): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 20:42:37:959 CPU/(186125:186218): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 128]
+
+[INFO] 20:42:37:960 CPU/(186125:186223): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 20:42:37:961 CPU/(186125:186228): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 20:42:37:962 CPU/(186125:186232): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 128]
+
+[INFO] 20:43:37:958 CPU/(186125:186236): PID: 2 - Ejecutando: EXIT
+
+[INFO] 20:43:37:959 CPU/(186125:186250): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 20:43:37:960 CPU/(186125:186254): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 20:43:37:963 CPU/(186125:186256): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 20:43:37:965 CPU/(186125:186260): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 20:43:37:966 CPU/(186125:186264): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 20:43:53:969 CPU/(186125:186266): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 20:43:53:970 CPU/(186125:186272): PID: 1 - Ejecutando: EXIT
+

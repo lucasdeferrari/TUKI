@@ -718,12 +718,12 @@ void compactar_memoria() {
 			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada)-1);
 			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
 				Segmento *proximoSegmento = list_get(listaOrdenada, list_iterator_index(iterador)+1);
+				memcpy(espacioUsuario + segmento->base + segmento->desplazamiento, espacioUsuario+proximoSegmento->base, proximoSegmento->desplazamiento);
 				proximoSegmento->base = segmento->base + segmento->desplazamiento;
 				int pid = buscarIdMemoria(proximoSegmento->idSegmentoMemoria);
 				int iteradorIndex = list_iterator_index(iterador2);
 				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento, iteradorIndex);
 				log_info(logger,"PID: %d - Segmento: %d - Base: %zu - Tamaño %zu\n", pid, proximoSegmento->idSegmentoKernel, proximoSegmento->base, proximoSegmento->desplazamiento);
-
 			}
 		}
 		list_iterator_destroy(iterador2);

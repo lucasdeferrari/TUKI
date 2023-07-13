@@ -1,5 +1,4 @@
 #include "kernel.h"
-int esperandoFS;
 t_config* config;
 
 int main(void) {
@@ -31,10 +30,10 @@ int main(void) {
 
 	sem_init(&semKernelClientMemoria,0,0);
 	sem_init(&semPasarAExit, 0, 0);
+	sem_init(&semCompactacion, 0, 1);
 	pthread_mutex_init(&mutex_fd, NULL);
 
 	FSejecutando = 0;
-	esperandoFS = 0;
     estadoEnEjecucion = malloc(sizeof(t_infopcb));
     int ningunEstado = -1;
     estadoEnEjecucion->pid = ningunEstado;
@@ -431,6 +430,7 @@ void* clientMemoria(void *arg) {
         	log_info(logger, "Se finalizó el proceso de compactación\n");
         	//printf("COMPATACIÓN REBICIDA.\n");
         	liberar_conexion(conexion_Memoria);
+        	sem_post(&semCompactacion);
         	iniciarHiloClienteMemoria(2);
 
         break;
@@ -443,11 +443,12 @@ void* clientMemoria(void *arg) {
         	if(FSejecutando){
         		log_info(logger, "Compactación: Esperando Fin de Operaciones de FS\n");
         		//ESPERA A QUE SE TERMINE DE EJECUTAR FS
-        		while(1){
-        			if(!FSejecutando){
-        				break;
-        			}
-        		}
+//        		while(1){
+//        			if(!FSejecutando){
+//        				break;
+//        			}
+//        		}
+        		sem_wait(&semCompactacion);
         	}
         	if(estaConectadoMemoria){
         		iniciarHiloClienteMemoria(13);
@@ -574,6 +575,7 @@ void* clientFileSystem(void *arg) {
 		case 2: //F_OPEN
 			pthread_mutex_lock(&mutex_fd);
 			FSejecutando = 1;
+			sem_wait(&semCompactacion);
 			log_info(logger, "PID: %d - Abrir Archivo: %s\n",unProceso->pid,unProceso->nombreArchivo);
 			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
@@ -601,6 +603,7 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	FSejecutando = 1;
+        	sem_wait(&semCompactacion);
         	log_info(logger, "PID: %d - Leer Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d\n",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
         	log_info(logger, "PID: %d - Estado Anterior: EJECUCIÓN - Estado Actual: BLOQUEADO\n", unProceso->pid);
 
@@ -650,6 +653,7 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	FSejecutando = 1;
+        	sem_wait(&semCompactacion);
         	log_info(logger, "PID: %d - Escribir Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d\n",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
         	log_info(logger, "PID: %d - Estado Anterior: EJECUCIÓN - Estado Actual: BLOQUEADO\n", unProceso->pid);
         	enviar_paquete(paquete, conexion_FileSystem);
@@ -691,6 +695,7 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	FSejecutando = 1;
+        	sem_wait(&semCompactacion);
         	log_info(logger, "PID: %d - Archivo: %s - Tamaño: %d\n",unProceso->pid,unProceso->nombreArchivo,unProceso->tamanioArchivo);
         	log_info(logger, "PID: %d - Estado Anterior: EJECUCIÓN - Estado Actual: BLOQUEADO\n", unProceso->pid);
         	enviar_paquete(paquete, conexion_FileSystem);
@@ -770,6 +775,7 @@ void* clientFileSystem(void *arg) {
 //		    }
 
 			FSejecutando = 0;
+			sem_post(&semCompactacion);
 			//Sigue ejecutando el mismo proceso
 			iniciarHiloClienteCPU();
 
@@ -804,6 +810,7 @@ void* clientFileSystem(void *arg) {
 			}
 
 			FSejecutando = 0;
+			sem_post(&semCompactacion);
 
 		break;
 		case 4: //F_WRITE
@@ -834,7 +841,7 @@ void* clientFileSystem(void *arg) {
 			}
 
 			FSejecutando = 0;
-
+			sem_post(&semCompactacion);
 		break;
 		case 5: //F_TRUNCATE
 			//printf("F_TRUNCATE recibido del proceso %d.\n", unProceso->pid);
@@ -863,6 +870,7 @@ void* clientFileSystem(void *arg) {
 			}
 
 			FSejecutando = 0;
+			sem_post(&semCompactacion);
 		break;
 
 		default:
