@@ -28,6 +28,9 @@ int server_fd;
 int cantidadElementosSistema;
 int cantidadElementosBloqueados;
 
+
+int FSejecutando;
+
 //Manejo de FS
 t_list* tablaGlobalArchivosAbiertos;
 

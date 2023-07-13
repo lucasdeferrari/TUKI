@@ -80654,3 +80654,362 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 14:55:23:961 Memoria/(5993:6252): Eliminación de Proceso PID: 2
 
+[INFO] 16:25:11:793 Memoria/(1774:1774): Listo para escuchar al cliente
+[INFO] 16:28:30:527 Memoria/(2482:2482): Listo para escuchar al cliente
+[INFO] 16:30:00:520 Memoria/(2482:2482): Se conectaron todos los modulos.
+
+[INFO] 16:30:00:520 Memoria/(2482:2482): Se crearon todas las estructuras correctamente.
+
+[INFO] 16:30:18:289 Memoria/(2482:2600): Creación de Proceso PID: 1
+
+[INFO] 16:30:18:291 Memoria/(2482:2638): Creación de Proceso PID: 2
+
+[INFO] 16:30:19:292 Memoria/(2482:2642): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:21:300 Memoria/(2482:2644): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:23:305 Memoria/(2482:2646): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:25:308 Memoria/(2482:2648): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:27:315 Memoria/(2482:2650): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:29:319 Memoria/(2482:2652): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:45:350 Memoria/(2482:2654): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:30:46:360 Memoria/(2482:2679): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:30:48:365 Memoria/(2482:2684): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 16:30:49:368 Memoria/(2482:2689): Eliminación de Proceso PID: 2
+
+[INFO] 16:31:19:394 Memoria/(2482:2690): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:31:35:399 Memoria/(2482:2708): Eliminación de Proceso PID: 1
+
+[INFO] 16:38:48:170 Memoria/(3451:3451): Listo para escuchar al cliente
+[INFO] 16:39:23:254 Memoria/(3451:3451): Se conectaron todos los modulos.
+
+[INFO] 16:39:23:254 Memoria/(3451:3451): Se crearon todas las estructuras correctamente.
+
+[INFO] 16:39:25:569 Memoria/(3451:3589): Creación de Proceso PID: 1
+
+[INFO] 16:39:25:572 Memoria/(3451:3597): Creación de Proceso PID: 2
+
+[INFO] 16:39:26:574 Memoria/(3451:3601): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:28:581 Memoria/(3451:3603): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:30:585 Memoria/(3451:3605): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:32:588 Memoria/(3451:3607): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:34:594 Memoria/(3451:3609): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:36:598 Memoria/(3451:3611): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:52:643 Memoria/(3451:3613): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:39:53:651 Memoria/(3451:3638): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:39:55:653 Memoria/(3451:3643): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 16:39:56:654 Memoria/(3451:3648): Eliminación de Proceso PID: 2
+
+[INFO] 16:40:26:676 Memoria/(3451:3649): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:40:42:682 Memoria/(3451:3671): Eliminación de Proceso PID: 1
+
+[INFO] 16:46:16:270 Memoria/(3683:3683): Listo para escuchar al cliente
+[INFO] 16:46:28:061 Memoria/(3702:3702): Listo para escuchar al cliente
+[INFO] 16:46:34:068 Memoria/(3702:3702): Se conectaron todos los modulos.
+
+[INFO] 16:46:34:068 Memoria/(3702:3702): Se crearon todas las estructuras correctamente.
+
+[INFO] 16:46:34:959 Memoria/(3702:3743): Creación de Proceso PID: 1
+
+[INFO] 16:46:34:962 Memoria/(3702:3750): Creación de Proceso PID: 2
+
+[INFO] 16:46:35:963 Memoria/(3702:3755): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:46:37:966 Memoria/(3702:3757): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:46:39:970 Memoria/(3702:3759): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:46:41:974 Memoria/(3702:3761): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:46:43:981 Memoria/(3702:3763): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:46:45:985 Memoria/(3702:3765): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:47:02:001 Memoria/(3702:3769): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:47:03:010 Memoria/(3702:3793): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 16:47:05:018 Memoria/(3702:3798): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 16:47:06:022 Memoria/(3702:3803): Eliminación de Proceso PID: 2
+
+[INFO] 16:47:36:048 Memoria/(3702:3804): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 16:47:52:056 Memoria/(3702:3822): Eliminación de Proceso PID: 1
+
+[INFO] 17:24:08:899 Memoria/(4583:4583): Listo para escuchar al cliente
+[INFO] 17:24:34:982 Memoria/(4583:4583): Se conectaron todos los modulos.
+
+[INFO] 17:24:34:982 Memoria/(4583:4583): Se crearon todas las estructuras correctamente.
+
+[INFO] 17:24:36:243 Memoria/(4583:4661): Creación de Proceso PID: 1
+
+[INFO] 17:24:36:245 Memoria/(4583:4669): Creación de Proceso PID: 2
+
+[INFO] 17:24:37:249 Memoria/(4583:4673): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:24:39:252 Memoria/(4583:4675): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:24:41:255 Memoria/(4583:4677): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:24:43:260 Memoria/(4583:4679): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:24:45:262 Memoria/(4583:4681): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:24:47:264 Memoria/(4583:4683): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:25:03:308 Memoria/(4583:4685): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:25:04:312 Memoria/(4583:4710): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:25:06:320 Memoria/(4583:4715): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 17:25:07:323 Memoria/(4583:4720): Eliminación de Proceso PID: 2
+
+[INFO] 17:25:37:359 Memoria/(4583:4721): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:25:53:383 Memoria/(4583:4739): Eliminación de Proceso PID: 1
+
+[INFO] 17:32:55:762 Memoria/(4818:4818): Listo para escuchar al cliente
+[INFO] 17:33:42:664 Memoria/(4818:4818): Se conectaron todos los modulos.
+
+[INFO] 17:33:42:664 Memoria/(4818:4818): Se crearon todas las estructuras correctamente.
+
+[INFO] 17:33:55:610 Memoria/(4818:4875): Creación de Proceso PID: 1
+
+[INFO] 17:33:55:614 Memoria/(4818:4912): Creación de Proceso PID: 2
+
+[INFO] 17:33:56:614 Memoria/(4818:4917): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:33:58:617 Memoria/(4818:4919): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:34:00:621 Memoria/(4818:4921): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:34:02:626 Memoria/(4818:4924): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:34:04:629 Memoria/(4818:4926): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:34:06:633 Memoria/(4818:4928): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:34:07:654 Memoria/(4818:4930): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 17:34:08:655 Memoria/(4818:4951): PID: 2 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 17:34:08:657 Memoria/(4818:4954): PID: 2 - Crear Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 17:34:08:658 Memoria/(4818:4959): PID: 2 - Crear Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 17:34:08:659 Memoria/(4818:4964): PID: 2 - Crear Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 17:34:08:661 Memoria/(4818:4969): PID: 2 - Crear Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 17:34:08:662 Memoria/(4818:4974): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 17:34:08:663 Memoria/(4818:4977): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 17:34:08:665 Memoria/(4818:4988): Solicitud de Compactación
+
+[INFO] 17:34:08:665 Memoria/(4818:4988): PID: 2 - Segmento: 3 - Base: 192 - Tamaño 64
+
+[INFO] 17:34:09:668 Memoria/(4818:4990): PID: 2 - Crear Segmento: 6 - Base: 256 - TAMAÑO: 128
+
+[INFO] 17:34:09:671 Memoria/(4818:4994): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 17:34:09:671 Memoria/(4818:4994): PID: 2 - Eliminar Segmento: 3 - Base: 192 - TAMAÑO: 64
+
+[INFO] 17:34:09:671 Memoria/(4818:4994): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 17:34:09:671 Memoria/(4818:4994): PID: 2 - Eliminar Segmento: 6 - Base: 256 - TAMAÑO: 128
+
+[INFO] 17:34:09:671 Memoria/(4818:4994): Eliminación de Proceso PID: 2
+
+[INFO] 17:34:38:669 Memoria/(4818:4997): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:34:54:686 Memoria/(4818:5015): Eliminación de Proceso PID: 1
+
+[INFO] 17:47:13:704 Memoria/(5035:5035): Listo para escuchar al cliente
+[INFO] 17:47:16:434 Memoria/(5035:5035): Se conectaron todos los modulos.
+
+[INFO] 17:47:16:434 Memoria/(5035:5035): Se crearon todas las estructuras correctamente.
+
+[INFO] 17:47:27:445 Memoria/(5035:5047): Creación de Proceso PID: 1
+
+[INFO] 17:47:27:449 Memoria/(5035:5055): Creación de Proceso PID: 2
+
+[INFO] 17:47:27:454 Memoria/(5035:5063): Creación de Proceso PID: 3
+
+[INFO] 17:47:27:458 Memoria/(5035:5068): Creación de Proceso PID: 4
+
+[INFO] 17:47:42:460 Memoria/(5035:5074): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:47:43:466 Memoria/(5035:5081): PID: 1 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:47:45:477 Memoria/(5035:5085): Eliminación de Proceso PID: 1
+
+[INFO] 17:48:00:490 Memoria/(5035:5091): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:48:01:492 Memoria/(5035:5097): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:48:03:498 Memoria/(5035:5101): Eliminación de Proceso PID: 2
+
+[INFO] 17:48:18:501 Memoria/(5035:5107): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:48:19:508 Memoria/(5035:5113): PID: 3 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:48:21:511 Memoria/(5035:5117): Eliminación de Proceso PID: 3
+
+[INFO] 17:48:36:515 Memoria/(5035:5123): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 17:48:37:524 Memoria/(5035:5129): PID: 4 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 17:48:39:534 Memoria/(5035:5134): Eliminación de Proceso PID: 4
+
+[INFO] 17:59:36:289 Memoria/(5905:5905): Listo para escuchar al cliente
+[INFO] 18:00:01:614 Memoria/(5905:5905): Se conectaron todos los modulos.
+
+[INFO] 18:00:01:614 Memoria/(5905:5905): Se crearon todas las estructuras correctamente.
+
+[INFO] 18:00:04:481 Memoria/(5905:6004): Creación de Proceso PID: 1
+
+[INFO] 18:00:04:484 Memoria/(5905:6012): Creación de Proceso PID: 2
+
+[INFO] 18:00:05:486 Memoria/(5905:6016): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:07:487 Memoria/(5905:6018): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:09:490 Memoria/(5905:6020): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:11:494 Memoria/(5905:6022): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:13:501 Memoria/(5905:6024): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:15:504 Memoria/(5905:6026): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:00:16:526 Memoria/(5905:6030): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 18:00:17:537 Memoria/(5905:6049): PID: 2 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 18:00:17:545 Memoria/(5905:6052): PID: 2 - Crear Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 18:00:17:547 Memoria/(5905:6057): PID: 2 - Crear Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 18:00:17:550 Memoria/(5905:6062): PID: 2 - Crear Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 18:00:17:552 Memoria/(5905:6067): PID: 2 - Crear Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 18:00:17:561 Memoria/(5905:6072): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 18:00:17:563 Memoria/(5905:6075): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 18:04:25:235 Memoria/(71840:71840): Listo para escuchar al cliente
+[INFO] 18:05:10:097 Memoria/(71840:71840): Se conectaron todos los modulos.
+
+[INFO] 18:05:10:097 Memoria/(71840:71840): Se crearon todas las estructuras correctamente.
+
+[INFO] 18:05:13:170 Memoria/(71840:71955): Creación de Proceso PID: 1
+
+[INFO] 18:05:13:174 Memoria/(71840:71963): Creación de Proceso PID: 2
+
+[INFO] 18:05:14:176 Memoria/(71840:71967): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:16:180 Memoria/(71840:71969): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:18:184 Memoria/(71840:71971): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:20:187 Memoria/(71840:71973): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:22:189 Memoria/(71840:71975): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:24:190 Memoria/(71840:71977): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:05:25:212 Memoria/(71840:71981): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 18:05:26:215 Memoria/(71840:72000): PID: 2 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 18:05:26:221 Memoria/(71840:72003): PID: 2 - Crear Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 18:05:26:230 Memoria/(71840:72008): PID: 2 - Crear Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 18:05:26:233 Memoria/(71840:72013): PID: 2 - Crear Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 18:05:26:235 Memoria/(71840:72018): PID: 2 - Crear Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 18:05:26:237 Memoria/(71840:72023): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 18:05:26:239 Memoria/(71840:72026): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 18:05:56:215 Memoria/(71840:72037): Solicitud de Compactación
+
+[INFO] 18:05:56:215 Memoria/(71840:72037): PID: 2 - Segmento: 3 - Base: 192 - Tamaño 64
+
+[INFO] 18:05:57:220 Memoria/(71840:72040): PID: 2 - Crear Segmento: 6 - Base: 256 - TAMAÑO: 128
+
+[INFO] 18:05:57:222 Memoria/(71840:72044): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 18:05:57:222 Memoria/(71840:72044): PID: 2 - Eliminar Segmento: 3 - Base: 192 - TAMAÑO: 64
+
+[INFO] 18:05:57:222 Memoria/(71840:72044): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 18:05:57:223 Memoria/(71840:72044): PID: 2 - Eliminar Segmento: 6 - Base: 256 - TAMAÑO: 128
+
+[INFO] 18:05:57:223 Memoria/(71840:72044): Eliminación de Proceso PID: 2
+
+[INFO] 18:05:57:235 Memoria/(71840:72048): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 18:06:13:243 Memoria/(71840:72064): Eliminación de Proceso PID: 1
+
+[INFO] 18:07:58:556 Memoria/(72073:72073): Listo para escuchar al cliente
+[INFO] 18:08:00:380 Memoria/(72073:72073): Se conectaron todos los modulos.
+
+[INFO] 18:08:00:380 Memoria/(72073:72073): Se crearon todas las estructuras correctamente.
+
+[INFO] 18:08:03:115 Memoria/(72073:72085): Creación de Proceso PID: 1
+
+[INFO] 18:08:03:120 Memoria/(72073:72092): Creación de Proceso PID: 2
+
+[INFO] 18:08:03:125 Memoria/(72073:72102): Creación de Proceso PID: 3
+
+[INFO] 18:08:03:128 Memoria/(72073:72107): Creación de Proceso PID: 4
+
+[INFO] 18:08:18:129 Memoria/(72073:72112): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 18:08:19:132 Memoria/(72073:72121): PID: 1 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:08:21:142 Memoria/(72073:72123): Eliminación de Proceso PID: 1
+
+[INFO] 18:08:36:155 Memoria/(72073:72129): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 18:08:37:161 Memoria/(72073:72143): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:08:39:165 Memoria/(72073:72147): Eliminación de Proceso PID: 2
+
+[INFO] 18:08:54:169 Memoria/(72073:72153): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 18:08:55:175 Memoria/(72073:72159): PID: 3 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:08:57:185 Memoria/(72073:72163): Eliminación de Proceso PID: 3
+
+[INFO] 18:09:12:197 Memoria/(72073:72169): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 18:09:13:203 Memoria/(72073:72177): PID: 4 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 18:09:15:207 Memoria/(72073:72179): Eliminación de Proceso PID: 4
+

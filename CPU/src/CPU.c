@@ -677,7 +677,8 @@ int ejecutarFuncion(char* proximaInstruccion){
 		setParam1 = string_duplicate(arrayInstruccion[1]);
 		setParam2 = string_duplicate(arrayInstruccion[2]);
 
-
+		int tamanioValor = string_length(setParam2);
+		setParam2[tamanioValor-1] = '\0';
 
 		//log minimo y obligatorio
 		log_info(logger, "PID: %d - Ejecutando: SET - %s, %s\n", contexto->pid, setParam1, setParam2);
@@ -1060,10 +1061,6 @@ void signal_tp(char* recurso) {
 
 // SET: (Registro, Valor): Asigna al registro el valor pasado como parámetro.
 void set_tp(char* registro, char* valor){
-
-	//ESTABA ANTES DE INVOCAR SET_TP EN LA INSTRUCCION SET
-	int tamanioValor = string_length(valor);
-	valor[tamanioValor-1] = '\0';
 
 	sleep_ms(retardo_instruccion);
 //	printf("REGISTRO A SETEAR: %s\n", registro);

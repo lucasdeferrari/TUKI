@@ -332,6 +332,9 @@ void* serverMemoria(void* ptr){
     			for(int i =0; i < tamanio; i++) {
     				memcpy(&destinoArray[i],  espacioUsuario + direccionFisica + i, sizeof(char));
 				}
+    			printf("VALOR A ENVIAR: %s\n",destinoArray);
+    			destinoArray[tamanio] = '\0';
+    			printf("VALOR ENVIADO: %s\n",destinoArray);
     			//memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
     			//printf("destino array:%s\n ", destinoArray[0]);
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisica, tamanio, quienMeHabla);
@@ -367,7 +370,7 @@ void* serverMemoria(void* ptr){
 				 for(int i =0; i<= tamanio; i++) {
 					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  &valorRegistro[i], sizeof(valorRegistro[0]));
 				     }
-
+				printf("VALOR RECIBIDO: %s\n",valorRegistro);
 				log_info(logger, "PID: %s - Acción: ESCRIBIR - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisicaRecibida, tamanio, quienMeHabla);
 				sleep_ms(retardoMemoria);
 				//printf("ENVIO MOV OUT");
