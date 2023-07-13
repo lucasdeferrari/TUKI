@@ -21,8 +21,7 @@ t_contextoEjecucion* contexto;
 int server_fd;
 int retardo_instruccion;
 int tam_max_segmento;
-int direcFisicaLog;
-char* valorAEscribirLog;
+
 int numSegmentoLog;
 
 void *serverCPU(void *ptr);

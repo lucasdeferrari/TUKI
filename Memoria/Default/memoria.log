@@ -79784,3 +79784,873 @@ el cliente se desconecto. Terminando servidor
 [INFO] 02:26:47:339 Memoria/(15594:15647): Se conecto un cliente!
 [INFO] 02:26:47:339 Memoria/(15594:15647): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
 
+[INFO] 14:16:57:093 Memoria/(3634:3634): Listo para escuchar al cliente
+[INFO] 14:19:42:596 Memoria/(3867:3867): Listo para escuchar al cliente
+[INFO] 14:19:50:924 Memoria/(3867:3868): Se conecto un cliente!
+[INFO] 14:19:54:424 Memoria/(3867:3900): Se conecto un cliente!
+[INFO] 14:20:01:325 Memoria/(3867:3904): Se conecto un cliente!
+[INFO] 14:20:01:327 Memoria/(3867:3867): Se conectaron todos los modulos.
+
+[INFO] 14:20:01:327 Memoria/(3867:3867): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:20:07:243 Memoria/(3867:3937): Se conecto un cliente!
+[INFO] 14:20:07:243 Memoria/(3867:3937): Creación de Proceso PID: 1
+
+[INFO] 14:20:07:250 Memoria/(3867:3945): Se conecto un cliente!
+[INFO] 14:20:07:250 Memoria/(3867:3945): Creación de Proceso PID: 2
+
+[INFO] 14:20:07:254 Memoria/(3867:3950): Se conecto un cliente!
+[INFO] 14:20:07:254 Memoria/(3867:3950): Creación de Proceso PID: 3
+
+[INFO] 14:20:08:252 Memoria/(3867:3953): Se conecto un cliente!
+[INFO] 14:20:08:253 Memoria/(3867:3953): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:20:58:637 Memoria/(4048:4048): Listo para escuchar al cliente
+[INFO] 14:20:59:691 Memoria/(4048:4049): Se conecto un cliente!
+[INFO] 14:21:03:977 Memoria/(4048:4052): Se conecto un cliente!
+[INFO] 14:21:04:961 Memoria/(4048:4085): Se conecto un cliente!
+[INFO] 14:21:04:962 Memoria/(4048:4048): Se conectaron todos los modulos.
+
+[INFO] 14:21:04:962 Memoria/(4048:4048): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:21:06:042 Memoria/(4048:4089): Se conecto un cliente!
+[INFO] 14:21:06:042 Memoria/(4048:4089): Creación de Proceso PID: 1
+
+[INFO] 14:21:15:025 Memoria/(4100:4100): Listo para escuchar al cliente
+[INFO] 14:21:16:835 Memoria/(4100:4101): Se conecto un cliente!
+[INFO] 14:21:18:065 Memoria/(4100:4104): Se conecto un cliente!
+[INFO] 14:21:19:241 Memoria/(4100:4108): Se conecto un cliente!
+[INFO] 14:21:19:242 Memoria/(4100:4100): Se conectaron todos los modulos.
+
+[INFO] 14:21:19:242 Memoria/(4100:4100): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:21:22:504 Memoria/(4100:4112): Se conecto un cliente!
+[INFO] 14:21:22:504 Memoria/(4100:4112): Creación de Proceso PID: 1
+
+[INFO] 14:21:22:508 Memoria/(4100:4120): Se conecto un cliente!
+[INFO] 14:21:22:508 Memoria/(4100:4120): Creación de Proceso PID: 2
+
+[INFO] 14:21:22:510 Memoria/(4100:4126): Se conecto un cliente!
+[INFO] 14:21:22:510 Memoria/(4100:4126): Creación de Proceso PID: 3
+
+[INFO] 14:21:23:509 Memoria/(4100:4128): Se conecto un cliente!
+[INFO] 14:21:23:509 Memoria/(4100:4128): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:21:24:511 Memoria/(4100:4132): Se conecto un cliente!
+[INFO] 14:21:24:511 Memoria/(4100:4132): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:21:24:516 Memoria/(4100:4135): Se conecto un cliente!
+[INFO] 14:21:24:516 Memoria/(4100:4135): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:21:26:517 Memoria/(4100:4145): Se conecto un cliente!
+[INFO] 14:21:26:518 Memoria/(4100:4145): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:21:26:519 Memoria/(4100:4150): Se conecto un cliente!
+[INFO] 14:21:26:519 Memoria/(4100:4150): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:21:26:520 Memoria/(4100:4155): Se conecto un cliente!
+[INFO] 14:21:26:521 Memoria/(4100:4155): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:21:26:522 Memoria/(4100:4160): Se conecto un cliente!
+[INFO] 14:21:26:522 Memoria/(4100:4160): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:21:26:523 Memoria/(4100:4165): Se conecto un cliente!
+[INFO] 14:21:26:523 Memoria/(4100:4165): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:21:26:524 Memoria/(4100:4170): Se conecto un cliente!
+[INFO] 14:21:26:524 Memoria/(4100:4170): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:21:26:525 Memoria/(4100:4175): Se conecto un cliente!
+[INFO] 14:21:26:526 Memoria/(4100:4175): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:21:26:527 Memoria/(4100:4180): Se conecto un cliente!
+[INFO] 14:21:26:527 Memoria/(4100:4180): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:21:27:530 Memoria/(4100:4185): Se conecto un cliente!
+[INFO] 14:21:27:530 Memoria/(4100:4185): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:21:28:535 Memoria/(4100:4188): Se conecto un cliente!
+[INFO] 14:21:28:536 Memoria/(4100:4188): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:21:28:537 Memoria/(4100:4194): Se conecto un cliente!
+[INFO] 14:21:28:537 Memoria/(4100:4194): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:21:30:541 Memoria/(4100:4197): Se conecto un cliente!
+[INFO] 14:21:30:541 Memoria/(4100:4197): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:21:31:543 Memoria/(4100:4206): Se conecto un cliente!
+[INFO] 14:21:31:543 Memoria/(4100:4206): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:21:33:544 Memoria/(4100:4208): Se conecto un cliente!
+[INFO] 14:21:33:544 Memoria/(4100:4208): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:21:34:547 Memoria/(4100:4211): Se conecto un cliente!
+[INFO] 14:21:34:548 Memoria/(4100:4219): Se conecto un cliente!
+[INFO] 14:21:34:548 Memoria/(4100:4220): Se conecto un cliente!
+[INFO] 14:21:34:548 Memoria/(4100:4220): Solicitud de Compactación
+
+[INFO] 14:21:34:548 Memoria/(4100:4220): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:21:35:550 Memoria/(4100:4222): Se conecto un cliente!
+[INFO] 14:21:35:551 Memoria/(4100:4226): Se conecto un cliente!
+[INFO] 14:21:35:553 Memoria/(4100:4227): Se conecto un cliente!
+[INFO] 14:21:35:553 Memoria/(4100:4227): Solicitud de Compactación
+
+[INFO] 14:21:35:553 Memoria/(4100:4227): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:21:36:555 Memoria/(4100:4229): Se conecto un cliente!
+[INFO] 14:21:36:556 Memoria/(4100:4233): Se conecto un cliente!
+[INFO] 14:21:36:556 Memoria/(4100:4234): Se conecto un cliente!
+[INFO] 14:21:36:557 Memoria/(4100:4234): Solicitud de Compactación
+
+[INFO] 14:21:36:557 Memoria/(4100:4234): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:21:37:559 Memoria/(4100:4236): Se conecto un cliente!
+[INFO] 14:21:37:559 Memoria/(4100:4240): Se conecto un cliente!
+[INFO] 14:21:37:560 Memoria/(4100:4241): Se conecto un cliente!
+[INFO] 14:21:37:560 Memoria/(4100:4241): Solicitud de Compactación
+
+[INFO] 14:21:37:561 Memoria/(4100:4241): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:21:38:562 Memoria/(4100:4243): Se conecto un cliente!
+[INFO] 14:21:38:563 Memoria/(4100:4247): Se conecto un cliente!
+[INFO] 14:21:38:564 Memoria/(4100:4248): Se conecto un cliente!
+[INFO] 14:21:38:564 Memoria/(4100:4248): Solicitud de Compactación
+
+[INFO] 14:21:38:565 Memoria/(4100:4248): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:21:39:566 Memoria/(4100:4250): Se conecto un cliente!
+[INFO] 14:21:39:567 Memoria/(4100:4254): Se conecto un cliente!
+[INFO] 14:21:39:568 Memoria/(4100:4255): Se conecto un cliente!
+[INFO] 14:21:39:569 Memoria/(4100:4255): Solicitud de Compactación
+
+[INFO] 14:21:39:569 Memoria/(4100:4255): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:21:40:571 Memoria/(4100:4257): Se conecto un cliente!
+[INFO] 14:21:40:571 Memoria/(4100:4261): Se conecto un cliente!
+[INFO] 14:21:40:573 Memoria/(4100:4262): Se conecto un cliente!
+[INFO] 14:21:40:573 Memoria/(4100:4262): Solicitud de Compactación
+
+[INFO] 14:21:40:573 Memoria/(4100:4262): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:21:41:577 Memoria/(4100:4264): Se conecto un cliente!
+[INFO] 14:21:41:580 Memoria/(4100:4268): Se conecto un cliente!
+[INFO] 14:21:41:582 Memoria/(4100:4269): Se conecto un cliente!
+[INFO] 14:21:41:582 Memoria/(4100:4269): Solicitud de Compactación
+
+[INFO] 14:21:41:582 Memoria/(4100:4269): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:21:42:585 Memoria/(4100:4271): Se conecto un cliente!
+[INFO] 14:21:42:586 Memoria/(4100:4275): Se conecto un cliente!
+[INFO] 14:21:42:588 Memoria/(4100:4276): Se conecto un cliente!
+[INFO] 14:21:42:588 Memoria/(4100:4276): Solicitud de Compactación
+
+[INFO] 14:21:42:588 Memoria/(4100:4276): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:21:43:593 Memoria/(4100:4278): Se conecto un cliente!
+[INFO] 14:21:43:594 Memoria/(4100:4278): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:21:43:598 Memoria/(4100:4282): Se conecto un cliente!
+[INFO] 14:21:43:598 Memoria/(4100:4282): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:21:45:602 Memoria/(4100:4284): Se conecto un cliente!
+[INFO] 14:21:45:602 Memoria/(4100:4284): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:21:47:605 Memoria/(4100:4292): Se conecto un cliente!
+[INFO] 14:21:47:606 Memoria/(4100:4292): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:21:47:612 Memoria/(4100:4294): Se conecto un cliente!
+[INFO] 14:21:47:613 Memoria/(4100:4294): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:21:49:619 Memoria/(4100:4296): Se conecto un cliente!
+[INFO] 14:21:49:620 Memoria/(4100:4296): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:21:49:623 Memoria/(4100:4300): Se conecto un cliente!
+[INFO] 14:21:49:623 Memoria/(4100:4300): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:21:49:624 Memoria/(4100:4303): Se conecto un cliente!
+[INFO] 14:21:49:625 Memoria/(4100:4303): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:21:49:633 Memoria/(4100:4307): Se conecto un cliente!
+[INFO] 14:21:49:633 Memoria/(4100:4307): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:21:49:636 Memoria/(4100:4317): Se conecto un cliente!
+[INFO] 14:21:49:637 Memoria/(4100:4317): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:21:49:637 Memoria/(4100:4317): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:21:49:637 Memoria/(4100:4317): Eliminación de Proceso PID: 3
+
+[INFO] 14:21:49:638 Memoria/(4100:4325): Se conecto un cliente!
+[INFO] 14:21:49:638 Memoria/(4100:4325): Eliminación de Proceso PID: 1
+
+[INFO] 14:21:49:639 Memoria/(4100:4329): Se conecto un cliente!
+[INFO] 14:21:49:639 Memoria/(4100:4329): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:21:49:639 Memoria/(4100:4329): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:21:49:640 Memoria/(4100:4329): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:21:49:640 Memoria/(4100:4329): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:21:49:640 Memoria/(4100:4329): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:21:49:640 Memoria/(4100:4329): Eliminación de Proceso PID: 2
+
+[INFO] 14:24:10:514 Memoria/(4459:4459): Listo para escuchar al cliente
+[INFO] 14:24:16:868 Memoria/(4459:4460): Se conecto un cliente!
+[INFO] 14:24:19:349 Memoria/(4459:4492): Se conecto un cliente!
+[INFO] 14:24:20:925 Memoria/(4459:4496): Se conecto un cliente!
+[INFO] 14:24:20:926 Memoria/(4459:4459): Se conectaron todos los modulos.
+
+[INFO] 14:24:20:926 Memoria/(4459:4459): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:24:23:107 Memoria/(4459:4500): Se conecto un cliente!
+[INFO] 14:24:23:107 Memoria/(4459:4500): Creación de Proceso PID: 1
+
+[INFO] 14:24:23:112 Memoria/(4459:4508): Se conecto un cliente!
+[INFO] 14:24:23:112 Memoria/(4459:4508): Creación de Proceso PID: 2
+
+[INFO] 14:24:23:115 Memoria/(4459:4514): Se conecto un cliente!
+[INFO] 14:24:23:116 Memoria/(4459:4514): Creación de Proceso PID: 3
+
+[INFO] 14:24:24:113 Memoria/(4459:4516): Se conecto un cliente!
+[INFO] 14:24:24:113 Memoria/(4459:4516): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:24:25:117 Memoria/(4459:4520): Se conecto un cliente!
+[INFO] 14:24:25:118 Memoria/(4459:4520): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:24:25:137 Memoria/(4459:4523): Se conecto un cliente!
+[INFO] 14:24:25:137 Memoria/(4459:4523): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:24:27:140 Memoria/(4459:4533): Se conecto un cliente!
+[INFO] 14:24:27:142 Memoria/(4459:4533): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:24:27:145 Memoria/(4459:4538): Se conecto un cliente!
+[INFO] 14:24:27:146 Memoria/(4459:4538): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:24:27:149 Memoria/(4459:4543): Se conecto un cliente!
+[INFO] 14:24:27:152 Memoria/(4459:4543): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:24:27:154 Memoria/(4459:4548): Se conecto un cliente!
+[INFO] 14:24:27:155 Memoria/(4459:4548): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:24:27:158 Memoria/(4459:4553): Se conecto un cliente!
+[INFO] 14:24:27:159 Memoria/(4459:4553): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:24:27:160 Memoria/(4459:4558): Se conecto un cliente!
+[INFO] 14:24:27:161 Memoria/(4459:4558): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:24:27:162 Memoria/(4459:4563): Se conecto un cliente!
+[INFO] 14:24:27:163 Memoria/(4459:4563): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:24:27:165 Memoria/(4459:4568): Se conecto un cliente!
+[INFO] 14:24:27:172 Memoria/(4459:4568): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:24:28:176 Memoria/(4459:4572): Se conecto un cliente!
+[INFO] 14:24:28:177 Memoria/(4459:4572): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:24:29:183 Memoria/(4459:4576): Se conecto un cliente!
+[INFO] 14:24:29:184 Memoria/(4459:4576): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:24:29:185 Memoria/(4459:4582): Se conecto un cliente!
+[INFO] 14:24:29:186 Memoria/(4459:4582): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:24:31:200 Memoria/(4459:4585): Se conecto un cliente!
+[INFO] 14:24:31:203 Memoria/(4459:4585): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:24:32:206 Memoria/(4459:4594): Se conecto un cliente!
+[INFO] 14:24:32:206 Memoria/(4459:4594): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:24:34:209 Memoria/(4459:4596): Se conecto un cliente!
+[INFO] 14:24:34:210 Memoria/(4459:4596): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:24:35:222 Memoria/(4459:4598): Se conecto un cliente!
+[INFO] 14:24:35:228 Memoria/(4459:4607): Se conecto un cliente!
+[INFO] 14:24:35:230 Memoria/(4459:4608): Se conecto un cliente!
+[INFO] 14:24:35:230 Memoria/(4459:4608): Solicitud de Compactación
+
+[INFO] 14:24:35:231 Memoria/(4459:4608): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:24:36:235 Memoria/(4459:4610): Se conecto un cliente!
+[INFO] 14:24:36:238 Memoria/(4459:4614): Se conecto un cliente!
+[INFO] 14:24:36:241 Memoria/(4459:4615): Se conecto un cliente!
+[INFO] 14:24:36:241 Memoria/(4459:4615): Solicitud de Compactación
+
+[INFO] 14:24:36:242 Memoria/(4459:4615): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:24:37:258 Memoria/(4459:4618): Se conecto un cliente!
+[INFO] 14:24:37:264 Memoria/(4459:4621): Se conecto un cliente!
+[INFO] 14:24:37:267 Memoria/(4459:4622): Se conecto un cliente!
+[INFO] 14:24:37:269 Memoria/(4459:4622): Solicitud de Compactación
+
+[INFO] 14:24:37:269 Memoria/(4459:4622): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:24:38:273 Memoria/(4459:4624): Se conecto un cliente!
+[INFO] 14:24:38:275 Memoria/(4459:4628): Se conecto un cliente!
+[INFO] 14:24:38:278 Memoria/(4459:4629): Se conecto un cliente!
+[INFO] 14:24:38:279 Memoria/(4459:4629): Solicitud de Compactación
+
+[INFO] 14:24:38:280 Memoria/(4459:4629): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:24:39:282 Memoria/(4459:4631): Se conecto un cliente!
+[INFO] 14:24:39:283 Memoria/(4459:4635): Se conecto un cliente!
+[INFO] 14:24:39:284 Memoria/(4459:4636): Se conecto un cliente!
+[INFO] 14:24:39:284 Memoria/(4459:4636): Solicitud de Compactación
+
+[INFO] 14:24:39:284 Memoria/(4459:4636): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:24:40:288 Memoria/(4459:4638): Se conecto un cliente!
+[INFO] 14:24:40:289 Memoria/(4459:4642): Se conecto un cliente!
+[INFO] 14:24:40:290 Memoria/(4459:4643): Se conecto un cliente!
+[INFO] 14:24:40:290 Memoria/(4459:4643): Solicitud de Compactación
+
+[INFO] 14:24:40:290 Memoria/(4459:4643): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:24:41:294 Memoria/(4459:4645): Se conecto un cliente!
+[INFO] 14:24:41:296 Memoria/(4459:4649): Se conecto un cliente!
+[INFO] 14:24:41:298 Memoria/(4459:4650): Se conecto un cliente!
+[INFO] 14:24:41:299 Memoria/(4459:4650): Solicitud de Compactación
+
+[INFO] 14:24:41:300 Memoria/(4459:4650): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:24:42:307 Memoria/(4459:4652): Se conecto un cliente!
+[INFO] 14:24:42:311 Memoria/(4459:4656): Se conecto un cliente!
+[INFO] 14:24:42:311 Memoria/(4459:4657): Se conecto un cliente!
+[INFO] 14:24:42:312 Memoria/(4459:4657): Solicitud de Compactación
+
+[INFO] 14:24:42:312 Memoria/(4459:4657): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:24:43:318 Memoria/(4459:4659): Se conecto un cliente!
+[INFO] 14:24:43:319 Memoria/(4459:4663): Se conecto un cliente!
+[INFO] 14:24:43:319 Memoria/(4459:4664): Se conecto un cliente!
+[INFO] 14:24:43:319 Memoria/(4459:4664): Solicitud de Compactación
+
+[INFO] 14:24:43:319 Memoria/(4459:4664): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:24:44:323 Memoria/(4459:4666): Se conecto un cliente!
+[INFO] 14:24:44:324 Memoria/(4459:4666): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:24:44:328 Memoria/(4459:4670): Se conecto un cliente!
+[INFO] 14:24:44:329 Memoria/(4459:4670): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:24:46:332 Memoria/(4459:4672): Se conecto un cliente!
+[INFO] 14:24:46:333 Memoria/(4459:4672): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:24:48:335 Memoria/(4459:4678): Se conecto un cliente!
+[INFO] 14:24:48:336 Memoria/(4459:4678): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:24:48:340 Memoria/(4459:4682): Se conecto un cliente!
+[INFO] 14:24:48:340 Memoria/(4459:4682): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:24:50:341 Memoria/(4459:4684): Se conecto un cliente!
+[INFO] 14:24:50:341 Memoria/(4459:4684): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:24:50:343 Memoria/(4459:4688): Se conecto un cliente!
+[INFO] 14:24:50:343 Memoria/(4459:4688): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:24:50:345 Memoria/(4459:4691): Se conecto un cliente!
+[INFO] 14:24:50:345 Memoria/(4459:4691): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:24:50:350 Memoria/(4459:4695): Se conecto un cliente!
+[INFO] 14:24:50:350 Memoria/(4459:4695): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:24:50:363 Memoria/(4459:4705): Se conecto un cliente!
+[INFO] 14:24:50:364 Memoria/(4459:4705): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:24:50:365 Memoria/(4459:4705): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:24:50:365 Memoria/(4459:4705): Eliminación de Proceso PID: 3
+
+[INFO] 14:24:50:366 Memoria/(4459:4713): Se conecto un cliente!
+[INFO] 14:24:50:366 Memoria/(4459:4713): Eliminación de Proceso PID: 1
+
+[INFO] 14:24:50:367 Memoria/(4459:4717): Se conecto un cliente!
+[INFO] 14:24:50:368 Memoria/(4459:4717): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:24:50:368 Memoria/(4459:4717): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:24:50:368 Memoria/(4459:4717): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:24:50:368 Memoria/(4459:4717): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:24:50:368 Memoria/(4459:4717): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:24:50:368 Memoria/(4459:4717): Eliminación de Proceso PID: 2
+
+[INFO] 14:28:25:395 Memoria/(4809:4809): Listo para escuchar al cliente
+[INFO] 14:28:46:928 Memoria/(4809:4809): Se conectaron todos los modulos.
+
+[INFO] 14:28:46:928 Memoria/(4809:4809): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:28:50:424 Memoria/(4809:4879): Creación de Proceso PID: 1
+
+[INFO] 14:28:50:429 Memoria/(4809:4886): Creación de Proceso PID: 2
+
+[INFO] 14:28:50:432 Memoria/(4809:4893): Creación de Proceso PID: 3
+
+[INFO] 14:28:51:430 Memoria/(4809:4895): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:28:52:435 Memoria/(4809:4897): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:28:52:452 Memoria/(4809:4902): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:28:54:454 Memoria/(4809:4912): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:28:54:455 Memoria/(4809:4917): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:28:54:457 Memoria/(4809:4922): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:28:54:458 Memoria/(4809:4927): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:28:54:459 Memoria/(4809:4932): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:28:54:460 Memoria/(4809:4937): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:28:54:461 Memoria/(4809:4942): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:28:54:462 Memoria/(4809:4947): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:28:55:465 Memoria/(4809:4952): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:28:56:479 Memoria/(4809:4954): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:28:56:483 Memoria/(4809:4961): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:28:58:501 Memoria/(4809:4964): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:28:59:505 Memoria/(4809:4973): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:29:01:510 Memoria/(4809:4975): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:29:02:526 Memoria/(4809:4987): Solicitud de Compactación
+
+[INFO] 14:29:02:526 Memoria/(4809:4987): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:29:03:533 Memoria/(4809:4994): Solicitud de Compactación
+
+[INFO] 14:29:03:534 Memoria/(4809:4994): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:29:04:541 Memoria/(4809:5001): Solicitud de Compactación
+
+[INFO] 14:29:04:542 Memoria/(4809:5001): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:29:05:549 Memoria/(4809:5008): Solicitud de Compactación
+
+[INFO] 14:29:05:549 Memoria/(4809:5008): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:29:06:560 Memoria/(4809:5015): Solicitud de Compactación
+
+[INFO] 14:29:06:561 Memoria/(4809:5015): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:29:07:569 Memoria/(4809:5022): Solicitud de Compactación
+
+[INFO] 14:29:07:570 Memoria/(4809:5022): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:29:08:578 Memoria/(4809:5029): Solicitud de Compactación
+
+[INFO] 14:29:08:578 Memoria/(4809:5029): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:29:09:586 Memoria/(4809:5036): Solicitud de Compactación
+
+[INFO] 14:29:09:587 Memoria/(4809:5036): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:29:10:590 Memoria/(4809:5043): Solicitud de Compactación
+
+[INFO] 14:29:10:590 Memoria/(4809:5043): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:29:11:594 Memoria/(4809:5045): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:29:11:597 Memoria/(4809:5049): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:29:13:602 Memoria/(4809:5051): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:29:15:604 Memoria/(4809:5057): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:29:15:605 Memoria/(4809:5061): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:29:17:610 Memoria/(4809:5063): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:29:17:616 Memoria/(4809:5067): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:29:17:628 Memoria/(4809:5070): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:29:17:643 Memoria/(4809:5074): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:29:17:649 Memoria/(4809:5083): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:29:17:650 Memoria/(4809:5083): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:29:17:650 Memoria/(4809:5083): Eliminación de Proceso PID: 3
+
+[INFO] 14:29:17:651 Memoria/(4809:5092): Eliminación de Proceso PID: 1
+
+[INFO] 14:29:17:654 Memoria/(4809:5096): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:29:17:654 Memoria/(4809:5096): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:29:17:654 Memoria/(4809:5096): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:29:17:655 Memoria/(4809:5096): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:29:17:655 Memoria/(4809:5096): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:29:17:655 Memoria/(4809:5096): Eliminación de Proceso PID: 2
+
+[INFO] 14:43:45:169 Memoria/(5189:5189): Listo para escuchar al cliente
+[INFO] 14:43:56:739 Memoria/(5189:5189): Se conectaron todos los modulos.
+
+[INFO] 14:43:56:739 Memoria/(5189:5189): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:43:57:945 Memoria/(5189:5230): Creación de Proceso PID: 1
+
+[INFO] 14:43:57:949 Memoria/(5189:5238): Creación de Proceso PID: 2
+
+[INFO] 14:43:57:951 Memoria/(5189:5244): Creación de Proceso PID: 3
+
+[INFO] 14:43:58:950 Memoria/(5189:5246): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:43:59:952 Memoria/(5189:5248): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:43:59:961 Memoria/(5189:5253): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:44:01:964 Memoria/(5189:5263): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:44:01:965 Memoria/(5189:5268): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:44:01:966 Memoria/(5189:5273): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:44:01:967 Memoria/(5189:5278): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:44:01:968 Memoria/(5189:5283): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:44:01:969 Memoria/(5189:5288): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:44:01:970 Memoria/(5189:5293): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:44:01:971 Memoria/(5189:5298): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:44:02:972 Memoria/(5189:5303): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:44:03:988 Memoria/(5189:5305): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:44:03:989 Memoria/(5189:5312): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:44:06:007 Memoria/(5189:5315): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:44:07:011 Memoria/(5189:5324): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:44:09:014 Memoria/(5189:5326): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:44:10:021 Memoria/(5189:5338): Solicitud de Compactación
+
+[INFO] 14:44:10:021 Memoria/(5189:5338): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:44:11:028 Memoria/(5189:5345): Solicitud de Compactación
+
+[INFO] 14:44:11:028 Memoria/(5189:5345): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:44:12:036 Memoria/(5189:5352): Solicitud de Compactación
+
+[INFO] 14:44:12:036 Memoria/(5189:5352): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:44:13:044 Memoria/(5189:5359): Solicitud de Compactación
+
+[INFO] 14:44:13:045 Memoria/(5189:5359): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:44:14:054 Memoria/(5189:5366): Solicitud de Compactación
+
+[INFO] 14:44:14:056 Memoria/(5189:5366): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:44:15:061 Memoria/(5189:5373): Solicitud de Compactación
+
+[INFO] 14:44:15:062 Memoria/(5189:5373): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:44:16:070 Memoria/(5189:5380): Solicitud de Compactación
+
+[INFO] 14:44:16:071 Memoria/(5189:5380): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:44:17:075 Memoria/(5189:5387): Solicitud de Compactación
+
+[INFO] 14:44:17:076 Memoria/(5189:5387): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:44:18:082 Memoria/(5189:5394): Solicitud de Compactación
+
+[INFO] 14:44:18:082 Memoria/(5189:5394): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:44:19:085 Memoria/(5189:5396): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:44:19:087 Memoria/(5189:5400): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:44:21:098 Memoria/(5189:5402): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:44:23:101 Memoria/(5189:5408): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:44:23:103 Memoria/(5189:5412): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:44:25:112 Memoria/(5189:5415): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:44:25:117 Memoria/(5189:5419): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:44:25:127 Memoria/(5189:5422): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:44:25:134 Memoria/(5189:5426): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:44:25:146 Memoria/(5189:5436): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:44:25:146 Memoria/(5189:5436): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:44:25:146 Memoria/(5189:5436): Eliminación de Proceso PID: 3
+
+[INFO] 14:44:25:148 Memoria/(5189:5444): Eliminación de Proceso PID: 1
+
+[INFO] 14:44:25:149 Memoria/(5189:5448): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:44:25:151 Memoria/(5189:5448): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:44:25:152 Memoria/(5189:5448): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:44:25:152 Memoria/(5189:5448): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:44:25:152 Memoria/(5189:5448): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:44:25:152 Memoria/(5189:5448): Eliminación de Proceso PID: 2
+
+[INFO] 14:48:10:431 Memoria/(5647:5647): Listo para escuchar al cliente
+[INFO] 14:48:16:405 Memoria/(5647:5647): Se conectaron todos los modulos.
+
+[INFO] 14:48:16:405 Memoria/(5647:5647): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:48:17:787 Memoria/(5647:5688): Creación de Proceso PID: 1
+
+[INFO] 14:48:17:792 Memoria/(5647:5695): Creación de Proceso PID: 2
+
+[INFO] 14:48:17:796 Memoria/(5647:5702): Creación de Proceso PID: 3
+
+[INFO] 14:48:18:794 Memoria/(5647:5704): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:48:19:798 Memoria/(5647:5707): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:48:19:818 Memoria/(5647:5711): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:48:21:824 Memoria/(5647:5721): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:48:21:829 Memoria/(5647:5726): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:48:21:835 Memoria/(5647:5731): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:48:21:838 Memoria/(5647:5736): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:48:21:840 Memoria/(5647:5741): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:48:21:842 Memoria/(5647:5746): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:48:21:844 Memoria/(5647:5751): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:48:21:846 Memoria/(5647:5756): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:48:22:856 Memoria/(5647:5761): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:48:23:868 Memoria/(5647:5763): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:48:23:873 Memoria/(5647:5770): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:48:25:886 Memoria/(5647:5773): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:48:26:894 Memoria/(5647:5782): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:48:28:897 Memoria/(5647:5784): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:48:29:914 Memoria/(5647:5796): Solicitud de Compactación
+
+[INFO] 14:48:29:915 Memoria/(5647:5796): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:48:30:922 Memoria/(5647:5803): Solicitud de Compactación
+
+[INFO] 14:48:30:923 Memoria/(5647:5803): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:48:31:930 Memoria/(5647:5810): Solicitud de Compactación
+
+[INFO] 14:48:31:930 Memoria/(5647:5810): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:48:32:938 Memoria/(5647:5817): Solicitud de Compactación
+
+[INFO] 14:48:32:939 Memoria/(5647:5817): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:48:33:948 Memoria/(5647:5824): Solicitud de Compactación
+
+[INFO] 14:48:33:949 Memoria/(5647:5824): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:48:34:957 Memoria/(5647:5831): Solicitud de Compactación
+
+[INFO] 14:48:34:958 Memoria/(5647:5831): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:48:35:968 Memoria/(5647:5838): Solicitud de Compactación
+
+[INFO] 14:48:35:969 Memoria/(5647:5838): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:48:36:977 Memoria/(5647:5845): Solicitud de Compactación
+
+[INFO] 14:48:36:978 Memoria/(5647:5845): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:48:37:986 Memoria/(5647:5852): Solicitud de Compactación
+
+[INFO] 14:48:37:986 Memoria/(5647:5852): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:48:38:990 Memoria/(5647:5854): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:48:38:992 Memoria/(5647:5858): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:48:40:996 Memoria/(5647:5860): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:48:42:997 Memoria/(5647:5866): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:48:42:998 Memoria/(5647:5870): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:48:44:999 Memoria/(5647:5872): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:48:45:001 Memoria/(5647:5876): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:48:45:002 Memoria/(5647:5879): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:48:45:006 Memoria/(5647:5883): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:48:45:012 Memoria/(5647:5893): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:48:45:012 Memoria/(5647:5893): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:48:45:012 Memoria/(5647:5893): Eliminación de Proceso PID: 3
+
+[INFO] 14:48:45:013 Memoria/(5647:5901): Eliminación de Proceso PID: 1
+
+[INFO] 14:48:45:014 Memoria/(5647:5905): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:48:45:015 Memoria/(5647:5905): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:48:45:015 Memoria/(5647:5905): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:48:45:015 Memoria/(5647:5905): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:48:45:015 Memoria/(5647:5905): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:48:45:015 Memoria/(5647:5905): Eliminación de Proceso PID: 2
+
+[INFO] 14:54:48:063 Memoria/(5993:5993): Listo para escuchar al cliente
+[INFO] 14:54:55:899 Memoria/(5993:5993): Se conectaron todos los modulos.
+
+[INFO] 14:54:55:899 Memoria/(5993:5993): Se crearon todas las estructuras correctamente.
+
+[INFO] 14:54:56:768 Memoria/(5993:6034): Creación de Proceso PID: 1
+
+[INFO] 14:54:56:773 Memoria/(5993:6042): Creación de Proceso PID: 2
+
+[INFO] 14:54:56:774 Memoria/(5993:6048): Creación de Proceso PID: 3
+
+[INFO] 14:54:57:775 Memoria/(5993:6050): PID: 1 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:54:58:785 Memoria/(5993:6052): PID: 1 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:54:58:801 Memoria/(5993:6057): PID: 2 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:55:00:806 Memoria/(5993:6067): PID: 2 - Crear Segmento: 1 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:55:00:807 Memoria/(5993:6072): PID: 2 - Crear Segmento: 2 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:55:00:808 Memoria/(5993:6077): PID: 2 - Crear Segmento: 3 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:55:00:809 Memoria/(5993:6082): PID: 2 - Crear Segmento: 4 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:55:00:810 Memoria/(5993:6087): PID: 2 - Crear Segmento: 5 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:55:00:811 Memoria/(5993:6092): PID: 2 - Crear Segmento: 6 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:55:00:812 Memoria/(5993:6097): PID: 2 - Crear Segmento: 7 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:55:00:813 Memoria/(5993:6102): PID: 2 - Crear Segmento: 8 - Base: 704 - TAMAÑO: 64
+
+[INFO] 14:55:01:815 Memoria/(5993:6107): PID: 2 - Acción: ESCRIBIR - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:55:02:828 Memoria/(5993:6109): PID: 1 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 128
+
+[INFO] 14:55:02:831 Memoria/(5993:6116): PID: 1 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:55:04:844 Memoria/(5993:6120): PID: 2 - Crear Segmento: 9 - Base: 768 - TAMAÑO: 64
+
+[INFO] 14:55:05:850 Memoria/(5993:6129): PID: 2 - Acción: ESCRIBIR - Dirección física: 256 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:55:07:853 Memoria/(5993:6131): PID: 2 - Acción: ESCRIBIR - Dirección física: 704 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:55:08:870 Memoria/(5993:6143): Solicitud de Compactación
+
+[INFO] 14:55:08:870 Memoria/(5993:6143): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 14:55:09:874 Memoria/(5993:6150): Solicitud de Compactación
+
+[INFO] 14:55:09:874 Memoria/(5993:6150): PID: 2 - Segmento: 2 - Base: 192 - Tamaño 64
+
+[INFO] 14:55:10:883 Memoria/(5993:6157): Solicitud de Compactación
+
+[INFO] 14:55:10:884 Memoria/(5993:6157): PID: 2 - Segmento: 3 - Base: 256 - Tamaño 64
+
+[INFO] 14:55:11:892 Memoria/(5993:6164): Solicitud de Compactación
+
+[INFO] 14:55:11:893 Memoria/(5993:6164): PID: 2 - Segmento: 4 - Base: 320 - Tamaño 64
+
+[INFO] 14:55:12:900 Memoria/(5993:6171): Solicitud de Compactación
+
+[INFO] 14:55:12:900 Memoria/(5993:6171): PID: 2 - Segmento: 5 - Base: 384 - Tamaño 64
+
+[INFO] 14:55:13:902 Memoria/(5993:6178): Solicitud de Compactación
+
+[INFO] 14:55:13:902 Memoria/(5993:6178): PID: 2 - Segmento: 6 - Base: 448 - Tamaño 64
+
+[INFO] 14:55:14:904 Memoria/(5993:6185): Solicitud de Compactación
+
+[INFO] 14:55:14:904 Memoria/(5993:6185): PID: 2 - Segmento: 7 - Base: 512 - Tamaño 64
+
+[INFO] 14:55:15:908 Memoria/(5993:6192): Solicitud de Compactación
+
+[INFO] 14:55:15:909 Memoria/(5993:6192): PID: 2 - Segmento: 8 - Base: 576 - Tamaño 64
+
+[INFO] 14:55:16:915 Memoria/(5993:6199): Solicitud de Compactación
+
+[INFO] 14:55:16:916 Memoria/(5993:6199): PID: 2 - Segmento: 9 - Base: 640 - Tamaño 64
+
+[INFO] 14:55:17:918 Memoria/(5993:6201): PID: 3 - Crear Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:55:17:920 Memoria/(5993:6205): PID: 3 - Acción: LEER - Dirección física: 12 - Tamaño: 4 - Origen: CPU
+
+[INFO] 14:55:19:924 Memoria/(5993:6207): PID: 2 - Acción: LEER - Dirección física: 128 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:55:21:932 Memoria/(5993:6213): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 14:55:21:935 Memoria/(5993:6217): PID: 2 - Acción: LEER - Dirección física: 576 - Tamaño: 8 - Origen: CPU
+
+[INFO] 14:55:23:938 Memoria/(5993:6219): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 14:55:23:941 Memoria/(5993:6223): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 14:55:23:943 Memoria/(5993:6226): PID: 2 - Eliminar Segmento: 5 - Base: 384 - TAMAÑO: 64
+
+[INFO] 14:55:23:952 Memoria/(5993:6230): PID: 3 - Crear Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:55:23:957 Memoria/(5993:6240): PID: 3 - Eliminar Segmento: 1 - Base: 704 - TAMAÑO: 256
+
+[INFO] 14:55:23:957 Memoria/(5993:6240): PID: 3 - Eliminar Segmento: 2 - Base: 832 - TAMAÑO: 128
+
+[INFO] 14:55:23:957 Memoria/(5993:6240): Eliminación de Proceso PID: 3
+
+[INFO] 14:55:23:959 Memoria/(5993:6248): Eliminación de Proceso PID: 1
+
+[INFO] 14:55:23:960 Memoria/(5993:6252): PID: 2 - Eliminar Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 14:55:23:960 Memoria/(5993:6252): PID: 2 - Eliminar Segmento: 6 - Base: 448 - TAMAÑO: 64
+
+[INFO] 14:55:23:960 Memoria/(5993:6252): PID: 2 - Eliminar Segmento: 7 - Base: 512 - TAMAÑO: 64
+
+[INFO] 14:55:23:960 Memoria/(5993:6252): PID: 2 - Eliminar Segmento: 8 - Base: 576 - TAMAÑO: 64
+
+[INFO] 14:55:23:961 Memoria/(5993:6252): PID: 2 - Eliminar Segmento: 9 - Base: 640 - TAMAÑO: 64
+
+[INFO] 14:55:23:961 Memoria/(5993:6252): Eliminación de Proceso PID: 2
+

@@ -41,7 +41,7 @@ int esperar_cliente(int socket_servidor)
 	int socket_cliente;
 	socket_cliente = accept(socket_servidor, NULL, NULL);
 
-	log_info(logger, "Se conecto un cliente!");
+	//log_info(logger, "Se conecto un cliente!");
 
 	return socket_cliente;
 }
@@ -204,7 +204,7 @@ void enviar_cod_operacion(char* mensaje, int socket_cliente, op_code cod_operaci
 	void* a_enviar = serializar_paquete(paquete, bytes);
 
 	send(socket_cliente, a_enviar, bytes, 0);
-	printf("cod_op: %d\n",cod_operacion);
+	//printf("cod_op: %d\n",cod_operacion);
 
 	free(a_enviar);
 	eliminar_paquete(paquete);
@@ -284,9 +284,9 @@ t_paquete* empaquetarTabla(int pid, t_list* cabeza, op_code cod_operacion) {
     	Segmento* siguiente = list_iterator_next(iterador);
 
 
-    	printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
-    	printf("base: %zu\n",siguiente->base);
-    	printf("desplazamiento: %zu\n",siguiente->desplazamiento);
+    	//printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
+    	//printf("base: %zu\n",siguiente->base);
+    	//printf("desplazamiento: %zu\n",siguiente->desplazamiento);
 
         char* unaPalabra = string_new();
 
