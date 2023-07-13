@@ -224,13 +224,13 @@ void* clientMemoria(void *arg) {
         	agregar_a_paquete(paquete, pid, strlen(pid)+1);
         	agregar_a_paquete(paquete, idSegmento, strlen(idSegmento)+1);
         	agregar_a_paquete(paquete, tamanioSegmento, strlen(tamanioSegmento)+1);
-
+        	log_info(logger, "PID: %d - Crear Segmento - Id Segmento: %d - Tamaño: %d\n",estadoEnEjecucion->pid,estadoEnEjecucion->idSegmento,estadoEnEjecucion->tamanioSegmento);
         	enviar_paquete(paquete, conexion_Memoria);
 
-        	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
-        	printf("pid enviado a Memoria: %s\n", pid);
-        	printf("idSegmento enviado a Memoria: %s\n", idSegmento);
-        	printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
+//        	printf("CREATE_SEGMENT enviado a MEMORIA.\n");
+//        	printf("pid enviado a Memoria: %s\n", pid);
+//        	printf("idSegmento enviado a Memoria: %s\n", idSegmento);
+//        	printf("tamanioSegmento enviado a Memoria: %s\n", tamanioSegmento);
 
         	eliminar_paquete(paquete);
         break;
@@ -242,15 +242,15 @@ void* clientMemoria(void *arg) {
     		string_append_with_format(&pidDelete, "%d", estadoEnEjecucion->pid);
     		string_append_with_format(&idSegmentoDelete, "%d", estadoEnEjecucion->idSegmento);
 
-    		printf("pid enviado a Memoria: %s\n", pidDelete);
-    		printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
+//    		printf("pid enviado a Memoria: %s\n", pidDelete);
+//    		printf("idSegmento enviado a Memoria: %s\n", idSegmentoDelete);
 
         	agregar_a_paquete(paquete, pidDelete, strlen(pidDelete)+1);
         	agregar_a_paquete(paquete, idSegmentoDelete, strlen(idSegmentoDelete)+1);
-
+        	log_info(logger, "PID: %d - Eliminar Segmento - Id Segmento: %d \n",estadoEnEjecucion->pid,estadoEnEjecucion->idSegmento);
     		enviar_paquete(paquete, conexion_Memoria);
 
-    		printf("DELETE_SEGMENT enviado a MEMORIA.\n");
+//    		printf("DELETE_SEGMENT enviado a MEMORIA.\n");
     		eliminar_paquete(paquete);
     	break;
     	case 5:
@@ -258,7 +258,7 @@ void* clientMemoria(void *arg) {
     		procesoADesencolar = unqueue(&frenteColaNew,&finColaNew);
     		string_append_with_format(&pidNuevo, "%d", procesoADesencolar->pid);
 
-    		printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
+    		//printf("PROCESO_NUEVO - Pid enviado a Memoria: %s\n", pidNuevo);
     		enviar_mensaje_cod_operacion(pidNuevo,conexion_Memoria,5);
 
     	break;
@@ -271,13 +271,14 @@ void* clientMemoria(void *arg) {
     		char* pidNuevoEliminarProceso = string_new();
     		string_append_with_format(&pidNuevoEliminarProceso, "%d", estadoEnEjecucion->pid);
     		sem_post(&semPasarAExit);
-    		printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
+    		//printf("ELIMINAR_PROCESO - Pid enviado a Memoria: %s\n", pidNuevoEliminarProceso);
     		enviar_mensaje_cod_operacion(pidNuevoEliminarProceso,conexion_Memoria,9);
     		liberar_conexion(conexion_Memoria);
     		return NULL;
     	break;
     	case 13:
     		//printf("PREGUNTO CONEXION MEMORIA\n");
+    		log_info(logger, "Compactación: Esperando Fin de Operaciones de FS");
     		enviar_mensaje_cod_operacion("",conexion_Memoria,13);
     	break;
 		default:
@@ -292,7 +293,7 @@ void* clientMemoria(void *arg) {
 		case 6:
 			t_list* tablaSegmentos = recibir_paquete(conexion_Memoria);
 			procesoADesencolar->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-			printf("PROCESO_NUEVO - Tabla inicial actualizada.\n");
+			//printf("PROCESO_NUEVO - Tabla inicial actualizada.\n");
 
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				queue(&frenteColaReady, &finColaReady,procesoADesencolar);
@@ -323,7 +324,7 @@ void* clientMemoria(void *arg) {
         	nuevoSegmento->tamanio = estadoEnEjecucion->tamanioSegmento;
 
         	list_add(estadoEnEjecucion->tablaSegmentos, nuevoSegmento);
-        	printf("Nuevo SEGMENTO creado. ID: %d BASE: %zu TAMANIO: %zu\n",nuevoSegmento->id,nuevoSegmento->direccionBase,nuevoSegmento->tamanio);
+        	//printf("Nuevo SEGMENTO creado. ID: %d BASE: %zu TAMANIO: %zu\n",nuevoSegmento->id,nuevoSegmento->direccionBase,nuevoSegmento->tamanio);
 //        	printf("Tabla de segmentos: \n");
 //        	t_list_iterator* iterador = list_iterator_create(estadoEnEjecucion->tablaSegmentos);
 //        	while (list_iterator_has_next(iterador)) {
@@ -337,12 +338,13 @@ void* clientMemoria(void *arg) {
         break;
         case 7:
         	//Log minimo y obligaotrio
-    		log_info(logger, "Finaliza el proceso &d - Motivo: OUT OF MEMORY\n", estadoEnEjecucion->pid);
+    		log_info(logger, "Finaliza el proceso %d - Motivo: OUT OF MEMORY\n", estadoEnEjecucion->pid);
         	liberar_conexion(conexion_Memoria);
         	pasarAExit();
         break;
         case 8:
-        	printf("Me llego que envie la solicitud de compactacion\n");
+
+        	//printf("Me llego que envie la solicitud de compactacion\n");
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteMemoria(13);
 
@@ -350,21 +352,21 @@ void* clientMemoria(void *arg) {
         case 3:   //Después de delete_segment
         	t_list* tablaSegmentosRecibida = recibir_paquete(conexion_Memoria);
         	estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosRecibida);
-        	printf("SEGMENTO ELIMINADO. PID: %d, ID: %d\n",estadoEnEjecucion->pid ,estadoEnEjecucion->idSegmento );
+        	//printf("SEGMENTO ELIMINADO. PID: %d, ID: %d\n",estadoEnEjecucion->pid ,estadoEnEjecucion->idSegmento );
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteCPU();
         break;
         case 10:
-        	log_info(logger, "Se finalizó el proceso de compactación");
+
         	//NOS MANDAN UN PAQUETE POR CADA TABLA DE SEGMENTOS
-        	printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
-        	printf("cantidadElementosSistema: %d\n",cantidadElementosSistema);
+        	//printf("VOY A RECIBIR TABLAS DE LA COMPACTACIÓN\n");
+        	//printf("cantidadElementosSistema: %d\n",cantidadElementosSistema);
         	t_list* tablaSegmentosCompactacion;
 
         	for(int i = 0; i<cantidadElementosSistema; i++){
 
         		tablaSegmentosCompactacion = recibir_paquete(conexion_Memoria);
-        		printf("PAQUETE RECIBIDO N°%d \n",i+1);
+        		//printf("PAQUETE RECIBIDO N°%d \n",i+1);
 
         		char* primerSegmento = list_get(tablaSegmentosCompactacion,0);
         		//printf("Primer segmento recibido: %s\n",primerSegmento);
@@ -372,17 +374,17 @@ void* clientMemoria(void *arg) {
         		char** arraySegmento = string_array_new();
         		arraySegmento = string_split(primerSegmento, " ");
         		int pidCompactacion = atoi(arraySegmento[0]);
-        		printf("PID BUSCADO: %d\n",pidCompactacion);
+        		//printf("PID BUSCADO: %d\n",pidCompactacion);
         		int cod_op_compactacion = recibir_operacion(conexion_Memoria);
         		//printf("cod_op: %d\n", cod_op_compactacion);
 
 
         		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 
-        			printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
+        			//printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
         			if(estadoEnEjecucion->pid == pidCompactacion){
         				estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentosCompactacion);
-        				printf("ACTUALICE UNA TABLA\n");
+        				//printf("ACTUALICE UNA TABLA\n");
         			}
 
         			actualizarColaReady(frenteColaReady,tablaSegmentosCompactacion, pidCompactacion);
@@ -407,16 +409,16 @@ void* clientMemoria(void *arg) {
         			//printf("PID estadoEnEjecución: %d\n",estadoEnEjecucion->pid);
 					if(estadoEnEjecucion->pid == pid){
 						estadoEnEjecucion->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-						printf("ACTUALICE UNA TABLA\n");
+						//printf("ACTUALICE UNA TABLA\n");
 					}
 
 					t_list_iterator* iteradorListaReady = list_iterator_create(listaReady);
 					while(list_iterator_has_next(iteradorListaReady)){
 						t_infopcb* siguiente = list_iterator_next(iteradorListaReady);
-						printf("PID: %d\n",siguiente->pid);
+						//printf("PID: %d\n",siguiente->pid);
 						if(siguiente->pid == pid){
 							siguiente->tablaSegmentos = tablaSegmentosActualizada(tablaSegmentos);
-							printf("ACTUALICE UNA TABLA\n");
+							//printf("ACTUALICE UNA TABLA\n");
 						}
 					}
 					list_iterator_destroy(iteradorListaReady);
@@ -424,7 +426,8 @@ void* clientMemoria(void *arg) {
 
 
         	}
-        	printf("COMPATACIÓN REBICIDA.\n");
+        	log_info(logger, "Se finalizó el proceso de compactación");
+        	//printf("COMPATACIÓN REBICIDA.\n");
         	liberar_conexion(conexion_Memoria);
         	iniciarHiloClienteMemoria(2);
 
@@ -436,11 +439,11 @@ void* clientMemoria(void *arg) {
         	liberar_conexion(conexion_Memoria);
         	if(estaConectadoMemoria){
         		iniciarHiloClienteMemoria(13);
-        		printf("MEMORIA OCUPADA\n");
+        		//printf("MEMORIA OCUPADA\n");
         	}
         	else{
         		iniciarHiloClienteMemoria(4);
-        		printf("MEMORIA LIBRE\n");
+        		//printf("MEMORIA LIBRE\n");
         	}
         break;
 		default:
@@ -560,9 +563,10 @@ void* clientFileSystem(void *arg) {
     switch(cod_fs){
 		case 2: //F_OPEN
 			pthread_mutex_lock(&mutex_fd);
+			log_info(logger, "PID: %d - Abrir Archivo: %s",unProceso->pid,unProceso->nombreArchivo);
 			enviar_mensaje_cod_operacion(unProceso->nombreArchivo,conexion_FileSystem,cod_fs);
 
-        	printf("F_OPEN enviado a FS del proceso %d.\n", unProceso->pid);
+        	//printf("F_OPEN enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 
         	eliminar_paquete(paquete);
@@ -585,8 +589,9 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
 
         	pthread_mutex_lock(&mutex_fd);
+        	log_info(logger, "PID: %d - Leer Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
         	enviar_paquete(paquete, conexion_FileSystem);
-        	printf("F_READ enviado a FS del proceso %d.\n", unProceso->pid);
+        	//printf("F_READ enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_READ enviado a MEMORIA.\n");
         	//printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
         	//printf("Puntero enviado a FS: %s\n", punteroRead);
@@ -630,8 +635,9 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
 
         	pthread_mutex_lock(&mutex_fd);
+        	log_info(logger, "PID: %d - Escribir Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
         	enviar_paquete(paquete, conexion_FileSystem);
-        	printf("F_WRITE enviado a FS del proceso %d.\n", unProceso->pid);
+        	//printf("F_WRITE enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_WRITE enviado a MEMORIA.\n");
 //        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
 //        	printf("Puntero enviado a FS: %s\n", punteroWrite);
@@ -668,8 +674,9 @@ void* clientFileSystem(void *arg) {
         	agregar_a_paquete(paquete, nuevoTamanio, strlen(nuevoTamanio)+1);
 
         	pthread_mutex_lock(&mutex_fd);
+        	log_info(logger, "PID: %d - Archivo: %s - Tamaño: %d",unProceso->pid,unProceso->nombreArchivo,unProceso->tamanioArchivo);
         	enviar_paquete(paquete, conexion_FileSystem);
-        	printf("F_TRUNCATE enviado a FS del proceso %d.\n", unProceso->pid);
+        	//printf("F_TRUNCATE enviado a FS del proceso %d.\n", unProceso->pid);
 
 
 //        	printf("Archivo enviado a FS: %s\n", unProceso->nombreArchivo);
@@ -704,7 +711,7 @@ void* clientFileSystem(void *arg) {
 
 	switch (cod_op) {
 		case 2: //F_OPEN
-			printf("F_OPEN recibido del proceso %d.\n", unProceso->pid);
+			//printf("F_OPEN recibido del proceso %d.\n", unProceso->pid);
 			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			//Agrego el archivo a la tabla global
@@ -713,7 +720,7 @@ void* clientFileSystem(void *arg) {
 			strcpy(nuevoArchivoGlobal->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivoGlobal->colaProcesosBloqueados = queue_create();
 			list_add(tablaGlobalArchivosAbiertos, nuevoArchivoGlobal);
-			printf("Archivo agregado a la tabla global de archivos.\n");
+			//printf("Archivo agregado a la tabla global de archivos.\n");
 
 			//Agrego el archivo a la tabla del proceso
 			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
@@ -721,7 +728,7 @@ void* clientFileSystem(void *arg) {
 			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivo->posicionPuntero = 0;
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
-			printf("Archivo agregado a la tabla del proceso.\n");
+			//printf("Archivo agregado a la tabla del proceso.\n");
 
 			//printf("TABLA GLOBAL DE ARCHIVOS:\n");
 //			t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
@@ -750,79 +757,79 @@ void* clientFileSystem(void *arg) {
 
 		break;
 		case 3: //F_READ
-			printf("F_READ recibido del proceso %d.\n", unProceso->pid);
+			//printf("F_READ recibido del proceso %d.\n", unProceso->pid);
 			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
-				printf("PID DEL ESTADO EN EJECUCION: %d\n",estadoEnEjecucion->pid);
+				//printf("PID DEL ESTADO EN EJECUCION: %d\n",estadoEnEjecucion->pid);
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Hay algun proceso ejecutandose\n");
-					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Hay algun proceso ejecutandose\n");
+					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
 				}
 			}
 			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
 				}
 			}
 
 		break;
 		case 4: //F_WRITE
-			printf("F_WRITE recibido del proceso %d.\n", unProceso->pid);
+			//printf("F_WRITE recibido del proceso %d.\n", unProceso->pid);
 			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
 				}
 			}
 			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+				//	printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
 				}
 			}
 
 		break;
 		case 5: //F_TRUNCATE
-			printf("F_TRUNCATE recibido del proceso %d.\n", unProceso->pid);
+			//printf("F_TRUNCATE recibido del proceso %d.\n", unProceso->pid);
 			pthread_mutex_unlock(&mutex_fd);
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					//printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
@@ -1307,7 +1314,7 @@ void manejar_recursos() {
 		if (recursoEncontrado == 0) {
 			//int pid = unProceso->pid;
 			//Log minimo y obligaotrio
-			log_info(logger, "Finaliza el proceso %d - Motivo: Recurso no encontrado\n", unProceso->pid);
+			log_info(logger, "Finaliza el proceso %d - Motivo: INVALID_RESOURCE\n", unProceso->pid);
 			pasarAExit();
 
 		}
@@ -1378,7 +1385,7 @@ void manejar_recursos() {
 			//printf("No se encontró el recurso\n");
 			//int pid = unProceso->pid;
 			//Log minimo y obligaotrio
-			log_info(logger, "Finaliza el proceso &d - Motivo: Recurso no encontrado\n", unProceso->pid);
+			log_info(logger, "Finaliza el proceso %d - Motivo: INVALID_RESOURCE\n", unProceso->pid);
 			pasarAExit();
 
 		}
@@ -1393,7 +1400,7 @@ void manejar_recursos() {
 		//int pid = unProceso->pid;
 		//printf("PASAR A EXIT PROCESO: %d\n",estadoEnEjecucion->pid);
 		//Log minimo y obligaotrio
-		log_info(logger, "Finaliza el proceso &d - Motivo: SUCCESS\n", unProceso->pid);
+		log_info(logger, "Finaliza el proceso %d - Motivo: SUCCESS\n", unProceso->pid);
 		pasarAExit();
 
 
@@ -1619,7 +1626,7 @@ void pasarAExit() {
 	iniciarHiloClienteMemoria(9);
 
 	liberarRecursosAsignados();
-	log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
+	//log_info(logger,"Proceso finalizado: %d\n",estadoEnEjecucion->pid);
 	sem_wait(&semPasarAExit);
 	//Log minimo y obligatorio
 	log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Exit\n", estadoEnEjecucion->pid);
@@ -1868,7 +1875,7 @@ void armarPCB(t_list* lista){
 
 	//Encolamos en NEW (FIFO)
 	queue(&frenteColaNew, &finColaNew, nuevoPCB);
-	printf("PCB encolado en NEW\n");
+	//printf("PCB encolado en NEW\n");
 
 	//Log minimo y obligatorio
 	log_info(logger, "Se crea el proceso %d en NEW\n", nuevoPCB->pid);
@@ -1883,7 +1890,7 @@ void armarPCB(t_list* lista){
 
 void finalizarEncolarPCB(){
 	encolarReady();  //Si corresponde lo encola en Ready
-	printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
+	//printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
 	if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
 		desencolarReady();
 	}
