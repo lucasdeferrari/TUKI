@@ -61,3 +61,7 @@ void liberarConexiones(int conexion, t_log* logger, t_config* config)
 	liberar_conexion(conexion);
 
 }
+
+void sleep_ms(unsigned int milliseconds) {
+    usleep(milliseconds * 1000);
+}

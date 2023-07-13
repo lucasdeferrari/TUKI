@@ -60919,3 +60919,973 @@ Operacion recibida de MEMORIA desconocida.
 [INFO] 23:08:36:433 CPU/(4231:4328): Se conecto un cliente
 [INFO] 23:08:36:434 CPU/(4231:4328): PID: 4 - Ejecutando: EXIT
 
+[INFO] 23:14:28:254 CPU/(4371:4371): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:14:53:181 CPU/(4371:4373): Se conecto un cliente
+[INFO] 23:14:53:182 CPU/(4371:4373): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:14:53:184 CPU/(4371:4419): Se conecto un cliente
+[INFO] 23:14:54:184 CPU/(4371:4419): PID: 1 - Ejecutando: SET - [AX, h014]
+
+[INFO] 23:14:55:185 CPU/(4371:4426): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+[INFO] 23:14:55:185 CPU/(4371:4419): PID: 1 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:14:55:185 CPU/(4371:4419): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 23:14:55:187 CPU/(4371:4429): Se conecto un cliente
+[INFO] 23:14:55:187 CPU/(4371:4429): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:14:55:188 CPU/(4371:4433): Se conecto un cliente
+[INFO] 23:14:55:188 CPU/(4371:4433): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:14:55:189 CPU/(4371:4435): Se conecto un cliente
+[INFO] 23:14:55:189 CPU/(4371:4435): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:14:55:190 CPU/(4371:4437): Se conecto un cliente
+[INFO] 23:14:55:190 CPU/(4371:4437): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:14:55:192 CPU/(4371:4439): Se conecto un cliente
+[INFO] 23:14:57:193 CPU/(4371:4443): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: h014L
+[INFO] 23:14:57:193 CPU/(4371:4439): PID: 2 - Ejecutando: MOV_IN - [CX, 12]
+
+[INFO] 23:14:57:193 CPU/(4371:4439): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 23:14:57:195 CPU/(4371:4446): Se conecto un cliente
+[INFO] 23:14:57:195 CPU/(4371:4446): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 23:14:57:196 CPU/(4371:4450): Se conecto un cliente
+[INFO] 23:14:57:197 CPU/(4371:4450): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 23:14:57:198 CPU/(4371:4455): Se conecto un cliente
+[INFO] 23:14:57:198 CPU/(4371:4455): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 23:14:57:200 CPU/(4371:4460): Se conecto un cliente
+[INFO] 23:14:57:201 CPU/(4371:4460): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 23:23:06:929 CPU/(4611:4611): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:23:22:220 CPU/(4611:4613): Se conecto un cliente
+[INFO] 23:23:22:220 CPU/(4611:4613): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:23:22:222 CPU/(4611:4689): Se conecto un cliente
+[INFO] 23:23:23:223 CPU/(4611:4689): PID: 1 - Ejecutando: SET - [AX, h014]
+
+[INFO] 23:23:24:225 CPU/(4611:4696): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+[INFO] 23:23:24:226 CPU/(4611:4689): PID: 1 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:23:24:226 CPU/(4611:4689): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 23:23:24:233 CPU/(4611:4698): Se conecto un cliente
+[INFO] 23:23:24:234 CPU/(4611:4698): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:23:24:238 CPU/(4611:4703): Se conecto un cliente
+[INFO] 23:23:24:240 CPU/(4611:4703): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:23:24:243 CPU/(4611:4705): Se conecto un cliente
+[INFO] 23:23:24:243 CPU/(4611:4705): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:23:24:245 CPU/(4611:4707): Se conecto un cliente
+[INFO] 23:23:24:246 CPU/(4611:4707): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:23:24:248 CPU/(4611:4709): Se conecto un cliente
+[INFO] 23:23:26:250 CPU/(4611:4711): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: h014�
+[INFO] 23:23:26:250 CPU/(4611:4709): PID: 2 - Ejecutando: MOV_IN - [CX, 12]
+
+[INFO] 23:23:26:251 CPU/(4611:4709): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 23:23:26:252 CPU/(4611:4714): Se conecto un cliente
+[INFO] 23:23:26:252 CPU/(4611:4714): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 23:23:26:253 CPU/(4611:4718): Se conecto un cliente
+[INFO] 23:23:26:254 CPU/(4611:4718): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 23:23:26:255 CPU/(4611:4723): Se conecto un cliente
+[INFO] 23:23:26:255 CPU/(4611:4723): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 23:23:26:256 CPU/(4611:4728): Se conecto un cliente
+[INFO] 23:23:26:257 CPU/(4611:4728): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 23:27:52:142 CPU/(4858:4858): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:28:32:883 CPU/(4858:4860): Se conecto un cliente
+[INFO] 23:28:32:884 CPU/(4858:4860): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:28:32:889 CPU/(4858:4935): Se conecto un cliente
+[INFO] 23:28:33:890 CPU/(4858:4935): PID: 1 - Ejecutando: SET - [AX, h014]
+
+[INFO] 23:28:34:892 CPU/(4858:4942): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+[INFO] 23:28:34:892 CPU/(4858:4935): PID: 1 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:28:34:892 CPU/(4858:4935): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 23:28:34:895 CPU/(4858:4945): Se conecto un cliente
+[INFO] 23:28:34:895 CPU/(4858:4945): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:28:34:897 CPU/(4858:4949): Se conecto un cliente
+[INFO] 23:28:34:898 CPU/(4858:4949): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:28:34:900 CPU/(4858:4951): Se conecto un cliente
+[INFO] 23:28:34:901 CPU/(4858:4951): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:28:34:904 CPU/(4858:4953): Se conecto un cliente
+[INFO] 23:28:34:905 CPU/(4858:4953): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:28:34:906 CPU/(4858:4955): Se conecto un cliente
+[INFO] 23:28:36:908 CPU/(4858:4957): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: h014x
+[INFO] 23:28:36:908 CPU/(4858:4955): PID: 2 - Ejecutando: MOV_IN - [CX, 12]
+
+[INFO] 23:28:36:908 CPU/(4858:4955): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 23:28:36:910 CPU/(4858:4960): Se conecto un cliente
+[INFO] 23:28:36:910 CPU/(4858:4960): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 23:28:36:912 CPU/(4858:4964): Se conecto un cliente
+[INFO] 23:28:36:913 CPU/(4858:4964): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 23:28:36:914 CPU/(4858:4969): Se conecto un cliente
+[INFO] 23:28:36:914 CPU/(4858:4969): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 23:28:36:916 CPU/(4858:4974): Se conecto un cliente
+[INFO] 23:28:36:917 CPU/(4858:4974): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 23:28:36:918 CPU/(4858:4979): Se conecto un cliente
+[INFO] 23:28:36:920 CPU/(4858:4979): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 23:28:36:922 CPU/(4858:4984): Se conecto un cliente
+[INFO] 23:28:36:922 CPU/(4858:4984): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 23:28:36:924 CPU/(4858:4989): Se conecto un cliente
+[INFO] 23:28:36:924 CPU/(4858:4989): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 23:28:36:926 CPU/(4858:4994): Se conecto un cliente
+[INFO] 23:28:37:926 CPU/(4858:4994): PID: 2 - Ejecutando: SET - [BX, Ch4u]
+
+[INFO] 23:28:38:927 CPU/(4858:4999): PID: 2 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+[INFO] 23:28:38:927 CPU/(4858:4994): PID: 2 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:28:38:927 CPU/(4858:4994): PID: 2 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:28:38:928 CPU/(4858:5001): Se conecto un cliente
+[INFO] 23:28:38:929 CPU/(4858:5001): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:28:38:931 CPU/(4858:5003): Se conecto un cliente
+[INFO] 23:28:38:932 CPU/(4858:5003): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:28:38:934 CPU/(4858:5005): Se conecto un cliente
+[INFO] 23:28:40:936 CPU/(4858:5009): PID: 1 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4ux
+[INFO] 23:28:40:936 CPU/(4858:5005): PID: 1 - Ejecutando: MOV_IN - [DX, 12]
+
+[INFO] 23:28:40:936 CPU/(4858:5005): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:28:40:937 CPU/(4858:5011): Se conecto un cliente
+[INFO] 23:28:40:937 CPU/(4858:5011): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:28:40:938 CPU/(4858:5013): Se conecto un cliente
+[INFO] 23:28:40:939 CPU/(4858:5013): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 23:28:40:941 CPU/(4858:5015): Se conecto un cliente
+[INFO] 23:28:41:941 CPU/(4858:5015): PID: 2 - Ejecutando: SET - [EAX, CoscuWin]
+
+[INFO] 23:28:42:943 CPU/(4858:5020): PID: 2 - Acción: <ESCRIBIR> - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+[INFO] 23:28:42:943 CPU/(4858:5015): PID: 2 - Ejecutando: MOV_OUT - [256, ]
+
+[INFO] 23:28:43:943 CPU/(4858:5015): PID: 2 - Ejecutando: SET - [EBX, GermanNo]
+
+[INFO] 23:28:44:944 CPU/(4858:5022): PID: 2 - Acción: <ESCRIBIR> - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+[INFO] 23:28:44:945 CPU/(4858:5015): PID: 2 - Ejecutando: MOV_OUT - [2048, ]
+
+[INFO] 23:28:44:945 CPU/(4858:5015): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:28:44:946 CPU/(4858:5024): Se conecto un cliente
+[INFO] 23:28:44:946 CPU/(4858:5024): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:28:44:948 CPU/(4858:5026): Se conecto un cliente
+[INFO] 23:28:44:948 CPU/(4858:5026): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 23:28:53:990 CPU/(4858:5028): Se conecto un cliente
+[INFO] 23:28:55:992 CPU/(4858:5096): PID: 3 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4ux
+[INFO] 23:28:55:993 CPU/(4858:5028): PID: 3 - Ejecutando: MOV_IN - [AX, 12]
+
+[INFO] 23:28:55:993 CPU/(4858:5028): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:28:55:994 CPU/(4858:5099): Se conecto un cliente
+[INFO] 23:28:55:995 CPU/(4858:5099): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:28:55:996 CPU/(4858:5100): Se conecto un cliente
+[INFO] 23:28:57:998 CPU/(4858:5102): PID: 2 - Acción: <LEER> - Segmento: 1 - Dirección Física: 128 - Valor leido: 
+[INFO] 23:28:57:999 CPU/(4858:5100): PID: 2 - Ejecutando: MOV_IN - [ECX, 256]
+
+[INFO] 23:28:57:999 CPU/(4858:5100): PID: 2 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:28:58:002 CPU/(4858:5105): Se conecto un cliente
+[INFO] 23:29:00:003 CPU/(4858:5108): PID: 2 - Acción: <LEER> - Segmento: 8 - Dirección Física: 576 - Valor leido: 
+[INFO] 23:29:00:003 CPU/(4858:5105): PID: 2 - Ejecutando: MOV_IN - [EDX, 2048]
+
+[INFO] 23:29:00:003 CPU/(4858:5105): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 23:29:00:006 CPU/(4858:5111): Se conecto un cliente
+[INFO] 23:29:00:007 CPU/(4858:5111): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 23:29:00:010 CPU/(4858:5114): Se conecto un cliente
+[INFO] 23:29:00:010 CPU/(4858:5114): PID: 2 - Ejecutando: DELETE_SEGMENT - [5]
+
+[INFO] 23:29:00:012 CPU/(4858:5118): Se conecto un cliente
+[INFO] 23:29:00:013 CPU/(4858:5118): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:29:00:019 CPU/(4858:5122): Se conecto un cliente
+[INFO] 23:29:00:019 CPU/(4858:5122): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:29:00:021 CPU/(4858:5125): Se conecto un cliente
+[INFO] 23:29:00:021 CPU/(4858:5125): PID: 3 - Ejecutando: CREATE_SEGMENT - [2, 128]
+
+[INFO] 23:29:00:023 CPU/(4858:5126): Se conecto un cliente
+[INFO] 23:29:00:023 CPU/(4858:5126): PID: 3 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:29:00:024 CPU/(4858:5131): Se conecto un cliente
+[INFO] 23:29:00:024 CPU/(4858:5131): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:29:00:025 CPU/(4858:5133): Se conecto un cliente
+[INFO] 23:29:00:025 CPU/(4858:5133): PID: 3 - Ejecutando: EXIT
+
+[INFO] 23:29:00:027 CPU/(4858:5135): Se conecto un cliente
+[INFO] 23:29:00:027 CPU/(4858:5135): PID: 1 - Ejecutando: EXIT
+
+[INFO] 23:29:00:037 CPU/(4858:5139): Se conecto un cliente
+[INFO] 23:29:00:037 CPU/(4858:5139): PID: 2 - Ejecutando: EXIT
+
+[INFO] 23:30:28:584 CPU/(5201:5201): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:30:43:685 CPU/(5201:5203): Se conecto un cliente
+[INFO] 23:30:43:685 CPU/(5201:5203): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:30:43:688 CPU/(5201:5249): Se conecto un cliente
+[INFO] 23:30:44:689 CPU/(5201:5249): PID: 1 - Ejecutando: SET - [AX, h014]
+
+[INFO] 23:30:45:690 CPU/(5201:5256): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+[INFO] 23:30:45:691 CPU/(5201:5249): PID: 1 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:30:45:691 CPU/(5201:5249): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 23:30:45:692 CPU/(5201:5259): Se conecto un cliente
+[INFO] 23:30:45:693 CPU/(5201:5259): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:30:45:693 CPU/(5201:5263): Se conecto un cliente
+[INFO] 23:30:45:694 CPU/(5201:5263): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:30:45:695 CPU/(5201:5265): Se conecto un cliente
+[INFO] 23:30:45:695 CPU/(5201:5265): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:30:45:696 CPU/(5201:5267): Se conecto un cliente
+[INFO] 23:30:45:696 CPU/(5201:5267): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:30:45:697 CPU/(5201:5269): Se conecto un cliente
+[INFO] 23:30:47:698 CPU/(5201:5271): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: h014F
+[INFO] 23:30:47:699 CPU/(5201:5269): PID: 2 - Ejecutando: MOV_IN - [CX, 12]
+
+[INFO] 23:30:47:699 CPU/(5201:5269): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 23:30:47:701 CPU/(5201:5274): Se conecto un cliente
+[INFO] 23:30:47:701 CPU/(5201:5274): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 23:30:47:703 CPU/(5201:5278): Se conecto un cliente
+[INFO] 23:30:47:703 CPU/(5201:5278): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 23:30:47:705 CPU/(5201:5283): Se conecto un cliente
+[INFO] 23:30:47:705 CPU/(5201:5283): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 23:30:47:707 CPU/(5201:5288): Se conecto un cliente
+[INFO] 23:30:47:707 CPU/(5201:5288): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 23:30:47:709 CPU/(5201:5293): Se conecto un cliente
+[INFO] 23:30:47:711 CPU/(5201:5293): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 23:30:47:713 CPU/(5201:5298): Se conecto un cliente
+[INFO] 23:30:47:713 CPU/(5201:5298): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 23:30:47:714 CPU/(5201:5303): Se conecto un cliente
+[INFO] 23:30:47:715 CPU/(5201:5303): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 23:30:47:716 CPU/(5201:5308): Se conecto un cliente
+[INFO] 23:30:48:717 CPU/(5201:5308): PID: 2 - Ejecutando: SET - [BX, Ch4u]
+
+[INFO] 23:30:49:718 CPU/(5201:5313): PID: 2 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+[INFO] 23:30:49:719 CPU/(5201:5308): PID: 2 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:30:49:719 CPU/(5201:5308): PID: 2 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:30:49:720 CPU/(5201:5315): Se conecto un cliente
+[INFO] 23:30:49:720 CPU/(5201:5315): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:30:49:722 CPU/(5201:5317): Se conecto un cliente
+[INFO] 23:30:49:723 CPU/(5201:5317): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:30:49:726 CPU/(5201:5319): Se conecto un cliente
+[INFO] 23:30:51:728 CPU/(5201:5323): PID: 1 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4uF
+[INFO] 23:30:51:728 CPU/(5201:5319): PID: 1 - Ejecutando: MOV_IN - [DX, 12]
+
+[INFO] 23:30:51:728 CPU/(5201:5319): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:30:51:729 CPU/(5201:5325): Se conecto un cliente
+[INFO] 23:30:51:729 CPU/(5201:5325): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:30:51:730 CPU/(5201:5327): Se conecto un cliente
+[INFO] 23:30:51:730 CPU/(5201:5327): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 23:30:51:732 CPU/(5201:5329): Se conecto un cliente
+[INFO] 23:30:52:732 CPU/(5201:5329): PID: 2 - Ejecutando: SET - [EAX, CoscuWin]
+
+[INFO] 23:30:53:733 CPU/(5201:5334): PID: 2 - Acción: <ESCRIBIR> - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+[INFO] 23:30:53:733 CPU/(5201:5329): PID: 2 - Ejecutando: MOV_OUT - [256, ]
+
+[INFO] 23:30:54:734 CPU/(5201:5329): PID: 2 - Ejecutando: SET - [EBX, GermanNo]
+
+[INFO] 23:30:55:735 CPU/(5201:5336): PID: 2 - Acción: <ESCRIBIR> - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+[INFO] 23:30:55:736 CPU/(5201:5329): PID: 2 - Ejecutando: MOV_OUT - [2048, ]
+
+[INFO] 23:30:55:736 CPU/(5201:5329): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:30:55:738 CPU/(5201:5338): Se conecto un cliente
+[INFO] 23:30:55:738 CPU/(5201:5338): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:30:55:740 CPU/(5201:5340): Se conecto un cliente
+[INFO] 23:30:55:740 CPU/(5201:5340): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 23:30:55:741 CPU/(5201:5342): Se conecto un cliente
+[INFO] 23:30:57:743 CPU/(5201:5347): PID: 3 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4uF
+[INFO] 23:30:57:743 CPU/(5201:5342): PID: 3 - Ejecutando: MOV_IN - [AX, 12]
+
+[INFO] 23:30:57:743 CPU/(5201:5342): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:30:57:743 CPU/(5201:5349): Se conecto un cliente
+[INFO] 23:30:57:744 CPU/(5201:5349): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:30:57:745 CPU/(5201:5351): Se conecto un cliente
+[INFO] 23:30:59:746 CPU/(5201:5353): PID: 2 - Acción: <LEER> - Segmento: 1 - Dirección Física: 256 - Valor leido: CoscuWinEB�U
+[INFO] 23:30:59:747 CPU/(5201:5351): PID: 2 - Ejecutando: MOV_IN - [ECX, 256]
+
+[INFO] 23:30:59:747 CPU/(5201:5351): PID: 2 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:30:59:750 CPU/(5201:5356): Se conecto un cliente
+[INFO] 23:31:01:753 CPU/(5201:5359): PID: 2 - Acción: <LEER> - Segmento: 8 - Dirección Física: 704 - Valor leido: GermanNoEB�U
+[INFO] 23:31:01:753 CPU/(5201:5356): PID: 2 - Ejecutando: MOV_IN - [EDX, 2048]
+
+[INFO] 23:31:01:753 CPU/(5201:5356): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 23:31:01:756 CPU/(5201:5362): Se conecto un cliente
+[INFO] 23:31:01:757 CPU/(5201:5362): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 23:31:01:759 CPU/(5201:5365): Se conecto un cliente
+[INFO] 23:31:01:760 CPU/(5201:5365): PID: 2 - Ejecutando: DELETE_SEGMENT - [5]
+
+[INFO] 23:31:01:762 CPU/(5201:5369): Se conecto un cliente
+[INFO] 23:31:01:762 CPU/(5201:5369): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:31:01:763 CPU/(5201:5373): Se conecto un cliente
+[INFO] 23:31:01:765 CPU/(5201:5373): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:31:01:766 CPU/(5201:5375): Se conecto un cliente
+[INFO] 23:31:01:766 CPU/(5201:5375): PID: 3 - Ejecutando: CREATE_SEGMENT - [2, 128]
+
+[INFO] 23:31:01:768 CPU/(5201:5377): Se conecto un cliente
+[INFO] 23:31:01:768 CPU/(5201:5377): PID: 3 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:31:01:769 CPU/(5201:5382): Se conecto un cliente
+[INFO] 23:31:01:769 CPU/(5201:5382): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:31:01:770 CPU/(5201:5384): Se conecto un cliente
+[INFO] 23:31:01:771 CPU/(5201:5384): PID: 3 - Ejecutando: EXIT
+
+[INFO] 23:31:01:772 CPU/(5201:5386): Se conecto un cliente
+[INFO] 23:31:01:773 CPU/(5201:5386): PID: 1 - Ejecutando: EXIT
+
+[INFO] 23:31:01:774 CPU/(5201:5390): Se conecto un cliente
+[INFO] 23:31:01:775 CPU/(5201:5390): PID: 2 - Ejecutando: EXIT
+
+[INFO] 23:32:34:359 CPU/(5435:5435): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:32:45:112 CPU/(5435:5437): Se conecto un cliente
+[INFO] 23:32:45:113 CPU/(5435:5437): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:32:45:119 CPU/(5435:5483): Se conecto un cliente
+[INFO] 23:32:46:119 CPU/(5435:5483): PID: 1 - Ejecutando: SET - [AX, h014]
+
+[INFO] 23:32:47:121 CPU/(5435:5490): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: h014
+[INFO] 23:32:47:121 CPU/(5435:5483): PID: 1 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:32:47:121 CPU/(5435:5483): PID: 1 - Ejecutando: CREATE_SEGMENT - [1, 128]
+
+[INFO] 23:32:47:123 CPU/(5435:5492): Se conecto un cliente
+[INFO] 23:32:47:124 CPU/(5435:5492): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:32:47:125 CPU/(5435:5497): Se conecto un cliente
+[INFO] 23:32:47:126 CPU/(5435:5497): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:32:47:128 CPU/(5435:5499): Se conecto un cliente
+[INFO] 23:32:47:128 CPU/(5435:5499): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:32:47:130 CPU/(5435:5501): Se conecto un cliente
+[INFO] 23:32:47:131 CPU/(5435:5501): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:32:47:133 CPU/(5435:5503): Se conecto un cliente
+[INFO] 23:32:49:135 CPU/(5435:5505): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: h014�
+[INFO] 23:32:49:135 CPU/(5435:5503): PID: 2 - Ejecutando: MOV_IN - [CX, 12]
+
+[INFO] 23:32:49:135 CPU/(5435:5503): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 23:32:49:139 CPU/(5435:5508): Se conecto un cliente
+[INFO] 23:32:49:140 CPU/(5435:5508): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 23:32:49:142 CPU/(5435:5512): Se conecto un cliente
+[INFO] 23:32:49:143 CPU/(5435:5512): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 23:32:49:145 CPU/(5435:5517): Se conecto un cliente
+[INFO] 23:32:49:146 CPU/(5435:5517): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 23:32:49:149 CPU/(5435:5522): Se conecto un cliente
+[INFO] 23:32:49:150 CPU/(5435:5522): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 64]
+
+[INFO] 23:32:49:151 CPU/(5435:5527): Se conecto un cliente
+[INFO] 23:32:49:152 CPU/(5435:5527): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 64]
+
+[INFO] 23:32:49:153 CPU/(5435:5532): Se conecto un cliente
+[INFO] 23:32:49:154 CPU/(5435:5532): PID: 2 - Ejecutando: CREATE_SEGMENT - [7, 64]
+
+[INFO] 23:32:49:155 CPU/(5435:5537): Se conecto un cliente
+[INFO] 23:32:49:156 CPU/(5435:5537): PID: 2 - Ejecutando: CREATE_SEGMENT - [8, 64]
+
+[INFO] 23:32:49:157 CPU/(5435:5542): Se conecto un cliente
+[INFO] 23:32:50:157 CPU/(5435:5542): PID: 2 - Ejecutando: SET - [BX, Ch4u]
+
+[INFO] 23:32:51:158 CPU/(5435:5547): PID: 2 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 12 - Valor escrito: Ch4u
+[INFO] 23:32:51:159 CPU/(5435:5542): PID: 2 - Ejecutando: MOV_OUT - [12, ]
+
+[INFO] 23:32:51:159 CPU/(5435:5542): PID: 2 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:32:51:160 CPU/(5435:5550): Se conecto un cliente
+[INFO] 23:32:51:161 CPU/(5435:5550): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:32:51:162 CPU/(5435:5551): Se conecto un cliente
+[INFO] 23:32:51:163 CPU/(5435:5551): PID: 1 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:32:51:164 CPU/(5435:5553): Se conecto un cliente
+[INFO] 23:32:53:166 CPU/(5435:5557): PID: 1 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u�
+[INFO] 23:32:53:166 CPU/(5435:5553): PID: 1 - Ejecutando: MOV_IN - [DX, 12]
+
+[INFO] 23:32:53:167 CPU/(5435:5553): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:32:53:167 CPU/(5435:5559): Se conecto un cliente
+[INFO] 23:32:53:168 CPU/(5435:5559): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 23:32:53:169 CPU/(5435:5561): Se conecto un cliente
+[INFO] 23:32:53:169 CPU/(5435:5561): PID: 2 - Ejecutando: CREATE_SEGMENT - [9, 64]
+
+[INFO] 23:32:53:171 CPU/(5435:5563): Se conecto un cliente
+[INFO] 23:32:54:172 CPU/(5435:5563): PID: 2 - Ejecutando: SET - [EAX, CoscuWin]
+
+[INFO] 23:32:55:172 CPU/(5435:5568): PID: 2 - Acción: <ESCRIBIR> - Segmento: 1 - Dirección Física: 256 - Valor escrito: CoscuWin
+[INFO] 23:32:55:173 CPU/(5435:5563): PID: 2 - Ejecutando: MOV_OUT - [256, ]
+
+[INFO] 23:32:56:173 CPU/(5435:5563): PID: 2 - Ejecutando: SET - [EBX, GermanNo]
+
+[INFO] 23:32:57:174 CPU/(5435:5570): PID: 2 - Acción: <ESCRIBIR> - Segmento: 8 - Dirección Física: 704 - Valor escrito: GermanNo
+[INFO] 23:32:57:174 CPU/(5435:5563): PID: 2 - Ejecutando: MOV_OUT - [2048, ]
+
+[INFO] 23:32:57:174 CPU/(5435:5563): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:32:57:175 CPU/(5435:5572): Se conecto un cliente
+[INFO] 23:32:57:175 CPU/(5435:5572): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:32:57:177 CPU/(5435:5574): Se conecto un cliente
+[INFO] 23:32:57:177 CPU/(5435:5574): PID: 3 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 23:33:06:221 CPU/(5435:5576): Se conecto un cliente
+[INFO] 23:33:08:222 CPU/(5435:5644): PID: 3 - Acción: <LEER> - Segmento: 0 - Dirección Física: 12 - Valor leido: Ch4u�
+[INFO] 23:33:08:223 CPU/(5435:5576): PID: 3 - Ejecutando: MOV_IN - [AX, 12]
+
+[INFO] 23:33:08:223 CPU/(5435:5576): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:33:08:224 CPU/(5435:5647): Se conecto un cliente
+[INFO] 23:33:08:224 CPU/(5435:5647): PID: 3 - Ejecutando: WAIT - [RC
+]
+
+[INFO] 23:33:08:227 CPU/(5435:5648): Se conecto un cliente
+[INFO] 23:33:10:230 CPU/(5435:5650): PID: 2 - Acción: <LEER> - Segmento: 1 - Dirección Física: 128 - Valor leido: 
+[INFO] 23:33:10:230 CPU/(5435:5648): PID: 2 - Ejecutando: MOV_IN - [ECX, 256]
+
+[INFO] 23:33:10:230 CPU/(5435:5648): PID: 2 - Ejecutando: DELETE_SEGMENT - [1]
+
+[INFO] 23:33:10:233 CPU/(5435:5653): Se conecto un cliente
+[INFO] 23:33:12:234 CPU/(5435:5656): PID: 2 - Acción: <LEER> - Segmento: 8 - Dirección Física: 576 - Valor leido: 
+[INFO] 23:33:12:235 CPU/(5435:5653): PID: 2 - Ejecutando: MOV_IN - [EDX, 2048]
+
+[INFO] 23:33:12:235 CPU/(5435:5653): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 23:33:12:238 CPU/(5435:5659): Se conecto un cliente
+[INFO] 23:33:12:239 CPU/(5435:5659): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 23:33:12:242 CPU/(5435:5662): Se conecto un cliente
+[INFO] 23:33:12:242 CPU/(5435:5662): PID: 2 - Ejecutando: DELETE_SEGMENT - [5]
+
+[INFO] 23:33:12:248 CPU/(5435:5666): Se conecto un cliente
+[INFO] 23:33:12:249 CPU/(5435:5666): PID: 2 - Ejecutando: SIGNAL - [RC
+]
+
+[INFO] 23:33:12:250 CPU/(5435:5670): Se conecto un cliente
+[INFO] 23:33:12:250 CPU/(5435:5670): PID: 2 - Ejecutando: WAIT - [RB
+]
+
+[INFO] 23:33:12:251 CPU/(5435:5672): Se conecto un cliente
+[INFO] 23:33:12:251 CPU/(5435:5672): PID: 3 - Ejecutando: CREATE_SEGMENT - [2, 128]
+
+[INFO] 23:33:12:253 CPU/(5435:5674): Se conecto un cliente
+[INFO] 23:33:12:253 CPU/(5435:5674): PID: 3 - Ejecutando: SIGNAL - [RA
+]
+
+[INFO] 23:33:12:254 CPU/(5435:5679): Se conecto un cliente
+[INFO] 23:33:12:254 CPU/(5435:5679): PID: 3 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 23:33:12:255 CPU/(5435:5681): Se conecto un cliente
+[INFO] 23:33:12:255 CPU/(5435:5681): PID: 3 - Ejecutando: EXIT
+
+[INFO] 23:33:12:257 CPU/(5435:5683): Se conecto un cliente
+[INFO] 23:33:12:257 CPU/(5435:5683): PID: 1 - Ejecutando: EXIT
+
+[INFO] 23:33:12:259 CPU/(5435:5687): Se conecto un cliente
+[INFO] 23:33:12:259 CPU/(5435:5687): PID: 2 - Ejecutando: EXIT
+
+[INFO] 23:36:14:853 CPU/(5784:5784): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:36:45:516 CPU/(5784:5786): Se conecto un cliente
+[INFO] 23:36:46:517 CPU/(5784:5786): PID: 1 - Ejecutando: SET - [AX, HOLA]
+
+[INFO] 23:36:46:517 CPU/(5784:5786): PID: 1 - Ejecutando: WAIT - [DISCO
+]
+
+[INFO] 23:36:46:518 CPU/(5784:5872): Se conecto un cliente
+[INFO] 23:36:47:519 CPU/(5784:5872): PID: 2 - Ejecutando: SET - [AX, HOLA]
+
+[INFO] 23:36:47:519 CPU/(5784:5872): PID: 2 - Ejecutando: SIGNAL - [EL_CUARTO_DE_FRANCIA
+]
+
+[INFO] 23:36:47:520 CPU/(5784:5874): Se conecto un cliente
+[INFO] 23:36:48:521 CPU/(5784:5874): PID: 3 - Ejecutando: SET - [AX, HOLA]
+
+[INFO] 23:36:49:522 CPU/(5784:5874): PID: 3 - Ejecutando: SET - [RAX, MappaLlegaEl2c23]
+
+[INFO] 23:36:50:523 CPU/(5784:5877): PID: 3 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 124 - Valor escrito: HOLA
+[INFO] 23:36:50:523 CPU/(5784:5874): PID: 3 - Ejecutando: MOV_OUT - [124, ]
+
+[INFO] 23:36:52:524 CPU/(5784:5878): PID: 3 - Acción: <LEER> - Segmento: 0 - Dirección Física: 124 - Valor leido: HOLA�
+[INFO] 23:36:52:525 CPU/(5784:5874): PID: 3 - Ejecutando: MOV_IN - [BX, 124]
+
+[INFO] 23:36:52:525 CPU/(5784:5874): PID: 3 - Error SEG_FAULT- Segmento: 0 - Offset: 120 - Tamaño: 16
+
+[INFO] 23:36:52:525 CPU/(5784:5874): PID: 3 - Ejecutando: MOV_OUT - [120, ]
+
+[INFO] 23:36:52:529 CPU/(5784:5882): Se conecto un cliente
+[INFO] 23:36:52:530 CPU/(5784:5882): PID: 4 - Ejecutando: CREATE_SEGMENT - [1, 256]
+
+[INFO] 23:36:52:535 CPU/(5784:5885): Se conecto un cliente
+[INFO] 23:36:52:536 CPU/(5784:5885): PID: 4 - Ejecutando: CREATE_SEGMENT - [2, 256]
+
+[INFO] 23:36:52:541 CPU/(5784:5890): Se conecto un cliente
+[INFO] 23:36:52:542 CPU/(5784:5890): PID: 4 - Ejecutando: CREATE_SEGMENT - [3, 256]
+
+[INFO] 23:36:52:545 CPU/(5784:5895): Se conecto un cliente
+[INFO] 23:36:52:545 CPU/(5784:5895): PID: 4 - Ejecutando: CREATE_SEGMENT - [4, 256]
+
+[INFO] 23:36:52:549 CPU/(5784:5900): Se conecto un cliente
+[INFO] 23:36:52:550 CPU/(5784:5900): PID: 1 - Ejecutando: WAIT - [LA_TERCERA_DE_FRANCIA
+]
+
+[INFO] 23:40:45:164 CPU/(6016:6016): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:41:08:453 CPU/(6016:6018): Se conecto un cliente
+[INFO] 23:41:09:455 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 23:41:10:455 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 23:41:11:455 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 23:41:12:455 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 23:41:13:455 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 23:41:14:456 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 23:41:15:456 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 23:41:16:457 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 23:41:17:457 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 23:41:18:458 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 23:41:19:459 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 23:41:20:459 CPU/(6016:6018): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 23:41:20:459 CPU/(6016:6018): PID: 1 - Ejecutando: YIELD
+
+[INFO] 23:41:20:460 CPU/(6016:6100): Se conecto un cliente
+[INFO] 23:41:21:461 CPU/(6016:6100): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 23:41:22:462 CPU/(6016:6100): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:22:463 CPU/(6016:6100): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:22:463 CPU/(6016:6102): Se conecto un cliente
+[INFO] 23:41:23:464 CPU/(6016:6102): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 23:41:24:465 CPU/(6016:6102): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:24:465 CPU/(6016:6102): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:24:466 CPU/(6016:6104): Se conecto un cliente
+[INFO] 23:41:25:467 CPU/(6016:6104): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 23:41:26:467 CPU/(6016:6104): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 23:41:26:467 CPU/(6016:6104): PID: 1 - Ejecutando: EXIT
+
+[INFO] 23:41:26:469 CPU/(6016:6106): Se conecto un cliente
+[INFO] 23:41:27:471 CPU/(6016:6106): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 23:41:28:472 CPU/(6016:6106): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:28:472 CPU/(6016:6106): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:28:473 CPU/(6016:6110): Se conecto un cliente
+[INFO] 23:41:29:474 CPU/(6016:6110): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 23:41:30:475 CPU/(6016:6110): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:30:475 CPU/(6016:6110): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:30:476 CPU/(6016:6112): Se conecto un cliente
+[INFO] 23:41:31:477 CPU/(6016:6112): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:32:477 CPU/(6016:6112): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:32:478 CPU/(6016:6112): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:32:479 CPU/(6016:6114): Se conecto un cliente
+[INFO] 23:41:33:480 CPU/(6016:6114): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:34:481 CPU/(6016:6114): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:41:34:481 CPU/(6016:6114): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:34:482 CPU/(6016:6116): Se conecto un cliente
+[INFO] 23:41:35:483 CPU/(6016:6116): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:36:484 CPU/(6016:6116): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 23:41:36:484 CPU/(6016:6116): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:36:485 CPU/(6016:6118): Se conecto un cliente
+[INFO] 23:41:37:487 CPU/(6016:6118): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:38:487 CPU/(6016:6118): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 23:41:38:487 CPU/(6016:6118): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:38:488 CPU/(6016:6120): Se conecto un cliente
+[INFO] 23:41:39:489 CPU/(6016:6120): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:40:489 CPU/(6016:6120): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:41:40:489 CPU/(6016:6120): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:40:490 CPU/(6016:6122): Se conecto un cliente
+[INFO] 23:41:41:491 CPU/(6016:6122): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:41:42:491 CPU/(6016:6122): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:41:42:491 CPU/(6016:6122): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:42:492 CPU/(6016:6124): Se conecto un cliente
+[INFO] 23:41:43:494 CPU/(6016:6124): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:41:44:495 CPU/(6016:6124): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:41:44:495 CPU/(6016:6124): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:44:497 CPU/(6016:6126): Se conecto un cliente
+[INFO] 23:41:45:498 CPU/(6016:6126): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:41:46:499 CPU/(6016:6126): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:41:46:500 CPU/(6016:6126): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:46:501 CPU/(6016:6128): Se conecto un cliente
+[INFO] 23:41:47:502 CPU/(6016:6128): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:41:48:502 CPU/(6016:6128): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 23:41:48:502 CPU/(6016:6128): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:48:504 CPU/(6016:6130): Se conecto un cliente
+[INFO] 23:41:49:505 CPU/(6016:6130): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:41:50:506 CPU/(6016:6130): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 23:41:50:507 CPU/(6016:6130): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:50:509 CPU/(6016:6132): Se conecto un cliente
+[INFO] 23:41:51:511 CPU/(6016:6132): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 23:41:51:511 CPU/(6016:6132): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:41:51:512 CPU/(6016:6134): Se conecto un cliente
+[INFO] 23:41:52:513 CPU/(6016:6134): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 23:41:52:514 CPU/(6016:6134): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:41:52:515 CPU/(6016:6136): Se conecto un cliente
+[INFO] 23:41:53:515 CPU/(6016:6136): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 23:41:53:516 CPU/(6016:6136): PID: 2 - Ejecutando: EXIT
+
+[INFO] 23:41:53:519 CPU/(6016:6137): Se conecto un cliente
+[INFO] 23:41:54:520 CPU/(6016:6137): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 23:41:54:520 CPU/(6016:6137): PID: 3 - Ejecutando: EXIT
+
+[INFO] 23:42:52:225 CPU/(6150:6150): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:43:03:979 CPU/(6150:6152): Se conecto un cliente
+[INFO] 23:43:04:980 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 23:43:05:981 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 23:43:06:981 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 23:43:07:982 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 23:43:08:982 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 23:43:09:982 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 23:43:10:983 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 23:43:11:984 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 23:43:12:984 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 23:43:13:985 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 23:43:14:986 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 23:43:15:986 CPU/(6150:6152): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 23:43:15:986 CPU/(6150:6152): PID: 1 - Ejecutando: YIELD
+
+[INFO] 23:43:15:987 CPU/(6150:6204): Se conecto un cliente
+[INFO] 23:43:16:988 CPU/(6150:6204): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 23:43:17:989 CPU/(6150:6204): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:17:989 CPU/(6150:6204): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:17:991 CPU/(6150:6206): Se conecto un cliente
+[INFO] 23:43:18:991 CPU/(6150:6206): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 23:43:19:992 CPU/(6150:6206): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:19:992 CPU/(6150:6206): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:19:993 CPU/(6150:6208): Se conecto un cliente
+[INFO] 23:43:20:994 CPU/(6150:6208): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 23:43:21:994 CPU/(6150:6208): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 23:43:21:994 CPU/(6150:6208): PID: 1 - Ejecutando: EXIT
+
+[INFO] 23:43:21:995 CPU/(6150:6210): Se conecto un cliente
+[INFO] 23:43:22:996 CPU/(6150:6210): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 23:43:23:996 CPU/(6150:6210): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:23:997 CPU/(6150:6210): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:23:998 CPU/(6150:6214): Se conecto un cliente
+[INFO] 23:43:25:000 CPU/(6150:6214): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 23:43:26:000 CPU/(6150:6214): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:26:000 CPU/(6150:6214): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:26:002 CPU/(6150:6216): Se conecto un cliente
+[INFO] 23:43:27:002 CPU/(6150:6216): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:28:003 CPU/(6150:6216): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:28:003 CPU/(6150:6216): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:28:004 CPU/(6150:6218): Se conecto un cliente
+[INFO] 23:43:29:005 CPU/(6150:6218): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:30:006 CPU/(6150:6218): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 23:43:30:006 CPU/(6150:6218): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:30:007 CPU/(6150:6220): Se conecto un cliente
+[INFO] 23:43:31:008 CPU/(6150:6220): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:32:009 CPU/(6150:6220): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 23:43:32:009 CPU/(6150:6220): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:32:010 CPU/(6150:6222): Se conecto un cliente
+[INFO] 23:43:33:010 CPU/(6150:6222): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:34:011 CPU/(6150:6222): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 23:43:34:011 CPU/(6150:6222): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:34:012 CPU/(6150:6224): Se conecto un cliente
+[INFO] 23:43:35:013 CPU/(6150:6224): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:36:013 CPU/(6150:6224): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:43:36:013 CPU/(6150:6224): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:36:014 CPU/(6150:6226): Se conecto un cliente
+[INFO] 23:43:37:015 CPU/(6150:6226): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 23:43:38:015 CPU/(6150:6226): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:43:38:016 CPU/(6150:6226): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:38:016 CPU/(6150:6228): Se conecto un cliente
+[INFO] 23:43:39:017 CPU/(6150:6228): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:43:40:018 CPU/(6150:6228): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:43:40:019 CPU/(6150:6228): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:40:019 CPU/(6150:6230): Se conecto un cliente
+[INFO] 23:43:41:020 CPU/(6150:6230): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:43:42:020 CPU/(6150:6230): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 23:43:42:020 CPU/(6150:6230): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:42:022 CPU/(6150:6232): Se conecto un cliente
+[INFO] 23:43:43:022 CPU/(6150:6232): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:43:44:023 CPU/(6150:6232): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 23:43:44:023 CPU/(6150:6232): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:44:024 CPU/(6150:6234): Se conecto un cliente
+[INFO] 23:43:45:026 CPU/(6150:6234): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 23:43:46:026 CPU/(6150:6234): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 23:43:46:026 CPU/(6150:6234): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:46:027 CPU/(6150:6236): Se conecto un cliente
+[INFO] 23:43:47:028 CPU/(6150:6236): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 23:43:47:028 CPU/(6150:6236): PID: 2 - Ejecutando: YIELD
+
+[INFO] 23:43:47:028 CPU/(6150:6237): Se conecto un cliente
+[INFO] 23:43:48:029 CPU/(6150:6237): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 23:43:48:029 CPU/(6150:6237): PID: 3 - Ejecutando: YIELD
+
+[INFO] 23:43:48:030 CPU/(6150:6240): Se conecto un cliente
+[INFO] 23:43:49:031 CPU/(6150:6240): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 23:43:49:032 CPU/(6150:6240): PID: 2 - Ejecutando: EXIT
+
+[INFO] 23:43:49:035 CPU/(6150:6241): Se conecto un cliente
+[INFO] 23:43:50:036 CPU/(6150:6241): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 23:43:50:036 CPU/(6150:6241): PID: 3 - Ejecutando: EXIT
+
+[INFO] 23:49:57:313 CPU/(6336:6336): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 23:50:25:619 CPU/(6336:6338): Se conecto un cliente
+[INFO] 23:50:25:620 CPU/(6336:6338): PID: 1 - Ejecutando: WAIT - [DISCO
+]
+
+[INFO] 23:50:25:622 CPU/(6336:6414): Se conecto un cliente
+[INFO] 23:50:25:622 CPU/(6336:6414): PID: 1 - Ejecutando: I/O - [10]
+
+[INFO] 23:50:25:627 CPU/(6336:6417): Se conecto un cliente
+[INFO] 23:50:25:628 CPU/(6336:6417): PID: 2 - Ejecutando: WAIT - [IMPRESORA
+]
+
+[INFO] 23:50:25:630 CPU/(6336:6423): Se conecto un cliente
+[INFO] 23:50:25:630 CPU/(6336:6423): PID: 2 - Ejecutando: I/O - [10]
+
+[INFO] 23:50:25:631 CPU/(6336:6426): Se conecto un cliente
+[INFO] 23:50:25:632 CPU/(6336:6426): PID: 3 - Ejecutando: WAIT - [SCANNER
+]
+
+[INFO] 23:50:25:633 CPU/(6336:6429): Se conecto un cliente
+[INFO] 23:50:25:639 CPU/(6336:6429): PID: 3 - Ejecutando: I/O - [10]
+
+[INFO] 23:50:25:642 CPU/(6336:6431): Se conecto un cliente
+[INFO] 23:50:25:644 CPU/(6336:6431): PID: 1 - Ejecutando: WAIT - [IMPRESORA
+]
+
+[INFO] 23:50:25:646 CPU/(6336:6434): Se conecto un cliente
+[INFO] 23:50:25:646 CPU/(6336:6434): PID: 2 - Ejecutando: WAIT - [SCANNER
+]
+
+[INFO] 23:50:25:653 CPU/(6336:6436): Se conecto un cliente
+[INFO] 23:50:25:653 CPU/(6336:6436): PID: 3 - Ejecutando: WAIT - [DISCO
+]
+
