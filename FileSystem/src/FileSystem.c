@@ -19,6 +19,7 @@ void* mapping2;
 size_t tamanio_bloques;
 char* textoLeidoMemoria = "";
 int instruccionEjecutando;
+int retardoAccesoBloques;
 
 int main(void) {
 
@@ -43,6 +44,14 @@ int main(void) {
     if (config == NULL) {
         printf("No se pudo crear el config.\n");
         exit(5);
+    }
+
+    if (config_has_property(config, "RETARDO_ACCESO_BLOQUE")) {
+    	 printf("Existe el path al superbloque.\n");
+    	 retardoAccesoBloques = config_get_int_value(config, "RETARDO_ACCESO_BLOQUE");
+    }else {
+    	 printf("No existe el path al superbloque.\n");
+    	 exit(5);
     }
 
     if (config_has_property(config, "PATH_SUPERBLOQUE")) {
@@ -650,8 +659,6 @@ char* crearPathArchivoFOpen(char* nombreArchivoOriginal){
 	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
 	p_fcb = string_new();
 
-	printf("El nombre es: %s\n", nombreArchivo);
-
 	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/fcb/");
 	string_append(&p_fcb, nombreArchivo);
 	string_append(&p_fcb, ".config");
@@ -662,22 +669,12 @@ char* crearPathArchivoFOpen(char* nombreArchivoOriginal){
 void crearPathArchivo(char* nombreArchivo){
 	p_fcb = string_new();
 
-	printf("El nombre es: %s\n", nombreArchivo);
-
 	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/fcb/");
 	string_append(&p_fcb, nombreArchivo);
 	string_append(&p_fcb, ".config");
 }
 
 void abrir_archivo(char* nombreArchivoOriginal){
-	//Creo archivo FCB para crear config FCB
-
-//	int largo = string_length(nombreArchivoOriginal) - 1;
-//	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
-//
-//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-//	string_append(&p_fcb, nombreArchivo);
-//	string_append(&p_fcb, ".config");
 
 	char* nombreArchivo = crearPathArchivoFOpen(nombreArchivoOriginal);
 
@@ -701,8 +698,6 @@ void abrir_archivo(char* nombreArchivoOriginal){
 
 			char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
 
-			printf("El nombre del archivo es: %s\n", nomArch);
-
 			log_info(logger, "Crear Archivo: <%s>\n", nombreArchivo);
 
 		    fclose(archivo_fcb);
@@ -718,29 +713,9 @@ void abrir_archivo(char* nombreArchivoOriginal){
 
 void truncar_archivo(char* nombreArchivo, int tamanio){
 
-//	int largo = string_length(nombreArchivoOriginal) - 1;
-//	char* nombreArchivo = string_substring_until(nombreArchivoOriginal, largo);
-//
-//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-//	string_append(&p_fcb, nombreArchivo);
-//	string_append(&p_fcb, ".config");
-
-	char listaBits[block_count];
-	listaBits[0] = '1';
-	int y = 1;
-
-	while(y < block_count){
-		listaBits[y] = '0';
-		y++;
-	}
-
-
 	crearPathArchivo(nombreArchivo);
 
-	printf("El path es: %s\n", p_fcb);
-
 	configFCBT = config_create(p_fcb);
-	printf("Hola\n");
 
 	int tamanioArchivo = 0;
 	int punteroIndirecto = 0;
@@ -753,34 +728,21 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 	 }else{
 
 	    if (config_has_property(configFCBT, "TAMANIO_ARCHIVO")) {
-	    	printf("El config se creo bien\n");
 	    	tamanioArchivo =  config_get_int_value(configFCBT, "TAMANIO_ARCHIVO");
-	    	printf("TamanioArchivo %d\n", tamanioArchivo);
-	    	printf("Tamanio %d\n", tamanio);
 	    	punteroIndirecto =  config_get_int_value(configFCBT, "PUNTERO_INDIRECTO");
-	    	printf("PunteroIndirecto %d\n", punteroIndirecto);
 	    	punteroDirecto =  config_get_int_value(configFCBT, "PUNTERO_DIRECTO");
-	    	printf("PunteroDirecto %d\n", punteroDirecto);
 	    }else {
 	    	printf("No existe el path al superbloque.\n");
 	    	exit(5);
 	    }
 
-	//if (configFCBT != NULL) {
-
     	snprintf(tam, sizeof(tam), "%d", tamanio);
 		config_set_value(configFCBT, "TAMANIO_ARCHIVO", tam);
-
-		printf("tamanio %d\n", tamanio);
-		printf("block_size %d\n", block_size);
 
 		int cantidadBloquesNecesarios = ceil(tamanio / block_size)+1;
 
 		int cantidadBloquesActual = 0;
 		int contador = 0;
-
-		printf("cantidadBloquesActual1 %d\n", cantidadBloquesActual);
-		printf("cantidadBloquesNecesarios %d\n", cantidadBloquesNecesarios);
 
 		if (punteroDirecto != 0){
 			cantidadBloquesActual++;
@@ -790,44 +752,23 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (contador*4);
 			uint32_t block = atoi(blockChar);
 
-			//mapping_archivo_bloques+num_bloque*BLOCK_SIZE+offset
-
-			printf("block %u\n", block);
-
-			bool valor = bitarray_test_bit(bitarray_mapeado, block);
-			printf("El valor del bit %u es %i\n", block, valor);
-
-			//Puede que no sea NULL, ver contra que hay que comparar
 			while (bitarray_test_bit(bitarray_mapeado, block) != 0){
-			//while (block != 0){
-			//lo modifique para probar pero el que debería ir es el de arriba
-			//while (contador <= 7){
 				contador++;
-				//MAL
-				//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (contador*4);
-				//BIEN
+
 				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (contador*4);
 
 				block = atoi(blockChar);
 
-				printf("block %u\n", block);
 				bool valor = bitarray_test_bit(bitarray_mapeado, block);
-				printf("El valor del bit %u es %i\n", block, valor);
 			}
 		}
 
 		cantidadBloquesActual += contador;
 
-		printf("cantidadBloquesActual3 %d\n", cantidadBloquesActual);
-
 		if (tamanio < tamanioArchivo){
-//				Reducir el tamaño del archivo: Se deberá asignar el nuevo tamaño del archivo en el FCB y
-//				se deberán marcar como libres todos los bloques que ya no sean necesarios para direccionar
-//				el tamaño del archivo (descartando desde el final del archivo hacia el principio).
 
 			if(cantidadBloquesNecesarios < (cantidadBloquesActual)){
 
-				//liberar bloques del bitmap.
 				int i = 0;
 				int diferencia = cantidadBloquesActual - cantidadBloquesNecesarios;
 				int bloquesALiberar = diferencia-1;
@@ -852,28 +793,19 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 				}
 			}
 		} else if (tamanio > tamanioArchivo){
-//				Ampliar el tamaño del archivo: Al momento de ampliar el tamaño del archivo deberá actualizar
-//				el tamaño del archivo en el FCB y se le deberán asignar tantos bloques como sea necesario para
-//				poder direccionar el nuevo tamaño.
 
 			if(cantidadBloquesNecesarios > cantidadBloquesActual){
 
-			//Agregar los bloques que sean necesarios y modificar el bit en el bitarray a 1.
 				int diferencia = cantidadBloquesNecesarios - cantidadBloquesActual;
 
-				printf("diferencia %d\n", diferencia);
 
 				int i = 0;
 				while (i < diferencia){
 					uint32_t bloqueNuevo = 1;
 
-					while(listaBits[bloqueNuevo] != '0'){
+					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 						bloqueNuevo++;
 					}
-
-//					while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
-//						bloqueNuevo++;
-//					}
 
 					printf("BloqueNuevo %u\n", bloqueNuevo);
 
@@ -882,20 +814,14 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 						char pd[20];
 				    	snprintf(pd, sizeof(pd), "%d", punteroDirecto);
 						config_set_value(configFCBT, "PUNTERO_DIRECTO", pd);
-						//bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
-						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, bitarray_test_bit(bitarray_mapeado, bloqueNuevo));
 
 						printf("BloqueNuevoPD %u\n", bloqueNuevo);
 
-						//AGREGADO SOLO PARA LAS PRUEBAS
-						listaBits[bloqueNuevo] = '1';
-						while(listaBits[bloqueNuevo] != '0'){
+						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
 						}
-
-//						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
-//							bloqueNuevo++;
-//						}
 						i++;
 					}
 
@@ -904,35 +830,23 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 						char pi[20];
 						snprintf(pi, sizeof(pi), "%d", punteroIndirecto);
 						config_set_value(configFCBT, "PUNTERO_INDIRECTO", pi);
-						//bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
 						printf("BloqueNuevoPI %u\n", bloqueNuevo);
 
-						listaBits[bloqueNuevo] = '1';
-						while(listaBits[bloqueNuevo] != '0'){
+						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
 						}
-
-//						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
-//							bloqueNuevo++;
-//						}
 					}
 
 					if (diferencia > i){
-						//ASI SE ESCRIBE
 						char* block = (char*)mapping2 + punteroIndirecto*block_size + ((cantidadBloquesActual)*4);
-						//memcpy(bloqueX, dataAEscribir, block_size);
 						printf("Escribiendo en bloque de archivos\n");
-						printf("BloqueNuevoPII %u\n", bloqueNuevo);
-						//memcpy(punteroIndirecto, &bloqueNuevo, cantidadBloquesActual*4);
 						sprintf(block, "%d", bloqueNuevo);
-//						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
-						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
+						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
+						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
+						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%i>\n", bloqueNuevo, valor);
 
-						listaBits[bloqueNuevo] = '1';
-
-//						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
-//						printf("El valor del bit %u es %i\n", bloqueNuevo, valor);
 						i++;
 						cantidadBloquesActual++;
 					}
@@ -946,15 +860,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 
 //FALTA MANDAR A MEMORIA
 void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int direcFisicaRead) {
-//	Esta operación deberá leer la información correspondiente de los bloques a partir del puntero y el
-//	tamaño recibidos. Esta información se deberá enviar a la Memoria para ser escrita a partir de la
-//	dirección física recibida por parámetro y esperar su finalización para poder confirmar el éxito de
-//	la operación al Kernel. MOVE_OUT
 
-//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-//	string_append(&p_fcb, nombreArchivo);
-//	string_append(&p_fcb, ".config");
-//
 	crearPathArchivo(nombreArchivo);
 
 	configFCBL = config_create(p_fcb);
@@ -971,9 +877,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 		if (config_has_property(configFCBL, "TAMANIO_ARCHIVO")) {
 			printf("El config se creo bien\n");
 			punteroIndirecto =  config_get_int_value(configFCBL, "PUNTERO_INDIRECTO");
-			printf("PunteroIndirecto %d\n", punteroIndirecto);
 			punteroDirecto =  config_get_int_value(configFCBL, "PUNTERO_DIRECTO");
-			printf("PunteroDirecto %d\n", punteroDirecto);
 		}else {
 			printf("No existe el path al superbloque.\n");
 			exit(5);
@@ -995,19 +899,6 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 			for (int i = 0; i < tamanioMenorLeer; i++){
 				char* bloqueLecturaString = (char*)mapping2 + punteroDirecto*block_size + punteroArchivo + i;
 
-				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
-
-				//char bloqueLectura = (char)mapping2 + 6*block_size + 0 + i;
-				//El de abajo lo use de prueba porque se que en ese bloque a esa altura hay algo escrito con seguridad
-				//char* bloqueLecturaString = (char*)mapping2 + 6*block_size + 0 + i;
-
-//				printf("String: %s\n", bloqueLecturaString);
-//				char bloqueLectura = bloqueLecturaString[0];
-//				porcionLeida[i] = bloqueLectura;
-//				printf("Char: %c\n", bloqueLectura);
-//				printf("PorcionLeida: %c.\n", porcionLeida[i]);
-//				indice++;
-//				bytesALeer--;
 				if(!string_is_empty(bloqueLecturaString)){
 					char bloqueLectura = bloqueLecturaString[0];
 					porcionLeida[i] = bloqueLectura;
@@ -1020,25 +911,23 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				bytesALeer--;
 			}
 
+			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
+			sleep_ms(retardoAccesoBloques);
+
 			printf("PorcionLeida: %s.\n", porcionLeida);
 
 			while (bytesALeer != 0){
 				int bloque = 0;
 				tamanioMenorLeer = minimo(bytesALeer, block_size);
 
-				//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloque*4);
 				char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloque*4);
 				uint32_t block = atoi(blockChar);
 
 				for (int x = 0; x < tamanioMenorLeer ; x++){
-					//char bloqueLectura = (char)mapping2 + block*block_size + x;
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
-					log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%u>\n", nombreArchivo, bloque, block);
 					if(!string_is_empty(bloqueLecturaString)){
 						char bloqueLectura = bloqueLecturaString[0];
 						porcionLeida[indice] = bloqueLectura;
-						printf("Char: %c\n", bloqueLectura);
-						printf("PorcionLeida: %c.\n", porcionLeida[x]);
 						indice++;
 						bytesALeer--;
 					}else{
@@ -1047,8 +936,11 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 						bytesALeer--;
 					}
 				}
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%u>\n", nombreArchivo, bloque+2, block);
+				sleep_ms(retardoAccesoBloques);
 				bloque++;
 			}
+			printf("PorcionLeida: %s.\n", porcionLeida);
 		}else {
 			int bytesALeer = cantBytesRead;
 			int indice = 0;
@@ -1056,20 +948,16 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 
 			tamanioMenorLeer = minimo(bytesALeer, block_size-resto);
 
-			//uint32_t block = (uint32_t)mapping2 + punteroIndirecto + (bloqueALeer*4);
 			char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueALeer*4);
 			uint32_t block = atoi(blockChar);
 
 			for (int i = 0; i < tamanioMenorLeer; i++){
 
 				char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + i;
-				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
 
 				if(!string_is_empty(bloqueLecturaString)){
 					char bloqueLectura = bloqueLecturaString[0];
 					porcionLeida[indice] = bloqueLectura;
-					printf("Char: %c\n", bloqueLectura);
-					printf("PorcionLeida: %c.\n", porcionLeida[i]);
 				}else{
 					porcionLeida[indice] = ' ';
 				}
@@ -1077,7 +965,11 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				bytesALeer--;
 			}
 
+			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
+			sleep_ms(retardoAccesoBloques);
+
 			bloqueALeer++;
+			printf("PorcionLeida: %s.\n", porcionLeida);
 
 			while (bytesALeer != 0){
 
@@ -1089,21 +981,20 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				for (int x = 0; x < tamanioMenorLeer ; x++){
 					char* bloqueLecturaString = (char*)mapping2 + block*block_size + punteroArchivo + x;
 
-					log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
-
 					if(!string_is_empty(bloqueLecturaString)){
 						char bloqueLectura = bloqueLecturaString[0];
 						porcionLeida[indice] = bloqueLectura;
-						printf("Char: %c\n", bloqueLectura);
-						printf("PorcionLeida: %c.\n", porcionLeida[x]);
 					}else{
 						porcionLeida[indice] = ' ';
 					}
 					indice++;
 					bytesALeer--;
 				}
+				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%u>\n", nombreArchivo, bloqueALeer+2, block);
+				sleep_ms(retardoAccesoBloques);
 				bloqueALeer++;
 			}
+			printf("PorcionLeida: %s.\n", porcionLeida);
 		}
 		char* registro = porcionLeida;
 		iniciarHiloCliente(12, registro, direcFisicaRead, cantBytesRead);
@@ -1112,16 +1003,6 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 }
 
 void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite, int direcFisicaWrite){
-//	Se deberá solicitar a la Memoria la información que se encuentra a partir de la dirección física y
-//	escribirlo en los bloques correspondientes del archivo a partir del puntero recibido.
-//	El tamaño de la información a leer de la memoria y a escribir en los bloques también deberá recibirse
-//	por parámetro desde el Kernel. MOVE_IN
-
-//	string_append(&p_fcb, "/home/utnso/tp-2023-1c-Los-operadores/FileSystem/");
-//	string_append(&p_fcb, nombreArchivo);
-//	string_append(&p_fcb, ".config");
-
-	//textoLeidoMemoria = "HOLA";
 
 	crearPathArchivo(nombreArchivo);
 
@@ -1138,15 +1019,11 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 		if (config_has_property(configFCBE, "TAMANIO_ARCHIVO")) {
 			printf("El config se creo bien\n");
 			punteroIndirecto =  config_get_int_value(configFCBE, "PUNTERO_INDIRECTO");
-			printf("PunteroIndirecto %d\n", punteroIndirecto);
 			punteroDirecto =  config_get_int_value(configFCBE, "PUNTERO_DIRECTO");
-			printf("PunteroDirecto %d\n", punteroDirecto);
 		}else {
 			printf("No existe el path al superbloque.\n");
 			exit(5);
 		}
-
-		//SOLICITAR A MEMORIA, suponemos que escribe en una variable global llamada textoLeido
 
 		uint32_t bloqueAEscribir = floor(punteroArchivo / block_size);
 		int resto = punteroArchivo%block_size;
@@ -1162,11 +1039,11 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
 			printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
-//			(char*)mapping2 + punteroDirecto + (punteroArchivo*4) = porcionAEscribir;
-			//memcpy(punteroDirecto, porcionAEscribir, sizeof(porcionAEscribir));
+
 			char* block = (char*)mapping2 + punteroDirecto*block_size;
 
 			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
+			sleep_ms(retardoAccesoBloques);
 
 			sprintf(block, "%s", porcionAEscribir);
 
@@ -1182,11 +1059,10 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 				char* blockChar = (char*)mapping2 + bloqueAE*block_size;
 
 				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%s>\n", nombreArchivo, bloque+2, bloqueAEs);
-				//uint32_t block = atoi(blockChar);
+				sleep_ms(retardoAccesoBloques);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
-//				(char*)mapping2 + block = porcionAEscribir;
 				sprintf(blockChar, "%s", porcionAEscribir);
 
 				ultimoIndiceEscrito += tamanioMenorEscribir2;
@@ -1197,20 +1073,18 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 			int bytesAEscribir = cantBytesWrite;
 			bloqueAEscribir--;
 
-			///char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 			char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 			uint32_t bloqueAE = atoi(bloqueAEs);
 			char* blockChar = (char*)mapping2 + bloqueAE*block_size + punteroArchivo;
 
 			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir+2, bloqueAEs);
-			//uint32_t block = atoi(blockChar);
+			sleep_ms(retardoAccesoBloques);
 
 			tamanioMenorEscribir = minimo(bytesAEscribir, block_size-resto);
 
 			char* porcionAEscribir = string_new();
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
-//			(char*)mapping2 + block + (punteroArchivo*4) = porcionAEscribir;
 			sprintf(blockChar, "%s", porcionAEscribir);
 
 			bloqueAEscribir++;
@@ -1220,16 +1094,15 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 			while (bytesAEscribir != 0){
 				int tamanioMenorEscribir2 = minimo(bytesAEscribir, block_size);
 
-				//char* blockChar = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 				char* bloqueAEs = (char*)mapping2 + punteroIndirecto*block_size + (bloqueAEscribir*4);
 				uint32_t bloqueAE = atoi(bloqueAEs);
 				char* blockChar = (char*)mapping2 + bloqueAE*block_size;
 
 				log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%u> - Bloque File System <%s>\n", nombreArchivo, bloqueAEscribir, bloqueAEs);
+				sleep_ms(retardoAccesoBloques);
 
 				porcionAEscribir = string_substring(textoLeidoMemoria, ultimoIndiceEscrito, tamanioMenorEscribir2);
 
-//				(char*)mapping2 + block = porcionAEscribir;
 				sprintf(blockChar, "%s", porcionAEscribir);
 
 				ultimoIndiceEscrito += tamanioMenorEscribir2;
@@ -1293,14 +1166,6 @@ void paquete(int conexion)
 }
 
 void enviar_handshake_memoria(){
-	//    int conexion_Memoria;
-	//    conexion_Memoria = crear_conexion(ip_memoria, puerto_memoria);
-	//    enviar_mensaje("filesystem",conexion_Memoria);
-	//    int cod_op = recibir_operacion(conexion_Memoria);
-	//    printf("codigo de operacion: %i\n", cod_op);
-	//    recibir_mensaje(conexion_Memoria);
-	//    liberar_conexion(conexion_Memoria);
-
 	int config = 1;
 	int conexion_Memoria;
 
