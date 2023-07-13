@@ -79491,3 +79491,101 @@ el cliente se desconecto. Terminando servidor
 [INFO] 23:50:25:629 Memoria/(6304:6420): Se conecto un cliente!
 [INFO] 23:50:25:629 Memoria/(6304:6420): Creación de Proceso PID: 3
 
+[INFO] 01:20:52:148 Memoria/(11537:11537): Listo para escuchar al cliente
+[INFO] 01:20:57:415 Memoria/(11537:11538): Se conecto un cliente!
+[INFO] 01:21:05:765 Memoria/(11537:11570): Se conecto un cliente!
+[INFO] 01:21:13:216 Memoria/(11537:11603): Se conecto un cliente!
+[INFO] 01:21:13:217 Memoria/(11537:11537): Se conectaron todos los modulos.
+
+[INFO] 01:21:13:217 Memoria/(11537:11537): Se crearon todas las estructuras correctamente.
+
+[INFO] 01:21:28:005 Memoria/(11537:11636): Se conecto un cliente!
+[INFO] 01:21:28:005 Memoria/(11537:11636): Creación de Proceso PID: 1
+
+[INFO] 01:21:28:009 Memoria/(11537:11645): Se conecto un cliente!
+[INFO] 01:21:28:009 Memoria/(11537:11645): Creación de Proceso PID: 2
+
+[INFO] 01:21:28:011 Memoria/(11537:11649): Se conecto un cliente!
+[INFO] 01:21:28:012 Memoria/(11537:11649): Creación de Proceso PID: 3
+
+[INFO] 01:21:46:031 Memoria/(11537:11651): Se conecto un cliente!
+[INFO] 01:21:46:032 Memoria/(11537:11651): Eliminación de Proceso PID: 1
+
+[INFO] 01:23:03:305 Memoria/(11709:11709): Listo para escuchar al cliente
+[INFO] 01:23:03:920 Memoria/(11709:11710): Se conecto un cliente!
+[INFO] 01:23:04:538 Memoria/(11709:11713): Se conecto un cliente!
+[INFO] 01:23:09:718 Memoria/(11709:11717): Se conecto un cliente!
+[INFO] 01:23:09:718 Memoria/(11709:11709): Se conectaron todos los modulos.
+
+[INFO] 01:23:09:718 Memoria/(11709:11709): Se crearon todas las estructuras correctamente.
+
+[INFO] 01:23:10:985 Memoria/(11709:11750): Se conecto un cliente!
+[INFO] 01:23:10:985 Memoria/(11709:11750): Creación de Proceso PID: 1
+
+[INFO] 01:23:10:988 Memoria/(11709:11758): Se conecto un cliente!
+[INFO] 01:23:10:988 Memoria/(11709:11758): Creación de Proceso PID: 2
+
+[INFO] 01:23:10:990 Memoria/(11709:11762): Se conecto un cliente!
+[INFO] 01:23:10:990 Memoria/(11709:11762): Creación de Proceso PID: 3
+
+[INFO] 01:23:29:019 Memoria/(11709:11764): Se conecto un cliente!
+[INFO] 01:23:29:020 Memoria/(11709:11764): Eliminación de Proceso PID: 1
+
+[INFO] 01:23:56:101 Memoria/(11709:11774): Se conecto un cliente!
+[INFO] 01:23:56:102 Memoria/(11709:11774): Eliminación de Proceso PID: 2
+
+[INFO] 01:23:57:106 Memoria/(11709:11806): Se conecto un cliente!
+[INFO] 01:23:57:107 Memoria/(11709:11806): Eliminación de Proceso PID: 3
+
+[INFO] 01:31:50:910 Memoria/(12313:12313): Listo para escuchar al cliente
+[INFO] 01:31:51:472 Memoria/(12313:12314): Se conecto un cliente!
+[INFO] 01:31:52:126 Memoria/(12313:12317): Se conecto un cliente!
+[INFO] 01:32:00:640 Memoria/(12313:12321): Se conecto un cliente!
+[INFO] 01:32:00:640 Memoria/(12313:12313): Se conectaron todos los modulos.
+
+[INFO] 01:32:00:640 Memoria/(12313:12313): Se crearon todas las estructuras correctamente.
+
+[INFO] 01:32:03:501 Memoria/(12313:12354): Se conecto un cliente!
+[INFO] 01:32:03:501 Memoria/(12313:12354): Creación de Proceso PID: 1
+
+[INFO] 01:32:03:505 Memoria/(12313:12362): Se conecto un cliente!
+[INFO] 01:32:03:505 Memoria/(12313:12362): Creación de Proceso PID: 2
+
+[INFO] 01:32:03:506 Memoria/(12313:12366): Se conecto un cliente!
+[INFO] 01:32:03:506 Memoria/(12313:12366): Creación de Proceso PID: 3
+
+[INFO] 01:32:21:532 Memoria/(12313:12368): Se conecto un cliente!
+[INFO] 01:32:21:534 Memoria/(12313:12368): Eliminación de Proceso PID: 1
+
+[INFO] 01:32:48:616 Memoria/(12313:12378): Se conecto un cliente!
+[INFO] 01:32:48:618 Memoria/(12313:12378): Eliminación de Proceso PID: 2
+
+[INFO] 01:32:49:624 Memoria/(12313:12410): Se conecto un cliente!
+[INFO] 01:32:49:625 Memoria/(12313:12410): Eliminación de Proceso PID: 3
+
+[INFO] 01:34:00:509 Memoria/(12606:12606): Listo para escuchar al cliente
+[INFO] 01:34:01:089 Memoria/(12606:12607): Se conecto un cliente!
+[INFO] 01:34:01:673 Memoria/(12606:12610): Se conecto un cliente!
+[INFO] 01:34:06:232 Memoria/(12606:12614): Se conecto un cliente!
+[INFO] 01:34:06:232 Memoria/(12606:12606): Se conectaron todos los modulos.
+
+[INFO] 01:34:06:233 Memoria/(12606:12606): Se crearon todas las estructuras correctamente.
+
+[INFO] 01:34:07:401 Memoria/(12606:12647): Se conecto un cliente!
+[INFO] 01:34:07:402 Memoria/(12606:12647): Creación de Proceso PID: 1
+
+[INFO] 01:34:07:405 Memoria/(12606:12655): Se conecto un cliente!
+[INFO] 01:34:07:405 Memoria/(12606:12655): Creación de Proceso PID: 2
+
+[INFO] 01:34:07:406 Memoria/(12606:12659): Se conecto un cliente!
+[INFO] 01:34:07:406 Memoria/(12606:12659): Creación de Proceso PID: 3
+
+[INFO] 01:34:25:430 Memoria/(12606:12661): Se conecto un cliente!
+[INFO] 01:34:25:431 Memoria/(12606:12661): Eliminación de Proceso PID: 1
+
+[INFO] 01:34:52:514 Memoria/(12606:12671): Se conecto un cliente!
+[INFO] 01:34:52:515 Memoria/(12606:12671): Eliminación de Proceso PID: 2
+
+[INFO] 01:34:53:520 Memoria/(12606:12703): Se conecto un cliente!
+[INFO] 01:34:53:522 Memoria/(12606:12703): Eliminación de Proceso PID: 3
+

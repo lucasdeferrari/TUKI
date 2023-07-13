@@ -61889,3 +61889,567 @@ Operacion recibida de MEMORIA desconocida.
 [INFO] 23:50:25:653 CPU/(6336:6436): PID: 3 - Ejecutando: WAIT - [DISCO
 ]
 
+[INFO] 01:20:57:415 CPU/(11569:11569): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 01:21:28:007 CPU/(11569:11571): Se conecto un cliente
+[INFO] 01:21:29:007 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 01:21:30:008 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 01:21:31:009 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 01:21:32:010 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 01:21:33:011 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 01:21:34:011 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 01:21:35:012 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 01:21:36:012 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 01:21:37:013 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 01:21:38:015 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 01:21:39:015 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 01:21:40:016 CPU/(11569:11571): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 01:21:40:016 CPU/(11569:11571): PID: 1 - Ejecutando: YIELD
+
+[INFO] 01:21:40:018 CPU/(11569:11653): Se conecto un cliente
+[INFO] 01:21:41:020 CPU/(11569:11653): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:21:42:020 CPU/(11569:11653): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:42:021 CPU/(11569:11653): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:21:42:022 CPU/(11569:11655): Se conecto un cliente
+[INFO] 01:21:43:023 CPU/(11569:11655): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:21:44:024 CPU/(11569:11655): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:44:024 CPU/(11569:11655): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:21:44:026 CPU/(11569:11657): Se conecto un cliente
+[INFO] 01:21:45:028 CPU/(11569:11657): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 01:21:46:029 CPU/(11569:11657): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 01:21:46:029 CPU/(11569:11657): PID: 1 - Ejecutando: EXIT
+
+[INFO] 01:21:46:033 CPU/(11569:11658): Se conecto un cliente
+[INFO] 01:21:47:035 CPU/(11569:11658): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:21:48:037 CPU/(11569:11658): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:48:037 CPU/(11569:11658): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:21:48:040 CPU/(11569:11663): Se conecto un cliente
+[INFO] 01:21:49:041 CPU/(11569:11663): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:21:50:042 CPU/(11569:11663): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:50:042 CPU/(11569:11663): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:21:50:046 CPU/(11569:11665): Se conecto un cliente
+[INFO] 01:21:51:046 CPU/(11569:11665): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:21:52:047 CPU/(11569:11665): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:52:048 CPU/(11569:11665): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:21:52:048 CPU/(11569:11667): Se conecto un cliente
+[INFO] 01:21:53:049 CPU/(11569:11667): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:21:54:049 CPU/(11569:11667): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:21:54:049 CPU/(11569:11667): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:21:54:050 CPU/(11569:11669): Se conecto un cliente
+[INFO] 01:21:55:051 CPU/(11569:11669): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:21:56:052 CPU/(11569:11669): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:21:56:052 CPU/(11569:11669): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:21:56:052 CPU/(11569:11671): Se conecto un cliente
+[INFO] 01:21:57:053 CPU/(11569:11671): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:21:58:054 CPU/(11569:11671): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:21:58:054 CPU/(11569:11671): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:21:58:055 CPU/(11569:11673): Se conecto un cliente
+[INFO] 01:21:59:056 CPU/(11569:11673): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:22:00:056 CPU/(11569:11673): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:22:00:056 CPU/(11569:11673): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:22:00:057 CPU/(11569:11675): Se conecto un cliente
+[INFO] 01:22:01:059 CPU/(11569:11675): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:22:02:059 CPU/(11569:11675): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:22:02:059 CPU/(11569:11675): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:03:920 CPU/(11712:11712): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 01:23:10:986 CPU/(11712:11714): Se conecto un cliente
+[INFO] 01:23:11:987 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 01:23:12:987 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 01:23:13:988 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 01:23:14:988 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 01:23:15:990 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 01:23:16:991 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 01:23:17:991 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 01:23:18:992 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 01:23:19:992 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 01:23:20:994 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 01:23:21:995 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 01:23:22:996 CPU/(11712:11714): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 01:23:22:996 CPU/(11712:11714): PID: 1 - Ejecutando: YIELD
+
+[INFO] 01:23:22:999 CPU/(11712:11766): Se conecto un cliente
+[INFO] 01:23:24:001 CPU/(11712:11766): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:23:25:002 CPU/(11712:11766): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:25:004 CPU/(11712:11766): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:25:008 CPU/(11712:11768): Se conecto un cliente
+[INFO] 01:23:26:011 CPU/(11712:11768): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:23:27:011 CPU/(11712:11768): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:27:012 CPU/(11712:11768): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:27:014 CPU/(11712:11770): Se conecto un cliente
+[INFO] 01:23:28:016 CPU/(11712:11770): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 01:23:29:017 CPU/(11712:11770): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 01:23:29:017 CPU/(11712:11770): PID: 1 - Ejecutando: EXIT
+
+[INFO] 01:23:29:021 CPU/(11712:11772): Se conecto un cliente
+[INFO] 01:23:30:027 CPU/(11712:11772): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:23:31:028 CPU/(11712:11772): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:31:028 CPU/(11712:11772): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:31:031 CPU/(11712:11776): Se conecto un cliente
+[INFO] 01:23:32:032 CPU/(11712:11776): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:23:33:032 CPU/(11712:11776): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:33:032 CPU/(11712:11776): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:33:033 CPU/(11712:11778): Se conecto un cliente
+[INFO] 01:23:34:034 CPU/(11712:11778): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:35:035 CPU/(11712:11778): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:35:036 CPU/(11712:11778): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:35:040 CPU/(11712:11780): Se conecto un cliente
+[INFO] 01:23:36:040 CPU/(11712:11780): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:37:041 CPU/(11712:11780): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:23:37:042 CPU/(11712:11780): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:37:044 CPU/(11712:11782): Se conecto un cliente
+[INFO] 01:23:38:046 CPU/(11712:11782): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:39:047 CPU/(11712:11782): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:23:39:047 CPU/(11712:11782): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:39:050 CPU/(11712:11784): Se conecto un cliente
+[INFO] 01:23:40:052 CPU/(11712:11784): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:41:053 CPU/(11712:11784): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:23:41:053 CPU/(11712:11784): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:41:054 CPU/(11712:11786): Se conecto un cliente
+[INFO] 01:23:42:055 CPU/(11712:11786): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:43:057 CPU/(11712:11786): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:23:43:057 CPU/(11712:11786): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:43:059 CPU/(11712:11788): Se conecto un cliente
+[INFO] 01:23:44:061 CPU/(11712:11788): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:23:45:061 CPU/(11712:11788): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:23:45:063 CPU/(11712:11788): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:45:065 CPU/(11712:11790): Se conecto un cliente
+[INFO] 01:23:46:068 CPU/(11712:11790): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:23:47:068 CPU/(11712:11790): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:23:47:068 CPU/(11712:11790): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:47:070 CPU/(11712:11792): Se conecto un cliente
+[INFO] 01:23:48:070 CPU/(11712:11792): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:23:49:071 CPU/(11712:11792): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:23:49:071 CPU/(11712:11792): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:49:074 CPU/(11712:11794): Se conecto un cliente
+[INFO] 01:23:50:076 CPU/(11712:11794): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:23:51:076 CPU/(11712:11794): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:23:51:077 CPU/(11712:11794): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:51:079 CPU/(11712:11796): Se conecto un cliente
+[INFO] 01:23:52:081 CPU/(11712:11796): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:23:53:082 CPU/(11712:11796): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:23:53:082 CPU/(11712:11796): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:53:087 CPU/(11712:11798): Se conecto un cliente
+[INFO] 01:23:54:089 CPU/(11712:11798): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:23:54:090 CPU/(11712:11798): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:23:54:092 CPU/(11712:11800): Se conecto un cliente
+[INFO] 01:23:55:094 CPU/(11712:11800): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:23:55:095 CPU/(11712:11800): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:23:55:098 CPU/(11712:11802): Se conecto un cliente
+[INFO] 01:23:56:101 CPU/(11712:11802): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:23:56:101 CPU/(11712:11802): PID: 2 - Ejecutando: EXIT
+
+[INFO] 01:23:56:102 CPU/(11712:11804): Se conecto un cliente
+[INFO] 01:23:57:103 CPU/(11712:11804): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:23:57:104 CPU/(11712:11804): PID: 3 - Ejecutando: EXIT
+
+[INFO] 01:31:51:472 CPU/(12316:12316): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 01:32:03:502 CPU/(12316:12318): Se conecto un cliente
+[INFO] 01:32:04:503 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 01:32:05:504 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 01:32:06:505 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 01:32:07:505 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 01:32:08:506 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 01:32:09:508 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 01:32:10:509 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 01:32:11:509 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 01:32:12:510 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 01:32:13:511 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 01:32:14:512 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 01:32:15:513 CPU/(12316:12318): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 01:32:15:513 CPU/(12316:12318): PID: 1 - Ejecutando: YIELD
+
+[INFO] 01:32:15:515 CPU/(12316:12370): Se conecto un cliente
+[INFO] 01:32:16:517 CPU/(12316:12370): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:32:17:518 CPU/(12316:12370): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:17:519 CPU/(12316:12370): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:17:521 CPU/(12316:12372): Se conecto un cliente
+[INFO] 01:32:18:523 CPU/(12316:12372): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:32:19:524 CPU/(12316:12372): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:19:524 CPU/(12316:12372): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:19:527 CPU/(12316:12374): Se conecto un cliente
+[INFO] 01:32:20:529 CPU/(12316:12374): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 01:32:21:530 CPU/(12316:12374): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 01:32:21:530 CPU/(12316:12374): PID: 1 - Ejecutando: EXIT
+
+[INFO] 01:32:21:535 CPU/(12316:12375): Se conecto un cliente
+[INFO] 01:32:22:537 CPU/(12316:12375): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:32:23:538 CPU/(12316:12375): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:23:539 CPU/(12316:12375): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:23:543 CPU/(12316:12380): Se conecto un cliente
+[INFO] 01:32:24:545 CPU/(12316:12380): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:32:25:545 CPU/(12316:12380): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:25:545 CPU/(12316:12380): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:25:548 CPU/(12316:12382): Se conecto un cliente
+[INFO] 01:32:26:549 CPU/(12316:12382): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:27:550 CPU/(12316:12382): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:27:550 CPU/(12316:12382): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:27:553 CPU/(12316:12384): Se conecto un cliente
+[INFO] 01:32:28:555 CPU/(12316:12384): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:29:558 CPU/(12316:12384): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:32:29:558 CPU/(12316:12384): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:29:561 CPU/(12316:12386): Se conecto un cliente
+[INFO] 01:32:30:562 CPU/(12316:12386): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:31:563 CPU/(12316:12386): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:32:31:564 CPU/(12316:12386): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:31:566 CPU/(12316:12388): Se conecto un cliente
+[INFO] 01:32:32:568 CPU/(12316:12388): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:33:568 CPU/(12316:12388): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:32:33:570 CPU/(12316:12388): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:33:573 CPU/(12316:12390): Se conecto un cliente
+[INFO] 01:32:34:576 CPU/(12316:12390): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:35:577 CPU/(12316:12390): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:32:35:577 CPU/(12316:12390): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:35:580 CPU/(12316:12392): Se conecto un cliente
+[INFO] 01:32:36:582 CPU/(12316:12392): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:32:37:582 CPU/(12316:12392): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:32:37:583 CPU/(12316:12392): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:37:585 CPU/(12316:12394): Se conecto un cliente
+[INFO] 01:32:38:587 CPU/(12316:12394): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:32:39:588 CPU/(12316:12394): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:32:39:588 CPU/(12316:12394): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:39:591 CPU/(12316:12396): Se conecto un cliente
+[INFO] 01:32:40:593 CPU/(12316:12396): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:32:41:593 CPU/(12316:12396): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:32:41:593 CPU/(12316:12396): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:41:594 CPU/(12316:12398): Se conecto un cliente
+[INFO] 01:32:42:595 CPU/(12316:12398): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:32:43:595 CPU/(12316:12398): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:32:43:596 CPU/(12316:12398): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:43:596 CPU/(12316:12400): Se conecto un cliente
+[INFO] 01:32:44:597 CPU/(12316:12400): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:32:45:598 CPU/(12316:12400): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:32:45:598 CPU/(12316:12400): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:45:600 CPU/(12316:12402): Se conecto un cliente
+[INFO] 01:32:46:602 CPU/(12316:12402): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:32:46:602 CPU/(12316:12402): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:32:46:605 CPU/(12316:12404): Se conecto un cliente
+[INFO] 01:32:47:607 CPU/(12316:12404): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:32:47:608 CPU/(12316:12404): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:32:47:610 CPU/(12316:12406): Se conecto un cliente
+[INFO] 01:32:48:612 CPU/(12316:12406): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:32:48:613 CPU/(12316:12406): PID: 2 - Ejecutando: EXIT
+
+[INFO] 01:32:48:620 CPU/(12316:12408): Se conecto un cliente
+[INFO] 01:32:49:622 CPU/(12316:12408): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:32:49:622 CPU/(12316:12408): PID: 3 - Ejecutando: EXIT
+
+[INFO] 01:34:01:090 CPU/(12609:12609): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 01:34:07:403 CPU/(12609:12611): Se conecto un cliente
+[INFO] 01:34:08:403 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 01:34:09:404 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 01:34:10:405 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 01:34:11:406 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 01:34:12:406 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 01:34:13:407 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 01:34:14:408 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 01:34:15:408 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 01:34:16:409 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 01:34:17:409 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 01:34:18:410 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 01:34:19:412 CPU/(12609:12611): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 01:34:19:412 CPU/(12609:12611): PID: 1 - Ejecutando: YIELD
+
+[INFO] 01:34:19:414 CPU/(12609:12663): Se conecto un cliente
+[INFO] 01:34:20:417 CPU/(12609:12663): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:34:21:417 CPU/(12609:12663): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:21:417 CPU/(12609:12663): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:21:420 CPU/(12609:12665): Se conecto un cliente
+[INFO] 01:34:22:422 CPU/(12609:12665): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 01:34:23:422 CPU/(12609:12665): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:23:424 CPU/(12609:12665): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:23:427 CPU/(12609:12667): Se conecto un cliente
+[INFO] 01:34:24:428 CPU/(12609:12667): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 01:34:25:428 CPU/(12609:12667): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 01:34:25:428 CPU/(12609:12667): PID: 1 - Ejecutando: EXIT
+
+[INFO] 01:34:25:431 CPU/(12609:12669): Se conecto un cliente
+[INFO] 01:34:26:433 CPU/(12609:12669): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:34:27:434 CPU/(12609:12669): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:27:434 CPU/(12609:12669): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:27:437 CPU/(12609:12673): Se conecto un cliente
+[INFO] 01:34:28:438 CPU/(12609:12673): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 01:34:29:441 CPU/(12609:12673): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:29:441 CPU/(12609:12673): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:29:444 CPU/(12609:12675): Se conecto un cliente
+[INFO] 01:34:30:446 CPU/(12609:12675): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:31:446 CPU/(12609:12675): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:31:446 CPU/(12609:12675): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:31:449 CPU/(12609:12676): Se conecto un cliente
+[INFO] 01:34:32:451 CPU/(12609:12676): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:33:451 CPU/(12609:12676): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 01:34:33:453 CPU/(12609:12676): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:33:456 CPU/(12609:12679): Se conecto un cliente
+[INFO] 01:34:34:458 CPU/(12609:12679): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:35:459 CPU/(12609:12679): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:34:35:460 CPU/(12609:12679): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:35:462 CPU/(12609:12681): Se conecto un cliente
+[INFO] 01:34:36:464 CPU/(12609:12681): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:37:465 CPU/(12609:12681): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 01:34:37:465 CPU/(12609:12681): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:37:468 CPU/(12609:12683): Se conecto un cliente
+[INFO] 01:34:38:470 CPU/(12609:12683): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:39:471 CPU/(12609:12683): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:34:39:472 CPU/(12609:12683): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:39:475 CPU/(12609:12684): Se conecto un cliente
+[INFO] 01:34:40:477 CPU/(12609:12684): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 01:34:41:478 CPU/(12609:12684): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:34:41:478 CPU/(12609:12684): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:41:481 CPU/(12609:12686): Se conecto un cliente
+[INFO] 01:34:42:482 CPU/(12609:12686): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:34:43:483 CPU/(12609:12686): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:34:43:484 CPU/(12609:12686): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:43:484 CPU/(12609:12689): Se conecto un cliente
+[INFO] 01:34:44:485 CPU/(12609:12689): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:34:45:486 CPU/(12609:12689): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 01:34:45:486 CPU/(12609:12689): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:45:489 CPU/(12609:12691): Se conecto un cliente
+[INFO] 01:34:46:491 CPU/(12609:12691): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:34:47:491 CPU/(12609:12691): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:34:47:492 CPU/(12609:12691): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:47:495 CPU/(12609:12693): Se conecto un cliente
+[INFO] 01:34:48:496 CPU/(12609:12693): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 01:34:49:498 CPU/(12609:12693): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 01:34:49:498 CPU/(12609:12693): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:49:501 CPU/(12609:12694): Se conecto un cliente
+[INFO] 01:34:50:503 CPU/(12609:12694): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:34:50:503 CPU/(12609:12694): PID: 2 - Ejecutando: YIELD
+
+[INFO] 01:34:50:506 CPU/(12609:12697): Se conecto un cliente
+[INFO] 01:34:51:507 CPU/(12609:12697): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 01:34:51:508 CPU/(12609:12697): PID: 3 - Ejecutando: YIELD
+
+[INFO] 01:34:51:510 CPU/(12609:12699): Se conecto un cliente
+[INFO] 01:34:52:512 CPU/(12609:12699): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:34:52:512 CPU/(12609:12699): PID: 2 - Ejecutando: EXIT
+
+[INFO] 01:34:52:515 CPU/(12609:12701): Se conecto un cliente
+[INFO] 01:34:53:516 CPU/(12609:12701): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 01:34:53:517 CPU/(12609:12701): PID: 3 - Ejecutando: EXIT
+

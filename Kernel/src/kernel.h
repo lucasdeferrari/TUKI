@@ -77,6 +77,7 @@ void procedimiento_compactar();
 int puntero(t_list* , char* );
 int elArchivoEstaAbierto(char* );
 
+
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
 t_infopcb* unqueue(t_nodoCola** , t_nodoCola** );
@@ -85,6 +86,9 @@ int cantidadElementosCola(t_nodoCola*);
 void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
 void mostrarListaReady(t_list*);
 int cantidadElementosListaReady(t_nodoCola*);
+char* pids_lista_ready();
+char* pids_cola_ready(t_nodoCola* );
+
 t_list* listaRecursos;
 t_list* tablaSegmentosActualizada(t_list*);
 void crearTablaSegmentos(int , t_list* );

@@ -303,7 +303,7 @@ void* clientMemoria(void *arg) {
 			}
 			else{
 			//if(string_contains(algoritmo_planificacion,"HHRN")){
-				printf("ENTRE POR HRRN");
+				//printf("ENTRE POR HRRN");
 				list_add(listaReady, procesoADesencolar);
 				procesoADesencolar->entraEnColaReady = tomarTiempo();
 				//Log minimo y obligatorio
@@ -1922,6 +1922,7 @@ void encolarReady() {
 				cantidadElementosSistema++;
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
+				log_info(logger,"Cola Ready FIFO: %s",pids_cola_ready(frenteColaReady));
 				//printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
 		}
@@ -1964,7 +1965,7 @@ void encolarReady() {
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
 				//printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
-
+				log_info(logger,"Cola Ready HRRN: %s",pids_lista_ready());
 				//log minimo y obligatorio
 				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
 
@@ -1987,6 +1988,33 @@ void encolarReady() {
 	return;
 }
 
+char* pids_lista_ready(){
+	char* listaPIDs = string_new();
+
+	t_list_iterator* iterador = list_iterator_create(listaReady);
+	while (list_iterator_has_next(iterador)) {
+		t_infopcb* siguiente = list_iterator_next(iterador);
+		string_append_with_format(&listaPIDs, "%d", siguiente->pid);
+		string_append_with_format(&listaPIDs, "%s", " ");
+	}
+
+	return listaPIDs;
+}
+
+char* pids_cola_ready(t_nodoCola* frenteColaReady){
+	char* listaPIDs = string_new();
+
+	while (frenteColaReady != NULL) {
+
+		string_append_with_format(&listaPIDs, "%d", frenteColaReady->info_pcb->pid);
+		string_append_with_format(&listaPIDs, "%s", " ");
+
+		frenteColaReady = frenteColaReady->sgte;
+	}
+
+	return listaPIDs;
+}
+
 void encolar_ready_ejecucion(t_infopcb* proceso) {
 
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
@@ -1995,11 +2023,12 @@ void encolar_ready_ejecucion(t_infopcb* proceso) {
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		queue(&frenteColaReady, &finColaReady, unProceso);
+		log_info(logger,"Cola Ready FIFO: %s",pids_cola_ready(frenteColaReady));
 	}
 
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 		list_add(listaReady, unProceso);
-		//log_info("Cola Ready HRRN: %d %d %d %d", lisaready)
+		log_info(logger,"Cola Ready HRRN: %s",pids_lista_ready());
 		unProceso->entraEnColaReady = tomarTiempo();
 	}
 	return;
@@ -2054,7 +2083,6 @@ void desencolarReady (){
 
 		//printf("PID MAX RAFAGA: %d\n", pidMaxRafaga);
 
-
 		estadoEnEjecucion = list_get(listaReady,pidMaxRafaga);
 		iniciarHiloClienteCPU();
 		list_remove(listaReady,pidMaxRafaga);
@@ -2063,7 +2091,7 @@ void desencolarReady (){
 		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		log_info(logger, "PID: %d - Estado Anterior: READY - Estado Actual: EJECUION\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: READY - Estado Actual: EJECUCION\n", estadoEnEjecucion->pid);
 
 		//CALCULA CUANDO SE VA DE KERNEL
 		estadoEnEjecucion->empiezaAEjecutar = tomarTiempo();
