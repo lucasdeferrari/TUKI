@@ -20,7 +20,9 @@ void iterator(char* value) {
 	log_info(logger,"%s", value);
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
+	char* pathConfig = string_new();
+	pathConfig = string_duplicate(argv[0]);
 
 	algoritmoAsignacion = string_new();
 
@@ -32,7 +34,7 @@ int main(void) {
 	server_fd = iniciar_servidor();
 	//log_info(logger, "Memoria lista para recibir al cliente\n");
 
-	config = config_create("/home/utnso/tp-2023-1c-Los-operadores/Memoria/memoria.config");
+	config = config_create(pathConfig);
 
 	    if (config == NULL) {
 	        log_error(logger, "No se pudo crear el config.\n");
