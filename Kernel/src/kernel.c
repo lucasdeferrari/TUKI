@@ -590,6 +590,8 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	log_info(logger, "PID: %d - Leer Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
+        	log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
+
         	enviar_paquete(paquete, conexion_FileSystem);
         	//printf("F_READ enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_READ enviado a MEMORIA.\n");
@@ -636,6 +638,7 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	log_info(logger, "PID: %d - Escribir Archivo: %s - Puntero %d - Dirección Memoria %d - Tamaño %d",unProceso->pid,unProceso->nombreArchivo,punteroArchivo,unProceso->direcFisicaArchivo,unProceso->cantBytesArchivo);
+        	log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
         	enviar_paquete(paquete, conexion_FileSystem);
         	//printf("F_WRITE enviado a FS del proceso %d.\n", unProceso->pid);
         	//printf("F_WRITE enviado a MEMORIA.\n");
@@ -675,6 +678,7 @@ void* clientFileSystem(void *arg) {
 
         	pthread_mutex_lock(&mutex_fd);
         	log_info(logger, "PID: %d - Archivo: %s - Tamaño: %d",unProceso->pid,unProceso->nombreArchivo,unProceso->tamanioArchivo);
+        	log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
         	enviar_paquete(paquete, conexion_FileSystem);
         	//printf("F_TRUNCATE enviado a FS del proceso %d.\n", unProceso->pid);
 
@@ -759,32 +763,32 @@ void* clientFileSystem(void *arg) {
 		case 3: //F_READ
 			//printf("F_READ recibido del proceso %d.\n", unProceso->pid);
 			pthread_mutex_unlock(&mutex_fd);
+
 			liberar_conexion(conexion_FileSystem);
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				//printf("PID DEL ESTADO EN EJECUCION: %d\n",estadoEnEjecucion->pid);
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
-					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					//printf("Hay algun proceso ejecutandose\n");
-					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
-					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_READ, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 
@@ -796,26 +800,26 @@ void* clientFileSystem(void *arg) {
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
-					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
 					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-				//	printf("Después del F_WRITE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 
@@ -827,26 +831,26 @@ void* clientFileSystem(void *arg) {
 			if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 				if(frenteColaReady == NULL && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					//printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
 					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 			else if(strcmp(algoritmo_planificacion,"HRRN") == 0){
 
 				if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 					desencolarReady();
-					printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
+					//printf("Lista vacia, proceso desencolado de ready: %d\n",unProceso->pid);
 				}
 				else{
 					encolar_ready_ejecucion(unProceso);
-					printf("Después del F_TRUNCATE, proceso encolado en Ready: %d\n",unProceso->pid);
+					log_info(logger, "PID: %d - Estado Anterior: BLOQUEADO - Estado Actual: READY\n", unProceso->pid);
 				}
 			}
 		break;
@@ -1277,9 +1281,10 @@ void manejar_recursos() {
 					queue_push(recurso->colaBloqueados,unProceso);
 
 					//log minimo y obligatorio
-					log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+					log_info(logger, "PID: %d - Bloqueado por: %s\n", unProceso->pid, unProceso->recursoSolicitado);
 					//log minimo y obligatorio
-					log_info(logger, "PID: %d - Bloqueado por: %s>\n", unProceso->pid, unProceso->recursoSolicitado);
+					log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
+
 
 					cantidadElementosBloqueados++;
 
@@ -1408,7 +1413,7 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "I/O") == 0) {
 		//log minimo y obligatorio
-		log_info(logger, "PID: %d - Estado Anterior: Ejecucion - Estado Actual: Bloqueado\n", unProceso->pid);
+		log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
 		log_info(logger, "PID: %d - Bloqueado por: I/O>\n", unProceso->pid);
 		iniciarHiloIO();
 	}
@@ -1424,6 +1429,13 @@ void manejar_recursos() {
 			nuevoArchivo->posicionPuntero = 0;
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
 			//printf("Archivo agregado a la tabla del proceso.\n");
+
+
+			//log minimo y obligatorio
+			log_info(logger, "PID: %d - Bloqueado por: %s\n", unProceso->pid, unProceso->nombreArchivo);
+			//log minimo y obligatorio
+			log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO\n", unProceso->pid);
+
 
 			//Bloqueo el proceso en la tabla global de archivos
 			t_list_iterator* iterador = list_iterator_create(tablaGlobalArchivosAbiertos);
@@ -1730,7 +1742,8 @@ void* interrupcionIO(void* ptr) {
 			//printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
-	log_info(logger, "PID: %d - Estado Anterior: Ejecución - Estado Actual: Bloqueado",unProceso->pid );
+	log_info(logger, "PID: %d - Bloqueado por: IO",unProceso->pid );
+	log_info(logger, "PID: %d - Estado Anterior: EJECUCION - Estado Actual: BLOQUEADO",unProceso->pid );
 	sleep_ms(unProceso->tiempoBloqueado);
 
 
@@ -1770,8 +1783,7 @@ void* interrupcionIO(void* ptr) {
 		}
 	}
 
-	//Log minimo y obligaotrio
-	log_info(logger, "PID: %d - Estado Anterior: I/O - Estado Actual: Ready\n", unProceso->pid);
+
 
 	return NULL;
 }
@@ -2009,7 +2021,7 @@ void desencolarReady (){
 		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecución\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: READY - Estado Actual: EJECUCION\n", estadoEnEjecucion->pid);
 	}
 
 
@@ -2051,7 +2063,7 @@ void desencolarReady (){
 		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: READY - Estado Actual: EJECUION\n", estadoEnEjecucion->pid);
 
 		//CALCULA CUANDO SE VA DE KERNEL
 		estadoEnEjecucion->empiezaAEjecutar = tomarTiempo();
