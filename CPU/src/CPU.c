@@ -3,13 +3,14 @@ t_config* config;
 int cliente_fd;
 
 
-int main(void) {
-
+int main(int argc, char *argv[]) {
+	char* pathConfig = string_new();
+	pathConfig = string_duplicate(argv[0]);
 	sem_init(&semCPUClientMemoria,0,0);
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/CPU/CPU.config");
+    config = config_create(pathConfig);
 
     if (config == NULL) {
         log_info(logger,"No se pudo crear el config.\n");

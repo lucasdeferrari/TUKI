@@ -1,13 +1,14 @@
 #include "kernel.h"
 t_config* config;
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
 	// LOGGER - CONFIG
-
+	char* pathConfig = string_new();
+	pathConfig = string_duplicate(argv[0]);
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/Kernel/kernel.config");
+    config = config_create(pathConfig);
 
     if (config == NULL) {
         log_info(logger,"No se pudo crear el config.\n");
