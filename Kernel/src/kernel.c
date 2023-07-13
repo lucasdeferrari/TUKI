@@ -1285,9 +1285,9 @@ void manejar_recursos() {
 
 					//printf("Cantidad de elementos bloqueados: %d\n",cantidadElementosBloqueados);
 
-					if( cantidadElementosBloqueados  == grado_max_multiprogramación){
-						printf("HAY DEADLOCK\n");
-					}
+//					if( cantidadElementosBloqueados  == grado_max_multiprogramación){
+//						printf("HAY DEADLOCK\n");
+//					}
 
 				}
 
@@ -1415,7 +1415,7 @@ void manejar_recursos() {
 	else if (strcmp(unProceso->ultimaInstruccion, "F_OPEN") == 0) {
 
 		if ( elArchivoEstaAbierto(unProceso->nombreArchivo) ){
-			printf("El archivo ya se encuentra en la tabla global de archivos.\n");
+			//printf("El archivo ya se encuentra en la tabla global de archivos.\n");
 
 			//Agrego el archivo a la tabla del proceso
 			t_infoTablaArchivos* nuevoArchivo = malloc(sizeof(t_infoTablaArchivos));
@@ -1423,7 +1423,7 @@ void manejar_recursos() {
 			strcpy(nuevoArchivo->nombreArchivo,unProceso->nombreArchivo);
 			nuevoArchivo->posicionPuntero = 0;
 			list_add(unProceso->tablaArchivosAbiertos, nuevoArchivo);
-			printf("Archivo agregado a la tabla del proceso.\n");
+			//printf("Archivo agregado a la tabla del proceso.\n");
 
 			//Bloqueo el proceso en la tabla global de archivos
 			t_list_iterator* iterador = list_iterator_create(tablaGlobalArchivosAbiertos);
@@ -1436,9 +1436,7 @@ void manejar_recursos() {
 		    		//printf("Proceso %d bloqueado en la tabla global de archivos: %s\n",unProceso->pid,siguiente->nombreArchivo);
 		    		log_info(logger, "PID: %d - Bloqueado por: %s", unProceso->pid, unProceso->nombreArchivo);
 		    	}
-//		    	if(strcmp(siguiente->nombreArchivo,unProceso->nombreArchivo) == 0){
-//		    		queue_push(siguiente->colaProcesosBloqueados, unProceso);
-//		    	}
+
 		    }
 		    estadoEnEjecucion->pid = -1;
 
@@ -1458,7 +1456,7 @@ void manejar_recursos() {
 			}
 
 		}else{
-			printf("El archivo no se encuentra en la tabla global de archivos.\n");
+			//printf("El archivo no se encuentra en la tabla global de archivos.\n");
 			//int cod_fs
 			//t_infopcb* unProceso
 			iniciarHiloClienteFileSystem(2,unProceso);
@@ -1466,7 +1464,7 @@ void manejar_recursos() {
 		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_CLOSE") == 0) {
-
+		log_info(logger, "PID: %d - Cerrar Archivo: %s",unProceso->pid,unProceso->nombreArchivo );
 		//Elimino el archivo de la tabla del proceso
 		t_list_iterator* iterador = list_iterator_create(unProceso->tablaArchivosAbiertos);
 		int indiceListaArchivos;
@@ -1478,11 +1476,11 @@ void manejar_recursos() {
 	    	}
 	    }
 	    t_infoTablaArchivos* archivoEliminado = list_remove(unProceso->tablaArchivosAbiertos,indiceListaArchivos);
-	    printf("Archivo eliminado de la tabla del proceso: %s\n",archivoEliminado->nombreArchivo);
+	   // printf("Archivo eliminado de la tabla del proceso: %s\n",archivoEliminado->nombreArchivo);
 
 	    //Encolo el proceso en Ready
 	    encolar_ready_ejecucion(unProceso);
-	    printf("Proceso encolado en Ready.\n");
+	    //printf("Proceso encolado en Ready.\n");
 
 		//Elimino el archivo de la tabla global de archivos o desbloqueo un proceso
 		t_list_iterator* iteradorGlobal = list_iterator_create(tablaGlobalArchivosAbiertos);
@@ -1500,7 +1498,7 @@ void manejar_recursos() {
 	    	if(queue_is_empty(archivoGlobalEncontrado->colaProcesosBloqueados)){
 				//Elimino el archivo de la tabla global de archivos
 				t_infoTablaGlobalArchivos* archivoGlobalEliminado = list_remove(tablaGlobalArchivosAbiertos,indiceListaArchivosGlobal);
-				printf("Archivo eliminado de la tabla global de archivos: %s\n",archivoGlobalEliminado->nombreArchivo);
+				//printf("Archivo eliminado de la tabla global de archivos: %s\n",archivoGlobalEliminado->nombreArchivo);
 			}
 			else{
 				//Desbloqueo y encolo en Ready el proceso desbloqueado
@@ -1523,7 +1521,8 @@ void manejar_recursos() {
 	    	if(string_contains(siguiente->nombreArchivo,unProceso->nombreArchivo)){
 	    		//printf("Puntero del archivo %s antes de actualizar: %d\n",siguiente->nombreArchivo, siguiente->posicionPuntero );
 	    		siguiente->posicionPuntero = unProceso->posicionArchivo;
-	    		printf("Puntero del archivo actualizado: %d \n", siguiente->posicionPuntero );
+	    		log_info(logger, "PID: %d - Actualizar puntero Archivo: %s - Puntero %d",unProceso->pid,unProceso->nombreArchivo,siguiente->posicionPuntero );
+	    		//printf("Puntero del archivo actualizado: %d \n", siguiente->posicionPuntero );
 
 	    	}
 	    }
@@ -1574,8 +1573,7 @@ void manejar_recursos() {
 //		}
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "F_TRUNCATE") == 0) {
-		//int cod_fs
-		//t_infopcb* unProceso
+
 		estadoEnEjecucion->pid = -1;
 		iniciarHiloClienteFileSystem(5,unProceso);
 	    //Desencolo ready si es que hay algun proceso en la lista
@@ -1596,8 +1594,6 @@ void manejar_recursos() {
 	}
 	else if (strcmp(unProceso->ultimaInstruccion, "CREATE_SEGMENT") == 0) {
 
-		//log minimo y obligatorio
-		//log_info(logger, "“PID: %d - Crear Segmento - Id: <ID SEGMENTO> - Tamaño: <TAMAÑO>\n", unProceso->pid, unProceso-> , unProceso-> in);
 
 		iniciarHiloClienteMemoria(2);
 	}
@@ -1605,8 +1601,6 @@ void manejar_recursos() {
 
 		iniciarHiloClienteMemoria(3);
 
-		//log minimo y obligatorio
-		//log_info(logger, "“PID: %d - Eliminar Segmento - Id Segmento: <ID SEGMENTO>\n", unProceso->pid);
 
 	}else if (strcmp(unProceso->ultimaInstruccion, "SEG_FAULT") == 0) {
 		//Log minimo y obligaotrio
@@ -1614,7 +1608,7 @@ void manejar_recursos() {
 		pasarAExit();
 	}
 	else{
-		printf("Instruccion no reconocida.\n");
+		log_info(logger, "Instrucción ejecutada en CPU NO RECONOCIDA\n");
 	}
 }
 
@@ -1648,13 +1642,13 @@ void pasarAExit() {
 
 
 		if( !list_is_empty(listaReady) ){
-			printf("lista ready NO vacia\n");
+			//printf("lista ready NO vacia\n");
 
 			cantidadElementosSistema--;
 			desencolarReady();
 		}
 		else{
-			printf("lista ready vacia\n");
+			//printf("lista ready vacia\n");
 			estadoEnEjecucion->pid = -1;
 			cantidadElementosSistema--;
 		}
@@ -1680,7 +1674,7 @@ void liberarRecursosAsignados(){
 
 			if(string_contains(recursoLista->recurso,recursoProceso->recurso) ){
 				recursoLista->instancias++;
-				printf("Recurso liberado: %s\n",recursoLista->recurso);
+				//printf("Recurso liberado: %s\n",recursoLista->recurso);
 			}
 		}
 		list_iterator_destroy(iteradorRecursos);
@@ -1701,7 +1695,7 @@ void iniciarHiloIO() {
 								NULL); // argumentos de la función
 
 	if (err != 0) {
-	printf("\nNo se pudo crear el hilo de interrupcion I/O.");
+	//printf("\nNo se pudo crear el hilo de interrupcion I/O.");
 	exit(7);
 	}
 	//printf("El hilo cliente de la Memoria se creo correctamente.");
@@ -1710,15 +1704,13 @@ void iniciarHiloIO() {
 
 
 void* interrupcionIO(void* ptr) {
-	printf("dentro del hilo IO\n");
 
-	//t_infopcb* unProceso = estadoEnEjecucion;
-	//cualquier modificación realizada en el objeto al que apuntan unProceso o estadoEnEjecucion
-	//se reflejará en ambas variables, ya que apuntan al mismo lugar en la memoria.
 
 	t_infopcb* unProceso = (t_infopcb*)malloc(sizeof(t_infopcb));
 	memcpy(unProceso, estadoEnEjecucion, sizeof(t_infopcb));
 
+	//Log minimo y obligatorio
+	log_info(logger, "“PID: %d - Ejecuta IO: %d\n", unProceso->pid, unProceso->tiempoBloqueado);
 
 	estadoEnEjecucion->pid = -1; //Sino el que llega después no se ejecuta hasta que no vuelva
 	//printf("Soy el proceso: %d , pase a -1 el pid\n",unProceso->pid);
@@ -1727,7 +1719,7 @@ void* interrupcionIO(void* ptr) {
 
 		if(frenteColaReady != NULL){
 			desencolarReady();
-			printf("Lista no vacia, proceso desencolado de ready \n");
+			//printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
 	if(strcmp(algoritmo_planificacion,"HRRN") == 0){
@@ -1738,11 +1730,10 @@ void* interrupcionIO(void* ptr) {
 			//printf("Lista no vacia, proceso desencolado de ready \n");
 		}
 	}
-
+	log_info(logger, "PID: %d - Estado Anterior: Ejecución - Estado Actual: Bloqueado",unProceso->pid );
 	sleep_ms(unProceso->tiempoBloqueado);
 
-	//Log minimo y obligatorio
-	log_info(logger, "“PID: %d - Ejecuta IO: %d\n", unProceso->pid, unProceso->tiempoBloqueado);
+
 
 
 	//printf("Proceso desbloqueado: %d\n",unProceso->pid);
@@ -1919,11 +1910,11 @@ void encolarReady() {
 				cantidadElementosSistema++;
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
-				printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+				//printf("PCB encolado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 			}
 		}
 		else{
-			printf("Grado máximo de multiprogramación alcanzado. \n");
+			log_info(logger,"Grado máximo de multiprogramación alcanzado. \n");
 		}
 
 		//printf("Cola NEW:\n");
@@ -1960,7 +1951,7 @@ void encolarReady() {
 				cantidadElementosSistema++;
 
 				lugaresDisponiblesReady = grado_max_multiprogramación - cantidadElementosSistema;
-				printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
+				//printf("PCB agregado en READY - lugares disponibles en READY: %d \n",lugaresDisponiblesReady);
 
 				//log minimo y obligatorio
 				//log_info(logger, "PID: %d - Estado Anterior: New - Estado Actual: Ready\n", procesoADesencolar->pid);
@@ -1971,7 +1962,7 @@ void encolarReady() {
 			}
 
 		}else{
-			printf("Grado máximo de multiprogramación alcanzado. \n");
+			log_info(logger,"Grado máximo de multiprogramación alcanzado. \n");
 		}
 
 		//printf("Cola NEW:\n");
@@ -2009,7 +2000,7 @@ void desencolarReady (){
 
 	if(strcmp(algoritmo_planificacion,"FIFO") == 0){
 		estadoEnEjecucion = unqueue(&frenteColaReady,&finColaReady);
-		printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
+		//printf("Proceso pasado a estadoEnEjecucion por FIFO. \n");
 
 		iniciarHiloClienteCPU();
 		//printf("Cola READY:\n");
@@ -2018,7 +2009,7 @@ void desencolarReady (){
 		//printf("Proceso en ejecucion: %d\n",estadoEnEjecucion->pid);
 
 		//log minimo y obligatorio
-		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecucion\n", estadoEnEjecucion->pid);
+		log_info(logger, "PID: %d - Estado Anterior: Ready - Estado Actual: Ejecución\n", estadoEnEjecucion->pid);
 	}
 
 
@@ -2049,7 +2040,7 @@ void desencolarReady (){
 			i++;
 		}
 
-		printf("PID MAX RAFAGA: %d\n", pidMaxRafaga);
+		//printf("PID MAX RAFAGA: %d\n", pidMaxRafaga);
 
 
 		estadoEnEjecucion = list_get(listaReady,pidMaxRafaga);
@@ -2164,7 +2155,7 @@ t_infopcb* unqueue(t_nodoCola** frenteColaNew, t_nodoCola** finColaNew) {
 	t_infopcb* pcb_puntero;
 	t_nodoCola* temp;
     if (*frenteColaNew == NULL) { // Si la cola está vacía
-        printf("La cola esta vacia\n");
+        //printf("La cola esta vacia\n");
         exit(5); //Ver como salir de la funcion
     }
     pcb_puntero = (*frenteColaNew)->info_pcb; // Obtenemos el valor del frente

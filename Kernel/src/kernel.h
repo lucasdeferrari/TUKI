@@ -75,6 +75,7 @@ void liberarRecursosAsignados();
 void enviar_handshake_memoria();
 void procedimiento_compactar();
 int puntero(t_list* , char* );
+int elArchivoEstaAbierto(char* );
 
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
