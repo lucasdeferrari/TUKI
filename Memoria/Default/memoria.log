@@ -79589,3 +79589,198 @@ el cliente se desconecto. Terminando servidor
 [INFO] 01:34:53:520 Memoria/(12606:12703): Se conecto un cliente!
 [INFO] 01:34:53:522 Memoria/(12606:12703): Eliminación de Proceso PID: 3
 
+[INFO] 02:00:39:813 Memoria/(14073:14073): Listo para escuchar al cliente
+[INFO] 02:00:40:350 Memoria/(14073:14074): Se conecto un cliente!
+[INFO] 02:00:40:932 Memoria/(14073:14077): Se conecto un cliente!
+[INFO] 02:00:46:129 Memoria/(14073:14081): Se conecto un cliente!
+[INFO] 02:00:46:130 Memoria/(14073:14073): Se conectaron todos los modulos.
+
+[INFO] 02:00:46:130 Memoria/(14073:14073): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:00:48:065 Memoria/(14073:14114): Se conecto un cliente!
+[INFO] 02:00:48:065 Memoria/(14073:14114): Creación de Proceso PID: 1
+
+[INFO] 02:00:48:068 Memoria/(14073:14122): Se conecto un cliente!
+[INFO] 02:00:48:068 Memoria/(14073:14122): Creación de Proceso PID: 2
+
+[INFO] 02:00:48:069 Memoria/(14073:14126): Se conecto un cliente!
+[INFO] 02:00:48:069 Memoria/(14073:14126): Creación de Proceso PID: 3
+
+[INFO] 02:01:06:088 Memoria/(14073:14128): Se conecto un cliente!
+[INFO] 02:01:06:088 Memoria/(14073:14128): Eliminación de Proceso PID: 1
+
+[INFO] 02:01:33:155 Memoria/(14073:14138): Se conecto un cliente!
+[INFO] 02:01:33:156 Memoria/(14073:14138): Eliminación de Proceso PID: 2
+
+[INFO] 02:01:34:159 Memoria/(14073:14171): Se conecto un cliente!
+[INFO] 02:01:34:159 Memoria/(14073:14171): Eliminación de Proceso PID: 3
+
+[INFO] 02:09:24:857 Memoria/(14441:14441): Listo para escuchar al cliente
+[INFO] 02:09:26:285 Memoria/(14441:14442): Se conecto un cliente!
+[INFO] 02:09:27:085 Memoria/(14441:14445): Se conecto un cliente!
+[INFO] 02:09:29:815 Memoria/(14441:14449): Se conecto un cliente!
+[INFO] 02:09:29:815 Memoria/(14441:14441): Se conectaron todos los modulos.
+
+[INFO] 02:09:29:815 Memoria/(14441:14441): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:09:40:349 Memoria/(14441:14453): Se conecto un cliente!
+[INFO] 02:09:40:349 Memoria/(14441:14453): Creación de Proceso PID: 1
+
+[INFO] 02:09:40:352 Memoria/(14441:14462): Se conecto un cliente!
+[INFO] 02:09:40:352 Memoria/(14441:14462): Eliminación de Proceso PID: 1
+
+[INFO] 02:09:40:352 Memoria/(14441:14466): Se conecto un cliente!
+[INFO] 02:09:40:353 Memoria/(14441:14466): Creación de Proceso PID: 2
+
+[INFO] 02:09:40:361 Memoria/(14441:14468): Se conecto un cliente!
+[INFO] 02:09:40:361 Memoria/(14441:14468): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:09:41:368 Memoria/(14441:14480): Se conecto un cliente!
+[INFO] 02:09:41:368 Memoria/(14441:14480): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:09:43:378 Memoria/(14441:14482): Se conecto un cliente!
+[INFO] 02:09:43:378 Memoria/(14441:14482): Eliminación de Proceso PID: 2
+
+[INFO] 02:11:23:853 Memoria/(14517:14517): Listo para escuchar al cliente
+[INFO] 02:11:24:636 Memoria/(14517:14518): Se conecto un cliente!
+[INFO] 02:11:32:199 Memoria/(14517:14521): Se conecto un cliente!
+[INFO] 02:11:39:473 Memoria/(14517:14554): Se conecto un cliente!
+[INFO] 02:11:39:474 Memoria/(14517:14517): Se conectaron todos los modulos.
+
+[INFO] 02:11:39:474 Memoria/(14517:14517): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:11:42:280 Memoria/(14517:14587): Se conecto un cliente!
+[INFO] 02:11:42:280 Memoria/(14517:14587): Creación de Proceso PID: 1
+
+[INFO] 02:11:42:282 Memoria/(14517:14595): Se conecto un cliente!
+[INFO] 02:11:42:282 Memoria/(14517:14595): Creación de Proceso PID: 2
+
+[INFO] 02:11:42:283 Memoria/(14517:14599): Se conecto un cliente!
+[INFO] 02:11:42:283 Memoria/(14517:14599): Eliminación de Proceso PID: 1
+
+[INFO] 02:11:42:294 Memoria/(14517:14601): Se conecto un cliente!
+[INFO] 02:11:42:295 Memoria/(14517:14601): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:11:43:297 Memoria/(14517:14611): Se conecto un cliente!
+[INFO] 02:11:43:297 Memoria/(14517:14611): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:11:45:309 Memoria/(14517:14615): Se conecto un cliente!
+[INFO] 02:11:45:309 Memoria/(14517:14615): Eliminación de Proceso PID: 2
+
+[INFO] 02:16:57:095 Memoria/(15008:15008): Listo para escuchar al cliente
+[INFO] 02:17:01:622 Memoria/(15008:15009): Se conecto un cliente!
+[INFO] 02:17:06:882 Memoria/(15008:15041): Se conecto un cliente!
+[INFO] 02:17:13:325 Memoria/(15008:15077): Se conecto un cliente!
+[INFO] 02:17:13:325 Memoria/(15008:15008): Se conectaron todos los modulos.
+
+[INFO] 02:17:13:325 Memoria/(15008:15008): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:17:16:288 Memoria/(15008:15110): Se conecto un cliente!
+[INFO] 02:17:16:288 Memoria/(15008:15110): Creación de Proceso PID: 1
+
+[INFO] 02:17:16:291 Memoria/(15008:15118): Se conecto un cliente!
+[INFO] 02:17:16:291 Memoria/(15008:15118): Creación de Proceso PID: 2
+
+[INFO] 02:17:17:292 Memoria/(15008:15122): Se conecto un cliente!
+[INFO] 02:17:17:292 Memoria/(15008:15122): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:19:293 Memoria/(15008:15124): Se conecto un cliente!
+[INFO] 02:17:19:293 Memoria/(15008:15124): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:21:296 Memoria/(15008:15126): Se conecto un cliente!
+[INFO] 02:17:21:296 Memoria/(15008:15126): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:23:303 Memoria/(15008:15128): Se conecto un cliente!
+[INFO] 02:17:23:303 Memoria/(15008:15128): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:25:308 Memoria/(15008:15130): Se conecto un cliente!
+[INFO] 02:17:25:309 Memoria/(15008:15130): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:27:313 Memoria/(15008:15132): Se conecto un cliente!
+[INFO] 02:17:27:315 Memoria/(15008:15132): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:28:333 Memoria/(15008:15134): Se conecto un cliente!
+[INFO] 02:17:28:334 Memoria/(15008:15134): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:17:29:342 Memoria/(15008:15159): Se conecto un cliente!
+[INFO] 02:17:29:343 Memoria/(15008:15159): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:17:31:345 Memoria/(15008:15164): Se conecto un cliente!
+[INFO] 02:17:31:345 Memoria/(15008:15164): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 02:17:32:352 Memoria/(15008:15171): Se conecto un cliente!
+[INFO] 02:17:32:352 Memoria/(15008:15171): Eliminación de Proceso PID: 2
+
+[INFO] 02:17:32:387 Memoria/(15008:15172): Se conecto un cliente!
+[INFO] 02:17:32:387 Memoria/(15008:15172): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:17:33:393 Memoria/(15008:15190): Se conecto un cliente!
+[INFO] 02:17:33:394 Memoria/(15008:15190): Eliminación de Proceso PID: 1
+
+[INFO] 02:23:11:464 Memoria/(15364:15364): Listo para escuchar al cliente
+[INFO] 02:23:16:354 Memoria/(15364:15365): Se conecto un cliente!
+[INFO] 02:23:44:140 Memoria/(15364:15397): Se conecto un cliente!
+[INFO] 02:23:48:141 Memoria/(15364:15438): Se conecto un cliente!
+[INFO] 02:23:48:141 Memoria/(15364:15364): Se conectaron todos los modulos.
+
+[INFO] 02:23:48:141 Memoria/(15364:15364): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:23:49:759 Memoria/(15364:15471): Se conecto un cliente!
+[INFO] 02:23:49:759 Memoria/(15364:15471): Creación de Proceso PID: 1
+
+[INFO] 02:23:49:762 Memoria/(15364:15479): Se conecto un cliente!
+[INFO] 02:23:49:762 Memoria/(15364:15479): Creación de Proceso PID: 2
+
+[INFO] 02:23:50:766 Memoria/(15364:15483): Se conecto un cliente!
+[INFO] 02:23:50:767 Memoria/(15364:15483): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:23:52:770 Memoria/(15364:15485): Se conecto un cliente!
+[INFO] 02:23:52:771 Memoria/(15364:15485): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:23:54:773 Memoria/(15364:15487): Se conecto un cliente!
+[INFO] 02:23:54:774 Memoria/(15364:15487): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:23:56:778 Memoria/(15364:15489): Se conecto un cliente!
+[INFO] 02:23:56:778 Memoria/(15364:15489): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:23:58:782 Memoria/(15364:15491): Se conecto un cliente!
+[INFO] 02:23:58:782 Memoria/(15364:15491): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:24:00:786 Memoria/(15364:15493): Se conecto un cliente!
+[INFO] 02:24:00:787 Memoria/(15364:15493): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:24:01:810 Memoria/(15364:15495): Se conecto un cliente!
+[INFO] 02:24:01:811 Memoria/(15364:15495): PID: 99 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:24:02:819 Memoria/(15364:15520): Se conecto un cliente!
+[INFO] 02:24:02:820 Memoria/(15364:15520): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 02:24:04:826 Memoria/(15364:15525): Se conecto un cliente!
+[INFO] 02:24:04:827 Memoria/(15364:15525): PID: 99 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 02:24:05:830 Memoria/(15364:15530): Se conecto un cliente!
+[INFO] 02:24:05:830 Memoria/(15364:15530): Eliminación de Proceso PID: 2
+
+[INFO] 02:24:05:841 Memoria/(15364:15535): Se conecto un cliente!
+[INFO] 02:24:05:841 Memoria/(15364:15535): PID: 99 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 02:24:06:854 Memoria/(15364:15549): Se conecto un cliente!
+[INFO] 02:24:06:857 Memoria/(15364:15549): Eliminación de Proceso PID: 1
+
+[INFO] 02:26:39:447 Memoria/(15594:15594): Listo para escuchar al cliente
+[INFO] 02:26:39:956 Memoria/(15594:15595): Se conecto un cliente!
+[INFO] 02:26:40:471 Memoria/(15594:15598): Se conecto un cliente!
+[INFO] 02:26:44:469 Memoria/(15594:15602): Se conecto un cliente!
+[INFO] 02:26:44:470 Memoria/(15594:15594): Se conectaron todos los modulos.
+
+[INFO] 02:26:44:470 Memoria/(15594:15594): Se crearon todas las estructuras correctamente.
+
+[INFO] 02:26:46:333 Memoria/(15594:15635): Se conecto un cliente!
+[INFO] 02:26:46:333 Memoria/(15594:15635): Creación de Proceso PID: 1
+
+[INFO] 02:26:46:337 Memoria/(15594:15643): Se conecto un cliente!
+[INFO] 02:26:46:337 Memoria/(15594:15643): Creación de Proceso PID: 2
+
+[INFO] 02:26:47:339 Memoria/(15594:15647): Se conecto un cliente!
+[INFO] 02:26:47:339 Memoria/(15594:15647): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+

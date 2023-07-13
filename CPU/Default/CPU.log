@@ -62453,3 +62453,409 @@ Operacion recibida de MEMORIA desconocida.
 
 [INFO] 01:34:53:517 CPU/(12609:12701): PID: 3 - Ejecutando: EXIT
 
+[INFO] 02:00:40:350 CPU/(14076:14076): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:00:48:066 CPU/(14076:14078): Se conecto un cliente
+[INFO] 02:00:49:066 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [AX, AAAA]
+
+[INFO] 02:00:50:067 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [BX, BBBB]
+
+[INFO] 02:00:51:067 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [CX, CCCC]
+
+[INFO] 02:00:52:071 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [DX, DDDD]
+
+[INFO] 02:00:53:072 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [EAX, AAAAAAAA]
+
+[INFO] 02:00:54:072 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [EBX, BBBBBBBB]
+
+[INFO] 02:00:55:073 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [ECX, CCCCCCCC]
+
+[INFO] 02:00:56:074 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [EDX, DDDDDDDD]
+
+[INFO] 02:00:57:075 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [RAX, AAAAAAAAAAAAAAAA]
+
+[INFO] 02:00:58:076 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [RBX, BBBBBBBBBBBBBBBB]
+
+[INFO] 02:00:59:077 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [RCX, CCCCCCCCCCCCCCCC]
+
+[INFO] 02:01:00:078 CPU/(14076:14078): PID: 1 - Ejecutando: SET - [RDX, DDDDDDDDDDDDDDDD]
+
+[INFO] 02:01:00:078 CPU/(14076:14078): PID: 1 - Ejecutando: YIELD
+
+[INFO] 02:01:00:078 CPU/(14076:14130): Se conecto un cliente
+[INFO] 02:01:01:079 CPU/(14076:14130): PID: 2 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 02:01:02:080 CPU/(14076:14130): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:02:080 CPU/(14076:14130): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:02:081 CPU/(14076:14131): Se conecto un cliente
+[INFO] 02:01:03:082 CPU/(14076:14131): PID: 3 - Ejecutando: SET - [AX, ARG0]
+
+[INFO] 02:01:04:083 CPU/(14076:14131): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:04:083 CPU/(14076:14131): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:04:086 CPU/(14076:14134): Se conecto un cliente
+[INFO] 02:01:05:088 CPU/(14076:14134): PID: 1 - Ejecutando: SET - [RAX, TCHOUAMENIAFUERA]
+
+[INFO] 02:01:06:088 CPU/(14076:14134): PID: 1 - Ejecutando: SET - [RBX, SEGUNDO_FRANCIA_]
+
+[INFO] 02:01:06:088 CPU/(14076:14134): PID: 1 - Ejecutando: EXIT
+
+[INFO] 02:01:06:088 CPU/(14076:14136): Se conecto un cliente
+[INFO] 02:01:07:090 CPU/(14076:14136): PID: 2 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 02:01:08:091 CPU/(14076:14136): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:08:091 CPU/(14076:14136): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:08:092 CPU/(14076:14141): Se conecto un cliente
+[INFO] 02:01:09:092 CPU/(14076:14141): PID: 3 - Ejecutando: SET - [AX, ARG1]
+
+[INFO] 02:01:10:093 CPU/(14076:14141): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:10:093 CPU/(14076:14141): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:10:094 CPU/(14076:14143): Se conecto un cliente
+[INFO] 02:01:11:094 CPU/(14076:14143): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:12:095 CPU/(14076:14143): PID: 2 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:12:096 CPU/(14076:14143): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:12:098 CPU/(14076:14144): Se conecto un cliente
+[INFO] 02:01:13:100 CPU/(14076:14144): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:14:101 CPU/(14076:14144): PID: 3 - Ejecutando: SET - [BX, FRA0]
+
+[INFO] 02:01:14:101 CPU/(14076:14144): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:14:103 CPU/(14076:14146): Se conecto un cliente
+[INFO] 02:01:15:104 CPU/(14076:14146): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:16:105 CPU/(14076:14146): PID: 2 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 02:01:16:106 CPU/(14076:14146): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:16:112 CPU/(14076:14148): Se conecto un cliente
+[INFO] 02:01:17:113 CPU/(14076:14148): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:18:114 CPU/(14076:14148): PID: 3 - Ejecutando: SET - [BX, FRA1]
+
+[INFO] 02:01:18:114 CPU/(14076:14148): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:18:117 CPU/(14076:14151): Se conecto un cliente
+[INFO] 02:01:19:119 CPU/(14076:14151): PID: 2 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:20:119 CPU/(14076:14151): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 02:01:20:120 CPU/(14076:14151): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:20:122 CPU/(14076:14153): Se conecto un cliente
+[INFO] 02:01:21:122 CPU/(14076:14153): PID: 3 - Ejecutando: SET - [AX, ARG2]
+
+[INFO] 02:01:22:123 CPU/(14076:14153): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 02:01:22:124 CPU/(14076:14153): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:22:127 CPU/(14076:14154): Se conecto un cliente
+[INFO] 02:01:23:130 CPU/(14076:14154): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 02:01:24:131 CPU/(14076:14154): PID: 2 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 02:01:24:131 CPU/(14076:14154): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:24:134 CPU/(14076:14156): Se conecto un cliente
+[INFO] 02:01:25:135 CPU/(14076:14156): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 02:01:26:135 CPU/(14076:14156): PID: 3 - Ejecutando: SET - [BX, FRA2]
+
+[INFO] 02:01:26:136 CPU/(14076:14156): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:26:137 CPU/(14076:14158): Se conecto un cliente
+[INFO] 02:01:27:138 CPU/(14076:14158): PID: 2 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 02:01:28:140 CPU/(14076:14158): PID: 2 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 02:01:28:140 CPU/(14076:14158): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:28:143 CPU/(14076:14160): Se conecto un cliente
+[INFO] 02:01:29:145 CPU/(14076:14160): PID: 3 - Ejecutando: SET - [AX, ARG3]
+
+[INFO] 02:01:30:145 CPU/(14076:14160): PID: 3 - Ejecutando: SET - [BX, FRA3]
+
+[INFO] 02:01:30:145 CPU/(14076:14160): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:30:148 CPU/(14076:14162): Se conecto un cliente
+[INFO] 02:01:31:149 CPU/(14076:14162): PID: 2 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 02:01:31:149 CPU/(14076:14162): PID: 2 - Ejecutando: YIELD
+
+[INFO] 02:01:31:150 CPU/(14076:14165): Se conecto un cliente
+[INFO] 02:01:32:150 CPU/(14076:14165): PID: 3 - Ejecutando: SET - [RDX, VAMOSALOSPENALES]
+
+[INFO] 02:01:32:151 CPU/(14076:14165): PID: 3 - Ejecutando: YIELD
+
+[INFO] 02:01:32:153 CPU/(14076:14167): Se conecto un cliente
+[INFO] 02:01:33:155 CPU/(14076:14167): PID: 2 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 02:01:33:155 CPU/(14076:14167): PID: 2 - Ejecutando: EXIT
+
+[INFO] 02:01:33:156 CPU/(14076:14168): Se conecto un cliente
+[INFO] 02:01:34:158 CPU/(14076:14168): PID: 3 - Ejecutando: SET - [RAX, ARGENTINACAMPEON]
+
+[INFO] 02:01:34:158 CPU/(14076:14168): PID: 3 - Ejecutando: EXIT
+
+[INFO] 02:09:26:286 CPU/(14444:14444): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:09:40:351 CPU/(14444:14446): Se conecto un cliente
+[INFO] 02:09:40:351 CPU/(14444:14446): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 02:09:40:353 CPU/(14444:14463): Se conecto un cliente
+[INFO] 02:09:40:354 CPU/(14444:14463): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:09:40:357 CPU/(14444:14469): Se conecto un cliente
+[INFO] 02:09:40:357 CPU/(14444:14469): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:09:40:358 CPU/(14444:14473): Se conecto un cliente
+[INFO] 02:09:40:359 CPU/(14444:14473): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 02:09:41:365 CPU/(14444:14475): Se conecto un cliente
+[INFO] 02:09:43:369 CPU/(14444:14481): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido:                 
+[INFO] 02:09:43:370 CPU/(14444:14475): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 02:09:43:371 CPU/(14444:14475): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:09:43:374 CPU/(14444:14484): Se conecto un cliente
+[INFO] 02:09:43:375 CPU/(14444:14484): PID: 2 - Ejecutando: EXIT
+
+[INFO] 02:11:24:636 CPU/(14520:14520): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:11:42:281 CPU/(14520:14522): Se conecto un cliente
+[INFO] 02:11:42:281 CPU/(14520:14522): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 02:11:42:283 CPU/(14520:14597): Se conecto un cliente
+[INFO] 02:11:42:284 CPU/(14520:14597): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:11:42:291 CPU/(14520:14602): Se conecto un cliente
+[INFO] 02:11:42:292 CPU/(14520:14602): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:11:42:292 CPU/(14520:14606): Se conecto un cliente
+[INFO] 02:11:42:292 CPU/(14520:14606): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 02:11:43:296 CPU/(14520:14608): Se conecto un cliente
+[INFO] 02:11:45:298 CPU/(14520:14614): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido:                 
+[INFO] 02:11:45:298 CPU/(14520:14608): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 02:11:45:299 CPU/(14520:14608): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:11:45:304 CPU/(14520:14616): Se conecto un cliente
+[INFO] 02:11:45:305 CPU/(14520:14616): PID: 2 - Ejecutando: EXIT
+
+[INFO] 02:17:01:623 CPU/(15040:15040): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:17:16:290 CPU/(15040:15042): Se conecto un cliente
+[INFO] 02:17:16:290 CPU/(15040:15042): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 02:17:16:291 CPU/(15040:15119): Se conecto un cliente
+[INFO] 02:17:17:291 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 02:17:18:292 CPU/(15040:15123): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 02:17:18:292 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+
+[INFO] 02:17:19:293 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation1]
+
+[INFO] 02:17:20:294 CPU/(15040:15125): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+[INFO] 02:17:20:294 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [32, ]
+
+[INFO] 02:17:21:295 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation2]
+
+[INFO] 02:17:22:296 CPU/(15040:15127): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+[INFO] 02:17:22:301 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [48, ]
+
+[INFO] 02:17:23:302 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation3]
+
+[INFO] 02:17:24:303 CPU/(15040:15129): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+[INFO] 02:17:24:304 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [64, ]
+
+[INFO] 02:17:25:304 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation4]
+
+[INFO] 02:17:26:310 CPU/(15040:15131): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+[INFO] 02:17:26:311 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [80, ]
+
+[INFO] 02:17:27:311 CPU/(15040:15119): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation5]
+
+[INFO] 02:17:28:317 CPU/(15040:15133): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+[INFO] 02:17:28:318 CPU/(15040:15119): PID: 1 - Ejecutando: MOV_OUT - [96, ]
+
+[INFO] 02:17:28:318 CPU/(15040:15119): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 02:17:28:322 CPU/(15040:15136): Se conecto un cliente
+[INFO] 02:17:28:322 CPU/(15040:15136): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 02:17:28:327 CPU/(15040:15139): Se conecto un cliente
+[INFO] 02:17:28:327 CPU/(15040:15139): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:17:28:331 CPU/(15040:15143): Se conecto un cliente
+[INFO] 02:17:28:331 CPU/(15040:15143): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:17:28:331 CPU/(15040:15147): Se conecto un cliente
+[INFO] 02:17:28:332 CPU/(15040:15147): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 02:17:28:334 CPU/(15040:15149): Se conecto un cliente
+[INFO] 02:17:28:334 CPU/(15040:15149): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 02:17:28:335 CPU/(15040:15153): Se conecto un cliente
+[INFO] 02:17:28:335 CPU/(15040:15153): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 02:17:28:336 CPU/(15040:15155): Se conecto un cliente
+[INFO] 02:17:28:336 CPU/(15040:15155): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 02:17:29:338 CPU/(15040:15157): Se conecto un cliente
+[INFO] 02:17:31:343 CPU/(15040:15162): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido:                 
+[INFO] 02:17:31:344 CPU/(15040:15157): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 02:17:31:344 CPU/(15040:15157): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:17:31:344 CPU/(15040:15165): Se conecto un cliente
+[INFO] 02:17:31:344 CPU/(15040:15165): PID: 2 - Ejecutando: EXIT
+
+[INFO] 02:17:32:351 CPU/(15040:15167): Se conecto un cliente
+[INFO] 02:17:32:353 CPU/(15040:15167): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 02:17:32:357 CPU/(15040:15173): Se conecto un cliente
+[INFO] 02:17:32:358 CPU/(15040:15173): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:17:32:366 CPU/(15040:15175): Se conecto un cliente
+[INFO] 02:17:32:366 CPU/(15040:15175): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 02:17:32:374 CPU/(15040:15179): Se conecto un cliente
+[INFO] 02:17:32:375 CPU/(15040:15179): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:17:32:383 CPU/(15040:15183): Se conecto un cliente
+[INFO] 02:17:32:384 CPU/(15040:15183): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 02:17:33:391 CPU/(15040:15185): Se conecto un cliente
+[INFO] 02:17:33:392 CPU/(15040:15185): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:17:33:393 CPU/(15040:15191): Se conecto un cliente
+[INFO] 02:17:33:393 CPU/(15040:15191): PID: 1 - Ejecutando: EXIT
+
+[INFO] 02:23:16:355 CPU/(15396:15396): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:23:49:760 CPU/(15396:15398): Se conecto un cliente
+[INFO] 02:23:49:760 CPU/(15396:15398): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 02:23:49:763 CPU/(15396:15481): Se conecto un cliente
+[INFO] 02:23:50:765 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 02:23:51:768 CPU/(15396:15484): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 02:23:51:769 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+
+[INFO] 02:23:52:769 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation1]
+
+[INFO] 02:23:53:771 CPU/(15396:15486): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+[INFO] 02:23:53:771 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [32, ]
+
+[INFO] 02:23:54:771 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation2]
+
+[INFO] 02:23:55:775 CPU/(15396:15488): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+[INFO] 02:23:55:775 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [48, ]
+
+[INFO] 02:23:56:776 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation3]
+
+[INFO] 02:23:57:779 CPU/(15396:15490): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+[INFO] 02:23:57:780 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [64, ]
+
+[INFO] 02:23:58:780 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation4]
+
+[INFO] 02:23:59:783 CPU/(15396:15492): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+[INFO] 02:23:59:784 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [80, ]
+
+[INFO] 02:24:00:785 CPU/(15396:15481): PID: 1 - Ejecutando: SET - [RBX, SonyPlaystation5]
+
+[INFO] 02:24:01:788 CPU/(15396:15494): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+[INFO] 02:24:01:788 CPU/(15396:15481): PID: 1 - Ejecutando: MOV_OUT - [96, ]
+
+[INFO] 02:24:01:788 CPU/(15396:15481): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 02:24:01:794 CPU/(15396:15497): Se conecto un cliente
+[INFO] 02:24:01:795 CPU/(15396:15497): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 02:24:01:803 CPU/(15396:15500): Se conecto un cliente
+[INFO] 02:24:01:803 CPU/(15396:15500): PID: 2 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:24:01:806 CPU/(15396:15504): Se conecto un cliente
+[INFO] 02:24:01:807 CPU/(15396:15504): PID: 2 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:24:01:807 CPU/(15396:15508): Se conecto un cliente
+[INFO] 02:24:01:808 CPU/(15396:15508): PID: 2 - Ejecutando: F_READ - [Videogames, 16, 16]
+
+[INFO] 02:24:01:811 CPU/(15396:15510): Se conecto un cliente
+[INFO] 02:24:01:812 CPU/(15396:15510): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 02:24:01:812 CPU/(15396:15514): Se conecto un cliente
+[INFO] 02:24:01:812 CPU/(15396:15514): PID: 1 - Ejecutando: SIGNAL - [RB
+]
+
+[INFO] 02:24:01:813 CPU/(15396:15516): Se conecto un cliente
+[INFO] 02:24:01:814 CPU/(15396:15516): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 02:24:02:816 CPU/(15396:15518): Se conecto un cliente
+[INFO] 02:24:04:822 CPU/(15396:15524): PID: 2 - Acción: <LEER> - Segmento: 0 - Dirección Física: 16 - Valor leido:                 �(
+[INFO] 02:24:04:823 CPU/(15396:15518): PID: 2 - Ejecutando: MOV_IN - [RAX, 16]
+
+[INFO] 02:24:04:824 CPU/(15396:15518): PID: 2 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:24:04:825 CPU/(15396:15526): Se conecto un cliente
+[INFO] 02:24:04:825 CPU/(15396:15526): PID: 2 - Ejecutando: EXIT
+
+[INFO] 02:24:05:829 CPU/(15396:15528): Se conecto un cliente
+[INFO] 02:24:05:829 CPU/(15396:15528): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 02:24:05:831 CPU/(15396:15533): Se conecto un cliente
+[INFO] 02:24:05:831 CPU/(15396:15533): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 02:24:05:832 CPU/(15396:15536): Se conecto un cliente
+[INFO] 02:24:05:833 CPU/(15396:15536): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 02:24:05:836 CPU/(15396:15540): Se conecto un cliente
+[INFO] 02:24:05:837 CPU/(15396:15540): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 02:24:05:837 CPU/(15396:15544): Se conecto un cliente
+[INFO] 02:24:05:838 CPU/(15396:15544): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 02:24:06:844 CPU/(15396:15546): Se conecto un cliente
+[INFO] 02:24:06:846 CPU/(15396:15546): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 02:24:06:850 CPU/(15396:15552): Se conecto un cliente
+[INFO] 02:24:06:851 CPU/(15396:15552): PID: 1 - Ejecutando: EXIT
+
+[INFO] 02:26:39:956 CPU/(15597:15597): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 02:26:46:335 CPU/(15597:15599): Se conecto un cliente
+[INFO] 02:26:46:336 CPU/(15597:15599): PID: 1 - Ejecutando: WAIT - [RA
+]
+
+[INFO] 02:26:46:338 CPU/(15597:15644): Se conecto un cliente
+[INFO] 02:26:47:339 CPU/(15597:15644): PID: 1 - Ejecutando: SET - [RAX, SonicTheHedgehog]
+
+[INFO] 02:26:48:340 CPU/(15597:15648): PID: 1 - Acción: <ESCRIBIR> - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+[INFO] 02:26:48:340 CPU/(15597:15644): PID: 1 - Ejecutando: MOV_OUT - [0, ]
+

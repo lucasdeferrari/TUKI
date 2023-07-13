@@ -81,7 +81,6 @@ int elArchivoEstaAbierto(char* );
 void armarPCB(t_list*);
 void queue(t_nodoCola** , t_nodoCola** , t_infopcb*);
 t_infopcb* unqueue(t_nodoCola** , t_nodoCola** );
-void mostrarCola(t_nodoCola* );
 int cantidadElementosCola(t_nodoCola*);
 void agregarElementoListaReady(t_nodoCola**, t_infopcb* );
 void mostrarListaReady(t_list*);

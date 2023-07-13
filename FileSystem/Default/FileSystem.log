@@ -7150,3 +7150,361 @@ el cliente se desconecto. Terminando servidor.
 [INFO] 01:34:01:674 FileSystem/(12613:12613): FileSystem listo para escuchar al cliente
 
 [INFO] 01:34:01:674 FileSystem/(12613:12615): FileSystem listo para recibir a kernel
+[INFO] 02:00:40:932 FileSystem/(14080:14080): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:00:40:933 FileSystem/(14080:14080): FileSystem listo para escuchar al cliente
+
+[INFO] 02:00:40:933 FileSystem/(14080:14082): FileSystem listo para recibir a kernel
+[INFO] 02:09:27:085 FileSystem/(14448:14448): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:09:27:085 FileSystem/(14448:14448): FileSystem listo para escuchar al cliente
+
+[INFO] 02:09:27:085 FileSystem/(14448:14450): FileSystem listo para recibir a kernel
+[INFO] 02:09:40:354 FileSystem/(14448:14450): Se conecto un cliente!
+[INFO] 02:09:40:355 FileSystem/(14448:14450): Crear Archivo: <Videogames>
+
+[INFO] 02:09:40:355 FileSystem/(14448:14450): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:09:40:355 FileSystem/(14448:14450): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:09:40:356 FileSystem/(14448:14471): FileSystem listo para recibir a kernel
+[INFO] 02:09:40:359 FileSystem/(14448:14471): Se conecto un cliente!
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:360 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:361 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:361 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:361 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:40:361 FileSystem/(14448:14471): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:09:41:362 FileSystem/(14448:14471): Leer Archivo: <Videogames> - Puntero: <0> - Memoria: <16> - Tamaño: <16>
+
+[ERROR] 02:09:41:362 FileSystem/(14448:14471): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:09:41:365 FileSystem/(14448:14478): FileSystem listo para recibir a kernel
+[INFO] 02:11:32:199 FileSystem/(14553:14553): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:11:32:199 FileSystem/(14553:14553): FileSystem listo para escuchar al cliente
+
+[INFO] 02:11:32:199 FileSystem/(14553:14555): FileSystem listo para recibir a kernel
+[INFO] 02:11:42:284 FileSystem/(14553:14555): Se conecto un cliente!
+[INFO] 02:11:42:286 FileSystem/(14553:14555): Crear Archivo: <Videogames>
+
+[INFO] 02:11:42:286 FileSystem/(14553:14555): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:11:42:287 FileSystem/(14553:14555): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:11:42:291 FileSystem/(14553:14604): FileSystem listo para recibir a kernel
+[INFO] 02:11:42:293 FileSystem/(14553:14604): Se conecto un cliente!
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:42:294 FileSystem/(14553:14604): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:11:43:295 FileSystem/(14553:14604): Leer Archivo: <Videogames> - Puntero: <0> - Memoria: <16> - Tamaño: <16>
+
+[ERROR] 02:11:43:295 FileSystem/(14553:14604): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:11:43:296 FileSystem/(14553:14612): FileSystem listo para recibir a kernel
+[INFO] 02:17:06:882 FileSystem/(15076:15076): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:17:06:882 FileSystem/(15076:15076): FileSystem listo para escuchar al cliente
+
+[INFO] 02:17:06:883 FileSystem/(15076:15078): FileSystem listo para recibir a kernel
+[INFO] 02:17:28:319 FileSystem/(15076:15078): Se conecto un cliente!
+[INFO] 02:17:28:322 FileSystem/(15076:15078): Crear Archivo: <Consoles>
+
+[INFO] 02:17:28:322 FileSystem/(15076:15078): Abrir Archivo: <Consoles
+>
+
+[ERROR] 02:17:28:322 FileSystem/(15076:15078): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:28:322 FileSystem/(15076:15137): FileSystem listo para recibir a kernel
+[INFO] 02:17:28:323 FileSystem/(15076:15137): Se conecto un cliente!
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <2> - Estado: <1>
+
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <3> - Estado: <1>
+
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <4> - Estado: <1>
+
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <5> - Estado: <1>
+
+[INFO] 02:17:28:324 FileSystem/(15076:15137): Acceso a Bitmap - Bloque: <6> - Estado: <1>
+
+[INFO] 02:17:28:326 FileSystem/(15076:15137): Truncar Archivo: <Consoles> - Tamaño: <256>
+
+[ERROR] 02:17:28:326 FileSystem/(15076:15137): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:28:327 FileSystem/(15076:15141): FileSystem listo para recibir a kernel
+[INFO] 02:17:28:328 FileSystem/(15076:15141): Se conecto un cliente!
+[INFO] 02:17:28:329 FileSystem/(15076:15141): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:17:28:329 FileSystem/(15076:15141): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:28:330 FileSystem/(15076:15145): FileSystem listo para recibir a kernel
+[INFO] 02:17:28:332 FileSystem/(15076:15145): Se conecto un cliente!
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:28:333 FileSystem/(15076:15145): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:17:29:335 FileSystem/(15076:15145): Leer Archivo: <Videogames> - Puntero: <0> - Memoria: <16> - Tamaño: <16>
+
+[ERROR] 02:17:29:337 FileSystem/(15076:15145): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:29:338 FileSystem/(15076:15161): FileSystem listo para recibir a kernel
+[INFO] 02:17:29:340 FileSystem/(15076:15161): Se conecto un cliente!
+[INFO] 02:17:32:347 FileSystem/(15076:15161): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <3> - Bloque File System <4>
+
+[INFO] 02:17:32:348 FileSystem/(15076:15161): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <2> - Bloque File System <5>
+
+[INFO] 02:17:32:348 FileSystem/(15076:15161): Escribir Archivo: <Consoles> - Puntero: <128> - Memoria: <32> - Tamaño: <80>
+
+[ERROR] 02:17:32:349 FileSystem/(15076:15161): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:32:350 FileSystem/(15076:15170): FileSystem listo para recibir a kernel
+[INFO] 02:17:32:360 FileSystem/(15076:15170): Se conecto un cliente!
+[INFO] 02:17:32:364 FileSystem/(15076:15170): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:17:32:365 FileSystem/(15076:15170): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:32:365 FileSystem/(15076:15177): FileSystem listo para recibir a kernel
+[INFO] 02:17:32:368 FileSystem/(15076:15177): Se conecto un cliente!
+[INFO] 02:17:32:369 FileSystem/(15076:15177): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 02:17:32:369 FileSystem/(15076:15177): Acceso a Bitmap - Bloque: <2> - Estado: <1>
+
+[INFO] 02:17:32:369 FileSystem/(15076:15177): Acceso a Bitmap - Bloque: <3> - Estado: <1>
+
+[INFO] 02:17:32:371 FileSystem/(15076:15177): Truncar Archivo: <Videogames> - Tamaño: <64>
+
+[ERROR] 02:17:32:371 FileSystem/(15076:15177): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:32:374 FileSystem/(15076:15181): FileSystem listo para recibir a kernel
+[INFO] 02:17:32:384 FileSystem/(15076:15181): Se conecto un cliente!
+[INFO] 02:17:33:388 FileSystem/(15076:15181): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <1>
+
+[INFO] 02:17:33:388 FileSystem/(15076:15181): Escribir Archivo: <Videogames> - Puntero: <0> - Memoria: <0> - Tamaño: <16>
+
+[ERROR] 02:17:33:388 FileSystem/(15076:15181): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:17:33:390 FileSystem/(15076:15188): FileSystem listo para recibir a kernel
+[INFO] 02:23:44:140 FileSystem/(15437:15437): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:23:44:141 FileSystem/(15437:15437): FileSystem listo para escuchar al cliente
+
+[INFO] 02:23:44:141 FileSystem/(15437:15439): FileSystem listo para recibir a kernel
+[INFO] 02:24:01:790 FileSystem/(15437:15439): Se conecto un cliente!
+[INFO] 02:24:01:792 FileSystem/(15437:15439): Crear Archivo: <Consoles>
+
+[INFO] 02:24:01:793 FileSystem/(15437:15439): Abrir Archivo: <Consoles
+>
+
+[ERROR] 02:24:01:793 FileSystem/(15437:15439): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:01:793 FileSystem/(15437:15498): FileSystem listo para recibir a kernel
+[INFO] 02:24:01:796 FileSystem/(15437:15498): Se conecto un cliente!
+[INFO] 02:24:01:797 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 02:24:01:797 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <2> - Estado: <1>
+
+[INFO] 02:24:01:797 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <3> - Estado: <1>
+
+[INFO] 02:24:01:797 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <4> - Estado: <1>
+
+[INFO] 02:24:01:798 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <5> - Estado: <1>
+
+[INFO] 02:24:01:798 FileSystem/(15437:15498): Acceso a Bitmap - Bloque: <6> - Estado: <1>
+
+[INFO] 02:24:01:798 FileSystem/(15437:15498): Truncar Archivo: <Consoles> - Tamaño: <256>
+
+[ERROR] 02:24:01:798 FileSystem/(15437:15498): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:01:803 FileSystem/(15437:15502): FileSystem listo para recibir a kernel
+[INFO] 02:24:01:804 FileSystem/(15437:15502): Se conecto un cliente!
+[INFO] 02:24:01:805 FileSystem/(15437:15502): Crear Archivo: <Videogames>
+
+[INFO] 02:24:01:805 FileSystem/(15437:15502): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:24:01:806 FileSystem/(15437:15502): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:01:806 FileSystem/(15437:15506): FileSystem listo para recibir a kernel
+[INFO] 02:24:01:808 FileSystem/(15437:15506): Se conecto un cliente!
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:809 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:01:810 FileSystem/(15437:15506): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <0>
+
+[INFO] 02:24:02:811 FileSystem/(15437:15506): Leer Archivo: <Videogames> - Puntero: <0> - Memoria: <16> - Tamaño: <16>
+
+[ERROR] 02:24:02:812 FileSystem/(15437:15506): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:02:814 FileSystem/(15437:15521): FileSystem listo para recibir a kernel
+[INFO] 02:24:02:815 FileSystem/(15437:15521): Se conecto un cliente!
+[INFO] 02:24:05:828 FileSystem/(15437:15521): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <3> - Bloque File System <4>
+
+[INFO] 02:24:05:828 FileSystem/(15437:15521): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <2> - Bloque File System <5>
+
+[INFO] 02:24:05:828 FileSystem/(15437:15521): Escribir Archivo: <Consoles> - Puntero: <128> - Memoria: <32> - Tamaño: <80>
+
+[ERROR] 02:24:05:828 FileSystem/(15437:15521): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:05:829 FileSystem/(15437:15532): FileSystem listo para recibir a kernel
+[INFO] 02:24:05:831 FileSystem/(15437:15532): Se conecto un cliente!
+[INFO] 02:24:05:832 FileSystem/(15437:15532): Abrir Archivo: <Videogames
+>
+
+[ERROR] 02:24:05:832 FileSystem/(15437:15532): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:05:832 FileSystem/(15437:15538): FileSystem listo para recibir a kernel
+[INFO] 02:24:05:833 FileSystem/(15437:15538): Se conecto un cliente!
+[INFO] 02:24:05:835 FileSystem/(15437:15538): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 02:24:05:835 FileSystem/(15437:15538): Acceso a Bitmap - Bloque: <2> - Estado: <1>
+
+[INFO] 02:24:05:835 FileSystem/(15437:15538): Acceso a Bitmap - Bloque: <3> - Estado: <1>
+
+[INFO] 02:24:05:835 FileSystem/(15437:15538): Truncar Archivo: <Videogames> - Tamaño: <64>
+
+[ERROR] 02:24:05:835 FileSystem/(15437:15538): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:05:836 FileSystem/(15437:15542): FileSystem listo para recibir a kernel
+[INFO] 02:24:05:838 FileSystem/(15437:15542): Se conecto un cliente!
+[INFO] 02:24:06:842 FileSystem/(15437:15542): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <1>
+
+[INFO] 02:24:06:842 FileSystem/(15437:15542): Escribir Archivo: <Videogames> - Puntero: <0> - Memoria: <0> - Tamaño: <16>
+
+[ERROR] 02:24:06:844 FileSystem/(15437:15542): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 02:24:06:845 FileSystem/(15437:15551): FileSystem listo para recibir a kernel
+[INFO] 02:26:40:471 FileSystem/(15601:15601): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 02:26:40:471 FileSystem/(15601:15601): FileSystem listo para escuchar al cliente
+
+[INFO] 02:26:40:472 FileSystem/(15601:15603): FileSystem listo para recibir a kernel
