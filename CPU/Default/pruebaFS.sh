@@ -1,3 +1,3 @@
-./CPU "./CPUFS.config"  
+./CPU "./config/CPUFS.config"  
 
 
