@@ -39,7 +39,7 @@ Memoria: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo ' '
 
 run:
-	cd home/utnso/tp-2023-1c-Los-operadores/Memoria/Default/config && FILE_PATH=$(FILE_PATH) ./Memoria
+	cd /config && FILE_PATH=$(FILE_PATH) ./Memoria
 
 # Other Targets
 clean:
