@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 	sem_init(&semCPUClientMemoria,0,0);
-	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
     config = config_create(pathConfig);
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         log_info(logger,"No se pudo crear el config.\n");
         exit(5);
     }
-
+    char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
     ip_memoria= config_get_string_value(config, "IP_MEMORIA");
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
     retardo_instruccion = config_get_int_value(config, "RETARDO_INSTRUCCION");

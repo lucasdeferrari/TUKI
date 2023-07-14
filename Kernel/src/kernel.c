@@ -7,16 +7,13 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
-
-    char* puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
-
     config = config_create(pathConfig);
 
     if (config == NULL) {
         log_info(logger,"No se pudo crear el config.\n");
         exit(5);
     }
-
+    char* puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
     ip_cpu = config_get_string_value(config, "IP_CPU");
     puerto_cpu = config_get_string_value(config, "PUERTO_CPU");
     ip_memoria = config_get_string_value(config, "IP_MEMORIA");

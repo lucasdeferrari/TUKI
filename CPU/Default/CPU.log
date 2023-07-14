@@ -65441,3 +65441,48 @@ Operacion recibida de MEMORIA desconocida.
 
 [INFO] 10:59:00:499 CPU/(8724:8903): PID: 1 - Ejecutando: EXIT
 
+[INFO] 13:47:24:547 CPU/(14062:14062): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 13:57:39:238 CPU/(14567:14567): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 13:57:49:347 CPU/(14567:14569): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 13:57:49:349 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RAX, SonicTheHedgehog
+
+[INFO] 13:57:50:350 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 0, RAX
+
+
+[INFO] 13:57:51:351 CPU/(14567:14616): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+
+[INFO] 13:57:51:351 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation1
+
+[INFO] 13:57:52:352 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 32, RBX
+
+
+[INFO] 13:57:53:353 CPU/(14567:14618): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+
+[INFO] 13:57:53:353 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation2
+
+[INFO] 13:57:54:353 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 48, RBX
+
+
+[INFO] 13:57:55:355 CPU/(14567:14620): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+
+[INFO] 13:57:55:355 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation3
+
+[INFO] 13:57:56:355 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 64, RBX
+
+
+[INFO] 13:57:57:356 CPU/(14567:14622): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+
+[INFO] 13:57:57:356 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation4
+
+[INFO] 13:57:58:357 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 80, RBX
+
+
+[INFO] 13:57:59:358 CPU/(14567:14624): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+
+[INFO] 13:57:59:358 CPU/(14567:14612): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation5
+
+[INFO] 13:58:00:359 CPU/(14567:14612): PID: 1 - Ejecutando: MOV_OUT - 96, RBX
+
+

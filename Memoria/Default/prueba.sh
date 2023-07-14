@@ -1,3 +1,3 @@
-./Memoria "../memoria.config"  
+./Memoria "../memoria.config" 
 
 

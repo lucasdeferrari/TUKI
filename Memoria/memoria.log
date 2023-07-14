@@ -4416,3 +4416,5 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 20:30:32:673 Memoria/(185071:185307): Eliminación de Proceso PID: 2
 
+[ERROR] 13:38:04:910 Memoria/(13602:13602): No existe el valor para el puerto escucha.
+

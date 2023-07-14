@@ -81478,3 +81478,27 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 10:59:00:501 Memoria/(8659:8900): Eliminación de Proceso PID: 1
 
+[INFO] 13:42:22:707 Memoria/(13767:13767): Listo para escuchar al cliente
+[INFO] 13:49:31:030 Memoria/(13767:14096): Creación de Proceso PID: 1
+
+[INFO] 13:57:17:735 Memoria/(14502:14502): Listo para escuchar al cliente
+[INFO] 13:57:45:226 Memoria/(14502:14502): Se conectaron todos los modulos.
+
+[INFO] 13:57:45:226 Memoria/(14502:14502): Se crearon todas las estructuras correctamente.
+
+[INFO] 13:57:49:346 Memoria/(14502:14601): Creación de Proceso PID: 1
+
+[INFO] 13:57:49:350 Memoria/(14502:14611): Creación de Proceso PID: 2
+
+[INFO] 13:57:50:350 Memoria/(14502:14615): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 13:57:52:352 Memoria/(14502:14617): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 13:57:54:355 Memoria/(14502:14619): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 13:57:56:356 Memoria/(14502:14621): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 13:57:58:357 Memoria/(14502:14623): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 13:58:00:359 Memoria/(14502:14625): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+

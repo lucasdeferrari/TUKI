@@ -8480,3 +8480,12 @@ el cliente se desconecto. Terminando servidor.
 el cliente se desconecto. Terminando servidor.
 
 [INFO] 10:59:00:496 FileSystem/(8691:8902): FileSystem listo para recibir a kernel
+[INFO] 13:46:54:434 FileSystem/(14026:14026): Me llego el mensaje OpenSSH_8.9p1 Ubuntu-3
+
+[INFO] 13:46:54:436 FileSystem/(14026:14026): FileSystem listo para escuchar al cliente
+
+[INFO] 13:46:54:436 FileSystem/(14026:14027): FileSystem listo para recibir a kernel
+[INFO] 13:57:31:436 FileSystem/(14534:14534): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 13:57:31:437 FileSystem/(14534:14534): FileSystem listo para escuchar al cliente
+
+[INFO] 13:57:31:437 FileSystem/(14534:14536): FileSystem listo para recibir a kernel

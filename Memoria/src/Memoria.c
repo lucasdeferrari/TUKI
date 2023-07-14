@@ -25,17 +25,6 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 
-
-	if (config_has_property(config, "PUERTO_ESCUCHA")) {
-		PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
-	 }
-	 else {
-		 log_error(logger, "No existe el valor para el puerto escucha.\n");
-		 exit(-1);
-	 }
-
-
-
 	algoritmoAsignacion = string_new();
 	listaDeHuecosLibres = list_create();
 	tablasDeSegmento = list_create();
@@ -43,7 +32,7 @@ int main(int argc, char *argv[]) {
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
 	config = config_create(pathConfig);
-	server_fd = iniciar_servidor(PUERTO);
+
 	//log_info(logger, "Memoria lista para recibir al cliente\n");
 
 
@@ -52,6 +41,13 @@ int main(int argc, char *argv[]) {
 	        log_error(logger, "No se pudo crear el config.\n");
 	        exit(-1);
 	    }
+	    if (config_has_property(config, "PUERTO_ESCUCHA")) {
+	    		PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+	    	 }
+	    	 else {
+	    		 log_error(logger, "No existe el valor para el puerto escucha.\n");
+	    		 exit(-1);
+	    	 }
 
 	if (config_has_property(config, "TAM_SEGMENTO_0")) {
 	    	 tamanioSeg0 = config_get_int_value(config, "TAM_SEGMENTO_0");
@@ -100,7 +96,7 @@ int main(int argc, char *argv[]) {
 				 log_error(logger, "No existe el valor para el retardo compactacion.\n");
 				 exit(-1);
 			 }
-
+	server_fd = iniciar_servidor(PUERTO);
 	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
 				iniciarHiloServer();
 				pthread_join(serverMemoria_thread, NULL);

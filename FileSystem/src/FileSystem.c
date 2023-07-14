@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	if(argc == 2){
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
-	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+
 	sem_init(&semFileSystemClientMemoriaMoveIn,0,0);
 	sem_init(&semFileSystemClientMemoriaMoveOut,0,0);
 
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         printf("No se pudo crear el config.\n");
         exit(5);
     }
-
+    char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
     if (config_has_property(config, "RETARDO_ACCESO_BLOQUE")) {
     	 printf("Existe el path al superbloque.\n");
     	 retardoAccesoBloques = config_get_int_value(config, "RETARDO_ACCESO_BLOQUE");
