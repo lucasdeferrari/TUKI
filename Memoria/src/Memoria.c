@@ -5,7 +5,7 @@ char* ip_memoria;
 char* puerto_memoria;
 int server_fd;
 int contadorSegmentos = 0, cantidadSegmentos;
-
+char* PUERTO;
 int estaConectadoFS = 0;
 
 t_config* config;
@@ -25,7 +25,16 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 
-	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+
+	if (config_has_property(config, "PUERTO_ESCUCHA")) {
+		PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+	 }
+	 else {
+		 log_error(logger, "No existe el valor para el puerto escucha.\n");
+		 exit(-1);
+	 }
+
+
 
 	algoritmoAsignacion = string_new();
 	listaDeHuecosLibres = list_create();
