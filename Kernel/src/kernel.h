@@ -19,7 +19,6 @@ char* ip_memoria;
 char* puerto_memoria;
 char* ip_filesystem;
 char* puerto_filesystem;
-char* puerto_escucha;
 char* algoritmo_planificacion;
 double estimacion_inicial;
 int hrrn_alfa;

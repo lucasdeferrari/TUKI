@@ -16,7 +16,9 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	getaddrinfo(IP, PUERTO, &hints, &servinfo);
+	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+
+	getaddrinfo(NULL, PUERTO, &hints, &servinfo);
 
 	socket_servidor = socket(servinfo->ai_family,
 	                         servinfo->ai_socktype,

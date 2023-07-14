@@ -16,7 +16,9 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	int result = getaddrinfo(IP, PUERTO, &hints, &servinfo);
+	char* puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
+
+	int result = getaddrinfo(NULL, puerto_escucha, &hints, &servinfo);
 
 	if (result != 0) {
 		// La llamada a getaddrinfo() falló, manejar el error aquí

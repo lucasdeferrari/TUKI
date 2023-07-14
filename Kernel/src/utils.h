@@ -15,8 +15,8 @@
 #include<sys/time.h>
 
 //KERNEL
-#define IP "127.0.0.1"
-#define PUERTO "8000"
+//#define IP "127.0.0.1"
+//#define PUERTO "8000"
 
 #define _POSIX_C_SOURCE 200809L
 #define _BSD_SOURCE

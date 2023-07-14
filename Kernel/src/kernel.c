@@ -21,7 +21,6 @@ int main(int argc, char *argv[]) {
     puerto_memoria = config_get_string_value(config, "PUERTO_MEMORIA");
     ip_filesystem = config_get_string_value(config, "IP_FILESYSTEM");
     puerto_filesystem = config_get_string_value(config, "PUERTO_FILESYSTEM");
-    puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
     algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
     hrrn_alfa = config_get_int_value(config, "HRRN_ALFA");
     grado_max_multiprogramación = config_get_int_value(config, "GRADO_MAX_MULTIPROGRAMACION");
