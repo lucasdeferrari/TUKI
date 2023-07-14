@@ -39,7 +39,7 @@ Memoria: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo ' '
 
 run:
-	cd config && FILE_PATH=$(FILE_PATH) ./Memoria
+	./Memoria 
 
 # Other Targets
 clean:

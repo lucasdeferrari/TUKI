@@ -21,20 +21,22 @@ void iterator(char* value) {
 }
 
 int main(int argc, char *argv[]) {
+	if(argc == 2){
+	printf("entre al if");
 	char* pathConfig = string_new();
-	pathConfig = string_duplicate(argv[0]);
+	pathConfig = string_duplicate(argv[1]);
 
 	algoritmoAsignacion = string_new();
-
 	listaDeHuecosLibres = list_create();
 	tablasDeSegmento = list_create();
 	segmentos = list_create();
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
+	config = config_create(pathConfig);
 	server_fd = iniciar_servidor();
 	//log_info(logger, "Memoria lista para recibir al cliente\n");
 
-	config = config_create(pathConfig);
+
 
 	    if (config == NULL) {
 	        log_error(logger, "No se pudo crear el config.\n");
@@ -135,6 +137,7 @@ int main(int argc, char *argv[]) {
 	free(espacioUsuario);
 	free(segmento0);
 	return EXIT_SUCCESS;
+	}
 }
 
 /////////////////////////////////////////CREAR SEGMENTO 0 Y ASIGNACION IDS/////////////////////////////////////////
