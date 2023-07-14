@@ -81266,3 +81266,36 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 20:43:53:970 Memoria/(186060:186269): Eliminación de Proceso PID: 1
 
+[INFO] 00:18:21:517 Memoria/(188203:188203): Listo para escuchar al cliente
+[ERROR] 00:18:21:520 Memoria/(188203:188203): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:18:56:027 Memoria/(188237:188237): Listo para escuchar al cliente
+[ERROR] 00:18:56:027 Memoria/(188237:188237): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:20:10:393 Memoria/(188382:188382): Listo para escuchar al cliente
+[ERROR] 00:20:10:394 Memoria/(188382:188382): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:21:46:020 Memoria/(188387:188387): Listo para escuchar al cliente
+[ERROR] 00:21:46:020 Memoria/(188387:188387): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:21:59:500 Memoria/(188417:188417): Listo para escuchar al cliente
+[ERROR] 00:21:59:500 Memoria/(188417:188417): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:22:23:797 Memoria/(188418:188418): Listo para escuchar al cliente
+[ERROR] 00:22:23:797 Memoria/(188418:188418): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 00:23:15:928 Memoria/(188430:188430): Listo para escuchar al cliente
+[ERROR] 00:23:15:932 Memoria/(188430:188430): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 01:33:06:644 Memoria/(188570:188570): Listo para escuchar al cliente
+[ERROR] 01:33:06:649 Memoria/(188570:188570): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 01:33:37:384 Memoria/(188578:188578): Listo para escuchar al cliente
+[ERROR] 01:33:37:385 Memoria/(188578:188578): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 01:37:03:745 Memoria/(188609:188609): Listo para escuchar al cliente
+[ERROR] 01:37:03:746 Memoria/(188609:188609): No existe el valor para el tamaño del segmento 0.
+
+[INFO] 01:37:14:266 Memoria/(188615:188615): Listo para escuchar al cliente
+[ERROR] 01:37:14:267 Memoria/(188615:188615): No existe el valor para el tamaño del segmento 0.
+

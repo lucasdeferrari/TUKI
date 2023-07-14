@@ -89,14 +89,14 @@ int main(int argc, char *argv[]) {
 				 exit(-1);
 			 }
 
-//	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
-//				iniciarHiloServer();
-//				pthread_join(serverMemoria_thread, NULL);
-//			}
-	while(!( seConectoCPU && seConectoKernel)){
+	while(!( seConectoCPU && seConectoFS && seConectoKernel)){
 				iniciarHiloServer();
 				pthread_join(serverMemoria_thread, NULL);
 			}
+//	while(!( seConectoCPU && seConectoKernel)){
+//				iniciarHiloServer();
+//				pthread_join(serverMemoria_thread, NULL);
+//			}
 
 	log_info(logger, "Se conectaron todos los modulos.\n");
 	pthread_detach(client_Kernel);

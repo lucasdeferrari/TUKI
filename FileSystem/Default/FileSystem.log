@@ -8376,3 +8376,7 @@ el cliente se desconecto. Terminando servidor.
 el cliente se desconecto. Terminando servidor.
 
 [INFO] 20:43:53:969 FileSystem/(186092:186271): FileSystem listo para recibir a kernel
+[INFO] 01:39:11:826 FileSystem/(188658:188658): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 01:39:11:829 FileSystem/(188658:188658): FileSystem listo para escuchar al cliente
+
+[INFO] 01:39:11:830 FileSystem/(188658:188660): FileSystem listo para recibir a kernel
