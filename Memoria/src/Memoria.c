@@ -22,7 +22,6 @@ void iterator(char* value) {
 
 int main(int argc, char *argv[]) {
 	if(argc == 2){
-	printf("entre al if");
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 

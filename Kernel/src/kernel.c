@@ -2,10 +2,10 @@
 t_config* config;
 
 int main(int argc, char *argv[]) {
-
+	if(argc == 2){
 	// LOGGER - CONFIG
 	char* pathConfig = string_new();
-	pathConfig = string_duplicate(argv[0]);
+	pathConfig = string_duplicate(argv[1]);
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
     config = config_create(pathConfig);
@@ -76,6 +76,7 @@ int main(int argc, char *argv[]) {
 
     free(estadoEnEjecucion);
     return EXIT_SUCCESS;
+	}
 }
 
 

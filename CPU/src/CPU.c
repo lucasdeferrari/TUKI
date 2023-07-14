@@ -4,8 +4,9 @@ int cliente_fd;
 
 
 int main(int argc, char *argv[]) {
+	if(argc == 2){
 	char* pathConfig = string_new();
-	pathConfig = string_duplicate(argv[0]);
+	pathConfig = string_duplicate(argv[1]);
 	sem_init(&semCPUClientMemoria,0,0);
 
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
@@ -51,6 +52,7 @@ int main(int argc, char *argv[]) {
     config_destroy(config);
 
     return EXIT_SUCCESS;
+	}
 }
 
 void iniciarHiloClienteMemoria(int cod_memoria, char* registro, int direcFisica) {
