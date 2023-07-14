@@ -8380,3 +8380,103 @@ el cliente se desconecto. Terminando servidor.
 [INFO] 01:39:11:829 FileSystem/(188658:188658): FileSystem listo para escuchar al cliente
 
 [INFO] 01:39:11:830 FileSystem/(188658:188660): FileSystem listo para recibir a kernel
+[INFO] 10:38:47:641 FileSystem/(6471:6471): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 10:38:47:642 FileSystem/(6471:6471): FileSystem listo para escuchar al cliente
+
+[INFO] 10:38:47:642 FileSystem/(6471:6473): FileSystem listo para recibir a kernel
+[INFO] 10:40:10:354 FileSystem/(6471:6473): Se conecto un cliente!
+[INFO] 10:40:10:356 FileSystem/(6471:6473): Crear Archivo: <Consoles>
+
+[INFO] 10:40:10:356 FileSystem/(6471:6473): Abrir Archivo: <Consoles
+>
+
+[ERROR] 10:40:10:356 FileSystem/(6471:6473): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:40:10:357 FileSystem/(6471:6569): FileSystem listo para recibir a kernel
+[INFO] 10:40:10:358 FileSystem/(6471:6569): Se conecto un cliente!
+[INFO] 10:40:10:359 FileSystem/(6471:6569): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 10:40:10:359 FileSystem/(6471:6569): Acceso a Bitmap - Bloque: <2> - Estado: <1>
+
+[INFO] 10:40:10:359 FileSystem/(6471:6569): Acceso a Bitmap - Bloque: <3> - Estado: <1>
+
+[INFO] 10:40:10:360 FileSystem/(6471:6569): Acceso a Bitmap - Bloque: <4> - Estado: <1>
+
+[INFO] 10:40:10:360 FileSystem/(6471:6569): Acceso a Bitmap - Bloque: <5> - Estado: <1>
+
+[INFO] 10:40:10:360 FileSystem/(6471:6569): Truncar Archivo: <Consoles> - Tamaño: <256>
+
+[ERROR] 10:40:10:361 FileSystem/(6471:6569): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:40:10:362 FileSystem/(6471:6573): FileSystem listo para recibir a kernel
+[INFO] 10:40:10:366 FileSystem/(6471:6573): Se conecto un cliente!
+[INFO] 10:40:11:368 FileSystem/(6471:6573): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <3> - Bloque File System <4>
+
+[INFO] 10:40:26:369 FileSystem/(6471:6573): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <4> - Bloque File System <5>
+
+[INFO] 10:40:41:369 FileSystem/(6471:6573): Escribir Archivo: <Consoles> - Puntero: <128> - Memoria: <32> - Tamaño: <80>
+
+[ERROR] 10:40:41:369 FileSystem/(6471:6573): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:40:41:370 FileSystem/(6471:6627): FileSystem listo para recibir a kernel
+[INFO] 10:56:51:656 FileSystem/(8691:8691): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 10:56:51:657 FileSystem/(8691:8691): FileSystem listo para escuchar al cliente
+
+[INFO] 10:56:51:657 FileSystem/(8691:8693): FileSystem listo para recibir a kernel
+[INFO] 10:57:43:453 FileSystem/(8691:8693): Se conecto un cliente!
+[INFO] 10:57:43:455 FileSystem/(8691:8693): Abrir Archivo: <Consoles
+>
+
+[ERROR] 10:57:43:456 FileSystem/(8691:8693): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:57:43:456 FileSystem/(8691:8818): FileSystem listo para recibir a kernel
+[INFO] 10:57:43:458 FileSystem/(8691:8818): Se conecto un cliente!
+[INFO] 10:57:43:460 FileSystem/(8691:8818): Truncar Archivo: <Consoles> - Tamaño: <256>
+
+[ERROR] 10:57:43:460 FileSystem/(8691:8818): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:57:43:462 FileSystem/(8691:8822): FileSystem listo para recibir a kernel
+[INFO] 10:57:43:470 FileSystem/(8691:8822): Se conecto un cliente!
+[INFO] 10:57:44:472 FileSystem/(8691:8822): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <3> - Bloque File System <4>
+
+[INFO] 10:57:59:472 FileSystem/(8691:8822): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <4> - Bloque File System <5>
+
+[INFO] 10:58:14:473 FileSystem/(8691:8822): Escribir Archivo: <Consoles> - Puntero: <128> - Memoria: <32> - Tamaño: <80>
+
+[ERROR] 10:58:14:474 FileSystem/(8691:8822): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:58:14:474 FileSystem/(8691:8875): FileSystem listo para recibir a kernel
+[INFO] 10:58:44:485 FileSystem/(8691:8875): Se conecto un cliente!
+[INFO] 10:58:44:489 FileSystem/(8691:8875): Crear Archivo: <Videogames>
+
+[INFO] 10:58:44:489 FileSystem/(8691:8875): Abrir Archivo: <Videogames
+>
+
+[ERROR] 10:58:44:489 FileSystem/(8691:8875): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:58:44:489 FileSystem/(8691:8889): FileSystem listo para recibir a kernel
+[INFO] 10:58:44:490 FileSystem/(8691:8889): Se conecto un cliente!
+[INFO] 10:58:44:491 FileSystem/(8691:8889): Acceso a Bitmap - Bloque: <1> - Estado: <1>
+
+[INFO] 10:58:44:491 FileSystem/(8691:8889): Truncar Archivo: <Videogames> - Tamaño: <64>
+
+[ERROR] 10:58:44:491 FileSystem/(8691:8889): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:58:44:492 FileSystem/(8691:8893): FileSystem listo para recibir a kernel
+[INFO] 10:58:44:493 FileSystem/(8691:8893): Se conecto un cliente!
+[INFO] 10:58:45:494 FileSystem/(8691:8893): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <1>
+
+[INFO] 10:59:00:494 FileSystem/(8691:8893): Escribir Archivo: <Videogames> - Puntero: <0> - Memoria: <0> - Tamaño: <16>
+
+[ERROR] 10:59:00:496 FileSystem/(8691:8893): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 10:59:00:496 FileSystem/(8691:8902): FileSystem listo para recibir a kernel

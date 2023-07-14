@@ -65268,3 +65268,176 @@ Operacion recibida de MEMORIA desconocida.
 [INFO] 20:43:53:970 CPU/(186125:186272): PID: 1 - Ejecutando: EXIT
 
 [INFO] 06:18:10:661 CPU/(4684:4684): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 10:38:33:912 CPU/(6438:6438): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 10:39:58:343 CPU/(6438:6440): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 10:39:58:344 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RAX, SonicTheHedgehog
+
+[INFO] 10:39:59:344 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 0, RAX
+
+
+[INFO] 10:40:00:345 CPU/(6438:6555): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+
+[INFO] 10:40:00:345 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation1
+
+[INFO] 10:40:01:345 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 32, RBX
+
+
+[INFO] 10:40:02:346 CPU/(6438:6557): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+
+[INFO] 10:40:02:346 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation2
+
+[INFO] 10:40:03:346 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 48, RBX
+
+
+[INFO] 10:40:04:348 CPU/(6438:6559): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+
+[INFO] 10:40:04:348 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation3
+
+[INFO] 10:40:05:348 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 64, RBX
+
+
+[INFO] 10:40:06:350 CPU/(6438:6561): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+
+[INFO] 10:40:06:351 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation4
+
+[INFO] 10:40:07:351 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 80, RBX
+
+
+[INFO] 10:40:08:352 CPU/(6438:6563): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+
+[INFO] 10:40:08:352 CPU/(6438:6552): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation5
+
+[INFO] 10:40:09:352 CPU/(6438:6552): PID: 1 - Ejecutando: MOV_OUT - 96, RBX
+
+
+[INFO] 10:40:10:353 CPU/(6438:6565): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+
+[INFO] 10:40:10:354 CPU/(6438:6552): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 10:40:10:357 CPU/(6438:6568): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 10:40:10:362 CPU/(6438:6571): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 10:40:10:363 CPU/(6438:6575): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 10:40:10:364 CPU/(6438:6577): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 10:40:10:366 CPU/(6438:6579): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 10:40:10:368 CPU/(6438:6581): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 10:40:11:370 CPU/(6438:6585): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 10:40:11:373 CPU/(6438:6591): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 10:40:11:375 CPU/(6438:6596): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 10:40:11:377 CPU/(6438:6601): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 128]
+
+[INFO] 10:40:11:382 CPU/(6438:6606): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 10:40:11:384 CPU/(6438:6611): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 10:40:11:384 CPU/(6438:6615): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 128]
+
+[INFO] 10:57:05:416 CPU/(8724:8724): Me llego el mensaje Hola cpu, gracias por comunicarte con la memoria!
+[INFO] 10:57:31:435 CPU/(8724:8726): PID: 1 - Ejecutando: WAIT - RA
+
+
+[INFO] 10:57:31:441 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RAX, SonicTheHedgehog
+
+[INFO] 10:57:32:441 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 0, RAX
+
+
+[INFO] 10:57:33:442 CPU/(8724:8803): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 0 - Valor escrito: SonicTheHedgehog
+
+[INFO] 10:57:33:442 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation1
+
+[INFO] 10:57:34:442 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 32, RBX
+
+
+[INFO] 10:57:35:443 CPU/(8724:8805): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 32 - Valor escrito: SonyPlaystation1
+
+[INFO] 10:57:35:444 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation2
+
+[INFO] 10:57:36:444 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 48, RBX
+
+
+[INFO] 10:57:37:446 CPU/(8724:8807): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 48 - Valor escrito: SonyPlaystation2
+
+[INFO] 10:57:37:446 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation3
+
+[INFO] 10:57:38:447 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 64, RBX
+
+
+[INFO] 10:57:39:448 CPU/(8724:8809): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 64 - Valor escrito: SonyPlaystation3
+
+[INFO] 10:57:39:448 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation4
+
+[INFO] 10:57:40:449 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 80, RBX
+
+
+[INFO] 10:57:41:450 CPU/(8724:8811): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 80 - Valor escrito: SonyPlaystation4
+
+[INFO] 10:57:41:451 CPU/(8724:8799): PID: 1 - Ejecutando: SET - RBX, SonyPlaystation5
+
+[INFO] 10:57:42:451 CPU/(8724:8799): PID: 1 - Ejecutando: MOV_OUT - 96, RBX
+
+
+[INFO] 10:57:43:452 CPU/(8724:8813): PID: 1 - Acción: ESCRIBIR - Segmento: 0 - Dirección Física: 96 - Valor escrito: SonyPlaystation5
+
+[INFO] 10:57:43:453 CPU/(8724:8799): PID: 1 - Ejecutando: F_OPEN - [Consoles
+]
+
+[INFO] 10:57:43:457 CPU/(8724:8817): PID: 1 - Ejecutando: F_TRUNCATE - [Consoles, 256]
+
+[INFO] 10:57:43:462 CPU/(8724:8820): PID: 2 - Ejecutando: WAIT - RB
+
+
+[INFO] 10:57:43:467 CPU/(8724:8824): PID: 1 - Ejecutando: F_SEEK - [Consoles, 128]
+
+[INFO] 10:57:43:469 CPU/(8724:8826): PID: 1 - Ejecutando: SIGNAL - RB
+
+
+[INFO] 10:57:43:470 CPU/(8724:8828): PID: 1 - Ejecutando: F_WRITE - [Consoles, 32, 80]
+
+[INFO] 10:57:43:471 CPU/(8724:8830): PID: 2 - Ejecutando: CREATE_SEGMENT - [1, 64]
+
+[INFO] 10:57:44:473 CPU/(8724:8834): PID: 2 - Ejecutando: CREATE_SEGMENT - [2, 64]
+
+[INFO] 10:57:44:476 CPU/(8724:8840): PID: 2 - Ejecutando: CREATE_SEGMENT - [3, 64]
+
+[INFO] 10:57:44:478 CPU/(8724:8845): PID: 2 - Ejecutando: CREATE_SEGMENT - [4, 64]
+
+[INFO] 10:57:44:480 CPU/(8724:8850): PID: 2 - Ejecutando: CREATE_SEGMENT - [5, 128]
+
+[INFO] 10:57:44:485 CPU/(8724:8855): PID: 2 - Ejecutando: DELETE_SEGMENT - [2]
+
+[INFO] 10:57:44:488 CPU/(8724:8860): PID: 2 - Ejecutando: DELETE_SEGMENT - [4]
+
+[INFO] 10:57:44:489 CPU/(8724:8864): PID: 2 - Ejecutando: CREATE_SEGMENT - [6, 128]
+
+[INFO] 10:58:44:478 CPU/(8724:8868): PID: 2 - Ejecutando: EXIT
+
+[INFO] 10:58:44:481 CPU/(8724:8881): PID: 1 - Ejecutando: F_CLOSE - [Consoles
+]
+
+[INFO] 10:58:44:484 CPU/(8724:8885): PID: 1 - Ejecutando: F_OPEN - [Videogames
+]
+
+[INFO] 10:58:44:489 CPU/(8724:8887): PID: 1 - Ejecutando: F_TRUNCATE - [Videogames, 64]
+
+[INFO] 10:58:44:492 CPU/(8724:8891): PID: 1 - Ejecutando: F_SEEK - [Videogames, 0]
+
+[INFO] 10:58:44:493 CPU/(8724:8895): PID: 1 - Ejecutando: F_WRITE - [Videogames, 0, 16]
+
+[INFO] 10:59:00:497 CPU/(8724:8897): PID: 1 - Ejecutando: F_CLOSE - [Videogames
+]
+
+[INFO] 10:59:00:499 CPU/(8724:8903): PID: 1 - Ejecutando: EXIT
+

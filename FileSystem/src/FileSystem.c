@@ -21,7 +21,10 @@ char* textoLeidoMemoria = "";
 int instruccionEjecutando;
 int retardoAccesoBloques;
 
-int main(void) {
+int main(int argc, char *argv[]) {
+	if(argc == 2){
+	char* pathConfig = string_new();
+	pathConfig = string_duplicate(argv[1]);
 
 	sem_init(&semFileSystemClientMemoriaMoveIn,0,0);
 	sem_init(&semFileSystemClientMemoriaMoveOut,0,0);
@@ -39,7 +42,7 @@ int main(void) {
 
     logger = log_create("FileSystem.log", "FileSystem", 1, LOG_LEVEL_DEBUG);
 
-    config = config_create("/home/utnso/tp-2023-1c-Los-operadores/FileSystem/FileSystem.config");
+    config = config_create(pathConfig);
 
     if (config == NULL) {
         printf("No se pudo crear el config.\n");
@@ -341,6 +344,7 @@ int main(void) {
 
 
     return EXIT_SUCCESS;
+	}
 }
 
 
