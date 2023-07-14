@@ -8,6 +8,8 @@ int main(int argc, char *argv[]) {
 	pathConfig = string_duplicate(argv[1]);
     logger = log_create("kernel.log", "Kernel", 1, LOG_LEVEL_DEBUG);
 
+    char* puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
+
     config = config_create(pathConfig);
 
     if (config == NULL) {
@@ -51,7 +53,7 @@ int main(int argc, char *argv[]) {
     enviar_handshake_memoria();
 
     //THREAD SERVER
-    server_fd = iniciar_servidor();
+    server_fd = iniciar_servidor(puerto_escucha);
     //log_info(logger, "Kernel listo para escuchar al cliente\n");
 
     while(1){

@@ -25,6 +25,8 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 
+	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
+
 	algoritmoAsignacion = string_new();
 	listaDeHuecosLibres = list_create();
 	tablasDeSegmento = list_create();
@@ -32,7 +34,7 @@ int main(int argc, char *argv[]) {
 
 	logger = log_create("memoria.log", "Memoria", 1, LOG_LEVEL_DEBUG);
 	config = config_create(pathConfig);
-	server_fd = iniciar_servidor();
+	server_fd = iniciar_servidor(PUERTO);
 	//log_info(logger, "Memoria lista para recibir al cliente\n");
 
 

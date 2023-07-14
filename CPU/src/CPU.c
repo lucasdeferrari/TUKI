@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
 	sem_init(&semCPUClientMemoria,0,0);
-
+	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
     logger = log_create("CPU.log", "CPU", 1, LOG_LEVEL_DEBUG);
 
     config = config_create(pathConfig);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     //thread server
 
-	server_fd = iniciar_servidor();
+	server_fd = iniciar_servidor(PUERTO);
 	//log_info(logger, "CPU lista para escuchar al cliente\n");
 
 	while(1){

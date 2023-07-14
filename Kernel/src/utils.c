@@ -2,7 +2,7 @@
 
 t_log* logger;
 
-int iniciar_servidor(void)
+int iniciar_servidor(char* puerto_escucha)
 {
 	// Quitar esta línea cuando hayamos terminado de implementar la funcion
 	// assert(!"no implementado!");
@@ -16,7 +16,7 @@ int iniciar_servidor(void)
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	char* puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
+
 
 	int result = getaddrinfo(NULL, puerto_escucha, &hints, &servinfo);
 

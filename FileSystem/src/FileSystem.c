@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	if(argc == 2){
 	char* pathConfig = string_new();
 	pathConfig = string_duplicate(argv[1]);
-
+	char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
 	sem_init(&semFileSystemClientMemoriaMoveIn,0,0);
 	sem_init(&semFileSystemClientMemoriaMoveOut,0,0);
 
@@ -317,7 +317,7 @@ int main(int argc, char *argv[]) {
     enviar_handshake_memoria();
 
     //thread server
-	server_fd = iniciar_servidor();
+	server_fd = iniciar_servidor(PUERTO);
 	log_info(logger, "FileSystem listo para escuchar al cliente\n");
 
 
