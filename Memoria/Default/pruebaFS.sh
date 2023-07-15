@@ -1,3 +1,1 @@
 ./Memoria "./config/memoriaFS.config"  
-
-

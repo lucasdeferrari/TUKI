@@ -1,0 +1,1 @@
+./CPU "./config/CPUMemoria.config"  

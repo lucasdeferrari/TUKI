@@ -1,0 +1,1 @@
+./Memoria "./config/memoriaBase.config"  
