@@ -343,9 +343,9 @@ void* serverMemoria(void* ptr){
     			for(int i =0; i < tamanio; i++) {
     				memcpy(&destinoArray[i],  espacioUsuario + direccionFisica + i, sizeof(char));
 				}
-    			printf("VALOR A ENVIAR: %s\n",destinoArray);
+    			//printf("VALOR A ENVIAR: %s\n",destinoArray);
     			destinoArray[tamanio] = '\0';
-    			printf("VALOR ENVIADO: %s\n",destinoArray);
+    			//printf("VALOR ENVIADO: %s\n",destinoArray);
     			//memcpy(destinoArray[0], espacioUsuario + direccionFisica, strlen(espacioUsuario + direccionFisica) + 1);
     			//printf("destino array:%s\n ", destinoArray[0]);
     			log_info(logger, "PID: %s - Acción: LEER - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisica, tamanio, quienMeHabla);

@@ -8489,3 +8489,57 @@ el cliente se desconecto. Terminando servidor.
 [INFO] 13:57:31:437 FileSystem/(14534:14534): FileSystem listo para escuchar al cliente
 
 [INFO] 13:57:31:437 FileSystem/(14534:14536): FileSystem listo para recibir a kernel
+[INFO] 04:38:14:027 FileSystem/(5578:5578): Me llego el mensaje Hola fs, gracias por comunicarte con la memoria!
+[INFO] 04:38:14:027 FileSystem/(5578:5578): FileSystem listo para escuchar al cliente
+
+[INFO] 04:38:14:028 FileSystem/(5578:5580): FileSystem listo para recibir a kernel
+[INFO] 04:40:20:434 FileSystem/(5578:5580): Se conecto un cliente!
+[INFO] 04:40:20:435 FileSystem/(5578:5580): Abrir Archivo: <Consoles
+>
+
+[ERROR] 04:40:20:435 FileSystem/(5578:5580): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:40:20:436 FileSystem/(5578:5655): FileSystem listo para recibir a kernel
+[INFO] 04:40:20:438 FileSystem/(5578:5655): Se conecto un cliente!
+[INFO] 04:40:20:440 FileSystem/(5578:5655): Truncar Archivo: <Consoles> - Tamaño: <256>
+
+[ERROR] 04:40:20:440 FileSystem/(5578:5655): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:40:20:442 FileSystem/(5578:5659): FileSystem listo para recibir a kernel
+[INFO] 04:40:20:451 FileSystem/(5578:5659): Se conecto un cliente!
+[INFO] 04:40:21:454 FileSystem/(5578:5659): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <3> - Bloque File System <4>
+
+[INFO] 04:40:36:455 FileSystem/(5578:5659): Acceso Bloque - Archivo: <Consoles> - Bloque Archivo: <4> - Bloque File System <5>
+
+[INFO] 04:40:51:456 FileSystem/(5578:5659): Escribir Archivo: <Consoles> - Puntero: <128> - Memoria: <32> - Tamaño: <80>
+
+[ERROR] 04:40:51:457 FileSystem/(5578:5659): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:40:51:457 FileSystem/(5578:5712): FileSystem listo para recibir a kernel
+[INFO] 04:41:21:467 FileSystem/(5578:5712): Se conecto un cliente!
+[INFO] 04:41:21:468 FileSystem/(5578:5712): Abrir Archivo: <Videogames
+>
+
+[ERROR] 04:41:21:468 FileSystem/(5578:5712): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:41:21:469 FileSystem/(5578:5726): FileSystem listo para recibir a kernel
+[INFO] 04:41:21:474 FileSystem/(5578:5726): Se conecto un cliente!
+[INFO] 04:41:21:475 FileSystem/(5578:5726): Truncar Archivo: <Videogames> - Tamaño: <64>
+
+[ERROR] 04:41:21:475 FileSystem/(5578:5726): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:41:21:476 FileSystem/(5578:5730): FileSystem listo para recibir a kernel
+[INFO] 04:41:21:479 FileSystem/(5578:5730): Se conecto un cliente!
+[INFO] 04:41:22:481 FileSystem/(5578:5730): Acceso Bloque - Archivo: <Videogames> - Bloque Archivo: <1> - Bloque File System <1>
+
+[INFO] 04:41:37:481 FileSystem/(5578:5730): Escribir Archivo: <Videogames> - Puntero: <0> - Memoria: <0> - Tamaño: <16>
+
+[ERROR] 04:41:37:481 FileSystem/(5578:5730): 
+el cliente se desconecto. Terminando servidor.
+
+[INFO] 04:41:37:483 FileSystem/(5578:5740): FileSystem listo para recibir a kernel

@@ -590,16 +590,19 @@ void* clientFileSystem(void *arg) {
     		char* punteroRead = string_new();
     		char* cantBytesRead = string_new();
     		char* direcFisicaRead = string_new();
+    		char* pidRead = string_new();
 
             string_append_with_format(&punteroRead, "%d", punteroArchivo);
             string_append_with_format(&cantBytesRead, "%d", unProceso->cantBytesArchivo);
             string_append_with_format(&direcFisicaRead, "%d", unProceso->direcFisicaArchivo);
+            string_append_with_format(&pidRead, "%d", unProceso->pid);
 
 
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
         	agregar_a_paquete(paquete, punteroRead, strlen(punteroRead)+1);
         	agregar_a_paquete(paquete, cantBytesRead, strlen(cantBytesRead)+1);
         	agregar_a_paquete(paquete, direcFisicaRead, strlen(direcFisicaRead)+1);
+        	agregar_a_paquete(paquete, pidRead, strlen(pidRead)+1);
 
         	pthread_mutex_lock(&mutex_fd);
         	FSejecutando = 1;
@@ -640,16 +643,19 @@ void* clientFileSystem(void *arg) {
 			char* punteroWrite = string_new();
     		char* cantBytesWrite = string_new();
     		char* direcFisicaWrite = string_new();
+    		char* pidWrite = string_new();
 
     		string_append_with_format(&punteroWrite, "%d", punteroArchivo);
             string_append_with_format(&cantBytesWrite, "%d", unProceso->cantBytesArchivo);
             string_append_with_format(&direcFisicaWrite, "%d", unProceso->direcFisicaArchivo);
+            string_append_with_format(&pidWrite, "%d", unProceso->pid);
 
 
             agregar_a_paquete(paquete, unProceso->nombreArchivo, strlen(unProceso->nombreArchivo)+1);
             agregar_a_paquete(paquete, punteroWrite, strlen(punteroWrite)+1);
         	agregar_a_paquete(paquete, cantBytesWrite, strlen(cantBytesWrite)+1);
         	agregar_a_paquete(paquete, direcFisicaWrite, strlen(direcFisicaWrite)+1);
+        	agregar_a_paquete(paquete, pidWrite, strlen(pidWrite)+1);
 
         	pthread_mutex_lock(&mutex_fd);
         	FSejecutando = 1;
