@@ -29,6 +29,7 @@ void* espacioUsuario;
 int asignarIdSegmento();
 Segmento *crearSegmento0(size_t);
 HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base);
+bool comparadorHuecoLibre(void* elem1, void* elem2);
 
 void* serverMemoria(void *ptr);
 void iniciarHiloServer();

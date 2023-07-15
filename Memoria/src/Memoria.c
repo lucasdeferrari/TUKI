@@ -173,6 +173,8 @@ HuecoLibre* crearHuecoLibre(size_t tamanio, size_t base) {
 		hueco->base = base;
 		//printf("HUECO BASE DESPLAZAMIENTO: %zu\n", hueco->desplazamiento);
 	}
+
+
 	return hueco;
 }
 
@@ -381,7 +383,7 @@ void* serverMemoria(void* ptr){
 				 for(int i =0; i<= tamanio; i++) {
 					 memcpy(espacioUsuario + direccionFisicaRecibida + i,  &valorRegistro[i], sizeof(valorRegistro[0]));
 				     }
-				printf("VALOR RECIBIDO: %s\n",valorRegistro);
+				//printf("VALOR RECIBIDO: %s\n",valorRegistro);
 				log_info(logger, "PID: %s - Acción: ESCRIBIR - Dirección física: %i - Tamaño: %i - Origen: %s\n", pid, direccionFisicaRecibida, tamanio, quienMeHabla);
 				sleep_ms(retardoMemoria);
 				//printf("ENVIO MOV OUT");
@@ -498,11 +500,12 @@ int hayLugarParaCrearSegmento(size_t tamanio) {
 
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
-		int desplazamientoSiguiente = siguiente->desplazamiento;
-		tamanioLibre += desplazamientoSiguiente;
+		tamanioLibre += siguiente->desplazamiento;
 	}
 	list_iterator_destroy(iterador);
 	int booleano = 0;
+//	printf("el tamanio del segmento es: %zu \n", tamanio);
+//	printf("el tamanio del hueco libre es: %zu \n", tamanioLibre);
 	if(tamanio <= tamanioLibre){
 		booleano = 1;
 	}
@@ -583,13 +586,27 @@ size_t buscarLugarParaElSegmento(size_t tamanio) {
 
 ///////////////////////////////////////////////////ALGORITMOS///////////////////////////////////////////////////
 size_t buscarPorFirst (size_t tamanio) {
-	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+	t_list* listaOrdenada = list_sorted(listaDeHuecosLibres, comparadorHuecoLibre);
+
+
+
+	t_list_iterator* iterador = list_iterator_create(listaOrdenada);
 	int iteradorIndex = 0;
+
+	//printf("tamanio lista huecos: %i\n", list_size(listaOrdenada));
 
 	while(list_iterator_has_next(iterador)) {
 		HuecoLibre *siguiente = list_iterator_next(iterador);
 		if(siguiente->desplazamiento >= tamanio) {
-			iteradorIndex = list_iterator_index(iterador);
+
+
+			t_list_iterator* iteradorDesordenado = list_iterator_create(listaDeHuecosLibres);
+			while(list_iterator_has_next(iteradorDesordenado)) {
+				HuecoLibre *siguienteDesordenado = list_iterator_next(iteradorDesordenado);
+				if(siguienteDesordenado->base == siguiente->base) {
+					iteradorIndex = list_iterator_index(iteradorDesordenado);
+				}
+			}
 			actualizarHuecosLibres(siguiente, tamanio,iteradorIndex);
 			list_iterator_destroy(iterador);
 			return siguiente->base;
@@ -637,15 +654,32 @@ size_t buscarPorWorst(size_t tamanio) {
 
 ////////////////////////////////////////FUNCIONES QUE USAN LOS ALGORITMOS/////////////////////////////////////////
 void actualizarHuecosLibres(HuecoLibre *siguiente, size_t tamanio, int iteradorIndex) {
+
+	HuecoLibre* huecoLibre = list_get(listaDeHuecosLibres,iteradorIndex);
+//	printf("HUECO BASE ELIMINADO: %zu\n", huecoLibre->base);
+//	printf("HUECO DESPLAZAMIENTO ELIMINADO: %zu\n", huecoLibre->desplazamiento);
+
 	list_remove(listaDeHuecosLibres, iteradorIndex);
+
 
 	HuecoLibre *nuevoHueco = malloc(sizeof(HuecoLibre));
 	nuevoHueco->base = siguiente->base + tamanio;
 	size_t base = buscarSiguienteLugarOcupado(nuevoHueco->base);
 	nuevoHueco->desplazamiento = base - nuevoHueco->base;
-	//printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
+//	printf("HUECO BASE: %zu\n", nuevoHueco->base);
+//	printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
 	list_add(listaDeHuecosLibres,nuevoHueco);
-}
+
+	//printf("tamanio lista huecos: %i\n", list_size(listaDeHuecosLibres));
+
+
+	t_list_iterator* iterador = list_iterator_create(listaDeHuecosLibres);
+			while(list_iterator_has_next(iterador)) {
+				HuecoLibre *siguiente = list_iterator_next(iterador);
+//				printf("HUECO BASE ITERADOR: %zu\n", siguiente->base);
+//				printf("HUECO DESPLAZAMIENTO ITERADOR: %zu\n", siguiente->desplazamiento);
+			}
+	}
 
 size_t buscarSiguienteLugarOcupado(size_t base) {
 	int cantidadTablasSegmentos = list_size(tablasDeSegmento);
@@ -678,11 +712,24 @@ void eliminar_segmento(int id_proceso, int id_segmento) {
 						nuevoHueco->base = segmentoSiguiente->base;
 						nuevoHueco->desplazamiento = segmentoSiguiente ->desplazamiento;
 						list_add(listaDeHuecosLibres,nuevoHueco);
+//						printf("HUECO BASE: %zu\n", nuevoHueco->base);
+//						printf("HUECO DESPLAZAMIENTO: %zu\n", nuevoHueco->desplazamiento);
 						juntarHuecosContiguos();
 						list_iterator_remove(iterador2);
-						list_remove_element(segmentos,segmentoSiguiente);
+						t_list_iterator* iteradorSegmentos = list_iterator_create(segmentos);
+
+						while(list_iterator_has_next(iteradorSegmentos)){
+							Segmento *segmentoBuscado = list_iterator_next(iteradorSegmentos);
+							if(segmentoBuscado->idSegmentoMemoria == segmentoSiguiente->idSegmentoMemoria) {
+								list_iterator_remove(iteradorSegmentos);
+							}
+						}
+
+						list_iterator_destroy(iteradorSegmentos);
+						//list_remove_element(segmentos,segmentoSiguiente);
 						log_info(logger, "PID: %d - Eliminar Segmento: %d - Base: %zu - TAMAÑO: %zu\n",id_proceso, id_segmento,segmentoSiguiente->base,segmentoSiguiente ->desplazamiento);
 					}
+
 
 				}
 				list_iterator_destroy(iterador2);
@@ -719,26 +766,36 @@ void compactar_memoria() {
 	t_list* listaOrdenada = list_sorted(segmentos, comparador);
 	//t_list* copialistaOrdenada = list_duplicate(listaOrdenada);
 	t_list_iterator* iterador = list_iterator_create(listaOrdenada);
+	HuecoLibre *huecoLibre = malloc(sizeof(HuecoLibre));
+	Segmento *proximoSegmento = malloc(sizeof(Segmento));
 
-	t_list* copiaHuecosLibres = list_duplicate(listaDeHuecosLibres);
+	//t_list* copiaHuecosLibres = list_duplicate(listaDeHuecosLibres);
+	//t_list_iterator* iteradorCopia = list_iterator_create(copiaHuecosLibres);
+
 	while(list_iterator_has_next(iterador)){
 		Segmento *segmento = list_iterator_next(iterador);
-		t_list_iterator* iterador2 = list_iterator_create(copiaHuecosLibres);
-		while(list_iterator_has_next(iterador2)){
-			HuecoLibre *huecoLibre = list_iterator_next(iterador2);
+		//t_list_iterator* iterador2 = list_iterator_create(listaDeHuecosLibres);
+		//while(list_iterator_has_next(iterador2)){
+	//		huecoLibre = list_iterator_next(iterador2);
 			Segmento *ultimoSegmento = list_get(listaOrdenada, list_size(listaOrdenada)-1);
-			if(segmento->base + segmento->desplazamiento == huecoLibre->base && segmento!=ultimoSegmento){
+			if(segmento!=ultimoSegmento){
 				Segmento *proximoSegmento = list_get(listaOrdenada, list_iterator_index(iterador)+1);
 				memcpy(espacioUsuario + segmento->base + segmento->desplazamiento, espacioUsuario+proximoSegmento->base, proximoSegmento->desplazamiento);
 				proximoSegmento->base = segmento->base + segmento->desplazamiento;
 				int pid = buscarIdMemoria(proximoSegmento->idSegmentoMemoria);
-				int iteradorIndex = list_iterator_index(iterador2);
-				actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento, iteradorIndex);
+//				int iteradorIndex = list_iterator_index(iterador2);
 				log_info(logger,"PID: %d - Segmento: %d - Base: %zu - Tamaño %zu\n", pid, proximoSegmento->idSegmentoKernel, proximoSegmento->base, proximoSegmento->desplazamiento);
 			}
-		}
-		list_iterator_destroy(iterador2);
+			//iterador2 = list_iterator_create(listaDeHuecosLibres);
+		//}
+	//	list_iterator_destroy(iterador2);
 	}
+	list_clean(listaDeHuecosLibres);
+	HuecoLibre* huecoLibreNuevo = malloc(sizeof(HuecoLibre));
+	huecoLibreNuevo->base = proximoSegmento->base + proximoSegmento->desplazamiento;
+	huecoLibreNuevo->desplazamiento = tamanioMemoria - (proximoSegmento->base + proximoSegmento->desplazamiento);
+	list_add(listaDeHuecosLibres, huecoLibreNuevo);
+	//actualizarHuecosLibres(huecoLibre, proximoSegmento->desplazamiento, iteradorIndex);
 	list_iterator_destroy(iterador);
 }
 
@@ -763,6 +820,13 @@ int buscarIdMemoria(int idSegmentoMemoria){
 bool comparador(void* elem1, void* elem2) {
 	Segmento* seg1 = (Segmento*) elem1;
 	Segmento* seg2 = (Segmento*) elem2;
+
+	return (seg1->base < seg2->base);
+	}
+
+bool comparadorHuecoLibre(void* elem1, void* elem2) {
+	HuecoLibre* seg1 = (HuecoLibre*) elem1;
+	HuecoLibre* seg2 = (HuecoLibre*) elem2;
 
 	return (seg1->base < seg2->base);
 	}

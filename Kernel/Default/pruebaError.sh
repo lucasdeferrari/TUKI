@@ -1,1 +1,1 @@
-./Kernel "./config/kernelBase.config" 
+./Kernel "./config/kernelError.config" 

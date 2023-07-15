@@ -1,6 +1,5 @@
 #include "FileSystem.h"
 
-int pidProceso;
 t_config* config;
 t_config* configFCB;
 t_config* configFCBT;
@@ -46,24 +45,21 @@ int main(int argc, char *argv[]) {
     config = config_create(pathConfig);
 
     if (config == NULL) {
-        printf("No se pudo crear el config.\n");
+        log_error(logger,"No se pudo crear el config.\n");
         exit(5);
     }
     char* PUERTO = config_get_string_value(config, "PUERTO_ESCUCHA");
     if (config_has_property(config, "RETARDO_ACCESO_BLOQUE")) {
-    	 printf("Existe el path al superbloque.\n");
+    	 //printf("Existe el path al superbloque.\n");
     	 retardoAccesoBloques = config_get_int_value(config, "RETARDO_ACCESO_BLOQUE");
-    }else {
-    	 printf("No existe el path al superbloque.\n");
-    	 exit(5);
     }
 
     if (config_has_property(config, "PATH_SUPERBLOQUE")) {
-    	 printf("Existe el path al superbloque.\n");
+    	// printf("Existe el path al superbloque.\n");
     	 p_superbloque = config_get_string_value(config, "PATH_SUPERBLOQUE");
     	 }
     	 else {
-    	 printf("No existe el path al superbloque.\n");
+    		 log_error(logger,"No existe el path al superbloque.\n");
     	 exit(5);
     	 }
 
@@ -71,7 +67,7 @@ int main(int argc, char *argv[]) {
     	//"/home/utnso/tp-2023-1c-Los-operadores/Consola/prueba.txt"
 
 	if (archivo_superbloque == NULL) {
-		fprintf(stderr, "Error al abrir el archivo de superbloque.\n");
+		log_error(logger,"Error al abrir el archivo de superbloque.\n");
 		exit(1);
 	}
 
@@ -81,48 +77,48 @@ int main(int argc, char *argv[]) {
 
 
 	 if (superbloque == NULL) {
-			printf("No se pudo crear el config para leer el superbloque.\n");
+		 log_error(logger,"No se pudo crear el config para leer el superbloque.\n");
 			exit(5);
 		}
 
 	  if (config_has_property(superbloque, "BLOCK_SIZE")) {
-			 printf("Existe el la clave block size.\n");
+			 //printf("Existe el la clave block size.\n");
 			 block_size = config_get_int_value(superbloque, "BLOCK_SIZE");
 			 }
 			 else {
-			 printf("No existe la clave block size.\n");
+			log_error(logger,"No existe la clave block size.\n");
 			 exit(5);
 			 }
 
 	  if (config_has_property(superbloque, "BLOCK_COUNT")) {
-			 printf("Existe el la clave block count.\n");
+			 //printf("Existe el la clave block count.\n");
 			 block_count = config_get_int_value(superbloque, "BLOCK_COUNT");
 			 }
 			 else {
-			 printf("No existe la clave block count.\n");
+			log_error(logger,"No existe la clave block count.\n");
 			 exit(5);
 			 }
 
-	  printf("Block count: %i\n", block_count);
-	  printf("Block size: %i\n", block_size);
+//	  printf("Block count: %i\n", block_count);
+//	  printf("Block size: %i\n", block_size);
 
 	  int tamanio_total = block_size * block_count;
 
     if (config_has_property(config, "PATH_BITMAP")) {
-       	 printf("Existe el path al bitmap.\n");
+       //	 printf("Existe el path al bitmap.\n");
        	 p_bitmap = config_get_string_value(config, "PATH_BITMAP");
        	 }
        	 else {
-       	 printf("No existe el path al bitmap.\n");
+       	log_error(logger,"No existe el path al bitmap.\n");
        	 exit(5);
        	 }
 
     //CHEQUEO SI EL ARCHIVO YA EXISTE
     if (access(p_bitmap, F_OK) == -1) {
-       printf("El archivo bitmap no existe.\n");
+    	log_info(logger,"El archivo bitmap no existe.\n");
        archivo_bitmap = fopen(p_bitmap, "w");
        if (archivo_bitmap) {
-              printf("El archivo bitmap se ha creado exitosamente.\n");
+    	   log_info(logger,"El archivo bitmap se ha creado exitosamente.\n");
               fclose(archivo_bitmap);
           } else {
               printf("No se pudo crear el archivo bitmap.\n");
@@ -137,7 +133,7 @@ int main(int argc, char *argv[]) {
 
     // Obtener el descriptor de archivo a partir del puntero de archivo
     int fd = fileno(archivo_bitmap);
-    printf("File descriptor: %i\n" , fd);
+    //printf("File descriptor: %i\n" , fd);
 
     // Ajustar el tamaño del archivo para que coincida con el tamaño del bitarray
 //	off_t result = lseek(fd, block_count - 1, SEEK_SET);
@@ -151,7 +147,7 @@ int main(int argc, char *argv[]) {
 		perror("Error al ajustar el tamaño del archivo");
 		exit(1);
 	}else if (result == 0 ){
-		printf("El tamanio del archivo se modifico correctamente");
+		log_info(logger,"El tamanio del archivo se modifico correctamente");
 	}
 
 	// Escribir un byte nulo al final del archivo para que ocupe espacio
@@ -174,7 +170,7 @@ int main(int argc, char *argv[]) {
 
    // Pregunto la cantidad maxima de bits
    size_t cantMaxBits = bitarray_get_max_bit(bitarray_mapeado);
-   printf("%lu\n", cantMaxBits);
+   //printf("%lu\n", cantMaxBits);
 
    // Escribir en la memoria mapeada
    //bitarray_set_bit(bitarray_mapeado, 0);
@@ -203,7 +199,7 @@ int main(int argc, char *argv[]) {
 
 
     if (config_has_property(config, "PATH_BLOQUES")) {
-		 printf("Existe el path a los bloques.\n");
+		 //printf("Existe el path a los bloques.\n");
 		 p_bloques= config_get_string_value(config, "PATH_BLOQUES");
 		 }
 		 else {
@@ -212,10 +208,10 @@ int main(int argc, char *argv[]) {
 		 }
 
     if (access(p_bloques, F_OK) == -1) {
-           printf("El archivo bloques no existe.\n");
+    	log_info(logger,"El archivo bloques no existe.\n");
            archivo_bloques = fopen(p_bloques, "w");
            if (archivo_bloques) {
-                  printf("El archivo bloques se ha creado exitosamente.\n");
+        	   log_info(logger,"El archivo bloques se ha creado exitosamente.\n");
                   fclose(archivo_bloques);
               } else {
                   printf("No se pudo crear el archivo bloques.\n");
@@ -233,7 +229,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	int fd2 = fileno(archivo_bloques);
-	printf("File descriptor: %i\n" , fd2);
+	//printf("File descriptor: %i\n" , fd2);
 
 	tamanio_bloques = sizeof(struct Bloque) * block_count;
 
@@ -343,6 +339,7 @@ int main(int argc, char *argv[]) {
         munmap(mapping, block_count);
         close(fd);
         fclose(archivo_bitmap);
+
 		munmap(mapping2, block_count*block_size);
 		close(fd2);
 		fclose(archivo_bloques);
@@ -391,18 +388,18 @@ void* serverFileSystem(void* ptr){
     		case F_OPEN:
     			//SI EXISTE LO ABRIMOS Y DEVOLVEMOS OK
     			//SI NO EXISTE, LO CREAMOS, LO ABRIMOS Y DEVOLVEMOS OK
-    			printf("DENTRO DE F_OPEN\n");
+    			//printf("DENTRO DE F_OPEN\n");
     			nombreArchivo = recibir_buffer_mio(cliente_fd);
 
-    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
+    			//printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
 
 				encolarInstruccion(cliente_fd, "F_OPEN", nombreArchivo, 0, 0, 0);
-				printf("6\n");
+				//printf("6\n");
 
     			if((!queue_is_empty(colaInstrucciones) && instruccionEjecutando == -1)){
     				desencolarInstruccion();
     			}
-    			printf("7\n");
+    			//printf("7\n");
 //    			abrir_archivo(nombreArchivo);
 //    			enviar_mensaje_cod_operacion("",cliente_fd,F_OPEN);
 //
@@ -415,9 +412,9 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorRead = list_iterator_create(lista);
 
-    			char* paqueteRead[5] = {};
+    			char* paqueteRead[4] = {};
 
-    			for (int i = 0; i<5; i++) {
+    			for (int i = 0; i<4; i++) {
     				char* siguiente = list_iterator_next(iteradorRead);
     				paqueteRead[i] = siguiente;
     			}
@@ -428,12 +425,11 @@ void* serverFileSystem(void* ptr){
     			int punteroArchivoRead = atoi(paqueteRead[1]);
     			int cantBytesRead = atoi(paqueteRead[2]);
     			int direcFisicaRead = atoi(paqueteRead[3]);
-    			pidProceso = atoi(paqueteRead[4]);
 
-    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
-    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoRead);
-    			printf("CantBytes recibida de Kernel: %d\n",cantBytesRead);
-    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaRead);
+//    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
+//    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoRead);
+//    			printf("CantBytes recibida de Kernel: %d\n",cantBytesRead);
+//    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaRead);
 
     			encolarInstruccion(cliente_fd, "F_READ", nombreArchivo, punteroArchivoRead, cantBytesRead, direcFisicaRead);
 
@@ -456,9 +452,9 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorWrite = list_iterator_create(lista);
 
-    			char* paqueteWrite[5] = {};
+    			char* paqueteWrite[4] = {};
 
-    			for (int i = 0; i<5; i++) {
+    			for (int i = 0; i<4; i++) {
     				char* siguiente = list_iterator_next(iteradorWrite);
     				paqueteWrite[i] = siguiente;
     			}
@@ -469,12 +465,11 @@ void* serverFileSystem(void* ptr){
     			int punteroArchivoWrite = atoi(paqueteWrite[1]);
     			int cantBytesWrite = atoi(paqueteWrite[2]);
     			int direcFisicaWrite = atoi(paqueteWrite[3]);
-    			pidProceso = atoi(paqueteWrite[4]);
-
-    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
-    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoWrite);
-    			printf("CantBytes recibida de Kernel: %d\n",cantBytesWrite);
-    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaWrite);
+//
+//    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
+//    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoWrite);
+//    			printf("CantBytes recibida de Kernel: %d\n",cantBytesWrite);
+//    			printf("DirecFisica recibida de Kernel: %d\n",direcFisicaWrite);
 
     			encolarInstruccion(cliente_fd, "F_WRITE", nombreArchivo, punteroArchivoWrite, cantBytesWrite, direcFisicaWrite);
 
@@ -497,7 +492,7 @@ void* serverFileSystem(void* ptr){
 
     			break;
     		case F_TRUNCATE:
-    			printf("DENTRO DE F_TRUNCATE\n");
+    			//printf("DENTRO DE F_TRUNCATE\n");
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorTruncate = list_iterator_create(lista);
 
@@ -558,7 +553,7 @@ void iniciarHiloCliente(int cod_memoria, char* registro, int direcFisica, int ta
 	     	  printf("\nNo se pudo crear el hilo del cliente Memoria del File System.");
 	     	  exit(7);
 	     	 }
-	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
+//	     	 printf("El hilo cliente de la Memoria se creo correctamente.");
 }
 
 void* clientMemoria(void* arg) {
@@ -581,7 +576,7 @@ void* clientMemoria(void* arg) {
         	char* direcFisicaMI = string_new();
         	char* tamanioMI = string_new();
 
-            string_append_with_format(&pidMI, "%d", pidProceso);
+            string_append_with_format(&pidMI, "%d", 99);
             string_append_with_format(&fsMI, "%s", "FS");
             string_append_with_format(&direcFisicaMI, "%d", direcFisica);
             string_append_with_format(&tamanioMI, "%d", tamanio);
@@ -593,11 +588,11 @@ void* clientMemoria(void* arg) {
 
             enviar_paquete(paquete, conexion_Memoria);
 
-            printf("MOV_IN enviado a MEMORIA.\n");
-            printf("pid enviado a Memoria: %s\n", pidMI);
-            printf("quienSoy enviado a Memoria: %s\n", fsMI);
-            printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
-            printf("tamanio enviado a Memoria: %s\n", tamanioMI);
+//            printf("MOV_IN enviado a MEMORIA.\n");
+//            printf("pid enviado a Memoria: %s\n", pidMI);
+//            printf("quienSoy enviado a Memoria: %s\n", fsMI);
+//            printf("direcFisica enviado a Memoria: %s\n", direcFisicaMI);
+//            printf("tamanio enviado a Memoria: %s\n", tamanioMI);
 
             eliminar_paquete(paquete);
         break;
@@ -609,7 +604,7 @@ void* clientMemoria(void* arg) {
 			char* direcFisicaMO = string_new();
 
 
-			string_append_with_format(&pidMO, "%d", pidProceso);
+			string_append_with_format(&pidMO, "%d", 99);
 			string_append_with_format(&fsMO, "%s", "FS");
 			string_append_with_format(&valorRegistroMO, "%s", registro);
 			string_append_with_format(&tamanioMO, "%d", tamanio);
@@ -625,12 +620,12 @@ void* clientMemoria(void* arg) {
 
 			enviar_paquete(paquete, conexion_Memoria);
 
-			printf("MOV_OUT enviado a MEMORIA.\n");
-			printf("pid: %s\n", pidMO);
-			printf("quienSoy: %s\n", fsMO);
-			printf("valorRegistro: %s.\n", valorRegistroMO);
-			printf("direcFisica: %s\n", direcFisicaMO);
-			printf("tamanio: %s\n", tamanioMO);
+//			printf("MOV_OUT enviado a MEMORIA.\n");
+//			printf("pid: %s\n", pidMO);
+//			printf("quienSoy: %s\n", fsMO);
+//			printf("valorRegistro: %s.\n", valorRegistroMO);
+//			printf("direcFisica: %s\n", direcFisicaMO);
+//			printf("tamanio: %s\n", tamanioMO);
 
             eliminar_paquete(paquete);
         break;
@@ -645,12 +640,12 @@ void* clientMemoria(void* arg) {
     switch (cod_op) {
     	case 11:
     		textoLeidoMemoria = recibir_handshake(conexion_Memoria);
-    		printf("Respuesta MOV_IN: %s\n",textoLeidoMemoria);
+    		//printf("Respuesta MOV_IN: %s\n",textoLeidoMemoria);
     		sem_post(&semFileSystemClientMemoriaMoveIn);
     	break;
         case 12:  //RECIBO UN OK
         	char* respuesta = recibir_handshake(conexion_Memoria);
-        	printf("Respuesta MOV_OUT: %s\n",respuesta);
+        	//printf("Respuesta MOV_OUT: %s\n",respuesta);
         	sem_post(&semFileSystemClientMemoriaMoveOut);
         break;
         default:
@@ -689,12 +684,12 @@ void abrir_archivo(char* nombreArchivoOriginal){
 
 	char* nombreArchivo = crearPathArchivoFOpen(nombreArchivoOriginal);
 
-	printf("El path es: %s\n", p_fcb);
+	//printf("El path es: %s\n", p_fcb);
 
 	configFCB = config_create(p_fcb);
 
 	if (configFCB == NULL) {
-		printf("No exise el archivo.\n");
+		log_info(logger,"No exise el archivo.\n");
 		archivo_fcb = fopen(p_fcb, "w");
 		if (archivo_fcb) {
 
@@ -717,7 +712,7 @@ void abrir_archivo(char* nombreArchivoOriginal){
 		}
 	}else {
 		char* nomArch = config_get_string_value(configFCB, "NOMBRE_ARCHIVO");
-		printf("El nombre del archivo es: %s\n", nomArch);
+		//printf("El nombre del archivo es: %s\n", nomArch);
 	}
 	//config_destroy(configFCB);
 }
@@ -820,7 +815,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 						bloqueNuevo++;
 					}
 
-					printf("BloqueNuevo %u\n", bloqueNuevo);
+					//printf("BloqueNuevo %u\n", bloqueNuevo);
 
 					if(punteroDirecto == 0){
 						punteroDirecto = bloqueNuevo;
@@ -830,7 +825,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, bitarray_test_bit(bitarray_mapeado, bloqueNuevo));
 
-						printf("BloqueNuevoPD %u\n", bloqueNuevo);
+					//	printf("BloqueNuevoPD %u\n", bloqueNuevo);
 
 						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
@@ -845,7 +840,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 						config_set_value(configFCBT, "PUNTERO_INDIRECTO", pi);
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						log_info(logger, "Acceso a Bitmap - Bloque: <%d> - Estado: <%d>\n", bloqueNuevo, 1);
-						printf("BloqueNuevoPI %u\n", bloqueNuevo);
+						//printf("BloqueNuevoPI %u\n", bloqueNuevo);
 
 						while(bitarray_test_bit(bitarray_mapeado, bloqueNuevo) != 0){
 							bloqueNuevo++;
@@ -854,7 +849,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 
 					if (diferencia > i){
 						char* block = (char*)mapping2 + punteroIndirecto*block_size + ((cantidadBloquesActual)*4);
-						printf("Escribiendo en bloque de archivos\n");
+						//printf("Escribiendo en bloque de archivos\n");
 						sprintf(block, "%d", bloqueNuevo);
 						bitarray_set_bit(bitarray_mapeado, bloqueNuevo);
 						bool valor = bitarray_test_bit(bitarray_mapeado, bloqueNuevo);
@@ -868,7 +863,7 @@ void truncar_archivo(char* nombreArchivo, int tamanio){
 		}
 	}
 	config_save(configFCBT);
-	printf("Config guardado\n");
+	//printf("Config guardado\n");
 }
 
 //FALTA MANDAR A MEMORIA
@@ -888,7 +883,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 	}else{
 
 		if (config_has_property(configFCBL, "TAMANIO_ARCHIVO")) {
-			printf("El config se creo bien\n");
+			//printf("El config se creo bien\n");
 			punteroIndirecto =  config_get_int_value(configFCBL, "PUNTERO_INDIRECTO");
 			punteroDirecto =  config_get_int_value(configFCBL, "PUNTERO_DIRECTO");
 		}else {
@@ -915,8 +910,8 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				if(!string_is_empty(bloqueLecturaString)){
 					char bloqueLectura = bloqueLecturaString[0];
 					porcionLeida[i] = bloqueLectura;
-					printf("Char: %c\n", bloqueLectura);
-					printf("PorcionLeida: %c.\n", porcionLeida[i]);
+//					printf("Char: %c\n", bloqueLectura);
+//					printf("PorcionLeida: %c.\n", porcionLeida[i]);
 				}else{
 					porcionLeida[i] = ' ';
 				}
@@ -927,7 +922,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 			log_info(logger, "Acceso Bloque - Archivo: <%s> - Bloque Archivo: <%d> - Bloque File System <%d>\n", nombreArchivo, 1, punteroDirecto);
 			sleep_ms(retardoAccesoBloques);
 
-			printf("PorcionLeida: %s.\n", porcionLeida);
+			//printf("PorcionLeida: %s.\n", porcionLeida);
 
 			while (bytesALeer != 0){
 				int bloque = 0;
@@ -953,7 +948,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				sleep_ms(retardoAccesoBloques);
 				bloque++;
 			}
-			printf("PorcionLeida: %s.\n", porcionLeida);
+			//printf("PorcionLeida: %s.\n", porcionLeida);
 		}else {
 			int bytesALeer = cantBytesRead;
 			int indice = 0;
@@ -982,7 +977,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 			sleep_ms(retardoAccesoBloques);
 
 			bloqueALeer++;
-			printf("PorcionLeida: %s.\n", porcionLeida);
+			//printf("PorcionLeida: %s.\n", porcionLeida);
 
 			while (bytesALeer != 0){
 
@@ -1007,7 +1002,7 @@ void leerArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesRead, int
 				sleep_ms(retardoAccesoBloques);
 				bloqueALeer++;
 			}
-			printf("PorcionLeida: %s.\n", porcionLeida);
+			//printf("PorcionLeida: %s.\n", porcionLeida);
 		}
 		char* registro = porcionLeida;
 		iniciarHiloCliente(12, registro, direcFisicaRead, cantBytesRead);
@@ -1030,7 +1025,7 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 	}else{
 
 		if (config_has_property(configFCBE, "TAMANIO_ARCHIVO")) {
-			printf("El config se creo bien\n");
+			//printf("El config se creo bien\n");
 			punteroIndirecto =  config_get_int_value(configFCBE, "PUNTERO_INDIRECTO");
 			punteroDirecto =  config_get_int_value(configFCBE, "PUNTERO_DIRECTO");
 		}else {
@@ -1051,7 +1046,7 @@ void escribirArchivo(char* nombreArchivo, int punteroArchivo, int cantBytesWrite
 			char* porcionAEscribir = string_new();
 			porcionAEscribir = string_substring(textoLeidoMemoria, 0, tamanioMenorEscribir);
 
-			printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
+		//	printf("PorcionAEscrbir: %s.\n", porcionAEscribir);
 
 			char* block = (char*)mapping2 + punteroDirecto*block_size + resto;
 
@@ -1201,7 +1196,7 @@ int minimo(int a, int b){
 void encolarInstruccion(int clientefd, char* instruccion, char* nombreArchivo, int punteroArchivo, int cantBytes, int direcFisica){
 	t_instruccion* nuevaInstruccion = malloc(sizeof(t_instruccion));
 
-	printf("5\n");
+	//printf("5\n");
 	nuevaInstruccion->clientefd = clientefd;
 	nuevaInstruccion->instruccion = instruccion;
 	nuevaInstruccion->nombreArchivo = nombreArchivo;
@@ -1210,17 +1205,17 @@ void encolarInstruccion(int clientefd, char* instruccion, char* nombreArchivo, i
 	nuevaInstruccion->direccionFisica = direcFisica;
 
 	queue_push(colaInstrucciones, nuevaInstruccion);
-	printf("4\n");
+//	printf("4\n");
 }
 
 
 void desencolarInstruccion(){
 
 	t_instruccion* siguienteInstruccion = malloc(sizeof(t_instruccion));
-	printf("3\n");
+//	printf("3\n");
 	siguienteInstruccion = queue_pop(colaInstrucciones);
 	instruccionEjecutando = 1;
-	printf("2\n");
+	//printf("2\n");
 	int clientefd = siguienteInstruccion->clientefd;
 	char* instruccion = siguienteInstruccion->instruccion;
 	char* nombreArchivo = siguienteInstruccion->nombreArchivo;
@@ -1228,7 +1223,7 @@ void desencolarInstruccion(){
 	int cantBytes = siguienteInstruccion->cantBytes;
 	int direcFisica = siguienteInstruccion->direccionFisica;
 
-	printf("1\n");
+	//printf("1\n");
 	if(string_contains(instruccion, "F_OPEN")){
 
 		abrir_archivo(nombreArchivo);
@@ -1242,7 +1237,7 @@ void desencolarInstruccion(){
 			desencolarInstruccion();
 		}
 
-		printf("F_OPEN ENVIADO A KERNEL\n");
+	//	printf("F_OPEN ENVIADO A KERNEL\n");
 		liberar_conexion(clientefd);
 
 	}else if (string_contains(instruccion, "F_TRUNCATE")){
@@ -1258,7 +1253,7 @@ void desencolarInstruccion(){
 			desencolarInstruccion();
 		}
 
-		printf("F_TRUNCATE ENVIADO A KERNEL\n");
+		//printf("F_TRUNCATE ENVIADO A KERNEL\n");
 		liberar_conexion(cliente_fd);
 
 	}else if(string_contains(instruccion, "F_READ")){
@@ -1275,7 +1270,7 @@ void desencolarInstruccion(){
 			desencolarInstruccion();
 		}
 
-		printf("F_READ ENVIADO A KERNEL\n");
+	//	printf("F_READ ENVIADO A KERNEL\n");
 		liberar_conexion(cliente_fd);
 
 	}else if(string_contains(instruccion, "F_WRITE")){
@@ -1296,7 +1291,7 @@ void desencolarInstruccion(){
 			desencolarInstruccion();
 		}
 
-		printf("F_WRITE ENVIADO A KERNEL\n");
+	//	printf("F_WRITE ENVIADO A KERNEL\n");
 		liberar_conexion(cliente_fd);
 
 	}
