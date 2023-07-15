@@ -82790,3 +82790,101 @@ el cliente se desconecto. Terminando servidor
 
 [INFO] 07:57:40:800 Memoria/(18336:18438): Eliminación de Proceso PID: 4
 
+[INFO] 08:22:51:513 Memoria/(20387:20387): Listo para escuchar al cliente
+[INFO] 08:23:00:084 Memoria/(20387:20387): Se conectaron todos los modulos.
+
+[INFO] 08:23:00:084 Memoria/(20387:20387): Se crearon todas las estructuras correctamente.
+
+[INFO] 08:23:01:600 Memoria/(20387:20399): Creación de Proceso PID: 1
+
+[INFO] 08:23:01:605 Memoria/(20387:20406): Creación de Proceso PID: 2
+
+[INFO] 08:23:02:606 Memoria/(20387:20411): PID: 1 - Acción: ESCRIBIR - Dirección física: 0 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:04:608 Memoria/(20387:20413): PID: 1 - Acción: ESCRIBIR - Dirección física: 32 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:06:609 Memoria/(20387:20415): PID: 1 - Acción: ESCRIBIR - Dirección física: 48 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:08:611 Memoria/(20387:20417): PID: 1 - Acción: ESCRIBIR - Dirección física: 64 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:10:612 Memoria/(20387:20419): PID: 1 - Acción: ESCRIBIR - Dirección física: 80 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:12:614 Memoria/(20387:20421): PID: 1 - Acción: ESCRIBIR - Dirección física: 96 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:23:13:622 Memoria/(20387:20423): PID: 1 - Acción: LEER - Dirección física: 32 - Tamaño: 80 - Origen: FS
+
+[INFO] 08:23:14:624 Memoria/(20387:20444): PID: 2 - Crear Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 08:23:14:625 Memoria/(20387:20447): PID: 2 - Crear Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 08:23:14:626 Memoria/(20387:20452): PID: 2 - Crear Segmento: 3 - Base: 256 - TAMAÑO: 64
+
+[INFO] 08:23:14:627 Memoria/(20387:20457): PID: 2 - Crear Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 08:23:14:629 Memoria/(20387:20462): PID: 2 - Crear Segmento: 5 - Base: 384 - TAMAÑO: 128
+
+[INFO] 08:23:14:630 Memoria/(20387:20467): PID: 2 - Eliminar Segmento: 2 - Base: 192 - TAMAÑO: 64
+
+[INFO] 08:23:14:631 Memoria/(20387:20470): PID: 2 - Eliminar Segmento: 4 - Base: 320 - TAMAÑO: 64
+
+[INFO] 08:23:44:626 Memoria/(20387:20481): Solicitud de Compactación
+
+[INFO] 08:23:44:626 Memoria/(20387:20481): PID: 2 - Segmento: 1 - Base: 128 - Tamaño 64
+
+[INFO] 08:23:44:626 Memoria/(20387:20481): PID: 2 - Segmento: 3 - Base: 192 - Tamaño 64
+
+[INFO] 08:23:44:626 Memoria/(20387:20481): PID: 2 - Segmento: 5 - Base: 256 - Tamaño 128
+
+[INFO] 08:24:14:628 Memoria/(20387:20485): PID: 2 - Crear Segmento: 6 - Base: 0 - TAMAÑO: 128
+
+[INFO] 08:24:14:629 Memoria/(20387:20489): PID: 2 - Eliminar Segmento: 1 - Base: 128 - TAMAÑO: 64
+
+[INFO] 08:24:14:629 Memoria/(20387:20489): PID: 2 - Eliminar Segmento: 3 - Base: 192 - TAMAÑO: 64
+
+[INFO] 08:24:14:629 Memoria/(20387:20489): PID: 2 - Eliminar Segmento: 5 - Base: 256 - TAMAÑO: 128
+
+[INFO] 08:24:14:629 Memoria/(20387:20489): PID: 2 - Eliminar Segmento: 6 - Base: 0 - TAMAÑO: 128
+
+[INFO] 08:24:14:629 Memoria/(20387:20489): Eliminación de Proceso PID: 2
+
+[INFO] 08:24:14:636 Memoria/(20387:20493): PID: 1 - Acción: LEER - Dirección física: 0 - Tamaño: 16 - Origen: FS
+
+[INFO] 08:24:30:640 Memoria/(20387:20509): Eliminación de Proceso PID: 1
+
+[INFO] 08:24:43:909 Memoria/(20518:20518): Listo para escuchar al cliente
+[INFO] 08:24:46:326 Memoria/(20518:20518): Se conectaron todos los modulos.
+
+[INFO] 08:24:46:326 Memoria/(20518:20518): Se crearon todas las estructuras correctamente.
+
+[INFO] 08:24:53:400 Memoria/(20518:20530): Creación de Proceso PID: 1
+
+[INFO] 08:24:53:403 Memoria/(20518:20537): Creación de Proceso PID: 2
+
+[INFO] 08:24:53:412 Memoria/(20518:20546): Creación de Proceso PID: 3
+
+[INFO] 08:24:53:414 Memoria/(20518:20552): Creación de Proceso PID: 4
+
+[INFO] 08:25:08:414 Memoria/(20518:20558): PID: 1 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 08:25:09:417 Memoria/(20518:20566): PID: 1 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:25:11:419 Memoria/(20518:20568): Eliminación de Proceso PID: 1
+
+[INFO] 08:25:26:424 Memoria/(20518:20574): PID: 2 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 08:25:27:429 Memoria/(20518:20582): PID: 2 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:25:29:433 Memoria/(20518:20584): Eliminación de Proceso PID: 2
+
+[INFO] 08:25:44:436 Memoria/(20518:20590): PID: 3 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 08:25:45:438 Memoria/(20518:20598): PID: 3 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:25:47:440 Memoria/(20518:20600): Eliminación de Proceso PID: 3
+
+[INFO] 08:26:02:443 Memoria/(20518:20606): PID: 4 - Acción: ESCRIBIR - Dirección física: 16 - Tamaño: 16 - Origen: FS
+
+[INFO] 08:26:03:445 Memoria/(20518:20614): PID: 4 - Acción: LEER - Dirección física: 16 - Tamaño: 16 - Origen: CPU
+
+[INFO] 08:26:05:447 Memoria/(20518:20616): Eliminación de Proceso PID: 4
+

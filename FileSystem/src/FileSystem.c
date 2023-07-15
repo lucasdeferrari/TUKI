@@ -7,6 +7,7 @@ t_config* configFCBL;
 t_config* configFCBE;
 int cliente_fd;
 t_queue* colaInstrucciones;
+int pid;
 
 int block_size = 0;
 int block_count = 0;
@@ -412,9 +413,9 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorRead = list_iterator_create(lista);
 
-    			char* paqueteRead[4] = {};
+    			char* paqueteRead[5] = {};
 
-    			for (int i = 0; i<4; i++) {
+    			for (int i = 0; i<5; i++) {
     				char* siguiente = list_iterator_next(iteradorRead);
     				paqueteRead[i] = siguiente;
     			}
@@ -425,6 +426,7 @@ void* serverFileSystem(void* ptr){
     			int punteroArchivoRead = atoi(paqueteRead[1]);
     			int cantBytesRead = atoi(paqueteRead[2]);
     			int direcFisicaRead = atoi(paqueteRead[3]);
+    			pid = atoi(paqueteRead[4]);
 
 //    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
 //    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoRead);
@@ -452,9 +454,9 @@ void* serverFileSystem(void* ptr){
     			lista = recibir_paquete(cliente_fd);
     			t_list_iterator* iteradorWrite = list_iterator_create(lista);
 
-    			char* paqueteWrite[4] = {};
+    			char* paqueteWrite[5] = {};
 
-    			for (int i = 0; i<4; i++) {
+    			for (int i = 0; i<5; i++) {
     				char* siguiente = list_iterator_next(iteradorWrite);
     				paqueteWrite[i] = siguiente;
     			}
@@ -465,6 +467,7 @@ void* serverFileSystem(void* ptr){
     			int punteroArchivoWrite = atoi(paqueteWrite[1]);
     			int cantBytesWrite = atoi(paqueteWrite[2]);
     			int direcFisicaWrite = atoi(paqueteWrite[3]);
+    			pid = atoi(paqueteWrite[4]);
 //
 //    			printf("Archivo recibido de Kernel: %s\n",nombreArchivo);
 //    			printf("Puntero recibido de Kernel: %d\n",punteroArchivoWrite);
@@ -576,7 +579,7 @@ void* clientMemoria(void* arg) {
         	char* direcFisicaMI = string_new();
         	char* tamanioMI = string_new();
 
-            string_append_with_format(&pidMI, "%d", 99);
+            string_append_with_format(&pidMI, "%d", pid);
             string_append_with_format(&fsMI, "%s", "FS");
             string_append_with_format(&direcFisicaMI, "%d", direcFisica);
             string_append_with_format(&tamanioMI, "%d", tamanio);
@@ -604,7 +607,7 @@ void* clientMemoria(void* arg) {
 			char* direcFisicaMO = string_new();
 
 
-			string_append_with_format(&pidMO, "%d", 99);
+			string_append_with_format(&pidMO, "%d", pid);
 			string_append_with_format(&fsMO, "%s", "FS");
 			string_append_with_format(&valorRegistroMO, "%s", registro);
 			string_append_with_format(&tamanioMO, "%d", tamanio);

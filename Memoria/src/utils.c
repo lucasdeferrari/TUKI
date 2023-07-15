@@ -285,10 +285,10 @@ t_paquete* empaquetarTabla(int pid, t_list* cabeza, op_code cod_operacion) {
     while (list_iterator_has_next(iterador)) {
     	Segmento* siguiente = list_iterator_next(iterador);
 
-
-    	printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
-    	printf("base: %zu\n",siguiente->base);
-    	printf("desplazamiento: %zu\n",siguiente->desplazamiento);
+//
+//    	printf("IdSegmentoKernel: %d\n",siguiente->idSegmentoKernel);
+//    	printf("base: %zu\n",siguiente->base);
+//    	printf("desplazamiento: %zu\n",siguiente->desplazamiento);
 
         char* unaPalabra = string_new();
 
