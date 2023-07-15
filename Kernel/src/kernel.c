@@ -450,12 +450,12 @@ void* clientMemoria(void *arg) {
 //        		}
         		sem_wait(&semCompactacion);
         	}
-        	if(estaConectadoMemoria){
-        		iniciarHiloClienteMemoria(13);
-        	}
-        	else{
+//        	if(estaConectadoMemoria){
+//        		iniciarHiloClienteMemoria(13);
+//        	}
+
         		iniciarHiloClienteMemoria(4);
-        	}
+
         break;
 		default:
 			log_warning(logger,"\nOperacion recibida de MEMORIA desconocida.\n");

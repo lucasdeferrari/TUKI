@@ -181,22 +181,22 @@ int main(int argc, char *argv[]) {
    //bitarray_set_bit(bitarray_mapeado, 2);
 
    // Ver el valor que acabo de modificar
-   bool valor = bitarray_test_bit(bitarray_mapeado, 0);
-   bool valor2 = bitarray_test_bit(bitarray_mapeado, 1);
-   bool valor3 = bitarray_test_bit(bitarray_mapeado, 2);
-   bool valor4 = bitarray_test_bit(bitarray_mapeado, 3);
+//   bool valor = bitarray_test_bit(bitarray_mapeado, 0);
+//   bool valor2 = bitarray_test_bit(bitarray_mapeado, 1);
+//   bool valor3 = bitarray_test_bit(bitarray_mapeado, 2);
+//   bool valor4 = bitarray_test_bit(bitarray_mapeado, 3);
 
 
-   printf("El valor del bit 0 es %i\n", valor);
-   printf("El valor del bit 1 es %i\n", valor2);
-   printf("El valor del bit 2 es %i\n", valor3);
-   printf("El valor del bit 3 es %i\n", valor4);
-
-   // Sincronizar los cambios con el archivo en disco
-   if (msync(mapping, block_count, MS_SYNC) == -1) {
-	   perror("Error en msync");
-	   exit(1);
-   }
+//   printf("El valor del bit 0 es %i\n", valor);
+//   printf("El valor del bit 1 es %i\n", valor2);
+//   printf("El valor del bit 2 es %i\n", valor3);
+//   printf("El valor del bit 3 es %i\n", valor4);
+//
+//   // Sincronizar los cambios con el archivo en disco
+//   if (msync(mapping, block_count, MS_SYNC) == -1) {
+//	   perror("Error en msync");
+//	   exit(1);
+//   }
 
 
 
@@ -279,7 +279,8 @@ int main(int argc, char *argv[]) {
 		if (msync(mapping2, tamanio_bloques, MS_SYNC) == -1) {
 			perror("Error en msync");
 			munmap(mapping2, block_count);
-			close(fd);
+			close(fd2);
+			fclose(archivo_bloques);
 			exit(1);
 		}
 
@@ -341,6 +342,9 @@ int main(int argc, char *argv[]) {
         munmap(mapping, block_count);
         close(fd);
         fclose(archivo_bitmap);
+		munmap(mapping2, block_count*block_size);
+		close(fd2);
+		fclose(archivo_bloques);
 
 
     return EXIT_SUCCESS;
