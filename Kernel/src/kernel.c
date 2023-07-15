@@ -1889,9 +1889,26 @@ void armarPCB(t_list* lista){
 void finalizarEncolarPCB(){
 	encolarReady();  //Si corresponde lo encola en Ready
 	//printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
-	if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
-		desencolarReady();
-	}
+	//if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
+		//desencolarReady();
+	//}
+
+		if(strcmp(algoritmo_planificacion,"FIFO") == 0){
+		
+			if(frenteColaReady != NULL && estadoEnEjecucion->pid == -1){
+			
+			desencolarReady();
+			}
+		
+		}
+		else{
+
+			if( list_is_empty(listaReady) && estadoEnEjecucion->pid == -1){
+			desencolarReady();
+			}
+			
+		}
+	
 }
 
 void encolarReady() {
