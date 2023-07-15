@@ -1889,6 +1889,14 @@ void armarPCB(t_list* lista){
 void finalizarEncolarPCB(){
 	encolarReady();  //Si corresponde lo encola en Ready
 	//printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
+	
+	if(estadoEnEjecucion->pid == -1){  
+		desencolarReady();
+	}
+}
+/*void finalizarEncolarPCB(){
+	encolarReady();  //Si corresponde lo encola en Ready
+	//printf("PID EN EJECUCION: %d\n", estadoEnEjecucion->pid );
 	//if(estadoEnEjecucion->pid == -1){  //Si no hay un proceso en ejecucion, lo ejecuto
 		//desencolarReady();
 	//}
@@ -1910,7 +1918,7 @@ void finalizarEncolarPCB(){
 		}
 	
 }
-
+*/
 void encolarReady() {
 
 	// SI EL ALGORITMO DE PLANIFICACION ES FIFO VERIFICA EL GRADO MAX DE MULTIPROGRAMCIÓN Y ENCOLA EN READY SI CORRESPONDE
